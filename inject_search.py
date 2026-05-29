@@ -39,6 +39,9 @@ NEW_NAV_CSS = r"""
   .search-result .r-snippet{font-size:.8rem;color:var(--ink-soft,#524d42);margin-top:2px;line-height:1.35}
   .search-result .r-snippet em{font-style:normal;font-weight:600;color:var(--ink,#1c1a16)}
   .search-no-results{padding:10px 12px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft,#524d42);text-align:center}
+  .search-see-all{border-top:1px dashed var(--line,#d8d0bf);margin-top:4px;padding-top:4px}
+  .search-see-all a{display:flex;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--prac,#243b66);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s;min-height:25px;align-items:center}
+  .search-see-all a:hover,.search-see-all a:focus{background:var(--paper-2,#ece6d8)}
   .toolbar{top:52px !important}
   section{scroll-margin-top:132px !important}
   /* WCAG 2.4.11 focus appearance */
@@ -82,7 +85,7 @@ NEW_NAV_HTML = """<a class="skip-link" href="#main-content">Skip to main content
       </ul>
     </nav>
     <div class="site-search" role="search">
-      <form class="search-form" action="#" onsubmit="return false" aria-label="Site search">
+      <form class="search-form" action="search.html" method="get" aria-label="Site search">
         <span class="search-icon" aria-hidden="true">
           <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
         </span>
@@ -90,6 +93,7 @@ NEW_NAV_HTML = """<a class="skip-link" href="#main-content">Skip to main content
           id="site-search-input"
           class="search-input"
           type="search"
+          name="q"
           placeholder="Search..."
           aria-label="Search this site"
           aria-autocomplete="list"
@@ -201,6 +205,7 @@ NEW_NAV_JS = r"""<script>
       showResults(); resultLinks = []; selIdx = -1; return;
     }
 
+    var seeAllHtml = '<li class="search-see-all" role="none"><a href="search.html?q='+encodeURIComponent(q)+'">See all results for “'+esc(q)+'” &rarr;</a></li>';
     searchResults.innerHTML = scored.map(function(x, i){
       var e = x.e, sec = bestSection(e,q);
       var snip = sec ? hilite(sec,q) : hilite(e.lede.slice(0,90),q);
@@ -210,7 +215,7 @@ NEW_NAV_JS = r"""<script>
           '<div class="r-title">'+hilite(e.title,q)+'</div>' +
           (snip ? '<div class="r-snippet">'+snip+'</div>' : '') +
         '</div></a></li>';
-    }).join('');
+    }).join('') + seeAllHtml;
 
     resultLinks = Array.from(searchResults.querySelectorAll('.search-result a'));
     selIdx = -1;
@@ -259,8 +264,14 @@ NEW_NAV_JS = r"""<script>
       e.preventDefault(); selectResult(Math.min(selIdx+1, resultLinks.length-1));
     } else if(e.key==='ArrowUp'){
       e.preventDefault(); selectResult(Math.max(selIdx-1, -1));
-    } else if(e.key==='Enter' && selIdx >= 0 && resultLinks[selIdx]){
-      e.preventDefault(); window.location.href = resultLinks[selIdx].getAttribute('href');
+    } else if(e.key==='Enter'){
+      e.preventDefault();
+      if(selIdx >= 0 && resultLinks[selIdx]){
+        window.location.href = resultLinks[selIdx].getAttribute('href');
+      } else {
+        var qv = searchInput.value.trim();
+        if(qv) window.location.href = 'search.html?q=' + encodeURIComponent(qv);
+      }
     } else if(e.key==='Escape'){
       hideResults(); searchInput.blur();
     }
@@ -294,6 +305,17 @@ for filename in files:
     content, n3 = re.subn(
         r'<script>\s*\(function\(\)\{[\s\S]*?practicePages[\s\S]*?\}\)\(\);\s*</script>',
         NEW_NAV_JS, content, count=1, flags=re.S)
+
+    # Fresh injection for files that have no existing nav markers
+    if n1 == 0 and '</style>' in content:
+        content = content.replace('</style>', NEW_NAV_CSS + '\n</style>', 1)
+        n1 = 1
+    if n2 == 0 and '<body>' in content:
+        content = content.replace('<body>', '<body>\n' + NEW_NAV_HTML, 1)
+        n2 = 1
+    if n3 == 0 and '</body>' in content:
+        content = content.replace('</body>', NEW_NAV_JS + '\n</body>', 1)
+        n3 = 1
 
     open(path, 'w').write(content)
     ok = 'v' if n1+n2+n3 == 3 else '!'

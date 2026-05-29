@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Essence Kernel</title>
+<title>Search — Essence Way of Working</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -11,66 +11,50 @@
   :root{
     --paper:#f3efe6; --paper-2:#ece6d8; --ink:#1c1a16; --ink-soft:#524d42; --soft:#8a93a2;
     --line:#d8d0bf; --card:#fbf9f3;
-    --alpha:#0f6e63; --activity:#1f5fa8; --comp:#4b3f9e;
-    --prac:#27406b; /* kernel accent */
-    --cust:#2e7d52; --sol:#b07d12; --end:#2a5e9c;
+    --prac:#243b66;
+    --bs:#0e7490; --sb:#b21e63; --mva:#0f6e63; --mvg:#4b3f9e; --kernel:#27406b;
     --shadow:0 1px 0 rgba(0,0,0,.04),0 14px 30px -22px rgba(28,26,22,.55);
+    scroll-behavior:smooth;
   }
   *{box-sizing:border-box}
   body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
-    background:radial-gradient(circle at 12% -10%,#fbf8ef 0%,transparent 45%),radial-gradient(circle at 95% 0%,#e9eef4 0%,transparent 42%),var(--paper);}
+    background:radial-gradient(circle at 12% -10%,#fbf8ef 0%,transparent 45%),radial-gradient(circle at 95% 0%,#e7ecf4 0%,transparent 42%),var(--paper);}
   body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
     background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-    background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);}
+    background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 22%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 22%,#000,transparent 80%);}
   .wrap{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:0 26px 90px}
   header.hero{padding:58px 0 24px;border-bottom:2px solid var(--ink)}
   .kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--prac)}
-  h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2.4rem,6vw,4.6rem);line-height:.98;margin:.16em 0 .14em;letter-spacing:-.015em}
-  h1 em{font-style:italic;font-weight:500;color:var(--alpha)}
-  .lede{font-size:clamp(1rem,1.5vw,1.18rem);max-width:66ch;color:var(--ink-soft)}
-  .pillars{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-  .pillars span{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.05em;border:1px solid var(--ink);border-radius:40px;padding:7px 14px;background:var(--card)}
-  .toolbar{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:13px 0 11px;margin:22px 0 4px;background:linear-gradient(var(--paper) 80%,transparent);backdrop-filter:blur(2px)}
-  .toolbar .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
-  button.f{font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;border:1px solid var(--ink);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:30px;transition:.15s}
-  button.f:hover,button.f.active{background:var(--ink);color:var(--paper)}
-  button.print{margin-left:auto;border-style:dashed}
-  section{margin-top:42px;scroll-margin-top:80px}
-  .sec-head{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:8px}
-  .sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.65rem;margin:0}
-  .sec-head .dot{width:13px;height:13px;border-radius:3px}
-  .sec-intro{color:var(--ink-soft);max-width:80ch;margin:6px 0 18px;font-size:.94rem}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:17px}
-  .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
-  .card .top{height:6px}
-  .card .body{padding:15px 16px 17px;display:flex;flex-direction:column;flex:1}
-  .meta{display:flex;align-items:center;gap:7px;margin-bottom:8px;flex-wrap:wrap}
-  .type{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
-  .area{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;border-radius:30px;padding:3px 8px;color:#fff;margin-left:auto}
-  .area.cust{background:var(--cust)} .area.sol{background:var(--sol)} .area.end{background:var(--end)}
-  .card h4{font-family:"Fraunces",serif;font-weight:600;font-size:1.22rem;margin:0 0 6px;line-height:1.1}
-  .desc{font-size:.88rem;color:var(--ink-soft);margin:0 0 11px}
-  .states{list-style:none;margin:0;padding:0;counter-reset:s}
-  .states>li{position:relative;padding:7px 0 7px 28px;border-top:1px dashed var(--line)}
-  .states>li:first-child{border-top:none}
-  .states>li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:50%;background:var(--c,var(--alpha));color:#fff;font-family:"IBM Plex Mono",monospace;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:600}
-  .st-name{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--c,var(--alpha))}
-  .st-check{font-size:.82rem;color:var(--ink-soft);margin-top:1px}
-  .ladder{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 18px}
-  .ladder .step{flex:1;min-width:155px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--comp);border-radius:8px;padding:9px 11px}
-  .ladder .step .n{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--comp);font-weight:600}
-  .ladder .step .t{font-family:"Fraunces",serif;font-size:1rem}
-  .ladder .step .d{font-size:.78rem;color:var(--ink-soft)}
-  .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-top:18px;border-left:4px solid var(--prac)}
-  .panel h3{font-family:"Fraunces",serif;margin:0 0 6px;font-size:1.18rem}
-  .panel p{margin:0;color:var(--ink-soft);font-size:.92rem;max-width:84ch}
-  footer{margin-top:54px;border-top:2px solid var(--ink);padding-top:16px;font-size:.83rem;color:var(--ink-soft)}
-  .hidden{display:none !important}
-  @media print{body::before{display:none}.toolbar{display:none}.wrap{max-width:none;padding:0}header.hero{padding-top:0}.card{box-shadow:none;border:1px solid #bbb}section{margin-top:22px}@page{margin:12mm}}
+  h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2.4rem,6vw,4.7rem);line-height:.97;margin:.16em 0 .14em;letter-spacing:-.015em}
+  h1 em{font-style:italic;font-weight:500;color:var(--prac);background:none}
+  .lede{font-size:clamp(1rem,1.5vw,1.18rem);max-width:70ch;color:var(--ink-soft)}
+  /* result cards */
+  .results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin-top:32px}
+  .sr-card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden;transition:transform .12s,box-shadow .12s}
+  .sr-card:hover{transform:translateY(-3px);box-shadow:0 1px 0 rgba(0,0,0,.04),0 22px 40px -24px rgba(28,26,22,.6)}
+  .sr-card > a{display:flex;flex-direction:column;text-decoration:none;color:inherit;flex:1}
+  .sr-top{height:6px;flex-shrink:0}
+  .sr-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+  .sr-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:5px}
+  .sr-title{font-family:"Fraunces",serif;font-weight:600;font-size:1.22rem;margin:0 0 8px;line-height:1.08;color:var(--ink)}
+  .sr-title em{font-style:normal;background:rgba(255,200,0,.35);border-radius:2px;padding:0 1px}
+  .sr-lede{font-size:.88rem;color:var(--ink-soft);margin:0 0 12px;line-height:1.5}
+  .sr-lede em{font-style:normal;font-weight:600;color:var(--ink)}
+  .sr-sections{list-style:none;margin:0 0 14px;padding:10px 0 0;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:3px}
+  .sr-sections li{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.03em;color:var(--ink-soft);padding:1px 0;padding-left:14px;position:relative}
+  .sr-sections li::before{content:"↳";position:absolute;left:0;color:var(--soft)}
+  .sr-sections li em{font-style:normal;font-weight:600;color:var(--ink)}
+  .sr-open{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-top:auto;padding-top:10px}
+  /* empty / no-results states */
+  .sr-state{margin-top:48px;text-align:center;padding:56px 24px;background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}
+  .sr-state-icon{font-size:2.6rem;margin-bottom:14px}
+  .sr-state h2{font-family:"Fraunces",serif;font-size:1.5rem;margin:0 0 8px;font-weight:600}
+  .sr-state p{color:var(--ink-soft);font-size:.95rem;margin:0}
+  .sr-state a{color:var(--prac);font-weight:600}
+  footer{margin-top:56px;border-top:2px solid var(--ink);padding-top:16px;font-size:.83rem;color:var(--ink-soft);max-width:90ch}
+  @media(max-width:600px){.results-grid{grid-template-columns:1fr}}
+  @media print{body::before,.site-nav,.skip-link{display:none}.wrap{padding:0}header.hero{padding-top:0}@page{margin:12mm}}
 
-  
-  
-  
   /* ===== SITE NAV ===== */
   .skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0;outline:none}
   .skip-link:focus-visible{top:0;outline:3px solid #f3efe6;outline-offset:2px}
@@ -178,90 +162,115 @@
     </div>
   </div>
 </header>
+
 <div class="wrap" id="main-content">
   <header class="hero">
-    <div class="kicker">The foundation · OMG / SEMAT Essence</div>
-    <h1>The Essence <em>Kernel</em></h1>
-    <p class="lede">The universal scaffolding every software endeavour shares: seven Alphas, fifteen Activity Spaces and six Competencies, across three areas of concern. Practices — Business Scenarios, MVA, MVG and your delivery practices — plug in on top. The kernel itself stays constant.</p>
-    <div class="pillars"><span>3 areas of concern</span><span>7 Alphas</span><span>15 Activity Spaces</span><span>6 Competencies</span></div>
+    <div class="kicker">Search · Essence Way of Working</div>
+    <h1 id="sr-heading">Search <em>results</em></h1>
+    <p class="lede" id="sr-subtitle"></p>
   </header>
-
-  <nav class="toolbar" aria-label="Filter">
-    <span class="lbl">Show</span>
-    <button class="f active" data-f="all">All</button>
-    <button class="f" data-f="alpha">Alphas</button>
-    <button class="f" data-f="activity">Activity Spaces</button>
-    <button class="f" data-f="comp">Competencies</button>
-    <button class="print" onclick="window.print()">⎙ Print</button>
-  </nav>
-
-  <main id="deck"></main>
-  <footer><p>This is the kernel only — it tells you <em>what</em> to track and <em>that</em> work must be done, not <em>how</em>. The “how” comes from practices composed on top. Kernel content follows the OMG Essence specification; descriptions are paraphrased to fit the card.</p></footer>
+  <main id="sr-main" aria-live="polite" aria-atomic="true"></main>
+  <footer>
+    <p>Essence is an OMG standard developed by the SEMAT community (Ivar Jacobson and others). This way of working composes the kernel with four practices synthesising ideas from TOGAF, service blueprinting (Shostack, 1984) and Use-Case 2.0. Keep your licensed standards as the authority.</p>
+  </footer>
 </div>
 <script>
-const AREA={cust:"Customer",sol:"Solution",end:"Endeavor"};
-const E=h=>{const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstChild;};
-const deck=document.getElementById('deck');
-function sec(type,color,title,intro){return `<section data-type="${type}" id="sec-${type}"><div class="sec-head"><span class="dot" style="background:${color}"></span><h2>${title}</h2></div><p class="sec-intro">${intro}</p><div class="grid"></div></section>`;}
+(function(){
+  var q = (new URLSearchParams(location.search).get('q') || '').trim();
 
-const alphas=[
-{area:"cust",title:"Opportunity",desc:"The circumstances that make a new or changed system worthwhile.",states:[["Identified","A commercial, social or business opportunity has been identified."],["Solution Needed","The need for a software-based solution is confirmed."],["Value Established","The value of a successful solution is established."],["Viable","It is clear a viable solution can be produced."],["Addressed","A solution that addresses the opportunity has been produced."],["Benefit Accrued","Operational use is creating tangible benefit."]]},
-{area:"cust",title:"Stakeholders",desc:"The people and groups that affect or are affected by the system.",states:[["Recognized","Stakeholders have been identified."],["Represented","Representatives are appointed and a way to work with them agreed."],["Involved","Representatives participate and meet their responsibilities."],["In Agreement","Representatives agree on the minimum needed to proceed."],["Satisfied for Deployment","They agree the system is ready to deploy."],["Satisfied in Use","Use of the system meets their expectations."]]},
-{area:"sol",title:"Requirements",desc:"What the system must do to address the opportunity and satisfy the stakeholders.",states:[["Conceived","The need for a new system is agreed."],["Bounded","The purpose and theme are understood and bounded."],["Coherent","The requirements form a coherent, consistent description."],["Acceptable","They describe a solution acceptable to stakeholders."],["Addressed","Enough is addressed for the system to be acceptable."],["Fulfilled","They are fully satisfied by the system."]]},
-{area:"sol",title:"System",desc:"The system that delivers value — software, configured products, hardware, data and the services around them. A generalisation (extension) of Essence's Software System.",states:[["Architecture Selected","Architecture chosen to meet key requirements and risks."],["Demonstrable","An executable version shows the key characteristics."],["Usable","The system is usable and shows the required quality."],["Ready","Tested and accepted for operational use."],["Operational","In use in an operational environment."],["Retired","No longer supported."]]},
-{area:"end",title:"Work",desc:"The activity and effort applied to produce the result.",states:[["Initiated","The work has been requested."],["Prepared","Preconditions for starting are in place."],["Started","The work is proceeding."],["Under Control","Tasks and risks are under control; going well."],["Concluded","The work to produce results is complete."],["Closed","Everything wrapped up; lessons captured."]]},
-{area:"end",title:"Team",desc:"The group actively developing, maintaining and supporting the system.",states:[["Seeded","Mission defined and conditions for growth in place."],["Formed","Enough members recruited to begin."],["Collaborating","Working as one cohesive unit."],["Performing","Working effectively and efficiently."],["Adjourned","Responsibilities discharged; no longer accountable."]]},
-{area:"end",title:"Way of Working",desc:"The tailored set of practices and tools the team uses to guide its work.",states:[["Principles Established","Principles and constraints agreed."],["Foundation Established","Key practices and tools agreed."],["In Use","Practices and tools are in use."],["In Place","All members are using the way of working."],["Working Well","Naturally adapted by the team and working well."],["Retired","No longer in use."]]}
-];
-const acts=[
-{area:"cust",title:"Explore Possibilities",desc:"Explore the opportunity, the stakeholders and the constraints to understand what is worth doing."},
-{area:"cust",title:"Understand Stakeholder Needs",desc:"Engage stakeholders to understand their real needs and reach agreement."},
-{area:"cust",title:"Ensure Stakeholder Satisfaction",desc:"Share results and gain stakeholder acceptance that the system meets their needs."},
-{area:"cust",title:"Use the System",desc:"Use the system in its operational context to generate benefit."},
-{area:"sol",title:"Understand the Requirements",desc:"Establish a shared understanding of what the system must do."},
-{area:"sol",title:"Shape the System",desc:"Shape the system so it is easy to build, change, test and maintain."},
-{area:"sol",title:"Implement the System",desc:"Build a quality system that meets the requirements."},
-{area:"sol",title:"Test the System",desc:"Verify the system meets requirements and demonstrate its quality."},
-{area:"sol",title:"Deploy the System",desc:"Take the tested system and make it available for use."},
-{area:"sol",title:"Operate the System",desc:"Support and sustain the system in live operation."},
-{area:"end",title:"Prepare to do the Work",desc:"Set up the team and the work so the endeavour can succeed."},
-{area:"end",title:"Coordinate Activity",desc:"Direct, prioritise and coordinate the work that is done."},
-{area:"end",title:"Support the Team",desc:"Help the team to function, improve and grow."},
-{area:"end",title:"Track Progress",desc:"Measure and assess progress and the health of the endeavour."},
-{area:"end",title:"Stop the Work",desc:"Shut down the endeavour and close out the work cleanly."}
-];
-const comps=[
-{area:"cust",title:"Stakeholder Representation",desc:"Gather, communicate and balance stakeholders' needs and represent their views and decisions."},
-{area:"sol",title:"Analysis",desc:"Understand opportunities and needs and turn them into a shared, agreed understanding."},
-{area:"sol",title:"Development",desc:"Design and build an effective system."},
-{area:"sol",title:"Testing",desc:"Test the system, verifying it meets requirements and demonstrating its quality."},
-{area:"end",title:"Leadership",desc:"Inspire and motivate people to do what is needed and make good decisions."},
-{area:"end",title:"Management",desc:"Coordinate, plan and track the work of the endeavour."}
-];
+  /* Pre-fill the nav search input */
+  function prefillNav(){
+    var navInput = document.getElementById('site-search-input');
+    if(navInput && q) navInput.value = q;
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', prefillNav);
+  } else {
+    prefillNav();
+  }
 
-deck.appendChild(E(sec('alpha','var(--alpha)','Alphas','The essential things we progress and whose health we track. Each moves through ordered states.')));
-let g=deck.querySelector('#sec-alpha .grid');
-alphas.forEach(a=>{const states=a.states.map(s=>`<li><span class="st-name">${s[0]}</span><div class="st-check">${s[1]}</div></li>`).join('');
-  g.appendChild(E(`<article class="card" data-type="alpha" style="--c:var(--alpha)"><div class="top" style="background:var(--alpha)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--alpha)">Alpha</span><span class="area ${a.area}">${AREA[a.area]}</span></div><h4>${a.title}</h4><p class="desc">${a.desc}</p><ul class="states">${states}</ul></div></article>`));});
+  var heading  = document.getElementById('sr-heading');
+  var subtitle = document.getElementById('sr-subtitle');
+  var main     = document.getElementById('sr-main');
 
-deck.appendChild(E(sec('activity','var(--activity)','Activity Spaces','What must be done — the universal work that moves the Alphas. A practice supplies the concrete activities that fill each space.')));
-g=deck.querySelector('#sec-activity .grid');
-acts.forEach(a=>g.appendChild(E(`<article class="card" data-type="activity"><div class="top" style="background:var(--activity)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--activity)">Activity Space</span><span class="area ${a.area}">${AREA[a.area]}</span></div><h4>${a.title}</h4><p class="desc" style="margin-bottom:0">${a.desc}</p></div></article>`)));
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-deck.appendChild(E(sec('comp','var(--comp)','Competencies','The abilities people bring. Each is held at one of five levels:')));
-const cs=deck.querySelector('#sec-comp');
-cs.querySelector('.grid').insertAdjacentElement('beforebegin',E(`<div class="ladder">
-  <div class="step"><div class="n">Level 1</div><div class="t">Assists</div><div class="d">Understands the basics; follows guidance.</div></div>
-  <div class="step"><div class="n">Level 2</div><div class="t">Applies</div><div class="d">Applies the competency in simple contexts.</div></div>
-  <div class="step"><div class="n">Level 3</div><div class="t">Masters</div><div class="d">Works independently in complex situations; guides others.</div></div>
-  <div class="step"><div class="n">Level 4</div><div class="t">Adapts</div><div class="d">Judges when and how to tailor the approach.</div></div>
-  <div class="step"><div class="n">Level 5</div><div class="t">Innovates</div><div class="d">A recognised expert who extends the practice.</div></div></div>`));
-g=cs.querySelector('.grid');
-comps.forEach(c=>g.appendChild(E(`<article class="card" data-type="comp"><div class="top" style="background:var(--comp)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--comp)">Competency</span><span class="area ${c.area}">${AREA[c.area]}</span></div><h4>${c.title}</h4><p class="desc" style="margin-bottom:0">${c.desc}</p></div></article>`)));
+  function hilite(text, q){
+    if(!q || !text) return esc(text || '');
+    var safe = q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    return esc(text).replace(new RegExp('('+safe+')','gi'),'<em>$1</em>');
+  }
 
-g.parentElement.insertAdjacentElement('afterend',E(`<div class="panel"><h3>The kernel is not a method</h3><p>On its own the kernel moves nothing. To advance the Alphas through their states you compose practices on top: <b>Business Scenarios</b> for the customer front end, <b>MVA</b> to shape the solution, <b>MVG</b> to govern it, and delivery/engineering practices to build, run and realise value.</p></div>`));
+  function scoreEntry(entry, ql){
+    var s = 0;
+    if(entry.title.toLowerCase().indexOf(ql)  !== -1) s += 20;
+    if(entry.kicker.toLowerCase().indexOf(ql) !== -1) s += 8;
+    if(entry.lede.toLowerCase().indexOf(ql)   !== -1) s += 5;
+    if(entry.text.toLowerCase().indexOf(ql)   !== -1) s += 2;
+    entry.sections.forEach(function(sec){ if(sec.h.toLowerCase().indexOf(ql) !== -1) s += 6; });
+    return s;
+  }
 
-document.querySelectorAll('button.f').forEach(b=>b.addEventListener('click',()=>{const f=b.dataset.f;document.querySelectorAll('button.f').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('section[data-type]').forEach(s=>s.classList.toggle('hidden',f!=='all'&&s.dataset.type!==f));}));
+  function render(idx){
+    if(!q){
+      heading.innerHTML = 'Search <em>the site</em>';
+      document.title = 'Search — Essence Way of Working';
+      subtitle.textContent = '';
+      main.innerHTML = '<div class="sr-state"><div class="sr-state-icon">&#128269;</div><h2>What are you looking for?</h2><p>Type a keyword into the search box in the navigation bar and press Enter.</p></div>';
+      return;
+    }
+
+    var ql = q.toLowerCase();
+    var results = idx
+      .map(function(e){ return {e:e, s:scoreEntry(e,ql)}; })
+      .filter(function(x){ return x.s > 0; })
+      .sort(function(a,b){ return b.s - a.s; });
+
+    heading.innerHTML = 'Results for <em>&ldquo;' + esc(q) + '&rdquo;</em>';
+    document.title = '“' + q + '” — Search — Essence Way of Working';
+
+    if(results.length === 0){
+      subtitle.textContent = 'No pages matched.';
+      main.innerHTML = '<div class="sr-state"><div class="sr-state-icon">&#128214;</div><h2>No results found</h2><p>Try a broader term, or browse from the <a href="index.html">home page</a>.</p></div>';
+      return;
+    }
+
+    subtitle.textContent = results.length === 1 ? '1 page matched' : results.length + ' pages matched';
+
+    main.innerHTML = '<div class="results-grid" role="list">' + results.map(function(x){
+      var e = x.e;
+      var matchedSecs = e.sections.filter(function(s){ return s.h.toLowerCase().indexOf(ql) !== -1; }).slice(0,6);
+      var secsHtml = matchedSecs.length
+        ? '<ul class="sr-sections" aria-label="Matching sections">' +
+            matchedSecs.map(function(s){ return '<li>'+hilite(s.h, q)+'</li>'; }).join('') +
+          '</ul>'
+        : '';
+      var ledeHtml = e.lede ? '<p class="sr-lede">'+hilite(e.lede.slice(0,200), q)+'</p>' : '';
+      return '<article class="sr-card" role="listitem">' +
+        '<a href="'+esc(e.url)+'">' +
+          '<div class="sr-top" style="background:'+esc(e.color)+'"></div>' +
+          '<div class="sr-body">' +
+            '<div class="sr-tag" style="color:'+esc(e.color)+'">'+esc(e.tag)+'</div>' +
+            '<h2 class="sr-title">'+hilite(e.title, q)+'</h2>' +
+            ledeHtml +
+            secsHtml +
+            '<span class="sr-open" style="color:'+esc(e.color)+'">Open page &rarr;</span>' +
+          '</div>' +
+        '</a>' +
+      '</article>';
+    }).join('') + '</div>';
+  }
+
+  if(q){
+    subtitle.textContent = 'Loading…';
+    fetch('search-index.json')
+      .then(function(r){ return r.json(); })
+      .then(render)
+      .catch(function(){ subtitle.textContent = 'Could not load search index.'; });
+  } else {
+    render([]);
+  }
+})();
 </script>
 <script>
 (function(){
@@ -325,7 +334,7 @@ document.querySelectorAll('button.f').forEach(b=>b.addEventListener('click',()=>
 
   function hilite(text, q){
     if(!q) return esc(text);
-    var safe = q.replace(/[.*+?^${}()|[\]\]/g,'\$&');
+    var safe = q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
     return esc(text).replace(new RegExp('('+safe+')','gi'),'<em>$1</em>');
   }
 
