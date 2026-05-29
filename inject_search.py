@@ -411,17 +411,18 @@ for filename in files:
     path = os.path.join(DOCS, filename)
     content = open(path).read()
 
+    _css_repl  = NEW_NAV_CSS + '\n</style>'
     content, n1 = re.subn(
         r'/\* ===== SITE NAV ===== \*/.*?</style>',
-        NEW_NAV_CSS + '\n</style>', content, count=1, flags=re.S)
+        lambda m: _css_repl, content, count=1, flags=re.S)
 
     content, n2 = re.subn(
         r'(?:<a class="skip-link"[^>]*>[^<]*</a>\n)?<header class="site-nav"[\s\S]*?</header>\n',
-        NEW_NAV_HTML, content, count=1, flags=re.S)
+        lambda m: NEW_NAV_HTML, content, count=1, flags=re.S)
 
     content, n3 = re.subn(
         r'<script>\s*\(function\(\)\{(?:(?!</script>)[\s\S])*?practicePages(?:(?!</script>)[\s\S])*?\}\)\(\);\s*</script>',
-        NEW_NAV_JS, content, count=1, flags=re.S)
+        lambda m: NEW_NAV_JS, content, count=1, flags=re.S)
 
     # Fresh injection for files that have no existing nav markers
     if n1 == 0 and '</style>' in content:
