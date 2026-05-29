@@ -70,9 +70,55 @@
   a.dl:hover{background:var(--ink);color:var(--paper)}
   footer{margin-top:56px;border-top:2px solid var(--ink);padding-top:16px;font-size:.83rem;color:var(--ink-soft);max-width:90ch}
   @media print{body::before{display:none}.toolbar{display:none}.wrap{max-width:none;padding:0}header.hero{padding-top:0}a.deck,.layer{box-shadow:none;border:1px solid #bbb}section{margin-top:24px}@page{margin:12mm}}
+
+  /* ===== SITE NAV ===== */
+  .site-nav{position:sticky;top:0;z-index:100;background:var(--paper,#f3efe6);border-bottom:1px solid var(--line,#d8d0bf);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .site-nav-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:center;height:52px;gap:0}
+  .site-nav-logo{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:var(--ink,#1c1a16);text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:-.01em}
+  .site-nav-logo em{font-style:italic;font-weight:500;color:#243b66}
+  .site-nav-list{display:flex;list-style:none;margin:0;padding:0;gap:2px;align-items:center}
+  .site-nav-list > li > a,.site-nav-list > li > button{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--ink-soft,#524d42);text-decoration:none;padding:6px 10px;border-radius:6px;border:none;background:transparent;cursor:pointer;transition:.12s;line-height:1;display:block}
+  .site-nav-list > li > a:hover,.site-nav-list > li > button:hover{color:var(--ink,#1c1a16);background:var(--paper-2,#ece6d8)}
+  .site-nav-list > li.active > a,.site-nav-list > li.active > button{color:var(--ink,#1c1a16);background:var(--paper-2,#ece6d8)}
+  .has-drop{position:relative}
+  .drop{display:none;position:absolute;top:calc(100% + 4px);right:0;min-width:240px;background:var(--card,#fbf9f3);border:1px solid var(--line,#d8d0bf);border-radius:10px;box-shadow:0 1px 0 rgba(0,0,0,.04),0 14px 30px -22px rgba(28,26,22,.55);padding:5px;list-style:none;margin:0;z-index:200}
+  .has-drop.open .drop{display:block}
+  .drop li a{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-soft,#524d42);text-decoration:none;padding:7px 10px;border-radius:6px;transition:.1s}
+  .drop li a:hover{background:var(--paper-2,#ece6d8);color:var(--ink,#1c1a16)}
+  .drop li.active a{color:var(--ink,#1c1a16);font-weight:600}
+  .drop-label{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft,#8a93a2);padding:6px 10px 2px;display:block}
+  .drop-sep{height:1px;background:var(--line,#d8d0bf);margin:4px 0}
+  /* offset existing sticky toolbar so it sits below site nav */
+  .toolbar{top:52px !important}
+  section{scroll-margin-top:132px !important}
+  @media(max-width:560px){
+    .site-nav-logo em{display:none}
+    .site-nav-list > li > a,.site-nav-list > li > button{font-size:10px;padding:5px 7px;letter-spacing:.04em}
+  }
 </style>
 </head>
 <body>
+<header class="site-nav" role="banner">
+  <div class="site-nav-inner">
+    <a class="site-nav-logo" href="index.html">Essence <em>Way of Working</em></a>
+    <nav aria-label="Site navigation">
+      <ul class="site-nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li class="has-drop">
+          <button aria-haspopup="true" aria-expanded="false">Practices ▾</button>
+          <ul class="drop" role="menu">
+            <span class="drop-label">Four practices</span>
+            <li role="none"><a href="business-scenarios-essence-practice.html" role="menuitem">Business Scenarios</a></li>
+            <li role="none"><a href="service-blueprint-essence-practice.html" role="menuitem">Service Blueprint</a></li>
+            <li role="none"><a href="mva-essence-practice.html" role="menuitem">Min. Viable Architecture</a></li>
+            <li role="none"><a href="mvg-essence-practice.html" role="menuitem">Min. Viable Governance</a></li>
+          </ul>
+        </li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 <div class="wrap">
   <header class="hero">
     <div class="kicker">Essence Way of Working · Home</div>
@@ -226,5 +272,39 @@
     <p>Essence is an OMG standard developed by the SEMAT community (Ivar Jacobson and others). This way of working composes the kernel with four practices synthesising ideas from TOGAF, service blueprinting (Shostack, 1984) and Use-Case 2.0. Keep your licensed standards as the authority.</p>
   </footer>
 </div>
+<script>
+(function(){
+  var p = location.pathname.split('/').pop() || 'index.html';
+  // Highlight top-level link
+  document.querySelectorAll('.site-nav-list > li > a').forEach(function(a){
+    if(a.getAttribute('href') === p) a.closest('li').classList.add('active');
+  });
+  // Highlight Practices parent if a practice page is active
+  var practicePages = ['business-scenarios-essence-practice.html','service-blueprint-essence-practice.html','mva-essence-practice.html','mvg-essence-practice.html'];
+  if(practicePages.indexOf(p) !== -1){
+    document.querySelectorAll('.has-drop').forEach(function(el){ el.classList.add('active'); });
+  }
+  // Highlight active item inside dropdown
+  document.querySelectorAll('.drop li a').forEach(function(a){
+    if(a.getAttribute('href') === p) a.closest('li').classList.add('active');
+  });
+  // Dropdown toggle
+  document.querySelectorAll('.has-drop > button').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var d = btn.closest('.has-drop');
+      var wasOpen = d.classList.contains('open');
+      document.querySelectorAll('.has-drop.open').forEach(function(el){ el.classList.remove('open'); btn.setAttribute('aria-expanded','false'); });
+      if(!wasOpen){ d.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.has-drop.open').forEach(function(el){
+      el.classList.remove('open');
+      el.querySelector('button').setAttribute('aria-expanded','false');
+    });
+  });
+})();
+</script>
 </body>
 </html>
