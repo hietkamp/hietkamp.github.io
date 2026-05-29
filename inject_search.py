@@ -420,7 +420,7 @@ for filename in files:
         NEW_NAV_HTML, content, count=1, flags=re.S)
 
     content, n3 = re.subn(
-        r'<script>\s*\(function\(\)\{[\s\S]*?practicePages[\s\S]*?\}\)\(\);\s*</script>',
+        r'<script>\s*\(function\(\)\{(?:(?!</script>)[\s\S])*?practicePages(?:(?!</script>)[\s\S])*?\}\)\(\);\s*</script>',
         NEW_NAV_JS, content, count=1, flags=re.S)
 
     # Fresh injection for files that have no existing nav markers
