@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essence Way of Working — Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3efe6; --paper-2:#ece6d8; --ink:#1c1a16; --ink-soft:#524d42; --soft:#8a93a2;
+    --line:#d8d0bf; --card:#fbf9f3;
+    --alpha:#0f6e63; --product:#bb7a16; --activity:#1f5fa8; --comp:#4b3f9e; --role:#9c3f76; --pattern:#b1492e;
+    --prac:#243b66;
+    --bs:#0e7490; --sb:#b21e63; --mva:#0f6e63; --mvg:#4b3f9e; --kernel:#27406b; --training:#243b66;
+    --shadow:0 1px 0 rgba(0,0,0,.04),0 14px 30px -22px rgba(28,26,22,.55);
+    scroll-behavior:smooth;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
+    background:radial-gradient(circle at 12% -10%,#fbf8ef 0%,transparent 45%),radial-gradient(circle at 95% 0%,#e7ecf4 0%,transparent 42%),var(--paper);}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 22%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 22%,#000,transparent 80%);}
+  .wrap{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:0 26px 90px}
+  header.hero{padding:58px 0 24px;border-bottom:2px solid var(--ink)}
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--prac)}
+  h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2.4rem,6vw,4.7rem);line-height:.97;margin:.16em 0 .14em;letter-spacing:-.015em}
+  h1 em{font-style:italic;font-weight:500;color:var(--prac)}
+  .lede{font-size:clamp(1.02rem,1.5vw,1.2rem);max-width:70ch;color:var(--ink-soft)}
+  .pillars{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .pillars span{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.05em;border:1px solid var(--ink);border-radius:40px;padding:7px 14px;background:var(--card)}
+  .toolbar{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:13px 0 11px;margin:18px 0 4px;background:linear-gradient(var(--paper) 80%,transparent);backdrop-filter:blur(2px)}
+  .toolbar .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
+  a.f,button.f{font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;border:1px solid var(--ink);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:30px;transition:.15s;text-decoration:none}
+  a.f:hover,button.f:hover{background:var(--ink);color:var(--paper)}
+  section{margin-top:46px;scroll-margin-top:76px}
+  .sec-head{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px}
+  .sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.7rem;margin:0}
+  .sec-head .num{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--prac);border:1px solid var(--prac);border-radius:30px;padding:3px 9px}
+  .prose{max-width:80ch;color:var(--ink-soft);font-size:1rem;margin:0 0 16px}
+  .prose b{color:var(--ink)}
+  .deck-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:17px;margin-top:8px}
+  a.deck{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden;transition:transform .12s,box-shadow .12s}
+  a.deck:hover{transform:translateY(-3px);box-shadow:0 1px 0 rgba(0,0,0,.04),0 22px 40px -24px rgba(28,26,22,.6)}
+  a.deck .top{height:7px}
+  a.deck .body{padding:15px 17px 16px;display:flex;flex-direction:column;flex:1}
+  a.deck .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:5px}
+  a.deck h4{font-family:"Fraunces",serif;font-weight:600;font-size:1.28rem;margin:0 0 5px;line-height:1.08}
+  a.deck .one{font-size:.9rem;color:var(--ink-soft);margin:0 0 11px}
+  a.deck .kv{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);border-top:1px dotted var(--line);padding-top:8px;margin-top:auto}
+  a.deck .kv b{color:var(--ink);font-weight:600}
+  a.deck .open{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-top:9px;font-weight:600}
+  /* stack */
+  .stack{display:flex;flex-direction:column;gap:9px;margin-top:8px}
+  .layer{border-radius:11px;padding:14px 18px;color:#fff;box-shadow:var(--shadow);position:relative}
+  .layer h4{font-family:"Fraunces",serif;font-size:1.2rem;margin:0 0 2px;font-weight:600}
+  .layer p{margin:0;font-size:.86rem;opacity:.92}
+  .layer .lbl{position:absolute;top:14px;right:16px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+  .twolayer{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  @media(max-width:640px){.twolayer{grid-template-columns:1fr}}
+  .layer.kernelbase{background:var(--kernel)} .layer.l-mva{background:var(--mva)} .layer.l-mvg{background:var(--mvg)}
+  .layer.l-bs{background:var(--bs)} .layer.l-sb{background:var(--sb)}
+  /* download panel */
+  .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-top:18px;border-left:4px solid var(--prac)}
+  .panel h3{font-family:"Fraunces",serif;margin:0 0 6px;font-size:1.18rem}
+  .panel p{margin:0 0 12px;color:var(--ink-soft);font-size:.92rem;max-width:86ch}
+  a.dl{display:inline-flex;align-items:center;gap:7px;font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;border:1px solid var(--ink);background:var(--card);color:var(--ink);padding:8px 15px;border-radius:30px;transition:.15s;text-decoration:none;font-weight:600}
+  a.dl:hover{background:var(--ink);color:var(--paper)}
+  footer{margin-top:56px;border-top:2px solid var(--ink);padding-top:16px;font-size:.83rem;color:var(--ink-soft);max-width:90ch}
+  @media print{body::before{display:none}.toolbar{display:none}.wrap{max-width:none;padding:0}header.hero{padding-top:0}a.deck,.layer{box-shadow:none;border:1px solid #bbb}section{margin-top:24px}@page{margin:12mm}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">Essence Way of Working · Home</div>
+    <h1>A complete way of working,<br><em>composed with Essence</em></h1>
+    <p class="lede">One kernel of universal things to track, four composable practices that move them. Start with the introduction, explore the kernel, then work through each practice in the logical order below.</p>
+    <div class="pillars"><span>OMG / SEMAT Essence</span><span>1 kernel + 4 practices</span><span>Customer · Solution · Endeavor</span><span>progress = alpha states</span></div>
+  </header>
+
+  <nav class="toolbar" aria-label="Jump to">
+    <span class="lbl">Jump to</span>
+    <a class="f" href="#start">Start here</a>
+    <a class="f" href="#practices">Practices</a>
+    <a class="f" href="#compose">How they compose</a>
+    <a class="f" href="#workbook">Workbook</a>
+  </nav>
+
+  <!-- START HERE -->
+  <section id="start">
+    <div class="sec-head"><span class="num">01</span><h2>Start here</h2></div>
+    <p class="prose">New to Essence? Read the introduction first, then skim the kernel reference to understand what the alphas are and how state progressions work.</p>
+    <div class="deck-grid">
+      <a class="deck" href="essence-introduction.html">
+        <div class="top" style="background:var(--prac)"></div>
+        <div class="body">
+          <div class="tag" style="color:var(--prac)">Introduction</div>
+          <h4>An Essence Way of Working</h4>
+          <p class="one">The front door — what Essence is, the six element types, the kernel, how practices compose, and the logical order in which they move the alphas.</p>
+          <div class="kv">Covers&nbsp;→&nbsp;<b>kernel + all four practices</b></div>
+          <div class="open" style="color:var(--prac)">Open introduction →</div>
+        </div>
+      </a>
+      <a class="deck" href="essence-kernel.html">
+        <div class="top" style="background:var(--kernel)"></div>
+        <div class="body">
+          <div class="tag" style="color:var(--kernel)">Foundation</div>
+          <h4>The Essence Kernel</h4>
+          <p class="one">7 alphas, 15 activity spaces, 6 competencies — the universal scaffolding every software endeavour shares, across three areas of concern.</p>
+          <div class="kv">Provides&nbsp;→&nbsp;<b>the alphas every practice advances</b></div>
+          <div class="open" style="color:var(--kernel)">Open the kernel deck →</div>
+        </div>
+      </a>
+      <a class="deck" href="essence-training.html">
+        <div class="top" style="background:var(--training)"></div>
+        <div class="body">
+          <div class="tag" style="color:var(--training)">Training</div>
+          <h4>Essence — Training</h4>
+          <p class="one">A full training in the kernel, the four practices, and the assessment workbook — how to use them together to move the alphas.</p>
+          <div class="kv">Format&nbsp;→&nbsp;<b>slide-style walkthrough</b></div>
+          <div class="open" style="color:var(--training)">Open training →</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PRACTICES -->
+  <section id="practices">
+    <div class="sec-head"><span class="num">02</span><h2>The four practices</h2></div>
+    <p class="prose">Each practice is a composable unit that plugs into the kernel and advances specific alphas. Run them in the order below — they form a loop that nests at every level of scale.</p>
+    <div class="deck-grid">
+      <a class="deck" href="business-scenarios-essence-practice.html">
+        <div class="top" style="background:var(--bs)"></div>
+        <div class="body">
+          <div class="tag" style="color:var(--bs)">Practice 1 · Discovery</div>
+          <h4>Business Scenarios</h4>
+          <p class="one">The TOGAF Business Scenario technique re-expressed as a composable Essence practice. Discover and quantify the need before anything is committed.</p>
+          <div class="kv">Advances&nbsp;→&nbsp;<b>Opportunity · Stakeholders</b></div>
+          <div class="open" style="color:var(--bs)">Open practice →</div>
+        </div>
+      </a>
+      <a class="deck" href="service-blueprint-essence-practice.html">
+        <div class="top" style="background:var(--sb)"></div>
+        <div class="body">
+          <div class="tag" style="color:var(--sb)">Practice 2 · Service design</div>
+          <h4>Service Blueprint</h4>
+          <p class="one">Visualise the end-to-end service from both the customer's and provider's perspective — frontstage, backstage, and support processes.</p>
+          <div class="kv">Advances&nbsp;→&nbsp;<b>Requirements · System</b></div>
+          <div class="open" style="color:var(--sb)">Open practice →</div>
+        </div>
+      </a>
+      <a class="deck" href="mva-essence-practice.html">
+        <div class="top" style="background:var(--mva)"></div>
+        <div class="body">
+          <div class="tag" style="color:var(--mva)">Practice 3 · Architecture</div>
+          <h4>Minimum Viable Architecture</h4>
+          <p class="one">Architect the minimum, just in time, to retire significant risks and guide delivery. Decisions over documents — shapes the Solution alpha.</p>
+          <div class="kv">Advances&nbsp;→&nbsp;<b>Architecture · System</b></div>
+          <div class="open" style="color:var(--mva)">Open practice →</div>
+        </div>
+      </a>
+      <a class="deck" href="mvg-essence-practice.html">
+        <div class="top" style="background:var(--mvg)"></div>
+        <div class="body">
+          <div class="tag" style="color:var(--mvg)">Practice 4 · Governance</div>
+          <h4>Minimum Viable Governance</h4>
+          <p class="one">Govern outcomes and guardrails, not gates. Decide at the last responsible moment, as close to the work as possible.</p>
+          <div class="kv">Advances&nbsp;→&nbsp;<b>Endeavor · Way of Working</b></div>
+          <div class="open" style="color:var(--mvg)">Open practice →</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- HOW THEY COMPOSE -->
+  <section id="compose">
+    <div class="sec-head"><span class="num">03</span><h2>How they compose</h2></div>
+    <p class="prose">The four practices stack on top of the kernel. Run them in a logical order — it is a loop, and it nests at every level of scale from enterprise to team.</p>
+    <div class="stack">
+      <div class="twolayer">
+        <div class="layer l-bs">
+          <span class="lbl">Practice 1</span>
+          <h4>Business Scenarios</h4>
+          <p>Discover &amp; quantify the need</p>
+        </div>
+        <div class="layer l-sb">
+          <span class="lbl">Practice 2</span>
+          <h4>Service Blueprint</h4>
+          <p>Design the end-to-end service</p>
+        </div>
+      </div>
+      <div class="twolayer">
+        <div class="layer l-mva">
+          <span class="lbl">Practice 3</span>
+          <h4>Min. Viable Architecture</h4>
+          <p>Architect just enough, just in time</p>
+        </div>
+        <div class="layer l-mvg">
+          <span class="lbl">Practice 4</span>
+          <h4>Min. Viable Governance</h4>
+          <p>Guard outcomes, not gates</p>
+        </div>
+      </div>
+      <div class="layer kernelbase">
+        <span class="lbl">Foundation</span>
+        <h4>The Essence Kernel</h4>
+        <p>7 alphas · 15 activity spaces · 6 competencies — always underneath</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKBOOK -->
+  <section id="workbook">
+    <div class="sec-head"><span class="num">04</span><h2>Assessment workbook</h2></div>
+    <div class="panel">
+      <h3>EA Alpha Assessment</h3>
+      <p>Track alpha states across all seven kernel alphas. Sixteen tabs in three groups — tick the checklists and the dashboard moves. Documents lie; alpha states are honest.</p>
+      <a class="dl" href="EA_Alpha_Assessment.xlsx" download>⬇ Download workbook (.xlsx)</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Essence is an OMG standard developed by the SEMAT community (Ivar Jacobson and others). This way of working composes the kernel with four practices synthesising ideas from TOGAF, service blueprinting (Shostack, 1984) and Use-Case 2.0. Keep your licensed standards as the authority.</p>
+  </footer>
+</div>
+</body>
+</html>
