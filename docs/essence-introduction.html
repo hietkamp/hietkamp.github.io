@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>An Essence Way of Working — Introduction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3efe6; --paper-2:#ece6d8; --ink:#1c1a16; --ink-soft:#524d42; --soft:#8a93a2;
+    --line:#d8d0bf; --card:#fbf9f3;
+    --alpha:#0f6e63; --product:#bb7a16; --activity:#1f5fa8; --comp:#4b3f9e; --role:#9c3f76; --pattern:#b1492e;
+    --prac:#243b66;            /* hub / composition accent */
+    --cust:#2e7d52; --sol:#b07d12; --end:#2a5e9c;
+    --bs:#0e7490; --sb:#b21e63; --mva:#0f6e63; --mvg:#4b3f9e; --kernel:#27406b;
+    --shadow:0 1px 0 rgba(0,0,0,.04),0 14px 30px -22px rgba(28,26,22,.55);
+    scroll-behavior:smooth;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
+    background:radial-gradient(circle at 12% -10%,#fbf8ef 0%,transparent 45%),radial-gradient(circle at 95% 0%,#e7ecf4 0%,transparent 42%),var(--paper);}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 22%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 22%,#000,transparent 80%);}
+  .wrap{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:0 26px 90px}
+  header.hero{padding:58px 0 24px;border-bottom:2px solid var(--ink)}
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--prac)}
+  h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2.4rem,6vw,4.7rem);line-height:.97;margin:.16em 0 .14em;letter-spacing:-.015em}
+  h1 em{font-style:italic;font-weight:500;color:var(--prac)}
+  .lede{font-size:clamp(1.02rem,1.5vw,1.2rem);max-width:70ch;color:var(--ink-soft)}
+  .pillars{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .pillars span{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.05em;border:1px solid var(--ink);border-radius:40px;padding:7px 14px;background:var(--card)}
+  .toolbar{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:13px 0 11px;margin:18px 0 4px;background:linear-gradient(var(--paper) 80%,transparent);backdrop-filter:blur(2px)}
+  .toolbar .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
+  a.f,button.f{font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;border:1px solid var(--ink);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:30px;transition:.15s;text-decoration:none}
+  a.f:hover,button.f:hover{background:var(--ink);color:var(--paper)}
+  button.print{margin-left:auto;border-style:dashed}
+  section{margin-top:46px;scroll-margin-top:76px}
+  .sec-head{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px}
+  .sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.7rem;margin:0}
+  .sec-head .num{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--prac);border:1px solid var(--prac);border-radius:30px;padding:3px 9px}
+  .prose{max-width:80ch;color:var(--ink-soft);font-size:1rem}
+  .prose b{color:var(--ink)}
+  .cols3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:18px}
+  .mini{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--prac);border-radius:11px;padding:14px 16px}
+  .mini h4{font-family:"Fraunces",serif;font-size:1.12rem;margin:0 0 4px}
+  .mini p{margin:0;font-size:.9rem;color:var(--ink-soft)}
+  /* element type chips */
+  .els{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:11px;margin-top:16px}
+  .el{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+  .pill{font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;border-radius:30px;padding:5px 11px;white-space:nowrap;flex-shrink:0}
+  .el span.def{font-size:.86rem;color:var(--ink-soft)}
+  /* state track */
+  .track{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}
+  .track .s{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--alpha);border:1px solid var(--alpha);border-radius:30px;padding:5px 11px;background:rgba(15,110,99,.06)}
+  .track .ar{color:var(--soft);font-family:"IBM Plex Mono",monospace}
+  /* areas */
+  .areas{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:16px}
+  .area-card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .area-card .bar{padding:9px 14px;color:#fff;font-family:"Fraunces",serif;font-weight:600;font-size:1.1rem}
+  .area-card .al{padding:10px 14px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);line-height:1.9}
+  /* link cards */
+  .deck-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:17px;margin-top:8px}
+  a.deck{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden;transition:transform .12s,box-shadow .12s}
+  a.deck:hover{transform:translateY(-3px);box-shadow:0 1px 0 rgba(0,0,0,.04),0 22px 40px -24px rgba(28,26,22,.6)}
+  a.deck .top{height:7px}
+  a.deck .body{padding:15px 17px 16px;display:flex;flex-direction:column;flex:1}
+  a.deck .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:5px}
+  a.deck h4{font-family:"Fraunces",serif;font-weight:600;font-size:1.28rem;margin:0 0 5px;line-height:1.08}
+  a.deck .one{font-size:.9rem;color:var(--ink-soft);margin:0 0 11px}
+  a.deck .kv{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);border-top:1px dotted var(--line);padding-top:8px;margin-top:auto}
+  a.deck .kv b{color:var(--ink);font-weight:600}
+  a.deck .open{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-top:9px;font-weight:600}
+  /* composition stack */
+  .stack{display:flex;flex-direction:column;gap:9px;margin-top:8px}
+  .layer{border-radius:11px;padding:14px 18px;color:#fff;box-shadow:var(--shadow);position:relative}
+  .layer h4{font-family:"Fraunces",serif;font-size:1.2rem;margin:0 0 2px;font-weight:600}
+  .layer p{margin:0;font-size:.86rem;opacity:.92}
+  .layer .lbl{position:absolute;top:14px;right:16px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+  .twolayer{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  @media(max-width:640px){.twolayer{grid-template-columns:1fr}}
+  .layer.kernelbase{background:var(--kernel)} .layer.l-mva{background:var(--mva)} .layer.l-mvg{background:var(--mvg)}
+  .layer.l-bs{background:var(--bs)} .layer.l-sb{background:var(--sb)}
+  .layer.gap{background:repeating-linear-gradient(135deg,#9a8f7d,#9a8f7d 12px,#8d8270 12px,#8d8270 24px)}
+  /* stage cards */
+  .stages{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+  .stage{display:grid;grid-template-columns:54px 1fr;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden}
+  .stage .n{display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:#fff}
+  .stage .c{padding:14px 16px 15px}
+  .stage h4{font-family:"Fraunces",serif;font-size:1.25rem;margin:0 0 2px}
+  .stage .by{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;margin-bottom:7px}
+  .stage .do{font-size:.9rem;color:var(--ink-soft);margin:0 0 10px}
+  .stage .mv{font-size:.82rem;background:rgba(36,59,102,.06);border:1px solid rgba(36,59,102,.16);border-radius:8px;padding:8px 10px;font-family:"IBM Plex Mono",monospace;color:var(--ink)}
+  .stage .mv b{color:var(--prac)}
+  /* coverage table */
+  .cov{width:100%;border-collapse:collapse;margin-top:10px;font-size:.9rem;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .cov th{background:var(--prac);color:#fff;text-align:left;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:9px 12px;font-weight:600}
+  .cov td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+  .cov tr:nth-child(even) td{background:rgba(0,0,0,.015)}
+  .cov .a{font-weight:600}
+  .cov .dot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px;vertical-align:middle}
+  .cov .to{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--alpha)}
+  .cov .gap{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--pattern)}
+  .cov .ok{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--alpha)}
+  .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-top:18px;border-left:4px solid var(--prac)}
+  .panel h3{font-family:"Fraunces",serif;margin:0 0 6px;font-size:1.18rem}
+  .panel p{margin:0 0 8px;color:var(--ink-soft);font-size:.92rem;max-width:86ch}
+  .run{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:16px}
+  .run .step{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 15px}
+  .run .step .n{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--prac);font-weight:600}
+  .run .step h4{font-family:"Fraunces",serif;font-size:1.05rem;margin:3px 0 4px}
+  .run .step p{margin:0;font-size:.85rem;color:var(--ink-soft)}
+  .lvl{border-radius:14px;padding:15px 17px;color:#fff;position:relative}
+  .lvl .lh{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+  .lvl h4{font-family:"Fraunces",serif;font-size:1.3rem;margin:2px 0 4px;font-weight:600}
+  .lvl p{margin:0 0 12px;font-size:.86rem;opacity:.94;max-width:74ch}
+  .lvl.ent{background:var(--kernel)} .lvl.sol{background:var(--mva)} .lvl.cmp{background:#6b6256}
+  .lvl .inner{margin-top:6px}
+  .scope{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+  @media(max-width:760px){.scope{grid-template-columns:1fr}}
+  .scope .col{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .scope .col h4{margin:0;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#fff;padding:10px 14px}
+  .scope .col.s1 h4{background:var(--mva)} .scope .col.s2 h4{background:var(--kernel)}
+  .scope dl{margin:0;padding:4px 14px 12px}
+  .scope dt{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--prac);margin-top:10px}
+  .scope dd{margin:1px 0 0;font-size:.86rem;color:var(--ink-soft)}
+  footer{margin-top:56px;border-top:2px solid var(--ink);padding-top:16px;font-size:.83rem;color:var(--ink-soft);max-width:90ch}
+  @media print{body::before{display:none}.toolbar{display:none}.wrap{max-width:none;padding:0}header.hero{padding-top:0}a.deck,.stage,.layer{box-shadow:none;border:1px solid #bbb}section{margin-top:24px}@page{margin:12mm}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">Start here · the composed way of working</div>
+    <h1>A Way of Working,<br><em>composed with Essence</em></h1>
+    <p class="lede">This is the front door to a complete way of working built on the OMG&nbsp;/&nbsp;SEMAT <b>Essence</b> standard: a kernel of universal things to track, plus four composable practices that move them. This page explains Essence, then shows how the kernel and practices fit together — and the logical order in which they move the alphas.</p>
+    <div class="pillars"><span>OMG / SEMAT Essence</span><span>1 kernel + 4 practices</span><span>Customer · Solution · Endeavor</span><span>progress = alpha states</span></div>
+  </header>
+
+  <nav class="toolbar" aria-label="Jump to">
+    <span class="lbl">Jump to</span>
+    <a class="f" href="#what">What is Essence</a>
+    <a class="f" href="#language">The language</a>
+    <a class="f" href="#kernel">The kernel</a>
+    <a class="f" href="#levels">Levels of scale</a>
+    <a class="f" href="#practices">The practices</a>
+    <a class="f" href="#compose">Way of working</a>
+    <a class="f" href="#coverage">Moving the alphas</a>
+    <button class="print" onclick="window.print()">⎙ Print</button>
+  </nav>
+
+  <main id="deck"></main>
+
+  <footer><p>Essence is an Open Group / OMG standard developed by the SEMAT community (Ivar Jacobson and others). This way of working composes the Essence kernel with four practices — Business Scenarios and Service Blueprint (discovery &amp; service design), Minimum Viable Architecture and Minimum Viable Governance — synthesising ideas from TOGAF, the TOGAF Business Scenarios method, service blueprinting (Shostack, 1984) and Use-Case 2.0. The composition and card form are a synthesis for learning; keep your licensed standards as the authority.</p></footer>
+</div>
+<script>
+const E=h=>{const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstChild;};
+const deck=document.getElementById('deck');
+function head(n,title){return `<div class="sec-head"><span class="num">${n}</span><h2>${title}</h2></div>`;}
+
+/* ---------- 1. WHAT IS ESSENCE ---------- */
+deck.appendChild(E(`<section id="what">${head('01','What is Essence?')}
+  <p class="prose">Essence is an OMG standard, created by the SEMAT initiative, that captures the common ground of every software endeavour as a <b>thinking framework</b> rather than a fixed method. Instead of following one methodology end to end, you <b>compose</b> your own way of working from small, reusable practices — and you judge progress by the health of a handful of essential things called <b>alphas</b>, not by the documents you have produced.</p>
+  <div class="cols3">
+    <div class="mini"><h4>A small language</h4><p>Six element types are enough to describe any way of working.</p></div>
+    <div class="mini"><h4>A kernel</h4><p>The essential things every endeavour shares — always present underneath.</p></div>
+    <div class="mini"><h4>Practices</h4><p>Composable units that plug into the kernel to form a full method.</p></div>
+  </div></section>`));
+
+/* ---------- 2. THE LANGUAGE ---------- */
+const els=[
+ ["Alpha","#0f6e63","A thing you progress and whose health you track — it has states."],
+ ["Activity Space","#1f5fa8","What must be done; concrete activities fill it."],
+ ["Competency","#4b3f9e","An ability people bring, held at five levels."],
+ ["Work Product","#bb7a16","A tangible artifact that evidences an alpha."],
+ ["Role","#9c3f76","A pattern of who does the work."],
+ ["Pattern","#b1492e","A reusable rule of thumb that biases decisions."]
+];
+let s=E(`<section id="language">${head('02','The language — six element types')}
+  <p class="prose">Everything in Essence — kernel and practices alike — is built from these six element types. The colours are used consistently across every card deck in this set.</p>
+  <div class="els"></div></section>`);
+let g=s.querySelector('.els');
+els.forEach(e=>g.appendChild(E(`<div class="el"><span class="pill" style="background:${e[1]}">${e[0]}</span><span class="def">${e[2]}</span></div>`)));
+deck.appendChild(s);
+
+/* state mechanic + areas */
+deck.appendChild(E(`<section id="states">${head('03','Progress is a state change')}
+  <p class="prose">Every alpha moves through <b>ordered states</b>, each with a checklist. Progress is an alpha reaching its next state — not a document being written. Laying the alpha cards on the table and agreeing their current state is how a team sees where it really is. For example, the <b>Architecture</b> alpha:</p>
+  <div class="track">
+    <span class="s">Envisioned</span><span class="ar">→</span><span class="s">Outlined</span><span class="ar">→</span><span class="s">Demonstrated</span><span class="ar">→</span><span class="s">Usable</span><span class="ar">→</span><span class="s">Established</span><span class="ar">→</span><span class="s">Evolving</span>
+  </div>
+  <p class="prose" style="margin-top:6px">A practice's job is to move specific alphas from one state to the next. The whole way of working is just the practices, applied in a sensible order, until every alpha has reached the state you need.</p></section>`));
+
+const areas=[
+ ["Customer","#2e7d52","Opportunity · Stakeholders"],
+ ["Solution","#b07d12","Requirements · System · Architecture · Architecture Decisions · Architectural Drivers"],
+ ["Endeavor","#2a5e9c","Work · Team · Way of Working · Governance"]
+];
+s=E(`<section id="areas">${head('04','Three areas of concern')}
+  <p class="prose">The alphas are organised into three areas — the customer you serve, the solution you build, and the endeavour that does the work.</p>
+  <div class="areas"></div></section>`);
+g=s.querySelector('.areas');
+areas.forEach(a=>g.appendChild(E(`<div class="area-card"><div class="bar" style="background:${a[1]}">${a[0]}</div><div class="al">${a[2]}</div></div>`)));
+deck.appendChild(s);
+
+/* ---------- 5. THE KERNEL ---------- */
+deck.appendChild(E(`<section id="kernel">${head('05','The kernel')}
+  <p class="prose">The kernel is the universal scaffolding every endeavour shares: <b>7 alphas, 15 activity spaces and 6 competencies</b>. On its own it moves nothing — it tells you <b>what</b> to track and <b>that</b> work must be done, never <b>how</b>. The "how" comes from practices composed on top.</p>
+  <div class="deck-grid" style="margin-top:14px">
+    <a class="deck" href="essence-kernel.html"><div class="top" style="background:var(--kernel)"></div><div class="body">
+      <div class="tag" style="color:var(--kernel)">Foundation</div><h4>The Essence Kernel</h4>
+      <p class="one">7 alphas (incl. the generalised <i>System</i>), 15 activity spaces, 6 competencies with the five-level ladder.</p>
+      <div class="kv">Provides&nbsp;→&nbsp;<b>the alphas every practice advances</b></div>
+      <div class="open" style="color:var(--kernel)">Open the kernel deck →</div></div></a>
+  </div></section>`));
+
+/* ---------- 6. LEVELS OF SCALE ---------- */
+deck.appendChild(E(`<section id="levels">${head('06','Levels of scale — naming the System')}
+  <p class="prose">Before you apply any of this, answer one question: <b>what is the System?</b> Essence's System alpha is the <b>system of interest</b> — and it is fractal. An enterprise is a system of systems; a solution is a sub-system of the enterprise; a configured product is a sub-system of the solution. The same kernel and practices instantiate at <b>any</b> level — and what is a "System" at one level is a "sub-system" at the level above. The boundary you draw decides what every alpha actually measures.</p>
+  <div class="lvl ent"><span class="lh">Outer level</span><h4>Enterprise — System = the enterprise</h4>
+    <p>The enterprise is the system of interest. Enterprise architecture, the paved road, enterprise drivers and standing governance are <b>owned</b> here. Each solution below is a sub-system that rolls up into the enterprise's health.</p>
+    <div class="lvl sol inner"><span class="lh">Middle level</span><h4>Solution / Project — System = the solution</h4>
+      <p>One endeavour delivering one solution. It <b>inherits</b> the enterprise architecture, paved road and governance as context (drivers and a way of working), and owns the architecture and decisions for this solution.</p>
+      <div class="lvl cmp inner"><span class="lh">Inner level</span><h4>Component — System = a configured product</h4>
+        <p>A single configured COTS product or service — a sub-system of the solution, tracked in its own right when it warrants it.</p>
+      </div>
+    </div>
+  </div>
+  <p class="prose" style="margin-top:18px">So the parent–child relationships shift with the level. The clearest example: at <b>enterprise</b> scope, each solution becomes a sub-alpha of the System; at <b>solution</b> scope, the enterprise architecture and paved road are inherited context, not parts of your System.</p>
+  <div class="scope">
+    <div class="col s1"><h4>If System = the solution (project level)</h4>
+      <dl>
+        <dt>System means</dt><dd>The one solution this endeavour delivers.</dd>
+        <dt>Architecture / Decisions</dt><dd>Owned — the architecture of this solution.</dd>
+        <dt>Paved Road · Governance</dt><dd>Inherited from the enterprise as context and guardrails.</dd>
+        <dt>Drivers</dt><dd>This solution's drivers, refined from enterprise drivers.</dd>
+      </dl></div>
+    <div class="col s2"><h4>If System = the enterprise</h4>
+      <dl>
+        <dt>System means</dt><dd>The whole estate — a system of systems.</dd>
+        <dt>Architecture / Decisions</dt><dd>Enterprise architecture describing the estate.</dd>
+        <dt>Paved Road · Governance</dt><dd>Owned, enterprise-wide capabilities.</dd>
+        <dt>Solutions</dt><dd>Sub-alphas (sub-systems) that roll up into the enterprise.</dd>
+      </dl></div>
+  </div>
+  <div class="panel"><h3>What flexes, and what doesn't</h3><p><b>Architectural Drivers</b> and <b>Architecture Decisions</b> are <b>forces and reasoning</b> — they shape whatever System you box, so they stay first-class at every level. <b>Architecture</b> is the one that flexes: read as "the structural description of the system" it is an aspect (and could be a sub-alpha at that level); read as "the discipline of architecting and its outputs" — as it is here — it stays first-class. These decks operate at the <b>solution level</b>, drawing on an enterprise that already provides the paved road, drivers and governance.</p></div>
+  <div class="panel"><h3>Which practice runs where</h3>
+  <p><b>At the enterprise level</b> you run <b>Business Scenarios</b> to set the drivers, enterprise <b>MVA</b> to shape the estate, and <b>MVG</b> to set the decision rights and paved road. These hand <b>down</b> as the context every solution inherits.</p>
+  <p><b>At the solution level</b> you run <b>Service Blueprint</b> to design the specific service and <b>MVA</b> to architect it — within the inherited guardrails — feeding evidence and new drivers back <b>up</b>. None of this is locked, though: run a business scenario for a single project, or blueprint an enterprise-wide service, whenever it fits. What changes is which level's <b>instance</b> of Opportunity, Requirements and Stakeholders the practice is advancing.</p></div>
+</section>`));
+const practices=[
+ ["Business Scenarios","#0e7490","business-scenarios-essence-practice.html","Discovery","Discover and quantify the real business need at the front of the loop.","1 sub-alpha · 6 activities · 1 work product · 12 roles · 4 patterns","Opportunity · Stakeholders · Requirements · Drivers","Enterprise / capability"],
+ ["Service Blueprint","#b21e63","service-blueprint-essence-practice.html","Service design","Visualise the service delivery process from both customer and provider perspectives.","1 sub-alpha · 5 activities · 2 work products · 6 roles · 5 patterns","Requirements · Stakeholders · System · (Blueprint)","Solution / service"],
+ ["Minimum Viable Architecture","#0f6e63","mva-essence-practice.html","Architecture","Architect the minimum, just in time; pave the road and review the exceptions.","3 alphas (+1 sub) · 7 activities · 7 work products · 4 roles · 5 patterns","Architecture · Decisions · Drivers · Paved Road · System","The level of its System"],
+ ["Minimum Viable Governance","#4b3f9e","mvg-essence-practice.html","Governance","Govern outcomes and guardrails, not gates; decide at the last responsible moment.","1 alpha · 5 activities · 5 work products · 2 roles · 5 patterns","Governance · Way of Working","Spans levels"]
+];
+s=E(`<section id="practices">${head('07','The four practices')}
+  <p class="prose">Each practice plugs into the kernel and is responsible for moving specific alphas. They also have a <b>natural home level</b> — Business Scenarios sits high, at the enterprise; Service Blueprint sits low, at a solution or service — though none is locked there. Open any card deck for the full detail.</p>
+  <div class="deck-grid"></div></section>`);
+g=s.querySelector('.deck-grid');
+practices.forEach(p=>g.appendChild(E(`<a class="deck" href="${p[2]}"><div class="top" style="background:${p[1]}"></div><div class="body">
+  <div class="tag" style="color:${p[1]}">${p[3]}</div><h4>${p[0]}</h4>
+  <p class="one">${p[4]}</p>
+  <div class="kv">Level&nbsp;→&nbsp;<b>${p[7]}</b><br>Adds&nbsp;→&nbsp;${p[5]}<br>Advances&nbsp;→&nbsp;<b>${p[6]}</b></div>
+  <div class="open" style="color:${p[1]}">Open the practice deck →</div></div></a>`)));
+deck.appendChild(s);
+
+/* ---------- 7. COMPOSE ---------- */
+deck.appendChild(E(`<section id="compose">${head('08','Composing the way of working')}
+  <p class="prose">Stacked, the practices sit on the kernel like this — discovery and service design at the front, architecture in the middle, governance over the top, and the kernel as the constant foundation:</p>
+  <div class="stack">
+    <div class="layer l-mvg"><span class="lbl">over the top</span><h4>Minimum Viable Governance</h4><p>Decision rights, guardrails and light assurance across everything.</p></div>
+    <div class="layer l-mva"><span class="lbl">the spine</span><h4>Minimum Viable Architecture</h4><p>Architect the minimum, pave the road, review the exceptions.</p></div>
+    <div class="twolayer">
+      <div class="layer l-bs"><span class="lbl">enterprise</span><h4>Business Scenarios</h4><p>Find &amp; quantify the need; set the drivers.</p></div>
+      <div class="layer l-sb"><span class="lbl">solution</span><h4>Service Blueprint</h4><p>Design the end-to-end service.</p></div>
+    </div>
+    <div class="layer kernelbase"><span class="lbl">foundation</span><h4>The Essence Kernel</h4><p>The alphas, activity spaces and competencies every practice builds on.</p></div>
+  </div>
+  <p class="prose" style="margin-top:24px">Pick the level you are working at — usually the <b>solution</b> — and run the practices in a logical order. Each stage names the practice that leads it and the alpha states it reaches. The very same practices run one level up for the <b>enterprise</b>, where their outputs (enterprise drivers, the paved road, governance) become the context every solution inherits:</p>
+  <div class="stages"></div>
+  <div class="panel"><h3>A loop, and it nests</h3><p>The order is a sensible default, not a waterfall. Governance runs throughout; discovery, service design and architecture iterate; once the service is live, what you learn feeds back into the need and the drivers. And it <b>nests</b>: the enterprise level runs the same loop, handing its drivers, paved road and governance <b>down</b> as context, while solutions feed evidence and new drivers back <b>up</b>. You apply whichever practice moves the alpha that is currently holding that level back.</p></div>
+</section>`));
+const stages=[
+ [1,"Discover the need","Business Scenarios","#0e7490","At the enterprise / capability level, run the business-scenario loop to find and quantify the real need and set the drivers handed down to solutions.","Opportunity → Value Established · Stakeholders → In Agreement · Requirements → Bounded · Drivers → Quantified"],
+ [2,"Design the service","Service Blueprint","#b21e63","At the solution / service level, blueprint the end-to-end service from both customer and provider perspectives; surface the fail points.","Requirements → Acceptable · System specified · Stakeholders → In Agreement · Blueprint → Validated"],
+ [3,"Architect the minimum","Minimum Viable Architecture","#0f6e63","Frame the drivers, envision and shape the minimum architecture, prove the risky parts, pave the road.","Architecture → Evolving · Decisions → Validated · Paved Road → Adopted · Drivers → Sustained · System → Demonstrable"],
+ [4,"Govern throughout","Minimum Viable Governance","#4b3f9e","Set decision rights and guardrails; let decisions flow within them; assure by reviewing the exceptions.","Governance → Effective · Way of Working → Foundation Established"],
+ [5,"Build, run & realise value","a delivery / run practice — not yet in this set","#b1492e","Build, test, deploy, operate and measure the value. These engines are the acknowledged gap in the current set.","System → Operational · Requirements → Fulfilled · Stakeholders → Satisfied in Use · Opportunity → Benefit Accrued · Team · Work"]
+];
+g=deck.querySelector('#compose .stages');
+stages.forEach(st=>g.appendChild(E(`<div class="stage"><div class="n" style="background:${st[3]}">${st[0]}</div><div class="c">
+  <h4>${st[1]}</h4><div class="by" style="color:${st[3]}">${st[2]}</div>
+  <p class="do">${st[4]}</p>
+  <div class="mv"><b>Moves:</b> ${st[5]}</div></div></div>`)));
+
+/* ---------- 8. COVERAGE ---------- */
+const AC={cust:"#2e7d52",sol:"#b07d12",end:"#2a5e9c"};
+const cov=[
+ ["Opportunity","cust","Business Scenarios","Value Established",true,"→ Benefit Accrued needs build/run"],
+ ["Stakeholders","cust","Business Scenarios · Service Blueprint","In Agreement",true,"→ Satisfied in Use needs run"],
+ ["Requirements","sol","Business Scenarios → Service Blueprint","Acceptable",true,"→ Fulfilled needs delivery"],
+ ["Architectural Drivers","sol","Business Scenarios → MVA","Sustained",false,"complete"],
+ ["Architecture","sol","MVA","Evolving",false,"complete"],
+ ["Architecture Decisions","sol","MVA","Validated",false,"complete"],
+ ["System","sol","Service Blueprint → MVA","Demonstrable",true,"→ Operational needs build/run"],
+ ["Work","end","MVA (partial)","Under Control",true,"needs a delivery practice"],
+ ["Team","end","—","not yet moved",true,"needs a delivery practice"],
+ ["Way of Working","end","MVG","Foundation Established",true,"→ Working Well needs improvement"],
+ ["Governance","end","MVG","Effective",false,"complete"]
+];
+s=E(`<section id="coverage">${head('09','Moving every alpha')}
+  <p class="prose">The point of the way of working is to move every alpha to the state you need. Here is how far the current set takes each one — and where the gaps are. The four practices cover the customer front-end, the architecture and the governance; what they do <b>not</b> yet cover is building, running and realising value.</p>
+  <table class="cov"><thead><tr><th>Alpha</th><th>Driven by</th><th>To state</th><th>Status</th></tr></thead><tbody></tbody></table>
+  <div class="panel"><h3>The honest gap</h3><p>To carry the remaining alphas to their terminal states you would add delivery / engineering, run / operations and benefits-realisation practices — the same way Business Scenarios, Service Blueprint, MVA and MVG plug in here. The set is deliberately strong on <b>deciding what to build and governing it</b>, and silent on <b>building, running and proving the value</b>.</p></div>
+</section>`);
+g=s.querySelector('tbody');
+cov.forEach(r=>g.appendChild(E(`<tr><td class="a"><span class="dot" style="background:${AC[r[1]]}"></span>${r[0]}</td><td>${r[2]}</td><td class="to">${r[3]}</td><td class="${r[4]?'gap':'ok'}">${r[4]?'◷ '+r[5]:'✓ complete'}</td></tr>`)));
+deck.appendChild(s);
+
+/* ---------- 9. HOW TO RUN IT ---------- */
+deck.appendChild(E(`<section id="run">${head('10','How to run it')}
+  <p class="prose">Whatever practice you are in, the rhythm is the same — and it is what makes this a way of working rather than a pile of documents.</p>
+  <div class="run">
+    <div class="step"><div class="n">01</div><h4>Name the System</h4><p>Choose your level — usually the solution. That decides what every alpha measures and what you inherit from the enterprise.</p></div>
+    <div class="step"><div class="n">02</div><h4>Lay out the alphas</h4><p>Put that level's alpha cards on the table; the shared picture starts with what you are tracking.</p></div>
+    <div class="step"><div class="n">03</div><h4>Agree the state</h4><p>For each alpha, agree its current state by consensus — the state's checklist settles any dispute.</p></div>
+    <div class="step"><div class="n">04</div><h4>Target the next state</h4><p>Pick the practice and activity that moves the alpha holding you back. Progress is a state change.</p></div>
+    <div class="step"><div class="n">05</div><h4>Govern lightly, evolve</h4><p>Stay inside the guardrails, review only the exceptions, and keep the picture live as things change.</p></div>
+  </div></section>`));
+</script>
+</body>
+</html>

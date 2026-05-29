@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minimum Viable Architecture — an Essence Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3efe6; --paper-2:#ece6d8; --ink:#1c1a16; --ink-soft:#524d42; --soft:#8a93a2;
+    --line:#d8d0bf; --card:#fbf9f3;
+    --alpha:#0f6e63; --product:#bb7a16; --activity:#1f5fa8; --role:#9c3f76; --pattern:#b1492e;
+    --prac:#0f6e63;            /* MVA accent = architecture green */
+    --cust:#2e7d52; --sol:#b07d12; --end:#2a5e9c;
+    --shadow:0 1px 0 rgba(0,0,0,.04),0 14px 30px -22px rgba(28,26,22,.55);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
+    background:radial-gradient(circle at 12% -10%,#fbf8ef 0%,transparent 45%),radial-gradient(circle at 95% 0%,#e6efe9 0%,transparent 42%),var(--paper);}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);}
+  .wrap{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:0 26px 90px}
+  header.hero{padding:58px 0 24px;border-bottom:2px solid var(--ink)}
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--prac)}
+  h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2.3rem,5.6vw,4.4rem);line-height:.98;margin:.16em 0 .14em;letter-spacing:-.015em}
+  h1 em{font-style:italic;font-weight:500;color:var(--prac)}
+  .lede{font-size:clamp(1rem,1.5vw,1.16rem);max-width:66ch;color:var(--ink-soft)}
+  .pillars{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .pillars span{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.05em;border:1px solid var(--ink);border-radius:40px;padding:7px 14px;background:var(--card)}
+  .plug{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:28px 0 6px}
+  .plug div{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--prac);border-radius:10px;padding:11px 14px}
+  .plug h4{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--prac);margin:0 0 5px}
+  .plug p{margin:0;font-size:.85rem;color:var(--ink-soft)} .plug b{color:var(--ink)}
+  .toolbar{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:13px 0 11px;margin:22px 0 4px;background:linear-gradient(var(--paper) 80%,transparent);backdrop-filter:blur(2px)}
+  .toolbar .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
+  button.f{font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;border:1px solid var(--ink);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:30px;transition:.15s}
+  button.f:hover,button.f.active{background:var(--ink);color:var(--paper)}
+  button.print{margin-left:auto;border-style:dashed}
+  section{margin-top:40px;scroll-margin-top:80px}
+  .sec-head{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:8px}
+  .sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.6rem;margin:0}
+  .sec-head .dot{width:13px;height:13px;border-radius:3px}
+  .sec-intro{color:var(--ink-soft);max-width:80ch;margin:6px 0 18px;font-size:.94rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:17px}
+  .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .card .top{height:6px}
+  .card .body{padding:15px 16px 17px;display:flex;flex-direction:column;flex:1}
+  .meta{display:flex;align-items:center;gap:7px;margin-bottom:8px;flex-wrap:wrap}
+  .type{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+  .area{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;border-radius:30px;padding:3px 8px;color:#fff}
+  .area.cust{background:var(--cust)} .area.sol{background:var(--sol)} .area.end{background:var(--end)}
+  .origin{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;border-radius:30px;padding:3px 8px;margin-left:auto;border:1px solid var(--prac);color:var(--prac);background:rgba(15,110,99,.07)}
+  .card h4{font-family:"Fraunces",serif;font-weight:600;font-size:1.22rem;margin:0 0 6px;line-height:1.1}
+  .desc{font-size:.88rem;color:var(--ink-soft);margin:0 0 11px}
+  .foot{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);border-top:1px dotted var(--line);padding-top:9px;margin-top:auto}
+  .foot b{color:var(--ink);font-weight:600}
+  .states{list-style:none;margin:0 0 6px;padding:0;counter-reset:s}
+  .states>li{position:relative;padding:7px 0 7px 28px;border-top:1px dashed var(--line)}
+  .states>li:first-child{border-top:none}
+  .states>li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:50%;background:var(--prac);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:600}
+  .st-name{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--prac)}
+  .st-check{font-size:.82rem;color:var(--ink-soft);margin-top:1px}
+  .levels{list-style:none;margin:0 0 11px;padding:0;display:flex;flex-direction:column;gap:6px}
+  .levels li{font-size:.83rem;display:flex;gap:8px;align-items:flex-start}
+  .levels .lv{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--product);border-radius:4px;padding:2px 6px;white-space:nowrap;margin-top:2px;flex-shrink:0}
+  .levels li.cut .lv{background:var(--soft)} .levels li.cut span{color:var(--soft);text-decoration:line-through}
+  .outcome{font-size:.83rem;background:rgba(15,110,99,.07);border:1px solid rgba(15,110,99,.2);border-radius:8px;padding:8px 10px;margin-top:auto}
+  .outcome b{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--prac);display:block;margin-bottom:3px}
+  .comps{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:10px}
+  .comps span{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.04em;border:1px solid var(--role);color:var(--role);border-radius:30px;padding:3px 8px}
+  .reinforces{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--pattern);border-top:1px dotted var(--line);padding-top:8px;margin-top:auto}
+  .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-top:18px;border-left:4px solid var(--prac)}
+  .panel h3{font-family:"Fraunces",serif;margin:0 0 6px;font-size:1.16rem}
+  .panel p{margin:0 0 10px;color:var(--ink-soft);font-size:.9rem;max-width:84ch}
+  .maprow{display:grid;grid-template-columns:1fr auto 1.2fr;gap:10px;align-items:center;padding:7px 0;border-top:1px dashed var(--line);font-size:.86rem}
+  .maprow:first-of-type{border-top:none}
+  .maprow .arrow{font-family:"IBM Plex Mono",monospace;color:var(--prac)}
+  .maprow .to{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--ink-soft)}
+  footer{margin-top:54px;border-top:2px solid var(--ink);padding-top:16px;font-size:.83rem;color:var(--ink-soft)}
+  .hidden{display:none !important}
+  @media print{body::before{display:none}.toolbar{display:none}.wrap{max-width:none;padding:0}header.hero{padding-top:0}.card{box-shadow:none;border:1px solid #bbb}section{margin-top:22px}@page{margin:12mm}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">A composable practice · plugs into the Essence kernel</div>
+    <h1>Minimum Viable Architecture<br><em>as an Essence practice</em></h1>
+    <p class="lede">Architect the minimum, just in time, to retire the significant risks and guide delivery — decisions over documents. MVA shapes the Solution; it pairs with Business Scenarios (which feeds it) and MVG (which governs it).</p>
+    <div class="pillars"><span>TOGAF ADM B–F · H</span><span>MVA</span><span>Solution area</span><span>pairs with MVG + Business Scenarios</span><span>Level &middot; The level of its System</span></div>
+    <div class="plug">
+      <div><h4>Where it plugs in</h4><p>The <b>Solution area</b> — shaping the system. Spans ADM phases B–F and H.</p></div>
+      <div><h4>What it adds</h4><p>3 alphas (+1 sub-alpha) · 7 activities · 7 work products · 4 roles · 5 patterns · +1 competency (Architecture).</p></div>
+      <div><h4>What it advances</h4><p>Its own three alphas, and drives kernel <b>System</b> to <i>Architecture Selected → Demonstrable</i>.</p></div>
+      <div><h4>Depends on</h4><p><b>Business Scenarios</b> for quantified drivers · <b>MVG</b> for guardrails · a <b>delivery practice</b> to build.</p></div>
+    </div>
+  </header>
+
+  <nav class="toolbar" aria-label="Filter">
+    <span class="lbl">Show</span>
+    <button class="f active" data-f="all">All</button>
+    <button class="f" data-f="alpha">Alphas</button>
+    <button class="f" data-f="activity">Activities</button>
+    <button class="f" data-f="product">Work Products</button>
+    <button class="f" data-f="role">Roles</button>
+    <button class="f" data-f="pattern">Patterns</button>
+    <button class="print" onclick="window.print()">⎙ Print</button>
+  </nav>
+  <main id="deck"></main>
+  <footer><p>MVA is one practice in a composed way of working. It owns the architecture-shaping elements split out from the former MVA/MVG bundle; governance now lives in the separate <em>MVG</em> practice. The TOGAF ADM mapping is a synthesis, not an Open Group standard.</p></footer>
+</div>
+<script>
+const E=h=>{const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstChild;};
+const deck=document.getElementById('deck');
+const ACC="var(--prac)";
+function sec(type,color,title,intro){return `<section data-type="${type}" id="sec-${type}"><div class="sec-head"><span class="dot" style="background:${color}"></span><h2>${title}</h2></div><p class="sec-intro">${intro}</p><div class="grid"></div></section>`;}
+
+const alphas=[
+{title:"Architectural Drivers",desc:"The significant concerns, goals, constraints and quality attributes that shape the architecture — the few things worth governing.",
+ states:[["Identified","Concerns and owners surfaced; candidate drivers listed."],["Prioritised","Significant drivers agreed and ranked; the trivial many deferred."],["Quantified","Each significant driver has a measurable success criterion."],["Addressed","Drivers reflected in decisions and the architecture."],["Sustained","Drivers monitored and re-validated as context changes."]],foot:"Owned by MVA · driven to → <b>Sustained</b>"},
+{title:"Architecture",desc:"The minimum set of structures, building blocks and views needed to satisfy the significant drivers and enable delivery — no more.",
+ states:[["Envisioned","Target direction, scope and value agreed on a page."],["Outlined","Minimum viable structure, boundaries and interfaces defined."],["Demonstrated","The riskiest parts proven via spike, reference or increment."],["Usable","Actively guiding and constraining delivery."],["Established","In operation, delivering the intended outcomes."],["Evolving","Changing under managed, continuous adaptation."]],foot:"Owned by MVA · driven to → <b>Evolving</b>"},
+{title:"Architecture Decisions",desc:"The significant, costly-to-reverse choices that are the architecture — the unit of progress in an MVA.",
+ states:[["Needed","A significant decision point is recognised and owned."],["Framed","Options, trade-offs and the last responsible moment understood."],["Decided","Choice made; rationale and consequences recorded (ADR)."],["Communicated","Known and accepted by those it affects."],["Validated","Proven by evidence and outcome — or revisited."]],foot:"Owned by MVA · driven to → <b>Validated</b>"}
+];
+deck.appendChild(E(sec('alpha',ACC,'Alphas','The three alphas MVA owns, plus a Paved Road sub-alpha (the service chassis) that makes the compliant choice the easy one, and the kernel System it advances. Each card shows its owner and the state it is carried to.')));
+let g=deck.querySelector('#sec-alpha .grid');
+alphas.forEach(a=>{const st=a.states.map(s=>`<li><span class="st-name">${s[0]}</span><div class="st-check">${s[1]}</div></li>`).join('');
+  g.appendChild(E(`<article class="card" data-type="alpha"><div class="top" style="background:${ACC}"></div><div class="body"><div class="meta"><span class="type" style="color:${ACC}">Alpha</span><span class="area sol">Solution</span><span class="origin">MVA</span></div><h4>${a.title}</h4><p class="desc">${a.desc}</p><ul class="states">${st}</ul><div class="foot">${a.foot}</div></div></article>`));});
+g.appendChild(E(`<article class="card" data-type="alpha"><div class="top" style="background:${ACC}"></div><div class="body"><div class="meta"><span class="type" style="color:${ACC}">Sub-Alpha</span><span class="area sol">Solution</span><span class="origin">MVA</span></div><h4>Paved Road</h4><p class="desc">The reusable foundation teams build on — the service chassis of approved products, patterns, reference setups and standards that makes the compliant choice the easy one. Conduct Architecture Review paves it and polices the exceptions.</p><ul class="states"><li><span class="st-name">Seeded</span><div class="st-check">The need for a paved road is recognised; a first approved default or two exists.</div></li><li><span class="st-name">Established</span><div class="st-check">A coherent service chassis of approved products, patterns and standards is published and self-serviceable.</div></li><li><span class="st-name">Adopted</span><div class="st-check">Teams build on it by default; on-road choices need no review.</div></li><li><span class="st-name">Pervasive</span><div class="st-check">It is the norm across the estate; going off-road is the rare, justified exception.</div></li><li><span class="st-name">Evolving</span><div class="st-check">Continuously widened and pruned from review learnings and new drivers.</div></li></ul><div class="foot">Sub-alpha of Architecture · driven to → <b>Evolving</b> · MVG governs its adoption</div></div></article>`));
+g.appendChild(E(`<article class="card" data-type="alpha"><div class="top" style="background:${ACC}"></div><div class="body"><div class="meta"><span class="type" style="color:${ACC}">Alpha</span><span class="area sol">Solution</span><span class="origin">Kernel</span></div><h4>System</h4><p class="desc">The system that delivers value — software, configured products, hardware and data. MVA selects its architecture and proves the riskiest parts before delivery builds it out.</p><ul class="states"><li><span class="st-name">Architecture Selected</span><div class="st-check">Architecture chosen to meet the key drivers and risks.</div></li><li><span class="st-name">Demonstrable</span><div class="st-check">An executable version shows the key characteristics.</div></li></ul><div class="foot">Owned by Kernel · MVA drives it to → <b>Demonstrable</b> · carried to Operational by a delivery practice</div></div></article>`));
+
+const acts=[
+["Frame the Drivers","Capture and quantify the architecturally-significant drivers; agree their measurable success criteria.","Drivers → Identified → Prioritised → Quantified"],
+["Conduct Architecture Review","Pave the road — publish approved products, patterns and standards as a self-serve service chassis — and review the off-road deviations and significant decisions against the drivers and principles.","Paved Road → Established → Adopted · Decisions → Validated"],
+["Envision the Architecture","Agree the target and its value on a page; bound the scope.","Architecture → Envisioned"],
+["Shape the Minimum Architecture","Define only the building blocks needed now across domains; frame and make the significant decisions.","Architecture → Outlined · Decisions → Framed → Decided"],
+["Prove the Risky Parts","Spike, reference-implement or build an increment against the highest risks; validate the decisions.","Architecture → Demonstrated · Decisions → Validated"],
+["Plan the Transition","Identify the gaps; sequence the next increment from baseline to target; detail only the next horizon.","Architecture → Usable"],
+["Evolve the Architecture","Manage change continuously; refactor and retire; re-validate the drivers.","Architecture → Established → Evolving · Drivers → Sustained"]
+];
+deck.appendChild(E(`<div class="panel"><h3>Adapting MVA for a COTS / buy-and-implement context</h3>
+  <p>When the company buys and configures commercial products rather than writing code, the alphas don't change — but how you advance them does. Conformance shifts from automated tests to a paved road of approved choices plus architecture review of the exceptions.</p>
+  <div class="maprow"><span>Architecture Decisions</span><span class="arrow">become →</span><span class="to">product-selection &amp; integration choices (decision matrix)</span></div>
+  <div class="maprow"><span>Architecture Definition</span><span class="arrow">becomes →</span><span class="to">integration architecture, boundaries &amp; standards products must meet</span></div>
+  <div class="maprow"><span>Prove the Risky Parts</span><span class="arrow">becomes →</span><span class="to">proof-of-concept, vendor evaluation or sandbox pilot</span></div>
+  <div class="maprow"><span>Significant Requirements</span><span class="arrow">become →</span><span class="to">selection &amp; conformance criteria in the RFP</span></div>
+  <div class="maprow"><span>Conformance</span><span class="arrow">assured by →</span><span class="to">paved roads + architecture review of deviations + SLA/telemetry monitoring</span></div></div>`));
+deck.appendChild(E(sec('activity','var(--activity)','Activities','The architecting flow — what MVA does, measured by the alpha states it reaches.')));
+g=deck.querySelector('#sec-activity .grid');
+acts.forEach((a,i)=>g.appendChild(E(`<article class="card" data-type="activity"><div class="top" style="background:var(--activity)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--activity)">Activity ${i+1} / ${acts.length}</span><span class="origin">MVA</span></div><h4>${a[0]}</h4><p class="desc">${a[1]}</p><div class="outcome"><b>Moves the alphas</b>${a[2]}</div></div></article>`)));
+
+const products=[
+["Architecture Vision (on a page)","Architecture · Drivers","The aspirational target and its value on a single page.",[["Sketch","Rough target & scope",0],["Agreed","One-pager signed off",0]]],
+["Architecture Definition (the MVA)","Architecture","Minimum building blocks and only the views a stakeholder will act on.",[["Skeleton","Key blocks & boundaries",0],["Working","Views the current decisions need",0],["Exhaustive model","All domains/artifacts — deferred",1]]],
+["Architecture Decision Records","Architecture Decisions","One short record per significant decision: context, options, choice, consequences.",[["Entry","Decision logged with rationale",0],["Linked","Tied to drivers & building blocks",0]]],
+["Architecturally-Significant Requirements","Drivers","The few requirements that are significant enough to shape the architecture, each tied to a driver.",[["Stated","Significant requirements named",0],["Quantified","Each carries a measurable target",0]]],
+["Paved Roads","Paved Road","The reusable foundation teams build on — approved products, patterns and reference setups (the service chassis), plus the standards they embody.",[["Seeded","A few approved defaults",0],["Published","Catalog self-serviceable",0],["Curated","Kept current; widened from learnings",0]]],
+["Review Records","Architecture Decisions","The record of architecture reviews — the decisions made when teams go off-road or make a significant choice, assessed against the drivers and principles.",[["Logged","Outcome recorded with rationale",0],["Linked","Tied to drivers & decisions",0]]],
+["Architecture Roadmap & Transition States","Architecture · Work","The path from baseline to target as increments. Only the next horizon is detailed.",[["Horizon","Next increment defined",0],["Sequenced","Gaps & dependencies ordered",0],["Big-bang plan","Full migration plan — deferred",1]]]
+];
+deck.appendChild(E(sec('product','var(--product)','Work Products','The architecture artifacts. They live in the repository governed by MVG. Struck-through levels are consciously deferred.')));
+g=deck.querySelector('#sec-product .grid');
+products.forEach(p=>{const lv=p[3].map(l=>`<li class="${l[2]?'cut':''}"><span class="lv">${l[0]}</span><span>${l[1]}</span></li>`).join('');
+  g.appendChild(E(`<article class="card" data-type="product"><div class="top" style="background:var(--product)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--product)">Work Product</span><span class="origin">MVA</span></div><h4>${p[0]}</h4><p class="desc">${p[2]}</p><ul class="levels">${lv}</ul><div class="foot">Evidences&nbsp;→&nbsp;<b>${p[1]}</b></div></div></article>`));});
+
+const roles=[
+["Lead / Enterprise Architect","Owns the vision and frames the significant decisions; keeps the architecture minimal and coherent.",["Architecture","Leadership","Analysis"]],
+["Domain Architect","Business · Data · Application · Technology. Just-enough domain depth, on demand, when a decision needs it.",["Architecture","Analysis"]],
+["Solution Architect","Bridges the MVA into delivery increments, so the architecture guides and is shaped by what is built.",["Architecture","Development"]],
+["Architecture Owner","Embedded in the delivery team; evolves the MVA day to day. The agile keystone role.",["Architecture","Development","Stakeholder Rep."]]
+];
+deck.appendChild(E(sec('role','var(--role)','Roles','Who shapes the architecture. The Sponsor and Governance Forum sit in the MVG practice.')));
+g=deck.querySelector('#sec-role .grid');
+roles.forEach(r=>g.appendChild(E(`<article class="card" data-type="role"><div class="top" style="background:var(--role)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--role)">Role</span><span class="area sol">Solution</span><span class="origin">MVA</span></div><h4>${r[0]}</h4><p class="desc">${r[1]}</p><div class="comps">${r[2].map(c=>`<span>${c}</span>`).join('')}</div></div></article>`)));
+
+const pats=[["A1","Architect the minimum, defer the rest","Produce only the structure a current decision needs. Everything else waits for evidence it's needed."],
+["A2","Decisions over documents","The architecture is its set of significant decisions. Capture those crisply; documents are a by-product."],
+["A3","Pave the road, review the exceptions","Encode the drivers into approved products, patterns and standards so the compliant path is the easy one; review only what goes off-road."],
+["A4","Prove the riskiest parts first","Spend architecture effort where uncertainty and cost-of-being-wrong are highest. Demonstrate before committing."],
+["A5","Evolve continuously; design for change","Treat the architecture as living. Optimise for reversibility, not a frozen end state."]];
+deck.appendChild(E(sec('pattern','var(--pattern)','Patterns','The five MVA principles that bias every architectural decision.')));
+g=deck.querySelector('#sec-pattern .grid');
+pats.forEach(p=>g.appendChild(E(`<article class="card" data-type="pattern"><div class="top" style="background:var(--pattern)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--pattern)">Pattern</span><span class="type" style="color:var(--pattern);letter-spacing:.1em">MVA · ${p[0]}</span><span class="origin">MVA</span></div><h4>${p[1]}</h4><p class="desc" style="margin-bottom:0">${p[2]}</p></div></article>`)));
+
+deck.querySelector('#sec-pattern .grid').insertAdjacentElement('afterend',E(`<div class="panel"><h3>How MVA composes with the rest</h3>
+  <div class="maprow"><span>Quantified business drivers</span><span class="arrow">in from →</span><span class="to">Business Scenarios practice</span></div>
+  <div class="maprow"><span>Guardrails, principles, decision rights</span><span class="arrow">in from →</span><span class="to">MVG practice</span></div>
+  <div class="maprow"><span>Architecture Selected → built &amp; run</span><span class="arrow">handed to →</span><span class="to">delivery / engineering practice (missing)</span></div>
+  <div class="maprow"><span>Review outcomes · Paved Road adoption</span><span class="arrow">out to →</span><span class="to">MVG (assurance &amp; conformance)</span></div></div>`));
+
+document.querySelectorAll('button.f').forEach(b=>b.addEventListener('click',()=>{const f=b.dataset.f;document.querySelectorAll('button.f').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('section[data-type]').forEach(s=>s.classList.toggle('hidden',f!=='all'&&s.dataset.type!==f));}));
+</script>
+</body>
+</html>

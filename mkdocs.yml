@@ -1,5 +1,5 @@
 site_name: Essence Way of Working
-site_description: Documentation for the Essence Way of Working
+site_description: A complete way of working built on the OMG / SEMAT Essence standard
 site_author: Rene Hietkamp
 site_url: https://reneh.github.io/essence-way-of-working/
 
@@ -12,6 +12,7 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.copy
+    - navigation.indexes
   palette:
     - scheme: default
       primary: indigo
@@ -38,5 +39,7 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - tables
+  - attr_list
+  - md_in_html
   - toc:
       permalink: true
