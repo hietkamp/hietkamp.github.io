@@ -1,61 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resources — Essence Way of Working</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#f3efe6; --paper-2:#ece6d8; --ink:#1c1a16; --ink-soft:#524d42; --soft:#8a93a2;
-    --line:#d8d0bf; --card:#fbf9f3;
-    --prac:#243b66;
-    --bs:#0e7490; --sb:#b21e63; --mva:#0f6e63; --mvg:#4b3f9e; --kernel:#27406b;
-    --shadow:0 1px 0 rgba(0,0,0,.04),0 14px 30px -22px rgba(28,26,22,.55);
-    scroll-behavior:smooth;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
-    background:radial-gradient(circle at 12% -10%,#fbf8ef 0%,transparent 45%),radial-gradient(circle at 95% 0%,#e7ecf4 0%,transparent 42%),var(--paper);}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
-    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-    background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 22%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 22%,#000,transparent 80%);}
-  .wrap{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:0 26px 90px}
-  header.hero{padding:58px 0 24px;border-bottom:2px solid var(--ink)}
-  .kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--prac)}
-  h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2.4rem,6vw,4.7rem);line-height:.97;margin:.16em 0 .14em;letter-spacing:-.015em}
-  h1 em{font-style:italic;font-weight:500;color:var(--prac)}
-  .lede{font-size:clamp(1.02rem,1.5vw,1.2rem);max-width:70ch;color:var(--ink-soft)}
-  section{margin-top:46px;scroll-margin-top:132px}
-  .sec-head{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px}
-  .sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.7rem;margin:0}
-  .sec-head .num{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--prac);border:1px solid var(--prac);border-radius:30px;padding:3px 9px}
-  .prose{max-width:80ch;color:var(--ink-soft);font-size:1rem;margin:0 0 16px}
-  .prose b{color:var(--ink)}
-  /* resource cards */
-  .res-list{display:flex;flex-direction:column;gap:12px;margin-top:8px}
-  .res{display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:16px 18px}
-  .res .ico{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
-  .res .info{}
-  .res .info .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:3px}
-  .res .info h4{font-family:"Fraunces",serif;font-weight:600;font-size:1.15rem;margin:0 0 3px}
-  .res .info p{margin:0;font-size:.88rem;color:var(--ink-soft)}
-  a.dl{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.05em;cursor:pointer;border:1px solid var(--ink);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:30px;transition:.15s;text-decoration:none;white-space:nowrap}
-  a.dl:hover{background:var(--ink);color:var(--paper)}
-  /* page link list */
-  .page-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:8px}
-  a.page-link{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--c,var(--prac));border-radius:10px;padding:12px 14px;text-decoration:none;color:inherit;transition:transform .1s,box-shadow .1s}
-  a.page-link:hover{transform:translateX(2px);box-shadow:var(--shadow)}
-  a.page-link .tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--c,var(--prac));margin-bottom:2px}
-  a.page-link h4{font-family:"Fraunces",serif;font-size:1.05rem;font-weight:600;margin:0;line-height:1.1}
-  footer{margin-top:56px;border-top:2px solid var(--ink);padding-top:16px;font-size:.83rem;color:var(--ink-soft);max-width:90ch}
-  @media print{body::before{display:none}.wrap{max-width:none;padding:0}header.hero{padding-top:0}section{margin-top:24px}@page{margin:12mm}}
-  @media(max-width:600px){.res{grid-template-columns:1fr;gap:10px}.res .ico{display:none}}
+import re, os
 
-  
-  
+DOCS = '/Users/reneh/Development/python/essence-way-of-working/docs'
+
+NEW_NAV_CSS = r"""
   /* ===== SITE NAV ===== */
   .skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0;outline:none}
   .skip-link:focus-visible{top:0;outline:3px solid #f3efe6;outline-offset:2px}
@@ -112,11 +59,9 @@
     .search-results{right:-60px;width:280px}
   }
   @media print{.site-nav,.skip-link{display:none}}
+"""
 
-</style>
-</head>
-<body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
+NEW_NAV_HTML = """<a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-nav" role="banner">
   <div class="site-nav-inner">
     <a class="site-nav-logo" href="index.html">Essence <em>Way of Working</em></a>
@@ -159,65 +104,9 @@
     </div>
   </div>
 </header>
-<div class="wrap" id="main-content">
-  <header class="hero">
-    <div class="kicker">Resources · Essence Way of Working</div>
-    <h1>Downloads<br><em>&amp; references</em></h1>
-    <p class="lede">All workbooks, reference materials, and page links in one place.</p>
-  </header>
+"""
 
-  <section id="downloads">
-    <div class="sec-head"><span class="num">01</span><h2>Downloads</h2></div>
-    <p class="prose">Printable or workable files to use alongside the way of working.</p>
-    <div class="res-list">
-      <div class="res">
-        <div class="ico" style="background:rgba(36,59,102,.1)">📊</div>
-        <div class="info">
-          <div class="tag" style="color:var(--prac)">Excel workbook</div>
-          <h4>EA Alpha Assessment</h4>
-          <p>Track alpha states across all seven kernel alphas. Sixteen tabs in three groups — tick the checklists and the dashboard moves. Documents lie; alpha states are honest.</p>
-        </div>
-        <a class="dl" href="EA_Alpha_Assessment.xlsx" download>⬇ Download</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="pages">
-    <div class="sec-head"><span class="num">02</span><h2>All pages</h2></div>
-    <p class="prose">Direct links to every page in this site — useful for bookmarking or opening for print.</p>
-    <div class="page-list">
-      <a class="page-link" href="index.html" style="--c:var(--prac)">
-        <div><div class="tag">Home</div><h4>Essence Way of Working</h4></div>
-      </a>
-      <a class="page-link" href="essence-introduction.html" style="--c:var(--prac)">
-        <div><div class="tag">Introduction</div><h4>An Essence Way of Working</h4></div>
-      </a>
-      <a class="page-link" href="essence-kernel.html" style="--c:var(--kernel)">
-        <div><div class="tag">Foundation</div><h4>The Essence Kernel</h4></div>
-      </a>
-      <a class="page-link" href="essence-training.html" style="--c:var(--prac)">
-        <div><div class="tag">Training</div><h4>Essence — Training</h4></div>
-      </a>
-      <a class="page-link" href="business-scenarios-essence-practice.html" style="--c:var(--bs)">
-        <div><div class="tag">Practice 1 · Discovery</div><h4>Business Scenarios</h4></div>
-      </a>
-      <a class="page-link" href="service-blueprint-essence-practice.html" style="--c:var(--sb)">
-        <div><div class="tag">Practice 2 · Service design</div><h4>Service Blueprint</h4></div>
-      </a>
-      <a class="page-link" href="mva-essence-practice.html" style="--c:var(--mva)">
-        <div><div class="tag">Practice 3 · Architecture</div><h4>Min. Viable Architecture</h4></div>
-      </a>
-      <a class="page-link" href="mvg-essence-practice.html" style="--c:var(--mvg)">
-        <div><div class="tag">Practice 4 · Governance</div><h4>Min. Viable Governance</h4></div>
-      </a>
-    </div>
-  </section>
-
-  <footer>
-    <p>Essence is an OMG standard developed by the SEMAT community (Ivar Jacobson and others). This way of working composes the kernel with four practices synthesising ideas from TOGAF, service blueprinting (Shostack, 1984) and Use-Case 2.0. Keep your licensed standards as the authority.</p>
-  </footer>
-</div>
-<script>
+NEW_NAV_JS = r"""<script>
 (function(){
   /* Active nav state */
   var p = location.pathname.split('/').pop() || 'index.html';
@@ -279,7 +168,7 @@
 
   function hilite(text, q){
     if(!q) return esc(text);
-    var safe = q.replace(/[.*+?^${}()|[\]\]/g,'\$&');
+    var safe = q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
     return esc(text).replace(new RegExp('('+safe+')','gi'),'<em>$1</em>');
   }
 
@@ -386,6 +275,28 @@
     if(!e.target.closest('.site-search')) hideResults();
   });
 })();
-</script>
-</body>
-</html>
+</script>"""
+
+files = sorted(f for f in os.listdir(DOCS) if f.endswith('.html'))
+
+for filename in files:
+    path = os.path.join(DOCS, filename)
+    content = open(path).read()
+
+    content, n1 = re.subn(
+        r'/\* ===== SITE NAV ===== \*/.*?</style>',
+        NEW_NAV_CSS + '\n</style>', content, count=1, flags=re.S)
+
+    content, n2 = re.subn(
+        r'(?:<a class="skip-link"[^>]*>[^<]*</a>\n)?<header class="site-nav"[\s\S]*?</header>\n',
+        NEW_NAV_HTML, content, count=1, flags=re.S)
+
+    content, n3 = re.subn(
+        r'<script>\s*\(function\(\)\{[\s\S]*?practicePages[\s\S]*?\}\)\(\);\s*</script>',
+        NEW_NAV_JS, content, count=1, flags=re.S)
+
+    open(path, 'w').write(content)
+    ok = 'v' if n1+n2+n3 == 3 else '!'
+    print(f'{ok} {filename:<52} css={n1} html={n2} js={n3}')
+
+print(f'\nDone — {len(files)} files.')
