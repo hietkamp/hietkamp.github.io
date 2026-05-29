@@ -1,6 +1,123 @@
-import re, os
+import re, os, json
 
 DOCS = '/Users/reneh/Development/python/essence-way-of-working/docs'
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Search index builder
+# ──────────────────────────────────────────────────────────────────────────────
+
+PAGE_META = {
+    'index.html':                               {'tag': 'Home',                               'color': '#243b66', 'kicker': 'Essence Way of Working'},
+    'essence-introduction.html':                {'tag': 'Introduction',                        'color': '#243b66', 'kicker': 'Essence Way of Working'},
+    'essence-kernel.html':                      {'tag': 'Foundation',                          'color': '#27406b', 'kicker': 'Essence Kernel'},
+    'essence-training.html':                    {'tag': 'Training',                            'color': '#243b66', 'kicker': 'Essence Way of Working'},
+    'business-scenarios-essence-practice.html': {'tag': 'Practice · Business Scenarios',      'color': '#0a5a72', 'kicker': 'A composable practice · plugs into the Essence kernel'},
+    'service-blueprint-essence-practice.html':  {'tag': 'Practice · Service Blueprint',       'color': '#b21e63', 'kicker': 'A composable practice · plugs into the Essence kernel'},
+    'mva-essence-practice.html':                {'tag': 'Practice · Min. Viable Architecture','color': '#0f6e63', 'kicker': 'A composable practice · plugs into the Essence kernel'},
+    'mvg-essence-practice.html':                {'tag': 'Practice · Min. Viable Governance',  'color': '#4b3f9e', 'kicker': 'A composable practice · plugs into the Essence kernel'},
+    'resources.html':                           {'tag': 'Resources',                          'color': '#243b66', 'kicker': 'Essence Way of Working'},
+}
+
+def _strip_tags(s):
+    return re.sub(r'<[^>]+>', ' ', s)
+
+def _clean(s):
+    return re.sub(r'\s+', ' ', _strip_tags(s)).strip()
+
+def _is_nav_script(script):
+    return 'practicePages' in script
+
+def _content_scripts(html):
+    return [m.group(1) for m in re.finditer(r'<script[^>]*>([\s\S]*?)</script>', html, re.I)
+            if not _is_nav_script(m.group(1))]
+
+def build_search_index():
+    entries = []
+    for filename in sorted(PAGE_META):
+        path = os.path.join(DOCS, filename)
+        if not os.path.exists(path):
+            continue
+        html = open(path, encoding='utf-8').read()
+        meta = PAGE_META[filename]
+
+        # Title
+        m = re.search(r'<title>([^<]+)</title>', html, re.I)
+        title = m.group(1).strip() if m else meta['tag']
+        title = re.sub(r'\s*[—–]\s*(?:Essence Way of Working|an Essence Practice).*$', '', title).strip()
+
+        # Lede (first .lede element)
+        m = re.search(r'class="lede"[^>]*>\s*([^<]{20,})', html)
+        lede = _clean(m.group(1)) if m else ''
+
+        # Visible HTML text (no scripts, no styles)
+        html_bare = re.sub(r'<script[^>]*>[\s\S]*?</script>', '', html, flags=re.I)
+        html_bare = re.sub(r'<style[^>]*>[\s\S]*?</style>', '', html_bare, flags=re.I)
+        html_text = _clean(html_bare)
+
+        # Text from JS template literals and description strings
+        js_parts = []
+        for script in _content_scripts(html):
+            # Backtick template literals (HTML card content)
+            for tm in re.finditer(r'`([\s\S]*?)`', script):
+                t = _clean(tm.group(1))
+                if len(t) > 20:
+                    js_parts.append(t)
+            # Double-quoted strings that look like prose (>= 20 chars, starts uppercase)
+            for sm in re.finditer(r'"([^"\\]{20,})"', script):
+                s = sm.group(1)
+                if '<' not in s and not s.startswith('#') and not s.startswith('var(') and s[0].isupper():
+                    js_parts.append(s)
+
+        full_text = (html_text + ' ' + ' '.join(js_parts))[:6000]
+
+        # Sections
+        seen = set()
+        sections = []
+
+        def add_sec(t):
+            t = _clean(t).strip()
+            if t and len(t) < 100 and t.lower() not in seen and '${' not in t:
+                seen.add(t.lower())
+                sections.append({'h': t})
+
+        # Static headings in HTML
+        for m in re.finditer(r'<h[2-6][^>]*>([\s\S]*?)</h[2-6]>', html_bare, re.I):
+            add_sec(m.group(1))
+        # .kicker elements (training slide headings + practice page headers)
+        for m in re.finditer(r'class="kicker"[^>]*>\s*([^<]{3,80})', html):
+            add_sec(m.group(1))
+        # h4 headings inside JS template literals
+        for script in _content_scripts(html):
+            for m in re.finditer(r'<h[234]>([\s\S]*?)</h[234]>', script):
+                add_sec(m.group(1))
+            # First element of JS data arrays: ["Name", ...] — activity/role/pattern names
+            for m in re.finditer(r'\[\s*"([^"]{3,60})"', script):
+                t = m.group(1)
+                if not any(c in t for c in ('#', '<', '{', '(', '/', ':')):
+                    add_sec(t)
+
+        entries.append({
+            'title':    title,
+            'tag':      meta['tag'],
+            'color':    meta['color'],
+            'kicker':   meta['kicker'],
+            'url':      filename,
+            'lede':     lede,
+            'text':     full_text,
+            'sections': sections,
+        })
+
+    out = os.path.join(DOCS, 'search-index.json')
+    with open(out, 'w', encoding='utf-8') as f:
+        json.dump(entries, f, ensure_ascii=False, separators=(',', ':'))
+    print(f'Built search-index.json — {len(entries)} entries')
+    for e in entries:
+        req_in_text = 'requirements' in e['text'].lower()
+        req_in_secs = any('requirements' in s['h'].lower() for s in e['sections'])
+        print(f'  {e["url"]:<52} text={len(e["text"])} secs={len(e["sections"])} req_text={req_in_text} req_sec={req_in_secs}')
+
+build_search_index()
+print()
 
 NEW_NAV_CSS = r"""
   /* ===== SITE NAV ===== */
