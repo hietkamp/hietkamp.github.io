@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essence — Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3efe6; --paper-2:#ece6d8; --ink:#1c1a16; --ink-soft:#524d42; --soft:#8a93a2;
+    --line:#d8d0bf; --card:#fbf9f3;
+    --alpha:#0f6e63; --product:#bb7a16; --activity:#1f5fa8; --comp:#4b3f9e; --role:#9c3f76; --pattern:#b1492e;
+    --prac:#243b66; --cust:#2e7d52; --sol:#b07d12; --end:#2a5e9c;
+    --bs:#0e7490; --sb:#b21e63; --mva:#0f6e63; --mvg:#4b3f9e; --kernel:#27406b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden}
+  body{background:var(--paper);font-family:"IBM Plex Sans",system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:60px 60px;-webkit-mask-image:radial-gradient(circle at 50% 30%,#000,transparent 85%);mask-image:radial-gradient(circle at 50% 30%,#000,transparent 85%)}
+  /* progress bar */
+  .progress{position:fixed;top:0;left:0;height:3px;background:var(--prac);width:0;z-index:50;transition:width .25s ease}
+  /* stage */
+  .stage{position:relative;width:100vw;height:100vh;overflow:hidden;z-index:1}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;padding:5vh 7vw;justify-content:flex-start}
+  .slide.active{display:flex}
+  /* HUD */
+  .hud{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;padding:14px 26px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);z-index:40;pointer-events:none}
+  .hud b{color:var(--ink)}
+  .nav{position:fixed;right:22px;bottom:18px;display:flex;gap:6px;z-index:41}
+  .nav button{font-family:"IBM Plex Mono",monospace;font-size:13px;cursor:pointer;border:1px solid var(--ink);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:30px;line-height:1}
+  .nav button:hover{background:var(--ink);color:var(--paper)}
+  /* common */
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--prac);margin-bottom:14px}
+  h1.s{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(1.8rem,3.6vw,3rem);line-height:1.04;letter-spacing:-.01em;max-width:24ch}
+  h1.s em{font-style:italic;color:var(--prac);font-weight:500}
+  .sub{font-size:clamp(1rem,1.4vw,1.25rem);color:var(--ink-soft);max-width:64ch;margin-top:12px}
+  .body{margin-top:28px;flex:1;display:flex;flex-direction:column;gap:18px;min-height:0}
+  /* TITLE slide */
+  .slide.title{justify-content:center;align-items:center;text-align:center;padding:10vh 8vw}
+  .slide.title .kicker{margin-bottom:24px}
+  .slide.title h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(3rem,8vw,6.5rem);line-height:.95;letter-spacing:-.02em}
+  .slide.title h1 em{font-style:italic;color:var(--prac);font-weight:500}
+  .slide.title .lede{font-size:clamp(1.1rem,1.6vw,1.4rem);color:var(--ink-soft);max-width:60ch;margin-top:24px}
+  .slide.title .meta{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-top:38px}
+  /* DIVIDER */
+  .slide.divider{justify-content:center;padding:8vh 10vw}
+  .slide.divider .num{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.3em;color:var(--prac);margin-bottom:18px}
+  .slide.divider h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(3rem,7vw,5.5rem);line-height:.96;max-width:18ch}
+  .slide.divider .tagline{font-size:clamp(1.1rem,1.6vw,1.4rem);color:var(--ink-soft);margin-top:22px;max-width:54ch}
+  /* two columns */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:32px;flex:1;min-height:0}
+  .col{display:flex;flex-direction:column;gap:14px;min-height:0;overflow:hidden}
+  .col h3{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--prac);font-weight:600}
+  .col p,.col li{font-size:clamp(.92rem,1.1vw,1.05rem);color:var(--ink-soft);line-height:1.55}
+  .col ul{padding-left:22px;display:flex;flex-direction:column;gap:8px}
+  .col b{color:var(--ink)}
+  /* chips/cards */
+  .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;flex:1}
+  .chip{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+  .chip .pill{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;padding:5px 12px;border-radius:30px;align-self:flex-start;font-weight:600}
+  .chip h4{font-family:"Fraunces",serif;font-size:1.25rem;font-weight:600}
+  .chip p{font-size:.95rem;color:var(--ink-soft);line-height:1.5}
+  /* area boxes */
+  .areas3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;flex:1}
+  .area-bx{border-radius:14px;overflow:hidden;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line)}
+  .area-bx .bar{padding:14px 18px;color:#fff;font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem}
+  .area-bx .alphas{padding:16px 20px;flex:1;display:flex;flex-direction:column;gap:7px;font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
+  .area-bx.cust .bar{background:var(--cust)} .area-bx.sol .bar{background:var(--sol)} .area-bx.end .bar{background:var(--end)}
+  /* alpha cards row */
+  .alphas-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;flex:1}
+  .a-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-top:5px solid var(--alpha)}
+  .a-card h5{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:600;color:var(--ink)}
+  .a-card .area{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#fff;padding:3px 8px;border-radius:30px;align-self:flex-start}
+  .a-card p{font-size:.85rem;color:var(--ink-soft);line-height:1.4}
+  /* state track */
+  .track{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:8px}
+  .track .s{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--alpha);padding:9px 16px;border-radius:30px;display:flex;align-items:center;gap:8px}
+  .track .s .n{display:inline-flex;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.25);align-items:center;justify-content:center;font-size:12px}
+  .track .ar{color:var(--soft);font-family:"IBM Plex Mono",monospace;font-size:18px}
+  /* checklist */
+  .check-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 28px;border-left:6px solid var(--alpha)}
+  .check-card h4{font-family:"Fraunces",serif;font-size:1.5rem;margin-bottom:14px;color:var(--alpha)}
+  .check-card ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .check-card li{display:flex;gap:14px;align-items:flex-start;font-size:1.05rem}
+  .check-card .cb{width:22px;height:22px;border-radius:5px;background:#D6F0E2;color:#1E7A4D;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;margin-top:1px}
+  .check-card .cb.open{background:#fbf0d8;color:#8a6d1a}
+  /* nested levels */
+  .nest{display:flex;flex-direction:column;gap:0;margin-top:8px}
+  .nest .lvl{border-radius:14px;padding:18px 22px;color:#fff;margin-top:0}
+  .nest .lvl h4{font-family:"Fraunces",serif;font-size:1.35rem;font-weight:600;margin-bottom:3px}
+  .nest .lvl .lh{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+  .nest .lvl p{font-size:.98rem;opacity:.95;max-width:80ch;margin-top:4px}
+  .nest .lvl.ent{background:var(--kernel)} .nest .lvl.sol{background:var(--mva)} .nest .lvl.cmp{background:#6b6256}
+  .nest .lvl.sol{margin:8px 0 0 6vw} .nest .lvl.cmp{margin:8px 0 0 12vw}
+  /* practice grid */
+  .prac-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;flex:1}
+  .p-card{border-radius:14px;background:var(--card);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column}
+  .p-card .top{height:6px}
+  .p-card .b{padding:16px 18px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .p-card .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+  .p-card h4{font-family:"Fraunces",serif;font-size:1.2rem;font-weight:600}
+  .p-card p{font-size:.9rem;color:var(--ink-soft);line-height:1.45;flex:1}
+  .p-card .lvl{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--ink-soft);border-top:1px dotted var(--line);padding-top:8px}
+  /* stack */
+  .stack{display:flex;flex-direction:column;gap:8px;flex:1}
+  .stack .layer{border-radius:12px;padding:16px 20px;color:#fff;position:relative}
+  .stack .layer h4{font-family:"Fraunces",serif;font-size:1.3rem;margin-bottom:3px;font-weight:600}
+  .stack .layer p{font-size:.92rem;opacity:.94}
+  .stack .layer .lbl{position:absolute;top:14px;right:18px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+  .stack .layer.mvg{background:var(--mvg)} .stack .layer.mva{background:var(--mva)} .stack .layer.kr{background:var(--kernel)}
+  .stack .two-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .stack .two-row .layer.bs{background:var(--bs)} .stack .two-row .layer.sb{background:var(--sb)}
+  /* stages */
+  .stages{display:flex;flex-direction:column;gap:11px;flex:1}
+  .stages .st{display:grid;grid-template-columns:60px 1fr;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden}
+  .stages .st .n{display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-size:1.7rem;font-weight:700;color:#fff}
+  .stages .st .c{padding:13px 16px}
+  .stages .st h4{font-family:"Fraunces",serif;font-size:1.18rem;margin-bottom:3px}
+  .stages .st .by{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.04em;margin-bottom:5px}
+  .stages .st p{font-size:.92rem;color:var(--ink-soft);line-height:1.42}
+  /* decision table */
+  .dec{width:100%;border-collapse:collapse;font-size:1rem;background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;margin-top:8px}
+  .dec th{background:var(--ink);color:#fff;text-align:left;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:12px 16px;font-weight:600}
+  .dec td{padding:13px 16px;border-top:1px solid var(--line);vertical-align:middle}
+  .dec tr:nth-child(even) td{background:rgba(0,0,0,.015)}
+  .dec .pr{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;padding:5px 11px;border-radius:30px;color:#fff;letter-spacing:.05em;text-transform:uppercase}
+  /* mockups */
+  .mock{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:.85rem}
+  .mock .m-title{background:var(--ink);color:#fff;padding:10px 14px;border-radius:8px;font-family:"Fraunces",serif;font-size:1.05rem;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+  .mock .m-title .chip-l{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;padding:4px 10px;background:var(--mva);border-radius:20px}
+  .mock .m-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .mock .m-tile{padding:9px;text-align:center;border-radius:7px}
+  .mock .m-tile .lab{font-family:"IBM Plex Mono",monospace;font-size:8px;letter-spacing:.12em;color:#fff;padding:3px;border-radius:4px}
+  .mock .m-tile .val{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:700;color:var(--mva);margin-top:5px}
+  .mock .m-tile.t1{background:#dceee9}.mock .m-tile.t2{background:#e3deef}.mock .m-tile.t3{background:#d8e9ec}
+  .mock .m-tile.t1 .lab{background:var(--mva)}.mock .m-tile.t2 .lab{background:var(--mvg)}.mock .m-tile.t3 .lab{background:var(--bs)}
+  .mock .m-tile.t2 .val{color:var(--mvg)}.mock .m-tile.t3 .val{color:var(--bs)}
+  .mock .m-row{display:grid;grid-template-columns:1.4fr 0.7fr 0.7fr 1.3fr 1.4fr 0.9fr;gap:6px;align-items:center;padding:7px 10px;border-bottom:1px solid var(--line);font-size:.78rem}
+  .mock .m-row.head{background:var(--ink);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;border-radius:5px;border-bottom:none}
+  .mock .m-row.area{background:var(--cust);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;display:block;padding:5px 10px;border-radius:4px}
+  .mock .m-row.area.sol{background:var(--sol)}
+  .mock .m-row .own{font-family:"IBM Plex Mono",monospace;font-size:8.5px;background:var(--kernel);color:#fff;text-align:center;padding:3px;border-radius:4px;letter-spacing:.05em}
+  .mock .m-row .own.mva{background:var(--mva)}.mock .m-row .own.bs{background:var(--bs)}.mock .m-row .own.sb{background:var(--sb)}.mock .m-row .own.mvg{background:var(--mvg)}
+  .mock .m-row .lv{font-family:"IBM Plex Mono",monospace;font-size:8.5px;background:var(--mva);color:#fff;text-align:center;padding:3px;border-radius:4px;letter-spacing:.05em}
+  .mock .m-row .lv.ent{background:var(--kernel)}.mock .m-row .lv.spn{background:var(--mvg)}
+  .mock .m-row .bar{height:14px;background:#eee;border-radius:3px;position:relative;overflow:hidden}
+  .mock .m-row .bar i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--mva),#3aa599)}
+  .mock .m-row .bar span{position:relative;font-family:"IBM Plex Mono",monospace;font-size:9px;color:#fff;line-height:14px;display:block;text-align:right;padding-right:6px;mix-blend-mode:luminosity}
+  .mock .m-row .stt{font-family:"IBM Plex Mono",monospace;font-size:9px;text-align:center;padding:3px;border-radius:3px;background:#fbf0d8;color:#8a6d1a}
+  .mock .m-row .stt.ok{background:#D6F0E2;color:#1E7A4D}
+  /* alpha tab mock */
+  .mockA{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:.85rem}
+  .mockA .title-row{background:var(--kernel);color:#fff;padding:11px 14px;border-radius:8px;font-family:"Fraunces",serif;font-size:1.2rem;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+  .mockA .title-row .lvc{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;padding:4px 10px;background:var(--mva);border-radius:20px}
+  .mockA .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:#e5e7ee;padding:8px;border-radius:6px}
+  .mockA .kpis .k .lab{font-family:"IBM Plex Mono",monospace;font-size:8px;letter-spacing:.12em;color:var(--ink-soft);text-align:center}
+  .mockA .kpis .k .val{font-family:"Fraunces",serif;font-size:1rem;font-weight:700;color:var(--kernel);text-align:center;margin-top:2px}
+  .mockA .tab-h{display:grid;grid-template-columns:120px 30px 1fr 70px;background:var(--ink);color:#fff;padding:7px 10px;border-radius:5px;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+  .mockA .grp{display:grid;grid-template-columns:120px 30px 1fr 70px;gap:1px}
+  .mockA .grp .sn{background:var(--kernel);color:#fff;font-family:"Fraunces",serif;font-weight:600;font-size:.95rem;padding:9px 11px;display:flex;align-items:center}
+  .mockA .grp .items{grid-column:2/5;display:grid;grid-template-columns:30px 1fr 70px;gap:1px;background:#f0ede4}
+  .mockA .grp .items .c{background:var(--card);text-align:center;padding:7px;color:#1E7A4D;font-weight:700}
+  .mockA .grp .items .t{background:var(--card);padding:7px 10px;font-size:.78rem;color:var(--ink-soft);line-height:1.3}
+  .mockA .grp .items .s{background:#D6F0E2;color:#1E7A4D;font-family:"IBM Plex Mono",monospace;font-size:.78rem;text-align:center;padding:7px;display:flex;align-items:center;justify-content:center;grid-row:span 3;font-weight:600}
+  /* generic boxes */
+  .callout{background:var(--paper-2);border-left:5px solid var(--prac);border:1px solid var(--line);border-left:5px solid var(--prac);border-radius:11px;padding:18px 24px;font-size:1.05rem;color:var(--ink)}
+  .callout b{color:var(--prac)}
+  .scenarios{display:flex;flex-direction:column;gap:10px}
+  .scenarios .sc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 18px;display:flex;gap:14px;align-items:flex-start;font-size:1rem}
+  .scenarios .sc .ic{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;padding:5px 11px;border-radius:6px;color:#fff;background:var(--prac);flex-shrink:0}
+  /* resources */
+  .res{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .res a{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--prac);border-radius:10px;padding:14px 18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:3px}
+  .res a:hover{background:var(--paper-2)}
+  .res a .lab{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--prac)}
+  .res a h5{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:600}
+  .res a p{font-size:.85rem;color:var(--ink-soft)}
+  /* responsive font tightening */
+  @media (max-height:700px){
+    .slide{padding:3vh 6vw}
+    h1.s{font-size:2rem}
+    .body{margin-top:18px;gap:12px}
+  }
+
+  
+  
+  
+  
+  
+  
+  
+  /* ===== SITE NAV ===== */
+  .skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0;outline:none}
+  .skip-link:focus-visible{top:0;outline:3px solid #f3efe6;outline-offset:2px}
+  .site-nav{position:sticky;top:0;z-index:100;background:var(--paper,#f3efe6);border-bottom:1px solid var(--line,#d8d0bf);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .site-nav-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:center;height:52px;gap:0}
+  .site-nav-logo{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:var(--ink,#1c1a16);text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:-.01em;flex-shrink:0}
+  .site-nav-logo em{font-style:italic;font-weight:500;color:#243b66}
+  .site-nav-list{display:flex;list-style:none;margin:0;padding:0;gap:2px;align-items:center}
+  .site-nav-list > li > a,.site-nav-list > li > button{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--ink-soft,#524d42);text-decoration:none;padding:7px 10px;border-radius:6px;border:none;background:transparent;cursor:pointer;transition:.12s;line-height:1;display:flex;align-items:center;gap:4px;min-height:25px;white-space:nowrap}
+  .site-nav-list > li > a:hover,.site-nav-list > li > button:hover{color:var(--ink,#1c1a16);background:var(--paper-2,#ece6d8)}
+  .site-nav-list > li.active > a,.site-nav-list > li.active > button{color:var(--ink,#1c1a16);background:var(--paper-2,#ece6d8)}
+  .has-drop{position:relative}
+  .has-drop .drop{display:none;position:absolute;top:calc(100% + 4px);right:0;min-width:240px;background:var(--card,#fbf9f3);border:1px solid var(--line,#d8d0bf);border-radius:10px;box-shadow:0 1px 0 rgba(0,0,0,.04),0 14px 30px -22px rgba(28,26,22,.55);padding:5px;list-style:none;margin:0;z-index:200}
+  .has-drop.open .drop{display:block}
+  .drop li a{display:flex;align-items:center;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-soft,#524d42);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s;min-height:25px}
+  .drop li a:hover,.drop li a:focus{background:var(--paper-2,#ece6d8);color:var(--ink,#1c1a16)}
+  .drop li.active a{color:var(--ink,#1c1a16);font-weight:600}
+  .drop-label{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#5a5040;padding:6px 10px 2px;display:block}
+  /* search */
+  .site-search{position:relative;margin-left:8px}
+  .search-form{display:flex;align-items:center;position:relative}
+  .search-input{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.02em;border:1px solid var(--line,#d8d0bf);background:var(--card,#fbf9f3);border-radius:20px;padding:6px 14px 6px 32px;width:160px;color:var(--ink,#1c1a16);transition:width .2s,border-color .2s;outline:none;min-height:25px}
+  .search-input::placeholder{color:var(--ink-soft,#524d42);opacity:.8}
+  .search-input:focus{width:220px;border-color:var(--ink,#1c1a16)}
+  .search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--ink-soft,#524d42);line-height:1}
+  .search-results{display:none;position:absolute;top:calc(100% + 6px);right:0;width:340px;background:var(--card,#fbf9f3);border:1px solid var(--line,#d8d0bf);border-radius:12px;box-shadow:0 1px 0 rgba(0,0,0,.04),0 18px 38px -24px rgba(28,26,22,.6);list-style:none;margin:0;padding:6px;max-height:420px;overflow-y:auto;z-index:201}
+  .search-results.visible{display:block}
+  .search-result{border-radius:8px}
+  .search-result a{display:flex;align-items:flex-start;gap:10px;padding:9px 10px;text-decoration:none;color:inherit;border-radius:8px;transition:.1s;border-left:3px solid transparent}
+  .search-result a:hover,.search-result a:focus,.search-result.sel a{background:var(--paper-2,#ece6d8)}
+  .search-result.sel a{border-left-color:var(--rc,#243b66)}
+  .search-result .r-tag{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--rc,#243b66);margin-bottom:2px;white-space:nowrap}
+  .search-result .r-title{font-family:"Fraunces",serif;font-weight:600;font-size:1rem;line-height:1.1;color:var(--ink,#1c1a16)}
+  .search-result .r-snippet{font-size:.8rem;color:var(--ink-soft,#524d42);margin-top:2px;line-height:1.35}
+  .search-result .r-snippet em{font-style:normal;font-weight:600;color:var(--ink,#1c1a16)}
+  .search-no-results{padding:10px 12px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft,#524d42);text-align:center}
+  .search-see-all{border-top:1px dashed var(--line,#d8d0bf);margin-top:4px;padding-top:4px}
+  .search-see-all a{display:flex;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--prac,#243b66);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s;min-height:25px;align-items:center}
+  .search-see-all a:hover,.search-see-all a:focus{background:var(--paper-2,#ece6d8)}
+  .toolbar{top:52px !important}
+  section{scroll-margin-top:132px !important}
+  /* WCAG 2.4.11 focus appearance */
+  :focus-visible{outline:3px solid #243b66;outline-offset:2px}
+  a:focus-visible,button:focus-visible{outline:3px solid #243b66;outline-offset:3px;border-radius:4px}
+  a.deck:focus-visible,a.page-link:focus-visible{outline:3px solid #243b66;outline-offset:4px;border-radius:14px}
+  a.dl:focus-visible{outline:3px solid #243b66;outline-offset:4px;border-radius:30px}
+  a.f:focus-visible,button.f:focus-visible{outline:3px solid #243b66;outline-offset:3px}
+  .site-nav-list a:focus-visible,.site-nav-list button:focus-visible,.site-nav-logo:focus-visible{outline:3px solid #243b66;outline-offset:2px;border-radius:4px}
+  .drop a:focus-visible{outline:3px solid #243b66;outline-offset:2px}
+  .search-input:focus-visible{outline:3px solid #243b66;outline-offset:2px;border-radius:20px}
+  /* WCAG 1.4.3 contrast corrections */
+  :root{--cust:#1a7040;--product:#7a4900;--sol:#6b4c00;--bs:#0a5a72}
+  @media(max-width:700px){
+    .site-nav-logo em{display:none}
+    .site-nav-list > li > a,.site-nav-list > li > button{font-size:10px;padding:6px 7px;letter-spacing:.04em}
+    .search-input{width:110px}.search-input:focus{width:160px}
+    .search-results{right:-60px;width:280px}
+  }
+  @media print{.site-nav,.skip-link{display:none}}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-nav" role="banner">
+  <div class="site-nav-inner">
+    <a class="site-nav-logo" href="index.html">Essence <em>Way of Working</em></a>
+    <nav aria-label="Site navigation">
+      <ul class="site-nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li class="has-drop">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="practices-menu">Practices <span aria-hidden="true">&#9662;</span></button>
+          <ul class="drop" id="practices-menu">
+            <span class="drop-label" aria-hidden="true">Four practices</span>
+            <li><a href="business-scenarios-essence-practice.html">Business Scenarios</a></li>
+            <li><a href="service-blueprint-essence-practice.html">Service Blueprint</a></li>
+            <li><a href="mva-essence-practice.html">Min. Viable Architecture</a></li>
+            <li><a href="mvg-essence-practice.html">Min. Viable Governance</a></li>
+          </ul>
+        </li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+    </nav>
+    <div class="site-search" role="search">
+      <form class="search-form" action="search.html" method="get" aria-label="Site search">
+        <span class="search-icon" aria-hidden="true">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+        </span>
+        <input
+          id="site-search-input"
+          class="search-input"
+          type="search"
+          name="q"
+          placeholder="Search..."
+          aria-label="Search this site"
+          aria-autocomplete="list"
+          aria-expanded="false"
+          aria-controls="search-results-list"
+          aria-activedescendant=""
+          autocomplete="off"
+          spellcheck="false"
+        >
+      </form>
+      <ul id="search-results-list" class="search-results" role="listbox" aria-label="Search results"></ul>
+    </div>
+  </div>
+</header>
+<div class="progress" id="progress"></div>
+<main class="stage" id="main-content">
+
+<!-- 01 TITLE -->
+<section class="slide title active">
+  <div class="kicker">Essence training</div>
+  <h1>Essence<br><em>a practical way of working</em></h1>
+  <p class="lede">A training in the kernel, the four practices and the assessment workbook — how to use them together to move the alphas.</p>
+  <p class="meta">Use → ← arrows to navigate · F11 for fullscreen</p>
+</section>
+
+<!-- 02 AGENDA -->
+<section class="slide" data-section="Welcome">
+  <div class="kicker">Welcome · Agenda</div>
+  <h1 class="s">What we'll cover today</h1>
+  <p class="sub">Six sections — from the standard, through the practices, to the workbook that measures progress.</p>
+  <div class="body">
+    <div class="stages">
+      <div class="st"><div class="n" style="background:var(--prac)">01</div><div class="c"><h4>Foundations</h4><p>What Essence is, the language of element types, the kernel and the alpha state mechanic.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--kernel)">02</div><div class="c"><h4>Levels of scale</h4><p>The System is the system of interest — and it is fractal. Pick the level before anything else.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--mva)">03</div><div class="c"><h4>The four practices</h4><p>Business Scenarios, Service Blueprint, MVA and MVG — what each does and the alphas it moves.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--bs)">04</div><div class="c"><h4>Composing the way</h4><p>Stacking the practices on the kernel and running them in a sensible order — including a decision guide.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--sb)">05</div><div class="c"><h4>The assessment workbook</h4><p>Measuring progress by alpha state — how to use the dashboard and tabs in practice.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--mvg)">06</div><div class="c"><h4>Wrap-up</h4><p>Key takeaways and pointers to the full reference decks.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 DIVIDER -->
+<section class="slide divider" data-section="Foundations">
+  <div class="num">Section 01</div>
+  <h1>Foundations</h1>
+  <p class="tagline">The Essence standard, in a handful of ideas.</p>
+</section>
+
+<!-- 04 WHAT IS ESSENCE -->
+<section class="slide" data-section="Foundations">
+  <div class="kicker">Foundations</div>
+  <h1 class="s">What is Essence — and why use it?</h1>
+  <div class="body two">
+    <div class="col">
+      <h3>What it is</h3>
+      <p>An <b>OMG standard</b> from the SEMAT initiative (Ivar Jacobson and others) that captures the common ground of any software endeavour as a <b>thinking framework</b>, not a fixed method.</p>
+      <p>You get a <b>small language</b>, a <b>kernel</b> of universals every endeavour shares, and <b>practices</b> that plug in to form a complete method.</p>
+    </div>
+    <div class="col">
+      <h3>Why use it</h3>
+      <p>Methodology fatigue is real. Big-process projects often produce big documents and small progress. Essence flips this: <b>progress is judged by the health of essential things — alphas — not by the documents you wrote.</b></p>
+      <p>It is lightweight, composable, and travels with you across teams and projects.</p>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:14px"><b>The core move:</b> compose your way of working from practices, and judge progress by alpha state.</div>
+</section>
+
+<!-- 05 LANGUAGE -->
+<section class="slide" data-section="Foundations">
+  <div class="kicker">Foundations · Element types</div>
+  <h1 class="s">Six element types — the language</h1>
+  <p class="sub">Everything in Essence — kernel and practices — is built from these six. Colours are consistent across every deck in this set.</p>
+  <div class="body">
+    <div class="chips">
+      <div class="chip"><span class="pill" style="background:#0f6e63">Alpha</span><h4>Things you progress</h4><p>An essential thing whose health you track — it has ordered <b>states</b>.</p></div>
+      <div class="chip"><span class="pill" style="background:#1f5fa8">Activity Space</span><h4>What must be done</h4><p>A space for work the endeavour cannot skip; concrete activities fill it.</p></div>
+      <div class="chip"><span class="pill" style="background:#4b3f9e">Competency</span><h4>Abilities people bring</h4><p>Held at five levels: Assists → Applies → Masters → Adapts → Innovates.</p></div>
+      <div class="chip"><span class="pill" style="background:#bb7a16">Work Product</span><h4>Tangible artifacts</h4><p>Evidence of an alpha's progress — a document, model, repo, decision record.</p></div>
+      <div class="chip"><span class="pill" style="background:#9c3f76">Role</span><h4>Patterns of who does the work</h4><p>Hats people wear, not job titles. One person can wear several.</p></div>
+      <div class="chip"><span class="pill" style="background:#b1492e">Pattern</span><h4>Reusable rules of thumb</h4><p>Biases that shape every decision a practice makes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 AREAS -->
+<section class="slide" data-section="Foundations">
+  <div class="kicker">Foundations · Areas of concern</div>
+  <h1 class="s">Three areas of concern</h1>
+  <p class="sub">Every alpha lives in one of these — the customer you serve, the solution you build, the endeavour that does the work.</p>
+  <div class="body">
+    <div class="areas3">
+      <div class="area-bx cust"><div class="bar">Customer</div><div class="alphas"><span>· Opportunity</span><span>· Stakeholders</span></div></div>
+      <div class="area-bx sol"><div class="bar">Solution</div><div class="alphas"><span>· Requirements</span><span>· System</span><span>· Architecture</span><span>· Architecture Decisions</span><span>· Architectural Drivers</span></div></div>
+      <div class="area-bx end"><div class="bar">Endeavor</div><div class="alphas"><span>· Work</span><span>· Team</span><span>· Way of Working</span><span>· Governance</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 THE KERNEL -->
+<section class="slide" data-section="Foundations">
+  <div class="kicker">Foundations · The kernel</div>
+  <h1 class="s">The kernel — universal scaffolding</h1>
+  <p class="sub"><b>7 alphas, 15 activity spaces, 6 competencies.</b> On its own the kernel moves nothing — it tells you <b>what</b> to track, never <b>how</b>. The "how" comes from practices composed on top.</p>
+  <div class="body">
+    <div class="alphas-row">
+      <div class="a-card"><span class="area" style="background:var(--cust)">Customer</span><h5>Opportunity</h5><p>The circumstances making a new or changed system worthwhile.</p></div>
+      <div class="a-card"><span class="area" style="background:var(--cust)">Customer</span><h5>Stakeholders</h5><p>The people who affect or are affected by the system.</p></div>
+      <div class="a-card"><span class="area" style="background:var(--sol)">Solution</span><h5>Requirements</h5><p>What the system must do to address the opportunity.</p></div>
+      <div class="a-card"><span class="area" style="background:var(--sol)">Solution</span><h5>System</h5><p>The system that delivers the value — software, products, services.</p></div>
+      <div class="a-card"><span class="area" style="background:var(--end)">Endeavor</span><h5>Work</h5><p>The activity and effort applied to produce the result.</p></div>
+      <div class="a-card"><span class="area" style="background:var(--end)">Endeavor</span><h5>Team</h5><p>The group developing, maintaining and supporting the system.</p></div>
+      <div class="a-card"><span class="area" style="background:var(--end)">Endeavor</span><h5>Way of Working</h5><p>The tailored set of practices and tools the team uses.</p></div>
+      <div class="a-card" style="border-top-color:var(--prac);background:var(--paper-2)"><span class="area" style="background:var(--prac)">Plus</span><h5>+ practice alphas</h5><p>Each practice you add brings its own alphas (e.g. Architecture, Governance).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 STATE CHANGE -->
+<section class="slide" data-section="Foundations">
+  <div class="kicker">Foundations · The state mechanic</div>
+  <h1 class="s">Progress is a state change</h1>
+  <p class="sub">An alpha reaches its next state — <b>that</b> is progress, not the document you wrote. Every alpha moves through ordered states; each state has a checklist.</p>
+  <div class="body">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--alpha);text-transform:uppercase;margin-top:8px">Example · Architecture alpha</p>
+    <div class="track">
+      <span class="s"><span class="n">1</span>Envisioned</span><span class="ar">→</span>
+      <span class="s"><span class="n">2</span>Outlined</span><span class="ar">→</span>
+      <span class="s"><span class="n">3</span>Demonstrated</span><span class="ar">→</span>
+      <span class="s"><span class="n">4</span>Usable</span><span class="ar">→</span>
+      <span class="s"><span class="n">5</span>Established</span><span class="ar">→</span>
+      <span class="s"><span class="n">6</span>Evolving</span>
+    </div>
+    <div class="callout" style="margin-top:18px">A practice's job is to <b>move specific alphas</b> from one state to the next. The whole way of working is just the practices applied in a sensible order until every alpha is where you need it.</div>
+  </div>
+</section>
+
+<!-- 09 CHECKLIST -->
+<section class="slide" data-section="Foundations">
+  <div class="kicker">Foundations · The state checklist</div>
+  <h1 class="s">A state's checklist settles the dispute</h1>
+  <p class="sub">When a team disagrees on where it is, the checklist is the referee. The state is reached when every item is genuinely true.</p>
+  <div class="body">
+    <div class="check-card">
+      <h4>Architecture → Demonstrated</h4>
+      <ul>
+        <li><span class="cb">✔</span><span>The riskiest parts are proven via spike, reference or increment.</span></li>
+        <li><span class="cb">✔</span><span>The key decisions are validated by evidence.</span></li>
+      </ul>
+    </div>
+    <div class="check-card" style="border-left-color:var(--cust)">
+      <h4 style="color:var(--cust)">Stakeholders → In Agreement</h4>
+      <ul>
+        <li><span class="cb">✔</span><span>The minimal expectations of the stakeholder groups are agreed.</span></li>
+        <li><span class="cb">✔</span><span>The representatives are happy with their involvement.</span></li>
+        <li><span class="cb open">○</span><span>The team's input is valued by the representatives.</span></li>
+        <li><span class="cb open">○</span><span>Priorities are clear and perspectives balanced.</span></li>
+      </ul>
+    </div>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--ink-soft);margin-top:4px">The <b>current state</b> is the highest state where all items (and all earlier states) are checked.</p>
+  </div>
+</section>
+
+<!-- 10 DIVIDER LEVELS -->
+<section class="slide divider" data-section="Levels of scale">
+  <div class="num">Section 02</div>
+  <h1>Levels of scale</h1>
+  <p class="tagline">Before you apply anything, answer one question: <em>what is the System?</em></p>
+</section>
+
+<!-- 11 NAME THE SYSTEM -->
+<section class="slide" data-section="Levels of scale">
+  <div class="kicker">Levels · Name the System</div>
+  <h1 class="s">The System is the system of interest — and it is fractal</h1>
+  <p class="sub">An enterprise is a system of systems; a solution is a sub-system of the enterprise; a configured product is a sub-system of the solution. The same kernel and practices instantiate at any level.</p>
+  <div class="body">
+    <div class="nest">
+      <div class="lvl ent"><span class="lh">Outer level</span><h4>Enterprise — System = the enterprise</h4><p>Enterprise architecture, the paved road, drivers and standing governance are owned here.</p></div>
+      <div class="lvl sol"><span class="lh">Middle level</span><h4>Solution / Project — System = the solution</h4><p>Inherits enterprise paved road, drivers and governance as context; owns this solution's architecture and decisions.</p></div>
+      <div class="lvl cmp"><span class="lh">Inner level</span><h4>Component — System = a configured product</h4><p>A sub-system of the solution, tracked in its own right when it warrants it.</p></div>
+    </div>
+    <div class="callout" style="margin-top:14px">What is a <b>System</b> at one level is a <b>sub-system</b> at the level above. The boundary you draw decides what every alpha actually measures.</div>
+  </div>
+</section>
+
+<!-- 12 WHICH PRACTICE WHERE -->
+<section class="slide" data-section="Levels of scale">
+  <div class="kicker">Levels · Which practice runs where</div>
+  <h1 class="s">Practices have a <em>natural home</em> level</h1>
+  <p class="sub">None is locked there — but their natural home tells you who runs what, where.</p>
+  <div class="body two">
+    <div class="col" style="background:var(--card);border:1px solid var(--line);border-radius:13px;padding:18px;border-left:5px solid var(--kernel)">
+      <h3 style="color:var(--kernel)">At the Enterprise level</h3>
+      <ul>
+        <li><b>Business Scenarios</b> — set the drivers</li>
+        <li><b>Enterprise MVA</b> — shape the estate</li>
+        <li><b>MVG</b> — set decision rights, paved road, guardrails</li>
+      </ul>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--prac);margin-top:8px">↓ hands down as context</p>
+    </div>
+    <div class="col" style="background:var(--card);border:1px solid var(--line);border-radius:13px;padding:18px;border-left:5px solid var(--mva)">
+      <h3 style="color:var(--mva)">At the Solution level</h3>
+      <ul>
+        <li><b>Service Blueprint</b> — design the specific service</li>
+        <li><b>MVA</b> — architect within the inherited guardrails</li>
+      </ul>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--prac);margin-top:8px">↑ feeds evidence &amp; new drivers back up</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 DIVIDER PRACTICES -->
+<section class="slide divider" data-section="The practices">
+  <div class="num">Section 03</div>
+  <h1>The four practices</h1>
+  <p class="tagline">Discovery, service design, architecture, governance — composed on the kernel.</p>
+</section>
+
+<!-- 14 PRACTICES OVERVIEW -->
+<section class="slide" data-section="The practices">
+  <div class="kicker">The practices · Overview</div>
+  <h1 class="s">Four practices, four roles in the way of working</h1>
+  <p class="sub">Each plugs into the kernel and is responsible for moving specific alphas. Two sit at the front, two form the architecture-and-governance spine.</p>
+  <div class="body">
+    <div class="prac-grid">
+      <div class="p-card"><div class="top" style="background:var(--bs)"></div><div class="b"><span class="tag" style="color:var(--bs)">Discovery</span><h4>Business Scenarios</h4><p>Discover and quantify the real business need at the front of the loop.</p><span class="lvl">Level · Enterprise / capability</span></div></div>
+      <div class="p-card"><div class="top" style="background:var(--sb)"></div><div class="b"><span class="tag" style="color:var(--sb)">Service design</span><h4>Service Blueprint</h4><p>Visualise the service delivery process from both customer and provider perspectives.</p><span class="lvl">Level · Solution / service</span></div></div>
+      <div class="p-card"><div class="top" style="background:var(--mva)"></div><div class="b"><span class="tag" style="color:var(--mva)">Architecture</span><h4>Minimum Viable Architecture</h4><p>Architect the minimum, just in time. Pave the road, review the exceptions.</p><span class="lvl">Level · The level of its System</span></div></div>
+      <div class="p-card"><div class="top" style="background:var(--mvg)"></div><div class="b"><span class="tag" style="color:var(--mvg)">Governance</span><h4>Minimum Viable Governance</h4><p>Govern outcomes and guardrails — not gates. Decide at the last responsible moment.</p><span class="lvl">Level · Spans levels</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 BS what + alphas -->
+<section class="slide" data-section="Business Scenarios">
+  <div class="kicker" style="color:var(--bs)">Business Scenarios · What &amp; what it moves</div>
+  <h1 class="s"><em style="color:var(--bs)">Business Scenarios</em> — discover and quantify the need</h1>
+  <p class="sub">A structured way to surface and quantify the real business need behind a request, before anyone commits to a solution. From the TOGAF method; runs at the <b>enterprise / capability level</b>.</p>
+  <div class="body two">
+    <div class="col">
+      <h3 style="color:var(--bs)">What it is</h3>
+      <ul>
+        <li><b>Five elements</b>: problem, environment, outcomes, human actors, system actors.</li>
+        <li>Loop: <b>Premise Formed → Verified → Refined → Released</b>.</li>
+        <li>Run as a facilitated workshop sequence, evolving a working model.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--bs)">Alphas it moves</h3>
+      <ul>
+        <li><b>Business Scenario</b> (sub-alpha) → Released</li>
+        <li><b>Opportunity</b> → Value Established</li>
+        <li><b>Stakeholders</b> → In Agreement</li>
+        <li><b>Requirements</b> → Bounded</li>
+        <li><b>Architectural Drivers</b> → Quantified</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 16 BS when -->
+<section class="slide" data-section="Business Scenarios">
+  <div class="kicker" style="color:var(--bs)">Business Scenarios · When to use it</div>
+  <h1 class="s">Use it when the <em style="color:var(--bs)">need</em> is unclear or contested</h1>
+  <div class="body">
+    <div class="scenarios">
+      <div class="sc"><span class="ic" style="background:var(--bs)">When</span><span>You don't really know what business problem you are solving, or stakeholders disagree on it.</span></div>
+      <div class="sc"><span class="ic" style="background:var(--bs)">When</span><span>The drivers are vague, anecdotal or non-measurable.</span></div>
+      <div class="sc"><span class="ic" style="background:var(--bs)">When</span><span>A new capability or platform investment is being initiated.</span></div>
+      <div class="sc"><span class="ic" style="background:var(--bs)">When</span><span>You need a defensible link between business outcomes and architectural decisions.</span></div>
+    </div>
+    <div class="callout"><b>Relations:</b> sits <b>upstream</b> of everything else. Hands quantified drivers <b>down</b> to MVA. Solutions then take those drivers and use <b>Service Blueprint</b> to design how the specific service is delivered.</div>
+  </div>
+</section>
+
+<!-- 17 SB what + alphas -->
+<section class="slide" data-section="Service Blueprint">
+  <div class="kicker" style="color:var(--sb)">Service Blueprint · What &amp; what it moves</div>
+  <h1 class="s"><em style="color:var(--sb)">Service Blueprint</em> — design the end-to-end service</h1>
+  <p class="sub">Visualise one service's delivery from both the customer's and the provider's perspectives. Introduced by Shostack (HBR, 1984); runs at the <b>solution / service level</b>.</p>
+  <div class="body two">
+    <div class="col">
+      <h3 style="color:var(--sb)">What it is</h3>
+      <ul>
+        <li><b>Five layers</b>: customer actions, frontstage, backstage, support processes, physical evidence.</li>
+        <li><b>Three lines</b>: interaction, visibility, internal interaction.</li>
+        <li>Sliced and progressed like a use case: <b>Scoped → Frontstage Mapped → Blueprinted → Validated → In Operation</b>.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--sb)">Alphas it moves</h3>
+      <ul>
+        <li><b>Service Blueprint</b> (sub-alpha) → In Operation</li>
+        <li><b>Requirements</b> → Acceptable</li>
+        <li><b>Stakeholders</b> → In Agreement</li>
+        <li><b>System</b> → Architecture Selected (supporting systems specified)</li>
+        <li><b>Opportunity</b> → Value Established</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 18 SB when -->
+<section class="slide" data-section="Service Blueprint">
+  <div class="kicker" style="color:var(--sb)">Service Blueprint · When to use it</div>
+  <h1 class="s">Use it when a <em style="color:var(--sb)">service</em> needs designing or fixing</h1>
+  <div class="body">
+    <div class="scenarios">
+      <div class="sc"><span class="ic" style="background:var(--sb)">When</span><span>Designing a new service end-to-end (a new customer journey or capability).</span></div>
+      <div class="sc"><span class="ic" style="background:var(--sb)">When</span><span>An existing service is failing — fail points, waits and hand-offs need to be surfaced.</span></div>
+      <div class="sc"><span class="ic" style="background:var(--sb)">When</span><span>Frontstage and backstage are out of step and need realigning.</span></div>
+      <div class="sc"><span class="ic" style="background:var(--sb)">When</span><span>You need to surface the supporting-system requirements before architecting.</span></div>
+    </div>
+    <div class="callout"><b>Relations:</b> takes drivers <b>from Business Scenarios</b>; hands service requirements and supporting-system needs <b>to MVA</b> and delivery. The customer-journey map is a <b>companion input</b>, not part of this practice.</div>
+  </div>
+</section>
+
+<!-- 19 MVA what + alphas -->
+<section class="slide" data-section="MVA">
+  <div class="kicker" style="color:var(--mva)">MVA · What &amp; what it moves</div>
+  <h1 class="s"><em style="color:var(--mva)">Minimum Viable Architecture</em> — architect the minimum, just in time</h1>
+  <p class="sub">The smallest architecture that addresses the significant drivers, evolved continuously. Runs at <b>the level of its System</b> (enterprise or solution).</p>
+  <div class="body two">
+    <div class="col">
+      <h3 style="color:var(--mva)">What it is</h3>
+      <ul>
+        <li>Frame drivers · envision · outline · demonstrate the riskiest part first · evolve.</li>
+        <li>The architecture is a small set of <b>significant decisions</b>, recorded as ADRs.</li>
+        <li>A <b>Paved Road</b> (the service chassis) makes the compliant choice the easy one.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--mva)">Alphas it moves</h3>
+      <ul>
+        <li><b>Architecture</b> → Established / Evolving</li>
+        <li><b>Architecture Decisions</b> → Validated</li>
+        <li><b>Architectural Drivers</b> → Sustained</li>
+        <li><b>Paved Road</b> (sub-alpha) → Pervasive</li>
+        <li><b>System</b> → Demonstrable</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 20 MVA when -->
+<section class="slide" data-section="MVA">
+  <div class="kicker" style="color:var(--mva)">MVA · When to use it</div>
+  <h1 class="s">Use it when there's a <em style="color:var(--mva)">significant decision</em> or technical risk</h1>
+  <div class="body">
+    <div class="scenarios">
+      <div class="sc"><span class="ic" style="background:var(--mva)">When</span><span>A choice is significant, costly to reverse, and has multiple credible options.</span></div>
+      <div class="sc"><span class="ic" style="background:var(--mva)">When</span><span>There is technical risk that needs proving before commitment (a riskiest-first spike).</span></div>
+      <div class="sc"><span class="ic" style="background:var(--mva)">When</span><span>A team is wandering off the paved road and a review (not a gate) is the right response.</span></div>
+      <div class="sc"><span class="ic" style="background:var(--mva)">When</span><span>The drivers have changed and the architecture needs adapting.</span></div>
+    </div>
+    <div class="callout"><b>Relations:</b> consumes <b>drivers</b> from Business Scenarios; takes <b>service &amp; system needs</b> from Service Blueprint; produces <b>decisions and paved-road updates</b> that MVG governs.</div>
+  </div>
+</section>
+
+<!-- 21 MVG what + alphas -->
+<section class="slide" data-section="MVG">
+  <div class="kicker" style="color:var(--mvg)">MVG · What &amp; what it moves</div>
+  <h1 class="s"><em style="color:var(--mvg)">Minimum Viable Governance</em> — guardrails, not gates</h1>
+  <p class="sub">The lightweight decision rights, guardrails and assurance that keep delivery aligned with intent. <b>Spans levels</b> — enterprise sets, solution operates within.</p>
+  <div class="body two">
+    <div class="col">
+      <h3 style="color:var(--mvg)">What it is</h3>
+      <ul>
+        <li>Govern by <b>guardrails</b> (the paved road) and <b>review the exceptions</b>, not every change.</li>
+        <li>Decision rights: <b>who decides what</b> at each level.</li>
+        <li>Assurance by evidence — paved-road conformance + architecture-review outcomes.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--mvg)">Alphas it moves</h3>
+      <ul>
+        <li><b>Governance</b> → Effective</li>
+        <li><b>Way of Working</b> → Foundation Established</li>
+      </ul>
+      <h3 style="color:var(--mvg);margin-top:8px">Anti-patterns it replaces</h3>
+      <ul>
+        <li>Stage gates that block delivery</li>
+        <li>Paperwork governance with no link to outcomes</li>
+        <li>Architecture boards that approve everything in advance</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 22 MVG when -->
+<section class="slide" data-section="MVG">
+  <div class="kicker" style="color:var(--mvg)">MVG · When to use it</div>
+  <h1 class="s">Use it to keep <em style="color:var(--mvg)">control without slowing delivery</em></h1>
+  <div class="body">
+    <div class="scenarios">
+      <div class="sc"><span class="ic" style="background:var(--mvg)">When</span><span>Decisions are constantly escalating or stuck waiting for approval.</span></div>
+      <div class="sc"><span class="ic" style="background:var(--mvg)">When</span><span>You need to set enterprise guardrails so solution teams can move fast within them.</span></div>
+      <div class="sc"><span class="ic" style="background:var(--mvg)">When</span><span>Compliance and risk need to be evidenced without theatre.</span></div>
+      <div class="sc"><span class="ic" style="background:var(--mvg)">When</span><span>The current way of working is heavier than it needs to be.</span></div>
+    </div>
+    <div class="callout"><b>Relations:</b> sits <b>over the top</b> of everything. Consumes architecture-review outcomes and paved-road signals from MVA; sets the context that solutions operate within.</div>
+  </div>
+</section>
+
+<!-- 23 DIVIDER COMPOSING -->
+<section class="slide divider" data-section="Composing the way">
+  <div class="num">Section 04</div>
+  <h1>Composing the way of working</h1>
+  <p class="tagline">How the practices stack, the order to run them, and when to use what.</p>
+</section>
+
+<!-- 24 STACK -->
+<section class="slide" data-section="Composing the way">
+  <div class="kicker">Composing · The stack</div>
+  <h1 class="s">Stacked on the kernel</h1>
+  <p class="sub">Governance over the top, architecture in the middle, discovery and service design at the front, the kernel as the foundation.</p>
+  <div class="body">
+    <div class="stack">
+      <div class="layer mvg"><span class="lbl">over the top</span><h4>Minimum Viable Governance</h4><p>Decision rights, guardrails and light assurance across everything.</p></div>
+      <div class="layer mva"><span class="lbl">the spine</span><h4>Minimum Viable Architecture</h4><p>Architect the minimum, pave the road, review the exceptions.</p></div>
+      <div class="two-row">
+        <div class="layer bs"><span class="lbl">enterprise</span><h4>Business Scenarios</h4><p>Find &amp; quantify the need; set the drivers.</p></div>
+        <div class="layer sb"><span class="lbl">solution</span><h4>Service Blueprint</h4><p>Design the end-to-end service.</p></div>
+      </div>
+      <div class="layer kr"><span class="lbl">foundation</span><h4>The Essence Kernel</h4><p>The alphas, activity spaces and competencies every practice builds on.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 25 LOGICAL ORDER -->
+<section class="slide" data-section="Composing the way">
+  <div class="kicker">Composing · The logical order</div>
+  <h1 class="s">Run them in a logical order — it is a loop, and it nests</h1>
+  <p class="sub">Each stage names the practice that leads it and the alpha states it reaches. It is not a waterfall.</p>
+  <div class="body">
+    <div class="stages">
+      <div class="st"><div class="n" style="background:var(--bs)">1</div><div class="c"><h4>Discover the need</h4><div class="by" style="color:var(--bs)">Business Scenarios · enterprise</div><p>Run the business-scenario loop to find and quantify the real need; set the drivers handed down.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--sb)">2</div><div class="c"><h4>Design the service</h4><div class="by" style="color:var(--sb)">Service Blueprint · solution</div><p>Blueprint the end-to-end service from both perspectives; surface the fail points.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--mva)">3</div><div class="c"><h4>Architect the minimum</h4><div class="by" style="color:var(--mva)">MVA</div><p>Envision, shape, prove the risky part; pave the road; record and validate the decisions.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--mvg)">4</div><div class="c"><h4>Govern throughout</h4><div class="by" style="color:var(--mvg)">MVG</div><p>Set decision rights and guardrails; let decisions flow within them; assure by exception.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--pattern)">5</div><div class="c"><h4>Build, run &amp; realise value</h4><div class="by" style="color:var(--pattern)">a delivery / run practice — the gap</h4></div><p>Build, test, deploy, operate and measure. These engines are the acknowledged gap in this set.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 26 DECISION GUIDE -->
+<section class="slide" data-section="Composing the way">
+  <div class="kicker">Composing · When to use what</div>
+  <h1 class="s">A simple decision guide</h1>
+  <p class="sub">When the team is stuck, ask: which alpha is holding us back? Then pick the practice that moves it.</p>
+  <div class="body">
+    <table class="dec">
+      <thead><tr><th>If the situation is…</th><th>Reach for…</th><th>To move…</th></tr></thead>
+      <tbody>
+        <tr><td>You don't really know what the business need is</td><td><span class="pr" style="background:var(--bs)">Business Scenarios</span></td><td>Opportunity, Stakeholders, Drivers</td></tr>
+        <tr><td>A service is being designed or is failing customers</td><td><span class="pr" style="background:var(--sb)">Service Blueprint</span></td><td>Requirements, Service Blueprint, System</td></tr>
+        <tr><td>A significant or risky decision needs making well</td><td><span class="pr" style="background:var(--mva)">MVA</span></td><td>Architecture, Decisions, Paved Road, Drivers</td></tr>
+        <tr><td>Things are getting out of alignment or stuck waiting</td><td><span class="pr" style="background:var(--mvg)">MVG</span></td><td>Governance, Way of Working</td></tr>
+        <tr><td>You just don't know where you are</td><td><span class="pr" style="background:var(--prac)">The workbook</span></td><td>(every alpha — see next section)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 27 DIVIDER WORKBOOK -->
+<section class="slide divider" data-section="The workbook">
+  <div class="num">Section 05</div>
+  <h1>The assessment workbook</h1>
+  <p class="tagline">Measuring progress by the only thing that doesn't lie — alpha state.</p>
+</section>
+
+<!-- 28 WHY MEASURE BY ALPHAS -->
+<section class="slide" data-section="The workbook">
+  <div class="kicker">Workbook · Why measure by alphas</div>
+  <h1 class="s">Documents lie. Alpha states are <em>honest</em></h1>
+  <p class="sub">A document being "done" tells you very little. The state checklist of an alpha tells you exactly what is true and what isn't — and what to do next.</p>
+  <div class="body two">
+    <div class="col">
+      <h3>Why alphas</h3>
+      <ul>
+        <li><b>Outcome-based</b> — measures the thing, not the artifact.</li>
+        <li><b>Self-evident</b> — the checklist makes status undeniable.</li>
+        <li><b>Pickable</b> — points straight at the next move (which state, which checklist item).</li>
+        <li><b>Portable</b> — works at any level of scale.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>What the workbook adds</h3>
+      <ul>
+        <li>A <b>dashboard</b> rolling up every alpha's current state and progress.</li>
+        <li>A tab per alpha with its <b>state checklists</b> as tickable items.</li>
+        <li>An explainer tab for <b>Levels of Scale</b> so the assessment level is explicit.</li>
+        <li>Formula-driven, zero manual roll-up. Tick a box — the dashboard updates.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 29 STRUCTURE -->
+<section class="slide" data-section="The workbook">
+  <div class="kicker">Workbook · Structure</div>
+  <h1 class="s">16 tabs in three groups</h1>
+  <div class="body">
+    <div class="chips">
+      <div class="chip" style="border-top:5px solid var(--ink)"><span class="pill" style="background:var(--ink)">Dashboard</span><h4>1 tab — rolls everything up</h4><p>KPI tiles, area-grouped table, level chips, data-bar progress, RAG status, links into every alpha tab.</p></div>
+      <div class="chip" style="border-top:5px solid var(--kernel)"><span class="pill" style="background:var(--kernel)">Levels of Scale</span><h4>1 tab — orientation</h4><p>Nested levels visual, which practice runs where, and the explicit statement of the level being assessed.</p></div>
+      <div class="chip" style="border-top:5px solid var(--cust)"><span class="pill" style="background:var(--cust)">14 Alpha tabs</span><h4>One per alpha</h4><p>Branded header, KPI strip, state-grouped checklist with tickable items. Tab colour = area · header colour = owner · chip = level.</p></div>
+    </div>
+    <div class="callout">Three dimensions are legible at once: <b>area</b> on the tab strip · <b>owner</b> inside · <b>level</b> in the chip.</div>
+  </div>
+</section>
+
+<!-- 30 ASSESSING AN ALPHA -->
+<section class="slide" data-section="The workbook">
+  <div class="kicker">Workbook · How to assess an alpha</div>
+  <h1 class="s">Ticking the checklists moves the state</h1>
+  <div class="body two">
+    <div class="col">
+      <h3>How it works</h3>
+      <ol style="padding-left:22px;display:flex;flex-direction:column;gap:10px">
+        <li>Open the alpha's tab.</li>
+        <li>Read each state's checklist — top to bottom.</li>
+        <li>Tick the <b>✔</b> column (dropdown) where the statement is genuinely true.</li>
+        <li>The <b>per-state status</b> turns green when all its items are checked.</li>
+        <li>The <b>Current State</b> KPI updates — it is the highest contiguous state achieved.</li>
+      </ol>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--ink-soft);margin-top:6px">The state's checklist is the referee. If you can't tick it honestly, you haven't reached that state.</p>
+    </div>
+    <div class="col">
+      <div class="mockA">
+        <div class="title-row">Architecture<span class="lvc">SOLUTION</span></div>
+        <div class="kpis"><div class="k"><div class="lab">CURRENT STATE</div><div class="val">Demonstrated</div></div><div class="k"><div class="lab">PROGRESS</div><div class="val">64%</div></div><div class="k"><div class="lab">ACHIEVED</div><div class="val">3 / 6</div></div><div class="k"><div class="lab">OWNER · AREA</div><div class="val" style="font-size:.78rem">MVA · Solution</div></div></div>
+        <div class="tab-h"><div>STATE</div><div>✔</div><div>CHECKLIST ITEM</div><div style="text-align:center">STATUS</div></div>
+        <div class="grp">
+          <div class="sn">3. Demonstrated</div>
+          <div class="items">
+            <div class="c">✔</div><div class="t">The riskiest parts are proven via spike, reference or increment.</div><div class="s">2 / 2 ✓</div>
+            <div class="c">✔</div><div class="t">The key decisions are validated by evidence.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 31 READING THE DASHBOARD -->
+<section class="slide" data-section="The workbook">
+  <div class="kicker">Workbook · Reading the Dashboard</div>
+  <h1 class="s">The dashboard — at a glance</h1>
+  <div class="body two">
+    <div class="col">
+      <div class="mock">
+        <div class="m-title">Essence Alpha Assessment<span class="chip-l">Solution level</span></div>
+        <div class="m-kpis"><div class="m-tile t1"><div class="lab">OVERALL</div><div class="val">60%</div></div><div class="m-tile t2"><div class="lab">COMPLETE</div><div class="val">1 / 14</div></div><div class="m-tile t3"><div class="lab">ITEMS</div><div class="val">127/210</div></div></div>
+        <div class="m-row head"><div>ALPHA</div><div>OWN</div><div>LVL</div><div>STATE</div><div>PROGRESS</div><div>STATUS</div></div>
+        <div class="m-row area">CUSTOMER</div>
+        <div class="m-row"><div>Opportunity</div><div class="own">Kr</div><div class="lv">Sol</div><div>Value Established</div><div class="bar"><i style="width:65%"></i><span>65%</span></div><div class="stt">In progress</div></div>
+        <div class="m-row"><div>Business Scenario</div><div class="own bs">BS</div><div class="lv ent">Ent</div><div>Released</div><div class="bar"><i style="width:100%"></i><span>100%</span></div><div class="stt ok">✓ Complete</div></div>
+        <div class="m-row area sol">SOLUTION</div>
+        <div class="m-row"><div>Architecture</div><div class="own mva">MVA</div><div class="lv">Sol</div><div>Demonstrated</div><div class="bar"><i style="width:64%"></i><span>64%</span></div><div class="stt">In progress</div></div>
+        <div class="m-row"><div>Paved Road</div><div class="own mva">MVA</div><div class="lv ent">Ent</div><div>Established</div><div class="bar"><i style="width:50%"></i><span>50%</span></div><div class="stt">In progress</div></div>
+        <div class="m-row"><div>Governance</div><div class="own mvg">MVG</div><div class="lv spn">Spn</div><div>Guiding</div><div class="bar"><i style="width:70%"></i><span>70%</span></div><div class="stt">In progress</div></div>
+      </div>
+    </div>
+    <div class="col">
+      <h3>What to look at</h3>
+      <ul>
+        <li><b>KPI tiles</b> — the headline health (overall, complete, items).</li>
+        <li><b>Area bands</b> — Customer, Solution, Endeavor groupings.</li>
+        <li><b>Owner chip</b> — which practice owns / drives this alpha.</li>
+        <li><b>Level chip</b> — Enterprise (inherited), Solution (owned), Spans.</li>
+        <li><b>Current state</b> — auto-computed from the alpha's tab.</li>
+        <li><b>Progress bar</b> — items done across all states.</li>
+        <li><b>Status</b> — ✓ Complete · ● In progress · ○ Not started.</li>
+      </ul>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--ink-soft);margin-top:4px">Click any alpha name to jump to its tab.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 32 CADENCE -->
+<section class="slide" data-section="The workbook">
+  <div class="kicker">Workbook · Cadence</div>
+  <h1 class="s">Using it in practice</h1>
+  <p class="sub">The workbook earns its place by being run regularly, lightly, and together.</p>
+  <div class="body two">
+    <div class="col">
+      <h3>When to assess</h3>
+      <ul>
+        <li><b>Every 2 weeks</b> — sprint review or fortnightly cadence.</li>
+        <li><b>At every governance review</b> — the dashboard is the agenda.</li>
+        <li><b>After major events</b> — a release, a re-org, a new driver, a failed audit.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>How to act on it</h3>
+      <ul>
+        <li>Pick the alpha <b>holding you back</b> — the one with low progress or a stuck state.</li>
+        <li>Look at the <b>next unticked checklist item</b> — that's your next move.</li>
+        <li>Choose the <b>practice activity</b> that addresses it (use the decision guide).</li>
+        <li>If an alpha is Enterprise-inherited and stuck, escalate to the enterprise level.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:14px"><b>Roles:</b> each practice owner maintains their own alpha tabs; the team reviews the dashboard together. Honesty about state is more valuable than green bars.</div>
+</section>
+
+<!-- 33 DIVIDER WRAP -->
+<section class="slide divider" data-section="Wrap-up">
+  <div class="num">Section 06</div>
+  <h1>Wrap-up</h1>
+  <p class="tagline">What to take away, and where to go next.</p>
+</section>
+
+<!-- 34 KEY TAKEAWAYS -->
+<section class="slide" data-section="Wrap-up">
+  <div class="kicker">Wrap-up · Key takeaways</div>
+  <h1 class="s">If you remember six things…</h1>
+  <div class="body">
+    <div class="stages">
+      <div class="st"><div class="n" style="background:var(--prac)">1</div><div class="c"><h4>Essence is a thinking framework, not a method</h4><p>Compose practices on the kernel rather than following one methodology end to end.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--alpha)">2</div><div class="c"><h4>Progress = alpha state change</h4><p>Not the document you wrote. The checklist of the next state tells you what to do.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--kernel)">3</div><div class="c"><h4>Name the System first</h4><p>Enterprise, solution or component — the level decides what every alpha measures.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--mva)">4</div><div class="c"><h4>Architect the minimum, pave the road</h4><p>Decisions, not documents. Review the exceptions, not every change.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--mvg)">5</div><div class="c"><h4>Govern by guardrails, not gates</h4><p>Decide at the last responsible moment; assure by evidence.</p></div></div>
+      <div class="st"><div class="n" style="background:var(--sb)">6</div><div class="c"><h4>Measure honestly</h4><p>The workbook makes progress visible — use the dashboard as your standing agenda.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 35 RESOURCES -->
+<section class="slide" data-section="Wrap-up">
+  <div class="kicker">Wrap-up · Resources</div>
+  <h1 class="s">Where to go next</h1>
+  <p class="sub">All of the reference material that this training is built on — open these in the same folder for the links to resolve.</p>
+  <div class="body">
+    <div class="res">
+      <a href="essence-introduction.html"><span class="lab">Hub / start here</span><h5>Essence introduction</h5><p>The full standard + composition explained.</p></a>
+      <a href="essence-kernel.html"><span class="lab">Reference</span><h5>The Essence kernel</h5><p>7 alphas, 15 activity spaces, 6 competencies.</p></a>
+      <a href="business-scenarios-essence-practice.html"><span class="lab">Practice</span><h5>Business Scenarios</h5><p>Enterprise / capability — discover &amp; quantify the need.</p></a>
+      <a href="service-blueprint-essence-practice.html"><span class="lab">Practice</span><h5>Service Blueprint</h5><p>Solution / service — design the end-to-end service.</p></a>
+      <a href="mva-essence-practice.html"><span class="lab">Practice</span><h5>Minimum Viable Architecture</h5><p>Architect the minimum, pave the road.</p></a>
+      <a href="mvg-essence-practice.html"><span class="lab">Practice</span><h5>Minimum Viable Governance</h5><p>Guardrails, not gates.</p></a>
+      <a href="EA_Alpha_Assessment.xlsx"><span class="lab">Workbook</span><h5>EA Alpha Assessment</h5><p>The assessment workbook with the live dashboard.</p></a>
+      <a href="#" onclick="return false"><span class="lab">External</span><h5>OMG Essence + SEMAT</h5><p>The standard itself — essence.omg.org · semat.org</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- 36 THANK YOU -->
+<section class="slide title" data-section="Wrap-up">
+  <div class="kicker">End of training</div>
+  <h1>Thank&nbsp;you<br><em>questions?</em></h1>
+  <p class="lede">Compose your way of working. Move the alphas. Govern lightly.</p>
+  <p class="meta">Press Home to return to the start · or Esc to overview (coming soon)</p>
+</section>
+
+</main>
+
+<div class="hud">
+  <div class="hud-section" id="section">Welcome</div>
+  <div class="hud-progress"><span id="cur">01</span> / <span id="tot">36</span></div>
+</div>
+<div class="nav">
+  <button id="prev" aria-label="Previous slide">← Prev</button>
+  <button id="next" aria-label="Next slide">Next →</button>
+</div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const tot=slides.length;
+let i=0;
+function show(n){
+  i=Math.max(0,Math.min(tot-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  document.getElementById('cur').textContent=String(i+1).padStart(2,'0');
+  document.getElementById('tot').textContent=String(tot).padStart(2,'0');
+  document.getElementById('progress').style.width=((i+1)/tot*100)+'%';
+  const sec=slides[i].dataset.section||'';
+  document.getElementById('section').innerHTML=sec?`<b>${sec}</b>`:'Essence training';
+  if(location.hash!=='#'+(i+1)) history.replaceState(null,'','#'+(i+1));
+}
+function next(){show(i+1)} function prev(){show(i-1)}
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}
+  else if(e.key==='Home'){show(0)} else if(e.key==='End'){show(tot-1)}
+});
+document.addEventListener('click',e=>{
+  if(e.target.closest('a,button,#prev,#next,.nav,.hud')) return;
+  const x=e.clientX,w=window.innerWidth;
+  if(x>w*0.5) next(); else prev();
+});
+document.getElementById('next').addEventListener('click',next);
+document.getElementById('prev').addEventListener('click',prev);
+const h=parseInt(location.hash.replace('#',''))||1;
+show(h-1);
+</script>
+<script>
+(function(){
+  /* Active nav state */
+  var p = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.site-nav-list > li > a').forEach(function(a){
+    if(a.getAttribute('href') === p) a.closest('li').classList.add('active');
+  });
+  var practicePages = ['business-scenarios-essence-practice.html','service-blueprint-essence-practice.html','mva-essence-practice.html','mvg-essence-practice.html'];
+  if(practicePages.indexOf(p) !== -1) document.querySelectorAll('.has-drop').forEach(function(el){ el.classList.add('active'); });
+  document.querySelectorAll('.drop li a').forEach(function(a){
+    if(a.getAttribute('href') === p) a.closest('li').classList.add('active');
+  });
+
+  /* Disclosure nav keyboard (WCAG 2.1.1) */
+  document.querySelectorAll('.has-drop').forEach(function(dropdown){
+    var btn = dropdown.querySelector('button');
+    var items = Array.from(dropdown.querySelectorAll('.drop li a'));
+    function open(){ dropdown.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    function close(ret){ dropdown.classList.remove('open'); btn.setAttribute('aria-expanded','false'); if(ret) btn.focus(); }
+    btn.addEventListener('click',function(e){ e.stopPropagation(); dropdown.classList.contains('open') ? close(false) : open(); });
+    btn.addEventListener('keydown',function(e){
+      if(e.key==='ArrowDown'){ e.preventDefault(); open(); if(items[0]) items[0].focus(); }
+      else if(e.key==='ArrowUp'){ e.preventDefault(); open(); if(items.length) items[items.length-1].focus(); }
+      else if(e.key==='Escape'){ close(true); }
+    });
+    items.forEach(function(item,i){
+      item.addEventListener('keydown',function(e){
+        if(e.key==='ArrowDown'){ e.preventDefault(); if(items[i+1]) items[i+1].focus(); }
+        else if(e.key==='ArrowUp'){ e.preventDefault(); if(i>0) items[i-1].focus(); else close(true); }
+        else if(e.key==='Escape'){ close(true); }
+        else if(e.key==='Tab'){ close(false); }
+      });
+    });
+  });
+  document.addEventListener('click',function(){
+    document.querySelectorAll('.has-drop.open').forEach(function(el){
+      el.classList.remove('open'); el.querySelector('button').setAttribute('aria-expanded','false');
+    });
+  });
+
+  /* Decorative aria-hidden */
+  document.querySelectorAll('.track .ar').forEach(function(el){ el.setAttribute('aria-hidden','true'); });
+
+  /* Site search */
+  var searchInput   = document.getElementById('site-search-input');
+  var searchResults = document.getElementById('search-results-list');
+  var searchIndex   = null;
+  var selIdx        = -1;
+  var resultLinks   = [];
+
+  function loadIndex(cb){
+    if(searchIndex){ cb(); return; }
+    fetch('search-index.json')
+      .then(function(r){ return r.json(); })
+      .then(function(d){ searchIndex = d; cb(); })
+      .catch(function(){ searchIndex = []; });
+  }
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function hilite(text, q){
+    if(!q) return esc(text);
+    var safe = q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    return esc(text).replace(new RegExp('('+safe+')','gi'),'<em>$1</em>');
+  }
+
+  function scoreEntry(entry, q){
+    var ql = q.toLowerCase(), s = 0;
+    if(entry.title.toLowerCase().indexOf(ql)  !== -1) s += 20;
+    if(entry.kicker.toLowerCase().indexOf(ql) !== -1) s += 8;
+    if(entry.lede.toLowerCase().indexOf(ql)   !== -1) s += 5;
+    if(entry.text.toLowerCase().indexOf(ql)   !== -1) s += 2;
+    entry.sections.forEach(function(sec){ if(sec.h.toLowerCase().indexOf(ql) !== -1) s += 6; });
+    return s;
+  }
+
+  function bestSection(entry, q){
+    var ql = q.toLowerCase(), best = null;
+    entry.sections.forEach(function(sec){ if(!best && sec.h.toLowerCase().indexOf(ql) !== -1) best = sec.h; });
+    return best;
+  }
+
+  function renderResults(q){
+    if(!q || q.length < 2){ hideResults(); return; }
+    var scored = searchIndex
+      .map(function(e){ return {e:e, s:scoreEntry(e,q)}; })
+      .filter(function(x){ return x.s > 0; })
+      .sort(function(a,b){ return b.s - a.s; })
+      .slice(0,7);
+
+    if(scored.length === 0){
+      searchResults.innerHTML = '<li class="search-no-results">No results for &ldquo;' + esc(q) + '&rdquo;</li>';
+      showResults(); resultLinks = []; selIdx = -1; return;
+    }
+
+    var seeAllHtml = '<li class="search-see-all" role="none"><a href="search.html?q='+encodeURIComponent(q)+'">See all results for “'+esc(q)+'” &rarr;</a></li>';
+    searchResults.innerHTML = scored.map(function(x, i){
+      var e = x.e, sec = bestSection(e,q);
+      var snip = sec ? hilite(sec,q) : hilite(e.lede.slice(0,90),q);
+      return '<li class="search-result" role="option" id="sr-'+i+'" aria-selected="false">' +
+        '<a href="'+esc(e.url)+'" tabindex="-1" style="--rc:'+esc(e.color)+'">' +
+          '<div><div class="r-tag">'+esc(e.tag)+'</div>' +
+          '<div class="r-title">'+hilite(e.title,q)+'</div>' +
+          (snip ? '<div class="r-snippet">'+snip+'</div>' : '') +
+        '</div></a></li>';
+    }).join('') + seeAllHtml;
+
+    resultLinks = Array.from(searchResults.querySelectorAll('.search-result a'));
+    selIdx = -1;
+    showResults();
+  }
+
+  function showResults(){ searchResults.classList.add('visible'); searchInput.setAttribute('aria-expanded','true'); }
+  function hideResults(){
+    searchResults.classList.remove('visible');
+    searchInput.setAttribute('aria-expanded','false');
+    searchInput.setAttribute('aria-activedescendant','');
+    resultLinks.forEach(function(a){
+      a.closest('.search-result').classList.remove('sel');
+      a.closest('.search-result').setAttribute('aria-selected','false');
+    });
+    selIdx = -1;
+  }
+
+  function selectResult(i){
+    resultLinks.forEach(function(a, j){
+      var li = a.closest('.search-result');
+      var sel = (j === i);
+      li.classList.toggle('sel', sel);
+      li.setAttribute('aria-selected', String(sel));
+    });
+    if(i >= 0 && resultLinks[i]){
+      var li = resultLinks[i].closest('.search-result');
+      searchInput.setAttribute('aria-activedescendant', li.id);
+      li.scrollIntoView({block:'nearest'});
+    } else {
+      searchInput.setAttribute('aria-activedescendant','');
+    }
+    selIdx = i;
+  }
+
+  var debounceTimer;
+  searchInput.addEventListener('input', function(){
+    clearTimeout(debounceTimer);
+    var q = searchInput.value.trim();
+    debounceTimer = setTimeout(function(){ loadIndex(function(){ renderResults(q); }); }, 120);
+  });
+
+  searchInput.addEventListener('keydown', function(e){
+    if(!searchResults.classList.contains('visible')) return;
+    if(e.key==='ArrowDown'){
+      e.preventDefault(); selectResult(Math.min(selIdx+1, resultLinks.length-1));
+    } else if(e.key==='ArrowUp'){
+      e.preventDefault(); selectResult(Math.max(selIdx-1, -1));
+    } else if(e.key==='Enter'){
+      e.preventDefault();
+      if(selIdx >= 0 && resultLinks[selIdx]){
+        window.location.href = resultLinks[selIdx].getAttribute('href');
+      } else {
+        var qv = searchInput.value.trim();
+        if(qv) window.location.href = 'search.html?q=' + encodeURIComponent(qv);
+      }
+    } else if(e.key==='Escape'){
+      hideResults(); searchInput.blur();
+    }
+  });
+
+  searchInput.addEventListener('focus', function(){
+    var q = searchInput.value.trim();
+    if(q.length >= 2) loadIndex(function(){ renderResults(q); });
+  });
+
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.site-search')) hideResults();
+  });
+})();
+</script>
+</body>
+</html>
