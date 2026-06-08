@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Minimum Viable Architecture — an Essence Practice</title>
+<title>Minimum Viable Architecture — een Essence practice</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,19 +13,19 @@
     --line:#d8d0bf; --card:#fbf9f3;
     --alpha:#0f6e63; --product:#bb7a16; --activity:#1f5fa8; --role:#9c3f76; --pattern:#b1492e;
     --prac:#0f6e63;            /* MVA accent = architecture green */
-    --cust:#2e7d52; --sol:#b07d12; --end:#2a5e9c;
-    --shadow:0 1px 0 rgba(0,0,0,.04),0 14px 30px -22px rgba(28,26,22,.55);
+    --cust:#1c7a44; --sol:#b88400; --end:#1a5698;
+    --shadow:0 1px 0 rgba(0,0,0,.03),0 16px 38px -16px rgba(28,26,22,.42);
   }
   *{box-sizing:border-box}
-  body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
-    background:radial-gradient(circle at 12% -10%,#fbf8ef 0%,transparent 45%),radial-gradient(circle at 95% 0%,#e6efe9 0%,transparent 42%),var(--paper);}
+  body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    background:radial-gradient(circle at 10% -8%,#fef5ed 0%,transparent 50%),radial-gradient(circle at 95% 0%,#e6efe9 0%,transparent 42%),var(--paper);}
   body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
     background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
     background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);}
   .wrap{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:0 26px 90px}
-  header.hero{padding:58px 0 24px;border-bottom:2px solid var(--ink)}
+  header.hero{padding:58px 0 24px;border-bottom:3px solid var(--prac)}
   .kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--prac)}
-  h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2.3rem,5.6vw,4.4rem);line-height:.98;margin:.16em 0 .14em;letter-spacing:-.015em}
+  h1{font-family:"Fraunces",serif;font-optical-sizing:auto;font-weight:900;font-size:clamp(2.3rem,5.6vw,4.4rem);line-height:.98;margin:.16em 0 .14em;letter-spacing:-.015em}
   h1 em{font-style:italic;font-weight:500;color:var(--prac)}
   .lede{font-size:clamp(1rem,1.5vw,1.16rem);max-width:66ch;color:var(--ink-soft)}
   .pillars{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
@@ -37,13 +37,13 @@
   .toolbar{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:13px 0 11px;margin:22px 0 4px;background:linear-gradient(var(--paper) 80%,transparent);backdrop-filter:blur(2px)}
   .toolbar .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
   button.f{font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;border:1px solid var(--ink);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:30px;transition:.15s}
-  button.f:hover,button.f.active{background:var(--ink);color:var(--paper)}
+  button.f:hover{background:var(--ink);color:var(--paper)}button.f.active{background:var(--prac);color:#fff;border-color:var(--prac)}
   button.print{margin-left:auto;border-style:dashed}
   section{margin-top:40px;scroll-margin-top:80px}
   .sec-head{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:8px}
   .sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.6rem;margin:0}
   .sec-head .dot{width:13px;height:13px;border-radius:3px}
-  .sec-intro{color:var(--ink-soft);max-width:80ch;margin:6px 0 18px;font-size:.94rem}
+  .sec-intro{color:var(--ink-soft);max-width:80ch;margin:6px 0 18px;font-size:.98rem}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:17px}
   .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
   .card .top{height:6px}
@@ -53,8 +53,8 @@
   .area{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;border-radius:30px;padding:3px 8px;color:#fff}
   .area.cust{background:var(--cust)} .area.sol{background:var(--sol)} .area.end{background:var(--end)}
   .origin{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;border-radius:30px;padding:3px 8px;margin-left:auto;border:1px solid var(--prac);color:var(--prac);background:rgba(15,110,99,.07)}
-  .card h4{font-family:"Fraunces",serif;font-weight:600;font-size:1.22rem;margin:0 0 6px;line-height:1.1}
-  .desc{font-size:.88rem;color:var(--ink-soft);margin:0 0 11px}
+  .card h4{font-family:"Fraunces",serif;font-optical-sizing:auto;font-weight:600;font-size:1.22rem;margin:0 0 6px;line-height:1.1}
+  .desc{font-size:.94rem;line-height:1.55;color:var(--ink-soft);margin:0 0 11px}
   .foot{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);border-top:1px dotted var(--line);padding-top:9px;margin-top:auto}
   .foot b{color:var(--ink);font-weight:600}
   .states{list-style:none;margin:0 0 6px;padding:0;counter-reset:s}
@@ -62,25 +62,37 @@
   .states>li:first-child{border-top:none}
   .states>li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:50%;background:var(--prac);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:600}
   .st-name{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--prac)}
-  .st-check{font-size:.82rem;color:var(--ink-soft);margin-top:1px}
+  .st-check{font-size:.93rem;line-height:1.55;color:var(--ink-soft);margin-top:1px}
   .levels{list-style:none;margin:0 0 11px;padding:0;display:flex;flex-direction:column;gap:6px}
-  .levels li{font-size:.83rem;display:flex;gap:8px;align-items:flex-start}
+  .levels li{font-size:.9rem;display:flex;gap:8px;align-items:flex-start}
   .levels .lv{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--product);border-radius:4px;padding:2px 6px;white-space:nowrap;margin-top:2px;flex-shrink:0}
   .levels li.cut .lv{background:var(--soft)} .levels li.cut span{color:var(--soft);text-decoration:line-through}
-  .outcome{font-size:.83rem;background:rgba(15,110,99,.07);border:1px solid rgba(15,110,99,.2);border-radius:8px;padding:8px 10px;margin-top:auto}
+  .outcome{font-size:.9rem;background:rgba(15,110,99,.07);border:1px solid rgba(15,110,99,.2);border-radius:8px;padding:8px 10px;margin-top:auto}
   .outcome b{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--prac);display:block;margin-bottom:3px}
   .comps{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:10px}
   .comps span{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.04em;border:1px solid var(--role);color:var(--role);border-radius:30px;padding:3px 8px}
   .reinforces{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--pattern);border-top:1px dotted var(--line);padding-top:8px;margin-top:auto}
   .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-top:18px;border-left:4px solid var(--prac)}
   .panel h3{font-family:"Fraunces",serif;margin:0 0 6px;font-size:1.16rem}
-  .panel p{margin:0 0 10px;color:var(--ink-soft);font-size:.9rem;max-width:84ch}
-  .maprow{display:grid;grid-template-columns:1fr auto 1.2fr;gap:10px;align-items:center;padding:7px 0;border-top:1px dashed var(--line);font-size:.86rem}
+  .panel p{margin:0 0 10px;color:var(--ink-soft);font-size:.95rem;max-width:84ch}
+  .maprow{display:grid;grid-template-columns:1fr auto 1.2fr;gap:10px;align-items:center;padding:7px 0;border-top:1px dashed var(--line);font-size:.92rem}
   .maprow:first-of-type{border-top:none}
   .maprow .arrow{font-family:"IBM Plex Mono",monospace;color:var(--prac)}
-  .maprow .to{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--ink-soft)}
+  .maprow .to{font-family:"IBM Plex Mono",monospace;font-size:.87rem;color:var(--ink-soft)}
   footer{margin-top:54px;border-top:2px solid var(--ink);padding-top:16px;font-size:.83rem;color:var(--ink-soft)}
   .hidden{display:none !important}
+
+  /* ===== MOBILE ===== */
+  @media(max-width:600px){
+    header.hero{padding:32px 0 16px}
+    .toolbar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:12px}
+    .toolbar::-webkit-scrollbar{display:none}
+    button.print{display:none}
+    .plug{grid-template-columns:1fr}
+    h1{font-size:clamp(1.9rem,8vw,3rem)}
+    .cols3{grid-template-columns:1fr}
+    .run{grid-template-columns:1fr}
+  }
   @media print{body::before{display:none}.toolbar{display:none}.wrap{max-width:none;padding:0}header.hero{padding-top:0}.card{box-shadow:none;border:1px solid #bbb}section{margin-top:22px}@page{margin:12mm}}
 
   
@@ -94,21 +106,21 @@
   /* ===== SITE NAV ===== */
   .skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0;outline:none}
   .skip-link:focus-visible{top:0;outline:3px solid #f3efe6;outline-offset:2px}
-  .site-nav{position:sticky;top:0;z-index:100;background:var(--paper,#f3efe6);border-bottom:1px solid var(--line,#d8d0bf);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .site-nav{position:sticky;top:0;z-index:100;background:var(--paper,#f3efe6);border-bottom:1px solid var(--line,#d8d0bf);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-top:3px solid transparent;border-image:linear-gradient(90deg,#d44f0e,#e87830) 1}
   .site-nav-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:center;height:52px;gap:0}
   .site-nav-logo{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:var(--ink,#1c1a16);text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:-.01em;flex-shrink:0}
-  .site-nav-logo em{font-style:italic;font-weight:500;color:#243b66}
+  .site-nav-logo em{font-style:italic;font-weight:500;color:#d44f0e}
   .site-nav-list{display:flex;list-style:none;margin:0;padding:0;gap:2px;align-items:center}
-  .site-nav-list > li > a,.site-nav-list > li > button{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--ink-soft,#524d42);text-decoration:none;padding:7px 10px;border-radius:6px;border:none;background:transparent;cursor:pointer;transition:.12s;line-height:1;display:flex;align-items:center;gap:4px;min-height:25px;white-space:nowrap}
+  .site-nav-list > li > a,.site-nav-list > li > button{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--ink-soft,#524d42);text-decoration:none;padding:7px 10px;border-radius:6px;border:none;background:transparent;cursor:pointer;transition:.12s;line-height:1;display:flex;align-items:center;gap:4px;min-height:25px;white-space:nowrap}
   .site-nav-list > li > a:hover,.site-nav-list > li > button:hover{color:var(--ink,#1c1a16);background:var(--paper-2,#ece6d8)}
-  .site-nav-list > li.active > a,.site-nav-list > li.active > button{color:var(--ink,#1c1a16);background:var(--paper-2,#ece6d8)}
+  .site-nav-list > li.active > a,.site-nav-list > li.active > button{color:#d44f0e;background:var(--paper-2,#ece6d8);box-shadow:inset 0 -2px 0 #d44f0e}
   .has-drop{position:relative}
   .has-drop .drop{display:none;position:absolute;top:calc(100% + 4px);right:0;min-width:240px;background:var(--card,#fbf9f3);border:1px solid var(--line,#d8d0bf);border-radius:10px;box-shadow:0 1px 0 rgba(0,0,0,.04),0 14px 30px -22px rgba(28,26,22,.55);padding:5px;list-style:none;margin:0;z-index:200}
   .has-drop.open .drop{display:block}
-  .drop li a{display:flex;align-items:center;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-soft,#524d42);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s;min-height:25px}
+  .drop li a{display:flex;align-items:center;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:12px;letter-spacing:.01em;color:var(--ink-soft,#524d42);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s;min-height:25px}
   .drop li a:hover,.drop li a:focus{background:var(--paper-2,#ece6d8);color:var(--ink,#1c1a16)}
   .drop li.active a{color:var(--ink,#1c1a16);font-weight:600}
-  .drop-label{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#5a5040;padding:6px 10px 2px;display:block}
+  .drop-label{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5a5040;padding:6px 10px 2px;display:block}
   /* search */
   .site-search{position:relative;margin-left:8px}
   .search-form{display:flex;align-items:center;position:relative}
@@ -121,28 +133,28 @@
   .search-result{border-radius:8px}
   .search-result a{display:flex;align-items:flex-start;gap:10px;padding:9px 10px;text-decoration:none;color:inherit;border-radius:8px;transition:.1s;border-left:3px solid transparent}
   .search-result a:hover,.search-result a:focus,.search-result.sel a{background:var(--paper-2,#ece6d8)}
-  .search-result.sel a{border-left-color:var(--rc,#243b66)}
-  .search-result .r-tag{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--rc,#243b66);margin-bottom:2px;white-space:nowrap}
+  .search-result.sel a{border-left-color:var(--rc,#d44f0e)}
+  .search-result .r-tag{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--rc,#d44f0e);margin-bottom:2px;white-space:nowrap}
   .search-result .r-title{font-family:"Fraunces",serif;font-weight:600;font-size:1rem;line-height:1.1;color:var(--ink,#1c1a16)}
   .search-result .r-snippet{font-size:.8rem;color:var(--ink-soft,#524d42);margin-top:2px;line-height:1.35}
   .search-result .r-snippet em{font-style:normal;font-weight:600;color:var(--ink,#1c1a16)}
   .search-no-results{padding:10px 12px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft,#524d42);text-align:center}
   .search-see-all{border-top:1px dashed var(--line,#d8d0bf);margin-top:4px;padding-top:4px}
-  .search-see-all a{display:flex;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--prac,#243b66);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s;min-height:25px;align-items:center}
+  .search-see-all a{display:flex;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--prac,#d44f0e);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s;min-height:25px;align-items:center}
   .search-see-all a:hover,.search-see-all a:focus{background:var(--paper-2,#ece6d8)}
   .toolbar{top:52px !important}
   section{scroll-margin-top:132px !important}
   /* WCAG 2.4.11 focus appearance */
-  :focus-visible{outline:3px solid #243b66;outline-offset:2px}
-  a:focus-visible,button:focus-visible{outline:3px solid #243b66;outline-offset:3px;border-radius:4px}
-  a.deck:focus-visible,a.page-link:focus-visible{outline:3px solid #243b66;outline-offset:4px;border-radius:14px}
-  a.dl:focus-visible{outline:3px solid #243b66;outline-offset:4px;border-radius:30px}
-  a.f:focus-visible,button.f:focus-visible{outline:3px solid #243b66;outline-offset:3px}
-  .site-nav-list a:focus-visible,.site-nav-list button:focus-visible,.site-nav-logo:focus-visible{outline:3px solid #243b66;outline-offset:2px;border-radius:4px}
-  .drop a:focus-visible{outline:3px solid #243b66;outline-offset:2px}
-  .search-input:focus-visible{outline:3px solid #243b66;outline-offset:2px;border-radius:20px}
+  :focus-visible{outline:3px solid #d44f0e;outline-offset:2px}
+  a:focus-visible,button:focus-visible{outline:3px solid #d44f0e;outline-offset:3px;border-radius:4px}
+  a.deck:focus-visible,a.page-link:focus-visible{outline:3px solid #d44f0e;outline-offset:4px;border-radius:14px}
+  a.dl:focus-visible{outline:3px solid #d44f0e;outline-offset:4px;border-radius:30px}
+  a.f:focus-visible,button.f:focus-visible{outline:3px solid #d44f0e;outline-offset:3px}
+  .site-nav-list a:focus-visible,.site-nav-list button:focus-visible,.site-nav-logo:focus-visible{outline:3px solid #d44f0e;outline-offset:2px;border-radius:4px}
+  .drop a:focus-visible{outline:3px solid #d44f0e;outline-offset:2px}
+  .search-input:focus-visible{outline:3px solid #d44f0e;outline-offset:2px;border-radius:20px}
   /* WCAG 1.4.3 contrast corrections */
-  :root{--cust:#1a7040;--product:#7a4900;--sol:#6b4c00;--bs:#0a5a72}
+  :root{--cust:#156236;--product:#7a4900;--sol:#7a5800;--end:#14437a;--bs:#0a5a72}
   @media(max-width:700px){
     .site-nav-logo em{display:none}
     .site-nav-list > li > a,.site-nav-list > li > button{font-size:10px;padding:6px 7px;letter-spacing:.04em}
@@ -152,7 +164,7 @@
   .site-nav-gh{display:flex;align-items:center;padding:6px 8px;border-radius:6px;color:var(--ink-soft,#524d42);transition:.12s;margin-left:4px;flex-shrink:0}
   .site-nav-gh:hover{color:var(--ink,#1c1a16);background:var(--paper-2,#ece6d8)}
   .site-nav-gh svg{fill:currentColor;display:block}
-  .site-nav-gh:focus-visible{outline:3px solid #243b66;outline-offset:2px;border-radius:6px}
+  .site-nav-gh:focus-visible{outline:3px solid #d44f0e;outline-offset:2px;border-radius:6px}
   /* contribute strip */
   .site-contribute{background:var(--ink,#1c1a16);color:#ddd8ce;padding:22px 0;margin-top:32px}
   .site-contribute-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:flex-start;gap:14px;font-size:.84rem;line-height:1.55}
@@ -162,33 +174,58 @@
   .site-contribute a:focus-visible{outline:3px solid #f3efe6;outline-offset:2px;border-radius:2px}
   .site-contribute-icon{flex-shrink:0;fill:#ddd8ce;margin-top:2px}
   @media(max-width:600px){.site-contribute-inner{flex-direction:column;gap:10px}}
+    /* ===== HAMBURGERMENU ===== */
+  .site-nav-toggle{display:none;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:none;background:transparent;cursor:pointer;border-radius:6px;flex-shrink:0;color:var(--ink,#1c1a16);margin-left:2px}
+  .site-nav-toggle:hover{background:var(--paper-2,#ece6d8)}
+  .site-nav-toggle:focus-visible{outline:3px solid #d44f0e;outline-offset:2px;border-radius:6px}
+  .site-nav-toggle .bar{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .22s,opacity .22s,margin .22s}
+  .site-nav-toggle .bar+.bar{margin-top:5px}
+  .site-nav-toggle[aria-expanded="true"] .bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .site-nav-toggle[aria-expanded="true"] .bar:nth-child(2){opacity:0;margin-top:0}
+  .site-nav-toggle[aria-expanded="true"] .bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media(max-width:700px){
+    .site-nav-toggle{display:flex}
+    .site-nav-gh{display:none}
+    .site-nav-menu{display:none;position:fixed;top:52px;left:0;right:0;background:var(--paper,#f3efe6);border-bottom:2px solid var(--ink,#1c1a16);z-index:98;padding:12px 18px 20px;box-shadow:0 16px 40px -12px rgba(28,26,22,.3)}
+    .site-nav-menu.open{display:block}
+    .site-nav-list{flex-direction:column;gap:0}
+    .site-nav-list > li{width:100%}
+    .site-nav-list > li > a,.site-nav-list > li > button{font-size:15px;padding:14px 12px;letter-spacing:.03em;border-bottom:1px solid var(--line,#d8d0bf);width:100%;justify-content:space-between;min-height:48px}
+    .site-nav-list > li:last-child > a{border-bottom:none}
+    .has-drop .drop{position:static;box-shadow:none;border:none;border-radius:8px;margin:4px 0 10px 0;background:var(--paper-2,#ece6d8);padding:6px;display:none}
+    .has-drop.open .drop{display:block}
+    .drop-label{font-size:10px;padding:8px 14px 4px}
+    .drop li a{padding:12px 14px;font-size:14px;min-height:44px}
+    .site-search{display:none}
+  }
   @media print{.site-nav,.skip-link,.site-contribute{display:none}}
 
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
+<a class="skip-link" href="#main-content">Ga naar de hoofdinhoud</a>
 <header class="site-nav" role="banner">
   <div class="site-nav-inner">
-    <a class="site-nav-logo" href="index.html">Essence <em>Way of Working</em></a>
-    <nav aria-label="Site navigation">
+    <a class="site-nav-logo" href="index.html">Essence <em>Way of Werkend</em></a>
+    <nav id="site-nav-menu" class="site-nav-menu" aria-label="Sitenavigatie">
       <ul class="site-nav-list">
         <li><a href="index.html">Home</a></li>
         <li class="has-drop">
           <button aria-haspopup="true" aria-expanded="false" aria-controls="practices-menu">Practices <span aria-hidden="true">&#9662;</span></button>
           <ul class="drop" id="practices-menu">
-            <span class="drop-label" aria-hidden="true">Four practices</span>
-            <li><a href="business-scenarios-essence-practice.html">Business Scenarios</a></li>
-            <li><a href="service-blueprint-essence-practice.html">Service Blueprint</a></li>
+            <span class="drop-label" aria-hidden="true">Twee practices</span>
             <li><a href="mva-essence-practice.html">Min. Viable Architecture</a></li>
             <li><a href="mvg-essence-practice.html">Min. Viable Governance</a></li>
           </ul>
         </li>
-        <li><a href="resources.html">Resources</a></li>
+        <li><a href="resources.html">Bronnen</a></li>
       </ul>
     </nav>
-    <div class="site-search" role="search">
-      <form class="search-form" action="search.html" method="get" aria-label="Site search">
+    <button class="site-nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="site-nav-menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+        <div class="site-search" role="search">
+      <form class="search-form" action="search.html" method="get" aria-label="Zoeken op de site">
         <span class="search-icon" aria-hidden="true">
           <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
         </span>
@@ -197,8 +234,8 @@
           class="search-input"
           type="search"
           name="q"
-          placeholder="Search..."
-          aria-label="Search this site"
+          placeholder="Zoeken..."
+          aria-label="Zoek op deze site"
           aria-autocomplete="list"
           aria-expanded="false"
           aria-controls="search-results-list"
@@ -207,7 +244,7 @@
           spellcheck="false"
         >
       </form>
-      <ul id="search-results-list" class="search-results" role="listbox" aria-label="Search results"></ul>
+      <ul id="search-results-list" class="search-results" role="listbox" aria-label="Zoekresultaten"></ul>
     </div>
     <a class="site-nav-gh" href="https://github.com/hietkamp/hietkamp.github.io" aria-label="GitHub repository" target="_blank" rel="noopener">
       <svg width="18" height="18" viewBox="0 0 98 96" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.364 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>
@@ -216,30 +253,30 @@
 </header>
 <div class="wrap" id="main-content">
   <header class="hero">
-    <div class="kicker">A composable practice · plugs into the Essence kernel</div>
-    <h1>Minimum Viable Architecture<br><em>as an Essence practice</em></h1>
-    <p class="lede">Architect the minimum, just in time, to retire the significant risks and guide delivery — decisions over documents. MVA shapes the Solution; it pairs with Business Scenarios (which feeds it) and MVG (which governs it).</p>
-    <div class="pillars"><span>TOGAF ADM B–F · H</span><span>MVA</span><span>Solution area</span><span>pairs with MVG + Business Scenarios</span><span>Level &middot; The level of its System</span></div>
+    <div class="kicker">Een samengestelde practice · sluit aan op de Essence kernel</div>
+    <h1>Minimum Viable Architecture<br><em>als een Essence practice</em></h1>
+    <p class="lede">Architectureer het minimum, just in time, om de significante risico's te elimineren en levering te sturen — beslissingen boven documenten. MVA vormt de Solution; het werkt samen met MVG (dat het bestuurt).</p>
+    <div class="pillars"><span>TOGAF ADM B–F · H</span><span>MVA</span><span>Solution-gebied</span><span>werkt samen met MVG</span><span>Niveau &middot; Het niveau van het System</span></div>
     <div class="plug">
-      <div><h4>Where it plugs in</h4><p>The <b>Solution area</b> — shaping the system. Spans ADM phases B–F and H.</p></div>
-      <div><h4>What it adds</h4><p>3 alphas (+1 sub-alpha) · 7 activities · 7 work products · 4 roles · 5 patterns · +1 competency (Architecture).</p></div>
-      <div><h4>What it advances</h4><p>Its own three alphas, and drives kernel <b>System</b> to <i>Architecture Selected → Demonstrable</i>.</p></div>
-      <div><h4>Depends on</h4><p><b>Business Scenarios</b> for quantified drivers · <b>MVG</b> for guardrails · a <b>delivery practice</b> to build.</p></div>
+      <div><h4>Waar het aansluit</h4><p>Het <b>Solution-gebied</b> — het systeem vormgeven. Overspant ADM-fasen B–F en H.</p></div>
+      <div><h4>Wat het toevoegt</h4><p>3 alphas (+1 sub-alpha) · 7 activiteiten · 7 work products · 4 rollen · 5 patronen · +1 competency (Architecture).</p></div>
+      <div><h4>Wat het vooruitbrengt</h4><p>Zijn eigen drie alphas, en drijft kernel-<b>System</b> naar <i>Architecture Selected → Demonstrable</i>.</p></div>
+      <div><h4>Invoer</h4><p>Gekwantificeerde drivers (aanbevolen: <b>TOGAF Business Scenarios-techniek</b>) · <b>MVG</b>-guardrails · een <b>leveringspractice</b> om te implementeren en te configureren.</p></div>
     </div>
   </header>
 
   <nav class="toolbar" aria-label="Filter">
-    <span class="lbl">Show</span>
-    <button class="f active" data-f="all">All</button>
+    <span class="lbl">Toon</span>
+    <button class="f active" data-f="all">Alles</button>
     <button class="f" data-f="alpha">Alphas</button>
     <button class="f" data-f="activity">Activities</button>
     <button class="f" data-f="product">Work Products</button>
     <button class="f" data-f="role">Roles</button>
     <button class="f" data-f="pattern">Patterns</button>
-    <button class="print" onclick="window.print()">⎙ Print</button>
+    <button class="print" onclick="window.print()">⎙ Afdrukken</button>
   </nav>
   <main id="deck"></main>
-  <footer><p>MVA is one practice in a composed way of working. It owns the architecture-shaping elements split out from the former MVA/MVG bundle; governance now lives in the separate <em>MVG</em> practice. The TOGAF ADM mapping is a synthesis, not an Open Group standard.</p></footer>
+  <footer><p>MVA is één practice in een samengestelde manier van werken. Het bezit de architectuurvormende elementen die zijn uitgesplitst uit het vroegere MVA/MVG-bundel; governance leeft nu in de afzonderlijke <em>MVG</em> practice. De TOGAF ADM-mapping is een synthese, geen Open Group-standaard.</p></footer>
 </div>
 <script>
 const E=h=>{const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstChild;};
@@ -248,78 +285,78 @@ const ACC="var(--prac)";
 function sec(type,color,title,intro){return `<section data-type="${type}" id="sec-${type}"><div class="sec-head"><span class="dot" style="background:${color}"></span><h2>${title}</h2></div><p class="sec-intro">${intro}</p><div class="grid"></div></section>`;}
 
 const alphas=[
-{title:"Architectural Drivers",desc:"The significant concerns, goals, constraints and quality attributes that shape the architecture — the few things worth governing.",
- states:[["Identified","Concerns and owners surfaced; candidate drivers listed."],["Prioritised","Significant drivers agreed and ranked; the trivial many deferred."],["Quantified","Each significant driver has a measurable success criterion."],["Addressed","Drivers reflected in decisions and the architecture."],["Sustained","Drivers monitored and re-validated as context changes."]],foot:"Owned by MVA · driven to → <b>Sustained</b>"},
-{title:"Architecture",desc:"The minimum set of structures, building blocks and views needed to satisfy the significant drivers and enable delivery — no more.",
- states:[["Envisioned","Target direction, scope and value agreed on a page."],["Outlined","Minimum viable structure, boundaries and interfaces defined."],["Demonstrated","The riskiest parts proven via spike, reference or increment."],["Usable","Actively guiding and constraining delivery."],["Established","In operation, delivering the intended outcomes."],["Evolving","Changing under managed, continuous adaptation."]],foot:"Owned by MVA · driven to → <b>Evolving</b>"},
-{title:"Architecture Decisions",desc:"The significant, costly-to-reverse choices that are the architecture — the unit of progress in an MVA.",
- states:[["Needed","A significant decision point is recognised and owned."],["Framed","Options, trade-offs and the last responsible moment understood."],["Decided","Choice made; rationale and consequences recorded (ADR)."],["Communicated","Known and accepted by those it affects."],["Validated","Proven by evidence and outcome — or revisited."]],foot:"Owned by MVA · driven to → <b>Validated</b>"}
+{title:"Architectural Drivers",desc:"De zakelijke en technische eisen die architectuurkeuzes sturen: strategische drivers, doelen (goals), kwaliteitsattributen, beperkingen (constraints) en principes. Vergelijkbaar met de ArchiMate motivatielaag.",
+ states:[["Identified","Architectureel significante drivers naar voren gebracht — denk aan strategische doelen, kwaliteitsattributen, beperkingen en principes; type en eigenaar vastgelegd."],["Prioritised","Architectureel significante drivers overeengekomen en naar gewicht gerangschikt; overige drivers expliciet uitgesteld of verworpen."],["Quantified","Elke significante driver heeft een meetbaar succescriterium (bijv. responstijd, beschikbaarheid, kosten); criteria overeengekomen met stakeholders."],["Addressed","Drivers weerspiegeld in beslissingen en de architectuur; bewijs toont naleving aan."],["Sustained","Drivers bewaakt naarmate de context verandert; opnieuw gevalideerd en bijgewerkt wanneer nodig."]],foot:"Eigendom van MVA · gebracht naar → <b>Sustained</b>"},
+{title:"Architecture",desc:"De minimale set structuren, bouwstenen en weergaven die nodig zijn om de significante drivers te bevredigen en levering mogelijk te maken — niet meer.",
+ states:[["Envisioned","Doelrichting, scope en waarde overeengekomen op één pagina."],["Outlined","Minimale haalbare structuur, grenzen en interfaces gedefinieerd."],["Demonstrated","De risicovolste keuzes bewezen via proof-of-concept, leveranciersevaluatie of sandbox-pilot."],["Usable","Actief levering leidend en beperkend."],["Established","In werking, de beoogde uitkomsten leverend."],["Evolving","Veranderend onder beheerde, continue aanpassing."]],foot:"Eigendom van MVA · gebracht naar → <b>Evolving</b>"},
+{title:"Architecture Decisions",desc:"De significante, kostbaar-om-terug-te-draaien keuzes die de architectuur zijn — de eenheid van voortgang in een MVA.",
+ states:[["Needed","Een significant beslissingspunt is herkend en eigendom."],["Framed","Opties, afwegingen en het laatste verantwoorde moment begrepen."],["Decided","Keuze gemaakt; redenering en consequenties vastgelegd (ADR)."],["Communicated","Bekend en geaccepteerd door degenen die het beïnvloedt."],["Validated","Bewezen door bewijs en uitkomst — of herzien."]],foot:"Eigendom van MVA · gebracht naar → <b>Validated</b>"}
 ];
-deck.appendChild(E(sec('alpha',ACC,'Alphas','The three alphas MVA owns, plus a Paved Road sub-alpha (the service chassis) that makes the compliant choice the easy one, and the kernel System it advances. Each card shows its owner and the state it is carried to.')));
+deck.appendChild(E(sec('alpha',ACC,'Alphas','De drie alphas die MVA bezit, plus een Paved Road sub-alpha (het servicechassis) dat de conforme keuze de gemakkelijke maakt, en het kernel-System dat het vooruitbrengt. Elke kaart toont zijn eigenaar en de toestand waarnaar het wordt gebracht.')));
 let g=deck.querySelector('#sec-alpha .grid');
 alphas.forEach(a=>{const st=a.states.map(s=>`<li><span class="st-name">${s[0]}</span><div class="st-check">${s[1]}</div></li>`).join('');
   g.appendChild(E(`<article class="card" data-type="alpha"><div class="top" style="background:${ACC}"></div><div class="body"><div class="meta"><span class="type" style="color:${ACC}">Alpha</span><span class="area sol">Solution</span><span class="origin">MVA</span></div><h4>${a.title}</h4><p class="desc">${a.desc}</p><ul class="states">${st}</ul><div class="foot">${a.foot}</div></div></article>`));});
-g.appendChild(E(`<article class="card" data-type="alpha"><div class="top" style="background:${ACC}"></div><div class="body"><div class="meta"><span class="type" style="color:${ACC}">Sub-Alpha</span><span class="area sol">Solution</span><span class="origin">MVA</span></div><h4>Paved Road</h4><p class="desc">The reusable foundation teams build on — the service chassis of approved products, patterns, reference setups and standards that makes the compliant choice the easy one. Conduct Architecture Review paves it and polices the exceptions.</p><ul class="states"><li><span class="st-name">Seeded</span><div class="st-check">The need for a paved road is recognised; a first approved default or two exists.</div></li><li><span class="st-name">Established</span><div class="st-check">A coherent service chassis of approved products, patterns and standards is published and self-serviceable.</div></li><li><span class="st-name">Adopted</span><div class="st-check">Teams build on it by default; on-road choices need no review.</div></li><li><span class="st-name">Pervasive</span><div class="st-check">It is the norm across the estate; going off-road is the rare, justified exception.</div></li><li><span class="st-name">Evolving</span><div class="st-check">Continuously widened and pruned from review learnings and new drivers.</div></li></ul><div class="foot">Sub-alpha of Architecture · driven to → <b>Evolving</b> · MVG governs its adoption</div></div></article>`));
-g.appendChild(E(`<article class="card" data-type="alpha"><div class="top" style="background:${ACC}"></div><div class="body"><div class="meta"><span class="type" style="color:${ACC}">Alpha</span><span class="area sol">Solution</span><span class="origin">Kernel</span></div><h4>System</h4><p class="desc">The system that delivers value — software, configured products, hardware and data. MVA selects its architecture and proves the riskiest parts before delivery builds it out.</p><ul class="states"><li><span class="st-name">Architecture Selected</span><div class="st-check">Architecture chosen to meet the key drivers and risks.</div></li><li><span class="st-name">Demonstrable</span><div class="st-check">An executable version shows the key characteristics.</div></li></ul><div class="foot">Owned by Kernel · MVA drives it to → <b>Demonstrable</b> · carried to Operational by a delivery practice</div></div></article>`));
+g.appendChild(E(`<article class="card" data-type="alpha"><div class="top" style="background:${ACC}"></div><div class="body"><div class="meta"><span class="type" style="color:${ACC}">Sub-Alpha</span><span class="area sol">Solution</span><span class="origin">MVA</span></div><h4>Paved Road</h4><p class="desc">Het herbruikbare fundament waarop teams implementeren — het servicechassis van goedgekeurde producten, patronen, referentie-instellingen en standaarden dat de conforme keuze de gemakkelijke maakt. Conduct Architecture Review plaveit het en controleert de uitzonderingen.</p><ul class="states"><li><span class="st-name">Seeded</span><div class="st-check">De behoefte aan een paved road is herkend; een eerste goedgekeurde standaard of twee bestaat.</div></li><li><span class="st-name">Established</span><div class="st-check">Een coherent servicechassis van goedgekeurde producten, patronen en standaarden is gepubliceerd en zelfbedienbaar.</div></li><li><span class="st-name">Adopted</span><div class="st-check">Teams implementeren er standaard op; op-weg keuzes hebben geen beoordeling nodig.</div></li><li><span class="st-name">Pervasive</span><div class="st-check">Het is de norm over het landgoed; off-road gaan is de zeldzame, gerechtvaardige uitzondering.</div></li><li><span class="st-name">Evolving</span><div class="st-check">Continu verbreed en gesnoeid vanuit reviewinzichten en nieuwe drivers.</div></li></ul><div class="foot">Sub-alpha van Architecture · gebracht naar → <b>Evolving</b> · MVG bestuurt de adoptie ervan</div></div></article>`));
+g.appendChild(E(`<article class="card" data-type="alpha"><div class="top" style="background:${ACC}"></div><div class="body"><div class="meta"><span class="type" style="color:${ACC}">Alpha</span><span class="area sol">Solution</span><span class="origin">Kernel</span></div><h4>System</h4><p class="desc">Het systeem dat waarde levert — geconfigureerde producten, integraties, hardware en data. MVA selecteert de architectuur en bewijst de risicovolste keuzes voordat levering het implementeert en configureert.</p><ul class="states"><li><span class="st-name">Architecture Selected</span><div class="st-check">Architectuur gekozen om te voldoen aan de belangrijkste drivers en risico's.</div></li><li><span class="st-name">Demonstrable</span><div class="st-check">Een uitvoerbare versie toont de belangrijkste kenmerken.</div></li></ul><div class="foot">Eigendom van Kernel · MVA brengt het naar → <b>Demonstrable</b> · verder naar Operational door een leveringspractice</div></div></article>`));
 
 const acts=[
-["Frame the Drivers","Capture and quantify the architecturally-significant drivers; agree their measurable success criteria.","Drivers → Identified → Prioritised → Quantified"],
-["Conduct Architecture Review","Pave the road — publish approved products, patterns and standards as a self-serve service chassis — and review the off-road deviations and significant decisions against the drivers and principles.","Paved Road → Established → Adopted · Decisions → Validated"],
-["Envision the Architecture","Agree the target and its value on a page; bound the scope.","Architecture → Envisioned"],
-["Shape the Minimum Architecture","Define only the building blocks needed now across domains; frame and make the significant decisions.","Architecture → Outlined · Decisions → Framed → Decided"],
-["Prove the Risky Parts","Spike, reference-implement or build an increment against the highest risks; validate the decisions.","Architecture → Demonstrated · Decisions → Validated"],
-["Plan the Transition","Identify the gaps; sequence the next increment from baseline to target; detail only the next horizon.","Architecture → Usable"],
-["Evolve the Architecture","Manage change continuously; refactor and retire; re-validate the drivers.","Architecture → Established → Evolving · Drivers → Sustained"]
+["Frame the Drivers","Leg de architectureel significante drivers vast en kwantificeer ze; kom overeen over hun meetbare succescriteria.","Drivers → Identified → Prioritised → Quantified"],
+["Conduct Architecture Review","Pave the road — publiceer goedgekeurde producten, patronen en standaarden als een zelfbedienend servicechassis — en beoordeel de off-road afwijkingen en significante beslissingen tegen de drivers en principes.","Paved Road → Established → Adopted · Decisions → Validated"],
+["Envision the Architecture","Kom het doel en de waarde ervan overeen op één pagina; baken de scope af.","Architecture → Envisioned"],
+["Shape the Minimum Architecture","Definieer alleen de bouwstenen die nu nodig zijn over domeinen heen; kader de significante beslissingen in en neem ze.","Architecture → Outlined · Decisions → Framed → Decided"],
+["Prove the Risky Parts","Bewijs de risicovolste keuzes via proof-of-concept, leveranciersevaluatie of sandbox-pilot; valideer de beslissingen.","Architecture → Demonstrated · Decisions → Validated"],
+["Plan the Transition","Identificeer de hiaten; orden de volgende implementatiestap van baseline naar doel; detailleer alleen de volgende horizon.","Architecture → Usable"],
+["Evolve the Architecture","Beheer verandering continu; actualiseer en pensioneer; hervalideer de drivers.","Architecture → Established → Evolving · Drivers → Sustained"]
 ];
-deck.appendChild(E(`<div class="panel"><h3>Adapting MVA for a COTS / buy-and-implement context</h3>
-  <p>When the company buys and configures commercial products rather than writing code, the alphas don't change — but how you advance them does. Conformance shifts from automated tests to a paved road of approved choices plus architecture review of the exceptions.</p>
-  <div class="maprow"><span>Architecture Decisions</span><span class="arrow">become →</span><span class="to">product-selection &amp; integration choices (decision matrix)</span></div>
-  <div class="maprow"><span>Architecture Definition</span><span class="arrow">becomes →</span><span class="to">integration architecture, boundaries &amp; standards products must meet</span></div>
-  <div class="maprow"><span>Prove the Risky Parts</span><span class="arrow">becomes →</span><span class="to">proof-of-concept, vendor evaluation or sandbox pilot</span></div>
-  <div class="maprow"><span>Significant Requirements</span><span class="arrow">become →</span><span class="to">selection &amp; conformance criteria in the RFP</span></div>
-  <div class="maprow"><span>Conformance</span><span class="arrow">assured by →</span><span class="to">paved roads + architecture review of deviations + SLA/telemetry monitoring</span></div></div>`));
-deck.appendChild(E(sec('activity','var(--activity)','Activities','The architecting flow — what MVA does, measured by the alpha states it reaches.')));
+deck.appendChild(E(`<div class="panel"><h3>COTS / koop-en-implementeer is de standaardcontext</h3>
+  <p>De alphas en activiteiten zijn native voor een koop-en-configureer-omgeving. De architectuur is niet het ontwerp van custom code — het is de selectie van producten, de definitie van integraties, en de set standaarden die conforme keuzes de gemakkelijke maakt.</p>
+  <div class="maprow"><span>Architecture Decisions</span><span class="arrow">zijn →</span><span class="to">productselectie- &amp; integratiekeuzes (beslissingsmatrix, ADR)</span></div>
+  <div class="maprow"><span>Architecture Definition</span><span class="arrow">is →</span><span class="to">integratiearchitectuur, grenzen &amp; standaarden waaraan producten moeten voldoen</span></div>
+  <div class="maprow"><span>Prove the Risky Parts</span><span class="arrow">is →</span><span class="to">proof-of-concept, leveranciersevaluatie of sandbox-pilot</span></div>
+  <div class="maprow"><span>Significant Requirements</span><span class="arrow">zijn →</span><span class="to">selectie- &amp; conformancecriteria in het RFP of programma van eisen</span></div>
+  <div class="maprow"><span>Conformance</span><span class="arrow">geborgd door →</span><span class="to">paved road + architectuurbeoordeling van afwijkingen + SLA- en telemetriebewaking</span></div></div>`));
+deck.appendChild(E(sec('activity','var(--activity)','Activities','De architectuurstroom — wat MVA doet, gemeten door de alpha-toestanden die het bereikt.')));
 g=deck.querySelector('#sec-activity .grid');
-acts.forEach((a,i)=>g.appendChild(E(`<article class="card" data-type="activity"><div class="top" style="background:var(--activity)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--activity)">Activity ${i+1} / ${acts.length}</span><span class="origin">MVA</span></div><h4>${a[0]}</h4><p class="desc">${a[1]}</p><div class="outcome"><b>Moves the alphas</b>${a[2]}</div></div></article>`)));
+acts.forEach((a,i)=>g.appendChild(E(`<article class="card" data-type="activity"><div class="top" style="background:var(--activity)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--activity)">Activiteit ${i+1} / ${acts.length}</span><span class="origin">MVA</span></div><h4>${a[0]}</h4><p class="desc">${a[1]}</p><div class="outcome"><b>Beweegt de alphas</b>${a[2]}</div></div></article>`)));
 
 const products=[
-["Architecture Vision (on a page)","Architecture · Drivers","The aspirational target and its value on a single page.",[["Sketch","Rough target & scope",0],["Agreed","One-pager signed off",0]]],
-["Architecture Definition (the MVA)","Architecture","Minimum building blocks and only the views a stakeholder will act on.",[["Skeleton","Key blocks & boundaries",0],["Working","Views the current decisions need",0],["Exhaustive model","All domains/artifacts — deferred",1]]],
-["Architecture Decision Records","Architecture Decisions","One short record per significant decision: context, options, choice, consequences.",[["Entry","Decision logged with rationale",0],["Linked","Tied to drivers & building blocks",0]]],
-["Architecturally-Significant Requirements","Drivers","The few requirements that are significant enough to shape the architecture, each tied to a driver.",[["Stated","Significant requirements named",0],["Quantified","Each carries a measurable target",0]]],
-["Paved Roads","Paved Road","The reusable foundation teams build on — approved products, patterns and reference setups (the service chassis), plus the standards they embody.",[["Seeded","A few approved defaults",0],["Published","Catalog self-serviceable",0],["Curated","Kept current; widened from learnings",0]]],
-["Review Records","Architecture Decisions","The record of architecture reviews — the decisions made when teams go off-road or make a significant choice, assessed against the drivers and principles.",[["Logged","Outcome recorded with rationale",0],["Linked","Tied to drivers & decisions",0]]],
-["Architecture Roadmap & Transition States","Architecture · Work","The path from baseline to target as increments. Only the next horizon is detailed.",[["Horizon","Next increment defined",0],["Sequenced","Gaps & dependencies ordered",0],["Big-bang plan","Full migration plan — deferred",1]]]
+["Architecture Vision (on a page)","Architecture · Drivers","Het ambitieuze doel en de waarde ervan op één pagina.",[["Schets","Ruwe doel & scope",0],["Overeengekomen","Eénpagina goedgekeurd",0]]],
+["Architecture Definition (the MVA)","Architecture","Minimale bouwstenen en alleen de weergaven waarop een stakeholder zal handelen.",[["Skelet","Sleutelbouwstenen & grenzen",0],["Werkend","Weergaven die de huidige beslissingen nodig hebben",0],["Uitputtend model","Alle domeinen/artefacten — uitgesteld",1]]],
+["Architecture Decision Records","Architecture Decisions","Eén korte vastlegging per significante beslissing: context, opties, keuze, consequenties.",[["Invoer","Beslissing vastgelegd met redenering",0],["Gekoppeld","Gekoppeld aan drivers & bouwstenen",0]]],
+["Architecturally-Significant Requirements","Drivers","De weinige requirements die significant genoeg zijn om de architectuur te vormen, elk gekoppeld aan een driver.",[["Verklaard","Significante requirements benoemd",0],["Quantified","Elk draagt een meetbaar doel",0]]],
+["Paved Roads","Paved Road","Het herbruikbare fundament waarop teams bouwen — goedgekeurde producten, patronen en referentie-instellingen (het servicechassis), plus de standaarden die ze belichamen.",[["Seeded","Een paar goedgekeurde standaarden",0],["Gepubliceerd","Catalogus zelfbedienbaar",0],["Samengesteld","Actueel gehouden; verbreed vanuit inzichten",0]]],
+["Review Records","Architecture Decisions","Het verslag van architectuurbeoordelingen — de beslissingen die worden genomen wanneer teams off-road gaan of een significante keuze maken, beoordeeld tegen de drivers en principes.",[["Vastgelegd","Uitkomst vastgelegd met redenering",0],["Gekoppeld","Gekoppeld aan drivers & beslissingen",0]]],
+["Architecture Roadmap & Transition States","Architecture · Work","Het pad van baseline naar doel als implementatiestappen. Alleen de volgende horizon is gedetailleerd.",[["Horizon","Volgende implementatiestap gedefinieerd",0],["Geordend","Hiaten & afhankelijkheden geordend",0],["Big-bang plan","Volledig migratieplan — uitgesteld",1]]]
 ];
-deck.appendChild(E(sec('product','var(--product)','Work Products','The architecture artifacts. They live in the repository governed by MVG. Struck-through levels are consciously deferred.')));
+deck.appendChild(E(sec('product','var(--product)','Work Products','De architectuurartefacten. Ze leven in de repository die door MVG wordt bestuurd. Doorgestreepte niveaus zijn bewust uitgesteld.')));
 g=deck.querySelector('#sec-product .grid');
 products.forEach(p=>{const lv=p[3].map(l=>`<li class="${l[2]?'cut':''}"><span class="lv">${l[0]}</span><span>${l[1]}</span></li>`).join('');
-  g.appendChild(E(`<article class="card" data-type="product"><div class="top" style="background:var(--product)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--product)">Work Product</span><span class="origin">MVA</span></div><h4>${p[0]}</h4><p class="desc">${p[2]}</p><ul class="levels">${lv}</ul><div class="foot">Evidences&nbsp;→&nbsp;<b>${p[1]}</b></div></div></article>`));});
+  g.appendChild(E(`<article class="card" data-type="product"><div class="top" style="background:var(--product)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--product)">Work Product</span><span class="origin">MVA</span></div><h4>${p[0]}</h4><p class="desc">${p[2]}</p><ul class="levels">${lv}</ul><div class="foot">Bewijst&nbsp;→&nbsp;<b>${p[1]}</b></div></div></article>`));});
 
 const roles=[
-["Lead / Enterprise Architect","Owns the vision and frames the significant decisions; keeps the architecture minimal and coherent.",["Architecture","Leadership","Analysis"]],
-["Domain Architect","Business · Data · Application · Technology. Just-enough domain depth, on demand, when a decision needs it.",["Architecture","Analysis"]],
-["Solution Architect","Bridges the MVA into delivery increments, so the architecture guides and is shaped by what is built.",["Architecture","Development"]],
-["Architecture Owner","Embedded in the delivery team; evolves the MVA day to day. The agile keystone role.",["Architecture","Development","Stakeholder Rep."]]
+["Lead / Enterprise Architect","Bezit de visie en kader de significante beslissingen; houdt de architectuur minimaal en coherent.",["Architecture","Leadership","Analysis"]],
+["Domain Architect","Business · Data · Applicatie · Technologie. Net genoeg domeindiepte, op aanvraag, wanneer een beslissing het vereist.",["Architecture","Analysis"]],
+["Solution Architect","Verbindt de MVA met implementatiestappen en -projecten, zodat de architectuur leidt en wordt bevestigd door wat wordt geconfigureerd en geïntegreerd.",["Architecture","Analysis"]],
+["Architecture Owner","Ingebed in het implementatieteam; evolueert de MVA van dag tot dag. Bewaakt de paved road en beoordeelt afwijkingen.",["Architecture","Stakeholder Rep."]]
 ];
-deck.appendChild(E(sec('role','var(--role)','Roles','Who shapes the architecture. The Sponsor and Governance Forum sit in the MVG practice.')));
+deck.appendChild(E(sec('role','var(--role)','Roles','Wie de architectuur vormgeeft. De Sponsor en het Governance Forum zitten in de MVG practice.')));
 g=deck.querySelector('#sec-role .grid');
 roles.forEach(r=>g.appendChild(E(`<article class="card" data-type="role"><div class="top" style="background:var(--role)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--role)">Role</span><span class="area sol">Solution</span><span class="origin">MVA</span></div><h4>${r[0]}</h4><p class="desc">${r[1]}</p><div class="comps">${r[2].map(c=>`<span>${c}</span>`).join('')}</div></div></article>`)));
 
-const pats=[["A1","Architect the minimum, defer the rest","Produce only the structure a current decision needs. Everything else waits for evidence it's needed."],
-["A2","Decisions over documents","The architecture is its set of significant decisions. Capture those crisply; documents are a by-product."],
-["A3","Pave the road, review the exceptions","Encode the drivers into approved products, patterns and standards so the compliant path is the easy one; review only what goes off-road."],
-["A4","Prove the riskiest parts first","Spend architecture effort where uncertainty and cost-of-being-wrong are highest. Demonstrate before committing."],
-["A5","Evolve continuously; design for change","Treat the architecture as living. Optimise for reversibility, not a frozen end state."]];
-deck.appendChild(E(sec('pattern','var(--pattern)','Patterns','The five MVA principles that bias every architectural decision.')));
+const pats=[["A1","Architect the minimum, defer the rest","Produceer alleen de structuur die een huidige beslissing nodig heeft. Al het andere wacht op bewijs dat het nodig is."],
+["A2","Decisions over documents","De architectuur is haar set van significante beslissingen. Leg die scherp vast; documenten zijn een bijproduct."],
+["A3","Pave the road, review the exceptions","Vertaal de drivers in goedgekeurde producten, patronen en standaarden zodat het conforme pad het gemakkelijke is; beoordeel alleen wat off-road gaat."],
+["A4","Prove the riskiest parts first","Besteed architectuurinspanning waar onzekerheid en kosten-van-fout-zijn het hoogst zijn. Demonstreer voordat je je vastlegt."],
+["A5","Evolve continuously; design for change","Behandel de architectuur als levend. Optimaliseer voor omkeerbaarheid, niet een bevroren eindtoestand."]];
+deck.appendChild(E(sec('pattern','var(--pattern)','Patterns','De vijf MVA-principes die elke architectuurbeslissing sturen.')));
 g=deck.querySelector('#sec-pattern .grid');
 pats.forEach(p=>g.appendChild(E(`<article class="card" data-type="pattern"><div class="top" style="background:var(--pattern)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--pattern)">Pattern</span><span class="type" style="color:var(--pattern);letter-spacing:.1em">MVA · ${p[0]}</span><span class="origin">MVA</span></div><h4>${p[1]}</h4><p class="desc" style="margin-bottom:0">${p[2]}</p></div></article>`)));
 
-deck.querySelector('#sec-pattern .grid').insertAdjacentElement('afterend',E(`<div class="panel"><h3>How MVA composes with the rest</h3>
-  <div class="maprow"><span>Quantified business drivers</span><span class="arrow">in from →</span><span class="to">Business Scenarios practice</span></div>
-  <div class="maprow"><span>Guardrails, principles, decision rights</span><span class="arrow">in from →</span><span class="to">MVG practice</span></div>
-  <div class="maprow"><span>Architecture Selected → built &amp; run</span><span class="arrow">handed to →</span><span class="to">delivery / engineering practice (missing)</span></div>
-  <div class="maprow"><span>Review outcomes · Paved Road adoption</span><span class="arrow">out to →</span><span class="to">MVG (assurance &amp; conformance)</span></div></div>`));
+deck.querySelector('#sec-pattern .grid').insertAdjacentElement('afterend',E(`<div class="panel"><h3>Hoe MVA samenstelt met de rest</h3>
+  <div class="maprow"><span>Gekwantificeerde zakelijke drivers</span><span class="arrow">in van →</span><span class="to">TOGAF Business Scenarios-techniek (of vergelijkbaar)</span></div>
+  <div class="maprow"><span>Guardrails, principes, beslissingsbevoegdheden</span><span class="arrow">in van →</span><span class="to">MVG practice</span></div>
+  <div class="maprow"><span>Architecture Selected → geconfigureerd &amp; geïntegreerd</span><span class="arrow">overgedragen aan →</span><span class="to">leverings- / implementatiepractice (ontbreekt)</span></div>
+  <div class="maprow"><span>Reviewuitkomsten · Paved Road adoptie</span><span class="arrow">naar →</span><span class="to">MVG (zekerheid &amp; conformance)</span></div></div>`));
 
 document.querySelectorAll('button.f').forEach(b=>b.addEventListener('click',()=>{const f=b.dataset.f;document.querySelectorAll('button.f').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('section[data-type]').forEach(s=>s.classList.toggle('hidden',f!=='all'&&s.dataset.type!==f));}));
 </script>
@@ -330,7 +367,7 @@ document.querySelectorAll('button.f').forEach(b=>b.addEventListener('click',()=>
   document.querySelectorAll('.site-nav-list > li > a').forEach(function(a){
     if(a.getAttribute('href') === p) a.closest('li').classList.add('active');
   });
-  var practicePages = ['business-scenarios-essence-practice.html','service-blueprint-essence-practice.html','mva-essence-practice.html','mvg-essence-practice.html'];
+  var practicePages = ['mva-essence-practice.html','mvg-essence-practice.html'];
   if(practicePages.indexOf(p) !== -1) document.querySelectorAll('.has-drop').forEach(function(el){ el.classList.add('active'); });
   document.querySelectorAll('.drop li a').forEach(function(a){
     if(a.getAttribute('href') === p) a.closest('li').classList.add('active');
@@ -362,6 +399,25 @@ document.querySelectorAll('button.f').forEach(b=>b.addEventListener('click',()=>
       el.classList.remove('open'); el.querySelector('button').setAttribute('aria-expanded','false');
     });
   });
+  /* Hamburgermenu */
+  (function(){
+    var tog=document.querySelector('.site-nav-toggle');
+    var menu=document.querySelector('.site-nav-menu');
+    if(!tog||!menu) return;
+    tog.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=menu.classList.toggle('open');
+      tog.setAttribute('aria-expanded',String(open));
+      tog.setAttribute('aria-label',open?'Menu sluiten':'Menu openen');
+    });
+    menu.addEventListener('click',function(e){e.stopPropagation();});
+    document.addEventListener('click',function(){
+      menu.classList.remove('open');
+      tog.setAttribute('aria-expanded','false');
+      tog.setAttribute('aria-label','Menu openen');
+    });
+  })();
+
 
   /* Decorative aria-hidden */
   document.querySelectorAll('.track .ar').forEach(function(el){ el.setAttribute('aria-hidden','true'); });
@@ -389,7 +445,7 @@ document.querySelectorAll('button.f').forEach(b=>b.addEventListener('click',()=>
     return esc(text).replace(new RegExp('('+safe+')','gi'),'<em>$1</em>');
   }
 
-  function scoreEntry(entry, q){
+  function scoreInvoer(entry, q){
     var ql = q.toLowerCase(), s = 0;
     if(entry.title.toLowerCase().indexOf(ql)  !== -1) s += 20;
     if(entry.kicker.toLowerCase().indexOf(ql) !== -1) s += 8;
@@ -408,7 +464,7 @@ document.querySelectorAll('button.f').forEach(b=>b.addEventListener('click',()=>
   function renderResults(q){
     if(!q || q.length < 2){ hideResults(); return; }
     var scored = searchIndex
-      .map(function(e){ return {e:e, s:scoreEntry(e,q)}; })
+      .map(function(e){ return {e:e, s:scoreInvoer(e,q)}; })
       .filter(function(x){ return x.s > 0; })
       .sort(function(a,b){ return b.s - a.s; })
       .slice(0,7);
@@ -504,7 +560,7 @@ document.querySelectorAll('button.f').forEach(b=>b.addEventListener('click',()=>
 <div class="site-contribute">
   <div class="site-contribute-inner">
     <svg class="site-contribute-icon" width="22" height="22" viewBox="0 0 98 96" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.364 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>
-    <p><strong>Open practice.</strong> These practices are open for community input. <a href="https://github.com/hietkamp/hietkamp.github.io/issues/new/choose" target="_blank" rel="noopener">Open a GitHub issue</a> to suggest an improvement to an existing practice, propose a new practice, or contribute a template — issues are the starting point for any change.</p>
+    <p><strong>Open practice.</strong> Deze practices zijn open voor bijdragen van de community. <a href="https://github.com/hietkamp/hietkamp.github.io/issues/new/choose" target="_blank" rel="noopener">Open een GitHub-issue</a> om een verbetering aan een bestaande practice voor te stellen, een nieuwe practice te introduceren of een sjabloon bij te dragen — issues zijn het startpunt voor elke wijziging.</p>
   </div>
 </div>
 <!-- /SITE CONTRIBUTE -->
