@@ -19,17 +19,17 @@ from openpyxl.worksheet.datavalidation import DataValidation
 
 # ─── Vaste kleuren ────────────────────────────────────────────────────────────
 INK    = "1C1A16"
-DARK   = "1C2433"   # dashboard-achtergrond / koptekst alpha-tab
+DARK   = "2D4460"   # soft slate-blue (was hard navy 1C2433)
 PAPER  = "F3EFE6"
 PAPER2 = "F4F2EC"   # zebra-rij (warm grijs) — exact origineel
 WHITE  = "FFFFFF"
 GRAY   = "5B6472"   # ondertitels / labels
-CUST   = "2E7D52"
-SOL    = "B07D12"
-END    = "2A5E9C"
-MVA_C  = "0F6E63"
-MVG_C  = "4B3F9E"
-KRN_C  = "27406B"
+CUST   = "5CA882"   # soft sage green
+SOL    = "C4A030"   # warm muted gold
+END    = "5585C0"   # soft cornflower blue
+MVA_C  = "3A9C8A"   # soft teal-green (was 0F6E63)
+MVG_C  = "6A5CC5"   # soft indigo (was 4B3F9E)
+KRN_C  = "3E618C"   # soft navy (was 27406B)
 CHK_GR = "1E7A4D"   # ✔ groen (checkbox + bereikt status)
 AMB_BG = "FBF0D8"   # amber achtergrond toestandsstatus
 AMB_FG = "8A6D1A"   # amber tekst toestandsstatus
@@ -186,6 +186,9 @@ ALPHAS = [
              ]),
          ], sample=(2, 4)),
 
+    # ── (practice alphas Architectural Drivers, Architecture, Architecture Decisions,
+    #     Paved Road, Governance removed — practices advance kernel alphas, not their own)
+
     dict(name="System", tab="System",
          owner="Kernel", area="sol", level="Solution",
          target="Operational",
@@ -225,110 +228,6 @@ ALPHAS = [
                  "Het systeem is vervangen of uit gebruik genomen.",
              ]),
          ], sample=(1, 2)),
-
-    dict(name="Architectural Drivers", tab="Architectural Drivers",
-         owner="MVA", area="sol", level="Solution",
-         target="Sustained",
-         desc=("De zakelijke en technische eisen die architectuurkeuzes sturen. "
-               "Omvat: strategische drivers (aanleiding), doelen (goals), "
-               "kwaliteitsattributen (performance, security, …), beperkingen (constraints) "
-               "en principes. Vergelijkbaar met de ArchiMate motivatielaag "
-               "(Driver · Goal · Requirement · Constraint · Principle)."),
-         states=[
-             ("Identified", [
-                 "Architectureel significante drivers zijn naar voren gebracht — "
-                 "denk aan strategische doelen, kwaliteitsattributen (bijv. performance, "
-                 "beveiliging), beperkingen (budget, technologie) en geldende principes.",
-                 "Van elke driver zijn type, omschrijving en eigenaar vastgelegd.",
-             ]),
-             ("Prioritised", [
-                 "De architectureel significante drivers zijn overeengekomen en "
-                 "naar gewicht gerangschikt.",
-                 "De overige drivers zijn expliciet uitgesteld of verworpen.",
-             ]),
-             ("Quantified", [
-                 "Elke significante driver heeft een meetbaar succescriterium "
-                 "(bijv. responstijd < 500 ms, beschikbaarheid ≥ 99,9%, kosten < X).",
-                 "De meetcriteria zijn overeengekomen met de stakeholders.",
-             ]),
-             ("Addressed", [
-                 "De drivers zijn weerspiegeld in de beslissingen en de architectuur.",
-                 "Bewijs toont aan dat de drivers worden nageleefd.",
-             ]),
-             ("Sustained", [
-                 "De drivers worden bewaakt naarmate de context verandert.",
-                 "De drivers worden opnieuw gevalideerd en bijgewerkt wanneer nodig.",
-             ]),
-         ], sample=(3, 1)),
-
-    dict(name="Architecture", tab="Architecture",
-         owner="MVA", area="sol", level="Solution",
-         target="Established",
-         desc="De minimale set van structuren, bouwstenen en overzichten die nodig zijn om de significante drivers te vervullen en levering mogelijk te maken.",
-         states=[
-             ("Envisioned", [
-                 "De doelrichting, scope en waarde zijn overeengekomen op één pagina.",
-                 "De sleutelstakeholders delen de visie.",
-             ]),
-             ("Outlined", [
-                 "De minimale haalbare structuur, grenzen en interfaces zijn gedefinieerd.",
-                 "Alleen de bouwstenen die nu nodig zijn zijn opgenomen.",
-             ]),
-             ("Demonstrated", [
-                 "De risicovolste delen zijn bewezen via spike, referentie of increment.",
-                 "De sleutelbeslissingen zijn gevalideerd door bewijs.",
-             ]),
-             ("Usable", [
-                 "De architectuur leidt actief levering en stelt beperkingen.",
-                 "De teams bouwen er actief binnen.",
-             ]),
-             ("Established", [
-                 "De architectuur is operationeel en levert de beoogde uitkomsten.",
-             ]),
-             ("Evolving", [
-                 "De architectuur verandert onder beheerde, continue aanpassing.",
-                 "Wijziging wordt afgehandeld zonder grootschalige herontwikkeling.",
-             ]),
-         ], sample=(3, 1)),
-
-    dict(name="Architecture Decisions", tab="Architecture Decisions",
-         owner="MVA", area="sol", level="Solution",
-         target="Validated",
-         desc="De significante, moeilijk terug te draaien keuzes die de architectuur vormen.",
-         states=[
-             ("Needed", ["Een significant, moeilijk terug te draaien beslissingspunt is herkend en eigendom aangewezen."]),
-             ("Framed", ["De opties, afwegingen en het laatste verantwoorde moment zijn begrepen."]),
-             ("Decided", ["De keuze is gemaakt en vastgelegd met onderbouwing en consequenties (ADR)."]),
-             ("Communicated", ["De beslissing is bekend en geaccepteerd door degenen die het beïnvloedt."]),
-             ("Validated", ["De beslissing is bewezen door bewijs en uitkomst, of herzien."]),
-         ], sample=(4, 0)),
-
-    dict(name="Paved Road", tab="Paved Road",
-         owner="MVA", area="sol", level="Enterprise",
-         target="Pervasive",
-         desc="Het herbruikbare servicechassis van goedgekeurde producten, patronen en standaarden dat de conforme keuze de gemakkelijke maakt.",
-         states=[
-             ("Seeded", [
-                 "De behoefte aan een paved road is erkend.",
-                 "Een eerste goedgekeurde standaard of twee bestaat.",
-             ]),
-             ("Established", [
-                 "Een coherent servicechassis van goedgekeurde producten, patronen en standaarden is gepubliceerd.",
-                 "De paved road is zelfbedienbaar.",
-             ]),
-             ("Adopted", [
-                 "Teams bouwen standaard op de paved road.",
-                 "On-road keuzes hebben geen beoordeling nodig.",
-             ]),
-             ("Pervasive", [
-                 "De paved road is de norm over het landgoed.",
-                 "Off-road gaan is de zeldzame, gerechtvaardige uitzondering.",
-             ]),
-             ("Evolving", [
-                 "De paved road wordt continu verbreed en gesnoeid.",
-                 "Lessen uit beoordelingen worden teruggekoppeld.",
-             ]),
-         ], sample=(2, 1)),
 
     # ── ENDEAVOR ──────────────────────────────────────────────────────────
     dict(name="Work", tab="Work",
@@ -439,32 +338,6 @@ ALPHAS = [
              ]),
          ], sample=(2, 1)),
 
-    dict(name="Governance", tab="Governance",
-         owner="MVG", area="end", level="Spans",
-         target="Effective",
-         desc="De lichtgewichte beslissingsbevoegdheden, guardrails en zekerheid die levering in lijn houden met de bedoeling.",
-         states=[
-             ("Initiated", [
-                 "De beslissingsbevoegdheden en minimale guardrails zijn overeengekomen.",
-                 "Het is duidelijk wie wat beslist.",
-             ]),
-             ("Engaged", [
-                 "Een lean governance-ritme is operationeel.",
-                 "De teams kennen de guardrails.",
-             ]),
-             ("Guiding", [
-                 "Beslissingen stromen binnen de guardrails.",
-                 "Alleen uitzonderingen worden geëscaleerd.",
-             ]),
-             ("Assured", [
-                 "Conformance is aangetoond waar het werkelijk van belang is.",
-                 "De architectuurbeoordelingen worden opgevolgd.",
-             ]),
-             ("Effective", [
-                 "Governance maakt levering aantoonbaar mogelijk.",
-                 "De governance zelf wordt continu afgestemd en verlicht.",
-             ]),
-         ], sample=(3, 1)),
 ]
 
 # ─── Stijlhulpen ─────────────────────────────────────────────────────────────
