@@ -146,6 +146,17 @@
   .dec td{padding:13px 16px;border-top:1px solid var(--line);vertical-align:middle}
   .dec tr:nth-child(even) td{background:rgba(0,0,0,.015)}
   .dec .pr{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;padding:5px 11px;border-radius:30px;color:#fff;letter-spacing:.05em;text-transform:uppercase}
+  /* decision guide — replaces table */
+  .dtable{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:13px;overflow:hidden;margin-top:8px}
+  .dtable .dhead{display:grid;grid-template-columns:1.8fr 1fr;background:var(--ink);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+  .dtable .dhead span{padding:11px 16px}
+  .dtable .drow{display:grid;grid-template-columns:1.8fr 1fr;border-top:1px solid var(--line)}
+  .dtable .drow:last-child{border-bottom:none}
+  .dtable .drow:nth-child(even){background:rgba(0,0,0,.02)}
+  .dtable .dsit{padding:14px 16px;font-size:.94rem;color:var(--ink);display:flex;align-items:center;line-height:1.45}
+  .dtable .dact{padding:14px 16px;display:flex;flex-direction:column;gap:7px;justify-content:center;border-left:1px solid var(--line);background:var(--card)}
+  .dtable .dact .pr{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;padding:5px 12px;border-radius:30px;color:#fff;letter-spacing:.05em;text-transform:uppercase;align-self:flex-start;white-space:nowrap}
+  .dtable .dact .dalpha{font-size:.8rem;color:var(--ink-soft);font-family:"IBM Plex Mono",monospace;letter-spacing:.01em;line-height:1.5}
   /* mockups */
   .mock{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:.85rem}
   .mock .m-title{background:var(--ink);color:#fff;padding:10px 14px;border-radius:8px;font-family:"Fraunces",serif;font-size:1.05rem;font-weight:600;display:flex;justify-content:space-between;align-items:center}
@@ -456,15 +467,15 @@
   <div class="slide-body">
     <div class="areas3">
       <div class="area-bx cust"><div class="bar">Customer<small>de klant &amp; de behoefte</small></div><div class="alphas"><span><b>Opportunity</b>de zakelijke aanleiding</span><span><b>Stakeholders</b>alle betrokkenen</span></div></div>
-      <div class="area-bx sol"><div class="bar">Solution<small>wat je implementeert</small></div><div class="alphas"><span><b>Requirements</b>wat het moet doen</span><span><b>System</b>het systeem zelf</span><span><b>Architecture</b>de inrichtingskeuzes</span><span><b>Arch. Decisions</b>losse keuzes</span><span><b>Arch. Drivers</b>eisen die keuzes sturen</span></div></div>
-      <div class="area-bx end"><div class="bar">Endeavor<small>het project zelf</small></div><div class="alphas"><span><b>Work</b>het werk</span><span><b>Team</b>de mensen</span><span><b>Way of Working</b>hoe we werken</span><span><b>Governance</b>wie beslist wat</span></div></div>
+      <div class="area-bx sol"><div class="bar">Solution<small>wat je implementeert</small></div><div class="alphas"><span><b>Requirements</b>wat het moet doen</span><span><b>System</b>het systeem zelf</span></div></div>
+      <div class="area-bx end"><div class="bar">Endeavor<small>het project zelf</small></div><div class="alphas"><span><b>Work</b>het werk</span><span><b>Team</b>de mensen</span><span><b>Way of Working</b>hoe we werken</span></div></div>
     </div>
   </div>
     </div>
     <div class="slide-card" id="slide-7">
   <div class="kicker">Grondbeginselen · De kernel</div>
-  <h2 class="slide-title">De kernel — de twaalf universele aandachtspunten</h2>
-  <p class="sub">De kernel zegt je <b>wát</b> je moet bijhouden in elk project, nooit <b>hoe</b>. Het "hoe" komt van de practices die je er bovenop zet. De zeven kernel-alphas zijn altijd aanwezig; de practices voegen vijf extra alphas toe.</p>
+  <h2 class="slide-title">De kernel — de zeven universele aandachtspunten</h2>
+  <p class="sub">De kernel zegt je <b>wát</b> je moet bijhouden in elk project, nooit <b>hoe</b>. Het "hoe" komt van de practices die je er bovenop zet. De zeven kernel-alphas zijn altijd aanwezig; de practices brengen deze alphas verder.</p>
   <div class="slide-body">
     <div class="alphas-row">
       <div class="a-card"><span class="area" style="background:var(--cust)">Customer</span><h5>Opportunity</h5><p>De zakelijke behoefte: waarom is dit project de moeite waard? Wat willen we bereiken?</p></div>
@@ -474,7 +485,7 @@
       <div class="a-card"><span class="area" style="background:var(--end)">Endeavor</span><h5>Work</h5><p>De activiteiten en inspanning die nodig zijn om het resultaat te bereiken.</p></div>
       <div class="a-card"><span class="area" style="background:var(--end)">Endeavor</span><h5>Team</h5><p>De mensen die het systeem inrichten, implementeren en beheren.</p></div>
       <div class="a-card"><span class="area" style="background:var(--end)">Endeavor</span><h5>Way of Working</h5><p>Hoe het team samenwerkt: welke aanpak, welke afspraken, welke tools.</p></div>
-      <div class="a-card" style="border-top-color:var(--prac);background:var(--paper-2)"><span class="area" style="background:var(--prac)">Practices</span><h5>+ 5 practice-alphas</h5><p>MVA voegt toe: Architecture, Architecture Decisions, Architectural Drivers, Paved Road. MVG voegt toe: Governance.</p></div>
+      <div class="a-card" style="border-top-color:var(--prac);background:var(--paper-2)"><span class="area" style="background:var(--prac)">Practices</span><h5>Practices brengen kernel-alphas verder</h5><p>MVA brengt Opportunity, Requirements en System verder. MVG brengt Way of Working en Work verder. De practices voegen geen eigen alphas toe — ze sturen de voortgang van de kernel.</p></div>
     </div>
   </div>
     </div>
@@ -483,14 +494,14 @@
   <h2 class="slide-title">Voortgang = een stadium verder komen</h2>
   <p class="sub">Elke alpha groeit door vaste stadia — zoals een rijbewijs: theorie gehaald → praktijkexamen gedaan → rijbewijs ontvangen. Je kunt geen stap overslaan. Dat stadium bereiken is voortgang, niet het schrijven van een document erover.</p>
   <div class="slide-body">
-    <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--alpha);text-transform:uppercase;margin-top:8px">Voorbeeld · Architecture — de inrichtingskeuzes</p>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--alpha);text-transform:uppercase;margin-top:8px">Voorbeeld · Requirements — wat het systeem moet doen</p>
     <div class="track">
-      <span class="s"><span class="n">1</span>Envisioned</span><span class="ar">→</span>
-      <span class="s"><span class="n">2</span>Outlined</span><span class="ar">→</span>
-      <span class="s"><span class="n">3</span>Demonstrated</span><span class="ar">→</span>
-      <span class="s"><span class="n">4</span>Usable</span><span class="ar">→</span>
-      <span class="s"><span class="n">5</span>Established</span><span class="ar">→</span>
-      <span class="s"><span class="n">6</span>Evolving</span>
+      <span class="s"><span class="n">1</span>Conceived</span><span class="ar">→</span>
+      <span class="s"><span class="n">2</span>Bounded</span><span class="ar">→</span>
+      <span class="s"><span class="n">3</span>Coherent</span><span class="ar">→</span>
+      <span class="s"><span class="n">4</span>Acceptable</span><span class="ar">→</span>
+      <span class="s"><span class="n">5</span>Addressed</span><span class="ar">→</span>
+      <span class="s"><span class="n">6</span>Fulfilled</span>
     </div>
     <div class="callout" style="margin-top:18px">De taak van een practice is om <b>specifieke alphas</b> van het ene stadium naar het volgende te brengen. De manier van werken is niets anders dan de practices in de juiste volgorde toepassen totdat elke alpha het gewenste stadium heeft bereikt.</div>
   </div>
@@ -501,10 +512,12 @@
   <p class="sub">Door een eerlijke checklist — niet door gevoel of mening. Als een item niet aangevinkt kan worden, is dat stadium nog niet bereikt. Dit voorkomt "wij denken dat het klaar is"-verrassingen.</p>
   <div class="slide-body">
     <div class="check-card">
-      <h4>Architecture → Demonstrated (de inrichting is bewezen)</h4>
+      <h4>Requirements → Acceptable (eisen zijn aanvaardbaar)</h4>
       <ul>
-        <li><span class="cb">✔</span><span>De risicovolste keuzes zijn bewezen via een proof-of-concept, leveranciersevaluatie of sandbox-test.</span></li>
-        <li><span class="cb">✔</span><span>De sleutelbeslissingen zijn gevalideerd door concreet bewijs — niet door aanname.</span></li>
+        <li><span class="cb">✔</span><span>Stakeholders accepteren dat de requirements een aanvaardbare oplossing beschrijven.</span></li>
+        <li><span class="cb">✔</span><span>De waarde van het implementeren van de requirements is duidelijk.</span></li>
+        <li><span class="cb open">○</span><span>Het wijzigingstempo van overeengekomen requirements is laag en onder controle.</span></li>
+        <li><span class="cb open">○</span><span>De requirements zijn testbaar.</span></li>
       </ul>
     </div>
     <div class="check-card" style="border-left-color:var(--cust)">
@@ -537,7 +550,7 @@
       <div class="lvl sol"><span class="lh">Projectniveau</span><h4>Solution / Project — één specifiek project of dienst</h4><p>Erft de organisatiestandaarden; neemt zelf beslissingen over inrichting en integratie voor dit specifieke project.</p></div>
       <div class="lvl cmp"><span class="lh">Applicatieniveau</span><h4>Component — één applicatie of module</h4><p>Een onderdeel van het project, apart bijgehouden als het groot genoeg is om apart te sturen.</p></div>
     </div>
-    <div class="callout" style="margin-top:14px"><b>Praktisch:</b> dit werkboek beoordeelt op <b>projectniveau</b>. Alphas als de Paved Road zijn "geërfd" van de organisatie — die meet je op organisatieniveau.</div>
+    <div class="callout" style="margin-top:14px"><b>Praktisch:</b> dit werkboek beoordeelt op <b>projectniveau</b>. Het meet de zeven kernel-alphas. De practices (MVA, MVG) zijn het middel om die alphas verder te brengen.</div>
   </div>
     </div>
     <div class="slide-card" id="slide-12">
@@ -598,13 +611,12 @@
       </ul>
     </div>
     <div class="col">
-      <h3 style="color:var(--mva)">Aandachtspunten die het vooruitbrengt</h3>
+      <h3 style="color:var(--mva)">Kernel-alphas die het vooruitbrengt</h3>
       <ul>
-        <li><b>Architecture</b> (inrichtingskeuzes) → Established / Evolving</li>
-        <li><b>Architecture Decisions</b> (losse keuzes) → Validated</li>
-        <li><b>Architectural Drivers</b> (de eisen) → Sustained</li>
-        <li><b>Paved Road</b> (goedgekeurd productenpalet) → Pervasive</li>
-        <li><b>System</b> (het systeem zelf) → Demonstrable</li>
+        <li><b>Opportunity</b> → Value Established</li>
+        <li><b>Stakeholders</b> → In Agreement</li>
+        <li><b>Requirements</b> → Acceptable</li>
+        <li><b>System</b> → Demonstrable</li>
       </ul>
     </div>
   </div>
@@ -636,10 +648,11 @@
       </ul>
     </div>
     <div class="col">
-      <h3 style="color:var(--mvg)">Aandachtspunten die het vooruitbrengt</h3>
+      <h3 style="color:var(--mvg)">Kernel-alphas die het vooruitbrengt</h3>
       <ul>
-        <li><b>Governance</b> (sturing) → Effective</li>
-        <li><b>Way of Working</b> (hoe we samenwerken) → Foundation Established</li>
+        <li><b>Way of Working</b> → Foundation Established</li>
+        <li><b>Work</b> → Prepared / Under Control</li>
+        <li><b>Stakeholders</b> → In Agreement</li>
       </ul>
       <h3 style="color:var(--mvg);margin-top:12px">Wat MVG vervangt</h3>
       <ul>
@@ -701,15 +714,25 @@
   <h2 class="slide-title">Vastzit? Vraag: welk aandachtspunt houdt ons tegen?</h2>
   <p class="sub">Elk knelpunt in een project is te herleiden tot een aandachtspunt dat niet ver genoeg is. Gebruik dit overzicht als kompas.</p>
   <div class="slide-body">
-    <table class="dec">
-      <thead><tr><th>Als de situatie is…</th><th>Zet in…</th><th>Om vooruit te brengen…</th></tr></thead>
-      <tbody>
-        <tr><td>We weten niet goed wat we eigenlijk nodig hebben of waarom</td><td><span class="pr" style="background:var(--mva)">MVA — eisen in kaart brengen</span></td><td>Opportunity, Stakeholders, Architectural Drivers</td></tr>
-        <tr><td>We moeten een product of leverancier kiezen en we twijfelen</td><td><span class="pr" style="background:var(--mva)">MVA</span></td><td>Architecture, Architecture Decisions, Paved Road</td></tr>
-        <tr><td>Beslissingen lopen vast of projecten doen steeds andere dingen</td><td><span class="pr" style="background:var(--mvg)">MVG</span></td><td>Governance, Way of Working</td></tr>
-        <tr><td>We weten niet waar we staan in het project</td><td><span class="pr" style="background:var(--prac)">Het werkboek</span></td><td>(elk aandachtspunt — zie sectie 05)</td></tr>
-      </tbody>
-    </table>
+    <div class="dtable">
+      <div class="dhead"><span>Als de situatie is…</span><span>Zet in</span></div>
+      <div class="drow">
+        <div class="dsit">We weten niet goed wat we eigenlijk nodig hebben of waarom</div>
+        <div class="dact"><span class="pr" style="background:var(--mva)">MVA</span><span class="dalpha">Opportunity · Stakeholders<br>Requirements</span></div>
+      </div>
+      <div class="drow">
+        <div class="dsit">We moeten een product of leverancier kiezen en we twijfelen</div>
+        <div class="dact"><span class="pr" style="background:var(--mva)">MVA</span><span class="dalpha">Requirements · System</span></div>
+      </div>
+      <div class="drow">
+        <div class="dsit">Beslissingen lopen vast of projecten doen steeds andere dingen</div>
+        <div class="dact"><span class="pr" style="background:var(--mvg)">MVG</span><span class="dalpha">Way of Working · Work</span></div>
+      </div>
+      <div class="drow">
+        <div class="dsit">We weten niet waar we staan in het project</div>
+        <div class="dact"><span class="pr" style="background:var(--prac)">Werkboek</span><span class="dalpha">alle 7 kernel-alphas</span></div>
+      </div>
+    </div>
   </div>
     </div>
   </section>
@@ -752,7 +775,7 @@
     <div class="chips">
       <div class="chip" style="border-top:5px solid var(--ink)"><span class="pill" style="background:var(--ink)">Dashboard</span><h4>1 tabblad — de samenvatting</h4><p>Toont alle twaalf aandachtspunten in één overzicht: huidige stand, voortgang als balk, doeltoestand en status (volledig / bezig / niet gestart). Klik op een naam om naar het tabblad te springen.</p></div>
       <div class="chip" style="border-top:5px solid var(--kernel)"><span class="pill" style="background:var(--kernel)">Schaalniveaus</span><h4>1 tabblad — uitleg</h4><p>Legt uit op welk niveau het werkboek beoordeelt (projectniveau) en welke aandachtspunten geërfd zijn van de organisatie. Lees dit als eerste bij een nieuwe beoordeling.</p></div>
-      <div class="chip" style="border-top:5px solid var(--cust)"><span class="pill" style="background:var(--cust)">12 aandachtspunt-tabbladen</span><h4>Eén per aandachtspunt</h4><p>Toont de huidige stand, voortgang en de volledige checklist per stadium — aanvinkbaar. De tabkleur geeft het gebied aan, de kopkleur de eigenaar (MVA, MVG of Kernel).</p></div>
+      <div class="chip" style="border-top:5px solid var(--cust)"><span class="pill" style="background:var(--cust)">7 kernel-alpha-tabbladen</span><h4>Eén per kernel-aandachtspunt</h4><p>Toont de huidige stand, voortgang en de volledige checklist per stadium — aanvinkbaar. De tabkleur geeft het gebied aan. De practices zijn het middel; de kernel-alphas zijn de maatstaf.</p></div>
     </div>
     <div class="callout">Je ziet in één oogopslag: <b>waar</b> een aandachtspunt thuishoort (tabkleur) · <b>wie</b> het aanstuurt (kopkleur) · <b>op welk niveau</b> het gemeten wordt (chip rechtsboven).</div>
   </div>
@@ -774,14 +797,14 @@
     </div>
     <div class="col">
       <div class="mockA">
-        <div class="title-row">Architecture<span class="lvc">SOLUTION</span></div>
-        <div class="kpis"><div class="k"><div class="lab">HUIDIGE STAND</div><div class="val">Demonstrated</div></div><div class="k"><div class="lab">VOORTGANG</div><div class="val">64%</div></div><div class="k"><div class="lab">BEREIKT</div><div class="val">3 / 6</div></div><div class="k"><div class="lab">EIGENAAR</div><div class="val" style="font-size:.78rem">MVA · Solution</div></div></div>
+        <div class="title-row">Requirements<span class="lvc">SOLUTION</span></div>
+        <div class="kpis"><div class="k"><div class="lab">HUIDIGE STAND</div><div class="val">Coherent</div></div><div class="k"><div class="lab">VOORTGANG</div><div class="val">52%</div></div><div class="k"><div class="lab">BEREIKT</div><div class="val">3 / 6</div></div><div class="k"><div class="lab">EIGENAAR</div><div class="val" style="font-size:.78rem">Kernel · Solution</div></div></div>
         <div class="tab-h"><div>STADIUM</div><div>✔</div><div>CHECKLISTPUNT</div><div style="text-align:center">STATUS</div></div>
         <div class="grp">
-          <div class="sn">3. Demonstrated</div>
+          <div class="sn">3. Coherent</div>
           <div class="items">
-            <div class="c">✔</div><div class="t">De risicovolste keuzes zijn bewezen via proof-of-concept of leveranciersevaluatie.</div><div class="s">2 / 2 ✓</div>
-            <div class="c">✔</div><div class="t">De sleutelbeslissingen zijn gevalideerd door concreet bewijs.</div>
+            <div class="c">✔</div><div class="t">De requirements zijn vastgelegd en gedeeld met het team en stakeholders.</div><div class="s">3 / 7 ✓</div>
+            <div class="c">✔</div><div class="t">De prioriteit van de requirements is duidelijk.</div>
           </div>
         </div>
       </div>
@@ -795,14 +818,15 @@
     <div class="col">
       <div class="mock">
         <div class="m-title">EA Alpha Assessment<span class="chip-l">Projectniveau</span></div>
-        <div class="m-kpis"><div class="m-tile t1"><div class="lab">VOLTOOIING</div><div class="val">54%</div></div><div class="m-tile t2"><div class="lab">VOLLEDIG</div><div class="val">1 / 12</div></div><div class="m-tile t3"><div class="lab">ITEMS</div><div class="val">104/192</div></div></div>
+        <div class="m-kpis"><div class="m-tile t1"><div class="lab">VOLTOOIING</div><div class="val">52%</div></div><div class="m-tile t2"><div class="lab">VOLLEDIG</div><div class="val">1 / 7</div></div><div class="m-tile t3"><div class="lab">ITEMS</div><div class="val">76/146</div></div></div>
         <div class="m-row head"><div>AANDACHTSPUNT</div><div>OWN</div><div>LVL</div><div>STATE</div><div>VOORTGANG</div><div>STATUS</div></div>
         <div class="m-row area">CUSTOMER</div>
         <div class="m-row"><div>Opportunity</div><div class="own">Kr</div><div class="lv">Sol</div><div>Value Established</div><div class="bar"><i style="width:65%"></i><span>65%</span></div><div class="stt">● Bezig</div></div>
         <div class="m-row area sol">SOLUTION</div>
-        <div class="m-row"><div>Architecture</div><div class="own mva">MVA</div><div class="lv">Sol</div><div>Demonstrated</div><div class="bar"><i style="width:64%"></i><span>64%</span></div><div class="stt">● Bezig</div></div>
-        <div class="m-row"><div>Paved Road</div><div class="own mva">MVA</div><div class="lv ent">Ent</div><div>Established</div><div class="bar"><i style="width:50%"></i><span>50%</span></div><div class="stt">● Bezig</div></div>
-        <div class="m-row"><div>Governance</div><div class="own mvg">MVG</div><div class="lv spn">Spn</div><div>Guiding</div><div class="bar"><i style="width:70%"></i><span>70%</span></div><div class="stt">● Bezig</div></div>
+        <div class="m-row"><div>Requirements</div><div class="own">Kr</div><div class="lv">Sol</div><div>Coherent</div><div class="bar"><i style="width:52%"></i><span>52%</span></div><div class="stt">● Bezig</div></div>
+        <div class="m-row"><div>System</div><div class="own">Kr</div><div class="lv">Sol</div><div>Architecture Selected</div><div class="bar"><i style="width:33%"></i><span>33%</span></div><div class="stt">● Bezig</div></div>
+        <div class="m-row area end">ENDEAVOR</div>
+        <div class="m-row"><div>Way of Working</div><div class="own">Kr</div><div class="lv">Sol</div><div>Foundation Established</div><div class="bar"><i style="width:60%"></i><span>60%</span></div><div class="stt">● Bezig</div></div>
       </div>
     </div>
     <div class="col">
