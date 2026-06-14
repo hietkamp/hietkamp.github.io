@@ -1,0 +1,33 @@
+C4Container
+  title Architecture Definition (MVA) — C4 Level 2 Containers
+
+  Person(gebruiker, "Eindgebruiker", "Voert bedrijfsprocessen uit")
+  Person(beheerder, "Beheerder", "Configureert het platform")
+
+  Container(portaal, "Portaal / UI", "SaaS · Web", "Self-service portaal · ✔ Paved Road\n[Container: SaaS Portal]")
+  Container(cots_a, "COTS Pakket A", "SaaS · Enterprise", "Primaire functionaliteit · bijv. ERP\n[Container: SaaS] ✔ Paved Road")
+  Container(cots_b, "COTS Pakket B", "SaaS", "Ondersteunende functionaliteit · bijv. CRM\n[Container: SaaS] ✔ Paved Road")
+  Container(integratie, "Integratie-laag", "API Gateway / iPaaS", "Orkestreert data tussen containers\n[Container: API GW] ✔ Paved Road")
+
+  System_Ext(idp, "Identity Provider", "SSO · Entra ID / Okta\n[Extern — Paved Road]")
+  System_Ext(bron, "Extern bronsysteem", "Levert of ontvangt data\n[Extern]")
+  System_Ext(obs, "Monitoring & Logging", "Datadog / Splunk · SLA-bewaking\n[Extern — Paved Road]")
+
+  Rel(gebruiker, portaal, "Gebruikt", "HTTPS / SSO")
+  Rel(beheerder, cots_a, "Configureert", "Admin-console")
+  Rel(portaal, idp, "Authenticeert via", "OIDC")
+  Rel(portaal, cots_a, "Haalt data op", "REST API")
+  Rel(cots_a, integratie, "Publiceert events", "CloudEvents")
+  Rel(cots_b, integratie, "Ontvangt events", "CloudEvents")
+  Rel(integratie, bron, "Synchroniseert", "REST / Event")
+  Rel(obs, cots_a, "Observeert", "Metrics / Logs")
+
+  UpdateElementStyle(gebruiker, $bgColor="#08427b", $fontColor="#ffffff")
+  UpdateElementStyle(beheerder, $bgColor="#08427b", $fontColor="#ffffff")
+  UpdateElementStyle(portaal, $bgColor="#438dd5", $fontColor="#ffffff")
+  UpdateElementStyle(cots_a, $bgColor="#438dd5", $fontColor="#ffffff")
+  UpdateElementStyle(cots_b, $bgColor="#438dd5", $fontColor="#ffffff")
+  UpdateElementStyle(integratie, $bgColor="#438dd5", $fontColor="#ffffff")
+  UpdateElementStyle(idp, $bgColor="#999999", $fontColor="#ffffff")
+  UpdateElementStyle(bron, $bgColor="#999999", $fontColor="#ffffff")
+  UpdateElementStyle(obs, $bgColor="#999999", $fontColor="#ffffff")

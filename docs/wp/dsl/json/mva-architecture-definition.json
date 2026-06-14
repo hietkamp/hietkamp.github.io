@@ -1,0 +1,349 @@
+{
+  "configuration" : { },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 0,
+  "model" : {
+    "people" : [ {
+      "description" : "Voert bedrijfsprocessen uit",
+      "id" : "1",
+      "name" : "Eindgebruiker",
+      "properties" : {
+        "structurizr.dsl.identifier" : "gebruiker"
+      },
+      "relationships" : [ {
+        "description" : "Gebruikt",
+        "destinationId" : "4",
+        "id" : "14",
+        "sourceId" : "1",
+        "tags" : "Relationship",
+        "technology" : "HTTPS"
+      }, {
+        "description" : "Gebruikt",
+        "destinationId" : "3",
+        "id" : "15",
+        "linkedRelationshipId" : "14",
+        "sourceId" : "1",
+        "technology" : "HTTPS"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "description" : "Configureert het platform",
+      "id" : "2",
+      "name" : "Beheerder",
+      "properties" : {
+        "structurizr.dsl.identifier" : "beheerder"
+      },
+      "relationships" : [ {
+        "description" : "Configureert",
+        "destinationId" : "5",
+        "id" : "16",
+        "sourceId" : "2",
+        "tags" : "Relationship",
+        "technology" : "Admin-console"
+      }, {
+        "description" : "Configureert",
+        "destinationId" : "3",
+        "id" : "17",
+        "linkedRelationshipId" : "16",
+        "sourceId" : "2",
+        "technology" : "Admin-console"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "containers" : [ {
+        "description" : "Self-service voor eindgebruikers\n✔ Paved Road",
+        "documentation" : { },
+        "id" : "4",
+        "name" : "Portaal / UI",
+        "properties" : {
+          "structurizr.dsl.identifier" : "portaal"
+        },
+        "relationships" : [ {
+          "description" : "Haalt data op",
+          "destinationId" : "5",
+          "id" : "8",
+          "sourceId" : "4",
+          "tags" : "Relationship",
+          "technology" : "REST API"
+        }, {
+          "description" : "Authenticeert via",
+          "destinationId" : "11",
+          "id" : "18",
+          "sourceId" : "4",
+          "tags" : "Relationship",
+          "technology" : "OIDC"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "SaaS Web"
+      }, {
+        "description" : "Primaire functionaliteit\nbijv. ERP / Finance · ✔ Paved Road",
+        "documentation" : { },
+        "id" : "5",
+        "name" : "COTS Pakket A",
+        "properties" : {
+          "structurizr.dsl.identifier" : "cots_a"
+        },
+        "relationships" : [ {
+          "description" : "Publiceert events",
+          "destinationId" : "7",
+          "id" : "9",
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : "CloudEvents"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "SaaS Enterprise"
+      }, {
+        "description" : "Ondersteunende functionaliteit\nbijv. CRM / Service · ✔ Paved Road",
+        "documentation" : { },
+        "id" : "6",
+        "name" : "COTS Pakket B",
+        "properties" : {
+          "structurizr.dsl.identifier" : "cots_b"
+        },
+        "relationships" : [ {
+          "description" : "Ontvangt events",
+          "destinationId" : "7",
+          "id" : "10",
+          "sourceId" : "6",
+          "tags" : "Relationship",
+          "technology" : "CloudEvents"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "SaaS"
+      }, {
+        "description" : "Orkestreert berichten\ntussen containers en externe systemen\n✔ Paved Road",
+        "documentation" : { },
+        "id" : "7",
+        "name" : "Integratie-laag",
+        "properties" : {
+          "structurizr.dsl.identifier" : "integratie"
+        },
+        "relationships" : [ {
+          "description" : "Synchroniseert",
+          "destinationId" : "13",
+          "id" : "20",
+          "sourceId" : "7",
+          "tags" : "Relationship",
+          "technology" : "REST / Event"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "API Gateway / iPaaS"
+      } ],
+      "description" : "COTS-platform",
+      "documentation" : { },
+      "id" : "3",
+      "name" : "Systeem in scope",
+      "properties" : {
+        "structurizr.dsl.identifier" : "systeem"
+      },
+      "relationships" : [ {
+        "description" : "Authenticeert via",
+        "destinationId" : "11",
+        "id" : "19",
+        "linkedRelationshipId" : "18",
+        "sourceId" : "3",
+        "technology" : "OIDC"
+      }, {
+        "description" : "Synchroniseert",
+        "destinationId" : "13",
+        "id" : "21",
+        "linkedRelationshipId" : "20",
+        "sourceId" : "3",
+        "technology" : "REST / Event"
+      } ],
+      "tags" : "Element,Software System"
+    }, {
+      "description" : "SSO · bijv. Entra ID",
+      "documentation" : { },
+      "id" : "11",
+      "name" : "Identity Provider",
+      "properties" : {
+        "structurizr.dsl.identifier" : "idp"
+      },
+      "tags" : "Element,Software System,External,PavedRoad"
+    }, {
+      "description" : "Datadog / Splunk · SLA-bewaking",
+      "documentation" : { },
+      "id" : "12",
+      "name" : "Monitoring & Logging",
+      "properties" : {
+        "structurizr.dsl.identifier" : "obs"
+      },
+      "relationships" : [ {
+        "description" : "Observeert",
+        "destinationId" : "5",
+        "id" : "22",
+        "sourceId" : "12",
+        "tags" : "Relationship",
+        "technology" : "Metrics / Logs"
+      }, {
+        "description" : "Observeert",
+        "destinationId" : "3",
+        "id" : "23",
+        "linkedRelationshipId" : "22",
+        "sourceId" : "12",
+        "technology" : "Metrics / Logs"
+      }, {
+        "description" : "Observeert",
+        "destinationId" : "6",
+        "id" : "24",
+        "sourceId" : "12",
+        "tags" : "Relationship",
+        "technology" : "Metrics / Logs"
+      } ],
+      "tags" : "Element,Software System,External,PavedRoad"
+    }, {
+      "description" : "Levert of ontvangt data",
+      "documentation" : { },
+      "id" : "13",
+      "name" : "Extern bronsysteem",
+      "properties" : {
+        "structurizr.dsl.identifier" : "bron"
+      },
+      "tags" : "Element,Software System,External"
+    } ]
+  },
+  "name" : "MVA — Architecture Definition",
+  "properties" : {
+    "structurizr.inspection.error" : "4",
+    "structurizr.dsl" : "d29ya3NwYWNlICJNVkEg4oCUIEFyY2hpdGVjdHVyZSBEZWZpbml0aW9uIiB7CgogIG1vZGVsIHsKICAgIGdlYnJ1aWtlciA9IHBlcnNvbiAiRWluZGdlYnJ1aWtlciIgIlZvZXJ0IGJlZHJpamZzcHJvY2Vzc2VuIHVpdCIKICAgIGJlaGVlcmRlciA9IHBlcnNvbiAiQmVoZWVyZGVyIiAiQ29uZmlndXJlZXJ0IGhldCBwbGF0Zm9ybSIKCiAgICBzeXN0ZWVtID0gc29mdHdhcmVTeXN0ZW0gIlN5c3RlZW0gaW4gc2NvcGUiICJDT1RTLXBsYXRmb3JtIiB7CiAgICAgIHBvcnRhYWwgICA9IGNvbnRhaW5lciAiUG9ydGFhbCAvIFVJIiAiU2VsZi1zZXJ2aWNlIHZvb3IgZWluZGdlYnJ1aWtlcnNcbuKclCBQYXZlZCBSb2FkIiAiU2FhUyBXZWIiCiAgICAgIGNvdHNfYSAgICA9IGNvbnRhaW5lciAiQ09UUyBQYWtrZXQgQSIgIlByaW1haXJlIGZ1bmN0aW9uYWxpdGVpdFxuYmlqdi4gRVJQIC8gRmluYW5jZSDCtyDinJQgUGF2ZWQgUm9hZCIgIlNhYVMgRW50ZXJwcmlzZSIKICAgICAgY290c19iICAgID0gY29udGFpbmVyICJDT1RTIFBha2tldCBCIiAiT25kZXJzdGV1bmVuZGUgZnVuY3Rpb25hbGl0ZWl0XG5iaWp2LiBDUk0gLyBTZXJ2aWNlIMK3IOKclCBQYXZlZCBSb2FkIiAiU2FhUyIKICAgICAgaW50ZWdyYXRpZSA9IGNvbnRhaW5lciAiSW50ZWdyYXRpZS1sYWFnIiAiT3JrZXN0cmVlcnQgYmVyaWNodGVuXG50dXNzZW4gY29udGFpbmVycyBlbiBleHRlcm5lIHN5c3RlbWVuXG7inJQgUGF2ZWQgUm9hZCIgIkFQSSBHYXRld2F5IC8gaVBhYVMiCgogICAgICBwb3J0YWFsICAgIC0+IGNvdHNfYSAgICAiSGFhbHQgZGF0YSBvcCIgIlJFU1QgQVBJIgogICAgICBjb3RzX2EgICAgIC0+IGludGVncmF0aWUgIlB1YmxpY2VlcnQgZXZlbnRzIiAiQ2xvdWRFdmVudHMiCiAgICAgIGNvdHNfYiAgICAgLT4gaW50ZWdyYXRpZSAiT250dmFuZ3QgZXZlbnRzIiAiQ2xvdWRFdmVudHMiCiAgICB9CgogICAgaWRwID0gc29mdHdhcmVTeXN0ZW0gIklkZW50aXR5IFByb3ZpZGVyIiAiU1NPIMK3IGJpanYuIEVudHJhIElEIiAiRXh0ZXJuYWwsUGF2ZWRSb2FkIgogICAgb2JzID0gc29mdHdhcmVTeXN0ZW0gIk1vbml0b3JpbmcgJiBMb2dnaW5nIiAiRGF0YWRvZyAvIFNwbHVuayDCtyBTTEEtYmV3YWtpbmciICJFeHRlcm5hbCxQYXZlZFJvYWQiCiAgICBicm9uID0gc29mdHdhcmVTeXN0ZW0gIkV4dGVybiBicm9uc3lzdGVlbSIgIkxldmVydCBvZiBvbnR2YW5ndCBkYXRhIiAiRXh0ZXJuYWwiCgogICAgZ2VicnVpa2VyICAtPiBwb3J0YWFsICAgICJHZWJydWlrdCIgIkhUVFBTIgogICAgYmVoZWVyZGVyICAtPiBjb3RzX2EgICAgICJDb25maWd1cmVlcnQiICJBZG1pbi1jb25zb2xlIgogICAgcG9ydGFhbCAgICAtPiBpZHAgICAgICAgICJBdXRoZW50aWNlZXJ0IHZpYSIgIk9JREMiCiAgICBpbnRlZ3JhdGllIC0+IGJyb24gICAgICAgIlN5bmNocm9uaXNlZXJ0IiAiUkVTVCAvIEV2ZW50IgogICAgb2JzICAgICAgICAtPiBjb3RzX2EgICAgICJPYnNlcnZlZXJ0IiAiTWV0cmljcyAvIExvZ3MiCiAgICBvYnMgICAgICAgIC0+IGNvdHNfYiAgICAgIk9ic2VydmVlcnQiICJNZXRyaWNzIC8gTG9ncyIKICB9CgogIHZpZXdzIHsKICAgIGNvbnRhaW5lciBzeXN0ZWVtICJDb250YWluZXJzIiB7CiAgICAgIGluY2x1ZGUgKgogICAgICBhdXRvTGF5b3V0CiAgICB9CiAgICAKICAgIHN0eWxlcyB7CiAgICAgIGVsZW1lbnQgIlBlcnNvbiIgewogICAgICAgIHNoYXBlIFBlcnNvbgogICAgICAgIGJhY2tncm91bmQgIzA4NDI3YgogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMwogICAgICB9CiAgICAgIGVsZW1lbnQgIlNvZnR3YXJlIFN5c3RlbSIgewogICAgICAgIGJhY2tncm91bmQgIzExNjhiZAogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMwogICAgICB9CiAgICAgIGVsZW1lbnQgIkNvbnRhaW5lciIgewogICAgICAgIGJhY2tncm91bmQgIzQzOGRkNQogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIkV4dGVybmFsIiB7CiAgICAgICAgYmFja2dyb3VuZCAjOTk5OTk5CiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEyCiAgICAgIH0KICAgICAgZWxlbWVudCAiUGF2ZWRSb2FkIiB7CiAgICAgICAgYmFja2dyb3VuZCAjMGY2ZTYzCiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEyCiAgICAgIH0KICAgICAgZWxlbWVudCAiR292ZXJuYW5jZSIgewogICAgICAgIGJhY2tncm91bmQgIzRiM2Y5ZQogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIkRyaXZlciIgewogICAgICAgIGJhY2tncm91bmQgI2JiN2ExNgogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIk9mZlJvYWQiIHsKICAgICAgICBiYWNrZ3JvdW5kICNjNDdkMGUKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJEZWNpc2lvbiIgewogICAgICAgIGJhY2tncm91bmQgIzFhNTY5OAogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIHJlbGF0aW9uc2hpcCAiUmVsYXRpb25zaGlwIiB7CiAgICAgICAgZm9udFNpemUgMTEKICAgICAgICBjb2xvciAjNTI0ZDQyCiAgICAgIH0KICAgIH0KCiAgfQp9",
+    "structurizr.inspection.info" : "0",
+    "structurizr.inspection.ignore" : "0",
+    "structurizr.inspection.warning" : "0"
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "background" : "#438dd5",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Container"
+        }, {
+          "background" : "#1a5698",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Decision"
+        }, {
+          "background" : "#bb7a16",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Driver"
+        }, {
+          "background" : "#999999",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "External"
+        }, {
+          "background" : "#4b3f9e",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Governance"
+        }, {
+          "background" : "#c47d0e",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "OffRoad"
+        }, {
+          "background" : "#0f6e63",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "PavedRoad"
+        }, {
+          "background" : "#08427b",
+          "color" : "#ffffff",
+          "fontSize" : 13,
+          "shape" : "Person",
+          "tag" : "Person"
+        }, {
+          "background" : "#1168bd",
+          "color" : "#ffffff",
+          "fontSize" : 13,
+          "tag" : "Software System"
+        } ],
+        "relationships" : [ {
+          "color" : "#524d42",
+          "fontSize" : 11,
+          "tag" : "Relationship"
+        } ]
+      },
+      "terminology" : { }
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "5",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "7",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "11",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "12",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "13",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "Containers",
+      "name" : "Container View: Systeem in scope",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "10"
+      }, {
+        "id" : "14"
+      }, {
+        "id" : "16"
+      }, {
+        "id" : "18"
+      }, {
+        "id" : "20"
+      }, {
+        "id" : "22"
+      }, {
+        "id" : "24"
+      }, {
+        "id" : "8"
+      }, {
+        "id" : "9"
+      } ],
+      "softwareSystemId" : "3"
+    } ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#1168bd",
+    "primaryTextColor": "#ffffff",
+    "primaryBorderColor": "#0a4d9e",
+    "lineColor": "#524d42",
+    "secondaryColor": "#438dd5",
+    "tertiaryColor": "#f3efe6",
+    "background": "#f3efe6",
+    "mainBkg": "#1168bd",
+    "nodeBorder": "#0a4d9e",
+    "clusterBkg": "#e8f0fa",
+    "titleColor": "#1c1a16",
+    "edgeLabelBackground": "#fbf9f3",
+    "fontFamily": "IBM Plex Sans, system-ui, sans-serif",
+    "fontSize": "13px"
+  }
+}

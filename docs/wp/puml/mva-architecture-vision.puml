@@ -1,0 +1,52 @@
+@startuml
+!include <archimate/Archimate>
+skinparam backgroundColor #F3EFE6
+skinparam shadowing false
+skinparam roundCorner 6
+skinparam defaultFontSize 10
+skinparam defaultFontName "IBM Plex Sans"
+skinparam ArchiMateBorderColor #888888
+skinparam ArchiMateElementFontColor #1C1A16
+skinparam ArchiMateElementBorderThickness 1
+skinparam ArrowColor #524D42
+skinparam ArrowFontSize 9
+skinparam ArrowFontColor #524D42
+skinparam noteFontSize 9
+skinparam noteFontColor #524D42
+skinparam noteBackgroundColor #FBF9F3
+skinparam noteBorderColor #D8D0BF
+title Architecture Vision — ArchiMate Motivatielaag
+left to right direction
+
+rectangle "Externe omgeving" as env #FFFFF0 {
+  Motivation_Driver(d1, "Driver D1\nStrategisch doel")
+  Motivation_Driver(d2, "Driver D2\nKwaliteitsattribuut")
+  Motivation_Driver(d3, "Driver D3\nBeperking")
+  Motivation_Assessment(a1, "Assessment\nSterkte / Risico")
+}
+
+rectangle "Doelen & principes" as gp #F0FFF0 {
+  Motivation_Goal(g1, "Doel 1\nbijv. Operationeel 24/7")
+  Motivation_Goal(g2, "Doel 2\nbijv. Kostenbeheer")
+  Motivation_Principle(p1, "Principe P1\nCloud-first")
+  Motivation_Principle(p2, "Principe P2\nKoop voor gebruik")
+  Motivation_Requirement(r1, "ASR-01\nUptime 99,5%")
+}
+
+rectangle "Oplossingsrichting (COTS)" as sol #F0FFFF {
+  Application_Component(ac1, "COTS Pakket A\nbijv. ERP")
+  Application_Component(ac2, "COTS Pakket B\nbijv. CRM")
+  Application_Interface(ai1, "Integratie-laag\nbijv. API Gateway")
+}
+
+Rel_Influence(d1, g1, "")
+Rel_Influence(d2, g2, "")
+Rel_Influence(d3, r1, "")
+Rel_Influence(a1, g1, "")
+Rel_Realization(g1, p1, "")
+Rel_Realization(g2, p2, "")
+Rel_Realization(r1, ac1, "")
+Rel_Association(ac1, ai1, "")
+Rel_Association(ac2, ai1, "")
+
+@enduml

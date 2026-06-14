@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Paved Roads – MVA Work Product</title>
+<meta name="description" content="Het herbruikbare fundament waarop teams implementeren. Goedgekeurde producten, patronen en standaarden. On-road = geen review nodig.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3efe6;--paper-2:#ece6d8;--ink:#1c1a16;--ink-soft:#524d42;
+  --line:#d8d0bf;--card:#fbf9f3;--prac:#0f6e63;
+  --alpha:#0f6e63;--product:#bb7a16;--activity:#1f5fa8;--role:#9c3f76;--pattern:#b1492e;
+  scroll-behavior:smooth;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(circle at 10% -8%,#fef5ed 0%,transparent 50%),radial-gradient(circle at 95% 0%,#e6efe9 0%,transparent 42%),var(--paper);}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.4;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 26px 90px}
+.breadcrumb{padding:16px 0 0;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);display:flex;align-items:center;gap:8px}
+.breadcrumb a{color:var(--prac);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+header.hero{padding:28px 0 22px;border-bottom:3px solid var(--prac);margin-bottom:24px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--prac);margin-bottom:6px}
+h1{font-family:"Fraunces",serif;font-optical-sizing:auto;font-weight:900;font-size:clamp(2rem,5vw,3.6rem);line-height:.98;margin:.14em 0 .14em;letter-spacing:-.015em}
+h1 em{font-style:italic;font-weight:500;color:var(--prac)}
+.lede{font-size:clamp(.98rem,1.4vw,1.1rem);max-width:66ch;color:var(--ink-soft);margin:.6em 0 1em}
+.meta-pills{display:flex;flex-wrap:wrap;gap:8px}
+.meta-pills span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;border:1px solid var(--ink);border-radius:30px;padding:5px 12px;background:var(--card)}
+.download-strip{display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--prac);border-radius:12px;padding:18px 22px;margin-bottom:28px}
+.dl-info{display:flex;align-items:center;gap:16px}
+.dl-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dl-label{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--prac);margin-bottom:2px}
+.dl-name{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:600;margin-bottom:1px}
+.dl-desc{font-size:.83rem;color:var(--ink-soft)}
+a.dl-btn{display:inline-flex;align-items:center;gap:7px;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.05em;border:2px solid var(--prac);background:var(--prac);color:#fff;padding:10px 20px;border-radius:30px;text-decoration:none;white-space:nowrap;transition:.15s;flex-shrink:0}
+a.dl-btn:hover{background:transparent;color:var(--prac)}
+.content-section{margin-bottom:32px}
+.content-section h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.45rem;margin:0 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.content-section p{color:var(--ink-soft);margin:0 0 10px}
+.content-section ul{color:var(--ink-soft);padding-left:20px;margin:0 0 10px}
+.content-section li{margin-bottom:4px}
+
+
+
+
+
+
+.struct-table{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0}
+.struct-table th{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--prac);text-align:left;padding:6px 10px;border-bottom:1px solid var(--prac);font-weight:600}
+.struct-table td{padding:6px 10px;border-bottom:1px dashed var(--line);color:var(--ink-soft);vertical-align:top}
+.struct-table td:first-child{font-weight:600;color:var(--ink);width:35%}
+.tip-list{list-style:none;margin:0;padding:0}
+.tip-list li{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.92rem;color:var(--ink-soft)}
+.tip-list li:last-child{border-bottom:none}
+.tip-list .tip-icon{color:var(--prac);font-size:1rem;flex-shrink:0;margin-top:1px}
+footer.page-footer{margin-top:48px;border-top:2px solid var(--ink);padding-top:14px;font-size:.82rem;color:var(--ink-soft)}
+.skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0;outline:none}
+.skip-link:focus-visible{top:0}
+.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--line);backdrop-filter:blur(6px);border-top:3px solid transparent;border-image:linear-gradient(90deg,#d44f0e,#e87830) 1}
+.site-nav-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:center;height:52px;gap:0}
+.site-nav-logo{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:var(--ink);text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:-.01em;flex-shrink:0}
+.site-nav-logo em{font-style:italic;font-weight:500;color:#d44f0e}
+.site-nav-list{display:flex;list-style:none;margin:0;padding:0;gap:2px;align-items:center}
+.site-nav-list>li>a,.site-nav-list>li>button{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 10px;border-radius:6px;border:none;background:transparent;cursor:pointer;transition:.12s;line-height:1;display:flex;align-items:center;gap:4px;min-height:25px;white-space:nowrap}
+.site-nav-list>li>a:hover,.site-nav-list>li>button:hover{color:var(--ink);background:var(--paper-2)}
+.has-drop{position:relative}
+.has-drop .drop{display:none;position:absolute;top:calc(100% + 4px);right:0;min-width:240px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 30px -22px rgba(28,26,22,.55);padding:5px;list-style:none;margin:0;z-index:200}
+.has-drop.open .drop{display:block}
+.drop li a{display:flex;align-items:center;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:12px;color:var(--ink-soft);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s}
+.drop li a:hover{background:var(--paper-2);color:var(--ink)}
+.drop-label{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5a5040;padding:6px 10px 2px;display:block}
+:focus-visible{outline:3px solid #d44f0e;outline-offset:2px}
+.site-nav-toggle{display:none;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:none;background:transparent;cursor:pointer;border-radius:6px;flex-shrink:0;color:var(--ink);margin-left:8px}
+.site-nav-toggle:hover{background:var(--paper-2)}
+.site-nav-toggle .bar{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .22s,opacity .22s,margin .22s}
+.site-nav-toggle .bar+.bar{margin-top:5px}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(2){opacity:0;margin-top:0}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:700px){
+  .site-nav-toggle{display:flex}
+  .site-nav-menu{display:none;position:fixed;top:52px;left:0;right:0;background:var(--paper);border-bottom:2px solid var(--ink);z-index:98;padding:12px 18px 20px}
+  .site-nav-menu.open{display:block}
+  .site-nav-list{flex-direction:column;gap:0}
+  .site-nav-list>li>a,.site-nav-list>li>button{font-size:15px;padding:14px 12px;border-bottom:1px solid var(--line);width:100%;min-height:48px}
+  .has-drop .drop{position:static;box-shadow:none;border:none;border-radius:8px;margin:4px 0 8px;background:var(--paper-2);display:none}
+  .has-drop.open .drop{display:block}
+  .download-strip{flex-direction:column;align-items:flex-start}
+}
+.site-contribute{background:var(--ink);color:#ddd8ce;padding:22px 0;margin-top:32px}
+.site-contribute-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:flex-start;gap:14px;font-size:.84rem;line-height:1.55}
+.site-contribute strong{color:#f3efe6}
+.site-contribute a{color:#aac4f0;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.site-contribute a:hover{color:#fff}
+.site-contribute-icon{flex-shrink:0;fill:#ddd8ce;margin-top:2px}
+@media(max-width:600px){.site-contribute-inner{flex-direction:column;gap:10px}}
+@media print{.site-nav,.skip-link,.site-contribute{display:none}}
+
+  .content-section h3{font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;margin:20px 0 6px;color:var(--ink)}
+  .layer-num{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--prac);background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:3px 10px;margin-right:8px;vertical-align:middle}
+  .on{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-family:"IBM Plex Mono",monospace;background:#dcfce7;color:#166534;font-weight:600;white-space:nowrap}
+  .ok{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-family:"IBM Plex Mono",monospace;background:#fef9c3;color:#854d0e;font-weight:600;white-space:nowrap}
+  .no{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-family:"IBM Plex Mono",monospace;background:#fee2e2;color:#991b1b;font-weight:600;white-space:nowrap}
+  .archimate-section{margin-bottom:36px}
+  .archimate-section p{color:var(--ink-soft);margin:0 0 10px}
+  .archimate-section .mapping-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:0 0 10px}
+  .archimate-section .mapping-table th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--prac);text-align:left;
+    padding:5px 10px;border-bottom:1px solid var(--prac);font-weight:600}
+  .archimate-section .mapping-table td{padding:5px 10px;border-bottom:1px dashed var(--line);
+    vertical-align:top;color:var(--ink-soft)}
+  .archimate-section .mapping-table td:first-child{font-weight:600;color:var(--ink);width:22%}
+  .archimate-section .mapping-table td:nth-child(2){color:var(--prac);width:26%}
+  .archimate-section .swatch{display:inline-block;width:11px;height:11px;border-radius:2px;
+    margin-right:4px;vertical-align:middle;border:1px solid rgba(0,0,0,.1)}
+  .archimate-section .ref{font-size:.8rem;color:var(--ink-soft);border-top:1px dashed var(--line);
+    padding-top:8px;margin-top:4px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Ga naar de hoofdinhoud</a>
+<header class="site-nav" role="banner">
+  <div class="site-nav-inner">
+    <a class="site-nav-logo" href="../index.html">Essence <em>Way of Working</em></a>
+    <nav id="site-nav-menu" class="site-nav-menu" aria-label="Sitenavigatie">
+      <ul class="site-nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li class="has-drop">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="practices-menu">Practices <span aria-hidden="true">&#9662;</span></button>
+          <ul class="drop" id="practices-menu">
+            <span class="drop-label" aria-hidden="true">Twee practices</span>
+            <li><a href="../mva-essence-practice.html">Min. Viable Architecture</a></li>
+            <li><a href="../mvg-essence-practice.html">Min. Viable Governance</a></li>
+          </ul>
+        </li>
+        <li><a href="../resources.html">Bronnen</a></li>
+      </ul>
+    </nav>
+    <button class="site-nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="site-nav-menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="wrap" id="main-content">
+  <div class="breadcrumb">
+    <a href="../mva-essence-practice.html">← Min. Viable Architecture</a>
+    <span>/</span>
+    <span>Paved Roads</span>
+  </div>
+
+  <header class="hero">
+    <div class="kicker">MVA Work Product · Technologielaag</div>
+    <h1>Paved Roads<br><em>servicechassis &amp; standaardencatalogus</em></h1>
+    <p class="lede">Een Paved Road is geen policy-document maar een gestructureerd aanbod van gesanctioneerde keuzes per laag — met bijbehorende ondersteuning én een expliciete off-road-procedure voor wie ervan afwijkt. On-road betekent: geen review nodig, gewoon gebruiken. Off-road betekent: ADR verplicht vóór gebruik.</p>
+    <div class="meta-pills">
+      <span>Technologielaag</span>
+      <span>Formaat: Excel (.xlsx)</span>
+      <span>Bewijst: Paved Road → Established → Adopted</span>
+    </div>
+  </header>
+
+  <div class="download-strip">
+    <div class="dl-info">
+      <div class="dl-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <rect width="36" height="36" rx="8" fill="#dcfce7"/>
+          <rect x="7" y="7" width="22" height="22" rx="2" fill="#16a34a" opacity=".12"/>
+          <rect x="7" y="7" width="22" height="22" rx="2" stroke="#16a34a" stroke-width="1.5" fill="none"/>
+          <line x1="7" y1="13" x2="29" y2="13" stroke="#16a34a" stroke-width="1.2"/>
+          <line x1="7" y1="19" x2="29" y2="19" stroke="#16a34a" stroke-width="1.2"/>
+          <line x1="7" y1="25" x2="29" y2="25" stroke="#16a34a" stroke-width="1.2"/>
+          <line x1="14" y1="7" x2="14" y2="29" stroke="#16a34a" stroke-width="1.2"/>
+          <line x1="21" y1="7" x2="21" y2="29" stroke="#16a34a" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <div>
+        <div class="dl-label">Sjabloon</div>
+        <div class="dl-name">mva-paved-roads.xlsx</div>
+        <div class="dl-desc">Excel-catalogus met producten, patronen, standaarden en adoptiestatus</div>
+      </div>
+    </div>
+    <a class="dl-btn" href="downloads/mva-paved-roads.xlsx" download>⬇ Download Excel</a>
+  </div>
+
+  <section class="content-section">
+    <h2>Wat bevat dit werkproduct?</h2>
+    <p>De Paved Road is een <strong>gelaagd architectuurkader</strong> van gesanctioneerde keuzes. De lagen zijn hiërarchisch: hogere lagen beperken de ontwerpruimte in lagere lagen. Het werkproduct bestaat uit een catalogus én een set principes en kaders die bepalen wat er in die catalogus mag komen.</p>
+    <table class="struct-table" style="table-layout:fixed">
+      <colgroup><col style="width:22%"><col style="width:78%"></colgroup>
+      <thead><tr><th>Laag</th><th>Inhoud</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Principes</td><td>Onveranderlijke gedragsregels die alle andere keuzes sturen — gelden voor interne teams én leveranciers.</td></tr>
+        <tr><td>2 · Leverancierskader</td><td>Kwalificatie-eisen waaraan een product moet voldoen vóór adoptie, plus de off-road-procedure voor dispensatie.</td></tr>
+        <tr><td>3 · Technologiestack</td><td>Driedeling per technologie: <span class="on">on-road</span> (ondersteund), <span class="ok">toegestaan met motivatie</span>, <span class="no">verboden</span>.</td></tr>
+        <tr><td>4 · Datadomeinen</td><td>Welke applicatie de system of record is per datadomein — en daarmee welke koppelingen van die bron afhangen.</td></tr>
+        <tr><td>5 · Identiteit &amp; SSO</td><td>Identiteitsprotocol, SSO-beleid en inlogmiddelenhiërarchie.</td></tr>
+        <tr><td>6 · Integratiepatronen</td><td>Welke integratiepatronen en tooling on-road zijn; contract-first als standaard werkwijze.</td></tr>
+        <tr><td>7 · Databasekeuzes</td><td>Toegestane opslagtechnologieën; verbod op gedeelde databases als integratiemechanisme.</td></tr>
+        <tr><td>8 · Aanvullende dimensies</td><td>Logging &amp; auditability, toestemmingsbeheer, API-versioning en leveranciersonboarding.</td></tr>
+      </tbody>
+    </table>
+    <p>De Paved Road is een <strong>sub-alpha van Architecture</strong> in het Essence-model. In ArchiMate-termen is het een samengesteld <strong>Technology Service</strong>-element — een chassis van goedgekeurde Technology Nodes, Application Components en standaardinterfaces die teams direct kunnen gebruiken.</p>
+  </section>
+
+  <section class="content-section">
+    <h2>De gelaagde structuur</h2>
+
+    <h3><span class="layer-num">Laag 1</span>Principes — de wegregels</h3>
+    <p>Onveranderlijke gedragsregels die alle andere keuzes sturen. Niet onderhandelbaar; gelden voor interne teams én leveranciers.</p>
+    <ul>
+      <li><strong>Configureer, customiseer niet.</strong> COTS-producten worden geconfigureerd binnen vendormogelijkheden. Aanpassingen buiten de vendor-API vereisen een ADR met expliciete eigenaarschapsverklaring.</li>
+      <li><strong>Standaarden boven maatwerk.</strong> Waar een open standaard bestaat (bijv. OAuth 2.0, OpenID Connect, HL7 FHIR), is die leidend. Proprietary alternatieven vereisen architectuurgoedkeuring.</li>
+      <li><strong>Data bij de bron.</strong> Geen kopiëren van data tenzij expliciet verantwoord; de bronsysteem-eigenaar is de enige autoriteit over die data.</li>
+      <li><strong>Interoperabiliteit by design.</strong> Elk systeem dat data uitwisselt exposeert een gedocumenteerde API. Silo's zonder koppelvlak worden niet geaccepteerd.</li>
+      <li><strong>Exitstrategie vóór adoptie.</strong> Elk COTS-product dat wordt geadopteerd heeft een gedocumenteerde migratieroute voordat het in productie gaat.</li>
+      <li><strong>Compliance is architectuureis, geen projecttaak.</strong> Wettelijke en sectorale verplichtingen (AVG, NEN 7510, sectorstandaarden) worden als falsifieerbaar criterium gedefinieerd vóór vendorselectie.</li>
+    </ul>
+
+    <h3><span class="layer-num">Laag 2</span>Leverancierskader — de rijbewijseisen</h3>
+    <p>Niet welk product een leverancier levert, maar aan welke voorwaarden het product moet voldoen om in aanmerking te komen. Toetsvragen bij elke COTS-kandidaat:</p>
+    <ul>
+      <li>Ondersteunt de leverancier standaard-authenticatieprotocollen (SAML 2.0 / OIDC)?</li>
+      <li>Is de API gedocumenteerd via OpenAPI 3.x of gelijkwaardig?</li>
+      <li>Wat is de dataportabiliteitsgarantie — export in open formaat?</li>
+      <li>Welk supportmodel geldt bij platformupdates die de configuratie raken?</li>
+      <li>Heeft de leverancier een gecertificeerd informatiebeveiligingsbeleid (bijv. ISO 27001)?</li>
+      <li>Hoe worden breaking changes in de roadmap gecommuniceerd en met hoeveel aanlooptijd?</li>
+    </ul>
+    <p>Een leverancier die niet aan de kwalificatiecriteria voldoet kan toch worden geadopteerd, maar vereist een <strong>dispensatie-ADR</strong> met compenserende maatregelen en een tijdpad naar compliance.</p>
+
+    <h3><span class="layer-num">Laag 3</span>Technologiestack — de rijstroken</h3>
+    <p>Driedeling per technologie. De driedeling werkt beter dan een binaire lijst: ze maakt het onderscheid tussen "niet wenselijk maar soms onvermijdelijk" en "absoluut verboden" expliciet.</p>
+    <table class="struct-table">
+      <thead><tr><th style="width:30%">Technologie / patroon</th><th style="width:14%">Status</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td>REST/JSON over HTTPS · OpenAPI 3.x als contractstandaard</td><td><span class="on">on-road</span></td><td>Standaard voor alle nieuwe koppelingen.</td></tr>
+        <tr><td>OAuth 2.0 + OpenID Connect</td><td><span class="on">on-road</span></td><td>Authenticatie- en autorisatiestandaard.</td></tr>
+        <tr><td>OCI-compatibele containers</td><td><span class="on">on-road</span></td><td>Containerisatie-standaard; geen vendor-lock op runtime.</td></tr>
+        <tr><td>Structured logging · centrale aggregatie</td><td><span class="on">on-road</span></td><td>Gestandaardiseerd logformaat verplicht voor alle services.</td></tr>
+        <tr><td>SOAP/XML voor legacy-koppelingen</td><td><span class="ok">toegestaan</span></td><td>Alleen waar migratie niet haalbaar is; tijdelijk, gedocumenteerd in ADR.</td></tr>
+        <tr><td>GraphQL</td><td><span class="ok">toegestaan</span></td><td>Voor specifieke query-intensieve use cases met motivatie.</td></tr>
+        <tr><td>Vendor-specifieke databases met exportgarantie</td><td><span class="ok">toegestaan</span></td><td>Mits dataportabiliteit aantoonbaar is; geen lock-in op data-niveau.</td></tr>
+        <tr><td>Directe databasekoppelingen tussen applicaties</td><td><span class="no">verboden</span></td><td>Point-to-point DB-integratie creëert onzichtbare afhankelijkheden.</td></tr>
+        <tr><td>Proprietary binaire protocollen zonder open specificatie</td><td><span class="no">verboden</span></td><td>Maakt onafhankelijke implementatie en migratie onmogelijk.</td></tr>
+        <tr><td>Customisatie van COTS buiten de vendor-API</td><td><span class="no">verboden</span></td><td>Blokkeert vendor-updates; vereist eigenaarschapsverklaring + ADR.</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="layer-num">Laag 4</span>Datadomeinen — wie is leidend</h3>
+    <p>De Paved Road definieert per datadomein welke applicatie de <em>system of record</em> is. Een applicatie die data uit een ander domein nodig heeft, raadpleegt de system of record via de gedefinieerde API — nooit via een database-dump of tussenkopie. Als twee systemen claimen system of record te zijn voor hetzelfde domein, is dat een architectuurincident dat escalatie vereist.</p>
+    <p>Breng de datadomeinen in kaart als onderdeel van de Paved Road: domein → system of record → geautoriseerde consumenten → uitwisselstandaard. Domeinboundaries volgen de organisatorische verantwoordelijkheid, niet de applicatiearchitectuur van de vendor.</p>
+
+    <h3><span class="layer-num">Laag 5</span>Identiteit &amp; SSO — de paspoortcontrole</h3>
+    <p>Elke applicatie die medewerkers of eindgebruikers bedient, participeert in de centrale identity provider (IdP) — geen eigen inlogschermen. Elk COTS-product moet de centrale IdP kunnen consumeren via OIDC; geïsoleerde user databases zijn verboden.</p>
+    <table class="struct-table">
+      <thead><tr><th style="width:28%">Inlogmiddel / protocol</th><th style="width:16%">Status</th><th>Toepassingsgebied</th></tr></thead>
+      <tbody>
+        <tr><td>OpenID Connect</td><td><span class="on">on-road</span></td><td>Primaire identiteitsstandaard voor alle nieuwe integraties.</td></tr>
+        <tr><td>SAML 2.0</td><td><span class="ok">toegestaan</span></td><td>Alleen voor legacy-systemen met gedocumenteerde migratietijdlijn naar OIDC.</td></tr>
+        <tr><td>Federatieve trust (OIDC/SAML)</td><td><span class="ok">toegestaan</span></td><td>B2B-koppelingen met externe partijen mits compatibel met centrale IdP.</td></tr>
+        <tr><td>Eigen identity stores per applicatie</td><td><span class="no">verboden</span></td><td>Creëert silo's; onmogelijk te besturen vanuit centrale IdP.</td></tr>
+        <tr><td>Gebruikersnaam + wachtwoord zonder MFA</td><td><span class="no">verboden</span></td><td>Alleen beheeraccounts met MFA als absoluut minimum; niet voor eindgebruikers.</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="layer-num">Laag 6</span>Integratierealisatie — de weginfrastructuur</h3>
+    <table class="struct-table">
+      <thead><tr><th style="width:28%">Patroon</th><th style="width:16%">Status</th><th>Wanneer</th></tr></thead>
+      <tbody>
+        <tr><td>REST API (pull, synchroon)</td><td><span class="on">on-road</span></td><td>Bevragingen, enkelvoudige transacties.</td></tr>
+        <tr><td>Event/notificatie (push, asynchroon)</td><td><span class="on">on-road</span></td><td>Statuswijzigingen, notificaties.</td></tr>
+        <tr><td>Bestandsuitwisseling (SFTP / AS4)</td><td><span class="ok">toegestaan</span></td><td>Legacy, bulk-overdrachten — met migratieplan.</td></tr>
+        <tr><td>ESB / message broker</td><td><span class="ok">toegestaan</span></td><td>Complexe routering of transformatie mits gemotiveerd.</td></tr>
+        <tr><td>Point-to-point DB-koppeling</td><td><span class="no">verboden</span></td><td>Creëert onzichtbare afhankelijkheden; altijd via API.</td></tr>
+      </tbody>
+    </table>
+    <p>Aanvullende tooling-eisen: <strong>API-gateway</strong> verplicht voor alle externe koppelingen (throttling, logging, authenticatie). <strong>Contract-first</strong>: OpenAPI-spec wordt opgesteld vóór implementatie, niet erna. Alle koppelingen loggen op gestandaardiseerd formaat naar centrale observability-stack.</p>
+
+    <h3><span class="layer-num">Laag 7</span>Databasekeuzes — de opslaginfrastructuur</h3>
+    <p><span class="on">On-road</span>: relationele databases voor transactionele data (open standaard); documentopslag voor semi-gestructureerde data; elke applicatie heeft zijn eigen schema — geen gedeelde databases. <span class="ok">Toegestaan</span>: vendor-specifieke databases mits exporteerbaarheid gegarandeerd; in-memory stores voor sessie- en cachedata. <span class="no">Verboden</span>: gedeelde databases als integratiemechanisme; databases zonder geautomatiseerde backupstrategie; opslag van gevoelige persoonsdata in systemen zonder aantoonbare compliance.</p>
+
+    <h3><span class="layer-num">Laag 8</span>Aanvullende dimensies</h3>
+    <ul>
+      <li><strong>Logging &amp; auditability.</strong> In een gereguleerde omgeving is de Paved Road voor logging niet alleen technisch maar ook juridisch: welke events worden gelogd, hoe lang bewaard, wie heeft inzagerecht — dit zijn architectuurgegevens, geen beheerdetails.</li>
+      <li><strong>Toestemmingsbeheer (consent).</strong> De Paved Road definieert welk systeem de authoritative consent store is en hoe applicaties dat raadplegen — niet zelf implementeren.</li>
+      <li><strong>API-versioning en lifecycle.</strong> Elke API op de Paved Road heeft een gedocumenteerde deprecatieprocedure. Breaking changes vereisen minimaal 6 maanden aankondiging.</li>
+      <li><strong>Leveranciersonboarding.</strong> De Paved Road heeft een expliciete onboardingroute — een gestandaardiseerd proces dat een leverancier doorloopt om "on-road" te worden, inclusief kwalificatietests, integratieverificatie en acceptatiecriteria.</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h2>Wanneer gebruik je dit?</h2>
+    <ul>
+      <li><strong>Bij vendorselectie als kwalificatiekader</strong> — de Laag 2-criteria zijn de ingangspoort: een leverancier die er niet aan voldoet vereist een dispensatie-ADR vóór verdere evaluatie.</li>
+      <li><strong>Bij Conduct Architecture Review als referentie</strong> — de reviewers toetsen het te beoordelen element aan de catalogus om on-road, toegestaan of verboden te bepalen.</li>
+      <li><strong>Bij nieuwe projectstart als selectiegids</strong> — teams beginnen bij de catalogus voordat ze een technologiekeuze maken. On-road = direct gebruiken.</li>
+      <li><strong>Bij het onboarden van nieuwe leveranciers</strong> — de Laag 2-criteria en het onboardingproces (Laag 8) bepalen het pad naar "on-road".</li>
+      <li><strong>Bij het onboarden van nieuwe teams</strong> — de catalogus geeft direct inzicht in wat beschikbaar en goedgekeurd is binnen de organisatie.</li>
+      <li><strong>Bij periodieke herziening door MVG</strong> — de Adoptie-tab laat zien welke producten daadwerkelijk worden gebruikt en welke verouderd zijn of een vervaldatum naderen.</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h2>Tips voor invullen</h2>
+    <ul class="tip-list">
+      <li><span class="tip-icon">→</span><span><strong>Begin met de principes, niet de catalogus.</strong> Zonder Laag 1 (de wegregels) is de catalogus een willekeurige lijst. Principes maken het verschil tussen "dit staat erin" en "dit staat erin omdat het voldoet aan onze onveranderlijke eisen".</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Gebruik de driedeling consequent.</strong> On-road / toegestaan / verboden is scherper dan een binaire goedkeurd/afgekeurd-lijst. "Toegestaan met motivatie" erkent de realiteit van legacy en uitzonderingen zonder ze te normaliseren.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Off-road = altijd een ADR, verboden = dispensatie op directieniveau.</strong> Maak het onderscheid expliciet in het governance-model: off-road is een architectuurbeslissing, verboden is een uitzondering die hoger escalatie vereist.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Exitstrategie vóór adoptie.</strong> Documenteer bij elk nieuw COTS-product hoe je er weer uitkomt. Zonder migratieroute is "goedgekeurd" een beslissing zonder uitweg.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Geldig t/m-datum is verplicht.</strong> Elke goedkeuring heeft een vervaldatum — dit dwingt periodieke herziening en voorkomt verouderde "eeuwigheidsgoedkeuringen".</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Publiceer via wiki of portaal voor zelfbediening.</strong> De catalogus is pas effectief als teams hem kunnen vinden zonder de architect te hoeven raadplegen.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>MVG bestuurt de adoptie.</strong> De MVG-practice bepaalt wanneer een product van Pilot naar Goedgekeurd gaat. De architect stelt voor; MVG beslist en registreert in een ADR.</span></li>
+    </ul>
+  </section>
+  
+  <section class="content-section">
+    <h2>Relatie tot ADR en ARR</h2>
+    <p>De Paved Road is geen ADR. Het is een beleid — de uitkomst van een reeks beslissingen, maar van een andere orde dan een beslissingsrecord. Een ADR legt vast: "gegeven deze context hebben we gekozen voor X boven Y en Z." De Paved Road legt vast: "dit zijn de regels die gelden." Dat is een normatief kader dat wordt onderhouden, herzien en gecommuniceerd.</p>
+    <p>Elk element van de Paved Road heeft een <strong>Standaard Record (SR)</strong> — een ADR dat de constitutieve beslissing voor dat element vastlegt: waarom is dit on-road, welke alternatieven zijn afgewezen, wanneer wordt dit herzien? Het SR resulteert in het Paved Road-element; het is er geen onderdeel van maar de rationale eronder.</p>
+    <p>Het geheel vormt één samenhangend governance-model:</p>
+    <ul>
+      <li><strong>Paved Road</strong> (levend beleidsdocument per laag en plateau)</li>
+      <li>&nbsp;&nbsp;&nbsp;↑ ingesteld of herzien via <strong>ADR → Standaard Record</strong> — constitutief besluit, ARB-akkoord</li>
+      <li>&nbsp;&nbsp;&nbsp;↓ toegepast via <strong>ARR → Conformiteitsrecord</strong> — on-road bevestigd, asynchroon</li>
+      <li>&nbsp;&nbsp;&nbsp;↓ afgeweken via <strong>ARR → Exception Request</strong> — off-road geformaliseerd, peer review of ARB</li>
+    </ul>
+    <p>De Paved Road is daarmee een MVG-instrument — het kleinste normatieve kader dat verkeerde keuzes voorkomt zonder elke keuze te hoeven goedkeuren. Zonder ARR blijft de Paved Road een papieren norm. Zonder ADR (SR) heeft hij geen aantoonbare rationale.</p>
+  </section>
+
+  <section class="content-section archimate-section" id="archimate-instructie">
+    <h2>ArchiMate · motivatie- en technologielaag</h2>
+    <p>De Paved Road is een <strong>sub-alpha van Architecture</strong> in het Essence-model. In ArchiMate-termen is het een samengesteld <strong>Technology Service</strong>-element — een chassis van goedgekeurde Technology Nodes, Application Components en standaardinterfaces. De principes (Laag 1) zijn <strong>Principle</strong>-elementen in de Motivatielaag; de technologiestack (Laag 3–7) realiseert zich in de Technologielaag. Een C4-diagram is voor dit werkproduct niet van toepassing — de Paved Road is een kader van keuzes, geen systeem.</p>
+  </section>
+
+  <footer class="page-footer">
+    <p>Onderdeel van de <strong>MVA-practice</strong> — Minimum Viable Architecture voor COTS-contexten.</p>
+  </footer>
+</div>
+
+<div class="site-contribute">
+  <div class="site-contribute-inner">
+    <svg class="site-contribute-icon" width="22" height="22" viewBox="0 0 98 96" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.364 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>
+    <p><strong>Open practice.</strong> Deze practices zijn open voor bijdragen van de community. <a href="https://github.com/hietkamp/hietkamp.github.io/issues/new/choose" target="_blank" rel="noopener">Open een GitHub-issue</a> om een sjabloon bij te dragen of een verbetering voor te stellen.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.has-drop').forEach(function(dropdown){
+    var btn=dropdown.querySelector('button');
+    function open(){dropdown.classList.add('open');btn.setAttribute('aria-expanded','true');}
+    function close(){dropdown.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+    btn.addEventListener('click',function(e){e.stopPropagation();dropdown.classList.contains('open')?close():open();});
+    document.addEventListener('click',function(){close();});
+    dropdown.addEventListener('click',function(e){e.stopPropagation();});
+  });
+  var tog=document.querySelector('.site-nav-toggle');
+  var menu=document.querySelector('.site-nav-menu');
+  if(tog&&menu){
+    tog.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=menu.classList.toggle('open');
+      tog.setAttribute('aria-expanded',String(open));
+      tog.setAttribute('aria-label',open?'Menu sluiten':'Menu openen');
+    });
+    document.addEventListener('click',function(){
+      menu.classList.remove('open');
+      tog.setAttribute('aria-expanded','false');
+      tog.setAttribute('aria-label','Menu openen');
+    });
+    menu.addEventListener('click',function(e){e.stopPropagation();});
+  }
+})();
+</script>
+</body>
+</html>

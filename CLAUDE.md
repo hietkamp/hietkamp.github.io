@@ -26,7 +26,19 @@ The HTML files are hosted as a private GitHub Pages site.
 ├── essence-training.html                            # 36-slide HTML training presentation
 ├── EA_Alpha_Assessment.xlsx                         # assessment workbook (generated)
 ├── build/
-│   └── build_xlsx.py                                # openpyxl builder for the workbook — source of truth
+│   ├── build_xlsx.py                                # openpyxl builder for EA_Alpha_Assessment.xlsx — source of truth
+│   └── build_templates.py                           # python-docx + openpyxl builder for MVA work product templates
+├── docs/
+│   ├── wp/                                          # MVA work product detail pages
+│   │   ├── mva-*.html                               # 7 detail pages (one per work product)
+│   │   ├── dsl/                                     # Structurizr DSL workspaces voor Architecture Vision & Definition
+│   │   │   ├── mva-architecture-vision.dsl          # DSL bronbestand — handmatig onderhouden
+│   │   │   ├── mva-architecture-definition.dsl      # DSL bronbestand — handmatig onderhouden
+│   │   │   └── json/                                # Workspace JSON-exports
+│   │   ├── img/                                     # Diagrams — handmatig toegevoegd door de architect
+│   │   │   ├── mva-architecture-vision.png          # C4 Level 1 Context diagram
+│   │   │   └── mva-architecture-definition.png      # C4 Level 2 Container diagram
+│   │   └── downloads/                               # Generated Word (.docx) and Excel (.xlsx) templates
 ├── README.md
 ├── CLAUDE.md                                        # this file
 └── .github/workflows/pages.yml                      # GitHub Pages deploy
@@ -168,7 +180,250 @@ The workbook ships pre-filled with a coherent mid-project sample so the visuals 
 **Always reflect changes across all artifacts**: practice deck → intro page → training deck → workbook.
 
 ---
+## Doel
 
+Dit document beschrijft hoe wij C4-diagrammen maken binnen de MedMij/enterprise
+architecture context. We volgen de C4 Model-niveaus en tekenen in ArchiMate-stijl,
+conform de richtlijn van Sarrodie (Archi 4.7 blog post).
+
+---
+
+## C4-niveaus en TOGAF/MVA-mapping
+
+| C4 Niveau | Naam            | TOGAF-deliverable                  | ArchiMate-laag        |
+|-----------|-----------------|------------------------------------|-----------------------|
+| Level 1   | Context         | Architecture Vision (one-pager)    | Business / Application |
+| Level 2   | Containers      | MVA / Architecture Definition      | Application           |
+| Level 3   | Components      | SAD / gedetailleerd ontwerp        | Application (intern)  |
+| Level 4   | Code            | *buiten scope MVA*                 | —                     |
+
+**Vuistregel:**
+- De **Architecture Vision** toont altijd een C4 Context-diagram: het systeem,
+  zijn gebruikers (Business Actors) en externe systemen.
+- De **MVA** bevat minimaal één C4 Container-diagram per systeem in scope.
+- Components worden alleen uitgewerkt als een ADR of plateauplan dat vereist.
+
+---
+
+## ArchiMate → C4 Elementmapping
+
+Conform Sarrodie (Archi 4.7):
+
+| C4 Concept       | ArchiMate Element       | Notitie                                      |
+|------------------|-------------------------|----------------------------------------------|
+| Person           | Business Actor          | Gebruik FontAwesome "user"-icoon indien mogelijk |
+| Software System  | Application Component   | Stereotype-property: `[Software System]`     |
+| Container        | Application Component   | Stereotype-property: `[Container: <tech>]`   |
+| Component        | Application Function    | Stereotype-property: `[Component]`           |
+| Relationship     | Triggering Relationship | Richting: caller → callee                    |
+
+Labels op elementen volgen de Archi 4.7 Label Expression:
+
+```
+${name}
+[${property:Stereotype}]
+${documentation}
+```
+
+---
+
+## Toolchain
+
+### Primair: Structurizr DSL
+
+Structurizr DSL is het aanbevolen bronformaat. Het is native C4, tekstueel,
+versie-beheerbaar en produceert direct ArchiMate-compatibele SVG/PNG output.
+
+**Lokaal draaien (geen cloud vereist):**
+
+```bash
+# Eenmalig: pull Structurizr Lite
+docker pull structurizr/lite
+
+# Start met een workspace-map
+docker run -it --rm -p 8080:8080 \
+  -v $(pwd)/workspace:/usr/local/structurizr \
+  structurizr/lite
+```
+
+Open daarna http://localhost:8080 — live preview met export naar PNG/SVG.
+
+**Minimale workspace.dsl:**
+
+```dsl
+workspace "MVA Context" "Architecture Vision — C4 Level 1" {
+
+  model {
+    # Personen (→ Business Actor)
+    zorgverlener = person "Zorgverlener" "Raadpleegt en registreert zorgdata"
+    patient      = person "Patiënt"      "Geeft toestemming, raadpleegt PGO"
+
+    # Systeem in scope (→ Application Component [Software System])
+    medmij = softwareSystem "MedMij Koppelvlak" "Regie op gegevens — datadiensten conform MedMij-afsprakenstelsel" {
+      # Containers (Level 2) — alleen tonen in Container-diagram
+      pgo_app = container "PGO App" "Persoonlijke Gezondheidsomgeving van de burger" "Web/Mobile"
+      dvza    = container "DVza" "Zorgaanbiedersysteem dat data beschikbaar stelt" "FHIR R4 API"
+      auth    = container "Autorisation Service" "OAuth 2.0 / eIDAS 2.0 authenticatie" "REST"
+    }
+
+    # Externe systemen (→ Application Component, buiten scope)
+    bsn_k  = softwareSystem "BSN-koppelregister" "Extern — buiten scope MVA" {
+      tags "External"
+    }
+    eudi   = softwareSystem "EUDI Wallet" "Artikel 5f eIDAS 2.0 — patiëntidentiteit" {
+      tags "External"
+    }
+
+    # Relaties (→ Triggering Relationship)
+    patient      -> medmij   "Raadpleegt zorgdata via"
+    zorgverlener -> medmij   "Registreert en leest via"
+    medmij       -> bsn_k    "Valideert identiteit via"
+    patient      -> eudi     "Authenticeert met"
+    eudi         -> medmij   "Levert verifieerbare credential aan"
+  }
+
+  views {
+    # Level 1 — Context (Architecture Vision)
+    systemContext medmij "Context" "C4 Level 1 — Architecture Vision" {
+      include *
+      autoLayout
+    }
+
+    # Level 2 — Containers (MVA)
+    container medmij "Containers" "C4 Level 2 — MVA Architecture Definition" {
+      include *
+      autoLayout
+    }
+
+    styles {
+      element "Person" {
+        shape Person
+        background #08427b
+        color #ffffff
+      }
+      element "Software System" {
+        background #1168bd
+        color #ffffff
+      }
+      element "External" {
+        background #999999
+        color #ffffff
+      }
+      element "Container" {
+        background #438dd5
+        color #ffffff
+      }
+    }
+  }
+}
+```
+
+**Export naar PNG (CI/CD of CLI):**
+
+```bash
+# Structurizr CLI (apart van Lite)
+docker run --rm \
+  -v $(pwd):/usr/local/structurizr \
+  structurizr/cli export \
+  -workspace workspace.dsl \
+  -format png
+```
+
+---
+
+### Fallback: Mermaid C4
+
+Gebruik Mermaid als Structurizr niet beschikbaar is (werkt in VS Code, GitLab,
+GitHub, Confluence via plugin).
+
+**Level 1 — Context:**
+
+```mermaid
+C4Context
+  title Architecture Vision — C4 Level 1 Context
+
+  Person(patient, "Patiënt", "Geeft toestemming,<br/>raadpleegt PGO")
+  Person(zorgverlener, "Zorgverlener", "Registreert en<br/>leest zorgdata")
+
+  System(medmij, "MedMij Koppelvlak", "Datadiensten conform<br/>MedMij-afsprakenstelsel")
+
+  System_Ext(bsn_k, "BSN-koppelregister", "Buiten scope MVA")
+  System_Ext(eudi, "EUDI Wallet", "Artikel 5f eIDAS 2.0")
+
+  Rel(patient, medmij, "Raadpleegt via")
+  Rel(zorgverlener, medmij, "Registreert/leest via")
+  Rel(medmij, bsn_k, "Valideert identiteit via")
+  Rel(patient, eudi, "Authenticeert met")
+  Rel(eudi, medmij, "Levert VC aan")
+```
+
+**Level 2 — Containers:**
+
+```mermaid
+C4Container
+  title MVA — C4 Level 2 Containers
+
+  Person(patient, "Patiënt", "Burger met PGO")
+  Person(zorgverlener, "Zorgverlener", "ZIS/EPD gebruiker")
+
+  System_Boundary(medmij, "MedMij Koppelvlak") {
+    Container(pgo, "PGO App", "Web/Mobile", "Persoonlijke Gezondheidsomgeving")
+    Container(dvza, "DVza", "FHIR R4 API", "Zorgaanbieder datadienst")
+    Container(auth, "Auth Service", "OAuth 2.0 / eIDAS", "Authenticatie & autorisatie")
+  }
+
+  System_Ext(eudi, "EUDI Wallet", "Artikel 5f eIDAS 2.0")
+
+  Rel(patient, pgo, "Gebruikt", "HTTPS")
+  Rel(zorgverlener, dvza, "Bevraagt", "FHIR REST")
+  Rel(pgo, auth, "Authoriseert via", "OAuth 2.0")
+  Rel(auth, eudi, "Valideert VC via", "OpenID4VP")
+  Rel(pgo, dvza, "Haalt data op via", "FHIR R4")
+```
+
+---
+
+## Werkwijze per deliverable
+
+### Architecture Vision (één pagina)
+
+1. Maak `context.dsl` (of Mermaid C4Context block)
+2. Toon: systeem in scope, directe gebruikers, externe systemen
+3. Maximaal ~15 elementen (conform Sarrodie's richtlijn)
+4. Exporteer als PNG, embed in Vision-document
+5. ArchiMate-annotatie: voeg `[Software System]` stereotype toe aan elk blok
+
+### MVA / Architecture Definition
+
+1. Maak `containers.dsl` (of Mermaid C4Container block)
+2. Toon: alle containers binnen het systeem, hun technologie-stack, relaties
+3. Externe systemen: grijs, label `[External]`
+4. Exporteer als PNG per systeem in scope
+5. Koppel elk container-element aan een ADR indien technologiekeuze gemaakt
+
+---
+
+## Conventies (conform Sarrodie + MedMij context)
+
+- **Relaties** lopen altijd van caller naar callee (Triggering-richting)
+- **Kleuren**: intern systeem `#1168bd`, container `#438dd5`, extern `#999999`, persoon `#08427b`
+- **Stereotype-labels** altijd tonen: `[Software System]`, `[Container: <tech>]`
+- **Beschrijving** in het element: maximaal 2 zinnen, functioneel (niet technisch)
+- **Legenda** altijd opnemen in geëxporteerde PNG
+- **Taal**: Nederlands voor namen en beschrijvingen; DSL-keywords blijven Engels
+- **Maximale grootte**: Context-diagram ≤ 15 elementen; Container-diagram ≤ 20 elementen
+- **Geen PlantUML**: PlantUML's C4-extensie biedt onvoldoende lay-outcontrole en
+  introduceert een onnodige Graphviz-tussenlaag. Gebruik Structurizr DSL of Mermaid.
+
+---
+
+## Niet in scope
+
+- C4 Level 4 (Code-diagrammen): vallen buiten MVA en Architecture Definition
+- Sequence-diagrammen: gebruik apart UML-diagram of Mermaid `sequenceDiagram`
+- Dynamic views: alleen bij expliciete vraag vanuit ADR of SEC-review
+
+---
 ## Open follow-ons (work explicitly not yet done)
 
 1. **Delivery / engineering / run practice** — the acknowledged gap. The current set leaves System → Operational, Requirements → Fulfilled, Stakeholders → Satisfied in Use, Opportunity → Benefit Accrued, Team and Work without a driving practice. The intro coverage table flags this honestly.

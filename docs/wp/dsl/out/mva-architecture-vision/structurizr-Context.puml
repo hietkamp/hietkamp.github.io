@@ -1,0 +1,32 @@
+@startuml
+title <size:24>System Context View: Systeem in scope</size>
+
+set separator none
+top to bottom direction
+
+<style>
+  root {
+    BackgroundColor: #ffffff
+    FontColor: #444444
+  }
+</style>
+
+!include <C4/C4>
+!include <C4/C4_Context>
+
+Person(Eindgebruiker, "Eindgebruiker", $descr="Voert primaire bedrijfsprocessen uit", $tags="", $link="")
+Person(Beheerder, "Beheerder", $descr="Configureert en beheert het platform", $tags="", $link="")
+System(Systeeminscope, "Systeem in scope", $descr="Het te configureren COTS-platform\n[Software System]", $tags="", $link="")
+System(IdentityProvider, "Identity Provider", $descr="SSO · bijv. Entra ID / Okta", $tags="", $link="")
+System(Bronsysteem, "Bronsysteem", $descr="Levert of ontvangt data", $tags="", $link="")
+System(CloudPlatform, "Cloud Platform", $descr="Paved Road · bijv. Azure / AWS · EU-regio", $tags="", $link="")
+
+Rel(Systeeminscope, Bronsysteem, "Wisselt data uit met", $techn="REST / Event", $tags="", $link="")
+Rel(CloudPlatform, Systeeminscope, "Host", $techn="Cloud-infra", $tags="", $link="")
+Rel(Eindgebruiker, Systeeminscope, "Gebruikt", $techn="HTTPS / SSO", $tags="", $link="")
+Rel(Beheerder, Systeeminscope, "Configureert", $techn="Admin-console", $tags="", $link="")
+Rel(Systeeminscope, IdentityProvider, "Authenticeert via", $techn="OIDC / SAML 2.0", $tags="", $link="")
+
+SHOW_LEGEND(true)
+hide stereotypes
+@enduml

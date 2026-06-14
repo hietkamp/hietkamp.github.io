@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Architecture Roadmap & Transition States – MVA Work Product</title>
+<meta name="description" content="Het pad van baseline naar doel als implementatiestappen. Alleen de volgende horizon is gedetailleerd. Geen big-bang planning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3efe6;--paper-2:#ece6d8;--ink:#1c1a16;--ink-soft:#524d42;
+  --line:#d8d0bf;--card:#fbf9f3;--prac:#0f6e63;
+  --alpha:#0f6e63;--product:#bb7a16;--activity:#1f5fa8;--role:#9c3f76;--pattern:#b1492e;
+  scroll-behavior:smooth;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(circle at 10% -8%,#fef5ed 0%,transparent 50%),radial-gradient(circle at 95% 0%,#e6efe9 0%,transparent 42%),var(--paper);}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.4;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 26px 90px}
+.breadcrumb{padding:16px 0 0;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);display:flex;align-items:center;gap:8px}
+.breadcrumb a{color:var(--prac);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+header.hero{padding:28px 0 22px;border-bottom:3px solid var(--prac);margin-bottom:24px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--prac);margin-bottom:6px}
+h1{font-family:"Fraunces",serif;font-optical-sizing:auto;font-weight:900;font-size:clamp(2rem,5vw,3.6rem);line-height:.98;margin:.14em 0 .14em;letter-spacing:-.015em}
+h1 em{font-style:italic;font-weight:500;color:var(--prac)}
+.lede{font-size:clamp(.98rem,1.4vw,1.1rem);max-width:66ch;color:var(--ink-soft);margin:.6em 0 1em}
+.meta-pills{display:flex;flex-wrap:wrap;gap:8px}
+.meta-pills span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;border:1px solid var(--ink);border-radius:30px;padding:5px 12px;background:var(--card)}
+.download-strip{display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--prac);border-radius:12px;padding:18px 22px;margin-bottom:28px}
+.dl-info{display:flex;align-items:center;gap:16px}
+.dl-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dl-label{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--prac);margin-bottom:2px}
+.dl-name{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:600;margin-bottom:1px}
+.dl-desc{font-size:.83rem;color:var(--ink-soft)}
+a.dl-btn{display:inline-flex;align-items:center;gap:7px;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.05em;border:2px solid var(--prac);background:var(--prac);color:#fff;padding:10px 20px;border-radius:30px;text-decoration:none;white-space:nowrap;transition:.15s;flex-shrink:0}
+a.dl-btn:hover{background:transparent;color:var(--prac)}
+.content-section{margin-bottom:32px}
+.content-section h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.45rem;margin:0 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.content-section p{color:var(--ink-soft);margin:0 0 10px}
+.content-section ul{color:var(--ink-soft);padding-left:20px;margin:0 0 10px}
+.content-section li{margin-bottom:4px}
+
+
+
+
+
+
+.struct-table{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0}
+.struct-table th{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--prac);text-align:left;padding:6px 10px;border-bottom:1px solid var(--prac);font-weight:600}
+.struct-table td{padding:6px 10px;border-bottom:1px dashed var(--line);color:var(--ink-soft);vertical-align:top}
+.struct-table td:first-child{font-weight:600;color:var(--ink);width:35%}
+.tip-list{list-style:none;margin:0;padding:0}
+.tip-list li{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.92rem;color:var(--ink-soft)}
+.tip-list li:last-child{border-bottom:none}
+.tip-list .tip-icon{color:var(--prac);font-size:1rem;flex-shrink:0;margin-top:1px}
+footer.page-footer{margin-top:48px;border-top:2px solid var(--ink);padding-top:14px;font-size:.82rem;color:var(--ink-soft)}
+.skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0;outline:none}
+.skip-link:focus-visible{top:0}
+.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--line);backdrop-filter:blur(6px);border-top:3px solid transparent;border-image:linear-gradient(90deg,#d44f0e,#e87830) 1}
+.site-nav-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:center;height:52px;gap:0}
+.site-nav-logo{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:var(--ink);text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:-.01em;flex-shrink:0}
+.site-nav-logo em{font-style:italic;font-weight:500;color:#d44f0e}
+.site-nav-list{display:flex;list-style:none;margin:0;padding:0;gap:2px;align-items:center}
+.site-nav-list>li>a,.site-nav-list>li>button{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 10px;border-radius:6px;border:none;background:transparent;cursor:pointer;transition:.12s;line-height:1;display:flex;align-items:center;gap:4px;min-height:25px;white-space:nowrap}
+.site-nav-list>li>a:hover,.site-nav-list>li>button:hover{color:var(--ink);background:var(--paper-2)}
+.has-drop{position:relative}
+.has-drop .drop{display:none;position:absolute;top:calc(100% + 4px);right:0;min-width:240px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 30px -22px rgba(28,26,22,.55);padding:5px;list-style:none;margin:0;z-index:200}
+.has-drop.open .drop{display:block}
+.drop li a{display:flex;align-items:center;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:12px;color:var(--ink-soft);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s}
+.drop li a:hover{background:var(--paper-2);color:var(--ink)}
+.drop-label{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5a5040;padding:6px 10px 2px;display:block}
+:focus-visible{outline:3px solid #d44f0e;outline-offset:2px}
+.site-nav-toggle{display:none;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:none;background:transparent;cursor:pointer;border-radius:6px;flex-shrink:0;color:var(--ink);margin-left:8px}
+.site-nav-toggle:hover{background:var(--paper-2)}
+.site-nav-toggle .bar{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .22s,opacity .22s,margin .22s}
+.site-nav-toggle .bar+.bar{margin-top:5px}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(2){opacity:0;margin-top:0}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:700px){
+  .site-nav-toggle{display:flex}
+  .site-nav-menu{display:none;position:fixed;top:52px;left:0;right:0;background:var(--paper);border-bottom:2px solid var(--ink);z-index:98;padding:12px 18px 20px}
+  .site-nav-menu.open{display:block}
+  .site-nav-list{flex-direction:column;gap:0}
+  .site-nav-list>li>a,.site-nav-list>li>button{font-size:15px;padding:14px 12px;border-bottom:1px solid var(--line);width:100%;min-height:48px}
+  .has-drop .drop{position:static;box-shadow:none;border:none;border-radius:8px;margin:4px 0 8px;background:var(--paper-2);display:none}
+  .has-drop.open .drop{display:block}
+  .download-strip{flex-direction:column;align-items:flex-start}
+}
+.site-contribute{background:var(--ink);color:#ddd8ce;padding:22px 0;margin-top:32px}
+.site-contribute-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:flex-start;gap:14px;font-size:.84rem;line-height:1.55}
+.site-contribute strong{color:#f3efe6}
+.site-contribute a{color:#aac4f0;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.site-contribute a:hover{color:#fff}
+.site-contribute-icon{flex-shrink:0;fill:#ddd8ce;margin-top:2px}
+@media(max-width:600px){.site-contribute-inner{flex-direction:column;gap:10px}}
+@media print{.site-nav,.skip-link,.site-contribute{display:none}}
+
+  .content-section h3{font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;margin:20px 0 6px;color:var(--ink)}
+  .track{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;border-radius:20px;padding:3px 10px;margin-right:8px;vertical-align:middle;font-weight:600}
+  .track-v{background:#e0f2fe;color:#0369a1;border:1px solid #bae6fd}
+  .track-a{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0}
+  .archimate-section{margin-bottom:36px}
+  .archimate-section p{color:var(--ink-soft);margin:0 0 10px}
+  .archimate-section .mapping-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:0 0 10px}
+  .archimate-section .mapping-table th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--prac);text-align:left;
+    padding:5px 10px;border-bottom:1px solid var(--prac);font-weight:600}
+  .archimate-section .mapping-table td{padding:5px 10px;border-bottom:1px dashed var(--line);
+    vertical-align:top;color:var(--ink-soft)}
+  .archimate-section .mapping-table td:first-child{font-weight:600;color:var(--ink);width:22%}
+  .archimate-section .mapping-table td:nth-child(2){color:var(--prac);width:26%}
+  .archimate-section .swatch{display:inline-block;width:11px;height:11px;border-radius:2px;
+    margin-right:4px;vertical-align:middle;border:1px solid rgba(0,0,0,.1)}
+  .archimate-section .ref{font-size:.8rem;color:var(--ink-soft);border-top:1px dashed var(--line);
+    padding-top:8px;margin-top:4px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Ga naar de hoofdinhoud</a>
+<header class="site-nav" role="banner">
+  <div class="site-nav-inner">
+    <a class="site-nav-logo" href="../index.html">Essence <em>Way of Working</em></a>
+    <nav id="site-nav-menu" class="site-nav-menu" aria-label="Sitenavigatie">
+      <ul class="site-nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li class="has-drop">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="practices-menu">Practices <span aria-hidden="true">&#9662;</span></button>
+          <ul class="drop" id="practices-menu">
+            <span class="drop-label" aria-hidden="true">Twee practices</span>
+            <li><a href="../mva-essence-practice.html">Min. Viable Architecture</a></li>
+            <li><a href="../mvg-essence-practice.html">Min. Viable Governance</a></li>
+          </ul>
+        </li>
+        <li><a href="../resources.html">Bronnen</a></li>
+      </ul>
+    </nav>
+    <button class="site-nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="site-nav-menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="wrap" id="main-content">
+  <div class="breadcrumb">
+    <a href="../mva-essence-practice.html">← Min. Viable Architecture</a>
+    <span>/</span>
+    <span>Architecture Roadmap &amp; Transition States</span>
+  </div>
+
+  <header class="hero">
+    <div class="kicker">MVA Work Product · Implementatie- &amp; Migratielaag</div>
+    <h1>Architecture Roadmap<br><em>&amp; Transition States · horizonplanning</em></h1>
+    <p class="lede">Het pad van baseline naar doel als implementatiestappen — in twee parallelle sporen: een <strong>configuratiespoor</strong> (wat de vendor levert) en een <strong>integratiespoor</strong> (wat de architect bouwt). Beide sporen worden gestart vanuit de fit/gap-analyse en gesynchroniseerd op checkpoints. Geen big-bang — pilot → wave → volledige uitrol. Alleen de volgende horizon is gedetailleerd uitgewerkt.</p>
+    <div class="meta-pills">
+      <span>Implementatie- &amp; Migratielaag</span>
+      <span>Formaat: Excel (.xlsx)</span>
+      <span>Bewijst: Architecture → Usable · Work → Initiated</span>
+    </div>
+  </header>
+
+  <div class="download-strip">
+    <div class="dl-info">
+      <div class="dl-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <rect width="36" height="36" rx="8" fill="#dcfce7"/>
+          <rect x="7" y="7" width="22" height="22" rx="2" fill="#16a34a" opacity=".12"/>
+          <rect x="7" y="7" width="22" height="22" rx="2" stroke="#16a34a" stroke-width="1.5" fill="none"/>
+          <line x1="7" y1="13" x2="29" y2="13" stroke="#16a34a" stroke-width="1.2"/>
+          <line x1="7" y1="19" x2="29" y2="19" stroke="#16a34a" stroke-width="1.2"/>
+          <line x1="7" y1="25" x2="29" y2="25" stroke="#16a34a" stroke-width="1.2"/>
+          <line x1="14" y1="7" x2="14" y2="29" stroke="#16a34a" stroke-width="1.2"/>
+          <line x1="21" y1="7" x2="21" y2="29" stroke="#16a34a" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <div>
+        <div class="dl-label">Sjabloon</div>
+        <div class="dl-name">mva-roadmap.xlsx</div>
+        <div class="dl-desc">Excel-roadmap met werkpakketten, horizons, alpha-toestanden en hiatenregister</div>
+      </div>
+    </div>
+    <a class="dl-btn" href="downloads/mva-roadmap.xlsx" download>⬇ Download Excel</a>
+  </div>
+
+  <section class="content-section">
+    <h2>Wat bevat dit werkproduct?</h2>
+    <p>De Architecture Roadmap verbindt de architectuurdoelstelling aan de concrete implementatievolgorde via fasegewijze uitrol. Elk werkpakket (WP) heeft een helder alpha-toestandsdoel en een expliciete onomkeerbare grens. In COTS-contexten lopen twee sporen parallel — het configuratiespoor en het integratiespoor — gesynchroniseerd op checkpoints. Het werkboek heeft vijf tabbladen.</p>
+    <table class="struct-table" style="table-layout:fixed">
+      <colgroup><col style="width:22%"><col style="width:78%"></colgroup>
+      <thead><tr><th>Tabblad</th><th>Inhoud</th></tr></thead>
+      <tbody>
+        <tr><td>Roadmap</td><td>Overzicht van alle werkpakketten. Kolommen: WP#, naam, spoor (configuratie / integratie), horizon, team, start, einde, alpha-toestandsdoel, afhankelijkheden, gekoppelde ADR's, status, <strong>onomkeerbare grens</strong>.</td></tr>
+        <tr><td>Fit/Gap</td><td>Output van de fit/gap-analyse per requirement. Classificatie: Fit (product dekt het), Configuratie (instelbaar), Procesaanpassing (werkwijze wijzigt), Integratie (te bouwen koppeling), Gap (onmogelijk / ADR vereist). Startpunt voor beide sporen.</td></tr>
+        <tr><td>Werkpakketten-detail</td><td>Per Horizon-1-WP: doelstelling, deliverables, acceptatiecriteria, architectuurcomponenten, risico's, onomkeerbare beslissingen. Horizon 2+ alleen globaal.</td></tr>
+        <tr><td>Hiaten</td><td>Register van bekende architectuurhiaten — prioriteit, aanbevolen aanpak en horizon-indicatie. Gevoed vanuit de Fit/Gap-tab.</td></tr>
+        <tr><td>Alpha-Toestanden</td><td>Referentietabel van Essence-alphas en toestanden. Elk WP verwijst naar een doeltoestand.</td></tr>
+      </tbody>
+    </table>
+    <p>De Roadmap opereert in de <strong>Implementatie- en Migratielaag</strong> van ArchiMate. Werkpakketten zijn <strong>Work Package</strong>-elementen; elke horizon is een <strong>Plateau</strong>.</p>
+  </section>
+
+  <section class="content-section">
+    <h2>De Sommerville-sequentie</h2>
+    <p>Ongeacht de COTS-categorie identificeerde Sommerville (Construction by Configuration, 2008) zes activiteiten die altijd beheerst moeten worden om de meest gerapporteerde faalpatronen te voorkomen. De volgorde is niet willekeurig: elke stap levert input voor de volgende, en terugspringen is kostbaar.</p>
+    <table class="struct-table" style="table-layout:fixed">
+      <colgroup><col style="width:22%"><col style="width:78%"></colgroup>
+      <thead><tr><th>Stap</th><th>Inhoud &amp; output</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Systeemkeuze</td><td>Selectie van het COTS-product op basis van requirements en kwalificatiecriteria uit de Paved Road. Output: geselecteerd product + ADR.</td></tr>
+        <tr><td>2 · Requirements-analyse + fit/gap</td><td>Vergelijking van businessrequirements met productmogelijkheden. Classificatie van gaps als proceswijziging, configuratie, integratie of onmogelijk. <strong>Scharnierpunt</strong>: start van beide sporen.</td></tr>
+        <tr><td>3 · Bedrijfsprocesherontwerp</td><td>Aanpassing van werkwijzen zodat ze aansluiten bij de COTS-standaard. Configureer, customiseer niet — proceswijziging gaat vóór maatwerkaanpassing.</td></tr>
+        <tr><td>4 · Systeemconfiguratie</td><td>Gefaseerde configuratie per module, binnen vendor-API. Geen aanpassing van kerncode. Output per fase: geconfigureerde COTS-module.</td></tr>
+        <tr><td>5 · Systeemtesten</td><td>Toetsing van de geconfigureerde omgeving inclusief de integratieschil. Validatie van fit/gap-classificaties: welke gaps zijn gedicht?</td></tr>
+        <tr><td>6 · Deployment &amp; evolutie</td><td>Pilot → wave 1 → wave 2 → volledige uitrol. Continue bijsturing op basis van gebruikersfeedback en ARR-uitkomsten.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="content-section">
+    <h2>Fit/Gap als scharnierpunt</h2>
+    <p>De fit/gap-analyse is niet alleen een selectie-instrument — het is het architectuurdocument dat bepaalt wat er gebouwd moet worden. Het vergelijkt businessrequirements met de productmogelijkheden en levert twee directe outputs:</p>
+    <ul>
+      <li><strong>Fit Assessment</strong> — identificeert waar het product aansluit op business- en technische requirements. Bepaalt de scope van het configuratiespoor.</li>
+      <li><strong>Gap Closure</strong> — de resterende requirements worden geclassificeerd: procesaanpassing, configuratie, integratieschil of functionele beperking (ADR vereist). Bepaalt de scope van het integratiespoor.</li>
+    </ul>
+    <p>De kritieke les: gaps classificeren als <em>configuratie</em> (instelbaar binnen vendor-API), <em>procesaanpassing</em> (werkwijze wijzigt), of <em>integratie</em> (te bouwen koppeling) is een architectuurkeuze, geen projectbeheer-keuze. Customisatie — aanpassing van de softwarecode zelf — is in principe verboden per Paved Road-principe 1 en vereist een expliciete ADR.</p>
+  </section>
+
+  <section class="content-section">
+    <h2>Twee parallelle sporen</h2>
+    <p>Een COTS-implementatie heeft altijd twee gelijktijdige sporen die op checkpoints worden gesynchroniseerd. Beide sporen starten vanuit de fit/gap-analyse.</p>
+
+    <h3><span class="track track-v">Vendor</span>Configuratiespoor — wat de vendor levert</h3>
+    <ul>
+      <li>Systeemkeuze + fit/gap-analyse → gap-classificatie</li>
+      <li>Bedrijfsprocesherontwerp → aangepaste processen conform COTS-standaard</li>
+      <li>Gefaseerde systeemconfiguratie per module → geconfigureerde COTS per fase</li>
+      <li>Systeemtesten + deployment (pilot → wave → volledig) → productie-acceptatie per fase</li>
+    </ul>
+    <p>Het vendor-spoor volgt de vendormijlpalen (releases, patches, training). Koppel eigen werkpakketten aan deze mijlpalen — niet omgekeerd.</p>
+
+    <h3><span class="track track-a">Architect</span>Integratiespoor — wat de architect bouwt</h3>
+    <ul>
+      <li>Integratie-inventarisatie vanuit fit/gap → welke koppelingen moeten worden gebouwd, in welke volgorde</li>
+      <li>Adapter / ACL / facade per koppeling (gefaseerd) → integratieschil per transitietoestand</li>
+      <li>Canoniek datamodel-mapping → COTS-datamodel vertaald naar enterprise-model</li>
+      <li>Verificatie per checkpoint aan Paved Road → ARR per fase (welke afwijkingen zijn opgeheven?)</li>
+    </ul>
+    <p>Het integratiespoor is de meest onderschatte deliverable in COTS-literatuur. Inadequate integratieplanning veroorzaakt 42% van alle COTS-implementatieproblemen. Behandel de integratieschil als een first-class architectuurdeliverable — niet als een projectbijproduct.</p>
+
+    <p><strong>Synchronisatiepunten (checkpoints)</strong> — op vaste momenten komen beide sporen samen: vendor-mijlpaal × architect-deliverable × ARR-uitkomst. Een horizon is pas af als beide sporen hun checkpoint-output hebben opgeleverd.</p>
+  </section>
+
+  <section class="content-section">
+    <h2>Wanneer gebruik je dit?</h2>
+    <ul>
+      <li><strong>Governance en change control vóór fit/gap</strong> — het ontbreken van governance- en change-controlprocessen is een showstopper. Zet deze op vóórdat de fit/gap-analyse begint.</li>
+      <li><strong>Na systeemkeuze: fit/gap-analyse</strong> — vul de Fit/Gap-tab als eerste; dit is de input voor zowel het configuratiespoor als het integratiespoor.</li>
+      <li><strong>Na Shape the Minimum Architecture</strong> — zodra de Architecture Definition de bouwstenen beschrijft, bepaalt de Roadmap de implementatievolgorde voor beide sporen.</li>
+      <li><strong>Bij horizoneinde herziening</strong> — herzie de roadmap voor beide sporen: Horizon 2 wordt gedetailleerd, Horizon 3+ bijgesteld. ARR-uitkomsten worden verwerkt.</li>
+      <li><strong>Bij een significante architectuurwijziging</strong> — een nieuwe ADR of scope-wijziging triggert herziening van werkpakketten in beide sporen.</li>
+      <li><strong>Bij voortgangsrapportage aan MVG</strong> — de Roadmap is de basis: welke alpha-toestanden zijn bereikt, welke checkpoints zijn gepasseerd?</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h2>Tips voor invullen</h2>
+    <ul class="tip-list">
+      <li><span class="tip-icon">→</span><span><strong>Governance eerst, dan fit/gap.</strong> Zorg dat governance- en change-controlprocessen operationeel zijn vóórdat de fit/gap-analyse begint. Zonder deze twee is de fit/gap-output niet afdwingbaar.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Fit/gap is architectuurwerk, geen projectwerk.</strong> De gap-classificatie (configuratie / procesaanpassing / integratie / onmogelijk) bepaalt de architectuurscope. Leg hem vast in de Fit/Gap-tab vóórdat werkpakketten worden gedefinieerd.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Twee sporen, eigen mijlpalen.</strong> Houd het configuratiespoor en het integratiespoor gescheiden in de Roadmap-tab. Synchroniseer op checkpoints — niet door ze samen te voegen tot één werkpakket.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Alleen Horizon 1 uitwerken.</strong> Horizon 2 en verder zijn bewust globaal — overspecificatie van verre horizons leidt tot verspilde planningsenergie en valse zekerheid.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Koppel elk werkpakket aan alpha-toestanden.</strong> "WP-01 is klaar" betekent niets zonder de Essence-toestand die het bereikt. Dit is de meetbare definitie van "gereed".</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Herzie aan het einde van elke horizon.</strong> De roadmap is geen vast plan maar een rolling horizon — verwerk ARR-uitkomsten en pas beide sporen aan op basis van wat geleerd is.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Hiaten expliciet vastleggen.</strong> Wat de huidige MVA niet dekt, staat in het Hiaten-tabblad. Gevoed vanuit de Fit/Gap-tab. Eerlijkheid over gaten is beter dan het wegstoppen ervan.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Afhankelijkheden zijn risico's.</strong> Een werkpakket dat wacht op een ander — zeker als de sporen overlappen — is een risico. Bespreek ze actief met MVG op elk checkpoint.</span></li>
+    </ul>
+  </section>
+  
+  <section class="content-section archimate-section" id="archimate-instructie">
+    <h2>ArchiMate · implementatie- en migratielaag</h2>
+    <p>De Roadmap opereert in de <strong>Implementatie- en Migratielaag</strong> van ArchiMate. Werkpakketten zijn <strong>Work Package</strong>-elementen; elke horizon is een <strong>Plateau</strong>. De transitie van baseline naar doel verloopt via opeenvolgende Plateaus die elk een stabiele architectuurtoestand vertegenwoordigen. Een C4-diagram is voor dit werkproduct niet van toepassing — de Roadmap beschrijft implementatiestappen, geen softwaresysteem.</p>
+  </section>
+
+  <footer class="page-footer">
+    <p>Onderdeel van de <strong>MVA-practice</strong> — Minimum Viable Architecture voor COTS-contexten.</p>
+  </footer>
+</div>
+
+<div class="site-contribute">
+  <div class="site-contribute-inner">
+    <svg class="site-contribute-icon" width="22" height="22" viewBox="0 0 98 96" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.364 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>
+    <p><strong>Open practice.</strong> Deze practices zijn open voor bijdragen van de community. <a href="https://github.com/hietkamp/hietkamp.github.io/issues/new/choose" target="_blank" rel="noopener">Open een GitHub-issue</a> om een sjabloon bij te dragen of een verbetering voor te stellen.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.has-drop').forEach(function(dropdown){
+    var btn=dropdown.querySelector('button');
+    function open(){dropdown.classList.add('open');btn.setAttribute('aria-expanded','true');}
+    function close(){dropdown.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+    btn.addEventListener('click',function(e){e.stopPropagation();dropdown.classList.contains('open')?close():open();});
+    document.addEventListener('click',function(){close();});
+    dropdown.addEventListener('click',function(e){e.stopPropagation();});
+  });
+  var tog=document.querySelector('.site-nav-toggle');
+  var menu=document.querySelector('.site-nav-menu');
+  if(tog&&menu){
+    tog.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=menu.classList.toggle('open');
+      tog.setAttribute('aria-expanded',String(open));
+      tog.setAttribute('aria-label',open?'Menu sluiten':'Menu openen');
+    });
+    document.addEventListener('click',function(){
+      menu.classList.remove('open');
+      tog.setAttribute('aria-expanded','false');
+      tog.setAttribute('aria-label','Menu openen');
+    });
+    menu.addEventListener('click',function(e){e.stopPropagation();});
+  }
+})();
+</script>
+</body>
+</html>
