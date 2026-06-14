@@ -997,273 +997,304 @@ def build_excel_asr():
 
 def build_excel_paved_roads():
     wb = Workbook()
-
-    # ── Sheet 1: Catalogus ───────────────────────────────────────────────────
     ws = wb.active
-    ws.title = "Catalogus"
+    ws.title = "Paved Road"
     ws.sheet_view.showGridLines = False
 
-    ws.merge_cells("A1:I1")
+    # ── Classificatie kleur-mapping ────────────────────────────────────────────
+    classif_fg = {
+        "🟢 On-road":     "166534",
+        "🟡 Toegestaan":  "854d0e",
+        "🔴 Verboden":    "991b1b",
+        "📐 Principe":    "1e3a8a",
+        "🔍 Kwalificatie":"524d42",
+        "📋 Richtlijn":   "524d42",
+    }
+    classif_bg = {
+        "🟢 On-road":     "D0EEDC",
+        "🟡 Toegestaan":  "FDF5E0",
+        "🔴 Verboden":    "FECACA",
+        "📐 Principe":    "DCEEFF",
+        "🔍 Kwalificatie":"ECE6D8",
+        "📋 Richtlijn":   "F3EFE6",
+    }
+    layer_bg = {
+        1: "EAF5EB", 2: "FFFDE7", 3: "E3F2FD",
+        4: "F3E5F5", 5: "FCE4EC", 6: "E8EAF6",
+        7: "FBE9E7", 8: "F5F5F5",
+    }
+
+    # ── Titel ─────────────────────────────────────────────────────────────────
+    ws.merge_cells("A1:J1")
     t = ws["A1"]
-    t.value = "Paved Roads — Gelaagd Architectuurkader · Technologiestack (Laag 3)"
-    t.font = font(bold=True, size=13, color=WHITE)
+    t.value = "Paved Road catalogus — [Organisatie / Programma]"
+    t.font = font(bold=True, size=14, color=WHITE)
     t.fill = fill(PRAC)
     t.alignment = center()
-    ws.row_dimensions[1].height = 26
+    ws.row_dimensions[1].height = 32
 
-    ws.merge_cells("A2:I2")
+    ws.merge_cells("A2:J2")
     s = ws["A2"]
-    s.value = ("On-road = geen review nodig. Toegestaan = motivatie vereist. Verboden = dispensatie op directieniveau. "
-               "Afwijkingen (off-road) worden beoordeeld via Architecture Review Record (ER).")
-    s.font = font(size=8, italic=True, color=SOFT)
+    s.value = ("Gebruik dit template als levend overzichtsdocument van de volledige Paved Road — "
+               "alle lagen, kaders en standaarden in één overzicht. "
+               "Filter op Laag of Classificatie om te focussen. "
+               "MVG-eigenaarschap: principes (Laag 1) worden vastgesteld door MVG en vloeien in naar MVA.")
+    s.font = font(size=9, italic=True, color=SOFT)
     s.fill = fill(PAPER2)
     s.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
-    ws.row_dimensions[2].height = 24
+    ws.row_dimensions[2].height = 28
 
-    header_row(ws, 3, range(1, 10),
-               ["Laag", "Product / Patroon", "Categorie", "Leverancier", "Versie / Tier",
-                "Status", "Standaard Record (SR)", "ADR-basis", "Geldig t/m"])
+    # ── Metagegevens (links, rijen 3-5) + Status legenda (rechts) ────────────
+    for i, (label, val) in enumerate([("Versie", "0.1"), ("Eigenaar", "[rol]"), ("Vastgesteld op", "JJJJ-MM-DD")], 3):
+        lc = ws.cell(row=i, column=1, value=label)
+        lc.font = font(bold=True, size=9, color=PRAC)
+        lc.fill = fill(PAPER2)
+        vc = ws.cell(row=i, column=2, value=val)
+        vc.font = font(size=9, color=SOFT, italic=True)
+        vc.fill = fill(CARD)
+        ws.merge_cells(f"B{i}:E{i}")
+        ws.row_dimensions[i].height = 16
+
+    # Status legenda (kolommen G-J, rijen 3-8)
+    sh = ws.cell(row=3, column=7, value="Status legenda")
+    sh.font = font(bold=True, size=9, color=WHITE)
+    sh.fill = fill(SOFT)
+    sh.alignment = center()
+    ws.merge_cells("G3:J3")
+    ws.row_dimensions[3].height = 16
+
+    legend = [
+        ("🌱 Seeded",    "Eerste opzet, niet gepubliceerd",       "FDF5E0", INK),
+        ("📢 Published", "Gepubliceerd, beschikbaar voor teams",  "DCEEFF", INK),
+        ("✅ Curated",   "Gevalideerd, aanbevolen",               "D0EEDC", INK),
+        ("🏗️ Adopted",  "Actief in gebruik bij teams",           "B8E4C9", INK),
+        ("🌐 Pervasive", "De-facto standaard over het landgoed", "0F6E63", WHITE),
+        ("🔄 Evolving",  "In herziening",                         "EDE8F8", INK),
+    ]
+    for i, (status, meaning, bg_color, txt_color) in enumerate(legend, 4):
+        c1 = ws.cell(row=i, column=7, value=status)
+        c1.font = font(bold=True, size=8, color=txt_color)
+        c1.fill = fill(bg_color)
+        c1.alignment = mid()
+        c1.border = thin_border()
+        ws.merge_cells(f"H{i}:J{i}")
+        c2 = ws.cell(row=i, column=8, value=meaning)
+        c2.font = font(size=8, color=SOFT)
+        c2.fill = fill(PAPER if i % 2 == 0 else CARD)
+        c2.alignment = mid()
+        c2.border = thin_border()
+        ws.row_dimensions[i].height = 15
+
+    ws.row_dimensions[10].height = 8   # spacer
+
+    # ── Kolomkoppen ──────────────────────────────────────────────────────────
+    HDR = 11
+    header_row(ws, HDR, range(1, 11),
+               ["Laag", "Domein", "ID", "Item / Naam", "Omschrijving / Consequentie",
+                "Classificatie", "Status", "Eigenaar", "SR / ADR", "Geldig t/m"],
+               bg=PRAC, row_h=18)
+
+    # ── Data-validatie ────────────────────────────────────────────────────────
+    classif_dv = DataValidation(
+        type="list",
+        formula1='"🟢 On-road,🟡 Toegestaan,🔴 Verboden,📐 Principe,🔍 Kwalificatie,📋 Richtlijn"',
+        allow_blank=True
+    )
+    ws.add_data_validation(classif_dv)
 
     status_dv = DataValidation(
         type="list",
-        formula1='"Goedgekeurd,Pilot,Afgeschreven,Onder review"',
+        formula1='"🌱 Seeded,📢 Published,✅ Curated,🏗️ Adopted,🌐 Pervasive,🔄 Evolving"',
         allow_blank=True
     )
     ws.add_data_validation(status_dv)
 
-    cat_dv = DataValidation(
-        type="list",
-        formula1='"Identiteit & Toegang,Cloud Platform,Integratie,Observability,Beveiliging,Data & Analytics,CI/CD & DevOps,Netwerk"',
-        allow_blank=True
-    )
-    ws.add_data_validation(cat_dv)
-
-    sample = [
-        ["5", "[Identity Provider]",      "Identiteit & SSO",     "[leverancier]", "Enterprise",   "Goedgekeurd",  "SR-005",  "ADR-02", "[datum]"],
-        ["5", "[PAM / Secrets Mgmt]",     "Identiteit & SSO",     "[leverancier]", "Enterprise",   "Goedgekeurd",  "SR-005",  "ADR-02", "[datum]"],
-        ["3", "[Cloud Landing Zone]",     "Cloud Platform",        "[leverancier]", "Production",   "Goedgekeurd",  "SR-003",  "ADR-01", "[datum]"],
-        ["3", "[Container Orchestratie]", "Cloud Platform",        "[leverancier]", "Managed",      "Goedgekeurd",  "SR-003",  "ADR-01", "[datum]"],
-        ["3", "[CI/CD Pipeline]",         "CI/CD & DevOps",        "[leverancier]", "SaaS",         "Goedgekeurd",  "SR-003",  "—",      "[datum]"],
-        ["6", "[API Gateway]",            "Integratierealisatie",  "[leverancier]", "Enterprise",   "Goedgekeurd",  "SR-006",  "ADR-03", "[datum]"],
-        ["6", "[Event Streaming]",        "Integratierealisatie",  "[leverancier]", "Managed",      "Pilot",        "SR-006",  "ADR-03", "[datum]"],
-        ["3", "[Monitoring Platform]",    "Observability",         "[leverancier]", "SaaS",         "Goedgekeurd",  "SR-003",  "—",      "[datum]"],
-        ["3", "[Centraal Logging]",       "Observability",         "[leverancier]", "SaaS",         "Goedgekeurd",  "SR-003",  "—",      "[datum]"],
-        ["6", "[Oud ESB]",               "Integratierealisatie",  "[leverancier]", "v2.x on-prem", "Afgeschreven", "SR-006",  "ADR-05", "[datum]"],
-        ["",  "",                         "",                      "",              "",             "",             "",        "",       ""],
+    # ── Alle paved road items (laag, domein, id, naam, omschrijving, classificatie, status, eigenaar, sr/adr, geldig) ──
+    items = [
+        # Laag 1 — Principes (vastgesteld door MVG)
+        (1,"Principes","P1","Configureer, customiseer niet",
+         "COTS-aanpassingen buiten vendor-API vereisen een ADR met eigenaarschapsverklaring.",
+         "📐 Principe","✅ Curated","[Arch. Board]","SR-001",""),
+        (1,"Principes","P2","Standaarden boven maatwerk",
+         "Waar een open standaard bestaat (OAuth 2.0, OIDC, OpenAPI), is die leidend.",
+         "📐 Principe","✅ Curated","[Arch. Board]","SR-002",""),
+        (1,"Principes","P3","Data bij de bron",
+         "Geen kopiëren van data tenzij expliciet verantwoord; bronsysteem-eigenaar is autoriteit.",
+         "📐 Principe","✅ Curated","[Arch. Board]","SR-003",""),
+        (1,"Principes","P4","Interoperabiliteit by design",
+         "Elk systeem dat data uitwisselt exposeert een gedocumenteerde API. Silo's niet geaccepteerd.",
+         "📐 Principe","✅ Curated","[Arch. Board]","SR-004",""),
+        (1,"Principes","P5","Exitstrategie vóór adoptie",
+         "Elk COTS-product heeft een gedocumenteerde migratieroute voordat het in productie gaat.",
+         "📐 Principe","✅ Curated","[Arch. Board]","SR-005",""),
+        (1,"Principes","P6","Compliance is architectuureis",
+         "Wettelijke verplichtingen als falsifieerbaar criterium gedefinieerd vóór vendorselectie.",
+         "📐 Principe","✅ Curated","[Arch. Board]","SR-006",""),
+        # Laag 2 — Leverancierskader
+        (2,"Leverancierskader","V1","Standaard-authenticatie",
+         "Leverancier ondersteunt SAML 2.0 of OIDC; geen proprietary login-flow.",
+         "🔍 Kwalificatie","📢 Published","[naam]","",""),
+        (2,"Leverancierskader","V2","Gedocumenteerde API",
+         "API gedocumenteerd via OpenAPI 3.x of gelijkwaardig; geen vendor-only tooling vereist.",
+         "🔍 Kwalificatie","📢 Published","[naam]","",""),
+        (2,"Leverancierskader","V3","Dataportabiliteitsgarantie",
+         "Export in open formaat gegarandeerd; geen lock-in op data-niveau.",
+         "🔍 Kwalificatie","📢 Published","[naam]","",""),
+        (2,"Leverancierskader","V4","Supportmodel bij platform-updates",
+         "Duidelijk supportmodel voor updates die configuratie raken; geen unilaterale breaking changes.",
+         "🔍 Kwalificatie","📢 Published","[naam]","",""),
+        (2,"Leverancierskader","V5","Gecertificeerd beveiligingsbeleid",
+         "Leverancier heeft gecertificeerd ISMS (bijv. ISO 27001 of gelijkwaardig).",
+         "🔍 Kwalificatie","📢 Published","[naam]","",""),
+        (2,"Leverancierskader","V6","Breaking change communicatie",
+         "Breaking changes minimaal 6 maanden van tevoren gecommuniceerd.",
+         "🔍 Kwalificatie","📢 Published","[naam]","",""),
+        # Laag 3 — Technologiestack
+        (3,"Technologiestack","T1","REST/JSON · OpenAPI 3.x",
+         "Standaard voor alle nieuwe koppelingen. Contract-first: spec vóór implementatie.",
+         "🟢 On-road","🏗️ Adopted","[naam]","SR-003","[datum]"),
+        (3,"Technologiestack","T2","OAuth 2.0 + OpenID Connect",
+         "Authenticatie- en autorisatiestandaard voor alle diensten.",
+         "🟢 On-road","🏗️ Adopted","[naam]","SR-005","[datum]"),
+        (3,"Technologiestack","T3","OCI-compatibele containers",
+         "Containerisatie-standaard; geen vendor-lock op container-runtime.",
+         "🟢 On-road","🏗️ Adopted","[naam]","SR-003","[datum]"),
+        (3,"Technologiestack","T4","Structured logging · centrale aggregatie",
+         "Gestandaardiseerd logformaat verplicht; gecentraliseerde observability-stack.",
+         "🟢 On-road","🏗️ Adopted","[naam]","SR-003","[datum]"),
+        (3,"Technologiestack","T5","SOAP/XML voor legacy-koppelingen",
+         "Alleen waar migratie niet haalbaar is; tijdelijk, gedocumenteerd in ADR.",
+         "🟡 Toegestaan","📢 Published","[naam]","","[datum]"),
+        (3,"Technologiestack","T6","GraphQL",
+         "Voor specifieke query-intensieve use cases; motivatie en ADR vereist.",
+         "🟡 Toegestaan","🌱 Seeded","[naam]","",""),
+        (3,"Technologiestack","T7","Vendor-specifieke databases (met exportgarantie)",
+         "Mits dataportabiliteit aantoonbaar is; geen lock-in op data-niveau.",
+         "🟡 Toegestaan","📢 Published","[naam]","","[datum]"),
+        (3,"Technologiestack","T8","Directe databasekoppelingen tussen applicaties",
+         "Creëert onzichtbare afhankelijkheden; altijd via API.",
+         "🔴 Verboden","✅ Curated","[naam]","SR-003",""),
+        (3,"Technologiestack","T9","Proprietary binaire protocollen (geen open spec)",
+         "Maakt onafhankelijke implementatie en migratie onmogelijk.",
+         "🔴 Verboden","✅ Curated","[naam]","SR-002",""),
+        (3,"Technologiestack","T10","Customisatie van COTS buiten de vendor-API",
+         "Blokkeert vendor-updates; vereist eigenaarschapsverklaring + ADR.",
+         "🔴 Verboden","✅ Curated","[naam]","SR-001",""),
+        # Laag 4 — Datadomeinen
+        (4,"Datadomeinen","D1","[Datadomein A]",
+         "System of record: [systeem A]. Consumenten raadplegen via API — nooit via database-dump.",
+         "📋 Richtlijn","🌱 Seeded","[naam]","",""),
+        (4,"Datadomeinen","D2","[Datadomein B]",
+         "System of record: [systeem B]. Domeinboundary volgt organisatorische verantwoordelijkheid.",
+         "📋 Richtlijn","🌱 Seeded","[naam]","",""),
+        (4,"Datadomeinen","D3","[Datadomein C]",
+         "System of record: [systeem C]. Twee claimen van SoR voor één domein = architectuurincident.",
+         "📋 Richtlijn","🌱 Seeded","[naam]","",""),
+        # Laag 5 — Identiteit & SSO
+        (5,"Identiteit & SSO","I1","OpenID Connect",
+         "Primaire identiteitsstandaard voor alle nieuwe integraties.",
+         "🟢 On-road","🏗️ Adopted","[naam]","SR-005","[datum]"),
+        (5,"Identiteit & SSO","I2","SAML 2.0",
+         "Alleen voor legacy-systemen met gedocumenteerde migratietijdlijn naar OIDC.",
+         "🟡 Toegestaan","📢 Published","[naam]","","[datum]"),
+        (5,"Identiteit & SSO","I3","Federatieve trust (OIDC/SAML)",
+         "B2B-koppelingen met externe partijen mits compatibel met centrale IdP.",
+         "🟡 Toegestaan","📢 Published","[naam]","",""),
+        (5,"Identiteit & SSO","I4","Eigen identity stores per applicatie",
+         "Creëert silo's; onmogelijk te besturen vanuit centrale IdP.",
+         "🔴 Verboden","✅ Curated","[naam]","SR-005",""),
+        (5,"Identiteit & SSO","I5","Gebruikersnaam + wachtwoord zonder MFA",
+         "Niet voor eindgebruikers; beheeraccounts: MFA verplicht.",
+         "🔴 Verboden","✅ Curated","[naam]","SR-005",""),
+        # Laag 6 — Integratiepatronen
+        (6,"Integratiepatronen","G1","REST API (pull, synchroon)",
+         "Standaard voor bevragingen en enkelvoudige transacties.",
+         "🟢 On-road","🏗️ Adopted","[naam]","SR-006","[datum]"),
+        (6,"Integratiepatronen","G2","Event/notificatie (push, asynchroon)",
+         "Standaard voor statuswijzigingen en notificaties.",
+         "🟢 On-road","🏗️ Adopted","[naam]","SR-006","[datum]"),
+        (6,"Integratiepatronen","G3","Bestandsuitwisseling (SFTP / AS4)",
+         "Alleen voor legacy en bulk-overdrachten; met migratieplan naar API.",
+         "🟡 Toegestaan","📢 Published","[naam]","","[datum]"),
+        (6,"Integratiepatronen","G4","ESB / message broker",
+         "Voor complexe routering of transformatie mits gemotiveerd.",
+         "🟡 Toegestaan","🌱 Seeded","[naam]","",""),
+        (6,"Integratiepatronen","G5","Point-to-point databasekoppeling",
+         "Creëert onzichtbare afhankelijkheden; altijd via API.",
+         "🔴 Verboden","✅ Curated","[naam]","SR-003",""),
+        # Laag 7 — Databasekeuzes
+        (7,"Databasekeuzes","DB1","Relationele database (open standaard)",
+         "Voor transactionele data; elke applicatie heeft zijn eigen schema.",
+         "🟢 On-road","🏗️ Adopted","[naam]","","[datum]"),
+        (7,"Databasekeuzes","DB2","Documentopslag voor semi-gestructureerde data",
+         "Alleen voor use cases waarvoor de structuur functioneel passend is.",
+         "🟢 On-road","📢 Published","[naam]","",""),
+        (7,"Databasekeuzes","DB3","In-memory stores voor sessie- en cachedata",
+         "Alleen voor tijdelijke, niet-kritieke data; geen primaire opslag.",
+         "🟡 Toegestaan","📢 Published","[naam]","",""),
+        (7,"Databasekeuzes","DB4","Vendor-specifieke database (met exportgarantie)",
+         "Mits dataportabiliteit aantoonbaar is.",
+         "🟡 Toegestaan","📢 Published","[naam]","","[datum]"),
+        (7,"Databasekeuzes","DB5","Gedeelde database als integratiemechanisme",
+         "Creëert onzichtbare koppeling tussen applicaties; verboden.",
+         "🔴 Verboden","✅ Curated","[naam]","SR-003",""),
+        # Laag 8 — Aanvullende dimensies
+        (8,"Aanvullende dimensies","A1","Logging & auditability",
+         "Logformaat, bewaartermijn en inzagerecht als architectuureis — niet als beheerdetail.",
+         "📋 Richtlijn","🌱 Seeded","[naam]","",""),
+        (8,"Aanvullende dimensies","A2","Toestemmingsbeheer (consent)",
+         "Één authoritative consent store; applicaties raadplegen — implementeren niet zelf.",
+         "📋 Richtlijn","🌱 Seeded","[naam]","",""),
+        (8,"Aanvullende dimensies","A3","API-versioning en lifecycle",
+         "Gedocumenteerde deprecatieprocedure; breaking changes minimaal 6 maanden van tevoren.",
+         "📋 Richtlijn","🌱 Seeded","[naam]","",""),
+        (8,"Aanvullende dimensies","A4","Leveranciersonboarding",
+         "Gestandaardiseerd onboardingproces: kwalificatietest, integratieverificatie, acceptatiecriteria.",
+         "📋 Richtlijn","🌱 Seeded","[naam]","",""),
+        # Lege invulrij
+        ("","","","","","","","","",""),
     ]
 
-    status_colors = {
-        "Goedgekeurd":   TECH_BG,
-        "Pilot":         MOT_BG,
-        "Afgeschreven":  "EEEEEE",
-        "Onder review":  APP_BG,
-    }
-
-    for r, row in enumerate(sample, 4):
-        bg = status_colors.get(row[5], CARD)
+    DATA_START = HDR + 1
+    for r, row in enumerate(items, DATA_START):
+        laag = row[0]
+        classif = row[5]
+        row_bg = layer_bg.get(laag, CARD)
         for c, val in enumerate(row, 1):
             cell = ws.cell(row=r, column=c, value=val)
-            cell.font = font(size=9, bold=(c <= 2), color=(GREY if row[5] == "Afgeschreven" else INK))
-            cell.fill = fill(bg)
             cell.border = thin_border()
-            cell.alignment = left()
-        ws.row_dimensions[r].height = 22
-        status_dv.sqref += f"F{r}:F{r}"
-        cat_dv.sqref += f"C{r}:C{r}"
-
-    set_col_widths(ws, [6, 24, 20, 16, 16, 14, 12, 10, 12])
-    ws.freeze_panes = "A4"
-    ws.auto_filter.ref = f"A3:I{3+len(sample)}"
-
-    ws.conditional_formatting.add(
-        f"A4:I{3+len(sample)}",
-        FormulaRule(formula=['$F4="Goedgekeurd"'], fill=PatternFill("solid", fgColor=TECH_BG))
-    )
-    ws.conditional_formatting.add(
-        f"A4:I{3+len(sample)}",
-        FormulaRule(formula=['$F4="Pilot"'], fill=PatternFill("solid", fgColor=MOT_BG))
-    )
-    ws.conditional_formatting.add(
-        f"A4:I{3+len(sample)}",
-        FormulaRule(formula=['$F4="Afgeschreven"'], fill=PatternFill("solid", fgColor="EEEEEE"))
-    )
-
-    # ── Sheet 2: Principes (Laag 1 — wegregels) ─────────────────────────────
-    ws_pr = wb.create_sheet("Principes (Laag 1)")
-    ws_pr.sheet_view.showGridLines = False
-    ws_pr.merge_cells("A1:D1")
-    tp = ws_pr["A1"]
-    tp.value = "Laag 1 — Principes (wegregels) · onveranderlijk · gelden voor teams én leveranciers"
-    tp.font = font(bold=True, size=12, color=WHITE)
-    tp.fill = fill(PRAC)
-    tp.alignment = center()
-    ws_pr.row_dimensions[1].height = 24
-    ws_pr.merge_cells("A2:D2")
-    sp = ws_pr["A2"]
-    sp.value = ("Principes zijn niet onderhandelbaar. Ze sturen alle onderliggende lagen. "
-                "Wijziging vereist ARB-besluit en nieuw Standaard Record.")
-    sp.font = font(size=8, italic=True, color=SOFT)
-    sp.fill = fill(PAPER2)
-    sp.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
-    ws_pr.row_dimensions[2].height = 22
-
-    header_row(ws_pr, 3, range(1, 5),
-               ["P#", "Principe", "Consequentie voor ontwerp / selectie", "Standaard Record"])
-    principes = [
-        ["P1", "Configureer, customiseer niet",
-         "COTS-aanpassingen buiten vendor-API vereisen een ADR met eigenaarschapsverklaring.",
-         "SR-001"],
-        ["P2", "Standaarden boven maatwerk",
-         "Waar een open standaard bestaat (OAuth 2.0, OIDC, OpenAPI), is die leidend. "
-         "Proprietary alternatieven vereisen architectuurgoedkeuring.",
-         "SR-002"],
-        ["P3", "Data bij de bron",
-         "Geen kopiëren van data tenzij expliciet verantwoord. "
-         "Bronsysteem-eigenaar is de enige autoriteit.",
-         "SR-003"],
-        ["P4", "Interoperabiliteit by design",
-         "Elk systeem dat data uitwisselt exposeert een gedocumenteerde API. "
-         "Silo's zonder koppelvlak worden niet geaccepteerd.",
-         "SR-004"],
-        ["P5", "Exitstrategie vóór adoptie",
-         "Elk COTS-product heeft een gedocumenteerde migratieroute voordat het in productie gaat.",
-         "SR-005"],
-        ["P6", "Compliance is architectuureis",
-         "Wettelijke en sectorale verplichtingen worden als falsifieerbaar criterium "
-         "gedefinieerd vóór vendorselectie.",
-         "SR-006"],
-        ["P7", "[eigen principe]", "[consequentie]", "SR-[xx]"],
-    ]
-    for r, row in enumerate(principes, 4):
-        for c, val in enumerate(row, 1):
-            cell = ws_pr.cell(row=r, column=c, value=val)
-            cell.font = font(size=9, bold=(c <= 2))
-            cell.fill = fill(PAPER if r % 2 == 0 else CARD)
-            cell.border = thin_border()
-            cell.alignment = left()
-        ws_pr.row_dimensions[r].height = 30
-    set_col_widths(ws_pr, [4, 24, 42, 16])
-    ws_pr.freeze_panes = "A4"
-
-    # ── Sheet 3: Standaard Records ───────────────────────────────────────────
-    ws_sr = wb.create_sheet("Standaard Records")
-    ws_sr.sheet_view.showGridLines = False
-    ws_sr.merge_cells("A1:F1")
-    ts = ws_sr["A1"]
-    ts.value = "Standaard Records (SR) — constitutieve ADR's per Paved Road-laag"
-    ts.font = font(bold=True, size=12, color=WHITE)
-    ts.fill = fill(PRAC)
-    ts.alignment = center()
-    ws_sr.row_dimensions[1].height = 24
-    ws_sr.merge_cells("A2:F2")
-    ss = ws_sr["A2"]
-    ss.value = ("Elk Standaard Record is het ADR dat een Paved Road-element heeft ingesteld. "
-                "Herziening vereist een nieuw ADR dat het vorige supersedes.")
-    ss.font = font(size=8, italic=True, color=SOFT)
-    ss.fill = fill(PAPER2)
-    ss.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
-    ws_sr.row_dimensions[2].height = 22
-
-    header_row(ws_sr, 3, range(1, 7),
-               ["SR #", "Laag", "Naam standaard", "Status", "ADR-basis", "Geldig t/m / herzieningsmoment"])
-    srs = [
-        ["SR-001", "1 · Principes",           "Configureer niet customiseer",       "Actief", "ADR-01", "[plateau P1 of datum]"],
-        ["SR-002", "1 · Principes",           "Standaarden boven maatwerk",          "Actief", "ADR-01", "[plateau P1 of datum]"],
-        ["SR-003", "3 · Technologiestack",    "REST/OpenAPI als integratiestandaard","Actief", "ADR-03", "[datum]"],
-        ["SR-004", "3 · Technologiestack",    "OCI-containers als runtime",          "Actief", "ADR-01", "[datum]"],
-        ["SR-005", "5 · Identiteit & SSO",    "OIDC als primair identiteitsprotocol","Actief", "ADR-02", "[datum]"],
-        ["SR-006", "6 · Integratiepatronen",  "Contract-first · OpenAPI 3.x",        "Actief", "ADR-03", "[datum]"],
-        ["SR-0xx", "[laag]",                  "[naam standaard]",                    "Actief | Herzien | Vervallen", "ADR-[xx]", "[datum]"],
-    ]
-    for r, row in enumerate(srs, 4):
-        for c, val in enumerate(row, 1):
-            cell = ws_sr.cell(row=r, column=c, value=val)
-            cell.font = font(size=9, bold=(c == 1))
-            cell.fill = fill(PAPER if r % 2 == 0 else CARD)
-            cell.border = thin_border()
-            cell.alignment = left()
-        ws_sr.row_dimensions[r].height = 22
-    set_col_widths(ws_sr, [9, 20, 28, 16, 10, 26])
-    ws_sr.freeze_panes = "A4"
-
-    # ── Sheet 4: Patronen & Standaarden ─────────────────────────────────────
-    ws2 = wb.create_sheet("Patronen & Standaarden")
-    ws2.sheet_view.showGridLines = False
-    ws2.merge_cells("A1:E1")
-    t2 = ws2["A1"]
-    t2.value = "Goedgekeurde Architectuurpatronen & Standaarden"
-    t2.font = font(bold=True, size=12, color=WHITE)
-    t2.fill = fill(PRAC)
-    t2.alignment = center()
-    ws2.row_dimensions[1].height = 22
-
-    header_row(ws2, 2, range(1, 6),
-               ["Patroon / Standaard", "Categorie", "Beschrijving", "Verplicht voor", "ADR"])
-    pats = [
-        ["GitOps",             "CI/CD",           "Infrastructure-as-code via Git", "Alle cloud-deployments", "ADR-01"],
-        ["REST / OpenAPI 3.x", "Integratie",      "Synchrone API-communicatie",     "Alle externe APIs",      "ADR-03"],
-        ["CloudEvents",        "Integratie",      "Asynchrone event-berichten",     "Event-gedreven koppelingen", "ADR-03"],
-        ["OIDC / SAML 2.0",   "Identiteit",      "Federatieve authenticatie",      "Alle webapplicaties",    "ADR-02"],
-        ["OpenTelemetry",      "Observability",   "Gedistribueerde tracing",        "Productiediensten",      "—"],
-        ["Zero Trust",         "Beveiliging",     "Never trust, always verify",     "Alle service-communicatie", "ADR-02"],
-        ["",                   "",                "",                               "",                       ""],
-    ]
-    for r, row in enumerate(pats, 3):
-        for c, val in enumerate(row, 1):
-            cell = ws2.cell(row=r, column=c, value=val)
-            cell.font = font(size=9, bold=(c==1))
-            cell.fill = fill(PAPER if r%2==0 else CARD)
-            cell.border = thin_border()
-            cell.alignment = left()
-        ws2.row_dimensions[r].height = 22
-    set_col_widths(ws2, [22, 14, 30, 28, 10])
-    ws2.freeze_panes = "A3"
-
-    # ── Sheet 3: Adoptie-tracking ────────────────────────────────────────────
-    ws3 = wb.create_sheet("Adoptie")
-    ws3.sheet_view.showGridLines = False
-    ws3.merge_cells("A1:G1")
-    t3 = ws3["A1"]
-    t3.value = "Paved Road Adoptie — per project/team"
-    t3.font = font(bold=True, size=12, color=WHITE)
-    t3.fill = fill(PRAC)
-    t3.alignment = center()
-    ws3.row_dimensions[1].height = 22
-
-    header_row(ws3, 2, range(1, 8),
-               ["Project / Team", "Horizondatum", "# On-road", "# Off-road", "% Adoptie",
-                "Openstaande reviews", "Status"])
-    adopt = [
-        ["[Project A]", "[Q1]", 12, 1, "=C3/(C3+D3)", 1, "In lijn"],
-        ["[Project B]", "[Q2]",  8, 3, "=C4/(C4+D4)", 3, "Aandacht"],
-        ["[Project C]", "[Q2]",  5, 0, "=C5/(C5+D5)", 0, "In lijn"],
-        ["",            "",      "", "", "",            "",  ""],
-    ]
-    for r, row in enumerate(adopt, 3):
-        for c, val in enumerate(row, 1):
-            cell = ws3.cell(row=r, column=c, value=val)
-            cell.font = font(size=9, bold=(c==1))
-            cell.fill = fill(PAPER if r%2==0 else CARD)
-            cell.border = thin_border()
-            if c == 5 and row[2]:
-                cell.number_format = "0%"
+            if c == 1:   # Laag — gecentreerd, vetgedrukt
+                cell.font = font(size=9, bold=True, color=PRAC if laag else INK)
+                cell.fill = fill(row_bg)
                 cell.alignment = center()
+            elif c == 6 and classif:   # Classificatie — gekleurde badge
+                cell.font = font(size=9, bold=True, color=classif_fg.get(classif, INK))
+                cell.fill = fill(classif_bg.get(classif, CARD))
+                cell.alignment = mid()
             else:
+                cell.font = font(size=9, bold=(c in (3, 4)))
+                cell.fill = fill(row_bg)
                 cell.alignment = left()
-        ws3.row_dimensions[r].height = 20
+        ws.row_dimensions[r].height = 30
+        if classif:
+            classif_dv.sqref += f"F{r}:F{r}"
+            status_dv.sqref += f"G{r}:G{r}"
 
-    set_col_widths(ws3, [22, 14, 12, 12, 12, 20, 14])
-    ws3.freeze_panes = "A3"
+    set_col_widths(ws, [6, 20, 7, 26, 44, 18, 16, 12, 10, 12])
+    ws.freeze_panes = f"A{DATA_START}"
+    ws.auto_filter.ref = f"A{HDR}:J{DATA_START - 1 + len(items)}"
 
-    # Dashboard state summary
-    ws3.cell(row=8, column=1, value="Huidige paved road toestand:").font = font(bold=True, size=10)
-    ws3.cell(row=9, column=1, value="Sub-alpha staat:").font = font(size=9)
-    ws3.cell(row=9, column=2, value="Established").font = font(bold=True, size=9, color=PRAC)
-    ws3.cell(row=10, column=1, value="Doel adoptie:").font = font(size=9)
-    ws3.cell(row=10, column=2, value=">90% on-road").font = font(size=9, color=SOFT)
+    # Conditionele opmaak op Classificatie-kolom
+    for classif_val, bg in classif_bg.items():
+        ws.conditional_formatting.add(
+            f"F{DATA_START}:F{DATA_START + len(items)}",
+            FormulaRule(formula=[f'$F{DATA_START}="{classif_val}"'],
+                        fill=PatternFill("solid", fgColor=bg))
+        )
 
     wb.save(OUT / "mva-paved-roads.xlsx")
     print("✓  mva-paved-roads.xlsx")
+
 
 
 def build_excel_roadmap():

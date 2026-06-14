@@ -120,6 +120,26 @@ footer.page-footer{margin-top:48px;border-top:2px solid var(--ink);padding-top:1
     margin-right:4px;vertical-align:middle;border:1px solid rgba(0,0,0,.1)}
   .archimate-section .ref{font-size:.8rem;color:var(--ink-soft);border-top:1px dashed var(--line);
     padding-top:8px;margin-top:4px}
+  /* Levend document */
+  .doc-meta{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px;margin-bottom:20px}
+  .doc-meta-item{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+  .doc-meta-label{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--prac);margin-bottom:5px}
+  .doc-meta-value{font-size:.96rem;font-weight:600;color:var(--ink-soft)}
+  .status-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;margin:12px 0 4px}
+  .status-item{display:flex;align-items:flex-start;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:.87rem;color:var(--ink-soft)}
+  .status-badge{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;border-radius:20px;padding:3px 10px;white-space:nowrap;flex-shrink:0}
+  .s-seeded{background:#fdf5e0;color:#854d0e}
+  .s-published{background:#dceeff;color:#1e40af}
+  .s-curated{background:#d0eedc;color:#166534}
+  .s-adopted{background:#b8e4c9;color:#14532d}
+  .s-pervasive{background:#0f6e63;color:#fff}
+  .s-evolving{background:#ede8f8;color:#4b3f9e}
+  .layer-nav{display:flex;flex-wrap:wrap;gap:6px;padding:13px 16px;background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:24px}
+  .layer-nav-label{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);align-self:center;margin-right:4px;flex-shrink:0}
+  .layer-nav a{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.04em;text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:4px 12px;color:var(--ink-soft);background:var(--paper);transition:.12s}
+  .layer-nav a:hover{background:var(--prac);color:#fff;border-color:var(--prac)}
+  .mvg-callout{background:#f0eeff;border-left:4px solid #4b3f9e;border-radius:0 8px 8px 0;padding:12px 18px;margin:10px 0 16px;font-size:.87rem;color:#2d2560;line-height:1.55}
+  .mvg-callout strong{color:#4b3f9e;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -182,11 +202,31 @@ footer.page-footer{margin-top:48px;border-top:2px solid var(--ink);padding-top:1
       <div>
         <div class="dl-label">Sjabloon</div>
         <div class="dl-name">mva-paved-roads.xlsx</div>
-        <div class="dl-desc">Excel-catalogus met producten, patronen, standaarden en adoptiestatus</div>
+        <div class="dl-desc">Één overzichtsblad met alle 44 paved road items over 8 lagen — filterbaar op laag en classificatie</div>
       </div>
     </div>
     <a class="dl-btn" href="downloads/mva-paved-roads.xlsx" download>⬇ Download Excel</a>
   </div>
+
+  <section class="content-section">
+    <h2>Levend overzichtsdocument</h2>
+    <p>Gebruik dit template als levend overzichtsdocument van de volledige Paved Road. Het Excel-sjabloon bevat één catalogusblad met alle lagen (1–8) als rijen — filter op <strong>Laag</strong> of <strong>Classificatie</strong> om te focussen op een specifiek domein.</p>
+    <div class="doc-meta">
+      <div class="doc-meta-item"><div class="doc-meta-label">Organisatie / Programma</div><div class="doc-meta-value">[naam]</div></div>
+      <div class="doc-meta-item"><div class="doc-meta-label">Versie</div><div class="doc-meta-value">0.1</div></div>
+      <div class="doc-meta-item"><div class="doc-meta-label">Eigenaar</div><div class="doc-meta-value">[rol]</div></div>
+      <div class="doc-meta-item"><div class="doc-meta-label">Vastgesteld op</div><div class="doc-meta-value">JJJJ-MM-DD</div></div>
+    </div>
+    <h3>Status legenda</h3>
+    <div class="status-grid">
+      <div class="status-item"><span class="status-badge s-seeded">🌱 Seeded</span><span>Eerste opzet aanwezig, nog niet formeel gepubliceerd</span></div>
+      <div class="status-item"><span class="status-badge s-published">📢 Published</span><span>Formeel gepubliceerd, beschikbaar voor teams</span></div>
+      <div class="status-item"><span class="status-badge s-curated">✅ Curated</span><span>Inhoudelijk gevalideerd, aanbevolen</span></div>
+      <div class="status-item"><span class="status-badge s-adopted">🏗️ Adopted</span><span>Actief in gebruik bij één of meer teams</span></div>
+      <div class="status-item"><span class="status-badge s-pervasive">🌐 Pervasive</span><span>Breed geadopteerd, de-facto standaard</span></div>
+      <div class="status-item"><span class="status-badge s-evolving">🔄 Evolving</span><span>In herziening vanwege gewijzigde context</span></div>
+    </div>
+  </section>
 
   <section class="content-section">
     <h2>Wat bevat dit werkproduct?</h2>
@@ -210,9 +250,21 @@ footer.page-footer{margin-top:48px;border-top:2px solid var(--ink);padding-top:1
 
   <section class="content-section">
     <h2>De gelaagde structuur</h2>
+    <div class="layer-nav">
+      <span class="layer-nav-label">Naar laag →</span>
+      <a href="#laag1">1 · Principes</a>
+      <a href="#laag2">2 · Leverancierskader</a>
+      <a href="#laag3">3 · Technologiestack</a>
+      <a href="#laag4">4 · Datadomeinen</a>
+      <a href="#laag5">5 · Identiteit &amp; SSO</a>
+      <a href="#laag6">6 · Integratiepatronen</a>
+      <a href="#laag7">7 · Databasekeuzes</a>
+      <a href="#laag8">8 · Aanvullende dimensies</a>
+    </div>
 
-    <h3><span class="layer-num">Laag 1</span>Principes — de wegregels</h3>
+    <h3 id="laag1"><span class="layer-num">Laag 1</span>Principes — de wegregels</h3>
     <p>Onveranderlijke gedragsregels die alle andere keuzes sturen. Niet onderhandelbaar; gelden voor interne teams én leveranciers.</p>
+    <div class="mvg-callout"><strong>MVG-eigenaarschap</strong>Deze principes worden vastgesteld door de MVG-practice als Architecture Principles-werkproduct en vloeien in van MVG naar MVA. De Paved Road past ze toe — MVG bezit ze. Wijziging vereist een ARB-besluit.</div>
     <ul>
       <li><strong>Configureer, customiseer niet.</strong> COTS-producten worden geconfigureerd binnen vendormogelijkheden. Aanpassingen buiten de vendor-API vereisen een ADR met expliciete eigenaarschapsverklaring.</li>
       <li><strong>Standaarden boven maatwerk.</strong> Waar een open standaard bestaat (bijv. OAuth 2.0, OpenID Connect, HL7 FHIR), is die leidend. Proprietary alternatieven vereisen architectuurgoedkeuring.</li>
@@ -222,7 +274,7 @@ footer.page-footer{margin-top:48px;border-top:2px solid var(--ink);padding-top:1
       <li><strong>Compliance is architectuureis, geen projecttaak.</strong> Wettelijke en sectorale verplichtingen (AVG, NEN 7510, sectorstandaarden) worden als falsifieerbaar criterium gedefinieerd vóór vendorselectie.</li>
     </ul>
 
-    <h3><span class="layer-num">Laag 2</span>Leverancierskader — de rijbewijseisen</h3>
+    <h3 id="laag2"><span class="layer-num">Laag 2</span>Leverancierskader — de rijbewijseisen</h3>
     <p>Niet welk product een leverancier levert, maar aan welke voorwaarden het product moet voldoen om in aanmerking te komen. Toetsvragen bij elke COTS-kandidaat:</p>
     <ul>
       <li>Ondersteunt de leverancier standaard-authenticatieprotocollen (SAML 2.0 / OIDC)?</li>
@@ -234,7 +286,7 @@ footer.page-footer{margin-top:48px;border-top:2px solid var(--ink);padding-top:1
     </ul>
     <p>Een leverancier die niet aan de kwalificatiecriteria voldoet kan toch worden geadopteerd, maar vereist een <strong>dispensatie-ADR</strong> met compenserende maatregelen en een tijdpad naar compliance.</p>
 
-    <h3><span class="layer-num">Laag 3</span>Technologiestack — de rijstroken</h3>
+    <h3 id="laag3"><span class="layer-num">Laag 3</span>Technologiestack — de rijstroken</h3>
     <p>Driedeling per technologie. De driedeling werkt beter dan een binaire lijst: ze maakt het onderscheid tussen "niet wenselijk maar soms onvermijdelijk" en "absoluut verboden" expliciet.</p>
     <table class="struct-table">
       <thead><tr><th style="width:30%">Technologie / patroon</th><th style="width:14%">Status</th><th>Toelichting</th></tr></thead>
@@ -252,11 +304,11 @@ footer.page-footer{margin-top:48px;border-top:2px solid var(--ink);padding-top:1
       </tbody>
     </table>
 
-    <h3><span class="layer-num">Laag 4</span>Datadomeinen — wie is leidend</h3>
+    <h3 id="laag4"><span class="layer-num">Laag 4</span>Datadomeinen — wie is leidend</h3>
     <p>De Paved Road definieert per datadomein welke applicatie de <em>system of record</em> is. Een applicatie die data uit een ander domein nodig heeft, raadpleegt de system of record via de gedefinieerde API — nooit via een database-dump of tussenkopie. Als twee systemen claimen system of record te zijn voor hetzelfde domein, is dat een architectuurincident dat escalatie vereist.</p>
     <p>Breng de datadomeinen in kaart als onderdeel van de Paved Road: domein → system of record → geautoriseerde consumenten → uitwisselstandaard. Domeinboundaries volgen de organisatorische verantwoordelijkheid, niet de applicatiearchitectuur van de vendor.</p>
 
-    <h3><span class="layer-num">Laag 5</span>Identiteit &amp; SSO — de paspoortcontrole</h3>
+    <h3 id="laag5"><span class="layer-num">Laag 5</span>Identiteit &amp; SSO — de paspoortcontrole</h3>
     <p>Elke applicatie die medewerkers of eindgebruikers bedient, participeert in de centrale identity provider (IdP) — geen eigen inlogschermen. Elk COTS-product moet de centrale IdP kunnen consumeren via OIDC; geïsoleerde user databases zijn verboden.</p>
     <table class="struct-table">
       <thead><tr><th style="width:28%">Inlogmiddel / protocol</th><th style="width:16%">Status</th><th>Toepassingsgebied</th></tr></thead>
@@ -269,7 +321,7 @@ footer.page-footer{margin-top:48px;border-top:2px solid var(--ink);padding-top:1
       </tbody>
     </table>
 
-    <h3><span class="layer-num">Laag 6</span>Integratierealisatie — de weginfrastructuur</h3>
+    <h3 id="laag6"><span class="layer-num">Laag 6</span>Integratierealisatie — de weginfrastructuur</h3>
     <table class="struct-table">
       <thead><tr><th style="width:28%">Patroon</th><th style="width:16%">Status</th><th>Wanneer</th></tr></thead>
       <tbody>
@@ -282,10 +334,10 @@ footer.page-footer{margin-top:48px;border-top:2px solid var(--ink);padding-top:1
     </table>
     <p>Aanvullende tooling-eisen: <strong>API-gateway</strong> verplicht voor alle externe koppelingen (throttling, logging, authenticatie). <strong>Contract-first</strong>: OpenAPI-spec wordt opgesteld vóór implementatie, niet erna. Alle koppelingen loggen op gestandaardiseerd formaat naar centrale observability-stack.</p>
 
-    <h3><span class="layer-num">Laag 7</span>Databasekeuzes — de opslaginfrastructuur</h3>
+    <h3 id="laag7"><span class="layer-num">Laag 7</span>Databasekeuzes — de opslaginfrastructuur</h3>
     <p><span class="on">On-road</span>: relationele databases voor transactionele data (open standaard); documentopslag voor semi-gestructureerde data; elke applicatie heeft zijn eigen schema — geen gedeelde databases. <span class="ok">Toegestaan</span>: vendor-specifieke databases mits exporteerbaarheid gegarandeerd; in-memory stores voor sessie- en cachedata. <span class="no">Verboden</span>: gedeelde databases als integratiemechanisme; databases zonder geautomatiseerde backupstrategie; opslag van gevoelige persoonsdata in systemen zonder aantoonbare compliance.</p>
 
-    <h3><span class="layer-num">Laag 8</span>Aanvullende dimensies</h3>
+    <h3 id="laag8"><span class="layer-num">Laag 8</span>Aanvullende dimensies</h3>
     <ul>
       <li><strong>Logging &amp; auditability.</strong> In een gereguleerde omgeving is de Paved Road voor logging niet alleen technisch maar ook juridisch: welke events worden gelogd, hoe lang bewaard, wie heeft inzagerecht — dit zijn architectuurgegevens, geen beheerdetails.</li>
       <li><strong>Toestemmingsbeheer (consent).</strong> De Paved Road definieert welk systeem de authoritative consent store is en hoe applicaties dat raadplegen — niet zelf implementeren.</li>
