@@ -1,0 +1,43 @@
+@startuml
+title <size:24>Container View: Systeem in scope</size>
+
+set separator none
+top to bottom direction
+
+<style>
+  root {
+    BackgroundColor: #ffffff
+    FontColor: #444444
+  }
+</style>
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+
+Person(Eindgebruiker, "Eindgebruiker", $descr="Voert bedrijfsprocessen uit", $tags="", $link="")
+Person(Beheerder, "Beheerder", $descr="Configureert het platform", $tags="", $link="")
+System(IdentityProvider, "Identity Provider", $descr="SSO · bijv. Entra ID", $tags="", $link="")
+System(MonitoringLogging, "Monitoring & Logging", $descr="Datadog / Splunk · SLA-bewaking", $tags="", $link="")
+System(Externbronsysteem, "Extern bronsysteem", $descr="Levert of ontvangt data", $tags="", $link="")
+
+System_Boundary("Systeeminscope_boundary", "Systeem in scope", $tags="") {
+  Container(Systeeminscope.PortaalUI, "Portaal / UI", $techn="SaaS Web", $descr="Self-service voor eindgebruikers\n✔ Paved Road", $tags="", $link="")
+  Container(Systeeminscope.COTSPakketA, "COTS Pakket A", $techn="SaaS Enterprise", $descr="Primaire functionaliteit\nbijv. ERP / Finance · ✔ Paved Road", $tags="", $link="")
+  Container(Systeeminscope.COTSPakketB, "COTS Pakket B", $techn="SaaS", $descr="Ondersteunende functionaliteit\nbijv. CRM / Service · ✔ Paved Road", $tags="", $link="")
+  Container(Systeeminscope.Integratielaag, "Integratie-laag", $techn="API Gateway / iPaaS", $descr="Orkestreert berichten\ntussen containers en externe systemen\n✔ Paved Road", $tags="", $link="")
+}
+
+Rel(Systeeminscope.COTSPakketB, Systeeminscope.Integratielaag, "Ontvangt events", $techn="CloudEvents", $tags="", $link="")
+Rel(Eindgebruiker, Systeeminscope.PortaalUI, "Gebruikt", $techn="HTTPS", $tags="", $link="")
+Rel(Beheerder, Systeeminscope.COTSPakketA, "Configureert", $techn="Admin-console", $tags="", $link="")
+Rel(Systeeminscope.PortaalUI, IdentityProvider, "Authenticeert via", $techn="OIDC", $tags="", $link="")
+Rel(Systeeminscope.Integratielaag, Externbronsysteem, "Synchroniseert", $techn="REST / Event", $tags="", $link="")
+Rel(MonitoringLogging, Systeeminscope.COTSPakketA, "Observeert", $techn="Metrics / Logs", $tags="", $link="")
+Rel(MonitoringLogging, Systeeminscope.COTSPakketB, "Observeert", $techn="Metrics / Logs", $tags="", $link="")
+Rel(Systeeminscope.PortaalUI, Systeeminscope.COTSPakketA, "Haalt data op", $techn="REST API", $tags="", $link="")
+Rel(Systeeminscope.COTSPakketA, Systeeminscope.Integratielaag, "Publiceert events", $techn="CloudEvents", $tags="", $link="")
+
+SHOW_LEGEND(true)
+hide stereotypes
+@enduml

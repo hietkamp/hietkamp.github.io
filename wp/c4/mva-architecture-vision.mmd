@@ -1,0 +1,24 @@
+C4Context
+  title Architecture Vision — C4 Level 1 Context
+
+  Person(gebruiker, "Eindgebruiker", "Voert bedrijfsprocessen uit")
+  Person(beheerder, "Beheerder", "Configureert het platform")
+
+  System(systeem, "Systeem in scope", "Het te configureren COTS-platform\n[Software System]")
+
+  System_Ext(idp, "Identity Provider", "SSO · bijv. Entra ID / Okta\n[Extern — Paved Road]")
+  System_Ext(bron, "Bronsysteem", "Levert of ontvangt data\n[Extern]")
+  System_Ext(platform, "Cloud Platform", "Paved Road · bijv. Azure / AWS\n[Extern — Paved Road]")
+
+  Rel(gebruiker, systeem, "Gebruikt", "HTTPS / SSO")
+  Rel(beheerder, systeem, "Configureert", "Admin-console")
+  Rel(systeem, idp, "Authenticeert via", "OIDC / SAML 2.0")
+  Rel(systeem, bron, "Wisselt data uit met", "REST / Event")
+  Rel(platform, systeem, "Host", "Cloud-infra")
+
+  UpdateElementStyle(gebruiker, $bgColor="#08427b", $fontColor="#ffffff")
+  UpdateElementStyle(beheerder, $bgColor="#08427b", $fontColor="#ffffff")
+  UpdateElementStyle(systeem, $bgColor="#1168bd", $fontColor="#ffffff")
+  UpdateElementStyle(idp, $bgColor="#999999", $fontColor="#ffffff")
+  UpdateElementStyle(bron, $bgColor="#999999", $fontColor="#ffffff")
+  UpdateElementStyle(platform, $bgColor="#999999", $fontColor="#ffffff")

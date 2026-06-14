@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Architecture Decision Record (ADR) – MVA Work Product</title>
+<meta name="description" content="Eén korte vastlegging per significante beslissing: context, opties, keuze, consequenties. De eenheid van voortgang in MVA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3efe6;--paper-2:#ece6d8;--ink:#1c1a16;--ink-soft:#524d42;
+  --line:#d8d0bf;--card:#fbf9f3;--prac:#0f6e63;
+  --alpha:#0f6e63;--product:#bb7a16;--activity:#1f5fa8;--role:#9c3f76;--pattern:#b1492e;
+  scroll-behavior:smooth;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(circle at 10% -8%,#fef5ed 0%,transparent 50%),radial-gradient(circle at 95% 0%,#e6efe9 0%,transparent 42%),var(--paper);}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.4;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 26px 90px}
+.breadcrumb{padding:16px 0 0;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);display:flex;align-items:center;gap:8px}
+.breadcrumb a{color:var(--prac);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+header.hero{padding:28px 0 22px;border-bottom:3px solid var(--prac);margin-bottom:24px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--prac);margin-bottom:6px}
+h1{font-family:"Fraunces",serif;font-optical-sizing:auto;font-weight:900;font-size:clamp(2rem,5vw,3.6rem);line-height:.98;margin:.14em 0 .14em;letter-spacing:-.015em}
+h1 em{font-style:italic;font-weight:500;color:var(--prac)}
+.lede{font-size:clamp(.98rem,1.4vw,1.1rem);max-width:66ch;color:var(--ink-soft);margin:.6em 0 1em}
+.meta-pills{display:flex;flex-wrap:wrap;gap:8px}
+.meta-pills span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;border:1px solid var(--ink);border-radius:30px;padding:5px 12px;background:var(--card)}
+.download-strip{display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--prac);border-radius:12px;padding:18px 22px;margin-bottom:28px}
+.dl-info{display:flex;align-items:center;gap:16px}
+.dl-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dl-label{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--prac);margin-bottom:2px}
+.dl-name{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:600;margin-bottom:1px}
+.dl-desc{font-size:.83rem;color:var(--ink-soft)}
+a.dl-btn{display:inline-flex;align-items:center;gap:7px;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.05em;border:2px solid var(--prac);background:var(--prac);color:#fff;padding:10px 20px;border-radius:30px;text-decoration:none;white-space:nowrap;transition:.15s;flex-shrink:0}
+a.dl-btn:hover{background:transparent;color:var(--prac)}
+.content-section{margin-bottom:32px}
+.content-section h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.45rem;margin:0 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.content-section p{color:var(--ink-soft);margin:0 0 10px}
+.content-section ul{color:var(--ink-soft);padding-left:20px;margin:0 0 10px}
+.content-section li{margin-bottom:4px}
+
+
+
+
+
+
+.struct-table{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0}
+.struct-table th{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--prac);text-align:left;padding:6px 10px;border-bottom:1px solid var(--prac);font-weight:600}
+.struct-table td{padding:6px 10px;border-bottom:1px dashed var(--line);color:var(--ink-soft);vertical-align:top}
+.struct-table td:first-child{font-weight:600;color:var(--ink);width:35%}
+.tip-list{list-style:none;margin:0;padding:0}
+.tip-list li{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.92rem;color:var(--ink-soft)}
+.tip-list li:last-child{border-bottom:none}
+.tip-list .tip-icon{color:var(--prac);font-size:1rem;flex-shrink:0;margin-top:1px}
+footer.page-footer{margin-top:48px;border-top:2px solid var(--ink);padding-top:14px;font-size:.82rem;color:var(--ink-soft)}
+.skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0;outline:none}
+.skip-link:focus-visible{top:0}
+.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--line);backdrop-filter:blur(6px);border-top:3px solid transparent;border-image:linear-gradient(90deg,#d44f0e,#e87830) 1}
+.site-nav-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:center;height:52px;gap:0}
+.site-nav-logo{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:var(--ink);text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:-.01em;flex-shrink:0}
+.site-nav-logo em{font-style:italic;font-weight:500;color:#d44f0e}
+.site-nav-list{display:flex;list-style:none;margin:0;padding:0;gap:2px;align-items:center}
+.site-nav-list>li>a,.site-nav-list>li>button{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 10px;border-radius:6px;border:none;background:transparent;cursor:pointer;transition:.12s;line-height:1;display:flex;align-items:center;gap:4px;min-height:25px;white-space:nowrap}
+.site-nav-list>li>a:hover,.site-nav-list>li>button:hover{color:var(--ink);background:var(--paper-2)}
+.has-drop{position:relative}
+.has-drop .drop{display:none;position:absolute;top:calc(100% + 4px);right:0;min-width:240px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 30px -22px rgba(28,26,22,.55);padding:5px;list-style:none;margin:0;z-index:200}
+.has-drop.open .drop{display:block}
+.drop li a{display:flex;align-items:center;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:12px;color:var(--ink-soft);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s}
+.drop li a:hover{background:var(--paper-2);color:var(--ink)}
+.drop-label{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5a5040;padding:6px 10px 2px;display:block}
+:focus-visible{outline:3px solid #d44f0e;outline-offset:2px}
+.site-nav-toggle{display:none;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:none;background:transparent;cursor:pointer;border-radius:6px;flex-shrink:0;color:var(--ink);margin-left:8px}
+.site-nav-toggle:hover{background:var(--paper-2)}
+.site-nav-toggle .bar{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .22s,opacity .22s,margin .22s}
+.site-nav-toggle .bar+.bar{margin-top:5px}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(2){opacity:0;margin-top:0}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:700px){
+  .site-nav-toggle{display:flex}
+  .site-nav-menu{display:none;position:fixed;top:52px;left:0;right:0;background:var(--paper);border-bottom:2px solid var(--ink);z-index:98;padding:12px 18px 20px}
+  .site-nav-menu.open{display:block}
+  .site-nav-list{flex-direction:column;gap:0}
+  .site-nav-list>li>a,.site-nav-list>li>button{font-size:15px;padding:14px 12px;border-bottom:1px solid var(--line);width:100%;min-height:48px}
+  .has-drop .drop{position:static;box-shadow:none;border:none;border-radius:8px;margin:4px 0 8px;background:var(--paper-2);display:none}
+  .has-drop.open .drop{display:block}
+  .download-strip{flex-direction:column;align-items:flex-start}
+}
+.site-contribute{background:var(--ink);color:#ddd8ce;padding:22px 0;margin-top:32px}
+.site-contribute-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:flex-start;gap:14px;font-size:.84rem;line-height:1.55}
+.site-contribute strong{color:#f3efe6}
+.site-contribute a{color:#aac4f0;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.site-contribute a:hover{color:#fff}
+.site-contribute-icon{flex-shrink:0;fill:#ddd8ce;margin-top:2px}
+@media(max-width:600px){.site-contribute-inner{flex-direction:column;gap:10px}}
+@media print{.site-nav,.skip-link,.site-contribute{display:none}}
+
+  .archimate-section{margin-bottom:36px}
+  .archimate-section p{color:var(--ink-soft);margin:0 0 10px}
+  .archimate-section .mapping-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:0 0 10px}
+  .archimate-section .mapping-table th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--prac);text-align:left;
+    padding:5px 10px;border-bottom:1px solid var(--prac);font-weight:600}
+  .archimate-section .mapping-table td{padding:5px 10px;border-bottom:1px dashed var(--line);
+    vertical-align:top;color:var(--ink-soft)}
+  .archimate-section .mapping-table td:first-child{font-weight:600;color:var(--ink);width:22%}
+  .archimate-section .mapping-table td:nth-child(2){color:var(--prac);width:26%}
+  .archimate-section .swatch{display:inline-block;width:11px;height:11px;border-radius:2px;
+    margin-right:4px;vertical-align:middle;border:1px solid rgba(0,0,0,.1)}
+  .archimate-section .ref{font-size:.8rem;color:var(--ink-soft);border-top:1px dashed var(--line);
+    padding-top:8px;margin-top:4px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Ga naar de hoofdinhoud</a>
+<header class="site-nav" role="banner">
+  <div class="site-nav-inner">
+    <a class="site-nav-logo" href="../index.html">Essence <em>Way of Working</em></a>
+    <nav id="site-nav-menu" class="site-nav-menu" aria-label="Sitenavigatie">
+      <ul class="site-nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li class="has-drop">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="practices-menu">Practices <span aria-hidden="true">&#9662;</span></button>
+          <ul class="drop" id="practices-menu">
+            <span class="drop-label" aria-hidden="true">Twee practices</span>
+            <li><a href="../mva-essence-practice.html">Min. Viable Architecture</a></li>
+            <li><a href="../mvg-essence-practice.html">Min. Viable Governance</a></li>
+          </ul>
+        </li>
+        <li><a href="../resources.html">Bronnen</a></li>
+      </ul>
+    </nav>
+    <button class="site-nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="site-nav-menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="wrap" id="main-content">
+  <div class="breadcrumb">
+    <a href="../mva-essence-practice.html">← Min. Viable Architecture</a>
+    <span>/</span>
+    <span>Architecture Decision Record</span>
+  </div>
+
+  <header class="hero">
+    <div class="kicker">MVA Work Product · Motivatielaag · Beslissingselement</div>
+    <h1>Architecture Decision Record<br><em>een beredeneerde keuze</em></h1>
+    <p class="lede">Een <strong>Architectural Decision (AD)</strong> is een beredeneerde ontwerpkeuze die een architectureel significante functionele of niet-functionele eis adresseert. Een ADR legt één zo'n beslissing vast: context, opties, keuze, consequenties. Het is de eenheid van voortgang in MVA — elke alpha-toestand van Architecture Decisions vereist aantoonbare ADR's.</p>
+    <div class="meta-pills">
+      <span>Motivatielaag · Beslissingselement</span>
+      <span>Formaat: Word (.docx)</span>
+      <span>Bewijst: Architecture Decisions → Framed → Decided → Validated</span>
+    </div>
+  </header>
+
+  <div class="download-strip">
+    <div class="dl-info">
+      <div class="dl-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <rect width="36" height="36" rx="8" fill="#dbeafe"/>
+          <rect x="9" y="6" width="18" height="24" rx="2" fill="#1d4ed8" opacity=".15"/>
+          <rect x="9" y="6" width="18" height="24" rx="2" stroke="#1d4ed8" stroke-width="1.5" fill="none"/>
+          <line x1="13" y1="13" x2="23" y2="13" stroke="#1d4ed8" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="17" x2="23" y2="17" stroke="#1d4ed8" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="21" x2="20" y2="21" stroke="#1d4ed8" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="dl-label">Sjabloon</div>
+        <div class="dl-name">mva-adr.docx</div>
+        <div class="dl-desc">Lichtgewicht ADR-sjabloon — één pagina per beslissing, statusbadge inbegrepen</div>
+      </div>
+    </div>
+    <a class="dl-btn" href="downloads/mva-adr.docx" download>⬇ Download Word</a>
+  </div>
+
+  <section class="content-section">
+    <h2>Wat bevat dit werkproduct?</h2>
+    <p>Het concept is geïntroduceerd door Michael Nygard in zijn blogpost <em>Documenting Architecture Decisions</em> (2011) en sindsdien breed omarmd — van agile teams tot enterprise-architectuurpraktijken (AWS, Azure Well-Architected Framework). Een ADR is een zelfstandig document dat één architectuurbeslissing vastlegt met een uniek nummer (ADR-xx). In COTS-contexten bevatten ADR's twee extra elementen: de <strong>onomkeerbaarheidscategorie</strong> van de beslissing en de <strong>glueware-kosten</strong> per overwogen optie.</p>
+    <table class="struct-table">
+      <thead><tr><th>Sectie</th><th>Inhoud</th></tr></thead>
+      <tbody>
+        <tr><td>Metadata + statusbadge</td><td>ADR-nummer, titel, datum, auteur, reviewers, huidige status (In overweging / Besloten / Gevalideerd / Vervangen door ADR-xx), en <strong>onomkeerbaarheidscategorie</strong>: Vendor lock-in / Datamodel / Integratie-API / Licentiemodel / Overig.</td></tr>
+        <tr><td>Context</td><td>Waarom staat deze beslissing open? Welke drivers, ASR's of paved-road vereisten spelen een rol? Bevat ook: is dit een beslissing die kostbaar is om later terug te draaien, en waarom?</td></tr>
+        <tr><td>Overwogen opties</td><td>Tabel met minimaal drie opties (inclusief nul-optie). Kolommen: optie, voordelen, nadelen, kosten van ombuigen, <strong>glueware-kosten</strong> (schatting van de integratieinspanning die deze optie vereist).</td></tr>
+        <tr><td>Beslissing + redenering</td><td>De gekozen optie en de argumentatie. Verwijzing naar de drivers en principes die de keuze sturen.</td></tr>
+        <tr><td>Consequenties</td><td>Positieve en negatieve gevolgen. "Te beheren consequenties" zijn net zo belangrijk als voordelen. In COTS: benoem expliciet de integratieafhankelijkheden die deze beslissing creëert.</td></tr>
+        <tr><td>Falsifieerbaarheidscriterium</td><td>Hoe en wanneer weten we dat deze beslissing juist was? Formuleer als meetbaar criterium — het ASR dat door deze beslissing wordt vervuld. Dit is de basis voor validatie in Prove the Risky Parts.</td></tr>
+        <tr><td>Koppelingen</td><td>Verwijzingen naar gerelateerde ADR's, ASR's, paved-road componenten en de Architecture Definition.</td></tr>
+      </tbody>
+    </table>
+    <p>Een ADR heeft geen directe pendant als ArchiMate-element — ArchiMate kent geen Decision-type. De <em>inhoud</em> van een ADR raakt wel degelijk de <strong>Motivatielaag</strong>: de aanleiding is een <strong>Driver</strong>, de afweging van opties is een <strong>Assessment</strong>, en de uitkomst van de beslissing wordt een <strong>Principle</strong>, <strong>Requirement</strong> of <strong>Constraint</strong> die de architectuurkeuze verankert. Het ADR-document zelf is het bewijs dat deze motivatie-elementen bewust zijn doorlopen en vastgelegd.</p>
+    <p>Een C4-diagram is voor een ADR niet van toepassing. C4 visualiseert de structuur van een softwaresysteem — een ADR is een beslisdocument, geen systeem. De traceerbaarheid van de beslissing loopt via de architectuurartefacten die het ADR citeert: de Architecture Definition, de ASR's en de Paved Roads-catalogus.</p>
+  </section>
+
+  <section class="content-section">
+    <h2>ADR-formats</h2>
+    <p>Er bestaan meerdere gangbare formats. Ze zijn alle geldig — kies er één en houd het consistent. De drie meest gebruikte, conform <a href="https://adr.github.io/adr-templates/" target="_blank" rel="noopener">adr.github.io/adr-templates</a>:</p>
+    <table class="struct-table">
+      <thead><tr><th>Format</th><th>Secties</th><th>Wanneer geschikt</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Nygard</strong> (2011)</td>
+          <td>Title · Status · Context · Decision · Consequences</td>
+          <td>Eenvoudig en snel. Goed als startpunt voor teams die nieuw zijn met ADR's. Minimale overhead.</td>
+        </tr>
+        <tr>
+          <td><strong>MADR</strong></td>
+          <td>Title · Status · Context · Considered Options (met voor/nadelen per optie) · Decision · Consequences · Confirmation</td>
+          <td>Wanneer de afweging van alternatieven expliciet zichtbaar moet zijn. Ondersteunt gestructureerde besluitvorming in teams. Aanbevolen voor COTS-selecties.</td>
+        </tr>
+        <tr>
+          <td><strong>Y-Statement</strong></td>
+          <td>Eén zin: <em>"In de context van &lt;use case&gt;, geconfronteerd met &lt;zorg&gt;, hebben we gekozen voor &lt;optie&gt; om &lt;kwaliteit&gt; te bereiken, waarbij we &lt;nadeel&gt; accepteren."</em></td>
+          <td>Voor snelle vastlegging of als samenvattende kop boven een Nygard- of MADR-ADR. Dwingt tot kernachtige formulering.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Het MVA-sjabloon volgt de MADR-structuur, aangevuld met de COTS-specifieke velden onomkeerbaarheidscategorie en glueware-kosten.</p>
+  </section>
+
+  <section class="content-section">
+    <h2>Levenscyclus en Definition of Done</h2>
+    <p>Elke ADR doorloopt een vaste levenscyclus. Een ADR is pas <em>klaar</em> als hij alle vijf Definition of Done-criteria heeft doorlopen — niet al bij het schrijven van de eerste versie.</p>
+    <table class="struct-table" style="table-layout:fixed">
+      <colgroup><col style="width:22%"><col style="width:78%"></colgroup>
+      <thead><tr><th>Status</th><th>Betekenis</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Proposed</strong></td><td>Beslissing staat open. Opties zijn geïdentificeerd maar nog niet beoordeeld of aanvaard.</td></tr>
+        <tr><td><strong>Accepted</strong></td><td>Beslissing genomen en gedragen door de relevante stakeholders.</td></tr>
+        <tr><td><strong>Rejected</strong></td><td>Optie expliciet afgewezen. De redenering blijft bewaard voor toekomstige navraag.</td></tr>
+        <tr><td><strong>Deprecated</strong></td><td>Beslissing niet langer actief van toepassing, maar nog niet vervangen.</td></tr>
+        <tr><td><strong>Superseded by ADR-xx</strong></td><td>Vervangen door een nieuwe beslissing. De oude ADR blijft leesbaar; de nieuwe is de opvolger.</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Definition of Done</strong> — een ADR is klaar als:</p>
+    <ul>
+      <li>Er bewijs is dat de beslissing de aanleiding adresseert.</li>
+      <li>De beoordelingscriteria en overwogen alternatieven gedocumenteerd zijn.</li>
+      <li>Overeenstemming bereikt is met de relevante stakeholders.</li>
+      <li>De ADR formeel vastgelegd is in het beslissingslog van het project.</li>
+      <li>Een realisatieplan en reviewmoment zijn afgesproken.</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h2>De ADR in relatie tot de Paved Road</h2>
+    <p>De Paved Road is geen ADR — het is een beleid. De Paved Road is de uitkomst van een reeks beslissingen, maar het document zelf is van een andere orde.</p>
+    <table class="struct-table" style="table-layout:fixed">
+      <colgroup><col style="width:18%"><col style="width:41%"><col style="width:41%"></colgroup>
+      <thead><tr><th></th><th>ADR</th><th>Paved Road</th></tr></thead>
+      <tbody>
+        <tr><td>Aard</td><td>Beslissingsrecord</td><td>Beleidsdocument / standaard</td></tr>
+        <tr><td>Tijdskarakter</td><td>Point-in-time, immutable</td><td>Levend, versioned</td></tr>
+        <tr><td>Functie</td><td>Legt rationale vast</td><td>Stuurt gedrag</td></tr>
+        <tr><td>Eigenaar</td><td>Beslisser op dat moment</td><td>Architectuurgovernance (MVG)</td></tr>
+        <tr><td>Relatie</td><td>Verantwoordt een keuze</td><td>Is de norm waaraan getoetst wordt</td></tr>
+      </tbody>
+    </table>
+    <p>De ADR is nooit de Paved Road zelf. De ADR komt in beeld op drie momenten <em>rond</em> de Paved Road:</p>
+    <ul>
+      <li><strong>Bij het instellen van een standaard</strong> — de beslissing om REST/OpenAPI als integratiestandaard te hanteren verdient een ADR (waarom dit en niet SOAP of GraphQL). Dat ADR <em>resulteert</em> in een Paved Road-element; het is er geen.</li>
+      <li><strong>Bij een off-road-afwijking</strong> — als een team of leverancier van de Paved Road afwijkt, is een ADR het instrument om die afwijking te verantwoorden. Dit is de meest directe koppeling tussen ADR en Paved Road in de dagelijkse praktijk.</li>
+      <li><strong>Bij het herzien van een standaard</strong> — als de Paved Road-norm verandert (bijv. van OIDC als aanbeveling naar OIDC als verplichting), is dat een beslissing die een ADR verdient. Het supersedes-mechanisme houdt de beslissingshistorie intact.</li>
+    </ul>
+    <p>De Paved Road is daarmee een MVG-instrument — het kleinste normatieve kader dat verkeerde keuzes voorkomt zonder elke keuze te hoeven goedkeuren. Het ADR is het instrument voor de uitzonderingen en de constitutieve beslissingen die het kader hebben gevormd.</p>
+  </section>
+
+  <section class="content-section">
+    <h2>Wanneer gebruik je dit?</h2>
+    <ul>
+      <li><strong>Bij elke significante, kostbaar-om-terug-te-draaien keuze</strong> — leveranciersselectie, cloudplatform, integratiepatroon, data-architectuurkeuze.</li>
+      <li><strong>Bij leveranciersselectie</strong> — een ADR legt vast waarom pakket A de voorkeur heeft boven pakket B en welke voorwaarden gelden.</li>
+      <li><strong>Bij integratiepatroonkeuze</strong> — API vs. event vs. batch: de afweging vastgelegd voor toekomstige verwijzing.</li>
+      <li><strong>Als een paved-road-afwijking wordt overwogen</strong> — off-road-keuzes vereisen altijd een ADR vóór een Review Record.</li>
+      <li><strong>Ter vervanging van een eerdere ADR</strong> — wanneer context verandert, wordt de nieuwe ADR de opvolger; de oude krijgt status "Vervangen door ADR-xx".</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h2>Tips voor invullen</h2>
+    <ul class="tip-list">
+      <li><span class="tip-icon">→</span><span><strong>Context beschrijft WHY, niet WHAT.</strong> Beschrijf de situatie die de beslissing urgent maakt, niet de beslissing zelf — die staat in de beslissings-sectie.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Minimaal drie opties, inclusief nul-optie.</strong> De nul-optie ("niets doen") is altijd een geldige optie en maakt de kosten van actie zichtbaar.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Normaliseer criteria naar hetzelfde abstractieniveau.</strong> Vergelijk opties alleen op gelijkwaardige criteria. Een technisch voordeel van optie A afwegen tegen een organisatorisch nadeel van optie B geeft een scheef beeld.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Consequenties "te beheren" zijn net zo belangrijk als voordelen.</strong> Benoem expliciet wat er mis kan gaan en wie dat beheert.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Koppel altijd aan drivers.</strong> Elke ADR verwijst naar minimaal één driver uit de Architecture Vision. Zonder driver is de beslissing niet gemotiveerd.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Schrijf de Y-Statement eerst.</strong> Formuleer de beslissing als één zin in Y-Statement-vorm voordat je de rest uitwerkt. Als dat niet lukt, is de beslissing nog niet scherp genoeg.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Validatie is geen bijzaak.</strong> Definieer vooraf hoe je weet dat de beslissing juist was — een meetpunt, een pilot-uitkomst of een review-datum.</span></li>
+      <li><span class="tip-icon">→</span><span><strong>Houd het kort.</strong> Een ADR van vijf pagina's is te lang. Als je meer nodig hebt, splits dan in twee ADR's of verplaats de details naar een bijlage.</span></li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h2>Tooling</h2>
+    <p>ADR's leven het beste als tekstbestanden naast de code of architectuurrepository — versiebeheerd, doorzoekbaar, en door iedereen bewerkbaar. Zie <a href="https://adr.github.io/adr-tooling/" target="_blank" rel="noopener">adr.github.io/adr-tooling</a> voor een volledig overzicht.</p>
+    <table class="struct-table" style="table-layout:fixed">
+      <colgroup><col style="width:22%"><col style="width:78%"></colgroup>
+      <thead><tr><th>Tool</th><th>Wat het doet</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Log4brains</strong></td><td>CLI voor aanmaken en beheren van ADR's, plus een statische website-renderer die het beslissingslog publiceerbaar maakt.</td></tr>
+        <tr><td><strong>adr-tools</strong></td><td>Originele bash-scripts van Nygard-stijl ADR's. Eenvoudig, lichtgewicht, werkt direct in een git-repository.</td></tr>
+        <tr><td><strong>ADR Manager</strong></td><td>Web-UI met GitHub-integratie voor teams die liever niet in de terminal werken.</td></tr>
+        <tr><td><strong>ADR Manager VS Code</strong></td><td>VS Code-extensie voor aanmaken en navigeren door ADR's vanuit de editor.</td></tr>
+        <tr><td><strong>Backstage ADR Plugin</strong></td><td>Integratie in het Backstage developer portal — maakt ADR's zoekbaar over meerdere teams en repositories.</td></tr>
+      </tbody>
+    </table>
+  </section>
+  
+  <section class="content-section archimate-section" id="archimate-instructie">
+    <h2>ArchiMate · motivatie-elementen</h2>
+    <p>Een ADR heeft geen directe pendant als ArchiMate-element — ArchiMate kent geen Decision-type. De inhoud van een ADR raakt wel de <strong>Motivatielaag</strong> via drie elementen:</p>
+    <table class="mapping-table">
+      <thead><tr><th>ADR-sectie</th><th>ArchiMate-element</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td>Aanleiding / context</td><td>Driver</td><td>De zakelijke of technische drijfveer die de beslissing urgent maakt.</td></tr>
+        <tr><td>Afweging van opties</td><td>Assessment</td><td>De beoordeling van alternatieven tegen drivers, ASR's en constraints.</td></tr>
+        <tr><td>Gekozen richting</td><td>Principle · Requirement · Constraint</td><td>De beslissing wordt een richtinggevend principe, een eis of een beperking die de architectuur verankert.</td></tr>
+      </tbody>
+    </table>
+    <p>Het ADR-document is het bewijs dat deze motivatie-elementen bewust zijn doorlopen. De traceerbaarheid loopt via de artefacten die het ADR citeert: de Architecture Definition, de ASR's en de Paved Roads-catalogus. Een C4-diagram is voor een ADR niet van toepassing — C4 visualiseert systemen, niet beslissingen.</p>
+  </section>
+
+  <footer class="page-footer">
+    <p>Onderdeel van de <strong>MVA-practice</strong> — Minimum Viable Architecture voor COTS-contexten.</p>
+  </footer>
+</div>
+
+<div class="site-contribute">
+  <div class="site-contribute-inner">
+    <svg class="site-contribute-icon" width="22" height="22" viewBox="0 0 98 96" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.364 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>
+    <p><strong>Open practice.</strong> Deze practices zijn open voor bijdragen van de community. <a href="https://github.com/hietkamp/hietkamp.github.io/issues/new/choose" target="_blank" rel="noopener">Open een GitHub-issue</a> om een sjabloon bij te dragen of een verbetering voor te stellen.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.has-drop').forEach(function(dropdown){
+    var btn=dropdown.querySelector('button');
+    function open(){dropdown.classList.add('open');btn.setAttribute('aria-expanded','true');}
+    function close(){dropdown.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+    btn.addEventListener('click',function(e){e.stopPropagation();dropdown.classList.contains('open')?close():open();});
+    document.addEventListener('click',function(){close();});
+    dropdown.addEventListener('click',function(e){e.stopPropagation();});
+  });
+  var tog=document.querySelector('.site-nav-toggle');
+  var menu=document.querySelector('.site-nav-menu');
+  if(tog&&menu){
+    tog.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=menu.classList.toggle('open');
+      tog.setAttribute('aria-expanded',String(open));
+      tog.setAttribute('aria-label',open?'Menu sluiten':'Menu openen');
+    });
+    document.addEventListener('click',function(){
+      menu.classList.remove('open');
+      tog.setAttribute('aria-expanded','false');
+      tog.setAttribute('aria-label','Menu openen');
+    });
+    menu.addEventListener('click',function(e){e.stopPropagation();});
+  }
+})();
+</script>
+</body>
+</html>

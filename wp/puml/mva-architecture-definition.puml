@@ -1,0 +1,51 @@
+@startuml
+!include <archimate/Archimate>
+skinparam backgroundColor #F3EFE6
+skinparam shadowing false
+skinparam roundCorner 6
+skinparam defaultFontSize 10
+skinparam defaultFontName "IBM Plex Sans"
+skinparam ArchiMateBorderColor #888888
+skinparam ArchiMateElementFontColor #1C1A16
+skinparam ArchiMateElementBorderThickness 1
+skinparam ArrowColor #524D42
+skinparam ArrowFontSize 9
+skinparam ArrowFontColor #524D42
+skinparam noteFontSize 9
+skinparam noteFontColor #524D42
+skinparam noteBackgroundColor #FBF9F3
+skinparam noteBorderColor #D8D0BF
+title Architecture Definition (MVA) — Gelaagde COTS-architectuur
+top to bottom direction
+
+rectangle "Bedrijfslaag" as bl #FFFFD0 {
+  Business_Process(bp1, "Primair proces\nbijv. Inkoop / Finance")
+  Business_Process(bp2, "Ondersteunend\nbijv. Rapportage")
+  Business_Role(br1, "Eindgebruiker")
+  Business_Role(br2, "Beheerder / Admin")
+}
+
+rectangle "Applicatielaag — COTS-producten" as al #D0FFFF {
+  Application_Component(ac1, "COTS Pakket A\n[ERP / Finance]\n✔ Paved Road")
+  Application_Component(ac2, "COTS Pakket B\n[CRM / Service]\n✔ Paved Road")
+  Application_Interface(ai1, "Integratie-laag\n[API Gateway / iPaaS]\n✔ Paved Road")
+  Application_Component(ac3, "Portaal / UI\n[Self-service]\n✔ Paved Road")
+}
+
+rectangle "Technologielaag — Paved Road platform" as tl #D0FFD0 {
+  Technology_Node(tn1, "Cloud Platform\nbijv. Azure / AWS\nRegio: EU")
+  Technology_SystemSoftware(ss1, "Identity Provider\nbijv. Entra ID\nSSO verplicht")
+  Technology_SystemSoftware(ss2, "Monitoring & Logging\nbijv. Datadog / Splunk")
+}
+
+Rel_Serving(ac1, bp1, "bedient")
+Rel_Serving(ac2, bp1, "bedient")
+Rel_Serving(ac3, br1, "bedient")
+Rel_Association(ac1, ai1, "")
+Rel_Association(ac2, ai1, "")
+Rel_Realization(tn1, ac1, "realiseert")
+Rel_Realization(tn1, ac2, "realiseert")
+Rel_Realization(ss1, ac3, "auth")
+Rel_Realization(ss2, ac1, "observability")
+
+@enduml

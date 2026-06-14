@@ -1,0 +1,221 @@
+{
+  "configuration" : { },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 0,
+  "model" : {
+    "people" : [ {
+      "description" : "Voert primaire bedrijfsprocessen uit",
+      "id" : "1",
+      "name" : "Eindgebruiker",
+      "properties" : {
+        "structurizr.dsl.identifier" : "gebruiker"
+      },
+      "relationships" : [ {
+        "description" : "Gebruikt",
+        "destinationId" : "3",
+        "id" : "7",
+        "sourceId" : "1",
+        "tags" : "Relationship",
+        "technology" : "HTTPS / SSO"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "description" : "Configureert en beheert het platform",
+      "id" : "2",
+      "name" : "Beheerder",
+      "properties" : {
+        "structurizr.dsl.identifier" : "beheerder"
+      },
+      "relationships" : [ {
+        "description" : "Configureert",
+        "destinationId" : "3",
+        "id" : "8",
+        "sourceId" : "2",
+        "tags" : "Relationship",
+        "technology" : "Admin-console"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "description" : "Het te configureren COTS-platform\n[Software System]",
+      "documentation" : { },
+      "id" : "3",
+      "name" : "Systeem in scope",
+      "properties" : {
+        "structurizr.dsl.identifier" : "systeem"
+      },
+      "relationships" : [ {
+        "description" : "Authenticeert via",
+        "destinationId" : "4",
+        "id" : "9",
+        "sourceId" : "3",
+        "tags" : "Relationship",
+        "technology" : "OIDC / SAML 2.0"
+      }, {
+        "description" : "Wisselt data uit met",
+        "destinationId" : "5",
+        "id" : "10",
+        "sourceId" : "3",
+        "tags" : "Relationship",
+        "technology" : "REST / Event"
+      } ],
+      "tags" : "Element,Software System"
+    }, {
+      "description" : "SSO · bijv. Entra ID / Okta",
+      "documentation" : { },
+      "id" : "4",
+      "name" : "Identity Provider",
+      "properties" : {
+        "structurizr.dsl.identifier" : "idp"
+      },
+      "tags" : "Element,Software System,External,PavedRoad"
+    }, {
+      "description" : "Levert of ontvangt data",
+      "documentation" : { },
+      "id" : "5",
+      "name" : "Bronsysteem",
+      "properties" : {
+        "structurizr.dsl.identifier" : "bron"
+      },
+      "tags" : "Element,Software System,External"
+    }, {
+      "description" : "Paved Road · bijv. Azure / AWS · EU-regio",
+      "documentation" : { },
+      "id" : "6",
+      "name" : "Cloud Platform",
+      "properties" : {
+        "structurizr.dsl.identifier" : "platform"
+      },
+      "relationships" : [ {
+        "description" : "Host",
+        "destinationId" : "3",
+        "id" : "11",
+        "sourceId" : "6",
+        "tags" : "Relationship",
+        "technology" : "Cloud-infra"
+      } ],
+      "tags" : "Element,Software System,External,PavedRoad"
+    } ]
+  },
+  "name" : "MVA — Architecture Vision",
+  "properties" : {
+    "structurizr.inspection.error" : "1",
+    "structurizr.dsl" : "d29ya3NwYWNlICJNVkEg4oCUIEFyY2hpdGVjdHVyZSBWaXNpb24iIHsKCiAgbW9kZWwgewogICAgZ2VicnVpa2VyICA9IHBlcnNvbiAiRWluZGdlYnJ1aWtlciIgIlZvZXJ0IHByaW1haXJlIGJlZHJpamZzcHJvY2Vzc2VuIHVpdCIKICAgIGJlaGVlcmRlciAgPSBwZXJzb24gIkJlaGVlcmRlciIgIkNvbmZpZ3VyZWVydCBlbiBiZWhlZXJ0IGhldCBwbGF0Zm9ybSIKCiAgICBzeXN0ZWVtID0gc29mdHdhcmVTeXN0ZW0gIlN5c3RlZW0gaW4gc2NvcGUiICJIZXQgdGUgY29uZmlndXJlcmVuIENPVFMtcGxhdGZvcm1cbltTb2Z0d2FyZSBTeXN0ZW1dIgoKICAgIGlkcCAgICAgID0gc29mdHdhcmVTeXN0ZW0gIklkZW50aXR5IFByb3ZpZGVyIiAiU1NPIMK3IGJpanYuIEVudHJhIElEIC8gT2t0YSIgIkV4dGVybmFsLFBhdmVkUm9hZCIKICAgIGJyb24gICAgID0gc29mdHdhcmVTeXN0ZW0gIkJyb25zeXN0ZWVtIiAiTGV2ZXJ0IG9mIG9udHZhbmd0IGRhdGEiICJFeHRlcm5hbCIKICAgIHBsYXRmb3JtID0gc29mdHdhcmVTeXN0ZW0gIkNsb3VkIFBsYXRmb3JtIiAiUGF2ZWQgUm9hZCDCtyBiaWp2LiBBenVyZSAvIEFXUyDCtyBFVS1yZWdpbyIgIkV4dGVybmFsLFBhdmVkUm9hZCIKCiAgICBnZWJydWlrZXIgLT4gc3lzdGVlbSAiR2VicnVpa3QiICJIVFRQUyAvIFNTTyIKICAgIGJlaGVlcmRlciAtPiBzeXN0ZWVtICJDb25maWd1cmVlcnQiICJBZG1pbi1jb25zb2xlIgogICAgc3lzdGVlbSAgIC0+IGlkcCAgICAgIkF1dGhlbnRpY2VlcnQgdmlhIiAiT0lEQyAvIFNBTUwgMi4wIgogICAgc3lzdGVlbSAgIC0+IGJyb24gICAgIldpc3NlbHQgZGF0YSB1aXQgbWV0IiAiUkVTVCAvIEV2ZW50IgogICAgcGxhdGZvcm0gIC0+IHN5c3RlZW0gIkhvc3QiICJDbG91ZC1pbmZyYSIKICB9CgogIHZpZXdzIHsKICAgIHN5c3RlbUNvbnRleHQgc3lzdGVlbSAiQ29udGV4dCIgewogICAgICBpbmNsdWRlICoKICAgICAgYXV0b0xheW91dAogICAgfQogICAgCiAgICBzdHlsZXMgewogICAgICBlbGVtZW50ICJQZXJzb24iIHsKICAgICAgICBzaGFwZSBQZXJzb24KICAgICAgICBiYWNrZ3JvdW5kICMwODQyN2IKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTMKICAgICAgfQogICAgICBlbGVtZW50ICJTb2Z0d2FyZSBTeXN0ZW0iIHsKICAgICAgICBiYWNrZ3JvdW5kICMxMTY4YmQKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTMKICAgICAgfQogICAgICBlbGVtZW50ICJDb250YWluZXIiIHsKICAgICAgICBiYWNrZ3JvdW5kICM0MzhkZDUKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJFeHRlcm5hbCIgewogICAgICAgIGJhY2tncm91bmQgIzk5OTk5OQogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIlBhdmVkUm9hZCIgewogICAgICAgIGJhY2tncm91bmQgIzBmNmU2MwogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIkdvdmVybmFuY2UiIHsKICAgICAgICBiYWNrZ3JvdW5kICM0YjNmOWUKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJEcml2ZXIiIHsKICAgICAgICBiYWNrZ3JvdW5kICNiYjdhMTYKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJPZmZSb2FkIiB7CiAgICAgICAgYmFja2dyb3VuZCAjYzQ3ZDBlCiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEyCiAgICAgIH0KICAgICAgZWxlbWVudCAiRGVjaXNpb24iIHsKICAgICAgICBiYWNrZ3JvdW5kICMxYTU2OTgKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICByZWxhdGlvbnNoaXAgIlJlbGF0aW9uc2hpcCIgewogICAgICAgIGZvbnRTaXplIDExCiAgICAgICAgY29sb3IgIzUyNGQ0MgogICAgICB9CiAgICB9CgogIH0KfQ==",
+    "structurizr.inspection.info" : "0",
+    "structurizr.inspection.ignore" : "0",
+    "structurizr.inspection.warning" : "0"
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "background" : "#438dd5",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Container"
+        }, {
+          "background" : "#1a5698",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Decision"
+        }, {
+          "background" : "#bb7a16",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Driver"
+        }, {
+          "background" : "#999999",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "External"
+        }, {
+          "background" : "#4b3f9e",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Governance"
+        }, {
+          "background" : "#c47d0e",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "OffRoad"
+        }, {
+          "background" : "#0f6e63",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "PavedRoad"
+        }, {
+          "background" : "#08427b",
+          "color" : "#ffffff",
+          "fontSize" : 13,
+          "shape" : "Person",
+          "tag" : "Person"
+        }, {
+          "background" : "#1168bd",
+          "color" : "#ffffff",
+          "fontSize" : 13,
+          "tag" : "Software System"
+        } ],
+        "relationships" : [ {
+          "color" : "#524d42",
+          "fontSize" : 11,
+          "tag" : "Relationship"
+        } ]
+      },
+      "terminology" : { }
+    },
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "5",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "Context",
+      "name" : "System Context View: Systeem in scope",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "10"
+      }, {
+        "id" : "11"
+      }, {
+        "id" : "7"
+      }, {
+        "id" : "8"
+      }, {
+        "id" : "9"
+      } ],
+      "softwareSystemId" : "3"
+    } ]
+  }
+}

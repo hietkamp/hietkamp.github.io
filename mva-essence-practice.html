@@ -55,7 +55,10 @@
   .origin{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;border-radius:30px;padding:3px 8px;margin-left:auto;border:1px solid var(--prac);color:var(--prac);background:rgba(15,110,99,.07)}
   .card h4{font-family:"Fraunces",serif;font-optical-sizing:auto;font-weight:600;font-size:1.22rem;margin:0 0 6px;line-height:1.1}
   .desc{font-size:.94rem;line-height:1.55;color:var(--ink-soft);margin:0 0 11px}
-  .foot{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);border-top:1px dotted var(--line);padding-top:9px;margin-top:auto}
+  .foot{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);border-top:1px dotted var(--line);padding-top:9px}
+  .card-bottom{margin-top:auto;display:flex;flex-direction:column;gap:8px}
+  a.wp-link{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--product);text-decoration:none;border:1px solid var(--product);border-radius:20px;padding:4px 10px;white-space:nowrap;transition:.13s;align-self:flex-start}
+  a.wp-link:hover{background:var(--product);color:#fff}
   .foot b{color:var(--ink);font-weight:600}
   .states{list-style:none;margin:0 0 6px;padding:0;counter-reset:s}
   .states>li{position:relative;padding:7px 0 7px 28px;border-top:1px dashed var(--line)}
@@ -75,7 +78,7 @@
   .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-top:18px;border-left:4px solid var(--prac)}
   .panel h3{font-family:"Fraunces",serif;margin:0 0 6px;font-size:1.16rem}
   .panel p{margin:0 0 10px;color:var(--ink-soft);font-size:.95rem;max-width:84ch}
-  .maprow{display:grid;grid-template-columns:1fr auto 1.2fr;gap:10px;align-items:center;padding:7px 0;border-top:1px dashed var(--line);font-size:.92rem}
+  .maprow{display:grid;grid-template-columns:0.6fr auto 1.6fr;gap:10px;align-items:center;padding:7px 0;border-top:1px dashed var(--line);font-size:.92rem}
   .maprow:first-of-type{border-top:none}
   .maprow .arrow{font-family:"IBM Plex Mono",monospace;color:var(--prac)}
   .maprow .to{font-family:"IBM Plex Mono",monospace;font-size:.87rem;color:var(--ink-soft)}
@@ -255,13 +258,13 @@
   <header class="hero">
     <div class="kicker">Een samengestelde practice · sluit aan op de Essence kernel</div>
     <h1>Minimum Viable Architecture<br><em>als een Essence practice</em></h1>
-    <p class="lede">Architectureer het minimum, just in time, om de significante risico's te elimineren en levering te sturen — beslissingen boven documenten. MVA vormt de Solution; het werkt samen met MVG (dat het bestuurt).</p>
+    <p class="lede">Architectureer het minimum, just in time, om de significante risico's te elimineren en levering te sturen — beslissingen boven documenten. MVA vormt de Solution; het werkt samen met MVG (dat het bestuurt). In COTS-contexten geldt het spanningsveld: stel beslissingen uit — tenzij ze vendor-selectie, datamodel of integratiepatroon raken. Die zijn kostbaar om terug te draaien en verdienen architectuurwerk vóór de MVA.</p>
     <div class="pillars"><span>TOGAF ADM B–F · H</span><span>MVA</span><span>Solution-gebied</span><span>werkt samen met MVG</span><span>Niveau &middot; Het niveau van het System</span></div>
     <div class="plug">
       <div><h4>Waar het aansluit</h4><p>Het <b>Solution-gebied</b> — het systeem vormgeven. Overspant ADM-fasen B–F en H.</p></div>
-      <div><h4>Wat het toevoegt</h4><p>3 alphas (+1 sub-alpha) · 7 activiteiten · 7 work products · 4 rollen · 5 patronen · +1 competency (Architecture).</p></div>
+      <div><h4>Wat het toevoegt</h4><p>3 alphas (+1 sub-alpha) · 7 activiteiten · 7 work products · 4 rollen · 6 patronen · +1 competency (Architecture).</p></div>
       <div><h4>Wat het vooruitbrengt</h4><p>Zijn eigen drie alphas, en drijft kernel-<b>System</b> naar <i>Architecture Selected → Demonstrable</i>.</p></div>
-      <div><h4>Invoer</h4><p>Gekwantificeerde drivers (aanbevolen: <b>TOGAF Business Scenarios-techniek</b>) · <b>MVG</b>-guardrails · een <b>leveringspractice</b> om te implementeren en te configureren.</p></div>
+      <div><h4>Invoer</h4><p>Gekwantificeerde drivers via stakeholder-analyse of discovery-workshops · <b>MVG</b>-guardrails · een <b>leveringspractice</b> om te implementeren en te configureren.</p></div>
     </div>
   </header>
 
@@ -300,38 +303,42 @@ g.appendChild(E(`<article class="card" data-type="alpha"><div class="top" style=
 g.appendChild(E(`<article class="card" data-type="alpha"><div class="top" style="background:${ACC}"></div><div class="body"><div class="meta"><span class="type" style="color:${ACC}">Alpha</span><span class="area sol">Solution</span><span class="origin">Kernel</span></div><h4>System</h4><p class="desc">Het systeem dat waarde levert — geconfigureerde producten, integraties, hardware en data. MVA selecteert de architectuur en bewijst de risicovolste keuzes voordat levering het implementeert en configureert.</p><ul class="states"><li><span class="st-name">Architecture Selected</span><div class="st-check">Architectuur gekozen om te voldoen aan de belangrijkste drivers en risico's.</div></li><li><span class="st-name">Demonstrable</span><div class="st-check">Een uitvoerbare versie toont de belangrijkste kenmerken.</div></li></ul><div class="foot">Eigendom van Kernel · MVA brengt het naar → <b>Demonstrable</b> · verder naar Operational door een leveringspractice</div></div></article>`));
 
 const acts=[
-["Frame the Drivers","Leg de architectureel significante drivers vast en kwantificeer ze; kom overeen over hun meetbare succescriteria.","Drivers → Identified → Prioritised → Quantified"],
+["Frame the Drivers","Leg de architectureel significante drivers vast en kwantificeer ze; kom overeen over hun meetbare succescriteria. Een discovery workshop met stakeholders is een effectieve manier om drivers snel te identificeren en te prioriteren. In COTS: formuleer falsifieerbare kwaliteitsattributen — meetbare doelen als 'reduceer verwerkingstijd van 48 naar 6 uur' — als selectiecriteria voor componentkeuze. Requirements en selectie lopen parallel, niet sequentieel.","Drivers → Identified → Prioritised → Quantified"],
 ["Conduct Architecture Review","Pave the road — publiceer goedgekeurde producten, patronen en standaarden als een zelfbedienend servicechassis — en beoordeel de off-road afwijkingen en significante beslissingen tegen de drivers en principes.","Paved Road → Established → Adopted · Decisions → Validated"],
-["Envision the Architecture","Kom het doel en de waarde ervan overeen op één pagina; baken de scope af.","Architecture → Envisioned"],
-["Shape the Minimum Architecture","Definieer alleen de bouwstenen die nu nodig zijn over domeinen heen; kader de significante beslissingen in en neem ze.","Architecture → Outlined · Decisions → Framed → Decided"],
-["Prove the Risky Parts","Bewijs de risicovolste keuzes via proof-of-concept, leveranciersevaluatie of sandbox-pilot; valideer de beslissingen.","Architecture → Demonstrated · Decisions → Validated"],
-["Plan the Transition","Identificeer de hiaten; orden de volgende implementatiestap van baseline naar doel; detailleer alleen de volgende horizon.","Architecture → Usable"],
+["Envision the Architecture","Kom het doel en de waarde ervan overeen op één pagina; baken de scope af. In COTS: de eerste deliverable is niet een architectuurschets maar een beknopte set architectuurprincipes en uitsluitingscriteria — vóórdat enige vendor geselecteerd wordt. Gedeelde architectuurintentie voorkomt verkeerde componentkeuzes.","Architecture → Envisioned"],
+["Shape the Minimum Architecture","Definieer alleen de bouwstenen die nu nodig zijn over domeinen heen; kader de significante beslissingen in en neem ze. In COTS: de integratielaag (glueware) is altijd first-class — niet een implementatiedetail achteraf. Identificeer expliciet welke beslissingen in deze fase onomkeerbaar worden: vendor lock-in, datamodel, integratie-API.","Architecture → Outlined · Decisions → Framed → Decided"],
+["Prove the Risky Parts","Bewijs de risicovolste keuzes via proof-of-concept, leveranciersevaluatie of sandbox-pilot; valideer de beslissingen. In COTS: de proof-of-concept toetst de integratielaag en de falsifieerbare kwaliteitsattributen — niet alleen de functionele fit van het pakket.","Architecture → Demonstrated · Decisions → Validated"],
+["Plan the Transition","Identificeer de hiaten; orden de volgende implementatiestap van baseline naar doel; detailleer alleen de volgende horizon. Elke horizon legt expliciet vast welke beslissingen in die fase onomkeerbaar worden en welke nog open blijven.","Architecture → Usable"],
 ["Evolve the Architecture","Beheer verandering continu; actualiseer en pensioneer; hervalideer de drivers.","Architecture → Established → Evolving · Drivers → Sustained"]
 ];
 deck.appendChild(E(`<div class="panel"><h3>COTS / koop-en-implementeer is de standaardcontext</h3>
-  <p>De alphas en activiteiten zijn native voor een koop-en-configureer-omgeving. De architectuur is niet het ontwerp van custom code — het is de selectie van producten, de definitie van integraties, en de set standaarden die conforme keuzes de gemakkelijke maakt.</p>
-  <div class="maprow"><span>Architecture Decisions</span><span class="arrow">zijn →</span><span class="to">productselectie- &amp; integratiekeuzes (beslissingsmatrix, ADR)</span></div>
+  <p>De alphas en activiteiten zijn native voor een koop-en-configureer-omgeving. De architectuur is niet het ontwerp van custom code — het is de selectie van producten, de definitie van integraties, en de set standaarden die conforme keuzes de gemakkelijke maakt. Het centrale spanningsveld: MVA stelt beslissingen uit tot ze nodig zijn, maar COTS forceert vroege beslissingen die moeilijk terug te draaien zijn.</p>
+  <div class="maprow"><span>Architectuurintentie als eerste deliverable</span><span class="arrow">is →</span><span class="to">een beknopte set principes &amp; uitsluitingscriteria vóór vendor-selectie — geen diagram</span></div>
+  <div class="maprow"><span>Requirements &amp; vendor-selectie</span><span class="arrow">lopen →</span><span class="to">parallel — falsifieerbare kwaliteitsattributen zijn tegelijk selectiecriteria</span></div>
+  <div class="maprow"><span>Integratielaag (glueware)</span><span class="arrow">is →</span><span class="to">first-class architectuurelement — nooit een implementatiedetail achteraf</span></div>
+  <div class="maprow"><span>Architecture Decisions</span><span class="arrow">zijn →</span><span class="to">productselectie- &amp; integratiekeuzes; bevatten ook glueware-kosten &amp; onomkeerbaarheidscategorie</span></div>
   <div class="maprow"><span>Architecture Definition</span><span class="arrow">is →</span><span class="to">integratiearchitectuur, grenzen &amp; standaarden waaraan producten moeten voldoen</span></div>
-  <div class="maprow"><span>Prove the Risky Parts</span><span class="arrow">is →</span><span class="to">proof-of-concept, leveranciersevaluatie of sandbox-pilot</span></div>
-  <div class="maprow"><span>Significant Requirements</span><span class="arrow">zijn →</span><span class="to">selectie- &amp; conformancecriteria in het RFP of programma van eisen</span></div>
+  <div class="maprow"><span>Prove the Risky Parts</span><span class="arrow">is →</span><span class="to">integratielaag + falsifieerbare QA's toetsen — niet alleen functionele fit van het pakket</span></div>
+  <div class="maprow"><span>Significant Requirements</span><span class="arrow">zijn →</span><span class="to">selectie- &amp; conformancecriteria in het RFP — parallel opgesteld, niet achteraf</span></div>
+  <div class="maprow"><span>Roadmap-horizons</span><span class="arrow">bevatten →</span><span class="to">expliciete onomkeerbare grens: welke beslissingen worden in deze fase definitief</span></div>
   <div class="maprow"><span>Conformance</span><span class="arrow">geborgd door →</span><span class="to">paved road + architectuurbeoordeling van afwijkingen + SLA- en telemetriebewaking</span></div></div>`));
 deck.appendChild(E(sec('activity','var(--activity)','Activities','De architectuurstroom — wat MVA doet, gemeten door de alpha-toestanden die het bereikt.')));
 g=deck.querySelector('#sec-activity .grid');
 acts.forEach((a,i)=>g.appendChild(E(`<article class="card" data-type="activity"><div class="top" style="background:var(--activity)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--activity)">Activiteit ${i+1} / ${acts.length}</span><span class="origin">MVA</span></div><h4>${a[0]}</h4><p class="desc">${a[1]}</p><div class="outcome"><b>Beweegt de alphas</b>${a[2]}</div></div></article>`)));
 
 const products=[
-["Architecture Vision (on a page)","Architecture · Drivers","Het ambitieuze doel en de waarde ervan op één pagina.",[["Schets","Ruwe doel & scope",0],["Overeengekomen","Eén pagina goedgekeurd",0]]],
-["Architecture Definition (the MVA)","Architecture","Minimale bouwstenen en alleen de weergaven waarop een stakeholder zal handelen.",[["Skelet","Sleutelbouwstenen & grenzen",0],["Werkend","Weergaven die de huidige beslissingen nodig hebben",0],["Uitputtend model","Alle domeinen/artefacten — uitgesteld",1]]],
-["Architecture Decision Records","Architecture Decisions","Eén korte vastlegging per significante beslissing: context, opties, keuze, consequenties.",[["Invoer","Beslissing vastgelegd met redenering",0],["Gekoppeld","Gekoppeld aan drivers & bouwstenen",0]]],
-["Architecturally-Significant Requirements","Drivers","De weinige requirements die significant genoeg zijn om de architectuur te vormen, elk gekoppeld aan een driver.",[["Verklaard","Significante requirements benoemd",0],["Quantified","Elk draagt een meetbaar doel",0]]],
-["Paved Roads","Paved Road","Het herbruikbare fundament waarop teams bouwen — goedgekeurde producten, patronen en referentie-instellingen (het servicechassis), plus de standaarden die ze belichamen.",[["Seeded","Een paar goedgekeurde standaarden",0],["Gepubliceerd","Catalogus zelfbedienbaar",0],["Samengesteld","Actueel gehouden; verbreed vanuit inzichten",0]]],
-["Review Records","Architecture Decisions","Het verslag van architectuurbeoordelingen — de beslissingen die worden genomen wanneer teams off-road gaan of een significante keuze maken, beoordeeld tegen de drivers en principes.",[["Vastgelegd","Uitkomst vastgelegd met redenering",0],["Gekoppeld","Gekoppeld aan drivers & beslissingen",0]]],
-["Architecture Roadmap & Transition States","Architecture · Work","Het pad van baseline naar doel als implementatiestappen. Alleen de volgende horizon is gedetailleerd.",[["Horizon","Volgende implementatiestap gedefinieerd",0],["Geordend","Hiaten & afhankelijkheden geordend",0],["Big-bang plan","Volledig migratieplan — uitgesteld",1]]]
+["Architecture Vision (on a page)","Architecture · Drivers","De kleinste gedeelde intentie die verkeerde componentkeuzes voorkomt — principes en uitsluitingscriteria op één pagina, vóórdat enige vendor geselecteerd wordt.",[["Schets","Ruwe doel, scope & uitsluitingscriteria",0],["Overeengekomen","Eén pagina goedgekeurd vóór vendor-selectie",0]],"wp/mva-architecture-vision.html"],
+["Architecture Definition (the MVA)","Architecture","Minimale bouwstenen en alleen de weergaven waarop een stakeholder zal handelen. De integratielaag (glueware) is altijd first-class — nooit een uitgesteld implementatiedetail.",[["Skelet","Sleutelbouwstenen, grenzen & integratiepatroon",0],["Werkend","Weergaven die de huidige beslissingen nodig hebben",0]],"wp/mva-architecture-definition.html"],
+["Architecture Decision Records","Architecture Decisions","Eén korte vastlegging per significante beslissing: context, opties, keuze, consequenties. In COTS ook: glueware-kosten per optie en de onomkeerbaarheidscategorie (vendor lock-in / datamodel / integratie-API).",[["Invoer","Beslissing + onomkeerbaarheidscategorie vastgelegd",0],["Gekoppeld","Gekoppeld aan drivers, bouwstenen & glueware-kosten",0]],"wp/mva-adr.html"],
+["Architecturally-Significant Requirements","Drivers","De weinige requirements die significant genoeg zijn om de architectuur te vormen — tevens de selectiecriteria voor COTS-componenten. Falsifieerbaar en meetbaar: niet 'verbeter efficiëntie' maar 'reduceer verwerkingstijd van 48 naar 6 uur'.",[["Verklaard","Significante requirements benoemd & falsifieerbaar",0],["Quantified","Elk draagt een meetbaar selectiecriterium",0]],"wp/mva-asr.html"],
+["Paved Roads","Paved Road","Het herbruikbare fundament waarop teams bouwen — goedgekeurde producten, patronen en referentie-instellingen (het servicechassis), plus de standaarden die ze belichamen.",[["Seeded","Een paar goedgekeurde standaarden",0],["Gepubliceerd","Catalogus zelfbedienbaar",0],["Samengesteld","Actueel gehouden; verbreed vanuit inzichten",0]],"wp/mva-paved-roads.html"],
+["Review Records","Architecture Decisions","Het verslag van architectuurbeoordelingen — de beslissingen die worden genomen wanneer teams off-road gaan of een significante keuze maken, beoordeeld tegen de drivers en principes.",[["Vastgelegd","Uitkomst vastgelegd met redenering",0],["Gekoppeld","Gekoppeld aan drivers & beslissingen",0]],"wp/mva-review-record.html"],
+["Architecture Roadmap & Transition States","Architecture · Work","Het pad van baseline naar doel als implementatiestappen. Alleen de volgende horizon is gedetailleerd. Elke horizon bevat een expliciete onomkeerbare grens: welke beslissingen worden in die fase definitief.",[["Horizon","Volgende stap + onomkeerbare grens gedefinieerd",0],["Geordend","Hiaten & afhankelijkheden geordend",0]],"wp/mva-roadmap.html"]
 ];
-deck.appendChild(E(sec('product','var(--product)','Work Products','De architectuurartefacten. Ze leven in de repository die door MVG wordt bestuurd. Doorgestreepte niveaus zijn bewust uitgesteld.')));
+deck.appendChild(E(sec('product','var(--product)','Work Products','De architectuurartefacten. Ze leven in de repository die door MVG wordt bestuurd. Klik op een kaart voor uitwerking en sjabloon.')));
 g=deck.querySelector('#sec-product .grid');
 products.forEach(p=>{const lv=p[3].map(l=>`<li class="${l[2]?'cut':''}"><span class="lv">${l[0]}</span><span>${l[1]}</span></li>`).join('');
-  g.appendChild(E(`<article class="card" data-type="product"><div class="top" style="background:var(--product)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--product)">Work Product</span><span class="origin">MVA</span></div><h4>${p[0]}</h4><p class="desc">${p[2]}</p><ul class="levels">${lv}</ul><div class="foot">Bewijst&nbsp;→&nbsp;<b>${p[1]}</b></div></div></article>`));});
+  g.appendChild(E(`<article class="card" data-type="product"><div class="top" style="background:var(--product)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--product)">Work Product</span><span class="origin">MVA</span></div><h4>${p[0]}</h4><p class="desc">${p[2]}</p><ul class="levels">${lv}</ul><div class="card-bottom"><a class="wp-link" href="${p[4]}">Uitwerking &amp; sjabloon →</a><div class="foot">Bewijst&nbsp;→&nbsp;<b>${p[1]}</b></div></div></div></article>`));});
 
 const roles=[
 ["Lead / Enterprise Architect","Bezit de visie en kader de significante beslissingen; houdt de architectuur minimaal en coherent.",["Architecture","Leadership","Analysis"]],
@@ -343,17 +350,18 @@ deck.appendChild(E(sec('role','var(--role)','Roles','Wie de architectuur vormgee
 g=deck.querySelector('#sec-role .grid');
 roles.forEach(r=>g.appendChild(E(`<article class="card" data-type="role"><div class="top" style="background:var(--role)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--role)">Role</span><span class="area sol">Solution</span><span class="origin">MVA</span></div><h4>${r[0]}</h4><p class="desc">${r[1]}</p><div class="comps">${r[2].map(c=>`<span>${c}</span>`).join('')}</div></div></article>`)));
 
-const pats=[["A1","Architect the minimum, defer the rest","Produceer alleen de structuur die een huidige beslissing nodig heeft. Al het andere wacht op bewijs dat het nodig is."],
-["A2","Decisions over documents","De architectuur is haar set van significante beslissingen. Leg die scherp vast; documenten zijn een bijproduct."],
+const pats=[["A1","Architect the minimum, defer the rest","Produceer alleen de structuur die een huidige beslissing nodig heeft. Al het andere wacht op bewijs. COTS-uitzondering: vendor-selectie, datamodel en integratie-API zijn onomkeerbaar — die vereisen architectuurwerk vóór de selectie, niet erna."],
+["A2","Decisions over documents","De architectuur is haar set van significante beslissingen. Leg die scherp vast; documenten zijn een bijproduct. In COTS bevat een ADR ook de glueware-kosten van de gekozen optie en het falsifieerbaarheidscriterium waarmee de beslissing later wordt gevalideerd."],
 ["A3","Pave the road, review the exceptions","Vertaal de drivers in goedgekeurde producten, patronen en standaarden zodat het conforme pad het gemakkelijke is; beoordeel alleen wat off-road gaat."],
-["A4","Prove the riskiest parts first","Besteed architectuurinspanning waar onzekerheid en kosten-van-fout-zijn het hoogst zijn. Demonstreer voordat je je vastlegt."],
-["A5","Evolve continuously; design for change","Behandel de architectuur als levend. Optimaliseer voor omkeerbaarheid, niet een bevroren eindtoestand."]];
-deck.appendChild(E(sec('pattern','var(--pattern)','Patterns','De vijf MVA-principes die elke architectuurbeslissing sturen.')));
+["A4","Prove the riskiest parts first","Besteed architectuurinspanning waar onzekerheid en kosten-van-fout-zijn het hoogst zijn. In COTS: beproef de integratielaag en de falsifieerbare kwaliteitsattributen — niet alleen de functionele fit. Demonstreer voordat je je vastlegt."],
+["A5","Evolve continuously; design for change","Behandel de architectuur als levend. Optimaliseer voor omkeerbaarheid, niet een bevroren eindtoestand. Fasegewijze uitrol — pilot → wave 1 → wave 2 — reduceert risico en maakt bijsturing mogelijk."],
+["A6","Identify the point of no return","Benoem vóór elke vendor-selectie de beslissingen die kostbaar zijn om terug te draaien: vendor lock-in, datamodel, integratie-API, licentiemodel. Die verdienen vroeg architectuurwerk en een expliciete onomkeerbare grens per horizon. De rest mag wachten."]];
+deck.appendChild(E(sec('pattern','var(--pattern)','Patterns','De zes MVA-principes die elke architectuurbeslissing sturen. A1–A5 gelden universeel; A6 adresseert het COTS-spanningsveld van uitgestelde versus onomkeerbare beslissingen.')));
 g=deck.querySelector('#sec-pattern .grid');
 pats.forEach(p=>g.appendChild(E(`<article class="card" data-type="pattern"><div class="top" style="background:var(--pattern)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--pattern)">Pattern</span><span class="type" style="color:var(--pattern);letter-spacing:.1em">MVA · ${p[0]}</span><span class="origin">MVA</span></div><h4>${p[1]}</h4><p class="desc" style="margin-bottom:0">${p[2]}</p></div></article>`)));
 
 deck.querySelector('#sec-pattern .grid').insertAdjacentElement('afterend',E(`<div class="panel"><h3>Hoe MVA samenstelt met de rest</h3>
-  <div class="maprow"><span>Gekwantificeerde zakelijke drivers</span><span class="arrow">in van →</span><span class="to">TOGAF Business Scenarios-techniek (of vergelijkbaar)</span></div>
+  <div class="maprow"><span>Gekwantificeerde zakelijke drivers</span><span class="arrow">in van →</span><span class="to">stakeholder-analyse, discovery-workshops of vergelijkbare requirements-aanpak</span></div>
   <div class="maprow"><span>Guardrails, principes, beslissingsbevoegdheden</span><span class="arrow">in van →</span><span class="to">MVG practice</span></div>
   <div class="maprow"><span>Architecture Selected → geconfigureerd &amp; geïntegreerd</span><span class="arrow">overgedragen aan →</span><span class="to">leverings- / implementatiepractice (ontbreekt)</span></div>
   <div class="maprow"><span>Reviewuitkomsten · Paved Road adoptie</span><span class="arrow">naar →</span><span class="to">MVG (zekerheid &amp; conformance)</span></div></div>`));
