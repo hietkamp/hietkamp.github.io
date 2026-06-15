@@ -341,14 +341,26 @@ products.forEach(p=>{const lv=p[3].map(l=>`<li class="${l[2]?'cut':''}"><span cl
   g.appendChild(E(`<article class="card" data-type="product"><div class="top" style="background:var(--product)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--product)">Work Product</span><span class="origin">MVA</span></div><h4>${p[0]}</h4><p class="desc">${p[2]}</p><ul class="levels">${lv}</ul><div class="card-bottom"><a class="wp-link" href="${p[4]}">Uitwerking &amp; sjabloon →</a><div class="foot">Bewijst&nbsp;→&nbsp;<b>${p[1]}</b></div></div></div></article>`));});
 
 const roles=[
-["Lead / Enterprise Architect","Bezit de visie en kader de significante beslissingen; houdt de architectuur minimaal en coherent.",["Architecture","Leadership","Analysis"]],
-["Domain Architect","Business · Data · Applicatie · Technologie. Net genoeg domeindiepte, op aanvraag, wanneer een beslissing het vereist.",["Architecture","Analysis"]],
-["Solution Architect","Verbindt de MVA met implementatiestappen en -projecten, zodat de architectuur leidt en wordt bevestigd door wat wordt geconfigureerd en geïntegreerd.",["Architecture","Analysis"]],
-["Architecture Owner","Ingebed in het implementatieteam; evolueert de MVA van dag tot dag. Bewaakt de paved road en beoordeelt afwijkingen.",["Architecture","Stakeholder Rep."]]
+["Lead / Enterprise Architect",
+ "Stelt de architectuurintentie vast als eerste deliverable — principes en uitsluitingscriteria op één pagina, vóór vendor-selectie. Kader de significante beslissingen en bewaakt dat de architectuur minimaal en coherent blijft. Werkt op <b>C4 Level 1 (Context)</b>: het systeem, zijn gebruikers en externe systemen.",
+ ["Architecture","Leadership","Analysis"],
+ "Architecture Vision · ASR · Roadmap"],
+["Domain Architect",
+ "Business · Data · Applicatie · Technologie. Levert de domeinspecifieke diepgang voor de Architecture Definition en ADRs — net genoeg, op aanvraag, wanneer een beslissing het vereist. Vult de containers van het eigen domein in op <b>C4 Level 2 (Containers)</b>.",
+ ["Architecture","Analysis"],
+ "Architecture Definition (domeinweergaven) · ADRs"],
+["Solution Architect",
+ "Brengt de architectuur over domeingrenzen samen. De integratielaag (glueware) is first-class — nooit een uitgesteld implementatiedetail. Vertaalt de architectuur in implementatiehorizons met expliciete onomkeerbare grenzen. Werkt op <b>C4 Level 2 (Containers)</b> voor het volledige systeem.",
+ ["Architecture","Analysis"],
+ "Architecture Definition · ADRs · Roadmap"],
+["Architecture Owner",
+ "Ingebed in het implementatieteam; evolueert de MVA van dag tot dag. Publiceert en onderhoudt de Paved Roads als zelfbedienend servicechassis. Beoordeelt off-road afwijkingen en legt uitkomsten vast. Werkt op <b>C4 Level 2–3</b> (Containers & Components).",
+ ["Architecture","Stakeholder Rep."],
+ "Paved Roads · Review Records · ADRs"]
 ];
 deck.appendChild(E(sec('role','var(--role)','Roles','Wie de architectuur vormgeeft. De Sponsor en het Governance Forum zitten in de MVG practice.')));
 g=deck.querySelector('#sec-role .grid');
-roles.forEach(r=>g.appendChild(E(`<article class="card" data-type="role"><div class="top" style="background:var(--role)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--role)">Role</span><span class="area sol">Solution</span><span class="origin">MVA</span></div><h4>${r[0]}</h4><p class="desc">${r[1]}</p><div class="comps">${r[2].map(c=>`<span>${c}</span>`).join('')}</div></div></article>`)));
+roles.forEach(r=>g.appendChild(E(`<article class="card" data-type="role"><div class="top" style="background:var(--role)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--role)">Role</span><span class="area sol">Solution</span><span class="origin">MVA</span></div><h4>${r[0]}</h4><p class="desc">${r[1]}</p><div class="comps">${r[2].map(c=>`<span>${c}</span>`).join('')}</div>${r[3]?`<div class="outcome" style="background:rgba(156,63,118,.07);border-color:rgba(156,63,118,.25);margin-top:10px"><b>Maakt →</b>${r[3]}</div>`:''}</div></article>`)));
 
 const pats=[["A1","Architect the minimum, defer the rest","Produceer alleen de structuur die een huidige beslissing nodig heeft. Al het andere wacht op bewijs. COTS-uitzondering: vendor-selectie, datamodel en integratie-API zijn onomkeerbaar — die vereisen architectuurwerk vóór de selectie, niet erna."],
 ["A2","Decisions over documents","De architectuur is haar set van significante beslissingen. Leg die scherp vast; documenten zijn een bijproduct. In COTS bevat een ADR ook de glueware-kosten van de gekozen optie en het falsifieerbaarheidscriterium waarmee de beslissing later wordt gevalideerd."],
