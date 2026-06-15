@@ -341,22 +341,14 @@ products.forEach(p=>{const lv=p[3].map(l=>`<li class="${l[2]?'cut':''}"><span cl
   g.appendChild(E(`<article class="card" data-type="product"><div class="top" style="background:var(--product)"></div><div class="body"><div class="meta"><span class="type" style="color:var(--product)">Work Product</span><span class="origin">MVA</span></div><h4>${p[0]}</h4><p class="desc">${p[2]}</p><ul class="levels">${lv}</ul><div class="card-bottom"><a class="wp-link" href="${p[4]}">Uitwerking &amp; sjabloon →</a><div class="foot">Bewijst&nbsp;→&nbsp;<b>${p[1]}</b></div></div></div></article>`));});
 
 const roles=[
-["Lead / Enterprise Architect",
- "Stelt de architectuurintentie vast als eerste deliverable — principes en uitsluitingscriteria op één pagina, vóór vendor-selectie. Kader de significante beslissingen en bewaakt dat de architectuur minimaal en coherent blijft. Werkt op <b>C4 Level 1 (Context)</b>: het systeem, zijn gebruikers en externe systemen.",
+["Enterprise Architect",
+ "Beheert de architectuur op ondernemingsniveau: schetst de richting, communiceert die en evolueert haar continu. Stelt de enterprise-brede Architectural Drivers (ASR) vast en vertaalt die in de Paved Roads — het estate-brede servicechassis van goedgekeurde producten, patronen en standaarden. Maakt de enterprise-brede Architecture Vision. Ondersteunt projectteams bij ADRs en Review Records als enabler, niet als controleur. Bij grote programma's vult de EA zelf de Architecture Owner-rol in een projectteam in of coördineert als chief architecture owner meerdere AOs. Werkt op <b>C4 Level 1–2</b> (Context & Containers).",
  ["Architecture","Leadership","Analysis"],
- "Architecture Vision · ASR · Roadmap"],
-["Domain Architect",
- "Business · Data · Applicatie · Technologie. Levert de domeinspecifieke diepgang voor de Architecture Definition en ADRs — net genoeg, op aanvraag, wanneer een beslissing het vereist. Vult de containers van het eigen domein in op <b>C4 Level 2 (Containers)</b>.",
- ["Architecture","Analysis"],
- "Architecture Definition (domeinweergaven) · ADRs"],
-["Solution Architect",
- "Brengt de architectuur over domeingrenzen samen. De integratielaag (glueware) is first-class — nooit een uitgesteld implementatiedetail. Vertaalt de architectuur in implementatiehorizons met expliciete onomkeerbare grenzen. Werkt op <b>C4 Level 2 (Containers)</b> voor het volledige systeem.",
- ["Architecture","Analysis"],
- "Architecture Definition · ADRs · Roadmap"],
+ "Architecture Vision · Paved Roads · ASR · Roadmap"],
 ["Architecture Owner",
- "Ingebed in het implementatieteam; evolueert de MVA van dag tot dag. Publiceert en onderhoudt de Paved Roads als zelfbedienend servicechassis. Beoordeelt off-road afwijkingen en legt uitkomsten vast. Werkt op <b>C4 Level 2–3</b> (Containers & Components).",
+ "De agile equivalent van de traditionele solution/software architect — de meest technisch ervaren persoon in het projectteam (<a href='https://www.pmi.org/disciplined-agile/process/introduction-to-dad/people-first-roles-in-dad-introduction' target='_blank'>Disciplined Agile Delivery</a>). Leidt bij inception de initiële architecture envisioning collaboratief met het team: het equivalent van een Projectstartarchitectuur, maar als teamactiviteit, niet als extern EA-document. Eigent de architectuurbeslissingen voor het team en <em>faciliteert</em> de continue evolutie van de oplossingsarchitectuur: collaboratief, niet command-and-control. Past de Paved Roads en enterprise-richtlijnen toe in het team. Mentort teamleden in architectuur en design. Brengt technische risico's en niet-functionele vereisten naar de prioritized backlog en reduceert risico's via architecturale spikes en proof-of-concepts. Werkt nauw samen met de Enterprise Architect; op kleine teams vervult de AO ook de rol van teamlead. Werkt op <b>C4 Level 2–3</b> (Containers & Components).",
  ["Architecture","Stakeholder Rep."],
- "Paved Roads · Review Records · ADRs"]
+ "Architecture Vision · Architecture Definition · ADRs · Review Records"]
 ];
 deck.appendChild(E(sec('role','var(--role)','Roles','Wie de architectuur vormgeeft. De Sponsor en het Governance Forum zitten in de MVG practice.')));
 g=deck.querySelector('#sec-role .grid');
