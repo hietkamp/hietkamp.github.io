@@ -1,0 +1,242 @@
+{
+  "configuration" : { },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 0,
+  "model" : {
+    "people" : [ {
+      "description" : "Voorzitter van de review · eigenaar van het oordeel",
+      "id" : "1",
+      "name" : "Lead Architect",
+      "properties" : {
+        "structurizr.dsl.identifier" : "architect"
+      },
+      "relationships" : [ {
+        "description" : "Beoordeelt",
+        "destinationId" : "3",
+        "id" : "9",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "description" : "Vraagt goedkeuring voor off-road keuze of nieuw product",
+      "id" : "2",
+      "name" : "Aanvragend team",
+      "properties" : {
+        "structurizr.dsl.identifier" : "aanvrager"
+      },
+      "relationships" : [ {
+        "description" : "Vraagt review aan voor",
+        "destinationId" : "3",
+        "id" : "8",
+        "sourceId" : "2",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "description" : "Product of patroon dat afwijkt van de paved road\nbijv. [Alternatief ERP Platform · REV-xx]\n[Software System — onder review]",
+      "documentation" : { },
+      "id" : "3",
+      "name" : "Off-road element",
+      "properties" : {
+        "structurizr.dsl.identifier" : "offroad"
+      },
+      "relationships" : [ {
+        "description" : "Resulteert in",
+        "destinationId" : "6",
+        "id" : "12",
+        "sourceId" : "3",
+        "tags" : "Relationship",
+        "technology" : "Goedgekeurd / Met condities"
+      }, {
+        "description" : "Rapporteert uitkomst aan",
+        "destinationId" : "7",
+        "id" : "13",
+        "sourceId" : "3",
+        "tags" : "Relationship",
+        "technology" : "Governance-signaal"
+      } ],
+      "tags" : "Element,Software System,OffRoad"
+    }, {
+      "description" : "Geldende standaard als referentie voor de beoordeling",
+      "documentation" : { },
+      "id" : "4",
+      "name" : "Paved Road Catalogus",
+      "properties" : {
+        "structurizr.dsl.identifier" : "paved"
+      },
+      "relationships" : [ {
+        "description" : "Referentie voor afwijking",
+        "destinationId" : "3",
+        "id" : "10",
+        "sourceId" : "4",
+        "tags" : "Relationship",
+        "technology" : "Conformance-delta"
+      } ],
+      "tags" : "Element,Software System,PavedRoad"
+    }, {
+      "description" : "Architecturele criteria waarop getoetst wordt\nbijv. Driver D1 · Principe P2 · ASR-01",
+      "documentation" : { },
+      "id" : "5",
+      "name" : "Drivers + Principes",
+      "properties" : {
+        "structurizr.dsl.identifier" : "kader"
+      },
+      "relationships" : [ {
+        "description" : "Toetsingscriteria voor",
+        "destinationId" : "3",
+        "id" : "11",
+        "sourceId" : "5",
+        "tags" : "Relationship",
+        "technology" : "Eis / Principe"
+      } ],
+      "tags" : "Element,Software System,Driver"
+    }, {
+      "description" : "Te maken beslissingsrecord als uitkomst van de review",
+      "documentation" : { },
+      "id" : "6",
+      "name" : "ADR-0x",
+      "properties" : {
+        "structurizr.dsl.identifier" : "adr"
+      },
+      "tags" : "Element,Software System,Decision"
+    }, {
+      "description" : "Ontvangt reviewuitkomst voor conformance-rapportage",
+      "documentation" : { },
+      "id" : "7",
+      "name" : "MVG Governance",
+      "properties" : {
+        "structurizr.dsl.identifier" : "mvg"
+      },
+      "tags" : "Element,Software System,Governance"
+    } ]
+  },
+  "name" : "MVA — Architecture Review Record",
+  "properties" : {
+    "structurizr.inspection.error" : "3",
+    "structurizr.dsl" : "d29ya3NwYWNlICJNVkEg4oCUIEFyY2hpdGVjdHVyZSBSZXZpZXcgUmVjb3JkIiB7CgogIG1vZGVsIHsKICAgIGFyY2hpdGVjdCA9IHBlcnNvbiAiTGVhZCBBcmNoaXRlY3QiICJWb29yeml0dGVyIHZhbiBkZSByZXZpZXcgwrcgZWlnZW5hYXIgdmFuIGhldCBvb3JkZWVsIgogICAgYWFudnJhZ2VyID0gcGVyc29uICJBYW52cmFnZW5kIHRlYW0iICJWcmFhZ3QgZ29lZGtldXJpbmcgdm9vciBvZmYtcm9hZCBrZXV6ZSBvZiBuaWV1dyBwcm9kdWN0IgoKICAgIG9mZnJvYWQgPSBzb2Z0d2FyZVN5c3RlbSAiT2ZmLXJvYWQgZWxlbWVudCIgIlByb2R1Y3Qgb2YgcGF0cm9vbiBkYXQgYWZ3aWprdCB2YW4gZGUgcGF2ZWQgcm9hZFxuYmlqdi4gW0FsdGVybmF0aWVmIEVSUCBQbGF0Zm9ybSDCtyBSRVYteHhdXG5bU29mdHdhcmUgU3lzdGVtIOKAlCBvbmRlciByZXZpZXddIiAiT2ZmUm9hZCIKCiAgICBwYXZlZCAgICA9IHNvZnR3YXJlU3lzdGVtICJQYXZlZCBSb2FkIENhdGFsb2d1cyIgIkdlbGRlbmRlIHN0YW5kYWFyZCBhbHMgcmVmZXJlbnRpZSB2b29yIGRlIGJlb29yZGVsaW5nIiAiUGF2ZWRSb2FkIgogICAga2FkZXIgICAgPSBzb2Z0d2FyZVN5c3RlbSAiRHJpdmVycyArIFByaW5jaXBlcyIgIkFyY2hpdGVjdHVyZWxlIGNyaXRlcmlhIHdhYXJvcCBnZXRvZXRzdCB3b3JkdFxuYmlqdi4gRHJpdmVyIEQxIMK3IFByaW5jaXBlIFAyIMK3IEFTUi0wMSIgIkRyaXZlciIKICAgIGFkciAgICAgID0gc29mdHdhcmVTeXN0ZW0gIkFEUi0weCIgIlRlIG1ha2VuIGJlc2xpc3NpbmdzcmVjb3JkIGFscyB1aXRrb21zdCB2YW4gZGUgcmV2aWV3IiAiRGVjaXNpb24iCiAgICBtdmcgICAgICA9IHNvZnR3YXJlU3lzdGVtICJNVkcgR292ZXJuYW5jZSIgIk9udHZhbmd0IHJldmlld3VpdGtvbXN0IHZvb3IgY29uZm9ybWFuY2UtcmFwcG9ydGFnZSIgIkdvdmVybmFuY2UiCgogICAgYWFudnJhZ2VyIC0+IG9mZnJvYWQgIlZyYWFndCByZXZpZXcgYWFuIHZvb3IiCiAgICBhcmNoaXRlY3QgLT4gb2Zmcm9hZCAiQmVvb3JkZWVsdCIKICAgIHBhdmVkICAgICAtPiBvZmZyb2FkICJSZWZlcmVudGllIHZvb3IgYWZ3aWpraW5nIiAiQ29uZm9ybWFuY2UtZGVsdGEiCiAgICBrYWRlciAgICAgLT4gb2Zmcm9hZCAiVG9ldHNpbmdzY3JpdGVyaWEgdm9vciIgIkVpcyAvIFByaW5jaXBlIgogICAgb2Zmcm9hZCAgIC0+IGFkciAgICAgIlJlc3VsdGVlcnQgaW4iICJHb2VkZ2VrZXVyZCAvIE1ldCBjb25kaXRpZXMiCiAgICBvZmZyb2FkICAgLT4gbXZnICAgICAiUmFwcG9ydGVlcnQgdWl0a29tc3QgYWFuIiAiR292ZXJuYW5jZS1zaWduYWFsIgogIH0KCiAgdmlld3MgewogICAgc3lzdGVtQ29udGV4dCBvZmZyb2FkICJDb250ZXh0IiB7CiAgICAgIGluY2x1ZGUgKgogICAgICBhdXRvTGF5b3V0CiAgICB9CiAgICAKICAgIHN0eWxlcyB7CiAgICAgIGVsZW1lbnQgIlBlcnNvbiIgewogICAgICAgIHNoYXBlIFBlcnNvbgogICAgICAgIGJhY2tncm91bmQgIzA4NDI3YgogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMwogICAgICB9CiAgICAgIGVsZW1lbnQgIlNvZnR3YXJlIFN5c3RlbSIgewogICAgICAgIGJhY2tncm91bmQgIzExNjhiZAogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMwogICAgICB9CiAgICAgIGVsZW1lbnQgIkNvbnRhaW5lciIgewogICAgICAgIGJhY2tncm91bmQgIzQzOGRkNQogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIkV4dGVybmFsIiB7CiAgICAgICAgYmFja2dyb3VuZCAjOTk5OTk5CiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEyCiAgICAgIH0KICAgICAgZWxlbWVudCAiUGF2ZWRSb2FkIiB7CiAgICAgICAgYmFja2dyb3VuZCAjMGY2ZTYzCiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEyCiAgICAgIH0KICAgICAgZWxlbWVudCAiR292ZXJuYW5jZSIgewogICAgICAgIGJhY2tncm91bmQgIzRiM2Y5ZQogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIkRyaXZlciIgewogICAgICAgIGJhY2tncm91bmQgI2JiN2ExNgogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIk9mZlJvYWQiIHsKICAgICAgICBiYWNrZ3JvdW5kICNjNDdkMGUKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJEZWNpc2lvbiIgewogICAgICAgIGJhY2tncm91bmQgIzFhNTY5OAogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIHJlbGF0aW9uc2hpcCAiUmVsYXRpb25zaGlwIiB7CiAgICAgICAgZm9udFNpemUgMTEKICAgICAgICBjb2xvciAjNTI0ZDQyCiAgICAgIH0KICAgIH0KCiAgfQp9",
+    "structurizr.inspection.info" : "0",
+    "structurizr.inspection.ignore" : "0",
+    "structurizr.inspection.warning" : "0"
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "background" : "#438dd5",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Container"
+        }, {
+          "background" : "#1a5698",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Decision"
+        }, {
+          "background" : "#bb7a16",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Driver"
+        }, {
+          "background" : "#999999",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "External"
+        }, {
+          "background" : "#4b3f9e",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Governance"
+        }, {
+          "background" : "#c47d0e",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "OffRoad"
+        }, {
+          "background" : "#0f6e63",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "PavedRoad"
+        }, {
+          "background" : "#08427b",
+          "color" : "#ffffff",
+          "fontSize" : 13,
+          "shape" : "Person",
+          "tag" : "Person"
+        }, {
+          "background" : "#1168bd",
+          "color" : "#ffffff",
+          "fontSize" : 13,
+          "tag" : "Software System"
+        } ],
+        "relationships" : [ {
+          "color" : "#524d42",
+          "fontSize" : 11,
+          "tag" : "Relationship"
+        } ]
+      },
+      "terminology" : { }
+    },
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "5",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "7",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "Context",
+      "name" : "System Context View: Off-road element",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "10"
+      }, {
+        "id" : "11"
+      }, {
+        "id" : "12"
+      }, {
+        "id" : "13"
+      }, {
+        "id" : "8"
+      }, {
+        "id" : "9"
+      } ],
+      "softwareSystemId" : "3"
+    } ]
+  }
+}

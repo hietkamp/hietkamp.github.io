@@ -1,0 +1,34 @@
+@startuml
+title <size:24>System Context View: Systeem in scope</size>
+
+set separator none
+top to bottom direction
+
+<style>
+  root {
+    BackgroundColor: #ffffff
+    FontColor: #444444
+  }
+</style>
+
+!include <C4/C4>
+!include <C4/C4_Context>
+
+Person(Architect, "Architect", $descr="Identificeert en kwantificeert ASR's", $tags="", $link="")
+Person(Stakeholder, "Stakeholder", $descr="Valideert meetbare criteria en accepteert trade-offs", $tags="", $link="")
+System(Systeeminscope, "Systeem in scope", $descr="Het COTS-platform dat moet voldoen aan de ASR's\n[Software System]", $tags="", $link="")
+System(ASRsKwaliteitsattributen, "ASR's — Kwaliteitsattributen", $descr="Beschikbaarheid 99,5% uptime · Performance p95 < 2s\nDriver D1, D2 · Meting: SLA-rapport / APM", $tags="", $link="")
+System(ASRsSecurityCompliance, "ASR's — Security & Compliance", $descr="ISO 27001-conformant · AVG/BIO · Datacenter EU-only\nDriver D3 · Meting: jaarlijkse audit", $tags="", $link="")
+System(ASRsConformance, "ASR's — Conformance", $descr=">90% paved road adoptie per kwartaal\nDriver D4 · Meting: reviewregistratie", $tags="", $link="")
+System(SLArapportageAudit, "SLA-rapportage / Audit", $descr="Valideert naleving van ASR's in productie", $tags="", $link="")
+
+Rel(ASRsKwaliteitsattributen, Systeeminscope, "Stelt eisen aan", $techn="Performance / Uptime", $tags="", $link="")
+Rel(ASRsSecurityCompliance, Systeeminscope, "Beperkt ontwerp van", $techn="Security-constraint", $tags="", $link="")
+Rel(ASRsConformance, Systeeminscope, "Bewaakt adoptie via", $techn="Paved road meting", $tags="", $link="")
+Rel(Systeeminscope, SLArapportageAudit, "Rapporteert SLA aan", $techn="Monitoring", $tags="", $link="")
+Rel(Architect, Systeeminscope, "Specificeert vereisten", $techn="", $tags="", $link="")
+Rel(Stakeholder, Systeeminscope, "Valideert criteria", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+hide stereotypes
+@enduml

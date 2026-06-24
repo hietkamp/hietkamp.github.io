@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plan the Transition — MVA Activiteit 05</title>
+<meta name="description" content="Orden de implementatiestap van baseline naar doel in horizons. Rollen, werkproducten en alpha-toestanden per niveau.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3efe6;--paper-2:#ece6d8;--ink:#1c1a16;--ink-soft:#524d42;--line:#d8d0bf;--card:#fbf9f3;--prac:#0f6e63;--alpha:#0f6e63;--product:#bb7a16;--activity:#1f5fa8;--comp:#4b3f9e;--role:#9c3f76;--ent:#27406b;--sol:#0f6e63;--shadow:0 1px 0 rgba(0,0,0,.03),0 16px 38px -16px rgba(28,26,22,.42);scroll-behavior:smooth;}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;background:radial-gradient(circle at 8% -6%,#eef1f7 0%,transparent 48%),radial-gradient(circle at 95% 2%,#e6edf6 0%,transparent 44%),var(--paper);}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.4;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 26px 90px}
+.breadcrumb{padding:14px 0 0;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.breadcrumb a{color:var(--prac);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+header.hero{padding:28px 0 22px;border-bottom:3px solid var(--ent);margin-bottom:26px}
+.act-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;align-items:center}
+.act-num{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.1em;border:1.5px solid var(--ent);color:var(--ent);border-radius:30px;padding:4px 12px}
+.act-chip{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:20px;font-weight:600}
+.chip-space{background:rgba(39,64,107,.1);color:var(--ent);border:1px solid rgba(39,64,107,.25)}
+.chip-comp{background:rgba(75,63,158,.1);color:var(--comp);border:1px solid rgba(75,63,158,.25)}
+.chip-prac{background:rgba(15,110,99,.1);color:var(--prac);border:1px solid rgba(15,110,99,.25)}
+h1{font-family:"Fraunces",serif;font-optical-sizing:auto;font-weight:900;font-size:clamp(2rem,5vw,3.2rem);line-height:.98;margin:.12em 0 .12em;letter-spacing:-.015em}
+h1 em{font-style:italic;font-weight:500;color:var(--ent)}
+.lede{font-size:clamp(.96rem,1.3vw,1.08rem);max-width:72ch;color:var(--ink-soft);margin:.5em 0 .9em}
+.alpha-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 14px;background:rgba(15,110,99,.07);border:1px solid rgba(15,110,99,.2);border-radius:10px;font-family:"IBM Plex Mono",monospace;font-size:11px}
+.alpha-bar .ab-label{font-weight:700;color:var(--prac);letter-spacing:.05em}
+.alpha-bar .ab-states{color:var(--ink-soft)}.alpha-bar .ab-states b{color:var(--prac)}
+.sec{margin-top:36px}
+h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem;margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.prose{color:var(--ink-soft);font-size:.95rem;max-width:82ch;margin:0 0 12px}.prose b{color:var(--ink)}
+.cots-box{background:var(--paper-2);border:1px solid var(--line);border-left:4px solid var(--product);border-radius:11px;padding:14px 16px;margin-top:12px}
+.cots-box .cots-label{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--product);margin-bottom:6px;font-weight:700}
+.cots-box p{margin:0;font-size:.9rem;color:var(--ink-soft)}
+.wp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:12px}
+a.wp-card{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .12s,box-shadow .12s}
+a.wp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.wp-card .wc-top{height:5px;background:var(--product)}.wp-card .wc-body{padding:12px 14px}
+.wp-card .wc-type{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--product);margin-bottom:4px;font-weight:600}
+.wp-card h4{font-family:"Fraunces",serif;font-size:1.05rem;margin:0 0 4px;font-weight:600}
+.wp-card p{font-size:.84rem;color:var(--ink-soft);margin:0 0 8px}
+.wp-card .wc-proves{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--alpha);border-top:1px dashed var(--line);padding-top:6px}
+.wp-card .wc-open{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--product);margin-top:4px}
+.level-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}
+@media(max-width:700px){.level-grid{grid-template-columns:1fr}}
+.level-card{border-radius:13px;border:1px solid var(--line);overflow:hidden}
+.level-card .lc-head{padding:12px 16px;color:#fff}
+.level-card.lc-ent .lc-head{background:var(--ent)}.level-card.lc-sol .lc-head{background:var(--sol)}
+.lc-head .lc-level{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;margin-bottom:3px}
+.lc-head h3{font-family:"Fraunces",serif;font-size:1.1rem;margin:0;font-weight:600}
+.level-card .lc-body{padding:14px 16px;background:var(--card)}
+.lc-body .lc-scope{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px}
+.lc-body p{font-size:.88rem;color:var(--ink-soft);margin:0 0 10px}
+.lc-body .lc-wp{font-size:.84rem;border-top:1px dashed var(--line);padding-top:8px;color:var(--ink-soft)}.lc-body .lc-wp b{color:var(--ink)}
+.lc-body .lc-comps{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.lc-comp{font-family:"IBM Plex Mono",monospace;font-size:9px;padding:3px 8px;border-radius:20px;background:rgba(75,63,158,.08);color:var(--comp);border:1px solid rgba(75,63,158,.2);font-weight:600}
+.act-nav{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;margin-top:42px;padding-top:18px;border-top:1px solid var(--line);align-items:center}
+.act-nav .an-prev{text-align:left}.act-nav .an-center{text-align:center}.act-nav .an-next{text-align:right}
+.act-nav a{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.05em;color:var(--prac);text-decoration:none;font-weight:600;padding:7px 14px;border:1.5px solid var(--prac);border-radius:30px;display:inline-block;transition:.12s}
+.act-nav a:hover{background:var(--prac);color:#fff}
+.act-nav .an-ghost{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);opacity:.4;font-weight:600}
+.skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0}.skip-link:focus-visible{top:0}
+.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--line);backdrop-filter:blur(6px);border-top:3px solid transparent;border-image:linear-gradient(90deg,#0f6e63,#27406b) 1}
+.site-nav-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:center;height:52px;gap:0}
+.site-nav-logo{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:var(--ink);text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:-.01em;flex-shrink:0}
+.site-nav-logo em{font-style:italic;font-weight:500;color:#d44f0e}
+.site-nav-list{display:flex;list-style:none;margin:0;padding:0;gap:2px;align-items:center}
+.site-nav-list>li>a,.site-nav-list>li>button{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 10px;border-radius:6px;border:none;background:transparent;cursor:pointer;transition:.12s;line-height:1;display:flex;align-items:center;gap:4px;min-height:25px;white-space:nowrap}
+.site-nav-list>li>a:hover,.site-nav-list>li>button:hover{color:var(--ink);background:var(--paper-2)}
+.has-drop{position:relative}
+.has-drop .drop{display:none;position:absolute;top:calc(100% + 4px);right:0;min-width:240px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 30px -22px rgba(28,26,22,.55);padding:5px;list-style:none;margin:0;z-index:200}
+.has-drop.open .drop{display:block}
+.drop li a{display:flex;align-items:center;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:12px;color:var(--ink-soft);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s}
+.drop li a:hover{background:var(--paper-2);color:var(--ink)}
+.drop-label{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5a5040;padding:6px 10px 2px;display:block}
+.site-nav-toggle{display:none;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:none;background:transparent;cursor:pointer;border-radius:6px;flex-shrink:0;color:var(--ink);margin-left:2px}
+.site-nav-toggle:hover{background:var(--paper-2)}
+.site-nav-toggle .bar{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .22s,opacity .22s,margin .22s}
+.site-nav-toggle .bar+.bar{margin-top:5px}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(2){opacity:0;margin-top:0}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:700px){.site-nav-toggle{display:flex}.site-nav-menu{display:none;position:fixed;top:52px;left:0;right:0;background:var(--paper);border-bottom:2px solid var(--ink);z-index:98;padding:12px 18px 20px}.site-nav-menu.open{display:block}.site-nav-list{flex-direction:column;gap:0}.site-nav-list>li{width:100%}.site-nav-list>li>a,.site-nav-list>li>button{font-size:15px;padding:14px 12px;border-bottom:1px solid var(--line);width:100%;justify-content:space-between;min-height:48px}.has-drop .drop{position:static;box-shadow:none;border:none;border-radius:8px;margin:4px 0 10px 0;background:var(--paper-2);padding:6px;display:none}.has-drop.open .drop{display:block}.drop li a{padding:12px 14px;font-size:14px;min-height:44px}}
+:focus-visible{outline:3px solid #0f6e63;outline-offset:2px}
+@media print{.site-nav,.skip-link{display:none}.wrap{padding:0}body::before{display:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Ga naar de hoofdinhoud</a>
+<header class="site-nav" role="banner">
+  <div class="site-nav-inner">
+    <a class="site-nav-logo" href="../essence-introduction.html">Essence <em>Way of Working</em></a>
+    <nav id="site-nav-menu" class="site-nav-menu" aria-label="Sitenavigatie">
+      <ul class="site-nav-list">
+        <li><a href="../essence-introduction.html">Home</a></li>
+        <li class="has-drop">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="practices-menu">Practices <span aria-hidden="true">&#9662;</span></button>
+          <ul class="drop" id="practices-menu">
+            <span class="drop-label" aria-hidden="true">Twee practices</span>
+            <li><a href="../mva-essence-practice.html">Min. Viable Architecture</a></li>
+            <li><a href="../mvg-essence-practice.html">Min. Viable Governance</a></li>
+          </ul>
+        </li>
+        <li><a href="../resources.html">Bronnen</a></li>
+      </ul>
+    </nav>
+    <button class="site-nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="site-nav-menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="wrap" id="main-content">
+  <div class="breadcrumb">
+    <a href="../essence-introduction.html">Introductie</a>
+    <span>›</span>
+    <a href="../wow-enterprise-architecture.html">Way of Working EA</a>
+    <span>›</span>
+    <span>Plan the Transition</span>
+  </div>
+
+  <header class="hero">
+    <div class="act-meta">
+      <span class="act-num">Activiteit 05 / 05</span>
+      <span class="act-chip chip-space">Activity Space · Development</span>
+      <span class="act-chip chip-comp">Competency · Architecture</span>
+      <span class="act-chip chip-prac">MVA</span>
+    </div>
+    <h1>Plan the <em>Transition</em></h1>
+    <p class="lede">Identificeer de hiaten; orden de volgende implementatiestap van baseline naar doel; detailleer alleen de volgende horizon. Elke horizon legt expliciet vast welke beslissingen in die fase onomkeerbaar worden en welke nog open blijven.</p>
+    <div class="alpha-bar">
+      <span class="ab-label">Beweegt de alphas:</span>
+      <span class="ab-states">Architecture → <b>Usable</b></span>
+    </div>
+  </header>
+
+  <section class="sec" id="wat">
+    <h2>Wat je doet</h2>
+    <p class="prose">In Plan the Transition maak je de architectuur bruikbaar door de weg van de huidige baseline naar de doelarchitectuur te ordenen. Je identificeert de hiaten — wat ontbreekt er tussen waar je nu bent en waar je naartoe wilt — en bepaalt de logische volgorde van implementatiestappen. Het resultaat is een Architecture Roadmap die de transitie structureert.</p>
+    <p class="prose">Cruciaal: <b>alleen de volgende horizon wordt gedetailleerd</b>. Verdere horizons worden in grote lijnen geschetst, maar niet uitgewerkt. Dit voorkomt uitgebreide planning die achterhaald is voordat het geïmplementeerd wordt. Elke horizon bevat een expliciete <b>onomkeerbare grens</b>: welke beslissingen worden in deze horizon definitief en welke blijven bewust open.</p>
+    <div class="cots-box">
+      <div class="cots-label">COTS / koop-en-configureer context</div>
+      <p>In een COTS-context bevatten de horizons expliciete onomkeerbare grenzen: welke vendor-selecties, datamodel-keuzes en integratie-API's worden in deze fase definitief. Dit maakt transparant wanneer de kosten-om-terug-te-draaien stijgen en helpt het beslismoment te plannen. Fasegewijze uitrol — pilot → wave 1 → wave 2 — reduceert risico en maakt bijsturing mogelijk op basis van bewijs uit de vorige fase.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="werkproducten">
+    <h2>Werkproducten</h2>
+    <div class="wp-grid">
+      <a href="../wp/mva-roadmap.html" class="wp-card">
+        <div class="wc-top"></div>
+        <div class="wc-body">
+          <div class="wc-type">Work Product · MVA</div>
+          <h4>Architecture Roadmap &amp; Transition States</h4>
+          <p>Het pad van baseline naar doel als implementatiestappen. Alleen de volgende horizon is gedetailleerd. Elke horizon bevat een expliciete onomkeerbare grens.</p>
+          <div class="wc-proves">Bewijst → Architecture (Usable)</div>
+          <div class="wc-open">Uitwerking &amp; sjabloon →</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec" id="rollen">
+    <h2>Rollen per niveau</h2>
+    <p class="prose">De roadmap verschilt per niveau in scope en tijdshorizon. De Enterprise Architect maakt de enterprise-roadmap die het landgoed stuurt; de Architecture Owner maakt de solution-roadmap binnen de enterprise-context.</p>
+    <div class="level-grid">
+      <div class="level-card lc-ent">
+        <div class="lc-head">
+          <div class="lc-level">Enterprise niveau · Portfolio scope</div>
+          <h3>Enterprise Architect</h3>
+        </div>
+        <div class="lc-body">
+          <div class="lc-scope">Scope: enterprise-brede transitie</div>
+          <p>Maakt de enterprise Architecture Roadmap: het pad van de huidige enterprise baseline naar de doelarchitectuur van het landgoed. Ordent de enterprise-brede implementatiestappen: welke capabilities wanneer worden uitgerold, welke solutions in welke volgorde. Definieert per horizon welke enterprise-beslissingen definitief worden (bijv. platformkeuze, datamodel-standaard). Stelt de enterprise transition states vast die solutions moeten naleven.</p>
+          <div class="lc-wp"><b>Maakt:</b> Enterprise Architecture Roadmap · Enterprise transition states · Portfolio-planning</div>
+          <div class="lc-comps">
+            <span class="lc-comp">Architecture</span>
+            <span class="lc-comp">Leadership</span>
+            <span class="lc-comp">Analyse</span>
+          </div>
+        </div>
+      </div>
+      <div class="level-card lc-sol">
+        <div class="lc-head">
+          <div class="lc-level">Solution niveau · Solution scope</div>
+          <h3>Architecture Owner</h3>
+        </div>
+        <div class="lc-body">
+          <div class="lc-scope">Scope: solution-specifieke transitie</div>
+          <p>Maakt de solution-specifieke roadmap <em>binnen</em> de enterprise-context: de stappen van baseline naar solution-doelarchitectuur. Werkt samen met de Product Owner om de horizons te koppelen aan de backlog en release-planning. Definieert per horizon welke solution-beslissingen definitief worden. Rapporteert terug aan de EA bij afwijkingen van de enterprise transition states of bij input voor de enterprise-roadmap.</p>
+          <div class="lc-wp"><b>Maakt:</b> Solution Architecture Roadmap · Solution transition states · Horizon-planning</div>
+          <div class="lc-comps">
+            <span class="lc-comp">Architecture</span>
+            <span class="lc-comp">Stakeholder Rep.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="act-nav" aria-label="Activiteitennavigatie">
+    <div class="an-prev">
+      <a href="prove-the-risky-parts.html">← Prove the Risky Parts</a>
+    </div>
+    <div class="an-center">
+      <a href="../wow-enterprise-architecture.html">Procesoverzicht</a>
+    </div>
+    <div class="an-next">
+      <span class="an-ghost">Volgende →</span>
+    </div>
+  </nav>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.has-drop').forEach(function(dropdown){
+    var btn=dropdown.querySelector('button');var items=Array.from(dropdown.querySelectorAll('.drop li a'));
+    function open(){dropdown.classList.add('open');btn.setAttribute('aria-expanded','true');}
+    function close(ret){dropdown.classList.remove('open');btn.setAttribute('aria-expanded','false');if(ret)btn.focus();}
+    btn.addEventListener('click',function(e){e.stopPropagation();dropdown.classList.contains('open')?close(false):open();});
+    btn.addEventListener('keydown',function(e){if(e.key==='ArrowDown'){e.preventDefault();open();if(items[0])items[0].focus();}else if(e.key==='Escape'){close(true);}});
+    items.forEach(function(item,i){item.addEventListener('keydown',function(e){if(e.key==='ArrowDown'){e.preventDefault();if(items[i+1])items[i+1].focus();}else if(e.key==='ArrowUp'){e.preventDefault();if(i>0)items[i-1].focus();else close(true);}else if(e.key==='Escape'){close(true);}else if(e.key==='Tab'){close(false);}});});
+  });
+  document.addEventListener('click',function(){document.querySelectorAll('.has-drop.open').forEach(function(el){el.classList.remove('open');el.querySelector('button').setAttribute('aria-expanded','false');});});
+  var tog=document.querySelector('.site-nav-toggle');var menu=document.querySelector('.site-nav-menu');
+  if(tog&&menu){tog.addEventListener('click',function(e){e.stopPropagation();var open=menu.classList.toggle('open');tog.setAttribute('aria-expanded',String(open));tog.setAttribute('aria-label',open?'Menu sluiten':'Menu openen');});menu.addEventListener('click',function(e){e.stopPropagation();});document.addEventListener('click',function(){menu.classList.remove('open');tog.setAttribute('aria-expanded','false');tog.setAttribute('aria-label','Menu openen');});}
+})();
+</script>
+</body>
+</html>

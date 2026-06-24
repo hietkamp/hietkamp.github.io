@@ -1,0 +1,39 @@
+@startuml
+title <size:24>Container View: Paved Road Servicechassis</size>
+
+set separator none
+top to bottom direction
+
+<style>
+  root {
+    BackgroundColor: #ffffff
+    FontColor: #444444
+  }
+</style>
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+
+System(COTSproduct, "COTS-product", $descr="Draait op paved road · bijv. ERP · CRM · Portal", $tags="", $link="")
+
+System_Boundary("PavedRoadServicechassis_boundary", "Paved Road Servicechassis", $tags="") {
+  Container(PavedRoadServicechassis.IdentityProvider, "Identity Provider", $techn="SaaS · Entra ID / Okta", $descr="SSO voor alle platformen · SAML 2.0 / OIDC verplicht\n✔ Goedgekeurd", $tags="", $link="")
+  Container(PavedRoadServicechassis.CloudPlatform, "Cloud Platform", $techn="IaaS · Azure / AWS", $descr="EU-regio · landing zone · governance · policies\n✔ Goedgekeurd", $tags="", $link="")
+  Container(PavedRoadServicechassis.ContainerOrchestratie, "Container Orchestratie", $techn="PaaS · AKS / EKS", $descr="GitOps-patroon · Helmchart-standaard\n✔ Goedgekeurd", $tags="", $link="")
+  Container(PavedRoadServicechassis.CICDPipeline, "CI/CD Pipeline", $techn="SaaS · GitHub Actions", $descr="Security gates · SBOM + vulnerability scan\n✔ Goedgekeurd", $tags="", $link="")
+  Container(PavedRoadServicechassis.APIGateway, "API Gateway", $techn="PaaS · Apigee / APISIX", $descr="REST · OpenAPI 3.x verplicht · rate-limiting\n✔ Goedgekeurd", $tags="", $link="")
+  Container(PavedRoadServicechassis.MonitoringLogging, "Monitoring & Logging", $techn="SaaS · Datadog / Splunk", $descr="Verplicht voor productie · retentie ≥ 13 mnd · SIEM\n✔ Goedgekeurd", $tags="", $link="")
+}
+
+Rel(PavedRoadServicechassis.CloudPlatform, PavedRoadServicechassis.ContainerOrchestratie, "Host", $techn="IaaS", $tags="", $link="")
+Rel(PavedRoadServicechassis.ContainerOrchestratie, PavedRoadServicechassis.APIGateway, "Exposeert", $techn="HTTP", $tags="", $link="")
+Rel(PavedRoadServicechassis.MonitoringLogging, PavedRoadServicechassis.CloudPlatform, "Observeert", $techn="Metrics/Logs", $tags="", $link="")
+Rel(COTSproduct, PavedRoadServicechassis.IdentityProvider, "Authenticeert via", $techn="OIDC / SAML 2.0", $tags="", $link="")
+Rel(COTSproduct, PavedRoadServicechassis.CloudPlatform, "Draait op", $techn="IaaS / PaaS", $tags="", $link="")
+Rel(COTSproduct, PavedRoadServicechassis.APIGateway, "Exposeert API via", $techn="REST / OpenAPI", $tags="", $link="")
+Rel(PavedRoadServicechassis.MonitoringLogging, COTSproduct, "Monitort", $techn="Metrics / Logs / Traces", $tags="", $link="")
+
+SHOW_LEGEND(true)
+hide stereotypes
+@enduml

@@ -1,0 +1,333 @@
+{
+  "configuration" : { },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 0,
+  "model" : {
+    "people" : [ {
+      "description" : "Implementeert on-road · geen architectuurreview nodig",
+      "id" : "1",
+      "name" : "Delivery-team",
+      "properties" : {
+        "structurizr.dsl.identifier" : "dev_team"
+      },
+      "relationships" : [ {
+        "description" : "Implementeert on-road",
+        "destinationId" : "13",
+        "id" : "15",
+        "sourceId" : "1",
+        "tags" : "Relationship",
+        "technology" : "Geen review nodig"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "description" : "Beheert de catalogus en beoordeelt afwijkingen",
+      "id" : "2",
+      "name" : "Architecture Owner",
+      "properties" : {
+        "structurizr.dsl.identifier" : "arch_own"
+      },
+      "relationships" : [ {
+        "description" : "Beheert en evolueert",
+        "destinationId" : "3",
+        "id" : "16",
+        "sourceId" : "2",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "containers" : [ {
+        "description" : "SSO voor alle platformen · SAML 2.0 / OIDC verplicht\n✔ Goedgekeurd",
+        "documentation" : { },
+        "id" : "4",
+        "name" : "Identity Provider",
+        "properties" : {
+          "structurizr.dsl.identifier" : "idp"
+        },
+        "tags" : "Element,Container",
+        "technology" : "SaaS · Entra ID / Okta"
+      }, {
+        "description" : "EU-regio · landing zone · governance · policies\n✔ Goedgekeurd",
+        "documentation" : { },
+        "id" : "5",
+        "name" : "Cloud Platform",
+        "properties" : {
+          "structurizr.dsl.identifier" : "cloud"
+        },
+        "relationships" : [ {
+          "description" : "Host",
+          "destinationId" : "6",
+          "id" : "10",
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : "IaaS"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "IaaS · Azure / AWS"
+      }, {
+        "description" : "GitOps-patroon · Helmchart-standaard\n✔ Goedgekeurd",
+        "documentation" : { },
+        "id" : "6",
+        "name" : "Container Orchestratie",
+        "properties" : {
+          "structurizr.dsl.identifier" : "k8s"
+        },
+        "relationships" : [ {
+          "description" : "Exposeert",
+          "destinationId" : "8",
+          "id" : "11",
+          "sourceId" : "6",
+          "tags" : "Relationship",
+          "technology" : "HTTP"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "PaaS · AKS / EKS"
+      }, {
+        "description" : "Security gates · SBOM + vulnerability scan\n✔ Goedgekeurd",
+        "documentation" : { },
+        "id" : "7",
+        "name" : "CI/CD Pipeline",
+        "properties" : {
+          "structurizr.dsl.identifier" : "cicd"
+        },
+        "tags" : "Element,Container",
+        "technology" : "SaaS · GitHub Actions"
+      }, {
+        "description" : "REST · OpenAPI 3.x verplicht · rate-limiting\n✔ Goedgekeurd",
+        "documentation" : { },
+        "id" : "8",
+        "name" : "API Gateway",
+        "properties" : {
+          "structurizr.dsl.identifier" : "apigw"
+        },
+        "tags" : "Element,Container",
+        "technology" : "PaaS · Apigee / APISIX"
+      }, {
+        "description" : "Verplicht voor productie · retentie ≥ 13 mnd · SIEM\n✔ Goedgekeurd",
+        "documentation" : { },
+        "id" : "9",
+        "name" : "Monitoring & Logging",
+        "properties" : {
+          "structurizr.dsl.identifier" : "obs"
+        },
+        "relationships" : [ {
+          "description" : "Observeert",
+          "destinationId" : "5",
+          "id" : "12",
+          "sourceId" : "9",
+          "tags" : "Relationship",
+          "technology" : "Metrics/Logs"
+        }, {
+          "description" : "Monitort",
+          "destinationId" : "13",
+          "id" : "21",
+          "sourceId" : "9",
+          "tags" : "Relationship",
+          "technology" : "Metrics / Logs / Traces"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "SaaS · Datadog / Splunk"
+      } ],
+      "description" : "Goedgekeurde producten en patronen waarop teams bouwen\n[Software System]",
+      "documentation" : { },
+      "id" : "3",
+      "name" : "Paved Road Servicechassis",
+      "properties" : {
+        "structurizr.dsl.identifier" : "paved_road"
+      },
+      "relationships" : [ {
+        "description" : "Monitort",
+        "destinationId" : "13",
+        "id" : "22",
+        "linkedRelationshipId" : "21",
+        "sourceId" : "3",
+        "technology" : "Metrics / Logs / Traces"
+      } ],
+      "tags" : "Element,Software System"
+    }, {
+      "description" : "Draait op paved road · bijv. ERP · CRM · Portal",
+      "documentation" : { },
+      "id" : "13",
+      "name" : "COTS-product",
+      "properties" : {
+        "structurizr.dsl.identifier" : "cots"
+      },
+      "relationships" : [ {
+        "description" : "Authenticeert via",
+        "destinationId" : "4",
+        "id" : "17",
+        "sourceId" : "13",
+        "tags" : "Relationship",
+        "technology" : "OIDC / SAML 2.0"
+      }, {
+        "description" : "Authenticeert via",
+        "destinationId" : "3",
+        "id" : "18",
+        "linkedRelationshipId" : "17",
+        "sourceId" : "13",
+        "technology" : "OIDC / SAML 2.0"
+      }, {
+        "description" : "Draait op",
+        "destinationId" : "5",
+        "id" : "19",
+        "sourceId" : "13",
+        "tags" : "Relationship",
+        "technology" : "IaaS / PaaS"
+      }, {
+        "description" : "Exposeert API via",
+        "destinationId" : "8",
+        "id" : "20",
+        "sourceId" : "13",
+        "tags" : "Relationship",
+        "technology" : "REST / OpenAPI"
+      } ],
+      "tags" : "Element,Software System,External"
+    }, {
+      "description" : "Bewaakt paved road adoptie en behandelt afwijkingen",
+      "documentation" : { },
+      "id" : "14",
+      "name" : "MVG Governance",
+      "properties" : {
+        "structurizr.dsl.identifier" : "mvg"
+      },
+      "relationships" : [ {
+        "description" : "Stuurt adoptie via",
+        "destinationId" : "2",
+        "id" : "23",
+        "sourceId" : "14",
+        "tags" : "Relationship",
+        "technology" : "Guardrails"
+      } ],
+      "tags" : "Element,Software System,Governance"
+    } ]
+  },
+  "name" : "MVA — Paved Roads",
+  "properties" : {
+    "structurizr.inspection.error" : "9",
+    "structurizr.dsl" : "d29ya3NwYWNlICJNVkEg4oCUIFBhdmVkIFJvYWRzIiB7CgogIG1vZGVsIHsKICAgIGRldl90ZWFtID0gcGVyc29uICJEZWxpdmVyeS10ZWFtIiAiSW1wbGVtZW50ZWVydCBvbi1yb2FkIMK3IGdlZW4gYXJjaGl0ZWN0dXVycmV2aWV3IG5vZGlnIgogICAgYXJjaF9vd24gPSBwZXJzb24gIkFyY2hpdGVjdHVyZSBPd25lciIgIkJlaGVlcnQgZGUgY2F0YWxvZ3VzIGVuIGJlb29yZGVlbHQgYWZ3aWpraW5nZW4iCgogICAgcGF2ZWRfcm9hZCA9IHNvZnR3YXJlU3lzdGVtICJQYXZlZCBSb2FkIFNlcnZpY2VjaGFzc2lzIiAiR29lZGdla2V1cmRlIHByb2R1Y3RlbiBlbiBwYXRyb25lbiB3YWFyb3AgdGVhbXMgYm91d2VuXG5bU29mdHdhcmUgU3lzdGVtXSIgewogICAgICBpZHAgICA9IGNvbnRhaW5lciAiSWRlbnRpdHkgUHJvdmlkZXIiICJTU08gdm9vciBhbGxlIHBsYXRmb3JtZW4gwrcgU0FNTCAyLjAgLyBPSURDIHZlcnBsaWNodFxu4pyUIEdvZWRnZWtldXJkIiAiU2FhUyDCtyBFbnRyYSBJRCAvIE9rdGEiCiAgICAgIGNsb3VkID0gY29udGFpbmVyICJDbG91ZCBQbGF0Zm9ybSIgIkVVLXJlZ2lvIMK3IGxhbmRpbmcgem9uZSDCtyBnb3Zlcm5hbmNlIMK3IHBvbGljaWVzXG7inJQgR29lZGdla2V1cmQiICJJYWFTIMK3IEF6dXJlIC8gQVdTIgogICAgICBrOHMgICA9IGNvbnRhaW5lciAiQ29udGFpbmVyIE9yY2hlc3RyYXRpZSIgIkdpdE9wcy1wYXRyb29uIMK3IEhlbG1jaGFydC1zdGFuZGFhcmRcbuKclCBHb2VkZ2VrZXVyZCIgIlBhYVMgwrcgQUtTIC8gRUtTIgogICAgICBjaWNkICA9IGNvbnRhaW5lciAiQ0kvQ0QgUGlwZWxpbmUiICJTZWN1cml0eSBnYXRlcyDCtyBTQk9NICsgdnVsbmVyYWJpbGl0eSBzY2FuXG7inJQgR29lZGdla2V1cmQiICJTYWFTIMK3IEdpdEh1YiBBY3Rpb25zIgogICAgICBhcGlndyA9IGNvbnRhaW5lciAiQVBJIEdhdGV3YXkiICJSRVNUIMK3IE9wZW5BUEkgMy54IHZlcnBsaWNodCDCtyByYXRlLWxpbWl0aW5nXG7inJQgR29lZGdla2V1cmQiICJQYWFTIMK3IEFwaWdlZSAvIEFQSVNJWCIKICAgICAgb2JzICAgPSBjb250YWluZXIgIk1vbml0b3JpbmcgJiBMb2dnaW5nIiAiVmVycGxpY2h0IHZvb3IgcHJvZHVjdGllIMK3IHJldGVudGllIOKJpSAxMyBtbmQgwrcgU0lFTVxu4pyUIEdvZWRnZWtldXJkIiAiU2FhUyDCtyBEYXRhZG9nIC8gU3BsdW5rIgoKICAgICAgY2xvdWQgLT4gazhzICAgIkhvc3QiICJJYWFTIgogICAgICBrOHMgICAtPiBhcGlndyAiRXhwb3NlZXJ0IiAiSFRUUCIKICAgICAgb2JzICAgLT4gY2xvdWQgIk9ic2VydmVlcnQiICJNZXRyaWNzL0xvZ3MiCiAgICB9CgogICAgY290cyA9IHNvZnR3YXJlU3lzdGVtICJDT1RTLXByb2R1Y3QiICJEcmFhaXQgb3AgcGF2ZWQgcm9hZCDCtyBiaWp2LiBFUlAgwrcgQ1JNIMK3IFBvcnRhbCIgIkV4dGVybmFsIgogICAgbXZnICA9IHNvZnR3YXJlU3lzdGVtICJNVkcgR292ZXJuYW5jZSIgIkJld2Fha3QgcGF2ZWQgcm9hZCBhZG9wdGllIGVuIGJlaGFuZGVsdCBhZndpamtpbmdlbiIgIkdvdmVybmFuY2UiCgogICAgZGV2X3RlYW0gLT4gY290cyAgICAgICJJbXBsZW1lbnRlZXJ0IG9uLXJvYWQiICJHZWVuIHJldmlldyBub2RpZyIKICAgIGFyY2hfb3duIC0+IHBhdmVkX3JvYWQgIkJlaGVlcnQgZW4gZXZvbHVlZXJ0IgogICAgY290cyAgICAgLT4gaWRwICAgICAgICJBdXRoZW50aWNlZXJ0IHZpYSIgIk9JREMgLyBTQU1MIDIuMCIKICAgIGNvdHMgICAgIC0+IGNsb3VkICAgICAiRHJhYWl0IG9wIiAiSWFhUyAvIFBhYVMiCiAgICBjb3RzICAgICAtPiBhcGlndyAgICAgIkV4cG9zZWVydCBBUEkgdmlhIiAiUkVTVCAvIE9wZW5BUEkiCiAgICBvYnMgICAgICAtPiBjb3RzICAgICAgIk1vbml0b3J0IiAiTWV0cmljcyAvIExvZ3MgLyBUcmFjZXMiCiAgICBtdmcgICAgICAtPiBhcmNoX293biAgIlN0dXVydCBhZG9wdGllIHZpYSIgIkd1YXJkcmFpbHMiCiAgfQoKICB2aWV3cyB7CiAgICBjb250YWluZXIgcGF2ZWRfcm9hZCAiQ29udGFpbmVycyIgewogICAgICBpbmNsdWRlICoKICAgICAgYXV0b0xheW91dAogICAgfQogICAgCiAgICBzdHlsZXMgewogICAgICBlbGVtZW50ICJQZXJzb24iIHsKICAgICAgICBzaGFwZSBQZXJzb24KICAgICAgICBiYWNrZ3JvdW5kICMwODQyN2IKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTMKICAgICAgfQogICAgICBlbGVtZW50ICJTb2Z0d2FyZSBTeXN0ZW0iIHsKICAgICAgICBiYWNrZ3JvdW5kICMxMTY4YmQKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTMKICAgICAgfQogICAgICBlbGVtZW50ICJDb250YWluZXIiIHsKICAgICAgICBiYWNrZ3JvdW5kICM0MzhkZDUKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJFeHRlcm5hbCIgewogICAgICAgIGJhY2tncm91bmQgIzk5OTk5OQogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIlBhdmVkUm9hZCIgewogICAgICAgIGJhY2tncm91bmQgIzBmNmU2MwogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIkdvdmVybmFuY2UiIHsKICAgICAgICBiYWNrZ3JvdW5kICM0YjNmOWUKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJEcml2ZXIiIHsKICAgICAgICBiYWNrZ3JvdW5kICNiYjdhMTYKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJPZmZSb2FkIiB7CiAgICAgICAgYmFja2dyb3VuZCAjYzQ3ZDBlCiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEyCiAgICAgIH0KICAgICAgZWxlbWVudCAiRGVjaXNpb24iIHsKICAgICAgICBiYWNrZ3JvdW5kICMxYTU2OTgKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICByZWxhdGlvbnNoaXAgIlJlbGF0aW9uc2hpcCIgewogICAgICAgIGZvbnRTaXplIDExCiAgICAgICAgY29sb3IgIzUyNGQ0MgogICAgICB9CiAgICB9CgogIH0KfQ==",
+    "structurizr.inspection.info" : "0",
+    "structurizr.inspection.ignore" : "0",
+    "structurizr.inspection.warning" : "0"
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "background" : "#438dd5",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Container"
+        }, {
+          "background" : "#1a5698",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Decision"
+        }, {
+          "background" : "#bb7a16",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Driver"
+        }, {
+          "background" : "#999999",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "External"
+        }, {
+          "background" : "#4b3f9e",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Governance"
+        }, {
+          "background" : "#c47d0e",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "OffRoad"
+        }, {
+          "background" : "#0f6e63",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "PavedRoad"
+        }, {
+          "background" : "#08427b",
+          "color" : "#ffffff",
+          "fontSize" : 13,
+          "shape" : "Person",
+          "tag" : "Person"
+        }, {
+          "background" : "#1168bd",
+          "color" : "#ffffff",
+          "fontSize" : 13,
+          "tag" : "Software System"
+        } ],
+        "relationships" : [ {
+          "color" : "#524d42",
+          "fontSize" : 11,
+          "tag" : "Relationship"
+        } ]
+      },
+      "terminology" : { }
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "5",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "7",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "8",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "9",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "13",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "Containers",
+      "name" : "Container View: Paved Road Servicechassis",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "10"
+      }, {
+        "id" : "11"
+      }, {
+        "id" : "12"
+      }, {
+        "id" : "17"
+      }, {
+        "id" : "19"
+      }, {
+        "id" : "20"
+      }, {
+        "id" : "21"
+      } ],
+      "softwareSystemId" : "3"
+    } ]
+  }
+}

@@ -1,0 +1,34 @@
+@startuml
+title <size:24>System Context View: Off-road element</size>
+
+set separator none
+top to bottom direction
+
+<style>
+  root {
+    BackgroundColor: #ffffff
+    FontColor: #444444
+  }
+</style>
+
+!include <C4/C4>
+!include <C4/C4_Context>
+
+Person(LeadArchitect, "Lead Architect", $descr="Voorzitter van de review · eigenaar van het oordeel", $tags="", $link="")
+Person(Aanvragendteam, "Aanvragend team", $descr="Vraagt goedkeuring voor off-road keuze of nieuw product", $tags="", $link="")
+System(Offroadelement, "Off-road element", $descr="Product of patroon dat afwijkt van de paved road\nbijv. [Alternatief ERP Platform · REV-xx]\n[Software System — onder review]", $tags="", $link="")
+System(PavedRoadCatalogus, "Paved Road Catalogus", $descr="Geldende standaard als referentie voor de beoordeling", $tags="", $link="")
+System(DriversPrincipes, "Drivers + Principes", $descr="Architecturele criteria waarop getoetst wordt\nbijv. Driver D1 · Principe P2 · ASR-01", $tags="", $link="")
+System(ADR0x, "ADR-0x", $descr="Te maken beslissingsrecord als uitkomst van de review", $tags="", $link="")
+System(MVGGovernance, "MVG Governance", $descr="Ontvangt reviewuitkomst voor conformance-rapportage", $tags="", $link="")
+
+Rel(PavedRoadCatalogus, Offroadelement, "Referentie voor afwijking", $techn="Conformance-delta", $tags="", $link="")
+Rel(DriversPrincipes, Offroadelement, "Toetsingscriteria voor", $techn="Eis / Principe", $tags="", $link="")
+Rel(Offroadelement, ADR0x, "Resulteert in", $techn="Goedgekeurd / Met condities", $tags="", $link="")
+Rel(Offroadelement, MVGGovernance, "Rapporteert uitkomst aan", $techn="Governance-signaal", $tags="", $link="")
+Rel(Aanvragendteam, Offroadelement, "Vraagt review aan voor", $techn="", $tags="", $link="")
+Rel(LeadArchitect, Offroadelement, "Beoordeelt", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+hide stereotypes
+@enduml
