@@ -1,0 +1,283 @@
+{
+  "configuration" : { },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 0,
+  "model" : {
+    "people" : [ {
+      "description" : "Stelt roadmap op · bewaakt alpha-toestanden per horizon",
+      "id" : "1",
+      "name" : "Architect",
+      "properties" : {
+        "structurizr.dsl.identifier" : "architect"
+      },
+      "relationships" : [ {
+        "description" : "Detailleert",
+        "destinationId" : "3",
+        "id" : "12",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "description" : "Voert werkpakketten uit per horizon",
+      "id" : "2",
+      "name" : "Delivery-team",
+      "properties" : {
+        "structurizr.dsl.identifier" : "delivery"
+      },
+      "relationships" : [ {
+        "description" : "Voert uit",
+        "destinationId" : "3",
+        "id" : "13",
+        "sourceId" : "2",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Plant globaal",
+        "destinationId" : "5",
+        "id" : "14",
+        "sourceId" : "2",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "description" : "WP-01 Platform-fundament · WP-02 COTS selectie & PoC\nArchitecture → Demonstrated · Paved Road → Established",
+      "documentation" : { },
+      "id" : "3",
+      "name" : "Horizon 1 [Q1–Q2]",
+      "properties" : {
+        "structurizr.dsl.identifier" : "h1"
+      },
+      "relationships" : [ {
+        "description" : "Transitie via WP-03, WP-04",
+        "destinationId" : "5",
+        "id" : "10",
+        "sourceId" : "3",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Software System"
+    }, {
+      "description" : "Huidige toestand · legacy systemen\nArchitecture → Outlined",
+      "documentation" : { },
+      "id" : "4",
+      "name" : "Baseline",
+      "properties" : {
+        "structurizr.dsl.identifier" : "baseline"
+      },
+      "relationships" : [ {
+        "description" : "Transitie via WP-01, WP-02",
+        "destinationId" : "3",
+        "id" : "9",
+        "sourceId" : "4",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Software System,External"
+    }, {
+      "description" : "WP-03 COTS implementatie · WP-04 Integratie-laag\nSystem → Demonstrable · Paved Road → Adopted",
+      "documentation" : { },
+      "id" : "5",
+      "name" : "Horizon 2 [Q3–Q4]",
+      "properties" : {
+        "structurizr.dsl.identifier" : "h2"
+      },
+      "relationships" : [ {
+        "description" : "Bereikt doeltoestand",
+        "destinationId" : "6",
+        "id" : "11",
+        "sourceId" : "5",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Software System,Decision"
+    }, {
+      "description" : "COTS-platform live · >90% on-road\nArchitecture → Established",
+      "documentation" : { },
+      "id" : "6",
+      "name" : "Doeltoestand",
+      "properties" : {
+        "structurizr.dsl.identifier" : "doel"
+      },
+      "tags" : "Element,Software System,PavedRoad"
+    }, {
+      "description" : "Bewaakt guardrails en conformance per horizon",
+      "documentation" : { },
+      "id" : "7",
+      "name" : "MVG Governance",
+      "properties" : {
+        "structurizr.dsl.identifier" : "mvg"
+      },
+      "relationships" : [ {
+        "description" : "Bewaakt",
+        "destinationId" : "3",
+        "id" : "15",
+        "sourceId" : "7",
+        "tags" : "Relationship",
+        "technology" : "Guardrails"
+      }, {
+        "description" : "Bewaakt",
+        "destinationId" : "5",
+        "id" : "16",
+        "sourceId" : "7",
+        "tags" : "Relationship",
+        "technology" : "Guardrails"
+      } ],
+      "tags" : "Element,Software System,Governance"
+    }, {
+      "description" : "Architectuurbeslissingen die de transitie sturen",
+      "documentation" : { },
+      "id" : "8",
+      "name" : "ADR-set (01–0x)",
+      "properties" : {
+        "structurizr.dsl.identifier" : "adrs"
+      },
+      "relationships" : [ {
+        "description" : "Stuurt keuzes",
+        "destinationId" : "3",
+        "id" : "17",
+        "sourceId" : "8",
+        "tags" : "Relationship",
+        "technology" : "Beslissingen"
+      }, {
+        "description" : "Stuurt keuzes",
+        "destinationId" : "5",
+        "id" : "18",
+        "sourceId" : "8",
+        "tags" : "Relationship",
+        "technology" : "Beslissingen"
+      } ],
+      "tags" : "Element,Software System,Driver"
+    } ]
+  },
+  "name" : "MVA — Architecture Roadmap",
+  "properties" : {
+    "structurizr.inspection.error" : "8",
+    "structurizr.dsl" : "d29ya3NwYWNlICJNVkEg4oCUIEFyY2hpdGVjdHVyZSBSb2FkbWFwIiB7CgogIG1vZGVsIHsKICAgIGFyY2hpdGVjdCA9IHBlcnNvbiAiQXJjaGl0ZWN0IiAiU3RlbHQgcm9hZG1hcCBvcCDCtyBiZXdhYWt0IGFscGhhLXRvZXN0YW5kZW4gcGVyIGhvcml6b24iCiAgICBkZWxpdmVyeSAgPSBwZXJzb24gIkRlbGl2ZXJ5LXRlYW0iICJWb2VydCB3ZXJrcGFra2V0dGVuIHVpdCBwZXIgaG9yaXpvbiIKCiAgICBoMSA9IHNvZnR3YXJlU3lzdGVtICJIb3Jpem9uIDEgW1Ex4oCTUTJdIiAiV1AtMDEgUGxhdGZvcm0tZnVuZGFtZW50IMK3IFdQLTAyIENPVFMgc2VsZWN0aWUgJiBQb0NcbkFyY2hpdGVjdHVyZSDihpIgRGVtb25zdHJhdGVkIMK3IFBhdmVkIFJvYWQg4oaSIEVzdGFibGlzaGVkIgoKICAgIGJhc2VsaW5lID0gc29mdHdhcmVTeXN0ZW0gIkJhc2VsaW5lIiAiSHVpZGlnZSB0b2VzdGFuZCDCtyBsZWdhY3kgc3lzdGVtZW5cbkFyY2hpdGVjdHVyZSDihpIgT3V0bGluZWQiICJFeHRlcm5hbCIKICAgIGgyICAgICAgID0gc29mdHdhcmVTeXN0ZW0gIkhvcml6b24gMiBbUTPigJNRNF0iICJXUC0wMyBDT1RTIGltcGxlbWVudGF0aWUgwrcgV1AtMDQgSW50ZWdyYXRpZS1sYWFnXG5TeXN0ZW0g4oaSIERlbW9uc3RyYWJsZSDCtyBQYXZlZCBSb2FkIOKGkiBBZG9wdGVkIiAiRGVjaXNpb24iCiAgICBkb2VsICAgICA9IHNvZnR3YXJlU3lzdGVtICJEb2VsdG9lc3RhbmQiICJDT1RTLXBsYXRmb3JtIGxpdmUgwrcgPjkwJSBvbi1yb2FkXG5BcmNoaXRlY3R1cmUg4oaSIEVzdGFibGlzaGVkIiAiUGF2ZWRSb2FkIgogICAgbXZnICAgICAgPSBzb2Z0d2FyZVN5c3RlbSAiTVZHIEdvdmVybmFuY2UiICJCZXdhYWt0IGd1YXJkcmFpbHMgZW4gY29uZm9ybWFuY2UgcGVyIGhvcml6b24iICJHb3Zlcm5hbmNlIgogICAgYWRycyAgICAgPSBzb2Z0d2FyZVN5c3RlbSAiQURSLXNldCAoMDHigJMweCkiICJBcmNoaXRlY3R1dXJiZXNsaXNzaW5nZW4gZGllIGRlIHRyYW5zaXRpZSBzdHVyZW4iICJEcml2ZXIiCgogICAgYmFzZWxpbmUgLT4gaDEgICAiVHJhbnNpdGllIHZpYSBXUC0wMSwgV1AtMDIiCiAgICBoMSAgICAgICAtPiBoMiAgICJUcmFuc2l0aWUgdmlhIFdQLTAzLCBXUC0wNCIKICAgIGgyICAgICAgIC0+IGRvZWwgIkJlcmVpa3QgZG9lbHRvZXN0YW5kIgogICAgYXJjaGl0ZWN0IC0+IGgxICAiRGV0YWlsbGVlcnQiCiAgICBkZWxpdmVyeSAgLT4gaDEgICJWb2VydCB1aXQiCiAgICBkZWxpdmVyeSAgLT4gaDIgICJQbGFudCBnbG9iYWFsIgogICAgbXZnICAgICAgIC0+IGgxICAiQmV3YWFrdCIgIkd1YXJkcmFpbHMiCiAgICBtdmcgICAgICAgLT4gaDIgICJCZXdhYWt0IiAiR3VhcmRyYWlscyIKICAgIGFkcnMgICAgICAtPiBoMSAgIlN0dXVydCBrZXV6ZXMiICJCZXNsaXNzaW5nZW4iCiAgICBhZHJzICAgICAgLT4gaDIgICJTdHV1cnQga2V1emVzIiAiQmVzbGlzc2luZ2VuIgogIH0KCiAgdmlld3MgewogICAgc3lzdGVtQ29udGV4dCBoMSAiQ29udGV4dCIgewogICAgICBpbmNsdWRlICoKICAgICAgYXV0b0xheW91dAogICAgfQogICAgCiAgICBzdHlsZXMgewogICAgICBlbGVtZW50ICJQZXJzb24iIHsKICAgICAgICBzaGFwZSBQZXJzb24KICAgICAgICBiYWNrZ3JvdW5kICMwODQyN2IKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTMKICAgICAgfQogICAgICBlbGVtZW50ICJTb2Z0d2FyZSBTeXN0ZW0iIHsKICAgICAgICBiYWNrZ3JvdW5kICMxMTY4YmQKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTMKICAgICAgfQogICAgICBlbGVtZW50ICJDb250YWluZXIiIHsKICAgICAgICBiYWNrZ3JvdW5kICM0MzhkZDUKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJFeHRlcm5hbCIgewogICAgICAgIGJhY2tncm91bmQgIzk5OTk5OQogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIlBhdmVkUm9hZCIgewogICAgICAgIGJhY2tncm91bmQgIzBmNmU2MwogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIkdvdmVybmFuY2UiIHsKICAgICAgICBiYWNrZ3JvdW5kICM0YjNmOWUKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJEcml2ZXIiIHsKICAgICAgICBiYWNrZ3JvdW5kICNiYjdhMTYKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJPZmZSb2FkIiB7CiAgICAgICAgYmFja2dyb3VuZCAjYzQ3ZDBlCiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEyCiAgICAgIH0KICAgICAgZWxlbWVudCAiRGVjaXNpb24iIHsKICAgICAgICBiYWNrZ3JvdW5kICMxYTU2OTgKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICByZWxhdGlvbnNoaXAgIlJlbGF0aW9uc2hpcCIgewogICAgICAgIGZvbnRTaXplIDExCiAgICAgICAgY29sb3IgIzUyNGQ0MgogICAgICB9CiAgICB9CgogIH0KfQ==",
+    "structurizr.inspection.info" : "0",
+    "structurizr.inspection.ignore" : "0",
+    "structurizr.inspection.warning" : "0"
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "background" : "#438dd5",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Container"
+        }, {
+          "background" : "#1a5698",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Decision"
+        }, {
+          "background" : "#bb7a16",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Driver"
+        }, {
+          "background" : "#999999",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "External"
+        }, {
+          "background" : "#4b3f9e",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Governance"
+        }, {
+          "background" : "#c47d0e",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "OffRoad"
+        }, {
+          "background" : "#0f6e63",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "PavedRoad"
+        }, {
+          "background" : "#08427b",
+          "color" : "#ffffff",
+          "fontSize" : 13,
+          "shape" : "Person",
+          "tag" : "Person"
+        }, {
+          "background" : "#1168bd",
+          "color" : "#ffffff",
+          "fontSize" : 13,
+          "tag" : "Software System"
+        } ],
+        "relationships" : [ {
+          "color" : "#524d42",
+          "fontSize" : 11,
+          "tag" : "Relationship"
+        } ]
+      },
+      "terminology" : { }
+    },
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "5",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "7",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "8",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "Context",
+      "name" : "System Context View: Horizon 1 [Q1–Q2]",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "10"
+      }, {
+        "id" : "12"
+      }, {
+        "id" : "13"
+      }, {
+        "id" : "14"
+      }, {
+        "id" : "15"
+      }, {
+        "id" : "16"
+      }, {
+        "id" : "17"
+      }, {
+        "id" : "18"
+      }, {
+        "id" : "9"
+      } ],
+      "softwareSystemId" : "3"
+    } ]
+  }
+}

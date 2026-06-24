@@ -1,0 +1,37 @@
+@startuml
+title <size:24>System Context View: Horizon 1 [Q1–Q2]</size>
+
+set separator none
+top to bottom direction
+
+<style>
+  root {
+    BackgroundColor: #ffffff
+    FontColor: #444444
+  }
+</style>
+
+!include <C4/C4>
+!include <C4/C4_Context>
+
+Person(Architect, "Architect", $descr="Stelt roadmap op · bewaakt alpha-toestanden per horizon", $tags="", $link="")
+Person(Deliveryteam, "Delivery-team", $descr="Voert werkpakketten uit per horizon", $tags="", $link="")
+System(Horizon1Q1Q2, "Horizon 1 [Q1–Q2]", $descr="WP-01 Platform-fundament · WP-02 COTS selectie & PoC\nArchitecture → Demonstrated · Paved Road → Established", $tags="", $link="")
+System(Baseline, "Baseline", $descr="Huidige toestand · legacy systemen\nArchitecture → Outlined", $tags="", $link="")
+System(Horizon2Q3Q4, "Horizon 2 [Q3–Q4]", $descr="WP-03 COTS implementatie · WP-04 Integratie-laag\nSystem → Demonstrable · Paved Road → Adopted", $tags="", $link="")
+System(MVGGovernance, "MVG Governance", $descr="Bewaakt guardrails en conformance per horizon", $tags="", $link="")
+System(ADRset010x, "ADR-set (01–0x)", $descr="Architectuurbeslissingen die de transitie sturen", $tags="", $link="")
+
+Rel(Horizon1Q1Q2, Horizon2Q3Q4, "Transitie via WP-03, WP-04", $techn="", $tags="", $link="")
+Rel(Architect, Horizon1Q1Q2, "Detailleert", $techn="", $tags="", $link="")
+Rel(Deliveryteam, Horizon1Q1Q2, "Voert uit", $techn="", $tags="", $link="")
+Rel(Deliveryteam, Horizon2Q3Q4, "Plant globaal", $techn="", $tags="", $link="")
+Rel(MVGGovernance, Horizon1Q1Q2, "Bewaakt", $techn="Guardrails", $tags="", $link="")
+Rel(MVGGovernance, Horizon2Q3Q4, "Bewaakt", $techn="Guardrails", $tags="", $link="")
+Rel(ADRset010x, Horizon1Q1Q2, "Stuurt keuzes", $techn="Beslissingen", $tags="", $link="")
+Rel(ADRset010x, Horizon2Q3Q4, "Stuurt keuzes", $techn="Beslissingen", $tags="", $link="")
+Rel(Baseline, Horizon1Q1Q2, "Transitie via WP-01, WP-02", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+hide stereotypes
+@enduml

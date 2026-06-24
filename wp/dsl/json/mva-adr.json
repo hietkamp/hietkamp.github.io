@@ -1,0 +1,222 @@
+{
+  "configuration" : { },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 0,
+  "model" : {
+    "people" : [ {
+      "description" : "Neemt en documenteert de architectuurbeslissing",
+      "id" : "1",
+      "name" : "Lead Architect",
+      "properties" : {
+        "structurizr.dsl.identifier" : "architect"
+      },
+      "relationships" : [ {
+        "description" : "Besluit en documenteert",
+        "destinationId" : "3",
+        "id" : "9",
+        "sourceId" : "1",
+        "tags" : "Relationship",
+        "technology" : "ADR"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "description" : "Valideert drivers en accepteert consequenties",
+      "id" : "2",
+      "name" : "Stakeholder",
+      "properties" : {
+        "structurizr.dsl.identifier" : "stakeholder"
+      },
+      "relationships" : [ {
+        "description" : "Valideert",
+        "destinationId" : "3",
+        "id" : "10",
+        "sourceId" : "2",
+        "tags" : "Relationship",
+        "technology" : "Review"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "description" : "Gekozen COTS-product of patroon\nbijv. [ERP Platform X · ADR-xx: Besloten]\n[Software System]",
+      "documentation" : { },
+      "id" : "3",
+      "name" : "Besliste oplossing",
+      "properties" : {
+        "structurizr.dsl.identifier" : "beslissing"
+      },
+      "relationships" : [ {
+        "description" : "Heeft gevolgen voor",
+        "destinationId" : "6",
+        "id" : "11",
+        "sourceId" : "3",
+        "tags" : "Relationship",
+        "technology" : "Consequentie"
+      } ],
+      "tags" : "Element,Software System"
+    }, {
+      "description" : "Architecturele krachten die de beslissing motiveren\nbijv. Beschikbaarheid 24/7 · Performance p95 < 2s",
+      "documentation" : { },
+      "id" : "4",
+      "name" : "Drivers + ASR's",
+      "properties" : {
+        "structurizr.dsl.identifier" : "drivers"
+      },
+      "relationships" : [ {
+        "description" : "Motiveert en begrenst",
+        "destinationId" : "3",
+        "id" : "7",
+        "sourceId" : "4",
+        "tags" : "Relationship",
+        "technology" : "Influence → ADR"
+      } ],
+      "tags" : "Element,Software System,Driver"
+    }, {
+      "description" : "Referentie voor goedgekeurde producten en patronen",
+      "documentation" : { },
+      "id" : "5",
+      "name" : "Paved Road Catalogus",
+      "properties" : {
+        "structurizr.dsl.identifier" : "paved"
+      },
+      "relationships" : [ {
+        "description" : "Stuurt productkeuze",
+        "destinationId" : "3",
+        "id" : "8",
+        "sourceId" : "5",
+        "tags" : "Relationship",
+        "technology" : "Conformance-check"
+      } ],
+      "tags" : "Element,Software System,PavedRoad"
+    }, {
+      "description" : "Component beïnvloed door de beslissing\nbijv. Integratie-laag",
+      "documentation" : { },
+      "id" : "6",
+      "name" : "Geraakt component",
+      "properties" : {
+        "structurizr.dsl.identifier" : "impact"
+      },
+      "tags" : "Element,Software System,External"
+    } ]
+  },
+  "name" : "MVA — Architecture Decision Record",
+  "properties" : {
+    "structurizr.inspection.error" : "1",
+    "structurizr.dsl" : "d29ya3NwYWNlICJNVkEg4oCUIEFyY2hpdGVjdHVyZSBEZWNpc2lvbiBSZWNvcmQiIHsKCiAgbW9kZWwgewogICAgYXJjaGl0ZWN0ICAgPSBwZXJzb24gIkxlYWQgQXJjaGl0ZWN0IiAiTmVlbXQgZW4gZG9jdW1lbnRlZXJ0IGRlIGFyY2hpdGVjdHV1cmJlc2xpc3NpbmciCiAgICBzdGFrZWhvbGRlciA9IHBlcnNvbiAiU3Rha2Vob2xkZXIiICJWYWxpZGVlcnQgZHJpdmVycyBlbiBhY2NlcHRlZXJ0IGNvbnNlcXVlbnRpZXMiCgogICAgYmVzbGlzc2luZyA9IHNvZnR3YXJlU3lzdGVtICJCZXNsaXN0ZSBvcGxvc3NpbmciICJHZWtvemVuIENPVFMtcHJvZHVjdCBvZiBwYXRyb29uXG5iaWp2LiBbRVJQIFBsYXRmb3JtIFggwrcgQURSLXh4OiBCZXNsb3Rlbl1cbltTb2Z0d2FyZSBTeXN0ZW1dIgoKICAgIGRyaXZlcnMgID0gc29mdHdhcmVTeXN0ZW0gIkRyaXZlcnMgKyBBU1IncyIgIkFyY2hpdGVjdHVyZWxlIGtyYWNodGVuIGRpZSBkZSBiZXNsaXNzaW5nIG1vdGl2ZXJlblxuYmlqdi4gQmVzY2hpa2JhYXJoZWlkIDI0LzcgwrcgUGVyZm9ybWFuY2UgcDk1IDwgMnMiICJEcml2ZXIiCiAgICBwYXZlZCAgICA9IHNvZnR3YXJlU3lzdGVtICJQYXZlZCBSb2FkIENhdGFsb2d1cyIgIlJlZmVyZW50aWUgdm9vciBnb2VkZ2VrZXVyZGUgcHJvZHVjdGVuIGVuIHBhdHJvbmVuIiAiUGF2ZWRSb2FkIgogICAgaW1wYWN0ICAgPSBzb2Z0d2FyZVN5c3RlbSAiR2VyYWFrdCBjb21wb25lbnQiICJDb21wb25lbnQgYmXDr252bG9lZCBkb29yIGRlIGJlc2xpc3NpbmdcbmJpanYuIEludGVncmF0aWUtbGFhZyIgIkV4dGVybmFsIgoKICAgIGRyaXZlcnMgICAgLT4gYmVzbGlzc2luZyAiTW90aXZlZXJ0IGVuIGJlZ3JlbnN0IiAiSW5mbHVlbmNlIOKGkiBBRFIiCiAgICBwYXZlZCAgICAgIC0+IGJlc2xpc3NpbmcgIlN0dXVydCBwcm9kdWN0a2V1emUiICJDb25mb3JtYW5jZS1jaGVjayIKICAgIGFyY2hpdGVjdCAgLT4gYmVzbGlzc2luZyAiQmVzbHVpdCBlbiBkb2N1bWVudGVlcnQiICJBRFIiCiAgICBzdGFrZWhvbGRlciAtPiBiZXNsaXNzaW5nICJWYWxpZGVlcnQiICJSZXZpZXciCiAgICBiZXNsaXNzaW5nIC0+IGltcGFjdCAgICAgIkhlZWZ0IGdldm9sZ2VuIHZvb3IiICJDb25zZXF1ZW50aWUiCiAgfQoKICB2aWV3cyB7CiAgICBzeXN0ZW1Db250ZXh0IGJlc2xpc3NpbmcgIkNvbnRleHQiIHsKICAgICAgaW5jbHVkZSAqCiAgICAgIGF1dG9MYXlvdXQKICAgIH0KICAgIAogICAgc3R5bGVzIHsKICAgICAgZWxlbWVudCAiUGVyc29uIiB7CiAgICAgICAgc2hhcGUgUGVyc29uCiAgICAgICAgYmFja2dyb3VuZCAjMDg0MjdiCiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEzCiAgICAgIH0KICAgICAgZWxlbWVudCAiU29mdHdhcmUgU3lzdGVtIiB7CiAgICAgICAgYmFja2dyb3VuZCAjMTE2OGJkCiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEzCiAgICAgIH0KICAgICAgZWxlbWVudCAiQ29udGFpbmVyIiB7CiAgICAgICAgYmFja2dyb3VuZCAjNDM4ZGQ1CiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEyCiAgICAgIH0KICAgICAgZWxlbWVudCAiRXh0ZXJuYWwiIHsKICAgICAgICBiYWNrZ3JvdW5kICM5OTk5OTkKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJQYXZlZFJvYWQiIHsKICAgICAgICBiYWNrZ3JvdW5kICMwZjZlNjMKICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgZm9udFNpemUgMTIKICAgICAgfQogICAgICBlbGVtZW50ICJHb3Zlcm5hbmNlIiB7CiAgICAgICAgYmFja2dyb3VuZCAjNGIzZjllCiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEyCiAgICAgIH0KICAgICAgZWxlbWVudCAiRHJpdmVyIiB7CiAgICAgICAgYmFja2dyb3VuZCAjYmI3YTE2CiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEyCiAgICAgIH0KICAgICAgZWxlbWVudCAiT2ZmUm9hZCIgewogICAgICAgIGJhY2tncm91bmQgI2M0N2QwZQogICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICBmb250U2l6ZSAxMgogICAgICB9CiAgICAgIGVsZW1lbnQgIkRlY2lzaW9uIiB7CiAgICAgICAgYmFja2dyb3VuZCAjMWE1Njk4CiAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgIGZvbnRTaXplIDEyCiAgICAgIH0KICAgICAgcmVsYXRpb25zaGlwICJSZWxhdGlvbnNoaXAiIHsKICAgICAgICBmb250U2l6ZSAxMQogICAgICAgIGNvbG9yICM1MjRkNDIKICAgICAgfQogICAgfQoKICB9Cn0=",
+    "structurizr.inspection.info" : "0",
+    "structurizr.inspection.ignore" : "0",
+    "structurizr.inspection.warning" : "0"
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "background" : "#438dd5",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Container"
+        }, {
+          "background" : "#1a5698",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Decision"
+        }, {
+          "background" : "#bb7a16",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Driver"
+        }, {
+          "background" : "#999999",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "External"
+        }, {
+          "background" : "#4b3f9e",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "Governance"
+        }, {
+          "background" : "#c47d0e",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "OffRoad"
+        }, {
+          "background" : "#0f6e63",
+          "color" : "#ffffff",
+          "fontSize" : 12,
+          "tag" : "PavedRoad"
+        }, {
+          "background" : "#08427b",
+          "color" : "#ffffff",
+          "fontSize" : 13,
+          "shape" : "Person",
+          "tag" : "Person"
+        }, {
+          "background" : "#1168bd",
+          "color" : "#ffffff",
+          "fontSize" : 13,
+          "tag" : "Software System"
+        } ],
+        "relationships" : [ {
+          "color" : "#524d42",
+          "fontSize" : 11,
+          "tag" : "Relationship"
+        } ]
+      },
+      "terminology" : { }
+    },
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "5",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "Context",
+      "name" : "System Context View: Besliste oplossing",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "10"
+      }, {
+        "id" : "11"
+      }, {
+        "id" : "7"
+      }, {
+        "id" : "8"
+      }, {
+        "id" : "9"
+      } ],
+      "softwareSystemId" : "3"
+    } ]
+  }
+}

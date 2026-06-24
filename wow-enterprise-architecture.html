@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Way-of-working Enterprise Architectuur — MVA Procesoverzicht</title>
+<meta name="description" content="Het MVA-architectuurproces voor enterprise architecten: van Frame the Drivers via Envision en Shape naar Prove en Plan the Transition.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3efe6;--paper-2:#ece6d8;--ink:#1c1a16;--ink-soft:#524d42;
+  --line:#d8d0bf;--card:#fbf9f3;--prac:#27406b;
+  --alpha:#0f6e63;--product:#bb7a16;--activity:#1f5fa8;--comp:#4b3f9e;--role:#9c3f76;--pattern:#b1492e;
+  --ent:#27406b;--sol:#0f6e63;--mva:#0f6e63;--mvg:#4b3f9e;--kernel:#27406b;
+  --shadow:0 1px 0 rgba(0,0,0,.03),0 16px 38px -16px rgba(28,26,22,.42);
+  scroll-behavior:smooth;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(circle at 8% -6%,#eef1f7 0%,transparent 48%),radial-gradient(circle at 94% 2%,#e6ede9 0%,transparent 44%),var(--paper);}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.4;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);}
+.wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 26px 90px}
+
+/* breadcrumb */
+.breadcrumb{padding:14px 0 0;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.breadcrumb a{color:var(--prac);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+
+/* hero */
+header.hero{padding:30px 0 24px;border-bottom:3px solid var(--prac);margin-bottom:28px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--prac);margin-bottom:6px}
+h1{font-family:"Fraunces",serif;font-optical-sizing:auto;font-weight:900;font-size:clamp(2rem,5vw,3.4rem);line-height:.98;margin:.14em 0 .14em;letter-spacing:-.015em}
+h1 em{font-style:italic;font-weight:500;color:var(--prac)}
+.lede{font-size:clamp(.96rem,1.3vw,1.08rem);max-width:72ch;color:var(--ink-soft);margin:.5em 0 1em}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px}
+.hero-chips span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;border:1.5px solid var(--prac);border-radius:30px;padding:5px 13px;background:var(--card);color:var(--prac);font-weight:500}
+
+/* section headers */
+.sh{font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem;margin:0 0 4px}
+.sec{margin-top:42px}
+.sec-intro{color:var(--ink-soft);font-size:.95rem;max-width:82ch;margin:0 0 18px}
+
+/* ====== PROCESS FLOW ====== */
+.flow-outer{margin:4px 0 10px;overflow-x:auto;padding-bottom:4px}
+.flow{display:flex;align-items:stretch;gap:0;min-width:820px}
+.flow-phase{display:flex;flex-direction:column;gap:0;flex:1;min-width:0}
+.phase-header{display:flex;gap:6px;padding:8px 0 10px;flex-wrap:wrap;align-items:center}
+.phase-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:5px 11px;border-radius:30px;color:#fff}
+.phase-label.analyse{background:var(--activity)}
+.phase-label.dev{background:var(--ent)}
+.space-tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:20px;font-weight:600}
+.space-tag.analyse-tag{background:rgba(31,95,168,.1);color:var(--activity);border:1px solid rgba(31,95,168,.25)}
+.space-tag.comp-tag{background:rgba(75,63,158,.1);color:var(--comp);border:1px solid rgba(75,63,158,.25)}
+.phase-steps{display:flex;align-items:stretch;flex:1;gap:0}
+.fc-wrap{display:flex;align-items:center}
+.fc-arrow{font-family:"IBM Plex Mono",monospace;font-size:16px;color:var(--line);padding:0 5px;flex-shrink:0;align-self:center}
+a.flow-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 14px 13px;transition:transform .12s,box-shadow .12s,border-color .12s;flex:1;min-width:130px;position:relative;overflow:hidden}
+a.flow-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px}
+.flow-card.a1::before,.flow-card.a2::before{background:var(--activity)}
+.flow-card.a3::before,.flow-card.a4::before,.flow-card.a5::before{background:var(--ent)}
+a.flow-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:rgba(39,64,107,.3)}
+.fc-num{font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.fc-name{font-family:"Fraunces",serif;font-weight:600;font-size:1rem;line-height:1.15;margin-bottom:5px}
+.fc-alpha{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--alpha);letter-spacing:.02em;line-height:1.5;margin-bottom:7px;flex:1}
+.fc-wp{font-size:.8rem;color:var(--product);font-weight:600;border-top:1px dashed var(--line);padding-top:6px}
+.fc-open{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ent);margin-top:5px}
+
+/* Phase divider */
+.phase-divider{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 4px;padding-bottom:20px;flex-shrink:0}
+.phase-divider-arrow{font-family:"IBM Plex Mono",monospace;font-size:22px;color:var(--ink-soft)}
+
+/* ====== PHASE DESCRIPTION CARDS ====== */
+.phase-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:680px){.phase-cards{grid-template-columns:1fr}}
+.phase-desc{border-radius:13px;padding:18px 20px;border:1px solid var(--line)}
+.phase-desc.analyse-card{border-left:4px solid var(--activity);background:rgba(31,95,168,.04)}
+.phase-desc.dev-card{border-left:4px solid var(--ent);background:rgba(39,64,107,.04)}
+.phase-desc h3{font-family:"Fraunces",serif;font-size:1.15rem;margin:0 0 4px;font-weight:600}
+.phase-desc .ph-label{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
+.phase-desc.analyse-card .ph-label{color:var(--activity)}
+.phase-desc.dev-card .ph-label{color:var(--ent)}
+.phase-desc p{margin:0;color:var(--ink-soft);font-size:.9rem}
+
+/* ====== ACTIVITY LIST ====== */
+.act-list{display:flex;flex-direction:column;gap:14px}
+.act-row{display:grid;grid-template-columns:52px 1fr auto;gap:0;background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .12s,box-shadow .12s}
+.act-row:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.act-row .ar-num{display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-size:1.4rem;font-weight:700;color:#fff}
+.act-row.a-analyse .ar-num{background:var(--activity)}
+.act-row.a-dev .ar-num{background:var(--ent)}
+.act-row .ar-body{padding:13px 16px}
+.act-row .ar-title{font-family:"Fraunces",serif;font-weight:600;font-size:1.12rem;margin:0 0 3px}
+.act-row .ar-desc{font-size:.86rem;color:var(--ink-soft);margin:0 0 7px}
+.act-row .ar-meta{display:flex;flex-wrap:wrap;gap:6px}
+.act-row .ar-chip{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:20px;font-weight:600}
+.ar-chip.space{background:rgba(31,95,168,.1);color:var(--activity)}
+.act-row.a-dev .ar-chip.space{background:rgba(39,64,107,.1);color:var(--ent)}
+.ar-chip.comp{background:rgba(75,63,158,.1);color:var(--comp)}
+.ar-chip.alpha{background:rgba(15,110,99,.08);color:var(--alpha)}
+.act-row .ar-arrow{display:flex;align-items:center;padding:0 18px;font-family:"IBM Plex Mono",monospace;font-size:18px;color:var(--ink-soft)}
+
+/* ====== ROLES ====== */
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:680px){.role-grid{grid-template-columns:1fr}}
+.role-card{border-radius:13px;border:1px solid var(--line);overflow:hidden}
+.role-card .rc-head{padding:13px 16px;color:#fff;display:flex;flex-direction:column;gap:3px}
+.role-card.rc-ent .rc-head{background:var(--ent)}
+.role-card.rc-sol .rc-head{background:var(--sol)}
+.rc-head .rc-level{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+.rc-head h3{font-family:"Fraunces",serif;font-size:1.15rem;margin:0;font-weight:600}
+.role-card .rc-body{padding:13px 16px;background:var(--card)}
+.rc-body p{margin:0 0 10px;font-size:.88rem;color:var(--ink-soft)}
+.rc-body .rc-comps{display:flex;flex-wrap:wrap;gap:5px}
+.rc-body .rc-comp{font-family:"IBM Plex Mono",monospace;font-size:9.5px;padding:3px 9px;border-radius:20px;background:rgba(75,63,158,.09);color:var(--comp);border:1px solid rgba(75,63,158,.2);font-weight:600}
+.rc-body .rc-acts{margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:8px}
+.rc-body .rc-acts b{color:var(--ink)}
+
+/* panel */
+.panel{background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-top:18px;border-left:4px solid var(--prac)}
+.panel h3{font-family:"Fraunces",serif;margin:0 0 6px;font-size:1.1rem}
+.panel p{margin:0 0 8px;color:var(--ink-soft);font-size:.9rem;max-width:86ch}
+.panel p:last-child{margin-bottom:0}
+
+/* ====== SITE NAV ====== */
+.skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0}
+.skip-link:focus-visible{top:0}
+.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--line);backdrop-filter:blur(6px);border-top:3px solid transparent;border-image:linear-gradient(90deg,#27406b,#1f5fa8) 1}
+.site-nav-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:center;height:52px;gap:0}
+.site-nav-logo{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:var(--ink);text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:-.01em;flex-shrink:0}
+.site-nav-logo em{font-style:italic;font-weight:500;color:#d44f0e}
+.site-nav-list{display:flex;list-style:none;margin:0;padding:0;gap:2px;align-items:center}
+.site-nav-list>li>a,.site-nav-list>li>button{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 10px;border-radius:6px;border:none;background:transparent;cursor:pointer;transition:.12s;line-height:1;display:flex;align-items:center;gap:4px;min-height:25px;white-space:nowrap}
+.site-nav-list>li>a:hover,.site-nav-list>li>button:hover{color:var(--ink);background:var(--paper-2)}
+.has-drop{position:relative}
+.has-drop .drop{display:none;position:absolute;top:calc(100% + 4px);right:0;min-width:240px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 30px -22px rgba(28,26,22,.55);padding:5px;list-style:none;margin:0;z-index:200}
+.has-drop.open .drop{display:block}
+.drop li a{display:flex;align-items:center;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:12px;color:var(--ink-soft);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s}
+.drop li a:hover{background:var(--paper-2);color:var(--ink)}
+.drop-label{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5a5040;padding:6px 10px 2px;display:block}
+.site-nav-toggle{display:none;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:none;background:transparent;cursor:pointer;border-radius:6px;flex-shrink:0;color:var(--ink);margin-left:2px}
+.site-nav-toggle:hover{background:var(--paper-2)}
+.site-nav-toggle .bar{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .22s,opacity .22s,margin .22s}
+.site-nav-toggle .bar+.bar{margin-top:5px}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(2){opacity:0;margin-top:0}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:700px){
+  .site-nav-toggle{display:flex}
+  .site-nav-menu{display:none;position:fixed;top:52px;left:0;right:0;background:var(--paper);border-bottom:2px solid var(--ink);z-index:98;padding:12px 18px 20px;box-shadow:0 16px 40px -12px rgba(28,26,22,.3)}
+  .site-nav-menu.open{display:block}
+  .site-nav-list{flex-direction:column;gap:0}
+  .site-nav-list>li{width:100%}
+  .site-nav-list>li>a,.site-nav-list>li>button{font-size:15px;padding:14px 12px;letter-spacing:.03em;border-bottom:1px solid var(--line);width:100%;justify-content:space-between;min-height:48px}
+  .has-drop .drop{position:static;box-shadow:none;border:none;border-radius:8px;margin:4px 0 10px 0;background:var(--paper-2);padding:6px;display:none}
+  .has-drop.open .drop{display:block}
+  .drop li a{padding:12px 14px;font-size:14px;min-height:44px}
+}
+:focus-visible{outline:3px solid #27406b;outline-offset:2px}
+@media print{.site-nav,.skip-link{display:none}.wrap{padding:0}body::before{display:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Ga naar de hoofdinhoud</a>
+<header class="site-nav" role="banner">
+  <div class="site-nav-inner">
+    <a class="site-nav-logo" href="essence-introduction.html">Essence <em>Way of Working</em></a>
+    <nav id="site-nav-menu" class="site-nav-menu" aria-label="Sitenavigatie">
+      <ul class="site-nav-list">
+        <li><a href="essence-introduction.html">Home</a></li>
+        <li class="has-drop">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="practices-menu">Practices <span aria-hidden="true">&#9662;</span></button>
+          <ul class="drop" id="practices-menu">
+            <span class="drop-label" aria-hidden="true">Twee practices</span>
+            <li><a href="mva-essence-practice.html">Min. Viable Architecture</a></li>
+            <li><a href="mvg-essence-practice.html">Min. Viable Governance</a></li>
+          </ul>
+        </li>
+        <li><a href="resources.html">Bronnen</a></li>
+      </ul>
+    </nav>
+    <button class="site-nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="site-nav-menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="wrap" id="main-content">
+  <div class="breadcrumb">
+    <a href="essence-introduction.html">Introductie</a>
+    <span>›</span>
+    <span>Way-of-working Enterprise Architectuur</span>
+  </div>
+
+  <header class="hero">
+    <div class="kicker">Way of Working · Enterprise Architectuur · MVA</div>
+    <h1>Van Drivers naar <em>Transitie</em></h1>
+    <p class="lede">Het MVA-architectuurproces voor de Enterprise Architect: vijf activiteiten, logisch geordend van het vastleggen en kwantificeren van drivers tot een bewezen, geordend transitieplan. De uitkomsten worden context voor elke solution.</p>
+    <div class="hero-chips">
+      <span>Rol → Enterprise Architect</span>
+      <span>C4 Level 1–2</span>
+      <span>Practice → MVA</span>
+      <span>Uitkomst → enterprise-context voor solutions</span>
+    </div>
+  </header>
+
+  <!-- ===== PROCESS FLOW ===== -->
+  <section class="sec" id="process">
+    <h2 class="sh">Het architectuurproces</h2>
+    <p class="sec-intro">Twee fasen — <b>Analyse</b> om drivers en architectuurrichting vast te stellen, en <b>Development</b> om de minimale architectuur te vormen, bewijzen en plannen. Klik een stap aan voor de volledige beschrijving, werkproducten en rollen.</p>
+    <div class="flow-outer">
+      <div class="flow">
+        <!-- ANALYSE PHASE -->
+        <div class="flow-phase">
+          <div class="phase-header">
+            <span class="phase-label analyse">Analyse</span>
+            <span class="space-tag analyse-tag">Activity Space · Analyse</span>
+            <span class="space-tag comp-tag">Competency · Analyse</span>
+          </div>
+          <div class="phase-steps">
+            <div class="fc-wrap">
+              <a href="act/frame-the-drivers.html" class="flow-card a1" aria-label="Activiteit 1: Frame the Drivers">
+                <div class="fc-num">01 / 05</div>
+                <div class="fc-name">Frame the Drivers</div>
+                <div class="fc-alpha">Drivers → Identified<br>→ Prioritised → Quantified</div>
+                <div class="fc-wp">ASR</div>
+                <div class="fc-open">Details →</div>
+              </a>
+            </div>
+            <div class="fc-arrow">→</div>
+            <div class="fc-wrap">
+              <a href="act/envision-the-architecture.html" class="flow-card a2" aria-label="Activiteit 2: Envision the Architecture">
+                <div class="fc-num">02 / 05</div>
+                <div class="fc-name">Envision the Architecture</div>
+                <div class="fc-alpha">Architecture → Envisioned</div>
+                <div class="fc-wp">Architecture Vision</div>
+                <div class="fc-open">Details →</div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHASE DIVIDER -->
+        <div class="phase-divider" aria-hidden="true">
+          <div class="phase-divider-arrow">⟶</div>
+        </div>
+
+        <!-- DEVELOPMENT PHASE -->
+        <div class="flow-phase">
+          <div class="phase-header">
+            <span class="phase-label dev">Development</span>
+            <span class="space-tag analyse-tag" style="background:rgba(39,64,107,.1);color:var(--ent);border-color:rgba(39,64,107,.25)">Activity Space · Development</span>
+            <span class="space-tag comp-tag">Competency · Architecture</span>
+          </div>
+          <div class="phase-steps">
+            <div class="fc-wrap">
+              <a href="act/shape-the-minimum-architecture.html" class="flow-card a3" aria-label="Activiteit 3: Shape the Minimum Architecture">
+                <div class="fc-num">03 / 05</div>
+                <div class="fc-name">Shape the Minimum Architecture</div>
+                <div class="fc-alpha">Architecture → Outlined<br>Decisions → Framed → Decided</div>
+                <div class="fc-wp">Architecture Definition · ADRs</div>
+                <div class="fc-open">Details →</div>
+              </a>
+            </div>
+            <div class="fc-arrow">→</div>
+            <div class="fc-wrap">
+              <a href="act/prove-the-risky-parts.html" class="flow-card a4" aria-label="Activiteit 4: Prove the Risky Parts">
+                <div class="fc-num">04 / 05</div>
+                <div class="fc-name">Prove the Risky Parts</div>
+                <div class="fc-alpha">Architecture → Demonstrated<br>Decisions → Validated</div>
+                <div class="fc-wp">Review Records · ADRs</div>
+                <div class="fc-open">Details →</div>
+              </a>
+            </div>
+            <div class="fc-arrow">→</div>
+            <div class="fc-wrap">
+              <a href="act/plan-the-transition.html" class="flow-card a5" aria-label="Activiteit 5: Plan the Transition">
+                <div class="fc-num">05 / 05</div>
+                <div class="fc-name">Plan the Transition</div>
+                <div class="fc-alpha">Architecture → Usable</div>
+                <div class="fc-wp">Architecture Roadmap</div>
+                <div class="fc-open">Details →</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHASE DESCRIPTIONS ===== -->
+  <section class="sec" id="phases">
+    <h2 class="sh">De twee fasen</h2>
+    <p class="sec-intro">Elke fase heeft een eigen focus, activity space en competency-zwaartepunt.</p>
+    <div class="phase-cards">
+      <div class="phase-desc analyse-card">
+        <div class="ph-label">Activity Space · Analyse · Stappen 01–02</div>
+        <h3>Analyse — Begrijp vóórdat je ontwerpt</h3>
+        <p>In de Analyse-fase brengt de Enterprise Architect de zakelijke werkelijkheid scherp in beeld. Drivers worden geïdentificeerd, geprioriteerd en gekwantificeerd met meetbare succescriteria. De architectuurrichting wordt vastgelegd op één pagina, inclusief de principes en uitsluitingscriteria die verkeerde componentkeuzes voorkomen. Dit vormt de basis voor alle latere beslissingen en is de context die solutions van de enterprise erven.</p>
+      </div>
+      <div class="phase-desc dev-card">
+        <div class="ph-label">Activity Space · Development · Stappen 03–05</div>
+        <h3>Development — Minimaal, bewezen, geordend</h3>
+        <p>In de Development-fase wordt de architectuur gevormd, bewezen en gepland. Alleen de bouwstenen die nu nodig zijn worden gedefinieerd; significante beslissingen worden vastgelegd als ADRs. De risicovolste keuzes worden bewezen via PoC of leveranciersevaluatie. Vervolgens wordt een geordend transitieplan gemaakt: baseline naar doel in horizons, elk met een expliciete grens welke beslissingen in die fase definitief worden.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACTIVITY LIST ===== -->
+  <section class="sec" id="activities">
+    <h2 class="sh">De vijf activiteiten</h2>
+    <p class="sec-intro">Klik een activiteit aan voor de volledige beschrijving, inclusief rollen per niveau, werkproducten en de alpha-toestanden die het beweegt.</p>
+    <div class="act-list">
+      <a href="act/frame-the-drivers.html" class="act-row a-analyse">
+        <div class="ar-num">01</div>
+        <div class="ar-body">
+          <div class="ar-title">Frame the Drivers</div>
+          <div class="ar-desc">Leg de architectureel significante drivers vast en kwantificeer ze; kom overeen over meetbare succescriteria. Discovery workshop met stakeholders.</div>
+          <div class="ar-meta">
+            <span class="ar-chip space">Activity Space · Analyse</span>
+            <span class="ar-chip comp">Competency · Analyse</span>
+            <span class="ar-chip alpha">Drivers → Quantified</span>
+          </div>
+        </div>
+        <div class="ar-arrow">→</div>
+      </a>
+      <a href="act/envision-the-architecture.html" class="act-row a-analyse">
+        <div class="ar-num">02</div>
+        <div class="ar-body">
+          <div class="ar-title">Envision the Architecture</div>
+          <div class="ar-desc">Kom het doel en de waarde overeen op één pagina; baken de scope af. Eerste deliverable zijn architectuurprincipes en uitsluitingscriteria — vóór vendor-selectie.</div>
+          <div class="ar-meta">
+            <span class="ar-chip space">Activity Space · Analyse</span>
+            <span class="ar-chip comp">Competency · Analyse</span>
+            <span class="ar-chip alpha">Architecture → Envisioned</span>
+          </div>
+        </div>
+        <div class="ar-arrow">→</div>
+      </a>
+      <a href="act/shape-the-minimum-architecture.html" class="act-row a-dev">
+        <div class="ar-num">03</div>
+        <div class="ar-body">
+          <div class="ar-title">Shape the Minimum Architecture</div>
+          <div class="ar-desc">Definieer alleen de bouwstenen die nu nodig zijn. De integratielaag is first-class. Identificeer onomkeerbare beslissingen: vendor lock-in, datamodel, integratie-API.</div>
+          <div class="ar-meta">
+            <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
+            <span class="ar-chip comp">Competency · Architecture</span>
+            <span class="ar-chip alpha">Architecture → Outlined · Decisions → Decided</span>
+          </div>
+        </div>
+        <div class="ar-arrow">→</div>
+      </a>
+      <a href="act/prove-the-risky-parts.html" class="act-row a-dev">
+        <div class="ar-num">04</div>
+        <div class="ar-body">
+          <div class="ar-title">Prove the Risky Parts</div>
+          <div class="ar-desc">Bewijs de risicovolste keuzes via PoC, leveranciersevaluatie of sandbox-pilot. In COTS: toets de integratielaag en de falsifieerbare kwaliteitsattributen.</div>
+          <div class="ar-meta">
+            <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
+            <span class="ar-chip comp">Competency · Architecture</span>
+            <span class="ar-chip alpha">Architecture → Demonstrated · Decisions → Validated</span>
+          </div>
+        </div>
+        <div class="ar-arrow">→</div>
+      </a>
+      <a href="act/plan-the-transition.html" class="act-row a-dev">
+        <div class="ar-num">05</div>
+        <div class="ar-body">
+          <div class="ar-title">Plan the Transition</div>
+          <div class="ar-desc">Identificeer de hiaten; orden de implementatiestap van baseline naar doel; detailleer alleen de volgende horizon. Elke horizon bevat een expliciete onomkeerbare grens.</div>
+          <div class="ar-meta">
+            <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
+            <span class="ar-chip comp">Competency · Architecture</span>
+            <span class="ar-chip alpha">Architecture → Usable</span>
+          </div>
+        </div>
+        <div class="ar-arrow">→</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== ROLES ===== -->
+  <section class="sec" id="roles">
+    <h2 class="sh">Rollen</h2>
+    <p class="sec-intro">Elke activiteit kan op twee niveaus worden uitgevoerd. De Enterprise Architect werkt op landgoedniveau; de Architecture Owner op solution-niveau. Op de individuele activiteitspagina's staat per activiteit uitgewerkt wie welke rol op welk niveau speelt.</p>
+    <div class="role-grid">
+      <div class="role-card rc-ent">
+        <div class="rc-head">
+          <span class="rc-level">Enterprise niveau · C4 Level 1–2</span>
+          <h3>Enterprise Architect</h3>
+        </div>
+        <div class="rc-body">
+          <p>Beheert de architectuur op ondernemingsniveau. Leidt het volledige MVA-proces op enterprise-scope: stelt enterprise-brede Architectural Drivers (ASR) vast, maakt de enterprise Architecture Vision, definieert de reference architecture en de Paved Roads. Werkt met de CIO, business-owners en de Governance Forum. Uitkomsten worden de context die solutions erven.</p>
+          <div class="rc-comps">
+            <span class="rc-comp">Architecture</span>
+            <span class="rc-comp">Leadership</span>
+            <span class="rc-comp">Analyse</span>
+          </div>
+          <div class="rc-acts"><b>Primair eigenaar van:</b> ASR · Architecture Vision · Paved Roads · Architecture Definition (enterprise) · Roadmap (enterprise)</div>
+        </div>
+      </div>
+      <div class="role-card rc-sol">
+        <div class="rc-head">
+          <span class="rc-level">Solution niveau · C4 Level 2–3</span>
+          <h3>Architecture Owner</h3>
+        </div>
+        <div class="rc-body">
+          <p>Voert dezelfde vijf activiteiten uit op solution-niveau, <em>binnen</em> de door de Enterprise Architect geleverde context. Verfijnt enterprise-drivers naar solution-specifieke kwaliteitsattributen, architectureert de solution, bewijst de risicovolste integratiekeuzes en maakt de solution-roadmap. Werkt nauw samen met de EA en rapporteert afwijkingen via ADRs en Review Records.</p>
+          <div class="rc-comps">
+            <span class="rc-comp">Architecture</span>
+            <span class="rc-comp">Stakeholder Rep.</span>
+          </div>
+          <div class="rc-acts"><b>Primair eigenaar van:</b> Architecture Definition (solution) · ADRs · Review Records · Roadmap (solution)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="panel">
+    <h3>Dit is een iteratief proces, geen waterval</h3>
+    <p>De volgorde Frame → Envision → Shape → Prove → Plan is een verstandige standaard. In de praktijk itereer je: nieuwe drivers beïnvloeden de visie; bewijs uit PoC herziet beslissingen; planningshorizons brengen nieuwe risico's boven. Governance loopt door alle stappen heen via MVG.</p>
+    <p>Ga voor de solution-variant naar de <a href="wow-solution-architecture.html" style="color:var(--sol);font-weight:600">Way-of-working Solution Architectuur</a> — zelfde process, solution-scope, Architecture Owner als primaire rol.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var p=location.pathname.split('/').pop()||'index.html';
+  document.querySelectorAll('.site-nav-list > li > a').forEach(function(a){
+    if(a.getAttribute('href')===p) a.closest('li').classList.add('active');
+  });
+  document.querySelectorAll('.has-drop').forEach(function(dropdown){
+    var btn=dropdown.querySelector('button');
+    var items=Array.from(dropdown.querySelectorAll('.drop li a'));
+    function open(){dropdown.classList.add('open');btn.setAttribute('aria-expanded','true');}
+    function close(ret){dropdown.classList.remove('open');btn.setAttribute('aria-expanded','false');if(ret)btn.focus();}
+    btn.addEventListener('click',function(e){e.stopPropagation();dropdown.classList.contains('open')?close(false):open();});
+    btn.addEventListener('keydown',function(e){
+      if(e.key==='ArrowDown'){e.preventDefault();open();if(items[0])items[0].focus();}
+      else if(e.key==='Escape'){close(true);}
+    });
+    items.forEach(function(item,i){
+      item.addEventListener('keydown',function(e){
+        if(e.key==='ArrowDown'){e.preventDefault();if(items[i+1])items[i+1].focus();}
+        else if(e.key==='ArrowUp'){e.preventDefault();if(i>0)items[i-1].focus();else close(true);}
+        else if(e.key==='Escape'){close(true);}
+        else if(e.key==='Tab'){close(false);}
+      });
+    });
+  });
+  document.addEventListener('click',function(){
+    document.querySelectorAll('.has-drop.open').forEach(function(el){
+      el.classList.remove('open');el.querySelector('button').setAttribute('aria-expanded','false');
+    });
+  });
+  var tog=document.querySelector('.site-nav-toggle');
+  var menu=document.querySelector('.site-nav-menu');
+  if(tog&&menu){
+    tog.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=menu.classList.toggle('open');
+      tog.setAttribute('aria-expanded',String(open));
+      tog.setAttribute('aria-label',open?'Menu sluiten':'Menu openen');
+    });
+    menu.addEventListener('click',function(e){e.stopPropagation();});
+    document.addEventListener('click',function(){menu.classList.remove('open');tog.setAttribute('aria-expanded','false');tog.setAttribute('aria-label','Menu openen');});
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Way-of-working Solution Architectuur — MVA Procesoverzicht</title>
+<meta name="description" content="Het MVA-architectuurproces voor de Architecture Owner: zelfde vijf stappen, solution-scope, binnen de door de enterprise geleverde context.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3efe6;--paper-2:#ece6d8;--ink:#1c1a16;--ink-soft:#524d42;
+  --line:#d8d0bf;--card:#fbf9f3;--prac:#0f6e63;
+  --alpha:#0f6e63;--product:#bb7a16;--activity:#1f5fa8;--comp:#4b3f9e;--role:#9c3f76;--pattern:#b1492e;
+  --ent:#27406b;--sol:#0f6e63;--mva:#0f6e63;--mvg:#4b3f9e;--kernel:#27406b;
+  --shadow:0 1px 0 rgba(0,0,0,.03),0 16px 38px -16px rgba(28,26,22,.42);
+  scroll-behavior:smooth;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(circle at 8% -6%,#e6f4f0 0%,transparent 48%),radial-gradient(circle at 95% 2%,#eef5ec 0%,transparent 44%),var(--paper);}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.4;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 80%);}
+.wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 26px 90px}
+.breadcrumb{padding:14px 0 0;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.breadcrumb a{color:var(--prac);text-decoration:none;font-weight:600}.breadcrumb a:hover{text-decoration:underline}
+header.hero{padding:30px 0 24px;border-bottom:3px solid var(--prac);margin-bottom:28px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--prac);margin-bottom:6px}
+h1{font-family:"Fraunces",serif;font-optical-sizing:auto;font-weight:900;font-size:clamp(2rem,5vw,3.4rem);line-height:.98;margin:.14em 0 .14em;letter-spacing:-.015em}
+h1 em{font-style:italic;font-weight:500;color:var(--prac)}
+.lede{font-size:clamp(.96rem,1.3vw,1.08rem);max-width:72ch;color:var(--ink-soft);margin:.5em 0 1em}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px}
+.hero-chips span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;border:1.5px solid var(--prac);border-radius:30px;padding:5px 13px;background:var(--card);color:var(--prac);font-weight:500}
+.sh{font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem;margin:0 0 4px}
+.sec{margin-top:42px}
+.sec-intro{color:var(--ink-soft);font-size:.95rem;max-width:82ch;margin:0 0 18px}
+
+/* inherited context banner */
+.context-banner{background:rgba(39,64,107,.06);border:1px solid rgba(39,64,107,.2);border-left:4px solid var(--ent);border-radius:12px;padding:16px 20px;margin-bottom:24px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.ctx-icon{font-size:1.6rem;line-height:1}
+.ctx-body h3{font-family:"Fraunces",serif;font-size:1.05rem;margin:0 0 4px;font-weight:600;color:var(--ent)}
+.ctx-body p{margin:0;font-size:.88rem;color:var(--ink-soft)}
+.ctx-body a{color:var(--ent);font-weight:600;text-decoration:none}.ctx-body a:hover{text-decoration:underline}
+
+/* flow strip */
+.flow-outer{margin:4px 0 10px;overflow-x:auto;padding-bottom:4px}
+.flow{display:flex;align-items:stretch;gap:0;min-width:820px}
+.flow-phase{display:flex;flex-direction:column;gap:0;flex:1;min-width:0}
+.phase-header{display:flex;gap:6px;padding:8px 0 10px;flex-wrap:wrap;align-items:center}
+.phase-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:5px 11px;border-radius:30px;color:#fff}
+.phase-label.analyse{background:var(--activity)}.phase-label.dev{background:var(--sol)}
+.space-tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:20px;font-weight:600}
+.space-tag.a-tag{background:rgba(31,95,168,.1);color:var(--activity);border:1px solid rgba(31,95,168,.25)}
+.space-tag.d-tag{background:rgba(15,110,99,.1);color:var(--sol);border:1px solid rgba(15,110,99,.25)}
+.space-tag.comp-tag{background:rgba(75,63,158,.1);color:var(--comp);border:1px solid rgba(75,63,158,.25)}
+.phase-steps{display:flex;align-items:stretch;flex:1;gap:0}
+.fc-wrap{display:flex;align-items:center}
+.fc-arrow{font-family:"IBM Plex Mono",monospace;font-size:16px;color:var(--line);padding:0 5px;flex-shrink:0;align-self:center}
+a.flow-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 14px 13px;transition:transform .12s,box-shadow .12s,border-color .12s;flex:1;min-width:130px;position:relative;overflow:hidden}
+a.flow-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px}
+.flow-card.a1::before,.flow-card.a2::before{background:var(--activity)}
+.flow-card.a3::before,.flow-card.a4::before,.flow-card.a5::before{background:var(--sol)}
+a.flow-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:rgba(15,110,99,.3)}
+.fc-num{font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.fc-name{font-family:"Fraunces",serif;font-weight:600;font-size:1rem;line-height:1.15;margin-bottom:5px}
+.fc-alpha{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--alpha);letter-spacing:.02em;line-height:1.5;margin-bottom:7px;flex:1}
+.fc-wp{font-size:.8rem;color:var(--product);font-weight:600;border-top:1px dashed var(--line);padding-top:6px}
+.fc-open{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--sol);margin-top:5px}
+.phase-divider{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 4px;padding-bottom:20px;flex-shrink:0}
+.phase-divider-arrow{font-family:"IBM Plex Mono",monospace;font-size:22px;color:var(--ink-soft)}
+
+/* differences grid */
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.diff-grid{grid-template-columns:1fr}}
+.diff-card{border-radius:13px;border:1px solid var(--line);overflow:hidden}
+.diff-card .dc-head{padding:11px 16px;color:#fff}
+.diff-card.dc-ent .dc-head{background:var(--ent)}
+.diff-card.dc-sol .dc-head{background:var(--sol)}
+.dc-head .dc-level{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;margin-bottom:2px}
+.dc-head h3{font-family:"Fraunces",serif;font-size:1.05rem;margin:0;font-weight:600}
+.diff-card .dc-body{padding:13px 16px;background:var(--card)}
+.dc-body p{font-size:.88rem;color:var(--ink-soft);margin:0 0 8px}
+.dc-body ul{font-size:.86rem;color:var(--ink-soft);margin:0;padding-left:18px}
+.dc-body ul li{margin-bottom:3px}
+
+/* act list */
+.act-list{display:flex;flex-direction:column;gap:14px}
+.act-row{display:grid;grid-template-columns:52px 1fr auto;gap:0;background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .12s,box-shadow .12s}
+.act-row:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.act-row .ar-num{display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-size:1.4rem;font-weight:700;color:#fff}
+.act-row.a-analyse .ar-num{background:var(--activity)}.act-row.a-dev .ar-num{background:var(--sol)}
+.act-row .ar-body{padding:13px 16px}
+.act-row .ar-title{font-family:"Fraunces",serif;font-weight:600;font-size:1.12rem;margin:0 0 3px}
+.act-row .ar-desc{font-size:.86rem;color:var(--ink-soft);margin:0 0 7px}
+.act-row .ar-meta{display:flex;flex-wrap:wrap;gap:6px}
+.ar-chip{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:20px;font-weight:600}
+.ar-chip.space{background:rgba(31,95,168,.1);color:var(--activity)}
+.act-row.a-dev .ar-chip.space{background:rgba(15,110,99,.1);color:var(--sol)}
+.ar-chip.comp{background:rgba(75,63,158,.1);color:var(--comp)}
+.ar-chip.alpha{background:rgba(15,110,99,.08);color:var(--alpha)}
+.act-row .ar-arrow{display:flex;align-items:center;padding:0 18px;font-family:"IBM Plex Mono",monospace;font-size:18px;color:var(--ink-soft)}
+
+/* panel */
+.panel{background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-top:18px;border-left:4px solid var(--prac)}
+.panel h3{font-family:"Fraunces",serif;margin:0 0 6px;font-size:1.1rem}
+.panel p{margin:0 0 8px;color:var(--ink-soft);font-size:.9rem;max-width:86ch}
+.panel p:last-child{margin-bottom:0}
+
+/* site nav */
+.skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0}.skip-link:focus-visible{top:0}
+.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--line);backdrop-filter:blur(6px);border-top:3px solid transparent;border-image:linear-gradient(90deg,#0f6e63,#1f5fa8) 1}
+.site-nav-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:center;height:52px;gap:0}
+.site-nav-logo{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:var(--ink);text-decoration:none;white-space:nowrap;margin-right:auto;letter-spacing:-.01em;flex-shrink:0}
+.site-nav-logo em{font-style:italic;font-weight:500;color:#d44f0e}
+.site-nav-list{display:flex;list-style:none;margin:0;padding:0;gap:2px;align-items:center}
+.site-nav-list>li>a,.site-nav-list>li>button{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 10px;border-radius:6px;border:none;background:transparent;cursor:pointer;transition:.12s;line-height:1;display:flex;align-items:center;gap:4px;min-height:25px;white-space:nowrap}
+.site-nav-list>li>a:hover,.site-nav-list>li>button:hover{color:var(--ink);background:var(--paper-2)}
+.has-drop{position:relative}
+.has-drop .drop{display:none;position:absolute;top:calc(100% + 4px);right:0;min-width:240px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 30px -22px rgba(28,26,22,.55);padding:5px;list-style:none;margin:0;z-index:200}
+.has-drop.open .drop{display:block}
+.drop li a{display:flex;align-items:center;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:12px;color:var(--ink-soft);text-decoration:none;padding:8px 10px;border-radius:6px;transition:.1s}
+.drop li a:hover{background:var(--paper-2);color:var(--ink)}
+.drop-label{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5a5040;padding:6px 10px 2px;display:block}
+.site-nav-toggle{display:none;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:none;background:transparent;cursor:pointer;border-radius:6px;flex-shrink:0;color:var(--ink);margin-left:2px}
+.site-nav-toggle:hover{background:var(--paper-2)}
+.site-nav-toggle .bar{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .22s,opacity .22s,margin .22s}
+.site-nav-toggle .bar+.bar{margin-top:5px}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(2){opacity:0;margin-top:0}
+.site-nav-toggle[aria-expanded="true"] .bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:700px){.site-nav-toggle{display:flex}.site-nav-menu{display:none;position:fixed;top:52px;left:0;right:0;background:var(--paper);border-bottom:2px solid var(--ink);z-index:98;padding:12px 18px 20px}.site-nav-menu.open{display:block}.site-nav-list{flex-direction:column;gap:0}.site-nav-list>li{width:100%}.site-nav-list>li>a,.site-nav-list>li>button{font-size:15px;padding:14px 12px;border-bottom:1px solid var(--line);width:100%;justify-content:space-between;min-height:48px}.has-drop .drop{position:static;box-shadow:none;border:none;border-radius:8px;margin:4px 0 10px 0;background:var(--paper-2);padding:6px;display:none}.has-drop.open .drop{display:block}.drop li a{padding:12px 14px;font-size:14px;min-height:44px}}
+:focus-visible{outline:3px solid #0f6e63;outline-offset:2px}
+@media print{.site-nav,.skip-link{display:none}.wrap{padding:0}body::before{display:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Ga naar de hoofdinhoud</a>
+<header class="site-nav" role="banner">
+  <div class="site-nav-inner">
+    <a class="site-nav-logo" href="essence-introduction.html">Essence <em>Way of Working</em></a>
+    <nav id="site-nav-menu" class="site-nav-menu" aria-label="Sitenavigatie">
+      <ul class="site-nav-list">
+        <li><a href="essence-introduction.html">Home</a></li>
+        <li class="has-drop">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="practices-menu">Practices <span aria-hidden="true">&#9662;</span></button>
+          <ul class="drop" id="practices-menu">
+            <span class="drop-label" aria-hidden="true">Twee practices</span>
+            <li><a href="mva-essence-practice.html">Min. Viable Architecture</a></li>
+            <li><a href="mvg-essence-practice.html">Min. Viable Governance</a></li>
+          </ul>
+        </li>
+        <li><a href="resources.html">Bronnen</a></li>
+      </ul>
+    </nav>
+    <button class="site-nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="site-nav-menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="wrap" id="main-content">
+  <div class="breadcrumb">
+    <a href="essence-introduction.html">Introductie</a>
+    <span>›</span>
+    <span>Way-of-working Solution Architectuur</span>
+  </div>
+
+  <header class="hero">
+    <div class="kicker">Way of Working · Solution Architectuur · MVA</div>
+    <h1>Architectureer de <em>Solution</em></h1>
+    <p class="lede">Het MVA-architectuurproces voor de Architecture Owner: zelfde vijf activiteiten als op enterprise-niveau, maar op solution-scope — binnen de door de Enterprise Architect geleverde context en guardrails. De Architecture Owner werkt collaboratief met het team en brengt de bewezen architectuur terug als input voor de enterprise.</p>
+    <div class="hero-chips">
+      <span>Rol → Architecture Owner</span>
+      <span>C4 Level 2–3</span>
+      <span>Practice → MVA</span>
+      <span>Erft → enterprise-context</span>
+    </div>
+  </header>
+
+  <!-- INHERITED CONTEXT -->
+  <div class="context-banner">
+    <div class="ctx-icon">⤵</div>
+    <div class="ctx-body">
+      <h3>Geërfde context van de Enterprise Architect</h3>
+      <p>De Architecture Owner werkt niet vanuit een blanco vel. De Enterprise Architect heeft enterprise-brede <b>Architectural Drivers</b> (ASR) vastgesteld, een <b>Architecture Vision</b> gemaakt, een <b>Paved Road</b> gepubliceerd en enterprise-level <b>ADRs</b> genomen. Dit zijn de guardrails. De Architecture Owner verfijnt ze naar solution-scope, werkt binnen de grenzen en rapporteert afwijkingen terug. Zie <a href="wow-enterprise-architecture.html">Way-of-working Enterprise Architectuur</a> voor de enterprise-rol.</p>
+    </div>
+  </div>
+
+  <!-- PROCESS FLOW -->
+  <section class="sec" id="process">
+    <h2 class="sh">Hetzelfde proces, solution-scope</h2>
+    <p class="sec-intro">De vijf activiteiten zijn dezelfde als op enterprise-niveau. Wat verschilt is de <b>scope</b> (één solution), de <b>rol</b> (Architecture Owner), het <b>C4-niveau</b> (Level 2–3) en de <b>context</b> (geërfd van enterprise). Klik een stap aan voor de volledige beschrijving inclusief de rol per niveau.</p>
+    <div class="flow-outer">
+      <div class="flow">
+        <div class="flow-phase">
+          <div class="phase-header">
+            <span class="phase-label analyse">Analyse</span>
+            <span class="space-tag a-tag">Activity Space · Analyse</span>
+            <span class="space-tag comp-tag">Competency · Analyse</span>
+          </div>
+          <div class="phase-steps">
+            <div class="fc-wrap">
+              <a href="act/frame-the-drivers.html" class="flow-card a1">
+                <div class="fc-num">01 / 05</div>
+                <div class="fc-name">Frame the Drivers</div>
+                <div class="fc-alpha">Drivers → Identified<br>→ Prioritised → Quantified</div>
+                <div class="fc-wp">ASR (solution)</div>
+                <div class="fc-open">Details →</div>
+              </a>
+            </div>
+            <div class="fc-arrow">→</div>
+            <div class="fc-wrap">
+              <a href="act/envision-the-architecture.html" class="flow-card a2">
+                <div class="fc-num">02 / 05</div>
+                <div class="fc-name">Envision the Architecture</div>
+                <div class="fc-alpha">Architecture → Envisioned</div>
+                <div class="fc-wp">Architecture Vision (solution)</div>
+                <div class="fc-open">Details →</div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="phase-divider" aria-hidden="true">
+          <div class="phase-divider-arrow">⟶</div>
+        </div>
+        <div class="flow-phase">
+          <div class="phase-header">
+            <span class="phase-label dev">Development</span>
+            <span class="space-tag d-tag">Activity Space · Development</span>
+            <span class="space-tag comp-tag">Competency · Architecture</span>
+          </div>
+          <div class="phase-steps">
+            <div class="fc-wrap">
+              <a href="act/shape-the-minimum-architecture.html" class="flow-card a3">
+                <div class="fc-num">03 / 05</div>
+                <div class="fc-name">Shape the Minimum Architecture</div>
+                <div class="fc-alpha">Architecture → Outlined<br>Decisions → Framed → Decided</div>
+                <div class="fc-wp">Architecture Definition · ADRs</div>
+                <div class="fc-open">Details →</div>
+              </a>
+            </div>
+            <div class="fc-arrow">→</div>
+            <div class="fc-wrap">
+              <a href="act/prove-the-risky-parts.html" class="flow-card a4">
+                <div class="fc-num">04 / 05</div>
+                <div class="fc-name">Prove the Risky Parts</div>
+                <div class="fc-alpha">Architecture → Demonstrated<br>Decisions → Validated</div>
+                <div class="fc-wp">Review Records · ADRs</div>
+                <div class="fc-open">Details →</div>
+              </a>
+            </div>
+            <div class="fc-arrow">→</div>
+            <div class="fc-wrap">
+              <a href="act/plan-the-transition.html" class="flow-card a5">
+                <div class="fc-num">05 / 05</div>
+                <div class="fc-name">Plan the Transition</div>
+                <div class="fc-alpha">Architecture → Usable</div>
+                <div class="fc-wp">Architecture Roadmap (solution)</div>
+                <div class="fc-open">Details →</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENCES PER ACTIVITY -->
+  <section class="sec" id="verschil">
+    <h2 class="sh">Wat er per activiteit verschilt</h2>
+    <p class="sec-intro">De Architecture Owner voert dezelfde vijf activiteiten uit als de Enterprise Architect, maar met een andere scope en andere uitkomsten. Hier de kernverschillen per activiteit.</p>
+    <div class="act-list">
+      <a href="act/frame-the-drivers.html" class="act-row a-analyse">
+        <div class="ar-num">01</div>
+        <div class="ar-body">
+          <div class="ar-title">Frame the Drivers — solution-scope</div>
+          <div class="ar-desc">Verfijn enterprise-drivers naar solution-specifieke kwaliteitsattributen. Werk met Product Owner en solution-stakeholders. Formuleer falsifieerbare COTS-selectiecriteria voor deze solution.</div>
+          <div class="ar-meta">
+            <span class="ar-chip space">Activity Space · Analyse</span>
+            <span class="ar-chip comp">Competency · Analyse</span>
+            <span class="ar-chip alpha">Drivers → Quantified</span>
+          </div>
+        </div>
+        <div class="ar-arrow">→</div>
+      </a>
+      <a href="act/envision-the-architecture.html" class="act-row a-analyse">
+        <div class="ar-num">02</div>
+        <div class="ar-body">
+          <div class="ar-title">Envision the Architecture — solution-scope</div>
+          <div class="ar-desc">Maak de solution Architecture Vision binnen de enterprise-guardrails. Teamactiviteit (niet extern EA-document). Stelt solution-uitsluitingscriteria voor COTS-selectie. C4 Level 2.</div>
+          <div class="ar-meta">
+            <span class="ar-chip space">Activity Space · Analyse</span>
+            <span class="ar-chip comp">Competency · Analyse</span>
+            <span class="ar-chip alpha">Architecture → Envisioned</span>
+          </div>
+        </div>
+        <div class="ar-arrow">→</div>
+      </a>
+      <a href="act/shape-the-minimum-architecture.html" class="act-row a-dev">
+        <div class="ar-num">03</div>
+        <div class="ar-body">
+          <div class="ar-title">Shape the Minimum Architecture — solution-scope</div>
+          <div class="ar-desc">Definieer solution-bouwstenen en interfaces binnen enterprise-kaders. Selecteer COTS-componenten op basis van ASR. Documenteer afwijkingen van enterprise-standaarden als ADR. C4 Level 2–3.</div>
+          <div class="ar-meta">
+            <span class="ar-chip space" style="background:rgba(15,110,99,.1);color:var(--sol)">Activity Space · Development</span>
+            <span class="ar-chip comp">Competency · Architecture</span>
+            <span class="ar-chip alpha">Architecture → Outlined · Decisions → Decided</span>
+          </div>
+        </div>
+        <div class="ar-arrow">→</div>
+      </a>
+      <a href="act/prove-the-risky-parts.html" class="act-row a-dev">
+        <div class="ar-num">04</div>
+        <div class="ar-body">
+          <div class="ar-title">Prove the Risky Parts — solution-scope</div>
+          <div class="ar-desc">Voer solution-level PoC's en architectuurspikes uit. Toets de integratielaag en COTS-fit tegen de ASR-criteria. Rapporteer bevindingen die enterprise-beslissingen raken terug aan de EA.</div>
+          <div class="ar-meta">
+            <span class="ar-chip space" style="background:rgba(15,110,99,.1);color:var(--sol)">Activity Space · Development</span>
+            <span class="ar-chip comp">Competency · Architecture</span>
+            <span class="ar-chip alpha">Architecture → Demonstrated · Decisions → Validated</span>
+          </div>
+        </div>
+        <div class="ar-arrow">→</div>
+      </a>
+      <a href="act/plan-the-transition.html" class="act-row a-dev">
+        <div class="ar-num">05</div>
+        <div class="ar-body">
+          <div class="ar-title">Plan the Transition — solution-scope</div>
+          <div class="ar-desc">Maak de solution-roadmap binnen de enterprise-context. Koppel horizons aan backlog en release-planning. Definieer per horizon welke solution-beslissingen definitief worden. Rapporteer afwijkingen van enterprise transition states.</div>
+          <div class="ar-meta">
+            <span class="ar-chip space" style="background:rgba(15,110,99,.1);color:var(--sol)">Activity Space · Development</span>
+            <span class="ar-chip comp">Competency · Architecture</span>
+            <span class="ar-chip alpha">Architecture → Usable</span>
+          </div>
+        </div>
+        <div class="ar-arrow">→</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ENTERPRISE VS SOLUTION -->
+  <section class="sec" id="niveaus">
+    <h2 class="sh">Enterprise versus Solution — de sleutelunterschiede</h2>
+    <div class="diff-grid">
+      <div class="diff-card dc-ent">
+        <div class="dc-head">
+          <div class="dc-level">Enterprise niveau</div>
+          <h3>Enterprise Architect</h3>
+        </div>
+        <div class="dc-body">
+          <ul>
+            <li>Scope: het volledige landgoed</li>
+            <li>C4 Level 1–2 (Context & Containers)</li>
+            <li>Stakeholders: CIO, business-owners, Governance Forum</li>
+            <li>Output: enterprise-brede ASR, Vision, Paved Road, Roadmap</li>
+            <li>Uitkomsten worden <b>context</b> die solutions erven</li>
+            <li>Legt enterprise-beslissingen vast (platform, datamodel, API)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="diff-card dc-sol">
+        <div class="dc-head">
+          <div class="dc-level">Solution niveau</div>
+          <h3>Architecture Owner</h3>
+        </div>
+        <div class="dc-body">
+          <ul>
+            <li>Scope: één solution / initiatief</li>
+            <li>C4 Level 2–3 (Containers & Components)</li>
+            <li>Stakeholders: Product Owner, team, solution-stakeholders</li>
+            <li>Output: solution-specifieke ASR, Vision, Definition, ADRs, Roadmap</li>
+            <li>Werkt <b>binnen</b> de enterprise-guardrails</li>
+            <li>Rapporteert bewijs en afwijkingen terug aan EA</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="panel">
+    <h3>Collaboratief, niet command-and-control</h3>
+    <p>De Architecture Owner is de meest technisch ervaren persoon in het team (Disciplined Agile Delivery). Het verschil met een traditionele architect: de AO <em>faciliteert</em> de architectuurevolutie — collaboratief met het team — in plaats van architectuur als extern document op te leggen. De initiële architecture envisioning (activiteit 02) is een teamactiviteit: het equivalent van een Projectstartarchitectuur, maar gemaakt met en door het team.</p>
+    <p>Ga voor de enterprise-variant naar de <a href="wow-enterprise-architecture.html" style="color:var(--ent);font-weight:600">Way-of-working Enterprise Architectuur</a>.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.has-drop').forEach(function(dropdown){
+    var btn=dropdown.querySelector('button');var items=Array.from(dropdown.querySelectorAll('.drop li a'));
+    function open(){dropdown.classList.add('open');btn.setAttribute('aria-expanded','true');}
+    function close(ret){dropdown.classList.remove('open');btn.setAttribute('aria-expanded','false');if(ret)btn.focus();}
+    btn.addEventListener('click',function(e){e.stopPropagation();dropdown.classList.contains('open')?close(false):open();});
+    btn.addEventListener('keydown',function(e){if(e.key==='ArrowDown'){e.preventDefault();open();if(items[0])items[0].focus();}else if(e.key==='Escape'){close(true);}});
+    items.forEach(function(item,i){item.addEventListener('keydown',function(e){if(e.key==='ArrowDown'){e.preventDefault();if(items[i+1])items[i+1].focus();}else if(e.key==='ArrowUp'){e.preventDefault();if(i>0)items[i-1].focus();else close(true);}else if(e.key==='Escape'){close(true);}else if(e.key==='Tab'){close(false);}});});
+  });
+  document.addEventListener('click',function(){document.querySelectorAll('.has-drop.open').forEach(function(el){el.classList.remove('open');el.querySelector('button').setAttribute('aria-expanded','false');});});
+  var tog=document.querySelector('.site-nav-toggle');var menu=document.querySelector('.site-nav-menu');
+  if(tog&&menu){tog.addEventListener('click',function(e){e.stopPropagation();var open=menu.classList.toggle('open');tog.setAttribute('aria-expanded',String(open));tog.setAttribute('aria-label',open?'Menu sluiten':'Menu openen');});menu.addEventListener('click',function(e){e.stopPropagation();});document.addEventListener('click',function(){menu.classList.remove('open');tog.setAttribute('aria-expanded','false');tog.setAttribute('aria-label','Menu openen');});}
+})();
+</script>
+</body>
+</html>

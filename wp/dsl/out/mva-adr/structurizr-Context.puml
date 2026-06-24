@@ -1,0 +1,32 @@
+@startuml
+title <size:24>System Context View: Besliste oplossing</size>
+
+set separator none
+top to bottom direction
+
+<style>
+  root {
+    BackgroundColor: #ffffff
+    FontColor: #444444
+  }
+</style>
+
+!include <C4/C4>
+!include <C4/C4_Context>
+
+Person(LeadArchitect, "Lead Architect", $descr="Neemt en documenteert de architectuurbeslissing", $tags="", $link="")
+Person(Stakeholder, "Stakeholder", $descr="Valideert drivers en accepteert consequenties", $tags="", $link="")
+System(Beslisteoplossing, "Besliste oplossing", $descr="Gekozen COTS-product of patroon\nbijv. [ERP Platform X · ADR-xx: Besloten]\n[Software System]", $tags="", $link="")
+System(DriversASRs, "Drivers + ASR's", $descr="Architecturele krachten die de beslissing motiveren\nbijv. Beschikbaarheid 24/7 · Performance p95 < 2s", $tags="", $link="")
+System(PavedRoadCatalogus, "Paved Road Catalogus", $descr="Referentie voor goedgekeurde producten en patronen", $tags="", $link="")
+System(Geraaktcomponent, "Geraakt component", $descr="Component beïnvloed door de beslissing\nbijv. Integratie-laag", $tags="", $link="")
+
+Rel(Stakeholder, Beslisteoplossing, "Valideert", $techn="Review", $tags="", $link="")
+Rel(Beslisteoplossing, Geraaktcomponent, "Heeft gevolgen voor", $techn="Consequentie", $tags="", $link="")
+Rel(DriversASRs, Beslisteoplossing, "Motiveert en begrenst", $techn="Influence → ADR", $tags="", $link="")
+Rel(PavedRoadCatalogus, Beslisteoplossing, "Stuurt productkeuze", $techn="Conformance-check", $tags="", $link="")
+Rel(LeadArchitect, Beslisteoplossing, "Besluit en documenteert", $techn="ADR", $tags="", $link="")
+
+SHOW_LEGEND(true)
+hide stereotypes
+@enduml
