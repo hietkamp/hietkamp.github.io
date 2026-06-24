@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Frame the Drivers — MVA Activiteit 01</title>
-<meta name="description" content="Leg de architectureel significante drivers vast en kwantificeer ze. Rollen, werkproducten en alpha-toestanden per niveau.">
+<title>Identify Business Goals and Drivers — MVA Activiteit 01</title>
+<meta name="description" content="Identificeer en kwantificeer de business goals en drivers van het initiatief. Meetbare succescriteria per niveau — rollen, werkproducten en alpha-toestanden.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -132,18 +132,18 @@ a.wp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
     <span>›</span>
     <a href="../wow-enterprise-architecture.html">Way of Working EA</a>
     <span>›</span>
-    <span>Frame the Drivers</span>
+    <span>Identify Business Goals and Drivers</span>
   </div>
 
   <header class="hero">
     <div class="act-meta">
       <span class="act-num">Activiteit 01 / 05</span>
-      <span class="act-chip chip-space">Activity Space · Analyse</span>
+      <span class="act-chip chip-space">Activity Space · Analyse · AS 1–2</span>
       <span class="act-chip chip-comp">Competency · Analyse</span>
       <span class="act-chip chip-prac">MVA</span>
     </div>
-    <h1>Frame the <em>Drivers</em></h1>
-    <p class="lede">Leg de architectureel significante drivers vast en kwantificeer ze. Kom overeen over meetbare succescriteria met stakeholders. Dit is de startactiviteit van het MVA-proces: zonder gekwantificeerde drivers heeft de architectuur geen fundament.</p>
+    <h1>Identify Business Goals <em>and Drivers</em></h1>
+    <p class="lede">Identificeer en kwantificeer de business goals en drivers van het initiatief. Kom overeen over meetbare succescriteria met stakeholders. Dit is de startactiviteit van het MVA-proces: zonder gekwantificeerde drivers heeft de architectuur geen fundament.</p>
     <div class="alpha-bar">
       <span class="ab-label">Beweegt de alphas:</span>
       <span class="ab-states">Drivers → <b>Identified</b> → <b>Prioritised</b> → <b>Quantified</b></span>
@@ -153,11 +153,11 @@ a.wp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
   <!-- WHAT YOU DO -->
   <section class="sec" id="wat">
     <h2>Wat je doet</h2>
-    <p class="prose">In Frame the Drivers breng je de zakelijke werkelijkheid scherp in beeld. Je identificeert alle architectureel significante drivers: strategische doelen, kwaliteitsattributen (performance, beveiliging, schaalbaarheid), beperkingen (wet- en regelgeving, budget, tijd, technologie) en architectuurprincipes. Vervolgens prioriteer je ze met de stakeholders — niet alle drivers zijn even zwaar — en kwantificeer je de significante drivers met meetbare succescriteria.</p>
-    <p class="prose">Een <b>discovery workshop</b> met stakeholders is een effectieve manier om drivers snel te identificeren en te prioriteren. Gebruik facilitatietechnieken als driver-kaarten, impact/urgentie-matrix of de MoSCoW-methode om consensus te bereiken over de prioriteitering.</p>
+    <p class="prose">In Identify Business Goals and Drivers breng je de zakelijke werkelijkheid scherp in beeld. Je identificeert de business goals en drivers: strategische doelen, kwaliteitsattributen (performance, beveiliging, schaalbaarheid) en beperkingen (wet- en regelgeving, budget, tijd, technologie). Vervolgens prioriteer je ze met de stakeholders — niet alle drivers zijn even zwaar — en kwantificeer je de significante drivers met meetbare succescriteria.</p>
+    <p class="prose">Een <b>discovery workshop</b> met stakeholders is een effectieve manier om drivers snel te identificeren en te prioriteren. Gebruik facilitatietechnieken als driver-kaarten, impact/urgentie-matrix of de MoSCoW-methode om consensus te bereiken over de prioriteitering. De uitkomsten vormen de input voor de business analyst die de requirements uitwerkt, en voor de architect die in de volgende activiteit de architectureel significante requirements (ASR) selecteert.</p>
     <div class="cots-box">
       <div class="cots-label">COTS / koop-en-configureer context</div>
-      <p>Formuleer falsifieerbare kwaliteitsattributen — meetbare doelen als <em>'reduceer verwerkingstijd van 48 naar 6 uur'</em> of <em>'beschikbaarheid ≥ 99,5% tijdens kantooruren'</em> — als selectiecriteria voor componentkeuze. Requirements en vendor-selectie lopen <b>parallel</b>, niet sequentieel: de drivers zijn tegelijk de selectiefilters voor COTS-componenten. Specificeer al vroeg welke drivers harde uitsluitingscriteria zijn (go/no-go bij vendor-selectie) versus zachte voorkeuren.</p>
+      <p>Formuleer falsifieerbare kwaliteitsattributen — meetbare doelen als <em>'reduceer verwerkingstijd van 48 naar 6 uur'</em> of <em>'beschikbaarheid ≥ 99,5% tijdens kantooruren'</em>. Specificeer welke drivers harde uitsluitingscriteria zijn (go/no-go bij vendor-selectie) versus zachte voorkeuren. De drivers worden in de volgende activiteit vertaald naar ASRs die tegelijk de selectiecriteria voor COTS-componenten vormen.</p>
     </div>
   </section>
 
@@ -165,23 +165,22 @@ a.wp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
   <section class="sec" id="werkproducten">
     <h2>Werkproducten</h2>
     <div class="wp-grid">
-      <a href="../wp/mva-asr.html" class="wp-card">
+      <div class="wp-card" style="cursor:default">
         <div class="wc-top"></div>
         <div class="wc-body">
           <div class="wc-type">Work Product · MVA</div>
-          <h4>Architecturally Significant Requirements</h4>
-          <p>De weinige requirements die significant genoeg zijn om de architectuur te vormen. Falsifieerbaar en meetbaar. In COTS ook de selectiecriteria voor componenten.</p>
-          <div class="wc-proves">Bewijst → Drivers (Identified → Quantified)</div>
-          <div class="wc-open">Uitwerking &amp; sjabloon →</div>
+          <h4>Driver-prioriteitenmatrix</h4>
+          <p>Overzicht van de geïdentificeerde business goals en drivers, geprioriteerd en gekwantificeerd met meetbare succescriteria. Input voor de business analyst en voor de architect in de volgende activiteit.</p>
+          <div class="wc-proves">Bewijst → Drivers (Identified → Prioritised → Quantified)</div>
         </div>
-      </a>
+      </div>
     </div>
   </section>
 
   <!-- ROLES PER LEVEL -->
   <section class="sec" id="rollen">
     <h2>Rollen per niveau</h2>
-    <p class="prose">Frame the Drivers wordt uitgevoerd op enterprise- en solution-niveau. De activiteit is dezelfde, maar de scope, stakeholders en uitkomsten verschillen per niveau.</p>
+    <p class="prose">Identify Business Goals and Drivers wordt uitgevoerd op enterprise- en solution-niveau. De activiteit is dezelfde, maar de scope, stakeholders en uitkomsten verschillen per niveau.</p>
     <div class="level-grid">
       <div class="level-card lc-ent">
         <div class="lc-head">
@@ -190,8 +189,8 @@ a.wp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
         </div>
         <div class="lc-body">
           <div class="lc-scope">Scope: het volledige enterprise-landgoed</div>
-          <p>Leidt een discovery workshop met de CIO, business-owners, risicomanager en andere enterprise-stakeholders. Identificeert enterprise-brede strategische doelen (kostenreductie, time-to-market, compliance), technologische beperkingen (cloud-strategie, vendor-beleid) en regelgevingsverplichtingen (AVG, NIS2, sectorspecifiek). Kwantificeert de significante enterprise-drivers met meetbare succescriteria die als filter dienen bij enterprise-brede beslissingen en vendor-selectie op landgoedniveau.</p>
-          <div class="lc-wp"><b>Maakt:</b> Enterprise-brede ASR · Enterprise stakeholder-map · Driver-prioriteitenmatrix</div>
+          <p>Leidt een discovery workshop met de CIO, business-owners, risicomanager en andere enterprise-stakeholders. Identificeert enterprise-brede strategische doelen (kostenreductie, time-to-market, compliance), technologische beperkingen (cloud-strategie, vendor-beleid) en regelgevingsverplichtingen (AVG, NIS2, sectorspecifiek). Kwantificeert de significante enterprise-drivers met meetbare succescriteria die als filter dienen bij enterprise-brede beslissingen.</p>
+          <div class="lc-wp"><b>Maakt:</b> Enterprise driver-prioriteitenmatrix · Enterprise stakeholder-map · Meetbare succescriteria</div>
           <div class="lc-comps">
             <span class="lc-comp">Architecture</span>
             <span class="lc-comp">Leadership</span>
@@ -206,8 +205,8 @@ a.wp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
         </div>
         <div class="lc-body">
           <div class="lc-scope">Scope: de ene solution in dit initiatief</div>
-          <p>Verfijnt de enterprise-drivers naar solution-specifieke kwaliteitsattributen. Werkt samen met de Product Owner en solution-stakeholders om solution-drivers te identificeren en te prioriteren. Formuleert falsifieerbare selectiecriteria voor COTS-componenten die relevant zijn voor deze solution. Legt de koppeling vast tussen enterprise-drivers (geërfd als context) en de solution-specifieke invulling ervan.</p>
-          <div class="lc-wp"><b>Maakt:</b> Solution-specifieke ASR · COTS-selectiecriteria · Koppeling enterprise–solution drivers</div>
+          <p>Verfijnt de enterprise-drivers naar solution-specifieke kwaliteitsattributen. Werkt samen met de Product Owner en solution-stakeholders om solution-drivers te identificeren en te prioriteren. Legt de koppeling vast tussen enterprise-drivers (geërfd als context) en de solution-specifieke invulling ervan. De uitkomsten zijn input voor de business analyst die de requirements uitwerkt.</p>
+          <div class="lc-wp"><b>Maakt:</b> Solution driver-prioriteitenmatrix · Koppeling enterprise–solution drivers · Meetbare succescriteria</div>
           <div class="lc-comps">
             <span class="lc-comp">Architecture</span>
             <span class="lc-comp">Stakeholder Rep.</span>

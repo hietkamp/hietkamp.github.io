@@ -129,22 +129,22 @@ a.wp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
   <header class="hero">
     <div class="act-meta">
       <span class="act-num">Activiteit 02 / 05</span>
-      <span class="act-chip chip-space">Activity Space · Analyse</span>
+      <span class="act-chip chip-space">Activity Space · Analyse · AS 5–6</span>
       <span class="act-chip chip-comp">Competency · Analyse</span>
       <span class="act-chip chip-prac">MVA</span>
     </div>
     <h1>Envision the <em>Architecture</em></h1>
-    <p class="lede">Kom de architectuurrichting, scope en waarde overeen op één pagina. Dit is de eerste architectuurlevering — niet een diagram, maar een beknopte set principes en uitsluitingscriteria die verkeerde componentkeuzes voorkomt vóórdat enige vendor geselecteerd wordt.</p>
+    <p class="lede">Selecteer de architectureel significante requirements en leg de architectuurrichting vast op één pagina. De ASRs — gekozen uit de door de business analyst verzamelde requirements — vormen de basis van de Architecture Vision: principes en uitsluitingscriteria die verkeerde componentkeuzes voorkomen vóórdat enige vendor geselecteerd wordt.</p>
     <div class="alpha-bar">
       <span class="ab-label">Beweegt de alphas:</span>
-      <span class="ab-states">Architecture → <b>Envisioned</b></span>
+      <span class="ab-states">Requirements → <b>Bounded</b> → <b>Acceptable</b></span>
     </div>
   </header>
 
   <section class="sec" id="wat">
     <h2>Wat je doet</h2>
-    <p class="prose">In Envision the Architecture kom je met de stakeholders tot een gedeelde architectuurintentie. Je brengt de doelrichting vast op één pagina: wat is de architecturele ambitie, welke scope omvat het System, wat is de waarde die het levert, en welke architectuurprincipes sturen de keuzes. Dit voorkomt verkeerde componentkeuzes doordat iedereen een gedeeld kompas heeft.</p>
-    <p class="prose">De output is <b>geen uitgewerkt architectuurschema</b> maar een beknopte Architecture Vision: één pagina met doelrichting, kernprincipes, scope-grenzen en — cruciaal — uitsluitingscriteria die aangeven wat expliciet buiten scope is. Dit document is de basis voor alle daaropvolgende architectuurbeslissingen.</p>
+    <p class="prose">In Envision the Architecture doe je twee dingen in samenhang. Eerst selecteer je de <b>architectureel significante requirements (ASRs)</b> uit de requirements die de business analyst heeft verzameld. Niet alle requirements zijn architectureel relevant; de architect kiest de weinige die de structuur van het systeem wezenlijk beïnvloeden — kwaliteitsattributen, beperkingen en kritieke functionele eisen. Deze ASRs worden opgenomen in de Architecture Vision als de expliciete basis voor alle architectuurkeuzes.</p>
+    <p class="prose">Vervolgens leg je de architectuurrichting vast op één pagina: wat is de architecturele ambitie, welke scope omvat het System, welke principes sturen de keuzes, en — cruciaal — welke uitsluitingscriteria geven aan wat expliciet buiten scope valt. Dit document voorkomt verkeerde componentkeuzes doordat iedereen een gedeeld kompas heeft vóórdat enige vendor geselecteerd wordt.</p>
     <div class="cots-box">
       <div class="cots-label">COTS / koop-en-configureer context</div>
       <p>In een COTS-context is de eerste deliverable <em>geen</em> architectuurschets maar een beknopte set <b>architectuurprincipes en uitsluitingscriteria</b> — vóórdat enige vendor geselecteerd wordt. Gedeelde architectuurintentie voorkomt verkeerde componentkeuzes. Formuleer principes als falsifieerbare richtlijnen: <em>'Geen vendor-specifieke API's in de business-logica'</em>, <em>'Alle integraties via standaard-API's (REST/FHIR)'</em>. De uitsluitingscriteria zijn de go/no-go-filters voor de RFP.</p>
@@ -154,13 +154,23 @@ a.wp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
   <section class="sec" id="werkproducten">
     <h2>Werkproducten</h2>
     <div class="wp-grid">
+      <a href="../wp/mva-asr.html" class="wp-card">
+        <div class="wc-top"></div>
+        <div class="wc-body">
+          <div class="wc-type">Work Product · MVA</div>
+          <h4>Architecturally Significant Requirements</h4>
+          <p>De weinige requirements die significant genoeg zijn om de architectuur te vormen. Geselecteerd door de architect uit de requirements van de business analyst. Falsifieerbaar en meetbaar; in COTS ook de selectiecriteria voor componenten.</p>
+          <div class="wc-proves">Bewijst → Requirements (Bounded → Acceptable)</div>
+          <div class="wc-open">Uitwerking &amp; sjabloon →</div>
+        </div>
+      </a>
       <a href="../wp/mva-architecture-vision.html" class="wp-card">
         <div class="wc-top"></div>
         <div class="wc-body">
           <div class="wc-type">Work Product · MVA</div>
           <h4>Architecture Vision (on a page)</h4>
-          <p>De kleinste gedeelde intentie die verkeerde componentkeuzes voorkomt. Principes en uitsluitingscriteria op één pagina, vóórdat enige vendor geselecteerd wordt.</p>
-          <div class="wc-proves">Bewijst → Architecture (Envisioned)</div>
+          <p>De kleinste gedeelde intentie die verkeerde componentkeuzes voorkomt. Bevat de ASRs als basis, plus principes en uitsluitingscriteria op één pagina, vóórdat enige vendor geselecteerd wordt.</p>
+          <div class="wc-proves">Bewijst → Requirements (Bounded → Acceptable)</div>
           <div class="wc-open">Uitwerking &amp; sjabloon →</div>
         </div>
       </a>
@@ -178,8 +188,8 @@ a.wp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
         </div>
         <div class="lc-body">
           <div class="lc-scope">Scope: enterprise-architectuurrichting</div>
-          <p>Maakt de enterprise Architecture Vision: de doelrichting van het landgoed op één pagina. Stelt enterprise-brede architectuurprincipes vast (cloud-first, standaardisatie, integratie-strategie) en definieert de guardrails die alle solutions moeten respecteren. Stelt uitsluitingscriteria op voor enterprise-brede technologieselectie. Dit document is de context die solutions erven als hun architectuurkader.</p>
-          <div class="lc-wp"><b>Maakt:</b> Enterprise Architecture Vision · Enterprise-principes · Guardrails-document</div>
+          <p>Selecteert de enterprise ASRs uit de requirements die zijn verzameld door business analisten en enterprise-stakeholders. Legt de enterprise Architecture Vision vast op één pagina: doelrichting van het landgoed, enterprise-brede architectuurprincipes (cloud-first, standaardisatie, integratie-strategie) en de guardrails die alle solutions moeten respecteren. De ASRs zijn de expliciete basis voor enterprise-brede technologieselectie en -beslissingen.</p>
+          <div class="lc-wp"><b>Maakt:</b> Enterprise ASR · Enterprise Architecture Vision · Enterprise-principes · Guardrails-document</div>
           <div class="lc-comps">
             <span class="lc-comp">Architecture</span>
             <span class="lc-comp">Leadership</span>
@@ -194,8 +204,8 @@ a.wp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
         </div>
         <div class="lc-body">
           <div class="lc-scope">Scope: solution-architectuurrichting</div>
-          <p>Maakt de solution Architecture Vision <em>binnen</em> de enterprise-guardrails. Scoped naar de ene solution: wat levert het, hoe past het in het enterprise-landgoed, welke solution-specifieke principes gelden. Stelt solution-uitsluitingscriteria op voor COTS-selectie en definieert hoe de solution zich verhoudt tot de enterprise context. Werkt collaboratief met het team: de Vision is een teamactiviteit, niet een extern EA-document.</p>
-          <div class="lc-wp"><b>Maakt:</b> Solution Architecture Vision · Solution-principes · Vendor-uitsluitingscriteria</div>
+          <p>Selecteert de solution-specifieke ASRs uit de requirements die de business analyst heeft uitgewerkt. Kiest de requirements die de architectuur van deze solution wezenlijk beïnvloeden en formuleert ze falsifieerbaar en meetbaar — ze zijn tegelijk de selectiecriteria voor COTS-componenten. Legt de solution Architecture Vision vast <em>binnen</em> de enterprise-guardrails: scope, solution-principes en uitsluitingscriteria voor vendor-selectie. Werkt collaboratief met het team.</p>
+          <div class="lc-wp"><b>Maakt:</b> Solution ASR · Solution Architecture Vision · Solution-principes · COTS-selectiecriteria</div>
           <div class="lc-comps">
             <span class="lc-comp">Architecture</span>
             <span class="lc-comp">Stakeholder Rep.</span>
@@ -207,7 +217,7 @@ a.wp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 
   <nav class="act-nav" aria-label="Activiteitennavigatie">
     <div class="an-prev">
-      <a href="frame-the-drivers.html">← Frame the Drivers</a>
+      <a href="identify-business-goals-and-drivers.html">← Identify Business Goals and Drivers</a>
     </div>
     <div class="an-center">
       <a href="../wow-enterprise-architecture.html">Procesoverzicht</a>

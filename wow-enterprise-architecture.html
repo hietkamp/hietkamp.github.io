@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Way-of-working Enterprise Architectuur — MVA Procesoverzicht</title>
-<meta name="description" content="Het MVA-architectuurproces voor enterprise architecten: van Frame the Drivers via Envision en Shape naar Prove en Plan the Transition.">
+<meta name="description" content="Het MVA-architectuurproces voor enterprise architecten: van Identify Business Goals and Drivers via Envision en Shape naar Prove en Plan the Transition.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -43,49 +43,8 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
 .sec{margin-top:42px}
 .sec-intro{color:var(--ink-soft);font-size:.95rem;max-width:82ch;margin:0 0 18px}
 
-/* ====== PROCESS FLOW ====== */
-.flow-outer{margin:4px 0 10px;overflow-x:auto;padding-bottom:4px}
-.flow{display:flex;align-items:stretch;gap:0;min-width:820px}
-.flow-phase{display:flex;flex-direction:column;gap:0;flex:1;min-width:0}
-.phase-header{display:flex;gap:6px;padding:8px 0 10px;flex-wrap:wrap;align-items:center}
-.phase-label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:5px 11px;border-radius:30px;color:#fff}
-.phase-label.analyse{background:var(--activity)}
-.phase-label.dev{background:var(--ent)}
-.space-tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:20px;font-weight:600}
-.space-tag.analyse-tag{background:rgba(31,95,168,.1);color:var(--activity);border:1px solid rgba(31,95,168,.25)}
-.space-tag.comp-tag{background:rgba(75,63,158,.1);color:var(--comp);border:1px solid rgba(75,63,158,.25)}
-.phase-steps{display:flex;align-items:stretch;flex:1;gap:0}
-.fc-wrap{display:flex;align-items:center}
-.fc-arrow{font-family:"IBM Plex Mono",monospace;font-size:16px;color:var(--line);padding:0 5px;flex-shrink:0;align-self:center}
-a.flow-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 14px 13px;transition:transform .12s,box-shadow .12s,border-color .12s;flex:1;min-width:130px;position:relative;overflow:hidden}
-a.flow-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px}
-.flow-card.a1::before,.flow-card.a2::before{background:var(--activity)}
-.flow-card.a3::before,.flow-card.a4::before,.flow-card.a5::before{background:var(--ent)}
-a.flow-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:rgba(39,64,107,.3)}
-.fc-num{font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
-.fc-name{font-family:"Fraunces",serif;font-weight:600;font-size:1rem;line-height:1.15;margin-bottom:5px}
-.fc-alpha{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--alpha);letter-spacing:.02em;line-height:1.5;margin-bottom:7px;flex:1}
-.fc-wp{font-size:.8rem;color:var(--product);font-weight:600;border-top:1px dashed var(--line);padding-top:6px}
-.fc-open{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ent);margin-top:5px}
-
-/* Phase divider */
-.phase-divider{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 4px;padding-bottom:20px;flex-shrink:0}
-.phase-divider-arrow{font-family:"IBM Plex Mono",monospace;font-size:22px;color:var(--ink-soft)}
-
-/* ====== PHASE DESCRIPTION CARDS ====== */
-.phase-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:680px){.phase-cards{grid-template-columns:1fr}}
-.phase-desc{border-radius:13px;padding:18px 20px;border:1px solid var(--line)}
-.phase-desc.analyse-card{border-left:4px solid var(--activity);background:rgba(31,95,168,.04)}
-.phase-desc.dev-card{border-left:4px solid var(--ent);background:rgba(39,64,107,.04)}
-.phase-desc h3{font-family:"Fraunces",serif;font-size:1.15rem;margin:0 0 4px;font-weight:600}
-.phase-desc .ph-label{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
-.phase-desc.analyse-card .ph-label{color:var(--activity)}
-.phase-desc.dev-card .ph-label{color:var(--ent)}
-.phase-desc p{margin:0;color:var(--ink-soft);font-size:.9rem}
 
 /* ====== ACTIVITY LIST ====== */
-.act-list{display:flex;flex-direction:column;gap:14px}
 .act-row{display:grid;grid-template-columns:52px 1fr auto;gap:0;background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .12s,box-shadow .12s}
 .act-row:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 .act-row .ar-num{display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-size:1.4rem;font-weight:700;color:#fff}
@@ -123,6 +82,51 @@ a.flow-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-col
 .panel h3{font-family:"Fraunces",serif;margin:0 0 6px;font-size:1.1rem}
 .panel p{margin:0 0 8px;color:var(--ink-soft);font-size:.9rem;max-width:86ch}
 .panel p:last-child{margin-bottom:0}
+
+/* ===== ACTIVITY MAP ===== */
+.amap{display:flex;flex-direction:column;margin:8px 0 0}
+.amap-domain{border-radius:16px;border:1.5px solid var(--line);overflow:hidden;background:var(--card)}
+.amap-dhdr{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  padding:13px 22px;color:#fff;
+}
+.amap-dhdr.cust{background:linear-gradient(130deg,#156236 0%,#1e7d46 100%)}
+.amap-dhdr.sol{background:linear-gradient(130deg,#7a5800 0%,#9a6e00 100%)}
+.amap-dname{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+.amap-dalphas{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.06em;opacity:.8}
+.amap-body{padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.amap-sp{
+  display:flex;align-items:baseline;gap:10px;
+  border-bottom:1px solid var(--line);padding-bottom:7px;
+  margin-top:6px;
+}
+.amap-sp:first-child{margin-top:0}
+.amap-sp-n{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;flex-shrink:0}
+.amap-sp-name{font-family:"Fraunces",serif;font-weight:600;font-size:.98rem;color:var(--ink)}
+.amap-sp.is-gap{opacity:.58;border-bottom-style:dashed}
+.amap-sp.is-gap .amap-sp-name{font-weight:500}
+.amap-sp-main{flex:1;min-width:0}
+.amap-sp-desc{display:block;margin:3px 0 0;font-size:.82rem;color:var(--ink-soft);line-height:1.4}
+.amap-sp-badge{
+  font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+  padding:2px 8px;border-radius:10px;margin-left:6px;
+  background:rgba(177,73,46,.1);color:var(--pattern);border:1px solid rgba(177,73,46,.25);
+  vertical-align:middle;
+}
+.amap-conn{display:flex;align-items:center;justify-content:center;height:36px;position:relative}
+.amap-conn::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1.5px;background:var(--line);transform:translateX(-50%)}
+.amap-conn-lbl{
+  position:relative;z-index:1;background:var(--paper);
+  padding:4px 14px;border:1px solid var(--line);border-radius:20px;
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
+}
+.amap-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em}
+.amap-li{display:flex;align-items:center;gap:7px;color:var(--ink-soft)}
+.amap-li-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.amap-li-dot.analyse{background:var(--activity)}
+.amap-li-dot.dev{background:var(--ent)}
+.amap-li-dot.gap{background:rgba(177,73,46,.15);border:1px solid rgba(177,73,46,.3)}
+.amap .act-row{border-radius:11px}
 
 /* ====== SITE NAV ====== */
 .skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0}
@@ -206,178 +210,159 @@ a.flow-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-col
     </div>
   </header>
 
-  <!-- ===== PROCESS FLOW ===== -->
+  <!-- ===== ACTIVITY MAP ===== -->
   <section class="sec" id="process">
     <h2 class="sh">Het architectuurproces</h2>
-    <p class="sec-intro">Twee fasen — <b>Analyse</b> om drivers en architectuurrichting vast te stellen, en <b>Development</b> om de minimale architectuur te vormen, bewijzen en plannen. Klik een stap aan voor de volledige beschrijving, werkproducten en rollen.</p>
-    <div class="flow-outer">
-      <div class="flow">
-        <!-- ANALYSE PHASE -->
-        <div class="flow-phase">
-          <div class="phase-header">
-            <span class="phase-label analyse">Analyse</span>
-            <span class="space-tag analyse-tag">Activity Space · Analyse</span>
-            <span class="space-tag comp-tag">Competency · Analyse</span>
-          </div>
-          <div class="phase-steps">
-            <div class="fc-wrap">
-              <a href="act/frame-the-drivers.html" class="flow-card a1" aria-label="Activiteit 1: Frame the Drivers">
-                <div class="fc-num">01 / 05</div>
-                <div class="fc-name">Frame the Drivers</div>
-                <div class="fc-alpha">Drivers → Identified<br>→ Prioritised → Quantified</div>
-                <div class="fc-wp">ASR</div>
-                <div class="fc-open">Details →</div>
-              </a>
-            </div>
-            <div class="fc-arrow">→</div>
-            <div class="fc-wrap">
-              <a href="act/envision-the-architecture.html" class="flow-card a2" aria-label="Activiteit 2: Envision the Architecture">
-                <div class="fc-num">02 / 05</div>
-                <div class="fc-name">Envision the Architecture</div>
-                <div class="fc-alpha">Architecture → Envisioned</div>
-                <div class="fc-wp">Architecture Vision</div>
-                <div class="fc-open">Details →</div>
-              </a>
-            </div>
-          </div>
-        </div>
+    <p class="sec-intro">Vijf activiteiten, geplaatst in de Essence kernel activity spaces. Klik een kaart aan voor de volledige beschrijving, werkproducten en rollen.</p>
 
-        <!-- PHASE DIVIDER -->
-        <div class="phase-divider" aria-hidden="true">
-          <div class="phase-divider-arrow">⟶</div>
-        </div>
+    <div class="amap">
 
-        <!-- DEVELOPMENT PHASE -->
-        <div class="flow-phase">
-          <div class="phase-header">
-            <span class="phase-label dev">Development</span>
-            <span class="space-tag analyse-tag" style="background:rgba(39,64,107,.1);color:var(--ent);border-color:rgba(39,64,107,.25)">Activity Space · Development</span>
-            <span class="space-tag comp-tag">Competency · Architecture</span>
+      <!-- ── CUSTOMER DOMEIN ── -->
+      <div class="amap-domain">
+        <div class="amap-dhdr cust">
+          <span class="amap-dname">Customer domein</span>
+          <span class="amap-dalphas">Opportunity · Stakeholders</span>
+        </div>
+        <div class="amap-body">
+          <div class="amap-sp">
+            <span class="amap-sp-n">AS 1–2</span>
+            <span class="amap-sp-name">Explore Possibilities · Understand Stakeholder Needs</span>
           </div>
-          <div class="phase-steps">
-            <div class="fc-wrap">
-              <a href="act/shape-the-minimum-architecture.html" class="flow-card a3" aria-label="Activiteit 3: Shape the Minimum Architecture">
-                <div class="fc-num">03 / 05</div>
-                <div class="fc-name">Shape the Minimum Architecture</div>
-                <div class="fc-alpha">Architecture → Outlined<br>Decisions → Framed → Decided</div>
-                <div class="fc-wp">Architecture Definition · ADRs</div>
-                <div class="fc-open">Details →</div>
-              </a>
+          <a href="act/identify-business-goals-and-drivers.html" class="act-row a-analyse">
+            <div class="ar-num">01</div>
+            <div class="ar-body">
+              <div class="ar-title">Identify Business Goals and Drivers</div>
+              <div class="ar-desc">Identificeer en kwantificeer de business goals en drivers; stel meetbare succescriteria vast in een discovery workshop met stakeholders.</div>
+              <div class="ar-meta">
+                <span class="ar-chip space">Activity Space · Analyse</span>
+                <span class="ar-chip comp">Competency · Analyse</span>
+                <span class="ar-chip alpha">Drivers → Quantified</span>
+              </div>
             </div>
-            <div class="fc-arrow">→</div>
-            <div class="fc-wrap">
-              <a href="act/prove-the-risky-parts.html" class="flow-card a4" aria-label="Activiteit 4: Prove the Risky Parts">
-                <div class="fc-num">04 / 05</div>
-                <div class="fc-name">Prove the Risky Parts</div>
-                <div class="fc-alpha">Architecture → Demonstrated<br>Decisions → Validated</div>
-                <div class="fc-wp">Review Records · ADRs</div>
-                <div class="fc-open">Details →</div>
-              </a>
+            <div class="ar-arrow">→</div>
+          </a>
+          <div class="amap-sp is-gap">
+            <span class="amap-sp-n">AS 3</span>
+            <div class="amap-sp-main">
+              <span class="amap-sp-name">Ensure Stakeholder Satisfaction</span><span class="amap-sp-badge">niet gedekt</span>
+              <span class="amap-sp-desc">Bevestig dat stakeholders tevreden zijn met wat is opgeleverd en dat de beloofde waarde daadwerkelijk is gerealiseerd.</span>
             </div>
-            <div class="fc-arrow">→</div>
-            <div class="fc-wrap">
-              <a href="act/plan-the-transition.html" class="flow-card a5" aria-label="Activiteit 5: Plan the Transition">
-                <div class="fc-num">05 / 05</div>
-                <div class="fc-name">Plan the Transition</div>
-                <div class="fc-alpha">Architecture → Usable</div>
-                <div class="fc-wp">Architecture Roadmap</div>
-                <div class="fc-open">Details →</div>
-              </a>
+          </div>
+          <div class="amap-sp is-gap">
+            <span class="amap-sp-n">AS 4</span>
+            <div class="amap-sp-main">
+              <span class="amap-sp-name">Use the System</span><span class="amap-sp-badge">niet gedekt</span>
+              <span class="amap-sp-desc">Het systeem is in productief gebruik; eindgebruikers werken ermee, feedback stroomt terug en adoptie wordt gemonitord.</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ===== PHASE DESCRIPTIONS ===== -->
-  <section class="sec" id="phases">
-    <h2 class="sh">De twee fasen</h2>
-    <p class="sec-intro">Elke fase heeft een eigen focus, activity space en competency-zwaartepunt.</p>
-    <div class="phase-cards">
-      <div class="phase-desc analyse-card">
-        <div class="ph-label">Activity Space · Analyse · Stappen 01–02</div>
-        <h3>Analyse — Begrijp vóórdat je ontwerpt</h3>
-        <p>In de Analyse-fase brengt de Enterprise Architect de zakelijke werkelijkheid scherp in beeld. Drivers worden geïdentificeerd, geprioriteerd en gekwantificeerd met meetbare succescriteria. De architectuurrichting wordt vastgelegd op één pagina, inclusief de principes en uitsluitingscriteria die verkeerde componentkeuzes voorkomen. Dit vormt de basis voor alle latere beslissingen en is de context die solutions van de enterprise erven.</p>
-      </div>
-      <div class="phase-desc dev-card">
-        <div class="ph-label">Activity Space · Development · Stappen 03–05</div>
-        <h3>Development — Minimaal, bewezen, geordend</h3>
-        <p>In de Development-fase wordt de architectuur gevormd, bewezen en gepland. Alleen de bouwstenen die nu nodig zijn worden gedefinieerd; significante beslissingen worden vastgelegd als ADRs. De risicovolste keuzes worden bewezen via PoC of leveranciersevaluatie. Vervolgens wordt een geordend transitieplan gemaakt: baseline naar doel in horizons, elk met een expliciete grens welke beslissingen in die fase definitief worden.</p>
-      </div>
-    </div>
-  </section>
+      <div class="amap-conn"><span class="amap-conn-lbl">↓ Solution domein</span></div>
 
-  <!-- ===== ACTIVITY LIST ===== -->
-  <section class="sec" id="activities">
-    <h2 class="sh">De vijf activiteiten</h2>
-    <p class="sec-intro">Klik een activiteit aan voor de volledige beschrijving, inclusief rollen per niveau, werkproducten en de alpha-toestanden die het beweegt.</p>
-    <div class="act-list">
-      <a href="act/frame-the-drivers.html" class="act-row a-analyse">
-        <div class="ar-num">01</div>
-        <div class="ar-body">
-          <div class="ar-title">Frame the Drivers</div>
-          <div class="ar-desc">Leg de architectureel significante drivers vast en kwantificeer ze; kom overeen over meetbare succescriteria. Discovery workshop met stakeholders.</div>
-          <div class="ar-meta">
-            <span class="ar-chip space">Activity Space · Analyse</span>
-            <span class="ar-chip comp">Competency · Analyse</span>
-            <span class="ar-chip alpha">Drivers → Quantified</span>
+      <!-- ── SOLUTION DOMEIN ── -->
+      <div class="amap-domain">
+        <div class="amap-dhdr sol">
+          <span class="amap-dname">Solution domein</span>
+          <span class="amap-dalphas">Requirements · System · Architecture · Architecture Decisions</span>
+        </div>
+        <div class="amap-body">
+
+          <div class="amap-sp">
+            <span class="amap-sp-n">AS 5</span>
+            <span class="amap-sp-name">Understand the Requirements</span>
+          </div>
+          <a href="act/envision-the-architecture.html" class="act-row a-analyse">
+            <div class="ar-num">02</div>
+            <div class="ar-body">
+              <div class="ar-title">Envision the Architecture</div>
+              <div class="ar-desc">De architect selecteert de architectureel significante requirements (ASR) uit de door de business analyst verzamelde requirements. De ASRs vormen de basis van de Architecture Vision: één pagina met doel, scope, principes en uitsluitingscriteria — vóór vendor-selectie.</div>
+              <div class="ar-meta">
+                <span class="ar-chip space">Activity Space · Analyse</span>
+                <span class="ar-chip comp">Competency · Analyse</span>
+                <span class="ar-chip alpha">Requirements → Bounded → Acceptable</span>
+              </div>
+            </div>
+            <div class="ar-arrow">→</div>
+          </a>
+
+          <div class="amap-sp">
+            <span class="amap-sp-n">AS 6</span>
+            <span class="amap-sp-name">Shape the System</span>
+          </div>
+          <a href="act/shape-the-minimum-architecture.html" class="act-row a-dev">
+            <div class="ar-num">03</div>
+            <div class="ar-body">
+              <div class="ar-title">Shape the Minimum Architecture</div>
+              <div class="ar-desc">Definieer alleen de bouwstenen die nu nodig zijn. De integratielaag is first-class. Identificeer onomkeerbare beslissingen: vendor lock-in, datamodel, integratie-API.</div>
+              <div class="ar-meta">
+                <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
+                <span class="ar-chip comp">Competency · Architecture</span>
+                <span class="ar-chip alpha">Architecture → Outlined · Decisions → Decided</span>
+              </div>
+            </div>
+            <div class="ar-arrow">→</div>
+          </a>
+
+          <div class="amap-sp is-gap">
+            <span class="amap-sp-n">AS 7</span>
+            <div class="amap-sp-main">
+              <span class="amap-sp-name">Implement the System</span><span class="amap-sp-badge">niet gedekt</span>
+              <span class="amap-sp-desc">Bouw, configureer en integreer de oplossingscomponenten conform de architectuur; dit is de realisatiefase.</span>
+            </div>
+          </div>
+
+          <div class="amap-sp">
+            <span class="amap-sp-n">AS 8</span>
+            <span class="amap-sp-name">Test the System</span>
+          </div>
+          <a href="act/prove-the-risky-parts.html" class="act-row a-dev">
+            <div class="ar-num">04</div>
+            <div class="ar-body">
+              <div class="ar-title">Prove the Risky Parts</div>
+              <div class="ar-desc">Bewijs de risicovolste keuzes via PoC, leveranciersevaluatie of sandbox-pilot. In COTS: toets de integratielaag en de falsifieerbare kwaliteitsattributen.</div>
+              <div class="ar-meta">
+                <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
+                <span class="ar-chip comp">Competency · Architecture</span>
+                <span class="ar-chip alpha">Architecture → Demonstrated · Decisions → Validated</span>
+              </div>
+            </div>
+            <div class="ar-arrow">→</div>
+          </a>
+
+          <div class="amap-sp">
+            <span class="amap-sp-n">AS 9</span>
+            <span class="amap-sp-name">Deploy the System</span>
+          </div>
+          <a href="act/plan-the-transition.html" class="act-row a-dev">
+            <div class="ar-num">05</div>
+            <div class="ar-body">
+              <div class="ar-title">Plan the Transition</div>
+              <div class="ar-desc">Identificeer de hiaten; orden de implementatiestap van baseline naar doel; detailleer alleen de volgende horizon. Elke horizon bevat een expliciete onomkeerbare grens.</div>
+              <div class="ar-meta">
+                <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
+                <span class="ar-chip comp">Competency · Architecture</span>
+                <span class="ar-chip alpha">Architecture → Usable</span>
+              </div>
+            </div>
+            <div class="ar-arrow">→</div>
+          </a>
+
+          <div class="amap-sp is-gap">
+            <span class="amap-sp-n">AS 10</span>
+            <div class="amap-sp-main">
+              <span class="amap-sp-name">Operate the System</span><span class="amap-sp-badge">niet gedekt</span>
+              <span class="amap-sp-desc">Houd het systeem operationeel in productie: monitoring, incidentafhandeling, onderhoud en continue verbetering.</span>
+            </div>
           </div>
         </div>
-        <div class="ar-arrow">→</div>
-      </a>
-      <a href="act/envision-the-architecture.html" class="act-row a-analyse">
-        <div class="ar-num">02</div>
-        <div class="ar-body">
-          <div class="ar-title">Envision the Architecture</div>
-          <div class="ar-desc">Kom het doel en de waarde overeen op één pagina; baken de scope af. Eerste deliverable zijn architectuurprincipes en uitsluitingscriteria — vóór vendor-selectie.</div>
-          <div class="ar-meta">
-            <span class="ar-chip space">Activity Space · Analyse</span>
-            <span class="ar-chip comp">Competency · Analyse</span>
-            <span class="ar-chip alpha">Architecture → Envisioned</span>
-          </div>
-        </div>
-        <div class="ar-arrow">→</div>
-      </a>
-      <a href="act/shape-the-minimum-architecture.html" class="act-row a-dev">
-        <div class="ar-num">03</div>
-        <div class="ar-body">
-          <div class="ar-title">Shape the Minimum Architecture</div>
-          <div class="ar-desc">Definieer alleen de bouwstenen die nu nodig zijn. De integratielaag is first-class. Identificeer onomkeerbare beslissingen: vendor lock-in, datamodel, integratie-API.</div>
-          <div class="ar-meta">
-            <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
-            <span class="ar-chip comp">Competency · Architecture</span>
-            <span class="ar-chip alpha">Architecture → Outlined · Decisions → Decided</span>
-          </div>
-        </div>
-        <div class="ar-arrow">→</div>
-      </a>
-      <a href="act/prove-the-risky-parts.html" class="act-row a-dev">
-        <div class="ar-num">04</div>
-        <div class="ar-body">
-          <div class="ar-title">Prove the Risky Parts</div>
-          <div class="ar-desc">Bewijs de risicovolste keuzes via PoC, leveranciersevaluatie of sandbox-pilot. In COTS: toets de integratielaag en de falsifieerbare kwaliteitsattributen.</div>
-          <div class="ar-meta">
-            <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
-            <span class="ar-chip comp">Competency · Architecture</span>
-            <span class="ar-chip alpha">Architecture → Demonstrated · Decisions → Validated</span>
-          </div>
-        </div>
-        <div class="ar-arrow">→</div>
-      </a>
-      <a href="act/plan-the-transition.html" class="act-row a-dev">
-        <div class="ar-num">05</div>
-        <div class="ar-body">
-          <div class="ar-title">Plan the Transition</div>
-          <div class="ar-desc">Identificeer de hiaten; orden de implementatiestap van baseline naar doel; detailleer alleen de volgende horizon. Elke horizon bevat een expliciete onomkeerbare grens.</div>
-          <div class="ar-meta">
-            <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
-            <span class="ar-chip comp">Competency · Architecture</span>
-            <span class="ar-chip alpha">Architecture → Usable</span>
-          </div>
-        </div>
-        <div class="ar-arrow">→</div>
-      </a>
+      </div>
+
+      <div class="amap-legend">
+        <div class="amap-li"><div class="amap-li-dot analyse"></div> Analyse-fase (01–02)</div>
+        <div class="amap-li"><div class="amap-li-dot dev"></div> Development-fase (03–05)</div>
+        <div class="amap-li"><div class="amap-li-dot gap"></div> Activity space niet gedekt in deze practiceset</div>
+      </div>
     </div>
   </section>
 
