@@ -381,36 +381,22 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
 
   <!-- ===== ROLES ===== -->
   <section class="sec" id="roles">
-    <h2 class="sh">Rollen</h2>
-    <p class="sec-intro">Elke activiteit kan op twee niveaus worden uitgevoerd. De Enterprise Architect werkt op landgoedniveau; de Architecture Owner op solution-niveau. Op de individuele activiteitspagina's staat per activiteit uitgewerkt wie welke rol op welk niveau speelt.</p>
-    <div class="role-grid">
+    <h2 class="sh">Rol</h2>
+    <p class="sec-intro">De Enterprise Architect is eigenaar van het volledige architectuurproces op enterprise-scope. Op de activiteitspagina's staat uitgewerkt hoe de Enterprise Architect samenwerkt met de Architecture Owners van de afzonderlijke solutions.</p>
+    <div class="role-grid" style="grid-template-columns:1fr;max-width:600px">
       <div class="role-card rc-ent">
         <div class="rc-head">
           <span class="rc-level">Enterprise niveau · C4 Level 1–2</span>
           <h3>Enterprise Architect</h3>
         </div>
         <div class="rc-body">
-          <p>Beheert de architectuur op ondernemingsniveau. Leidt het volledige MVA-proces op enterprise-scope: stelt enterprise-brede Architectural Drivers (ASR) vast, maakt de enterprise Architecture Vision, definieert de reference architecture en de Paved Roads. Werkt met de CIO, business-owners en de Governance Forum. Uitkomsten worden de context die solutions erven.</p>
+          <p>Beheert de architectuur op ondernemingsniveau. Leidt het volledige MVA-proces op enterprise-scope: stelt enterprise-brede Architectural Drivers (ASR) vast, maakt de enterprise Architecture Vision, definieert de reference architecture en bouwt de Paved Road. Werkt met de CIO, business-owners en het Governance Forum. De uitkomsten worden de guardrails en context die elke solution erft.</p>
           <div class="rc-comps">
             <span class="rc-comp">Architecture</span>
             <span class="rc-comp">Leadership</span>
             <span class="rc-comp">Analyse</span>
           </div>
-          <div class="rc-acts"><b>Primair eigenaar van:</b> ASR · Architecture Vision · Paved Roads · Architecture Definition (enterprise) · Roadmap (enterprise)</div>
-        </div>
-      </div>
-      <div class="role-card rc-sol">
-        <div class="rc-head">
-          <span class="rc-level">Solution niveau · C4 Level 2–3</span>
-          <h3>Architecture Owner</h3>
-        </div>
-        <div class="rc-body">
-          <p>Voert dezelfde vijf activiteiten uit op solution-niveau, <em>binnen</em> de door de Enterprise Architect geleverde context. Verfijnt enterprise-drivers naar solution-specifieke kwaliteitsattributen, architectureert de solution, bewijst de risicovolste integratiekeuzes en maakt de solution-roadmap. Werkt nauw samen met de EA en rapporteert afwijkingen via ADRs en Review Records.</p>
-          <div class="rc-comps">
-            <span class="rc-comp">Architecture</span>
-            <span class="rc-comp">Stakeholder Rep.</span>
-          </div>
-          <div class="rc-acts"><b>Primair eigenaar van:</b> Architecture Definition (solution) · ADRs · Review Records · Roadmap (solution)</div>
+          <div class="rc-acts"><b>Primair eigenaar van:</b> ASR · Architecture Vision · Paved Roads · Architecture Definition (enterprise) · Roadmap (enterprise) · enterprise ADRs</div>
         </div>
       </div>
     </div>
