@@ -127,6 +127,11 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
 .amap-li-dot.dev{background:var(--ent)}
 .amap-li-dot.gap{background:rgba(177,73,46,.15);border:1px solid rgba(177,73,46,.3)}
 .amap .act-row{border-radius:11px}
+.ar-flow{display:flex;flex-direction:column;gap:5px;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.ar-flow-row{display:flex;align-items:flex-start;flex-wrap:wrap;gap:5px}
+.ar-flow-lbl{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;flex-shrink:0;padding-top:3px;width:76px;color:var(--ink-soft)}
+.ar-chip.wp-in{background:rgba(28,26,22,.06);color:var(--ink-soft);border:1px solid var(--line)}
+.ar-chip.wp-out{background:rgba(187,122,22,.1);color:var(--product);border:1px solid rgba(187,122,22,.3)}
 
 /* ====== SITE NAV ====== */
 .skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0}
@@ -238,6 +243,16 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
                 <span class="ar-chip comp">Competency · Analyse</span>
                 <span class="ar-chip alpha">Drivers → Quantified</span>
               </div>
+              <div class="ar-flow">
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl">Verwerkt</span>
+                  <span class="ar-chip wp-in">Statement of Architecture Work</span>
+                </div>
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl">Produceert</span>
+                  <span class="ar-chip wp-out">Architectural Drivers (ASRs)</span>
+                </div>
+              </div>
             </div>
             <div class="ar-arrow">→</div>
           </a>
@@ -282,6 +297,16 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
                 <span class="ar-chip comp">Competency · Analyse</span>
                 <span class="ar-chip alpha">Requirements → Bounded → Acceptable</span>
               </div>
+              <div class="ar-flow">
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl">Verwerkt</span>
+                  <span class="ar-chip wp-in">Architectural Drivers (ASRs)</span>
+                </div>
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl">Produceert</span>
+                  <span class="ar-chip wp-out">Architecture Vision</span>
+                </div>
+              </div>
             </div>
             <div class="ar-arrow">→</div>
           </a>
@@ -300,6 +325,17 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
                 <span class="ar-chip comp">Competency · Architecture</span>
                 <span class="ar-chip alpha">Architecture → Outlined · Decisions → Decided</span>
               </div>
+              <div class="ar-flow">
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl">Verwerkt</span>
+                  <span class="ar-chip wp-in">Architecture Vision</span>
+                </div>
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl">Produceert</span>
+                  <span class="ar-chip wp-out">Architecture Definition (enterprise)</span>
+                  <span class="ar-chip wp-out">Architecture Decisions (ADRs)</span>
+                </div>
+              </div>
             </div>
             <div class="ar-arrow">→</div>
           </a>
@@ -312,6 +348,16 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
                 <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
                 <span class="ar-chip comp">Competency · Architecture</span>
                 <span class="ar-chip alpha">Paved Road → Seeded → Established</span>
+              </div>
+              <div class="ar-flow">
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl">Verwerkt</span>
+                  <span class="ar-chip wp-in">Architecture Definition</span>
+                </div>
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl">Produceert</span>
+                  <span class="ar-chip wp-out">Paved Road</span>
+                </div>
               </div>
             </div>
             <div class="ar-arrow">→</div>
@@ -347,6 +393,17 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
                 <span class="ar-chip comp">Competency · Architecture</span>
                 <span class="ar-chip alpha">Architecture → Usable</span>
               </div>
+              <div class="ar-flow">
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl">Verwerkt</span>
+                  <span class="ar-chip wp-in">Architecture Definition</span>
+                  <span class="ar-chip wp-in">Paved Road</span>
+                </div>
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl">Produceert</span>
+                  <span class="ar-chip wp-out">Architecture Roadmap & Transition States</span>
+                </div>
+              </div>
             </div>
             <div class="ar-arrow">→</div>
           </a>
@@ -364,6 +421,17 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
                 <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
                 <span class="ar-chip comp">Competency · Architecture</span>
                 <span class="ar-chip alpha">Architecture → Established → Evolving · Drivers → Sustained</span>
+              </div>
+              <div class="ar-flow">
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl">Verwerkt</span>
+                  <span class="ar-chip wp-in">Architectural Decisions (ADRs)</span>
+                  <span class="ar-chip wp-in">Paved Road-adoptie</span>
+                </div>
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl">Produceert</span>
+                  <span class="ar-chip wp-out">Paved Road (bijgewerkt)</span>
+                </div>
               </div>
             </div>
             <div class="ar-arrow">→</div>
@@ -396,7 +464,7 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
             <span class="rc-comp">Leadership</span>
             <span class="rc-comp">Analyse</span>
           </div>
-          <div class="rc-acts"><b>Primair eigenaar van:</b> ASR · Architecture Vision · Paved Roads · Architecture Definition (enterprise) · Roadmap (enterprise) · enterprise ADRs</div>
+          <div class="rc-acts"><b>Primair eigenaar van:</b> ASR · Architecture Vision · Paved Road · Architecture Definition (enterprise) · Roadmap (enterprise) · enterprise ADRs</div>
         </div>
       </div>
     </div>
