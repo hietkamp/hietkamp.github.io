@@ -465,3 +465,4 @@ git add -A && git commit -m "…" && git push
 - Rewrite the JS card-deck pattern — extend it.
 - Edit the workbook by hand — change `build_xlsx.py` and regenerate.
 - Reintroduce "Software System" as a separate alpha — it's `System` now and extends Software System.
+- **Commit or push without explicit user instruction.** Make the changes, show what was done, then wait for the user to say "commit" or "push".
