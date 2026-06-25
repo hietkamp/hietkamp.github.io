@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Essence Way of Working — Home</title>
+<title>Een Essence manier van werken — Start hier</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +13,8 @@
     --line:#d8d0bf; --card:#fbf9f3;
     --alpha:#0f6e63; --product:#bb7a16; --activity:#1f5fa8; --comp:#4b3f9e; --role:#9c3f76; --pattern:#b1492e;
     --prac:#d44f0e;
-    --bs:#0e7490; --sb:#b21e63; --mva:#0f6e63; --mvg:#4b3f9e; --kernel:#27406b; --training:#d44f0e;
+    --cust:#1c7a44; --sol:#b88400; --end:#1a5698;
+    --bs:#0e7490; --sb:#b21e63; --mva:#0f6e63; --mvg:#4b3f9e; --kernel:#27406b;
     --shadow:0 1px 0 rgba(0,0,0,.03),0 16px 38px -16px rgba(28,26,22,.42);
     scroll-behavior:smooth;
   }
@@ -35,40 +36,77 @@
   .toolbar .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
   a.f,button.f{font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;border:1px solid var(--ink);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:30px;transition:.15s;text-decoration:none}
   a.f:hover,button.f:hover{background:var(--ink);color:var(--paper)}
+  button.print{margin-left:auto;border-style:dashed}
   section{margin-top:46px;scroll-margin-top:76px}
   .sec-head{display:flex;align-items:center;gap:12px;border-bottom:2px solid var(--prac);padding-bottom:10px;margin-bottom:12px}
   .sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.7rem;margin:0}
   .sec-head .num{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--prac);border:1px solid var(--prac);border-radius:30px;padding:3px 9px}
-  .prose{max-width:80ch;color:var(--ink-soft);font-size:1rem;margin:0 0 16px}
+  .prose{max-width:80ch;color:var(--ink-soft);font-size:1rem}
   .prose b{color:var(--ink)}
-  .deck-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:17px;margin-top:8px}
-  a.deck{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden;transition:transform .12s,box-shadow .12s}
-  a.deck:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(0,0,0,.04),0 22px 44px -20px rgba(28,26,22,.5),0 0 0 2px rgba(212,79,14,.18)}
-  a.deck .top{height:7px}
-  a.deck .body{padding:15px 17px 16px;display:flex;flex-direction:column;flex:1}
-  a.deck .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:5px}
-  a.deck h4{font-family:"Fraunces",serif;font-weight:600;font-size:1.28rem;margin:0 0 5px;line-height:1.08}
-  a.deck .one{font-size:.9rem;color:var(--ink-soft);margin:0 0 11px}
-  a.deck .kv{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-soft);border-top:1px dotted var(--line);padding-top:8px;margin-top:auto}
-  a.deck .kv b{color:var(--ink);font-weight:600}
-  a.deck .open{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-top:9px;font-weight:600}
-  /* stack */
-  .stack{display:flex;flex-direction:column;gap:9px;margin-top:8px}
-  .layer{border-radius:11px;padding:14px 18px;color:#fff;box-shadow:var(--shadow);position:relative}
-  .layer h4{font-family:"Fraunces",serif;font-size:1.2rem;margin:0 0 2px;font-weight:600}
-  .layer p{margin:0;font-size:.86rem;opacity:.92}
-  .layer .lbl{position:absolute;top:14px;right:16px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
-  .twolayer{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-  @media(max-width:640px){.twolayer{grid-template-columns:1fr}}
-  .layer.kernelbase{background:var(--kernel)} .layer.l-mva{background:var(--mva)} .layer.l-mvg{background:var(--mvg)}
-  .layer.l-bs{background:var(--bs)} .layer.l-sb{background:var(--sb)}
-  /* download panel */
   .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin-top:18px;border-left:4px solid var(--prac)}
   .panel h3{font-family:"Fraunces",serif;margin:0 0 6px;font-size:1.18rem}
-  .panel p{margin:0 0 12px;color:var(--ink-soft);font-size:.92rem;max-width:86ch}
-  a.dl{display:inline-flex;align-items:center;gap:7px;font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;border:1px solid var(--ink);background:var(--card);color:var(--ink);padding:8px 15px;border-radius:30px;transition:.15s;text-decoration:none;font-weight:600}
-  a.dl:hover{background:var(--ink);color:var(--paper)}
-  footer{margin-top:56px;border-top:2px solid var(--ink);padding-top:16px;font-size:.83rem;color:var(--ink-soft);max-width:90ch}
+  .panel p{margin:0 0 8px;color:var(--ink-soft);font-size:.92rem;max-width:86ch}
+  .panel p:last-child{margin-bottom:0}
+  /* deck cards (background section) */
+  .deck-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:8px}
+  a.deck{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden;transition:transform .12s,box-shadow .12s}
+  a.deck:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(0,0,0,.04),0 22px 44px -20px rgba(28,26,22,.5),0 0 0 2px rgba(212,79,14,.18)}
+  a.deck .top{height:6px}
+  a.deck .body{padding:13px 15px 14px;display:flex;flex-direction:column;flex:1}
+  a.deck .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:4px}
+  a.deck h4{font-family:"Fraunces",serif;font-weight:600;font-size:1.1rem;margin:0 0 4px;line-height:1.08}
+  a.deck .one{font-size:.84rem;color:var(--ink-soft);margin:0 0 10px}
+  a.deck .open{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-top:auto;font-weight:600}
+
+  /* ===== PATH CHOOSER ===== */
+  .path-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:14px}
+  a.path-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:16px;overflow:hidden;border:2px solid;background:var(--card);padding:26px 28px 24px;transition:transform .14s,box-shadow .14s;box-shadow:var(--shadow)}
+  a.path-card:hover{transform:translateY(-5px);box-shadow:0 2px 0 rgba(0,0,0,.04),0 28px 56px -22px rgba(28,26,22,.52)}
+  a.path-card.ent-card{border-color:var(--kernel)}
+  a.path-card.sol-card{border-color:var(--mva)}
+  .pc-level{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px;opacity:.85}
+  .ent-card .pc-level{color:var(--kernel)}
+  .sol-card .pc-level{color:var(--mva)}
+  .pc-role{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.04em;margin-bottom:14px}
+  .ent-card .pc-role{color:var(--kernel)}
+  .sol-card .pc-role{color:var(--mva)}
+  a.path-card h3{font-family:"Fraunces",serif;font-weight:800;font-size:1.85rem;margin:0 0 10px;line-height:1.02;letter-spacing:-.01em}
+  .ent-card h3{color:var(--kernel)}
+  .sol-card h3{color:var(--mva)}
+  .pc-desc{font-size:.9rem;color:var(--ink-soft);margin:0 0 16px;line-height:1.55}
+  .pc-bullets{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.03em;color:var(--ink-soft);line-height:2;margin-bottom:20px;border-top:1px dashed var(--line);padding-top:12px}
+  .pc-bullets b{color:var(--ink);font-weight:600}
+  .pc-cta{margin-top:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:10px 18px;border-radius:30px;color:#fff;display:inline-block;align-self:flex-start}
+  .ent-card .pc-cta{background:var(--kernel)}
+  .sol-card .pc-cta{background:var(--mva)}
+  .path-note{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);margin-top:12px;letter-spacing:.02em}
+
+  /* ===== ACTIVITY FLOW ===== */
+  .flow-wrap{max-width:760px;margin-top:8px}
+  .domain-block{margin-top:20px}
+  .domain-hdr{padding:11px 16px;border-radius:11px 11px 0 0;color:#fff;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;display:flex;align-items:center;justify-content:space-between}
+  .domain-hdr.dh-cust{background:#156236}
+  .domain-hdr.dh-sol{background:#7a5800}
+  .domain-hdr .dh-tag{opacity:.75;font-weight:400;font-size:9.5px}
+  .act-flow{border:1px solid var(--line);border-top:none;border-radius:0 0 12px 12px;overflow:hidden}
+  a.act-node{display:grid;grid-template-columns:52px 1fr;background:var(--card);text-decoration:none;color:inherit;transition:background .1s;border-top:1px solid var(--line)}
+  a.act-node:first-child{border-top:none}
+  a.act-node:hover{background:var(--paper-2)}
+  .an-num{display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-size:1.4rem;font-weight:700;color:#fff;flex-shrink:0}
+  .an-num.n-cust{background:#156236}
+  .an-num.n-sol{background:#7a5800}
+  .an-body{padding:14px 16px 13px}
+  .an-title{font-family:"Fraunces",serif;font-weight:600;font-size:1.1rem;margin:0 0 5px;line-height:1.1}
+  .an-desc{font-size:.875rem;color:var(--ink-soft);margin:0 0 8px;line-height:1.52}
+  .an-alpha{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--alpha);letter-spacing:.02em;line-height:1.6}
+  .an-open{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:5px;display:block}
+  .n-cust ~ .an-body .an-open,.dh-cust ~ .act-flow .an-open-c{color:#156236}
+  .n-sol ~ .an-body .an-open,.dh-sol ~ .act-flow .an-open-s{color:#7a5800}
+  .an-open.c{color:#156236}
+  .an-open.s{color:#7a5800}
+  .domain-sep{display:flex;align-items:center;gap:14px;padding:18px 0;max-width:760px}
+  .ds-line{flex:1;height:1px;background:var(--line)}
+  .ds-text{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
 
   /* ===== MOBILE ===== */
   @media(max-width:600px){
@@ -76,21 +114,15 @@
     .toolbar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:12px}
     .toolbar::-webkit-scrollbar{display:none}
     button.print{display:none}
-    .plug{grid-template-columns:1fr}
     h1{font-size:clamp(1.9rem,8vw,3rem)}
-    .cols3{grid-template-columns:1fr}
-    .run{grid-template-columns:1fr}
+    .path-grid{grid-template-columns:1fr}
+    a.path-card h3{font-size:1.5rem}
+    .flow-wrap{max-width:none}
+    .deck-grid{grid-template-columns:1fr}
+    .domain-sep{padding:12px 0}
   }
-  @media print{body::before{display:none}.toolbar{display:none}.wrap{max-width:none;padding:0}header.hero{padding-top:0}a.deck,.layer{box-shadow:none;border:1px solid #bbb}section{margin-top:24px}@page{margin:12mm}}
+  @media print{body::before{display:none}.toolbar{display:none}.wrap{max-width:none;padding:0}header.hero{padding-top:0}a.path-card,a.act-node,a.deck{box-shadow:none;border:1px solid #bbb}section{margin-top:24px}@page{margin:12mm}}
 
-  
-  
-  
-  
-  
-  
-  
-  
   /* ===== SITE NAV ===== */
   .skip-link{position:absolute;top:-100%;left:0;z-index:999;padding:10px 18px;background:#1c1a16;color:#f3efe6;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 8px 0;outline:none}
   .skip-link:focus-visible{top:0;outline:3px solid #f3efe6;outline-offset:2px}
@@ -109,7 +141,6 @@
   .drop li a:hover,.drop li a:focus{background:var(--paper-2,#ece6d8);color:var(--ink,#1c1a16)}
   .drop li.active a{color:var(--ink,#1c1a16);font-weight:600}
   .drop-label{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5a5040;padding:6px 10px 2px;display:block}
-  /* search */
   .site-search{position:relative;margin-left:8px}
   .search-form{display:flex;align-items:center;position:relative}
   .search-input{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.02em;border:1px solid var(--line,#d8d0bf);background:var(--card,#fbf9f3);border-radius:20px;padding:6px 14px 6px 32px;width:160px;color:var(--ink,#1c1a16);transition:width .2s,border-color .2s;outline:none;min-height:25px}
@@ -132,11 +163,9 @@
   .search-see-all a:hover,.search-see-all a:focus{background:var(--paper-2,#ece6d8)}
   .toolbar{top:52px !important}
   section{scroll-margin-top:132px !important}
-  /* WCAG 2.4.11 focus appearance */
   :focus-visible{outline:3px solid #d44f0e;outline-offset:2px}
   a:focus-visible,button:focus-visible{outline:3px solid #d44f0e;outline-offset:3px;border-radius:4px}
-  a.deck:focus-visible,a.page-link:focus-visible{outline:3px solid #d44f0e;outline-offset:4px;border-radius:14px}
-  a.dl:focus-visible{outline:3px solid #d44f0e;outline-offset:4px;border-radius:30px}
+  a.deck:focus-visible,a.path-card:focus-visible,a.act-node:focus-visible{outline:3px solid #d44f0e;outline-offset:4px;border-radius:14px}
   a.f:focus-visible,button.f:focus-visible{outline:3px solid #d44f0e;outline-offset:3px}
   .site-nav-list a:focus-visible,.site-nav-list button:focus-visible,.site-nav-logo:focus-visible{outline:3px solid #d44f0e;outline-offset:2px;border-radius:4px}
   .drop a:focus-visible{outline:3px solid #d44f0e;outline-offset:2px}
@@ -153,7 +182,6 @@
   .site-nav-gh:hover{color:var(--ink,#1c1a16);background:var(--paper-2,#ece6d8)}
   .site-nav-gh svg{fill:currentColor;display:block}
   .site-nav-gh:focus-visible{outline:3px solid #d44f0e;outline-offset:2px;border-radius:6px}
-  /* contribute strip */
   .site-contribute{background:var(--ink,#1c1a16);color:#ddd8ce;padding:22px 0;margin-top:32px}
   .site-contribute-inner{max-width:1300px;margin:0 auto;padding:0 26px;display:flex;align-items:flex-start;gap:14px;font-size:.84rem;line-height:1.55}
   .site-contribute strong{color:#f3efe6}
@@ -162,7 +190,6 @@
   .site-contribute a:focus-visible{outline:3px solid #f3efe6;outline-offset:2px;border-radius:2px}
   .site-contribute-icon{flex-shrink:0;fill:#ddd8ce;margin-top:2px}
   @media(max-width:600px){.site-contribute-inner{flex-direction:column;gap:10px}}
-    /* ===== HAMBURGERMENU ===== */
   .site-nav-toggle{display:none;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:none;background:transparent;cursor:pointer;border-radius:6px;flex-shrink:0;color:var(--ink,#1c1a16);margin-left:2px}
   .site-nav-toggle:hover{background:var(--paper-2,#ece6d8)}
   .site-nav-toggle:focus-visible{outline:3px solid #d44f0e;outline-offset:2px;border-radius:6px}
@@ -187,7 +214,6 @@
     .site-search{display:none}
   }
   @media print{.site-nav,.skip-link,.site-contribute{display:none}}
-
 </style>
 </head>
 <body>
@@ -202,7 +228,6 @@
           <button aria-haspopup="true" aria-expanded="false" aria-controls="practices-menu">Practices <span aria-hidden="true">&#9662;</span></button>
           <ul class="drop" id="practices-menu">
             <span class="drop-label" aria-hidden="true">Twee practices</span>
-
             <li><a href="mva-essence-practice.html">Min. Viable Architecture</a></li>
             <li><a href="mvg-essence-practice.html">Min. Viable Governance</a></li>
           </ul>
@@ -213,7 +238,7 @@
     <button class="site-nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="site-nav-menu">
       <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </button>
-        <div class="site-search" role="search">
+    <div class="site-search" role="search">
       <form class="search-form" action="search.html" method="get" aria-label="Zoeken op de site">
         <span class="search-icon" aria-hidden="true">
           <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
@@ -240,127 +265,127 @@
     </a>
   </div>
 </header>
+
 <div class="wrap" id="main-content">
   <header class="hero">
-    <div class="kicker">Essence Way of Working · Home</div>
-    <h1>Een complete manier van werken,<br><em>samengesteld met Essence</em></h1>
-    <p class="lede">Eén kernel van universele dingen om bij te houden, vier samengestelde practices die ze bewegen. Begin met de introductie, verken de kernel, werk dan elke practice door in de logische volgorde hieronder.</p>
-    <div class="pillars"><span>OMG / SEMAT Essence</span><span>1 kernel + 4 practices</span><span>Customer · Solution · Endeavor</span><span>voortgang = alpha-toestanden</span></div>
+    <div class="kicker">Begin hier · enterprise of solution architectuur</div>
+    <h1>Architectuur maken<br><em>— kies je startpunt</em></h1>
+    <p class="lede">Vijf activiteiten, twee niveaus. De Enterprise Architect werkt op landgoedniveau en levert context die elke solution erft. De Architecture Owner architectureert één solution binnen die guardrails. Beiden volgen hetzelfde proces.</p>
+    <div class="pillars">
+      <span>Enterprise Architect · C4 1–2</span>
+      <span>Architecture Owner · C4 2–3</span>
+      <span>5 activiteiten</span>
+      <span>Customer → Solution</span>
+      <span>MVA · MVG</span>
+    </div>
   </header>
 
-  <nav class="toolbar" aria-label="Ga naar">
+  <nav class="toolbar" aria-label="Spring naar">
     <span class="lbl">Ga naar</span>
-    <a class="f" href="#start">Begin hier</a>
-    <a class="f" href="#practices">Practices</a>
-    <a class="f" href="#compose">Hoe ze samenstellen</a>
-    <a class="f" href="#workbook">Werkboek</a>
+    <a class="f" href="#start">Kies je startpunt</a>
+    <a class="f" href="#governance">Governance</a>
+    <a class="f" href="#achtergrond">Achtergrond</a>
+    <button class="print f" onclick="window.print()">⎙ Afdrukken</button>
   </nav>
 
-  <!-- START HERE -->
-  <section id="start">
-    <div class="sec-head"><span class="num">01</span><h2>Begin hier</h2></div>
-    <p class="prose">Nieuw bij Essence? Lees eerst de introductie, blader dan door het kernelnaslagwerk om te begrijpen wat de alphas zijn en hoe toestandsprogressies werken.</p>
-    <div class="deck-grid">
-      <a class="deck" href="essence-introduction.html">
-        <div class="top" style="background:var(--prac)"></div>
-        <div class="body">
-          <div class="tag" style="color:var(--prac)">Introductie</div>
-          <h4>Een Essence manier van werken</h4>
-          <p class="one">De ingang — wat Essence is, de zes elementtypen, de kernel, hoe practices samenstellen, en de logische volgorde waarin ze de alphas bewegen.</p>
-          <div class="kv">Dekt&nbsp;→&nbsp;<b>kernel + alle twee practices</b></div>
-          <div class="open" style="color:var(--prac)">Open introductie →</div>
-        </div>
-      </a>
-      <a class="deck" href="essence-kernel.html">
-        <div class="top" style="background:var(--kernel)"></div>
-        <div class="body">
-          <div class="tag" style="color:var(--kernel)">Fundament</div>
-          <h4>De Essence Kernel</h4>
-          <p class="one">7 alphas, 15 activity spaces, 6 competencies — het universele geraamte dat elk software-initiatief deelt, over drie aandachtsgebieden.</p>
-          <div class="kv">Biedt&nbsp;→&nbsp;<b>de alphas die elke practice vooruitbrengt</b></div>
-          <div class="open" style="color:var(--kernel)">Open het kerneldek →</div>
-        </div>
-      </a>
-      <a class="deck" href="essence-training.html">
-        <div class="top" style="background:var(--training)"></div>
-        <div class="body">
-          <div class="tag" style="color:var(--training)">Training</div>
-          <h4>Essence — Training</h4>
-          <p class="one">Een volledige training in de kernel, de twee practices en het beoordelingswerkboek — hoe ze samen te gebruiken om de alphas te bewegen.</p>
-          <div class="kv">Formaat&nbsp;→&nbsp;<b>6 secties · naslagpagina</b></div>
-          <div class="open" style="color:var(--training)">Open training →</div>
-        </div>
-      </a>
-    </div>
-  </section>
+  <main>
 
-  <!-- PRACTICES -->
-  <section id="practices">
-    <div class="sec-head"><span class="num">02</span><h2>De twee practices</h2></div>
-    <p class="prose">Elke practice is een samengestelde eenheid die aansluit op de kernel en specifieke alphas vooruitbrengt. Voer ze uit in de onderstaande volgorde — ze vormen een lus die nestelt op elk schaalniveau.</p>
-    <div class="deck-grid">
-      <a class="deck" href="mva-essence-practice.html">
-        <div class="top" style="background:var(--mva)"></div>
-        <div class="body">
-          <div class="tag" style="color:var(--mva)">Practice 1 · Architectuur</div>
-          <h4>Minimum Viable Architecture</h4>
-          <p class="one">Architectureer het minimum, just in time, om significante risico's te elimineren en levering te sturen. Beslissingen boven documenten — vormt de Solution-alpha.</p>
-          <div class="kv">Brengt vooruit&nbsp;→&nbsp;<b>Architecture · System</b></div>
-          <div class="open" style="color:var(--mva)">Open practice →</div>
-        </div>
-      </a>
-      <a class="deck" href="mvg-essence-practice.html">
-        <div class="top" style="background:var(--mvg)"></div>
-        <div class="body">
-          <div class="tag" style="color:var(--mvg)">Practice 2 · Governance</div>
-          <h4>Minimum Viable Governance</h4>
-          <p class="one">Bestuur uitkomsten en guardrails, geen gates. Beslis op het laatste verantwoorde moment, zo dicht bij het werk als mogelijk.</p>
-          <div class="kv">Brengt vooruit&nbsp;→&nbsp;<b>Endeavor · Way of Working</b></div>
-          <div class="open" style="color:var(--mvg)">Open practice →</div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- HOW THEY COMPOSE -->
-  <section id="compose">
-    <div class="sec-head"><span class="num">03</span><h2>Hoe ze samenstellen</h2></div>
-    <p class="prose">De twee practices stapelen bovenop de kernel. Voer ze uit in een logische volgorde — ze vormen een lus die nestelt op elk schaalniveau van enterprise tot team.</p>
-    <div class="stack">
-      <div class="twolayer">
-        <div class="layer l-mva">
-          <span class="lbl">Practice 1</span>
-          <h4>Min. Viable Architecture</h4>
-          <p>Architectureer net genoeg, just in time</p>
-        </div>
-        <div class="layer l-mvg">
-          <span class="lbl">Practice 2</span>
-          <h4>Min. Viable Governance</h4>
-          <p>Bewaak uitkomsten, geen gates</p>
-        </div>
+    <!-- ===== 1. PATH CHOOSER ===== -->
+    <section id="start">
+      <div class="sec-head"><span class="num">01</span><h2>Kies je startpunt</h2></div>
+      <p class="prose">Bepaal eerst je niveau: werk je op landgoedniveau, of architectureer je één solution? Je kunt ook beide openen — de enterprise-architectuur levert de context die de solution erft.</p>
+      <div class="path-grid">
+        <a class="path-card ent-card" href="wow-enterprise-architecture.html">
+          <div class="pc-level">Enterprise niveau · C4 Level 1–2</div>
+          <div class="pc-role">Rol → Enterprise Architect</div>
+          <h3>Enterprise Architectuur</h3>
+          <p class="pc-desc">Stel enterprise-brede drivers vast, maak de architectuurvisie, definieer de reference architecture en de paved road. Je uitkomsten worden de guardrails die elke solution erft.</p>
+          <div class="pc-bullets">
+            <b>Stakeholders</b> → CIO · business-owners · Governance Forum<br>
+            <b>Output</b> → ASR · Architecture Vision · Paved Road · Roadmap<br>
+            <b>Geeft door aan</b> → elke solution als geërfde context
+          </div>
+          <span class="pc-cta">Open Enterprise Architectuur →</span>
+        </a>
+        <a class="path-card sol-card" href="wow-solution-architecture.html">
+          <div class="pc-level">Solution niveau · C4 Level 2–3</div>
+          <div class="pc-role">Rol → Architecture Owner</div>
+          <h3>Solution Architectuur</h3>
+          <p class="pc-desc">Architectureer één solution binnen de enterprise-guardrails. Verfijn drivers naar solution-scope, selecteer COTS-componenten, bewijs de integratielaag en maak de solution-roadmap.</p>
+          <div class="pc-bullets">
+            <b>Stakeholders</b> → Product Owner · team · solution-stakeholders<br>
+            <b>Output</b> → Vision · Architecture Definition · ADRs · Roadmap<br>
+            <b>Rapporteert terug aan</b> → Enterprise Architect via ADRs
+          </div>
+          <span class="pc-cta">Open Solution Architectuur →</span>
+        </a>
       </div>
-      <div class="layer kernelbase">
-        <span class="lbl">Fundament</span>
-        <h4>De Essence Kernel</h4>
-        <p>7 alphas · 15 activity spaces · 6 competencies — altijd eronder</p>
+      <p class="path-note">Nog geen enterprise context? Begin met Enterprise Architectuur. Werkt de enterprise al en start je een solution-initiatief? Open dan Solution Architectuur.</p>
+    </section>
+
+    <!-- ===== 2. GOVERNANCE ===== -->
+    <section id="governance">
+      <div class="sec-head"><span class="num">02</span><h2>Governance loopt door het hele proces</h2></div>
+      <p class="prose">De vijf architectuuractiviteiten lopen altijd binnen de kaders die <b>Minimum Viable Governance</b> stelt. MVG definieert de beslissingsbevoegdheden en guardrails — beslissingen die binnen die guardrails vallen stromen vrij; alleen uitzonderingen worden gereviewed. Governance is geen gate, maar een doorlopende kader.</p>
+      <div class="panel" style="border-left-color:var(--mvg)">
+        <h3>MVG — wat het doet voor de architecteur</h3>
+        <p>MVG legt vast wie welke architectuurbeslissingen mag nemen, welke afwijkingen van de paved road gereviewed moeten worden, en hoe de zekerheid wordt gegeven dat de solution binnen de enterprise-richtlijnen blijft. De Enterprise Architect en Architecture Owner rapporteren afwijkingen via ADRs; het Governance Forum beoordeelt alleen de uitzonderingen.</p>
+        <p><a href="mvg-essence-practice.html" style="color:var(--mvg);font-weight:600">Open de MVG Practice →</a></p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WORKBOOK -->
-  <section id="workbook">
-    <div class="sec-head"><span class="num">04</span><h2>Beoordelingswerkboek</h2></div>
-    <div class="panel">
-      <h3>EA Alpha Assessment</h3>
-      <p>Houd alpha-toestanden bij over alle zeven kernel-alphas. Zestien tabbladen in drie groepen — vink de checklists aan en het dashboard beweegt. Documenten liegen; alpha-toestanden zijn eerlijk.</p>
-      <a class="dl" href="EA_Alpha_Assessment.xlsx" download>⬇ Werkboek downloaden (.xlsx)</a>
-    </div>
-  </section>
+    <!-- ===== 4. BACKGROUND ===== -->
+    <section id="achtergrond">
+      <div class="sec-head"><span class="num">03</span><h2>Achtergrond — de Essence-bouwstenen</h2></div>
+      <p class="prose">De vijf activiteiten zijn gebaseerd op de <b>Minimum Viable Architecture</b> practice, samengesteld op de <b>Essence-kernel</b>. De kernel bewaakt voortgang via alpha-toestanden — elk van de zeven alphas beweegt door geordende toestanden, elk met een checklist. De practices bepalen hoe je die bewegt. Hieronder vind je de volledige details per bouwsteen.</p>
+      <div class="deck-grid">
+        <a class="deck" href="essence-kernel.html">
+          <div class="top" style="background:var(--kernel)"></div>
+          <div class="body">
+            <div class="tag" style="color:var(--kernel)">Fundament</div>
+            <h4>De Essence Kernel</h4>
+            <p class="one">7 alphas, 15 activity spaces, 6 competencies. De universele basis die elke practice vooruitbrengt.</p>
+            <div class="open" style="color:var(--kernel)">Open het kerneldek →</div>
+          </div>
+        </a>
+        <a class="deck" href="mva-essence-practice.html">
+          <div class="top" style="background:var(--mva)"></div>
+          <div class="body">
+            <div class="tag" style="color:var(--mva)">Architectuur</div>
+            <h4>Minimum Viable Architecture</h4>
+            <p class="one">De practice die de vijf activiteiten definieert: alle alphas, werkproducten, rollen en patronen.</p>
+            <div class="open" style="color:var(--mva)">Open het MVA-dek →</div>
+          </div>
+        </a>
+        <a class="deck" href="mvg-essence-practice.html">
+          <div class="top" style="background:var(--mvg)"></div>
+          <div class="body">
+            <div class="tag" style="color:var(--mvg)">Governance</div>
+            <h4>Minimum Viable Governance</h4>
+            <p class="one">Beslissingsbevoegdheden, guardrails en lichte zekerheid — governance als kader, niet als gate.</p>
+            <div class="open" style="color:var(--mvg)">Open het MVG-dek →</div>
+          </div>
+        </a>
+        <a class="deck" href="essence-training.html">
+          <div class="top" style="background:var(--prac)"></div>
+          <div class="body">
+            <div class="tag" style="color:var(--prac)">Training</div>
+            <h4>Essence Training</h4>
+            <p class="one">36 slides over de Essence-standaard, de kernel, de practices en hoe ze samenpassen.</p>
+            <div class="open" style="color:var(--prac)">Open de training →</div>
+          </div>
+        </a>
+      </div>
+      <div class="panel" style="margin-top:22px">
+        <h3>Wat is Essence?</h3>
+        <p>Essence is een OMG/SEMAT-standaard die de gemeenschappelijke basis van elk software-initiatief vastlegt als een denkkader. In plaats van één methode van begin tot eind te volgen, stel je je eigen manier van werken samen uit kleine, herbruikbare practices. Voortgang wordt gemeten aan de hand van de gezondheid van zeven <b>alphas</b> — de essentiële dingen die elk initiatief deelt — niet aan de documenten die je hebt geproduceerd. De alphas bewegen door geordende toestanden; elke toestand heeft een checklist. Als een team de alpha-kaarten op tafel legt en de huidige toestand overeenkomt, ziet het direct waar het écht staat.</p>
+      </div>
+    </section>
 
-  <footer>
-    <p>Essence is een OMG-standaard, ontwikkeld door de SEMAT-community (Ivar Jacobson en anderen). Deze manier van werken stelt de kernel samen met twee practices waarbij ideeën worden gesynthetiseerd uit TOGAF, serviceblauwdruk (Shostack, 1984) en Use-Case 2.0. Houd je gelicenseerde standaarden als de autoriteit.</p>
-  </footer>
+  </main>
+
 </div>
+
 <script>
 (function(){
   /* Active nav state */
@@ -400,7 +425,8 @@
       el.classList.remove('open'); el.querySelector('button').setAttribute('aria-expanded','false');
     });
   });
-  /* Hamburgermenu */
+
+  /* Hamburger menu */
   (function(){
     var tog=document.querySelector('.site-nav-toggle');
     var menu=document.querySelector('.site-nav-menu');
@@ -418,10 +444,6 @@
       tog.setAttribute('aria-label','Menu openen');
     });
   })();
-
-
-  /* Decorative aria-hidden */
-  document.querySelectorAll('.track .ar').forEach(function(el){ el.setAttribute('aria-hidden','true'); });
 
   /* Site search */
   var searchInput   = document.getElementById('site-search-input');
@@ -471,11 +493,11 @@
       .slice(0,7);
 
     if(scored.length === 0){
-      searchResults.innerHTML = '<li class="search-no-results">No results for &ldquo;' + esc(q) + '&rdquo;</li>';
+      searchResults.innerHTML = '<li class="search-no-results">Geen resultaten voor &ldquo;' + esc(q) + '&rdquo;</li>';
       showResults(); resultLinks = []; selIdx = -1; return;
     }
 
-    var seeAllHtml = '<li class="search-see-all" role="none"><a href="search.html?q='+encodeURIComponent(q)+'">See all results for “'+esc(q)+'” &rarr;</a></li>';
+    var seeAllHtml = '<li class="search-see-all" role="none"><a href="search.html?q='+encodeURIComponent(q)+'">Alle resultaten voor "'+esc(q)+'" &rarr;</a></li>';
     searchResults.innerHTML = scored.map(function(x, i){
       var e = x.e, sec = bestSection(e,q);
       var snip = sec ? hilite(sec,q) : hilite(e.lede.slice(0,90),q);
@@ -557,6 +579,7 @@
   });
 })();
 </script>
+
 <!-- ===== SITE CONTRIBUTE ===== -->
 <div class="site-contribute">
   <div class="site-contribute-inner">
