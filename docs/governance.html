@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Governance in het architectuurproces — MVA &amp; MVG</title>
-<meta name="description" content="Hoe Minimum Viable Governance de architectuuractiviteiten borgt: guardrails, werkproducten en de vijf MVG-activiteiten in één overzicht.">
+<meta name="description" content="Hoe Minimum Viable Governance de architectuuractiviteiten borgt: de vijf MVG-activiteiten als proceskaart, met de MVA-werkproducten die governance voeden.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
   --paper:#f3efe6;--paper-2:#ece6d8;--ink:#1c1a16;--ink-soft:#524d42;
   --line:#d8d0bf;--card:#fbf9f3;
   --prac:#4b3f9e;--mvg:#4b3f9e;--mva:#0f6e63;--ent:#27406b;--sol:#0f6e63;
-  --alpha:#0f6e63;--product:#7a4900;--activity:#1f5fa8;--comp:#4b3f9e;--role:#9c3f76;--pattern:#b1492e;
+  --alpha:#0f6e63;--comp:#4b3f9e;--pattern:#b1492e;
   --shadow:0 1px 0 rgba(0,0,0,.03),0 16px 38px -16px rgba(28,26,22,.42);
   scroll-behavior:smooth;
 }
@@ -43,46 +43,47 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
 
 /* sections */
 .sec{margin-top:38px}
-h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem;margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-.prose{color:var(--ink-soft);font-size:.95rem;max-width:82ch;margin:0 0 12px}
-.prose b{color:var(--ink)}
+.sh{font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem;margin:0 0 4px}
+.sec-intro{color:var(--ink-soft);font-size:.95rem;max-width:82ch;margin:0 0 18px}
 
-/* principle cards */
-.principle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
-.principle-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--prac);border-radius:12px;padding:14px 16px}
-.pc-label{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--prac);margin-bottom:5px;font-weight:700}
-.principle-card h4{font-family:"Fraunces",serif;font-size:1.05rem;font-weight:600;margin:0 0 5px}
-.principle-card p{font-size:.86rem;color:var(--ink-soft);margin:0}
+/* ====== ACTIVITY MAP ====== */
+.amap{display:flex;flex-direction:column;margin:8px 0 0}
+.amap-domain{border-radius:16px;border:1.5px solid var(--line);overflow:hidden;background:var(--card)}
+.amap-dhdr{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:13px 22px;color:#fff}
+.amap-dhdr.gov-init{background:linear-gradient(130deg,#2c2464 0%,#4b3f9e 100%)}
+.amap-dhdr.gov-run{background:linear-gradient(130deg,#4b3f9e 0%,#6254c0 100%)}
+.amap-dname{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+.amap-dalphas{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.06em;opacity:.8}
+.amap-body{padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.amap-sp{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:7px;margin-top:6px}
+.amap-sp:first-child{margin-top:0}
+.amap-sp-n{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;flex-shrink:0}
+.amap-sp-name{font-family:"Fraunces",serif;font-weight:600;font-size:.98rem;color:var(--ink)}
+.amap-conn{display:flex;align-items:center;justify-content:center;height:36px;position:relative}
+.amap-conn::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1.5px;background:var(--line);transform:translateX(-50%)}
+.amap-conn-lbl{position:relative;z-index:1;background:var(--paper);padding:4px 14px;border:1px solid var(--line);border-radius:20px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.amap-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em}
+.amap-li{display:flex;align-items:center;gap:7px;color:var(--ink-soft)}
+.amap-li-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
 
-/* flow table */
-.flow-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:.88rem}
-.flow-table th{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;text-align:left;padding:8px 12px;background:var(--paper-2);border-bottom:2px solid var(--line);color:var(--ink-soft)}
-.flow-table td{padding:10px 12px;border-bottom:1px dashed var(--line);vertical-align:top}
-.flow-table tr:last-child td{border-bottom:none}
-.flow-table .wp-name{font-family:"Fraunces",serif;font-weight:600;font-size:.95rem;color:var(--ink)}
-.flow-table .wp-sub{font-size:.8rem;color:var(--ink-soft);margin-top:1px}
-.flow-table .wp-owner{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:10px;font-weight:600;white-space:nowrap}
-.owner-mva{background:rgba(15,110,99,.1);color:var(--mva)}
-.owner-mvg{background:rgba(75,63,158,.1);color:var(--mvg)}
-.flow-table .act-ref{font-family:"IBM Plex Mono",monospace;font-size:.82rem;color:var(--ink-soft)}
-.flow-table .act-ref b{color:var(--mvg)}
-@media(max-width:680px){
-  .flow-table thead{display:none}
-  .flow-table tr{display:block;margin-bottom:14px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-  .flow-table td{display:block;padding:8px 12px;border-bottom:1px solid var(--line)}
-  .flow-table td:last-child{border-bottom:none}
-}
+/* activity card — non-link, 2-col */
+.act-card{display:grid;grid-template-columns:52px 1fr;gap:0;background:var(--card);border:1px solid var(--line);border-radius:11px;overflow:hidden}
+.act-card .ac-num{display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-size:1.4rem;font-weight:700;color:#fff;background:var(--mvg)}
+.act-card .ac-body{padding:13px 16px}
+.act-card .ac-title{font-family:"Fraunces",serif;font-weight:600;font-size:1.1rem;margin:0 0 3px}
+.act-card .ac-desc{font-size:.86rem;color:var(--ink-soft);margin:0 0 10px}
 
-/* activity steps */
-.act-list{display:flex;flex-direction:column;gap:0;margin-top:14px}
-.act-item{display:grid;grid-template-columns:44px 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);margin-bottom:10px}
-.act-item .ai-num{display:flex;align-items:center;justify-content:center;background:var(--prac);color:#fff;font-family:"Fraunces",serif;font-size:1.3rem;font-weight:700}
-.act-item .ai-body{padding:13px 16px}
-.act-item .ai-title{font-family:"Fraunces",serif;font-weight:600;font-size:1.08rem;margin:0 0 3px}
-.act-item .ai-desc{font-size:.87rem;color:var(--ink-soft);margin:0 0 7px}
-.act-item .ai-alpha{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--prac);letter-spacing:.02em}
-.act-item .ai-wps{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.06em;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:6px;margin-top:6px}
-.act-item .ai-wps b{color:var(--ink)}
+/* flow rows: MVA inputs + MVG outputs */
+.ar-flow{display:flex;flex-direction:column;gap:5px}
+.ar-flow-row{display:flex;align-items:flex-start;flex-wrap:wrap;gap:5px}
+.ar-flow-lbl{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;flex-shrink:0;padding-top:3px;width:76px}
+.lbl-mva{color:var(--mva)}
+.lbl-mvg{color:var(--mvg)}
+.ar-chip{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.06em;padding:3px 8px;border-radius:20px;font-weight:600}
+.ar-chip.mva-in{background:rgba(15,110,99,.1);color:var(--mva);border:1px solid rgba(15,110,99,.22)}
+.ar-chip.mvg-out{background:rgba(75,63,158,.1);color:var(--mvg);border:1px solid rgba(75,63,158,.22)}
+.ar-chip.alpha-g{background:rgba(75,63,158,.07);color:var(--mvg);border:1px solid rgba(75,63,158,.18)}
+.ac-alpha{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--mvg);border-top:1px dashed var(--line);padding-top:7px;margin-top:8px}
 
 /* roles */
 .role-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
@@ -171,159 +172,176 @@ h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem;margin:0 0 8px;
       <span class="hchip hchip-mvg">Overspant beide niveaus</span>
     </div>
     <h1>Governance als <em>kader</em>, niet als gate</h1>
-    <p class="lede">Minimum Viable Governance loopt door het hele architectuurproces heen. MVG stelt de guardrails in waarbinnen de Enterprise Architect en de Architecture Owner beslissingen nemen — beslissingen die binnen de guardrails vallen stromen vrij; alleen uitzonderingen worden gereviewed. De MVA-werkproducten zijn de schakel tussen architectuurwerk en governance.</p>
+    <p class="lede">MVG loopt als een doorlopende laag door het hele architectuurproces heen. De vijf MVG-activiteiten zijn geen eenmalige stap — ze zijn een cadence. De MVA-werkproducten zijn de schakel: wat de architect produceert, voedt governance; wat governance borgt, geeft de architect ruimte om te beslissen.</p>
     <div class="alpha-bar">
-      <span class="ab-label">Beweegt de alpha:</span>
-      <span class="ab-states">Governance → <b>Initiated</b> → <b>Engaged</b> → <b>Guiding</b> → <b>Assured</b> → <b>Effective</b></span>
+      <span class="ab-label">Governance alpha:</span>
+      <span class="ab-states"><b>Initiated</b> → <b>Engaged</b> → <b>Guiding</b> → <b>Assured</b> → <b>Effective</b></span>
     </div>
   </header>
 
-  <!-- PRINCIPE -->
-  <section class="sec" id="principe">
-    <h2>De drie pijlers van governance</h2>
-    <p class="prose">MVG bestuurt door drie mechanismen te combineren. Ze zijn niet opeenvolgend maar parallel actief gedurende het hele architectuurproces.</p>
-    <div class="principle-grid">
-      <div class="principle-card">
-        <div class="pc-label">Pijler 1</div>
-        <h4>Guardrails — wat mag zonder review</h4>
-        <p>De <b>Architecture Principles</b> en de <b>Architecture Working Agreement</b> leggen vast welke beslissingen een team zelfstandig kan nemen en welke uitzonderingen voorgelegd moeten worden aan het Governance Forum. Guardrails zijn geen verboden — ze zijn grenzen waarbinnen beslissingen vrij stromen.</p>
-      </div>
-      <div class="principle-card">
-        <div class="pc-label">Pijler 2</div>
-        <h4>Paved Road — de conforme keuze is de gemakkelijke</h4>
-        <p>De <b>Paved Roads</b> (goedgekeurde COTS-producten, integratiepictogrammen en referentie-instellingen) maken het conforme pad ook het snelste pad. Teams hoeven niet te vragen of iets mag — ze pakken het uit de catalogus. Alleen wie off-road gaat, dient een <b>ADR</b> in ter review.</p>
-      </div>
-      <div class="principle-card">
-        <div class="pc-label">Pijler 3</div>
-        <h4>Bewijs — zekerheid op basis van uitkomsten</h4>
-        <p>Conformance wordt aangetoond via <b>Review Records</b> en paved-road-adoptiemetingen, niet via compliance-documenten. Het Governance Forum beoordeelt alleen wat werkelijk van belang is: significante afwijkingen, onomkeerbare beslissingen en escalaties.</p>
-      </div>
-    </div>
-  </section>
+  <!-- PROCESS MAP -->
+  <section class="sec" id="proces">
+    <h2 class="sh">Het governanceproces</h2>
+    <p class="sec-intro">Vijf activiteiten, geplaatst op het moment in het architectuurproces waarop ze primair actief zijn. Govern the Delivery en Assure by Evidence lopen parallel — beiden draaien continu tijdens de delivery- en operate-fase.</p>
 
-  <!-- MVA → MVG FLOW -->
-  <section class="sec" id="werkproducten">
-    <h2>Van MVA-werkproducten naar governance</h2>
-    <p class="prose">MVA produceert de architectuurinhoud; MVG borgt dat die inhoud consistent en verantwoord is. De tabel laat zien welk werkproduct welke governance-activiteit voedt.</p>
-    <table class="flow-table" aria-label="Werkproducten en hun rol in governance">
-      <thead>
-        <tr>
-          <th>Werkproduct</th>
-          <th>Eigenaar</th>
-          <th>Rol in governance</th>
-          <th>MVG-activiteit</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><div class="wp-name">Architecture Principles</div><div class="wp-sub">Een kleine set (≈7) guardrails met redenering en implicaties</div></td>
-          <td><span class="wp-owner owner-mvg">MVG</span></td>
-          <td>Stelt de guardrails in die bepalen wat zonder review mag</td>
-          <td><span class="act-ref"><b>Establish Governance</b></span></td>
-        </tr>
-        <tr>
-          <td><div class="wp-name">Architecture Working Agreement</div><div class="wp-sub">Lean contract: guardrails, paved roads, escalatieprocedure</div></td>
-          <td><span class="wp-owner owner-mvg">MVG</span></td>
-          <td>Maakt de guardrails operationeel; teams weten wanneer ze moeten escaleren</td>
-          <td><span class="act-ref"><b>Engage the Cadence</b></span></td>
-        </tr>
-        <tr>
-          <td><div class="wp-name">Paved Roads</div><div class="wp-sub">Catalogus van goedgekeurde producten, patronen en referentie-instellingen</div></td>
-          <td><span class="wp-owner owner-mva">MVA</span></td>
-          <td>Maakt de conforme keuze de gemakkelijke; verlaagt governance-druk structureel</td>
-          <td><span class="act-ref"><b>Engage the Cadence</b> · <b>Assure by Evidence</b></span></td>
-        </tr>
-        <tr>
-          <td><div class="wp-name">Architecture Decision Records (ADRs)</div><div class="wp-sub">Eén vastlegging per significante beslissing: context, opties, keuze, consequenties</div></td>
-          <td><span class="wp-owner owner-mva">MVA</span></td>
-          <td>Maakt beslissingen zichtbaar; off-road ADRs worden gereviewed door het Governance Forum</td>
-          <td><span class="act-ref"><b>Govern the Delivery</b></span></td>
-        </tr>
-        <tr>
-          <td><div class="wp-name">Review Records</div><div class="wp-sub">Verslag van architectuurbeoordelingen; beslissingen genomen bij off-road-keuzes</div></td>
-          <td><span class="wp-owner owner-mva">MVA</span></td>
-          <td>Primair bewijs van conformance; bron voor adoptiepatronen in de paved road</td>
-          <td><span class="act-ref"><b>Assure by Evidence</b></span></td>
-        </tr>
-        <tr>
-          <td><div class="wp-name">Architecture Vision &amp; ASRs</div><div class="wp-sub">Architectuurrichting op één pagina; architectureel significante requirements</div></td>
-          <td><span class="wp-owner owner-mva">MVA</span></td>
-          <td>Definieert de scope waarover governance toezicht houdt; basis voor Statement of Architecture Work</td>
-          <td><span class="act-ref"><b>Establish Governance</b></span></td>
-        </tr>
-        <tr>
-          <td><div class="wp-name">Architecture Roadmap &amp; Transition States</div><div class="wp-sub">Pad van baseline naar doel; per horizon: welke beslissingen worden definitief</div></td>
-          <td><span class="wp-owner owner-mva">MVA</span></td>
-          <td>Maakt de onomkeerbare grenzen per horizon expliciet; Governance Forum beoordeelt de grensmomenten</td>
-          <td><span class="act-ref"><b>Govern the Delivery</b> · <b>Assure by Evidence</b></span></td>
-        </tr>
-        <tr>
-          <td><div class="wp-name">Conformance Evidence</div><div class="wp-sub">Beoordelingsuitkomsten en paved-road-signalen; bewijs dat telt, continu verzameld</div></td>
-          <td><span class="wp-owner owner-mvg">MVG</span></td>
-          <td>Toont aan dat de architectuur binnen de guardrails is gebleven; input voor afstelling van governance</td>
-          <td><span class="act-ref"><b>Assure by Evidence</b> · <b>Tune the Governance</b></span></td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+    <div class="amap">
 
-  <!-- MVG ACTIVITEITEN -->
-  <section class="sec" id="activiteiten">
-    <h2>De vijf MVG-activiteiten</h2>
-    <p class="prose">MVG-activiteiten zijn geen eenmalige stappen — ze zijn doorlopend. Establish en Engage worden bij aanvang uitgevoerd; Govern, Assure en Tune draaien continu zolang het architectuurproces loopt.</p>
-    <div class="act-list">
-      <div class="act-item">
-        <div class="ai-num">1</div>
-        <div class="ai-body">
-          <div class="ai-title">Establish Governance</div>
-          <div class="ai-desc">Kom beslissingsbevoegdheden en minimale guardrails overeen. Bekrachtig een kleine set Architecture Principles. Stel de bestuurde repository in als het enkele thuis voor alle architectuurartefacten. Dit is de funderingsactiviteit die alle andere mogelijk maakt.</div>
-          <div class="ai-alpha">Governance → Initiated · Way of Working → Foundation Established</div>
-          <div class="ai-wps"><b>Werkproducten:</b> Statement of Architecture Work · Architecture Principles · Architecture Repository</div>
+      <!-- ── DOMAIN 1: INRICHTING ── -->
+      <div class="amap-domain">
+        <div class="amap-dhdr gov-init">
+          <span class="amap-dname">Governance-inrichting</span>
+          <span class="amap-dalphas">Initiated → Engaged</span>
+        </div>
+        <div class="amap-body">
+
+          <div class="amap-sp">
+            <span class="amap-sp-n">Bij aanvang</span>
+            <span class="amap-sp-name">Architectuurproces gestart · AS 1–5 Identify &amp; Envision</span>
+          </div>
+          <div class="act-card">
+            <div class="ac-num">1</div>
+            <div class="ac-body">
+              <div class="ac-title">Establish Governance</div>
+              <div class="ac-desc">Kom beslissingsbevoegdheden en minimale guardrails overeen. Bekrachtig een kleine set Architecture Principles. Stel de bestuurde Architecture Repository in als het enkele thuis voor alle architectuurartefacten. Dit is de funderingsactiviteit die alle andere mogelijk maakt.</div>
+              <div class="ar-flow">
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl lbl-mva">van MVA</span>
+                  <span class="ar-chip mva-in">Architecture Vision</span>
+                  <span class="ar-chip mva-in">ASRs</span>
+                </div>
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl lbl-mvg">produceert</span>
+                  <span class="ar-chip mvg-out">Architecture Principles</span>
+                  <span class="ar-chip mvg-out">Statement of Architecture Work</span>
+                  <span class="ar-chip mvg-out">Architecture Repository</span>
+                </div>
+              </div>
+              <div class="ac-alpha">Governance → Initiated · Way of Working → Foundation Established</div>
+            </div>
+          </div>
+
+          <div class="amap-sp">
+            <span class="amap-sp-n">Na shaping</span>
+            <span class="amap-sp-name">Paved Road beschikbaar · AS 6 Shape the System</span>
+          </div>
+          <div class="act-card">
+            <div class="ac-num">2</div>
+            <div class="ac-body">
+              <div class="ac-title">Engage the Cadence</div>
+              <div class="ac-desc">Zet een lean ritme op: korte, frequente synchronisatiemomenten tussen de Enterprise Architect, Architecture Owners en het Governance Forum. Publiceer de guardrails en de paved road zodat elk team ze kent en direct kan toepassen. Governance die niet bekend is, bestaat niet.</div>
+              <div class="ar-flow">
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl lbl-mva">van MVA</span>
+                  <span class="ar-chip mva-in">Paved Roads</span>
+                </div>
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl lbl-mvg">produceert</span>
+                  <span class="ar-chip mvg-out">Architecture Working Agreement</span>
+                </div>
+              </div>
+              <div class="ac-alpha">Governance → Engaged</div>
+            </div>
+          </div>
+
         </div>
       </div>
-      <div class="act-item">
-        <div class="ai-num">2</div>
-        <div class="ai-body">
-          <div class="ai-title">Engage the Cadence</div>
-          <div class="ai-desc">Zet een lean ritme op: korte, frequente synchronisatiemomenten tussen de Enterprise Architect, Architecture Owners en het Governance Forum. Publiceer de guardrails en de paved road zodat elk team ze kent en direct kan toepassen. Governance die niet bekend is, bestaat niet.</div>
-          <div class="ai-alpha">Governance → Engaged</div>
-          <div class="ai-wps"><b>Werkproducten:</b> Architecture Working Agreement · Paved Roads (MVA)</div>
+
+      <div class="amap-conn"><span class="amap-conn-lbl">↓ governance-cadence loopt door</span></div>
+
+      <!-- ── DOMAIN 2: UITVOERING ── -->
+      <div class="amap-domain">
+        <div class="amap-dhdr gov-run">
+          <span class="amap-dname">Governance-uitvoering</span>
+          <span class="amap-dalphas">Guiding → Assured → Effective</span>
+        </div>
+        <div class="amap-body">
+
+          <div class="amap-sp">
+            <span class="amap-sp-n">Doorlopend</span>
+            <span class="amap-sp-name">Development &amp; Deploy · AS 6–9 Shape → Plan the Transition</span>
+          </div>
+          <div class="act-card">
+            <div class="ac-num">3</div>
+            <div class="ac-body">
+              <div class="ac-title">Govern the Delivery</div>
+              <div class="ac-desc">Laat beslissingen die binnen de guardrails vallen vrij stromen. Review alleen de uitzonderingen: off-road ADRs, significante onomkeerbare beslissingen en escalaties. Deblokkeer teams actief — governance is een dienst, geen controlepunt.</div>
+              <div class="ar-flow">
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl lbl-mva">van MVA</span>
+                  <span class="ar-chip mva-in">ADRs (off-road)</span>
+                  <span class="ar-chip mva-in">Architecture Roadmap</span>
+                </div>
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl lbl-mvg">produceert</span>
+                  <span class="ar-chip mvg-out">review-beslissingen</span>
+                  <span class="ar-chip mvg-out">escalatieresoluties</span>
+                </div>
+              </div>
+              <div class="ac-alpha">Governance → Guiding</div>
+            </div>
+          </div>
+
+          <div class="act-card" style="margin-top:0">
+            <div class="ac-num">4</div>
+            <div class="ac-body">
+              <div class="ac-title">Assure by Evidence</div>
+              <div class="ac-desc">Verzamel architectuurbeoordelingsuitkomsten en paved-road-adoptiemetingen. Conformance wordt aangetoond op basis van bewijs, niet via documentatieverplichtingen. Richt de zekerheid op de beslissingen die er werkelijk toe doen: onomkeerbaar, hoog-risico, of met enterprise-brede impact.</div>
+              <div class="ar-flow">
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl lbl-mva">van MVA</span>
+                  <span class="ar-chip mva-in">Review Records</span>
+                  <span class="ar-chip mva-in">Paved Road adoptie</span>
+                  <span class="ar-chip mva-in">Architecture Roadmap</span>
+                </div>
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl lbl-mvg">produceert</span>
+                  <span class="ar-chip mvg-out">Conformance Evidence</span>
+                </div>
+              </div>
+              <div class="ac-alpha">Governance → Assured</div>
+            </div>
+          </div>
+
+          <div class="amap-sp">
+            <span class="amap-sp-n">In productie</span>
+            <span class="amap-sp-name">Operate &amp; Evolve · AS 10 Operate the System</span>
+          </div>
+          <div class="act-card">
+            <div class="ac-num">5</div>
+            <div class="ac-body">
+              <div class="ac-title">Tune the Governance</div>
+              <div class="ac-desc">Verwijder of verlicht continu elke governance die zijn bestaansreden heeft verloren. Actualiseer Architecture Principles wanneer de context verandert, verbreed de paved road op basis van reviewinzichten, en herzie de Architecture Working Agreement als het ritme niet meer past.</div>
+              <div class="ar-flow">
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl lbl-mva">van MVA</span>
+                  <span class="ar-chip mva-in">Conformance Evidence</span>
+                  <span class="ar-chip mva-in">Review Records</span>
+                </div>
+                <div class="ar-flow-row">
+                  <span class="ar-flow-lbl lbl-mvg">produceert</span>
+                  <span class="ar-chip mvg-out">Architecture Principles (herzien)</span>
+                  <span class="ar-chip mvg-out">Architecture Working Agreement (herzien)</span>
+                </div>
+              </div>
+              <div class="ac-alpha">Governance → Effective</div>
+            </div>
+          </div>
+
         </div>
       </div>
-      <div class="act-item">
-        <div class="ai-num">3</div>
-        <div class="ai-body">
-          <div class="ai-title">Govern the Delivery</div>
-          <div class="ai-desc">Laat beslissingen die binnen de guardrails vallen vrij stromen. Review alleen de uitzonderingen: off-road ADRs, significante onomkeerbare beslissingen en escalaties. Deblokkeer teams actief — governance is een dienst, geen controlepunt. Rapportage via ADRs en Review Records volstaat voor de meeste beslissingen.</div>
-          <div class="ai-alpha">Governance → Guiding</div>
-          <div class="ai-wps"><b>Werkproducten:</b> ADRs (MVA) · Review Records (MVA) · Architecture Roadmap (MVA)</div>
-        </div>
-      </div>
-      <div class="act-item">
-        <div class="ai-num">4</div>
-        <div class="ai-body">
-          <div class="ai-title">Assure by Evidence</div>
-          <div class="ai-desc">Verzamel architectuurbeoordelingsuitkomsten en paved-road-adoptiemetingen. Beoordeel afwijkingen en noteer resoluties. Conformance wordt aangetoond op basis van bewijs — niet via documentatieverplichtingen of periodieke audits. Richt de zekerheid op de beslissingen die er werkelijk toe doen: onomkeerbaar, hoog-risico, of met enterprise-brede impact.</div>
-          <div class="ai-alpha">Governance → Assured</div>
-          <div class="ai-wps"><b>Werkproducten:</b> Conformance Evidence (MVG) · Review Records (MVA) · Paved Road adoptie (MVA)</div>
-        </div>
-      </div>
-      <div class="act-item">
-        <div class="ai-num">5</div>
-        <div class="ai-body">
-          <div class="ai-title">Tune the Governance</div>
-          <div class="ai-desc">Verwijder of verlicht continu elke governance die zijn bestaansreden heeft verloren. Governance die niet meer bijdraagt aan betere uitkomsten is overhead. Actualiseer Architecture Principles wanneer de context verandert, verbreed de paved road op basis van reviewinzichten, en herzie de Architecture Working Agreement als het ritme niet meer past.</div>
-          <div class="ai-alpha">Governance → Effective</div>
-          <div class="ai-wps"><b>Werkproducten:</b> Architecture Principles (herzien) · Architecture Working Agreement (herzien) · Conformance Evidence</div>
-        </div>
+
+      <div class="amap-legend">
+        <div class="amap-li"><div class="amap-li-dot" style="background:var(--mvg)"></div> MVG-activiteit</div>
+        <div class="amap-li"><span class="ar-chip mva-in" style="font-size:9px">van MVA</span> MVA-werkproduct als input</div>
+        <div class="amap-li"><span class="ar-chip mvg-out" style="font-size:9px">produceert</span> MVG-werkproduct als output</div>
       </div>
     </div>
   </section>
 
   <!-- ROLLEN -->
   <section class="sec" id="rollen">
-    <h2>Rollen</h2>
-    <p class="prose">Governance heeft twee eigen rollen. De architectuurrollen (Enterprise Architect en Architecture Owner) zitten in de MVA practice en produceren de inhoud die governance borgt.</p>
+    <h2 class="sh">Rollen</h2>
+    <p class="sec-intro">Governance heeft twee eigen rollen. De architectuurrollen (Enterprise Architect en Architecture Owner) zitten in de MVA practice en produceren de inhoud die governance borgt.</p>
     <div class="role-grid">
       <div class="role-card rc-sponsor">
         <div class="rc-head">
@@ -331,7 +349,7 @@ h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem;margin:0 0 8px;
           <h3>Architecture Sponsor</h3>
         </div>
         <div class="rc-body">
-          <p>Verleent het mandaat en de financiering die MVG laten werken. Stelt de beslissingsbevoegdheden in en beschermt ze: wie beslist wat, op welk niveau, en wat de escalatieroute is. De Sponsor is de stille garantie achter de guardrails — zonder mandaat heeft het Governance Forum geen tanden.</p>
+          <p>Verleent het mandaat en de financiering die MVG laten werken. Stelt de beslissingsbevoegdheden in en beschermt ze: wie beslist wat, op welk niveau, en wat de escalatieroute is. Zonder mandaat heeft het Governance Forum geen tanden.</p>
           <div class="rc-acts"><b>Primair betrokken bij:</b> Establish Governance · Tune the Governance</div>
         </div>
       </div>
@@ -341,7 +359,7 @@ h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem;margin:0 0 8px;
           <h3>Governance Forum</h3>
         </div>
         <div class="rc-body">
-          <p>Een kleine, snelle, op principes gebaseerde instantie — een lean Architecture Board of gilde. Beoordeelt uitsluitend uitzonderingen en off-road-beslissingen. Borgt uitkomsten, geen papierwerk. Het Forum vergadert alleen als er iets te beoordelen is; het stelt geen agenda op en produceert geen statusrapportages.</p>
+          <p>Een kleine, snelle, op principes gebaseerde instantie — een lean Architecture Board of gilde. Beoordeelt uitsluitend uitzonderingen en off-road ADRs. Borgt uitkomsten, geen papierwerk. Vergadert alleen als er iets te beoordelen is.</p>
           <div class="rc-acts"><b>Primair betrokken bij:</b> Govern the Delivery · Assure by Evidence · Tune the Governance</div>
         </div>
       </div>
@@ -350,7 +368,7 @@ h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem;margin:0 0 8px;
 
   <div class="panel">
     <h3>Governance op twee niveaus</h3>
-    <p>De Enterprise Architect stelt de enterprise-brede guardrails in (via Architecture Principles en de Paved Road) en rapporteert aan de Governance Forum voor enterprise-beslissingen. De Architecture Owner werkt binnen die guardrails en legt solution-afwijkingen voor via ADRs. Het Governance Forum beoordeelt alleen wat enterprise-brede impact heeft of onomkeerbaar is.</p>
+    <p>De Enterprise Architect stelt de enterprise-brede guardrails in en rapporteert enterprise-beslissingen aan het Governance Forum. De Architecture Owner werkt binnen die guardrails en legt solution-afwijkingen voor via ADRs. Het Forum beoordeelt alleen wat enterprise-brede impact heeft of onomkeerbaar is.</p>
     <p>
       <a href="mva-essence-practice.html">Open de MVA Practice →</a>
       &ensp;·&ensp;
