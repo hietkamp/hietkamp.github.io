@@ -185,7 +185,7 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
   <header class="hero">
     <div class="kicker">Way of Working · Solution Architectuur · MVA</div>
     <h1>Architectureer de <em>Solution</em></h1>
-    <p class="lede">Het MVA-architectuurproces voor de Architecture Owner: zelfde vijf activiteiten als op enterprise-niveau, maar op solution-scope — binnen de door de Enterprise Architect geleverde context en guardrails. De Architecture Owner werkt collaboratief met het team en brengt de bewezen architectuur terug als input voor de enterprise.</p>
+    <p class="lede">Het MVA-architectuurproces voor de Architecture Owner: zes activiteiten op solution-scope — binnen de door de Enterprise Architect geleverde context en guardrails. De Architecture Owner Shape en Proves de solution-architectuur; de Enterprise Architect bouwt de Paved Road. De Architecture Owner werkt collaboratief met het team en brengt de bewezen architectuur terug als input voor de enterprise.</p>
     <div class="hero-chips">
       <span>Rol → Architecture Owner</span>
       <span>C4 Level 2–3</span>
@@ -206,7 +206,7 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
   <!-- ===== ACTIVITY MAP ===== -->
   <section class="sec" id="process">
     <h2 class="sh">Het architectuurproces — solution-scope</h2>
-    <p class="sec-intro">Dezelfde vijf activiteiten als op enterprise-niveau, geplaatst in de Essence kernel activity spaces. Scope, rol en uitkomsten zijn solution-specifiek. Klik een kaart aan voor de volledige beschrijving.</p>
+    <p class="sec-intro">Zes activiteiten, geplaatst in de Essence kernel activity spaces. Op solution-niveau wordt de architectuur ook geschetst (Shape) en bewezen (Prove) — op enterprise-niveau is dat vervangen door Build the Paved Road. Scope, rol en uitkomsten zijn solution-specifiek. Klik een kaart aan voor de volledige beschrijving.</p>
 
     <div class="amap">
 
@@ -341,19 +341,29 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
             <div class="ar-arrow">→</div>
           </a>
 
-          <div class="amap-sp is-gap">
+          <div class="amap-sp">
             <span class="amap-sp-n">AS 10</span>
-            <div class="amap-sp-main">
-              <span class="amap-sp-name">Operate the System</span><span class="amap-sp-badge">niet gedekt</span>
-              <span class="amap-sp-desc">Houd het systeem operationeel in productie: monitoring, incidentafhandeling, onderhoud en continue verbetering.</span>
-            </div>
+            <span class="amap-sp-name">Operate the System</span>
           </div>
+          <a href="act/evolve-the-architecture.html" class="act-row a-dev">
+            <div class="ar-num">06</div>
+            <div class="ar-body">
+              <div class="ar-title">Evolve the Architecture</div>
+              <div class="ar-desc">Beheer de solution-architectuur continu in productie: actualiseer ADRs en Review Records op basis van operationele inzichten, hervalideer drivers naarmate de context verandert, en rapporteer structurele wijzigingen terug aan de Enterprise Architect.</div>
+              <div class="ar-meta">
+                <span class="ar-chip space" style="background:rgba(15,110,99,.1);color:var(--sol)">Activity Space · Development</span>
+                <span class="ar-chip comp">Competency · Architecture</span>
+                <span class="ar-chip alpha">Architecture → Established → Evolving · Drivers → Sustained</span>
+              </div>
+            </div>
+            <div class="ar-arrow">→</div>
+          </a>
         </div>
       </div>
 
       <div class="amap-legend">
         <div class="amap-li"><div class="amap-li-dot analyse"></div> Analyse-fase (01–02)</div>
-        <div class="amap-li"><div class="amap-li-dot dev"></div> Development-fase (03–05)</div>
+        <div class="amap-li"><div class="amap-li-dot dev"></div> Development-fase (03–06)</div>
         <div class="amap-li"><div class="amap-li-dot gap"></div> Activity space niet gedekt in deze practiceset</div>
       </div>
     </div>

@@ -201,7 +201,7 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
   <header class="hero">
     <div class="kicker">Way of Working · Enterprise Architectuur · MVA</div>
     <h1>Van Drivers naar <em>Transitie</em></h1>
-    <p class="lede">Het MVA-architectuurproces voor de Enterprise Architect: vijf activiteiten, logisch geordend van het vastleggen en kwantificeren van drivers tot een bewezen, geordend transitieplan. De uitkomsten worden context voor elke solution.</p>
+    <p class="lede">Het MVA-architectuurproces voor de Enterprise Architect: vijf activiteiten, logisch geordend van het vastleggen en kwantificeren van drivers, via het bouwen van de enterprise paved road, naar continue architectuurevolutie. De uitkomsten worden context voor elke solution.</p>
     <div class="hero-chips">
       <span>Rol → Enterprise Architect</span>
       <span>C4 Level 1–2</span>
@@ -290,15 +290,15 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
             <span class="amap-sp-n">AS 6</span>
             <span class="amap-sp-name">Shape the System</span>
           </div>
-          <a href="act/shape-the-minimum-architecture.html" class="act-row a-dev">
+          <a href="act/build-the-paved-road.html" class="act-row a-dev">
             <div class="ar-num">03</div>
             <div class="ar-body">
-              <div class="ar-title">Shape the Minimum Architecture</div>
-              <div class="ar-desc">Definieer alleen de bouwstenen die nu nodig zijn. De integratielaag is first-class. Identificeer onomkeerbare beslissingen: vendor lock-in, datamodel, integratie-API.</div>
+              <div class="ar-title">Build the Paved Road</div>
+              <div class="ar-desc">Vertaal enterprise-drivers in een catalogus van goedgekeurde COTS-producten, integratiepictogrammen en referentie-instellingen. Behandel de Paved Road als een product: zelfbedienbaar, versiegebonden, meetbaar in adoptie. Identificeer terugkerende patronen, bouw herbruikbare componenten, publiceer vroeg en herstel knelpunten op basis van adoptiegegevens.</div>
               <div class="ar-meta">
                 <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
                 <span class="ar-chip comp">Competency · Architecture</span>
-                <span class="ar-chip alpha">Architecture → Outlined · Decisions → Decided</span>
+                <span class="ar-chip alpha">Paved Road → Seeded → Established</span>
               </div>
             </div>
             <div class="ar-arrow">→</div>
@@ -312,30 +312,20 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
             </div>
           </div>
 
-          <div class="amap-sp">
+          <div class="amap-sp is-gap">
             <span class="amap-sp-n">AS 8</span>
-            <span class="amap-sp-name">Test the System</span>
-          </div>
-          <a href="act/prove-the-risky-parts.html" class="act-row a-dev">
-            <div class="ar-num">04</div>
-            <div class="ar-body">
-              <div class="ar-title">Prove the Risky Parts</div>
-              <div class="ar-desc">Bewijs de risicovolste keuzes via PoC, leveranciersevaluatie of sandbox-pilot. In COTS: toets de integratielaag en de falsifieerbare kwaliteitsattributen.</div>
-              <div class="ar-meta">
-                <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
-                <span class="ar-chip comp">Competency · Architecture</span>
-                <span class="ar-chip alpha">Architecture → Demonstrated · Decisions → Validated</span>
-              </div>
+            <div class="amap-sp-main">
+              <span class="amap-sp-name">Test the System</span><span class="amap-sp-badge">niet gedekt</span>
+              <span class="amap-sp-desc">Formele systeemtest en kwaliteitsborging; in COTS-context afgehandeld door de leveringspractice.</span>
             </div>
-            <div class="ar-arrow">→</div>
-          </a>
+          </div>
 
           <div class="amap-sp">
             <span class="amap-sp-n">AS 9</span>
             <span class="amap-sp-name">Deploy the System</span>
           </div>
           <a href="act/plan-the-transition.html" class="act-row a-dev">
-            <div class="ar-num">05</div>
+            <div class="ar-num">04</div>
             <div class="ar-body">
               <div class="ar-title">Plan the Transition</div>
               <div class="ar-desc">Identificeer de hiaten; orden de implementatiestap van baseline naar doel; detailleer alleen de volgende horizon. Elke horizon bevat een expliciete onomkeerbare grens.</div>
@@ -348,13 +338,23 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
             <div class="ar-arrow">→</div>
           </a>
 
-          <div class="amap-sp is-gap">
+          <div class="amap-sp">
             <span class="amap-sp-n">AS 10</span>
-            <div class="amap-sp-main">
-              <span class="amap-sp-name">Operate the System</span><span class="amap-sp-badge">niet gedekt</span>
-              <span class="amap-sp-desc">Houd het systeem operationeel in productie: monitoring, incidentafhandeling, onderhoud en continue verbetering.</span>
-            </div>
+            <span class="amap-sp-name">Operate the System</span>
           </div>
+          <a href="act/evolve-the-architecture.html" class="act-row a-dev">
+            <div class="ar-num">05</div>
+            <div class="ar-body">
+              <div class="ar-title">Evolve the Architecture</div>
+              <div class="ar-desc">Beheer de architectuur continu in productie: actualiseer de Paved Road op basis van reviewinzichten, pensioneer verouderde standaarden en hervalideer drivers naarmate de context verandert.</div>
+              <div class="ar-meta">
+                <span class="ar-chip space" style="background:rgba(39,64,107,.1);color:var(--ent)">Activity Space · Development</span>
+                <span class="ar-chip comp">Competency · Architecture</span>
+                <span class="ar-chip alpha">Architecture → Established → Evolving · Drivers → Sustained</span>
+              </div>
+            </div>
+            <div class="ar-arrow">→</div>
+          </a>
         </div>
       </div>
 
@@ -405,7 +405,7 @@ h1 em{font-style:italic;font-weight:500;color:var(--prac)}
 
   <div class="panel">
     <h3>Dit is een iteratief proces, geen waterval</h3>
-    <p>De volgorde Frame → Envision → Shape → Prove → Plan is een verstandige standaard. In de praktijk itereer je: nieuwe drivers beïnvloeden de visie; bewijs uit PoC herziet beslissingen; planningshorizons brengen nieuwe risico's boven. Governance loopt door alle stappen heen via MVG.</p>
+    <p>De volgorde Identify → Envision → Build → Plan → Evolve is een verstandige standaard. In de praktijk itereer je: nieuwe drivers beïnvloeden de visie; de paved road groeit mee met reviewinzichten; planningshorizons brengen nieuwe risico's boven. Governance loopt door alle stappen heen via MVG.</p>
     <p>Ga voor de solution-variant naar de <a href="wow-solution-architecture.html" style="color:var(--sol);font-weight:600">Way-of-working Solution Architectuur</a> — zelfde process, solution-scope, Architecture Owner als primaire rol.</p>
   </div>
 </div>
