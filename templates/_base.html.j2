@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="{{ css_path | default('style.css') }}">
+<style>:root{--header-h:154px}</style>
 </head>
 <body{% if data_prac %} data-prac="{{ data_prac }}"{% endif %} class="min-h-screen bg-white text-[var(--fg)] antialiased">
 <a class="skip-link absolute -top-full left-0 z-[999] rounded-br-lg bg-slate-900 px-[18px] py-2.5 text-[13px] font-semibold text-white no-underline focus-visible:top-0" href="#main-content">Ga naar de hoofdinhoud</a>
@@ -29,7 +30,12 @@
       <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </button>
   </div>
-  <!-- rij 2: hoofdnavigatie -->
+  <!-- rij 2: ontwikkelings-disclaimer (altijd zichtbaar, geen interactie nodig) -->
+  <div class="topnav-banner flex flex-wrap items-start gap-2 border-t border-amber-200 bg-amber-50 px-5 py-2 text-[12.5px] leading-snug text-amber-800 max-[480px]:px-3" role="note">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" class="mt-0.5 shrink-0"><path d="M8 1.2 1 14.5h14L8 1.2Zm0 4.3a1 1 0 0 1 1 1v3.5a1 1 0 1 1-2 0V6.5a1 1 0 0 1 1-1Zm0 6.8a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>
+    <p class="m-0"><strong>Deze site is nog in ontwikkeling.</strong> De inhoud kan onvolledig zijn en fouten bevatten. Aan de inhoud van deze site kunnen dan ook geen rechten worden ontleend; wij aanvaarden geen verantwoordelijkheid voor eventuele onjuistheden.</p>
+  </div>
+  <!-- rij 3: hoofdnavigatie -->
   <nav class="topnav-links flex h-11 items-center gap-1 border-t border-slate-100 px-5 max-[480px]:px-3" aria-label="Hoofdnavigatie">
     <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}index.html">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6.5L8 2l6 4.5V14a1 1 0 01-1 1H3a1 1 0 01-1-1V6.5z"/><path d="M6 15v-5h4v5"/></svg>
@@ -45,9 +51,9 @@
     </a>
   </nav>
 </header>
-<div id="sidenav-overlay" class="sidenav-overlay hidden fixed inset-x-0 bottom-0 top-[100px] z-[90] bg-black/25"></div>
-<div class="page-shell flex min-h-screen pt-[100px]">
-  <aside id="sidenav" class="sidenav fixed bottom-0 left-0 top-[100px] z-[100] w-[240px] overflow-y-auto overflow-x-hidden border-r border-slate-300 bg-white pb-6 max-[900px]:-translate-x-full max-[900px]:transition-transform" aria-label="Domein navigatie"></aside>
+<div id="sidenav-overlay" class="sidenav-overlay hidden fixed inset-x-0 bottom-0 top-[var(--header-h)] z-[90] bg-black/25"></div>
+<div class="page-shell flex min-h-screen pt-[var(--header-h)]">
+  <aside id="sidenav" class="sidenav fixed bottom-0 left-0 top-[var(--header-h)] z-[100] w-[240px] overflow-y-auto overflow-x-hidden border-r border-slate-300 bg-white pb-6 max-[900px]:-translate-x-full max-[900px]:transition-transform" aria-label="Domein navigatie"></aside>
   <main class="page-main relative ml-[240px] min-w-0 flex-1 before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:z-0 before:h-[340px] before:bg-gradient-to-b before:from-slate-50 before:to-white before:content-[''] max-[900px]:ml-0" id="main-content">
     <div class="wrap relative z-[1] mx-auto {{ wrap_class | default('max-w-[1300px]') }} px-[26px] pb-[90px]">
 {% block content %}{% endblock %}

@@ -1,0 +1,216 @@
+/* ── Essence Way of Working — GitHub Pages stylesheet ─────────────────── */
+
+/* ── CSS custom properties ─────────────────────────────────────────────── */
+:root {
+  /* Practice colours */
+  --mva:  #27406b; /* Enterprise Architectuur */
+  --sol:  #0f6e63; /* Solution Architectuur */
+  --mvg:  #4f46e5; /* Lichte Architectuursturing */
+  --port: #b45309; /* Portfolio Levenscyclus */
+  --wf:   #475569; /* Watervalaanpak */
+
+  /* Aliases */
+  --ent:  var(--mva);
+  --prac: var(--mva); /* overridden by data-prac selector below */
+
+  /* Foreground */
+  --fg: #0f172a;
+}
+
+/* ── Practice colour overrides ─────────────────────────────────────────── */
+[data-prac="mva"]  { --prac: var(--mva); }
+[data-prac="sol"]  { --prac: var(--sol); }
+[data-prac="mvg"]  { --prac: var(--mvg); }
+[data-prac="port"] { --prac: var(--port); }
+[data-prac="wf"]   { --prac: var(--wf);  }
+
+/* ── Base resets ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 16px; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--fg);
+  margin: 0;
+}
+
+/* ── Typography ────────────────────────────────────────────────────────── */
+.prose {
+  max-width: 72ch;
+  line-height: 1.75;
+  color: #475569;
+  font-size: 0.9375rem;
+  margin: 0 0 1rem;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+/* ── Skip link ─────────────────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 999;
+  border-bottom-right-radius: 0.5rem;
+  background: #0f172a;
+  padding: 0.625rem 1.125rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+}
+.skip-link:focus-visible { top: 0; }
+
+/* ── Top nav ───────────────────────────────────────────────────────────── */
+.topnav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 200;
+  background: #fff;
+}
+
+/* mobile toggle — hidden by default, shown <900px via Tailwind max-[900px] */
+.topnav-toggle {
+  display: none;
+}
+
+/* ── Topnav dropdown ──────────────────────────────────────────────────── */
+.topnav-drop { position: relative; }
+
+.topnav-drop-menu {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 6px);
+  z-index: 301;
+  min-width: 220px;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,.1);
+  padding: 0.375rem;
+  list-style: none;
+  margin: 0;
+}
+
+.topnav-drop-menu li a {
+  display: block;
+  padding: 0.5rem 0.875rem;
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  color: #334155;
+  text-decoration: none;
+  transition: background 0.12s;
+}
+
+.topnav-drop-menu li a:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.topnav-drop-label {
+  display: block;
+  padding: 0.375rem 0.875rem 0.125rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.topnav-drop-sep {
+  display: block;
+  border-top: 1px solid #e2e8f0;
+  margin: 0.25rem 0.5rem;
+}
+
+/* ── Sidenav ───────────────────────────────────────────────────────────── */
+.sidenav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  top: 100px;  /* 56px logo row + 40px nav-links row */
+  z-index: 100;
+  width: 240px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-right: 1px solid #cbd5e1;
+  background: #fff;
+  padding-bottom: 1.5rem;
+}
+
+/* ── Sidenav nav items (populated by nav.js) ─────────────────────────── */
+.snav-section {
+  padding: 0.75rem 1rem 0.25rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.snav-link {
+  display: block;
+  padding: 0.4rem 1rem;
+  font-size: 0.8125rem;
+  color: #475569;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.12s, border-color 0.12s;
+}
+
+.snav-link:hover,
+.snav-link.active {
+  color: var(--prac);
+  border-left-color: var(--prac);
+}
+
+/* ── Page shell ────────────────────────────────────────────────────────── */
+.page-shell {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+.page-main {
+  margin-left: 240px;
+  min-width: 0;
+  flex: 1;
+}
+
+/* ── Mobile overrides ──────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .topnav-toggle { display: flex; }
+  .sidenav { transform: translateX(-100%); transition: transform 0.2s; }
+  .sidenav.open { transform: translateX(0); }
+  .page-main { margin-left: 0; }
+}
+
+/* ── Utility: bar in mobile toggle ─────────────────────────────────────── */
+.topnav-toggle .bar {
+  display: block;
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  margin: 2px auto;
+  transition: transform 0.2s;
+}
+
+/* ── Overlay ───────────────────────────────────────────────────────────── */
+.sidenav-overlay {
+  position: fixed;
+  inset: 100px 0 0;
+  z-index: 90;
+  background: rgba(0,0,0,.25);
+}
+
+/* ── Fonts fallback (if Google Fonts unavailable) ──────────────────────── */
+@supports not (font-variation-settings: normal) {
+  body { font-family: system-ui, sans-serif; }
+  h1, h2, h3, h4 { font-family: Georgia, serif; }
+}

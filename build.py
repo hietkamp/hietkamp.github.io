@@ -1460,12 +1460,22 @@ def main() -> None:
     env = make_env()
 
     # Copy static assets
+    DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    STATIC_DIR = ROOT / "static"
     for asset in ("style.css", "nav.js"):
-        src = ROOT / "docs" / asset
+        src = STATIC_DIR / asset
         if src.exists():
-            print(f"  static: {asset} already in docs/")
+            shutil.copy(src, DOCS_DIR / asset)
+            print(f"  static: copied {asset} to docs/")
         else:
-            print(f"  warning: docs/{asset} not found — create it")
+            print(f"  warning: static/{asset} not found — create it")
+
+    assets_src = STATIC_DIR / "assets"
+    if assets_src.exists():
+        shutil.copytree(assets_src, DOCS_DIR / "assets", dirs_exist_ok=True)
+        print("  static: copied assets/ to docs/assets/")
+    else:
+        print("  warning: static/assets/ not found — create it")
 
     print("Generating pages…")
 

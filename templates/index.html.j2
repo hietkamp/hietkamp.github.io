@@ -4,7 +4,7 @@
 {% block content %}
 {{ hero(hero_data) }}
 
-<nav class="toolbar sticky top-[100px] z-20 my-[22px] mb-1 flex flex-wrap items-center gap-[7px] bg-gradient-to-b from-white from-80% to-transparent py-[13px] pb-[11px] backdrop-blur-[2px] max-[600px]:flex-nowrap max-[600px]:overflow-x-auto max-[600px]:pb-3" aria-label="Spring naar">
+<nav class="toolbar sticky top-[var(--header-h)] z-20 my-[22px] mb-1 flex flex-wrap items-center gap-[7px] bg-gradient-to-b from-white from-80% to-transparent py-[13px] pb-[11px] backdrop-blur-[2px] max-[600px]:flex-nowrap max-[600px]:overflow-x-auto max-[600px]:pb-3" aria-label="Spring naar">
   <span class="lbl mr-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">Ga naar</span>
   {% for link in toolbar %}
   <a class="f inline-flex cursor-pointer items-center rounded-full border border-slate-900 bg-white px-3 py-1.5 font-mono text-xs text-slate-900 no-underline transition hover:bg-slate-900 hover:text-white [&.active]:border-[var(--prac)] [&.active]:bg-[var(--prac)] [&.active]:text-white" href="{{ link.href }}">{{ link.label }}</a>
