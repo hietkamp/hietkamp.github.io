@@ -119,6 +119,10 @@ Pas de templates in `templates/` of `docs/style.css` aan. Templates mogen **geen
 
 Pas `essence/essence-language.owl` aan en voeg de bijbehorende ophaal-/mapping-logica toe aan `build.py` (een nieuwe helper- of context-bouwfunctie), niet aan de templates.
 
+## Licentie
+
+Dit project is gelicenseerd onder de [GNU General Public License v3.0](LICENSE) (GPLv3). Zie het [`LICENSE`](LICENSE)-bestand voor de volledige tekst.
+
 ## Gedetailleerde regels & context-schema's
 
 Volledige beschrijving van de Essence-ontologie, alle context-dictionary-schema's per template, SPARQL-voorbeeldqueries en de harde regels voor dit project (RDF als enige bron, geen JSON/YAML tussenlagen, relatieve paden, etc.) staan in [`CLAUDE.md`](CLAUDE.md).
