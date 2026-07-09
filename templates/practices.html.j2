@@ -1,0 +1,26 @@
+{% extends "_base.html.j2" %}
+{% from "_macros.html.j2" import hero %}
+
+{% block content %}
+{{ hero(hero_data) }}
+
+<section class="mt-12 grid gap-6 sm:grid-cols-2">
+  {% for practice in practices %}
+  <a href="{{ practice.href }}" class="group block rounded-2xl border border-slate-200 bg-white p-8 no-underline shadow-sm transition hover:border-[var(--{{ practice.color }})] hover:shadow-md">
+    <div class="mb-4 flex items-center gap-3">
+      <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white" style="background:var(--{{ practice.color }})">
+        <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true">{{ practice.icon_path | safe }}</svg>
+      </span>
+      <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">{{ practice.id }}</span>
+    </div>
+    <h2 class="mb-2 font-serif text-[1.45rem] font-black leading-tight text-slate-900 group-hover:text-[var(--{{ practice.color }})]">{{ practice.title }}</h2>
+    <p class="m-0 text-sm leading-relaxed text-slate-500">{{ practice.desc }}</p>
+    <div class="mt-5 flex flex-wrap gap-1.5">
+      {% for tag in practice.tags %}
+      <span class="rounded-full border border-[var(--{{ practice.color }})]/30 bg-[var(--{{ practice.color }})]/8 px-2.5 py-0.5 font-mono text-[10px] text-[var(--{{ practice.color }})]">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </a>
+  {% endfor %}
+</section>
+{% endblock %}

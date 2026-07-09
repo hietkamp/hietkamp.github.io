@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:ewow="https://hietkamp.nl/essence/vocab#"
+>
+
+  <ess:Activity rdf:about="activity/governance-assure-evidence">
+    <ess:name xml:lang="nl">Borgen op Bewijs</ess:name>
+    <ess:name xml:lang="en">Assure by Evidence</ess:name>
+    <ess:briefDescription xml:lang="nl">Verzamel architectuurbeoordelingsuitkomsten en paved-road-adoptiemetingen. Conformance wordt aangetoond op basis van bewijs, niet via documentatieverp…</ess:briefDescription>
+    <ess:description xml:lang="nl">Verzamel architectuurbeoordelingsuitkomsten en paved-road-adoptiemetingen. Conformance wordt aangetoond op basis van bewijs, niet via documentatieverplichtingen.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <ess:approach rdf:resource="approach/governance-assure-evidence/default"/>
+    <ess:action rdf:resource="action/governance-assure-evidence/read/architecture-roadmap"/>
+    <ess:action rdf:resource="action/governance-assure-evidence/create/conformance-evidence"/>
+    <ess:action rdf:resource="action/governance-assure-evidence/read/paved-road-adoptie"/>
+    <ess:action rdf:resource="action/governance-assure-evidence/read/review-records"/>
+    <ess:action rdf:resource="action/governance-assure-evidence/update-alpha/governance"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/governance-assure-evidence/completion/governance"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/governance-assure-evidence/default">
+    <ess:name xml:lang="nl">Borgen op Bewijs</ess:name>
+    <ess:name xml:lang="en">Assure by Evidence</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Verzamel architectuurbeoordelingsuitkomsten en paved-road-adoptiemetingen. Conformance wordt aangetoond op basis van bewijs, niet via documentatieverplichtingen.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/governance-assure-evidence/read/architecture-roadmap">
+    <ess:name>Read Architecture Roadmap</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-roadmap"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-assure-evidence/create/conformance-evidence">
+    <ess:name>Create Conformance Evidence</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/conformance-evidence"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-assure-evidence/read/paved-road-adoptie">
+    <ess:name>Read Paved Road Adoptie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/paved-road-adoptie"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-assure-evidence/read/review-records">
+    <ess:name>Read Review Records</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/review-records"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-assure-evidence/update-alpha/governance">
+    <ess:name>Update Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/governance"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/governance-assure-evidence/part-of/track-progress">
+    <ess:name>Assure by Evidence part-of Track Progress</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-assure-evidence"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:CompletionCriterion rdf:about="criterion/governance-assure-evidence/completion/governance">
+    <ess:name>Completion: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/assured"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

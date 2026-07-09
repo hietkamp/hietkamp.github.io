@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <ess:Activity rdf:about="activity/solution-gather-requirements">
+    <ess:name xml:lang="nl">Verzamel architectuurbepalende eisen</ess:name>
+    <ess:name xml:lang="en">Select architectural significant requirements</ess:name>
+    <ess:briefDescription xml:lang="nl">Selecteer de architectuurbepalende eisen uit de requirements van de business analyst. Leg de solution-richting vast binnen de enterprise-kaders: scope…</ess:briefDescription>
+    <ess:description xml:lang="nl">Selecteer de architectuurbepalende eisen uit de requirements van de business analyst. Leg de solution-richting vast binnen de enterprise-kaders: scope, principes en COTS-uitsluitingscriteria. Teamactiviteit op C4 Level 2.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/solution-architecture"/>
+    <ess:approach rdf:resource="approach/solution-gather-requirements/default"/>
+    <ess:action rdf:resource="action/solution-gather-requirements/read/architectural-drivers"/>
+    <ess:action rdf:resource="action/solution-gather-requirements/create/architecture-vision"/>
+    <ess:action rdf:resource="action/solution-gather-requirements/read/paved-road"/>
+    <ess:action rdf:resource="action/solution-gather-requirements/update-alpha/requirements"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/solution-gather-requirements/entry/requirements"/>
+    <ess:criterion rdf:resource="criterion/solution-gather-requirements/completion/requirements"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/solution-gather-requirements/default">
+    <ess:name xml:lang="nl">Requirements verzamelen</ess:name>
+    <ess:name xml:lang="en">Gather Requirements</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Selecteer de architectuurbepalende eisen uit de requirements van de business analyst. Leg de solution-richting vast binnen de enterprise-kaders: scope, principes en COTS-uitsluitingscriteria. Teamactiviteit op C4 Level 2.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/solution-gather-requirements/read/architectural-drivers">
+    <ess:name>Read Architectural Drivers</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architectural-drivers"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-gather-requirements/create/architecture-vision">
+    <ess:name>Create Architecture Vision</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-vision"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-gather-requirements/read/paved-road">
+    <ess:name>Read Paved Road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/paved-road"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-gather-requirements/update-alpha/requirements">
+    <ess:name>Update Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/solution-gather-requirements/part-of/understand-the-requirements">
+    <ess:name>Requirements verzamelen part-of Understand The Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/solution-gather-requirements"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandtheRequirements"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/solution-gather-requirements/entry/requirements">
+    <ess:name>Entry: Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/solution-gather-requirements/completion/requirements">
+    <ess:name>Completion: Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

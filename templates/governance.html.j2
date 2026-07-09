@@ -1,0 +1,104 @@
+{% extends "_base.html.j2" %}
+{% from "_macros.html.j2" import breadcrumb, hero, panel, rdf_prose %}
+
+{% block content %}
+{{ breadcrumb(crumbs) }}
+{{ hero(hero_data) }}
+
+<section class="sec mt-[38px] scroll-mt-[164px]" id="proces">
+  <h2 class="sh m-0 mb-1 font-serif text-[1.4rem] font-semibold">{{ activities.title }}</h2>
+  {{ rdf_prose(activities.intro, 'sec-intro my-1.5 mb-[18px]') }}
+
+  <div class="amap mt-2 flex flex-col">
+    {% for domain in activities.domains %}
+
+    <div class="amap-domain overflow-hidden rounded-2xl border-[1.5px] border-slate-300 bg-white">
+      <div class="amap-dhdr flex flex-wrap items-center justify-between gap-2 px-[22px] py-[13px] {% if domain.header_light %}text-slate-800{% else %}text-white{% endif %} [&_.amap-dname]:font-mono [&_.amap-dname]:text-[11px] [&_.amap-dname]:font-bold [&_.amap-dname]:uppercase [&_.amap-dname]:tracking-[0.2em] [&_.amap-dalphas]:font-mono [&_.amap-dalphas]:text-[9.5px] [&_.amap-dalphas]:tracking-wide [&_.amap-dalphas]:opacity-80 {{ domain.css }} bg-gradient-to-br {{ domain.gradient }}">
+        <span class="amap-dname">{{ domain.name }}</span>
+        <span class="amap-dalphas">{{ domain.alphas }}</span>
+      </div>
+      <div class="amap-body flex flex-col gap-3 px-5 py-[18px]">
+        {% for item in domain['items'] %}
+          {% if item.type == 'space' %}
+          <div class="amap-sp mt-1.5 flex items-baseline gap-2.5 border-b border-slate-300 pb-[7px] first:mt-0 [&_.amap-sp-n]:shrink-0 [&_.amap-sp-n]:font-mono [&_.amap-sp-n]:text-[9px] [&_.amap-sp-n]:font-semibold [&_.amap-sp-n]:uppercase [&_.amap-sp-n]:tracking-[0.14em] [&_.amap-sp-n]:text-slate-500 [&_.amap-sp-name]:font-serif [&_.amap-sp-name]:text-[0.98rem] [&_.amap-sp-name]:font-semibold [&_.amap-sp-name]:text-slate-900">
+            <span class="amap-sp-n">{{ item.code }}</span>
+            <span class="amap-sp-name">{{ item.name }}</span>
+          </div>
+          {% elif item.type == 'activity' %}
+          <div class="act-card grid grid-cols-[52px_1fr] overflow-hidden rounded-[11px] border border-slate-300 bg-white [&_.ac-num]:flex [&_.ac-num]:items-center [&_.ac-num]:justify-center [&_.ac-num]:{{ domain.num_color }} [&_.ac-num]:font-serif [&_.ac-num]:text-[1.4rem] [&_.ac-num]:font-bold [&_.ac-num]:{{ domain.num_text_color|default('text-white') }} [&_.ac-body]:px-4 [&_.ac-body]:py-[13px] [&_.ac-title]:m-0 [&_.ac-title]:mb-[3px] [&_.ac-title]:font-serif [&_.ac-title]:text-[1.1rem] [&_.ac-title]:font-semibold [&_.ac-desc]:m-0 [&_.ac-desc]:mb-2.5 [&_.ac-desc]:text-[0.86rem] [&_.ac-desc]:text-slate-500">
+            <div class="ac-num"{% if item.id %} id="{{ item.id }}"{% endif %}>{{ item.num }}</div>
+            <div class="ac-body">
+              <div class="ac-title">{{ item.title }}</div>
+              <div class="ac-desc">{{ item.desc }}</div>
+              <div class="ar-flow mt-2 flex flex-col gap-[5px] border-t border-dashed border-slate-300 pt-2">
+                {% if item.inputs %}
+                <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
+                  <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-emerald-700">Verwerkt</span>
+                  {% for i in item.inputs %}
+                  <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] mva-in border border-emerald-700/25 bg-emerald-700/10 text-emerald-700">{{ i }}</span>
+                  {% endfor %}
+                </div>
+                {% endif %}
+                {% if item.outputs %}
+                <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
+                  <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-indigo-700">produceert</span>
+                  {% for o in item.outputs %}
+                  <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] mvg-out border border-indigo-700/25 bg-indigo-700/10 text-indigo-700">{{ o }}</span>
+                  {% endfor %}
+                </div>
+                {% endif %}
+                {% if item.patterns %}
+                <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
+                  <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-red-700">Patroon</span>
+                  {% for pattern in item.patterns %}
+                  <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] pattern border border-red-700/25 bg-red-700/10 text-red-700">{{ pattern }}</span>
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+              <div class="ac-alpha mt-2 border-t border-dashed border-slate-300 pt-[7px] font-mono text-[9.5px] text-indigo-700">{{ item.alpha }}</div>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {% if not loop.last %}
+    <div class="amap-conn relative flex h-9 items-center justify-center before:absolute before:bottom-0 before:left-1/2 before:top-0 before:w-px before:-translate-x-1/2 before:bg-slate-300 before:content-['']"><span class="amap-conn-lbl relative z-[1] rounded-full border border-slate-300 bg-white px-3.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-slate-500">{{ domain.connector_after | default('↓ governance-cadence loopt door') }}</span></div>
+    {% endif %}
+
+    {% endfor %}
+
+    <div class="amap-legend mt-3 flex flex-wrap gap-3.5 font-mono text-[10px] tracking-wide">
+      <div class="amap-li flex items-center gap-[7px] text-slate-500"><div class="amap-li-dot h-2.5 w-2.5 shrink-0 rounded-sm bg-[var(--mvg)]"></div> MVG-activiteit</div>
+      <div class="amap-li flex items-center gap-[7px] text-slate-500"><span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] mva-in border border-emerald-700/25 bg-emerald-700/10 text-emerald-700">Verwerkt</span> MVA-werkproduct als input</div>
+      <div class="amap-li flex items-center gap-[7px] text-slate-500"><span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] mvg-out border border-indigo-700/25 bg-indigo-700/10 text-indigo-700">produceert</span> MVG-werkproduct als output</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec mt-[38px] scroll-mt-[164px]" id="rollen">
+  <h2 class="sh m-0 mb-1 font-serif text-[1.4rem] font-semibold">Rollen</h2>
+  <p class="sec-intro my-1.5 mb-[18px] text-[0.98rem] text-slate-500">{{ roles.intro }}</p>
+  <div class="role-grid mt-3.5 grid grid-cols-2 gap-4 max-[900px]:grid-cols-1">
+    {% for r in roles.cards %}
+    <div class="role-card overflow-hidden rounded-[13px] border border-slate-300 [&_.rc-head]:flex [&_.rc-head]:flex-col [&_.rc-head]:gap-[3px] [&_.rc-head]:px-4 [&_.rc-head]:py-[13px] [&_.rc-head]:text-slate-800 [&_.rc-type]:font-mono [&_.rc-type]:text-[9px] [&_.rc-type]:uppercase [&_.rc-type]:tracking-[0.18em] [&_.rc-type]:opacity-85 [&_.rc-head_h3]:m-0 [&_.rc-head_h3]:font-serif [&_.rc-head_h3]:text-[1.15rem] [&_.rc-head_h3]:font-semibold [&_.rc-body]:bg-white [&_.rc-body]:px-4 [&_.rc-body]:py-[13px] [&_.rc-body_p]:m-0 [&_.rc-body_p]:mb-2.5 [&_.rc-body_p]:text-[0.88rem] [&_.rc-body_p]:text-slate-500 rc-{{ r.id }} [&_.rc-head]:{{ r.head_color }}">
+      <div class="rc-head">
+        <div class="rc-type">MVG rol</div>
+        <h3>{{ r.name }}</h3>
+      </div>
+      <div class="rc-body">
+        <p>{{ r.desc }}</p>
+        <div class="rc-acts mt-2.5 border-t border-dashed border-slate-300 pt-2 font-mono text-[0.8rem] text-slate-500 [&_b]:text-slate-900"><b>Primair betrokken bij:</b> {{ r.involves }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<div class="panel transition-shadow mt-[18px] rounded-[13px] border border-l-4 border-slate-300 border-l-[var(--prac)] bg-slate-50 px-5 py-[18px] [&_h3]:m-0 [&_h3]:mb-1.5 [&_h3]:font-serif [&_h3]:text-[1.16rem] [&_p]:mb-2.5 [&_p]:text-[0.95rem] [&_p]:text-slate-500 [&_p:last-child]:mb-0 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline">
+  <h3>{{ closing_panel.title }}</h3>
+  {% for para in closing_panel.body %}<p>{{ para | safe }}</p>{% endfor %}
+</div>
+{% endblock %}

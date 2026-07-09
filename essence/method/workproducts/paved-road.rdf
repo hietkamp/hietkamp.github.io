@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:WorkProduct rdf:about="workproduct/paved-road">
+    <ess:name xml:lang="nl">Paved Road</ess:name>
+    <ess:name xml:lang="en">Paved Road</ess:name>
+    <ess:briefDescription xml:lang="nl">Maak de conforme keuze makkelijk en de afwijkende keuze expliciet bestuurbaar.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Een Paved Road is geen policy-document maar een gestructureerd aanbod van gesanctioneerde keuzes per laag — met bijbehorende ondersteuning én een expliciete off-road-procedure voor wie ervan afwijkt. On-road betekent: geen review nodig, gewoon gebruiken. Off-road betekent: ADR verplicht vóór gebruik.</p>
+<p><strong>Rol:</strong> Normatieve catalogus van gesanctioneerde keuzes die teams zelfstandig mogen toepassen.</p>
+<p><strong>Beantwoordt:</strong> Welke producten, patronen en instellingen zijn on-road, onder welke voorwaarden?</p>
+<p><strong>Scope:</strong> Bevat standaarden en catalogusitems; de rationale staat in ADRs en concrete toetsing in Review Records.</p>
+<p><strong>Publiek:</strong> Enterprise Architect, Architecture Owners, deliveryteams, leveranciers en Architectuurforum.</p>
+<h3>Informatie-elementen</h3><table><thead><tr><th>Element</th><th>Betekenis</th><th>Verplicht</th></tr></thead><tbody><tr><td>Catalogusitem</td><td>Het goedgekeurde product, patroon, protocol of referentie-instelling.</td><td>Ja</td></tr><tr><td>Status</td><td>Seeded, Published, Curated, Adopted, Pervasive of Evolving.</td><td>Ja</td></tr><tr><td>Voorwaarden</td><td>Wanneer het item geldt, inclusief beperkingen, versies en uitzonderingsroute.</td><td>Ja</td></tr><tr><td>Eigenaar</td><td>De rol of groep die onderhoud, documentatie en lifecycle bewaakt.</td><td>Ja</td></tr></tbody></table>
+<h3>Kwaliteitscriteria</h3><ul><li><strong>Zelfbedienbaar</strong> — Een team kan het item toepassen zonder extra uitleg van de Enterprise Architect.</li><li><strong>Normatief</strong> — Het item maakt duidelijk wat on-road, toegestaan met motivatie of verboden is.</li><li><strong>Meetbaar</strong> — Adoptie en afwijkingen kunnen per item worden geteld.</li></ul>
+<p><strong>Bijwerken wanneer:</strong> Continu productbeheer op basis van adoptie, reviewrecords, nieuwe standaarden en uitgefaseerde keuzes.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:ownedElements rdf:resource="resource/paved-road/template"/>
+  </ess:WorkProduct>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/paved-road/paved-road">
+    <ess:workProduct rdf:resource="workproduct/paved-road"/>
+    <ess:alpha rdf:resource="alpha/paved-road"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:WorkProductManifest>
+
+  <ess:TypedResource rdf:about="resource/paved-road/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/paved-road.docx</ess:content>
+  </ess:TypedResource>
+
+</rdf:RDF>

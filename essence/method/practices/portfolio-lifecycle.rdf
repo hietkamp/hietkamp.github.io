@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:Practice rdf:about="practice/portfolio-lifecycle">
+    <ess:name xml:lang="nl">Portfolio Levenscyclus</ess:name>
+    <ess:name xml:lang="en">Portfolio Lifecycle</ess:name>
+    <ess:briefDescription xml:lang="nl">Iteratief PMI-portfoilorhythme in vier fasen: initiatie, planning, uitvoering en optimalisatie, met Monitor &amp; Control als doorlopende activiteit.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De Portfolio Levenscyclus structureert de Enterprise Architectuurwerkwijze als een doorlopend, iteratief ritme gebaseerd op het PMI Standard for Portfolio Management (4e editie). Waar de Watervalaanpak een project-specifieke, lineaire structuur biedt voor de solution-architectuur, biedt de Portfolio Levenscyclus de strategische, continue cyclus voor de enterprise-architectuur en governance.</p>
+<p>De levenscyclus heeft vier fasen die herhaald doorlopen worden, aangevuld met Monitor &amp; Control als continue activiteit:</p>
+<p><strong>Fase Initiatie:</strong> Definieer en koppel het architectuurportfolio aan strategische doelen: context begrijpen, governance inrichten en de architectuurkansen en -uitdagingen identificeren.</p>
+<p><strong>Fase Planning:</strong> Prioriteer en selecteer architectuurcomponenten, definieer de architectuurvisie en richt de governancecadentie in: welke keuzes zijn strategisch en moeten gecoördineerd worden.</p>
+<p><strong>Fase Uitvoering:</strong> Governance op de architectuuruitvoering: enterprise-architectuur ontwerpen, paved road opbouwen, architectuurroadmap plannen en de uitvoering sturen op paved road-conformance.</p>
+<p><strong>Fase Optimalisatie:</strong> Continu herbalanceren: leer van de uitvoering, verbeter de enterprise-architectuur en stem governance bij voor de volgende cyclus.</p>
+<p><strong>Monitor &amp; Control (doorlopend):</strong> Continue toets van architectuurconformance via bewijs; loopt over alle fasen heen en voedt de optimalisatiefase.</p>
+<p>De solution-architectuur blijft in de Watervalaanpak. De portfolio levenscyclus levert de enterprise-kaders (paved road, roadmap) waarop de waterval voortbouwt.</p>]]></ess:description>
+    <ess:objective xml:lang="nl">Aligneer het enterprise-architectuurportfolio continu aan strategische doelen via een iteratief PMI-ritme; lever de paved road en governance-kaders waarop de Watervalaanpak voortbouwt.</ess:objective>
+    <ess:objective xml:lang="en">Continuously align the enterprise architecture portfolio with strategic goals via an iterative PMI rhythm; deliver the paved road and governance boundaries on which the Waterfall Approach builds.</ess:objective>
+    <ess:entry xml:lang="nl">Strategische doelen zijn geformuleerd; een Architecture Sponsor heeft de noodzaak voor portfolio-architectuur erkend; de organisatie voert meerdere COTS-implementatietrajecten uit of plant deze.</ess:entry>
+    <ess:entry xml:lang="en">Strategic goals are formulated; an Architecture Sponsor has recognised the need for portfolio architecture; the organisation is executing or planning multiple COTS implementation trajectories.</ess:entry>
+    <ess:result xml:lang="nl">Enterprise-architectuur is strategisch geankerd; de paved road is in gebruik door solution-teams; governance stuurt op portfolio-bewijs; lessen voeden de volgende iteratiecyclus.</ess:result>
+    <ess:result xml:lang="en">Enterprise architecture is strategically anchored; the paved road is in use by solution teams; governance steers on portfolio evidence; lessons feed the next iteration cycle.</ess:result>
+    <ess:measures xml:lang="nl">Paved road-adoptiegraad per solution-traject; strategische doelalignment per kwartaalreview; aantal actieve portfolio-componenten versus capaciteit; conformance-score uit Monitor &amp; Control.</ess:measures>
+    <ess:measures xml:lang="en">Paved road adoption rate per solution trajectory; strategic goal alignment per quarterly review; number of active portfolio components versus capacity; conformance score from Monitor &amp; Control.</ess:measures>
+    <ess:consistencyRules xml:lang="nl">Monitor &amp; Control loopt doorlopend over alle fasen; elke gate vereist dat de bijbehorende alpha-toestand is bereikt vóórdat de volgende cyclus de volgende fase ingaat; de paved road uit de Uitvoering-fase is een pre-conditie voor solution-trajecten in de Watervalaanpak.</ess:consistencyRules>
+    <ess:consistencyRules xml:lang="en">Monitor &amp; Control runs continuously across all phases; each gate requires the corresponding alpha state to be reached before the next cycle enters the next phase; the paved road from the Execution phase is a pre-condition for solution trajectories in the Waterfall Approach.</ess:consistencyRules>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:referredElements rdf:resource="practice/enterprise-architecture"/>
+    <ess:referredElements rdf:resource="practice/architectural-governance"/>
+    <ess:ownedElements rdf:resource="pattern/portfolio/initiatie"/>
+    <ess:ownedElements rdf:resource="pattern/portfolio/planning"/>
+    <ess:ownedElements rdf:resource="pattern/portfolio/uitvoering"/>
+    <ess:ownedElements rdf:resource="pattern/portfolio/optimalisatie"/>
+    <ess:ownedElements rdf:resource="pattern/portfolio/monitor-en-control"/>
+    <ess:ownedElements rdf:resource="pattern/portfolio/gate-gericht"/>
+    <ess:ownedElements rdf:resource="pattern/portfolio/gate-bruikbaar"/>
+    <ess:ownedElements rdf:resource="pattern/portfolio/gate-gevestigd"/>
+    <ess:ownedElements rdf:resource="activity-association/portfolio/enterprise-envision/end-before-start/governance-govern-delivery"/>
+    <ess:ownedElements rdf:resource="activity-association/portfolio/governance-assure-evidence/end-before-start/enterprise-learn-and-improve"/>
+  </ess:Practice>
+
+  <!-- Phase: Initiatie / Initiation -->
+  <ess:Pattern rdf:about="pattern/portfolio/initiatie">
+    <ess:name xml:lang="nl">Fase Initiatie</ess:name>
+    <ess:name xml:lang="en">Phase Initiation</ess:name>
+    <ess:briefDescription xml:lang="nl">Begrijp de strategische context, identificeer architectuurkansen en -uitdagingen en richt de governance-structuur in.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Begrijp de strategische context, identificeer architectuurkansen en -uitdagingen en richt de governance-structuur in.</p>
+<p><strong>Doel:</strong> Leg het fundament voor de portfolioarchitectuur: strategische doelen zijn vertaald naar architectuurdrivers, scope is bepaald en de governance is ingericht.</p>
+<p><strong>Context:</strong> Start van een nieuwe portfolioarchitectuurcyclus; organisatie wil strategische doelen koppelen aan architectuurkeuzes.</p>
+<p><strong>Probleem:</strong> Zonder gedeeld begrip van de strategische context en zonder governance-kaders mist het architectuurportfolio richting en aansturing.</p>
+<p><strong>Oplossing:</strong> Voer enterprise-begrijpingsactiviteiten uit om de organisatiecontext en architectuurdrivers te identificeren; richt tegelijkertijd de governance-structuur in als basis voor alle verdere besluitvorming.</p>
+<p><strong>Resultaat:</strong> Architectuurcontext is begrepen; governance-structuur is ingericht; fundament voor de planning-fase is gelegd.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/portfolio/initiatie/includes"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/portfolio/initiatie/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/enterprise-understand"/>
+    <ess:elements rdf:resource="activity/governance-establish-governance"/>
+  </ess:PatternAssociation>
+
+  <!-- Phase: Planning / Planning -->
+  <ess:Pattern rdf:about="pattern/portfolio/planning">
+    <ess:name xml:lang="nl">Fase Planning</ess:name>
+    <ess:name xml:lang="en">Phase Planning</ess:name>
+    <ess:briefDescription xml:lang="nl">Definieer de architectuurvisie, prioriteer portfolio-componenten en richt de governance-cadentie in.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Definieer de architectuurvisie, prioriteer portfolio-componenten en richt de governance-cadentie in.</p>
+<p><strong>Doel:</strong> Lever een gedeelde architectuurvisie: welke strategische architectuurkeuzes worden gemaakt, welke componenten prioriteit krijgen en hoe governance het ritme bewaakt.</p>
+<p><strong>Context:</strong> Architectuurcontext is begrepen (Initiatie); enterprise-architect en governance-forum bepalen richting voor de komende uitvoeringscyclus.</p>
+<p><strong>Probleem:</strong> Zonder heldere architectuurvisie en georganiseerde governance-cadentie ontbreekt de samenhang tussen strategische doelen en architectuuruitvoering.</p>
+<p><strong>Oplossing:</strong> Stel de architectuurvisie vast via de envision-activiteit; richt de governance-cadentie in zodat het governance-forum op het juiste moment de juiste beslissingen neemt.</p>
+<p><strong>Resultaat:</strong> Architectuurvisie is overeengekomen; portfolio-componenten zijn geprioriteerd; governance-cadentie is ingericht; gate Gericht kan worden gepasseerd.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/portfolio/planning/includes"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/portfolio/planning/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/enterprise-envision"/>
+    <ess:elements rdf:resource="activity/governance-engage-cadence"/>
+  </ess:PatternAssociation>
+
+  <!-- Phase: Uitvoering / Execution -->
+  <ess:Pattern rdf:about="pattern/portfolio/uitvoering">
+    <ess:name xml:lang="nl">Fase Uitvoering</ess:name>
+    <ess:name xml:lang="en">Phase Execution</ess:name>
+    <ess:briefDescription xml:lang="nl">Ontwerp de enterprise-architectuur, bouw de paved road, plan de architectuurroadmap en stuur de uitvoering op conformance.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Ontwerp de enterprise-architectuur, bouw de paved road, plan de architectuurroadmap en stuur de uitvoering op conformance.</p>
+<p><strong>Doel:</strong> Lever de enterprise-architectuurkaders en paved road die solution-trajecten als input gebruiken; stuur de uitvoering actief op conformance.</p>
+<p><strong>Context:</strong> Architectuurvisie is overeengekomen (gate Gericht); enterprise-architect werkt de architectuurkeuzes uit, publiceert de paved road als zelfbedienbare catalogus en plant de roadmap; governance bewaakt de uitvoering.</p>
+<p><strong>Probleem:</strong> Zonder concrete architectuurkaders, gepubliceerde paved road en actieve uitvoeringssturing raken solution-trajecten versnipperd en wijken af van de strategische richting.</p>
+<p><strong>Oplossing:</strong> Ontwerp de enterprise-architectuur, publiceer de paved road als catalogus, stel de architectuurroadmap vast op basis van portfolio-prioriteiten, en stuur leveranciers en teams actief op paved road-conformance.</p>
+<p><strong>Resultaat:</strong> Enterprise-architectuurkaders en paved road zijn beschikbaar voor solution-trajecten; architectuurroadmap is vastgesteld; uitvoering is gestuurd; gate Bruikbaar kan worden gepasseerd.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/portfolio/uitvoering/includes"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/portfolio/uitvoering/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/enterprise-design"/>
+    <ess:elements rdf:resource="activity/enterprise-build-paved-road"/>
+    <ess:elements rdf:resource="activity/enterprise-plan"/>
+    <ess:elements rdf:resource="activity/governance-govern-delivery"/>
+  </ess:PatternAssociation>
+
+  <!-- Phase: Optimalisatie / Optimization -->
+  <ess:Pattern rdf:about="pattern/portfolio/optimalisatie">
+    <ess:name xml:lang="nl">Fase Optimalisatie</ess:name>
+    <ess:name xml:lang="en">Phase Optimization</ess:name>
+    <ess:briefDescription xml:lang="nl">Leer van de uitvoering, verbeter de enterprise-architectuur en stem governance bij voor de volgende portfoliocyclus.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Leer van de uitvoering, verbeter de enterprise-architectuur en stem governance bij voor de volgende portfoliocyclus.</p>
+<p><strong>Doel:</strong> Verstevig de enterprise-architectuur op basis van uitvoeringservaringen en conformance-bewijs; actualiseer paved road en governance voor de volgende cyclus.</p>
+<p><strong>Context:</strong> Uitvoeringscyclus is afgerond; Monitor &amp; Control heeft conformance-bewijs verzameld; enterprise-architect en governance-forum evalueren en sturen bij.</p>
+<p><strong>Probleem:</strong> Architectuurlessen blijven impliciet en de paved road veroudert als er geen structureel leer- en verbeterproces is ingericht op portfolio-niveau.</p>
+<p><strong>Oplossing:</strong> Voer verbeteractiviteiten uit op enterprise- en governance-niveau: actualiseer de paved road, evalueer de architectuurmethode en stem governance bij op basis van wat Monitor &amp; Control heeft aangetoond.</p>
+<p><strong>Resultaat:</strong> Paved road en architectuurmethode zijn bijgesteld; governance-mechanisme is geëvalueerd; lessen voeden de volgende Initiatie-fase; gate Gevestigd kan worden gepasseerd.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/portfolio/optimalisatie/includes"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/portfolio/optimalisatie/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/enterprise-learn-and-improve"/>
+    <ess:elements rdf:resource="activity/governance-tune-governance"/>
+  </ess:PatternAssociation>
+
+  <!-- Continuous: Monitor en Control / Monitor and Control -->
+  <ess:Pattern rdf:about="pattern/portfolio/monitor-en-control">
+    <ess:name xml:lang="nl">Monitor en Control (doorlopend)</ess:name>
+    <ess:name xml:lang="en">Monitor and Control (continuous)</ess:name>
+    <ess:briefDescription xml:lang="nl">Continue toets van architectuurconformance en portfolio-gezondheid; loopt parallel aan alle fasen en voedt de optimalisatie.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Continue toets van architectuurconformance en portfolio-gezondheid; loopt parallel aan alle fasen en voedt de optimalisatie.</p>
+<p><strong>Doel:</strong> Zorg dat afwijkingen van de architectuurkaders tijdig zichtbaar zijn, zodat portfolio-beslissingen gebaseerd zijn op actueel conformance-bewijs.</p>
+<p><strong>Context:</strong> Loopt continu als achtergrondproces over alle portfoliofasen; het governance-forum verzamelt en beoordeelt bewijs op reguliere cadentie.</p>
+<p><strong>Probleem:</strong> Zonder continue monitoring ontbreken de gegevens om portfolio-componenten gericht bij te sturen en ontstaan verborgen conformance-risico's.</p>
+<p><strong>Oplossing:</strong> Voer governance-assurance-activiteiten doorlopend uit: verzamel conformance-bewijs, beoordeel het via on-road/off-road analyse en rapporteer portfolio-gezondheid aan de Architecture Sponsor.</p>
+<p><strong>Resultaat:</strong> Actueel conformance-bewijs is beschikbaar; portfolio-gezondheid is inzichtelijk; input voor Optimalisatie is verzameld.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/portfolio/monitor-en-control/includes"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/portfolio/monitor-en-control/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/governance-assure-evidence"/>
+  </ess:PatternAssociation>
+
+  <!-- Gate: Architectuur Gericht / Architecture Envisioned (end of Planning) -->
+  <ess:Pattern rdf:about="pattern/portfolio/gate-gericht">
+    <ess:name xml:lang="nl">Gate — Architectuur Gericht</ess:name>
+    <ess:name xml:lang="en">Gate — Architecture Envisioned</ess:name>
+    <ess:briefDescription xml:lang="nl">De Planning-fase is afgerond als de architectuur de toestand Gericht heeft bereikt: de architectuurvisie is overeengekomen en de governance-cadentie is ingericht.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De Planning-fase is afgerond als de architectuur de toestand Gericht heeft bereikt: de architectuurvisie is overeengekomen en de governance-cadentie is ingericht.</p>
+<p><strong>Criterium:</strong> Architecture Sponsor heeft de enterprise-architectuurvisie formeel goedgekeurd; portfolio-componenten zijn geprioriteerd; governance-cadentie is operationeel; solution-trajecten kunnen starten met de waterval.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/portfolio/gate-gericht/aligns"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/portfolio/gate-gericht/aligns">
+    <ess:name xml:lang="nl">sluit aan op</ess:name>
+    <ess:name xml:lang="en">aligns</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="state/architecture/envisioned"/>
+  </ess:PatternAssociation>
+
+  <!-- Gate: Architectuur Bruikbaar / Architecture Usable (end of Uitvoering) -->
+  <ess:Pattern rdf:about="pattern/portfolio/gate-bruikbaar">
+    <ess:name xml:lang="nl">Gate — Architectuur Bruikbaar</ess:name>
+    <ess:name xml:lang="en">Gate — Architecture Usable</ess:name>
+    <ess:briefDescription xml:lang="nl">De Uitvoering-fase is afgerond als de architectuur de toestand Bruikbaar heeft bereikt: de paved road is gepubliceerd en in gebruik door solution-teams.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De Uitvoering-fase is afgerond als de architectuur de toestand Bruikbaar heeft bereikt: de paved road is gepubliceerd en in gebruik door solution-teams.</p>
+<p><strong>Criterium:</strong> Enterprise-architectuurontwerp is goedgekeurd; paved road is gepubliceerd als zelfbedienbare catalogus; architectuurroadmap is vastgesteld; minstens één solution-traject heeft de paved road succesvol als referentie gebruikt; governance heeft eerste conformance-bewijs verzameld.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/portfolio/gate-bruikbaar/aligns"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/portfolio/gate-bruikbaar/aligns">
+    <ess:name xml:lang="nl">sluit aan op</ess:name>
+    <ess:name xml:lang="en">aligns</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="state/architecture/usable"/>
+  </ess:PatternAssociation>
+
+  <!-- Gate: Architectuur Gevestigd / Architecture Established (end of Optimalisatie) -->
+  <ess:Pattern rdf:about="pattern/portfolio/gate-gevestigd">
+    <ess:name xml:lang="nl">Gate — Architectuur Gevestigd</ess:name>
+    <ess:name xml:lang="en">Gate — Architecture Established</ess:name>
+    <ess:briefDescription xml:lang="nl">De Optimalisatie-fase is afgerond als de architectuur de toestand Gevestigd heeft bereikt: paved road en governance zijn bijgesteld op basis van uitvoeringservaringen.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De Optimalisatie-fase is afgerond als de architectuur de toestand Gevestigd heeft bereikt: paved road en governance zijn bijgesteld op basis van uitvoeringservaringen.</p>
+<p><strong>Criterium:</strong> Paved road is geactualiseerd op basis van conformance-bewijs uit Monitor &amp; Control; enterprise-architectuurmethode is geëvalueerd; governance is bijgesteld; lessen zijn gedocumenteerd voor de volgende Initiatie-fase; Architecture Sponsor heeft de cyclus formeel afgesloten.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/portfolio/gate-gevestigd/aligns"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/portfolio/gate-gevestigd/aligns">
+    <ess:name xml:lang="nl">sluit aan op</ess:name>
+    <ess:name xml:lang="en">aligns</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="state/architecture/established"/>
+  </ess:PatternAssociation>
+
+  <!-- Cross-practice: enterprise vision must be complete before governing execution delivery -->
+  <ess:ActivityAssociation rdf:about="activity-association/portfolio/enterprise-envision/end-before-start/governance-govern-delivery">
+    <ess:name>portfolio enterprise-envision end-before-start governance-govern-delivery</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/enterprise-envision"/>
+    <ess:end2 rdf:resource="activity/governance-govern-delivery"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <!-- Cross-practice: conformance evidence collected before enterprise improvement starts -->
+  <ess:ActivityAssociation rdf:about="activity-association/portfolio/governance-assure-evidence/end-before-start/enterprise-learn-and-improve">
+    <ess:name>portfolio governance-assure-evidence end-before-start enterprise-learn-and-improve</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-assure-evidence"/>
+    <ess:end2 rdf:resource="activity/enterprise-learn-and-improve"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+</rdf:RDF>

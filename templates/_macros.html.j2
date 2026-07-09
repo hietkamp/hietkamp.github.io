@@ -1,0 +1,157 @@
+{# ─── Shared macros ──────────────────────────────────────────────── #}
+
+{# Generic prose renderer for ess:description HTML (CDATA with p/h3/h4/ul/table/strong/em).
+   Gives every element a consistent look wherever RDF description HTML is rendered with | safe. #}
+{% macro rdf_prose(html, extra_class='') %}
+{% if html %}
+<div class="rdf-prose {{ extra_class }} [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&_p]:mb-2.5 [&_p]:text-[0.92rem] [&_p]:leading-relaxed [&_p]:text-slate-500 [&_h3]:mb-1.5 [&_h3]:mt-5 [&_h3]:font-serif [&_h3]:text-[1.08rem] [&_h3]:font-semibold [&_h3]:text-slate-900 [&_h4]:mb-1 [&_h4]:mt-4 [&_h4]:font-serif [&_h4]:text-[0.96rem] [&_h4]:font-semibold [&_h4]:text-slate-800 [&_strong]:font-semibold [&_strong]:text-slate-800 [&_em]:italic [&_ul]:mb-2.5 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:text-[0.92rem] [&_ul]:text-slate-500 [&_ol]:mb-2.5 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:text-[0.92rem] [&_ol]:text-slate-500 [&_li]:mb-1 [&_li]:leading-relaxed [&_table]:mb-3 [&_table]:w-full [&_table]:border-collapse [&_table]:text-[0.84rem] [&_thead_th]:border [&_thead_th]:border-slate-300 [&_thead_th]:bg-slate-50 [&_thead_th]:px-2.5 [&_thead_th]:py-1.5 [&_thead_th]:text-left [&_thead_th]:font-semibold [&_thead_th]:text-slate-700 [&_td]:border [&_td]:border-slate-300 [&_td]:px-2.5 [&_td]:py-1.5 [&_td]:align-top [&_td]:text-slate-500 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline">
+  {{ html | safe }}
+</div>
+{% endif %}
+{% endmacro %}
+
+{# Breadcrumb #}
+{% macro breadcrumb(crumbs) %}
+<div class="breadcrumb flex flex-wrap items-center gap-2 pt-[18px] font-mono text-[11px] text-slate-500 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline">
+  {% for c in crumbs %}
+    {% if c.href %}<a href="{{ c.href }}">{{ c.label }}</a>{% else %}<span>{{ c.label }}</span>{% endif %}
+    {% if not loop.last %}<span>›</span>{% endif %}
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{# Hero with kicker + h1 (optional em part) + lede + chips/pillars #}
+{% macro hero(h, pill_style='chips') %}
+<header class="hero border-b-2 border-[var(--prac)] py-14 pb-8 [&_h1]:m-0 [&_h1]:mb-[0.45em] [&_h1]:font-serif [&_h1]:text-[clamp(2.3rem,5.6vw,4.4rem)] [&_h1]:font-black [&_h1]:leading-none [&_h1_em]:font-medium [&_h1_em]:italic [&_h1_em]:text-[var(--prac)] max-[600px]:py-8 max-[600px]:pb-4 max-[600px]:[&_h1]:text-[clamp(1.9rem,8vw,3rem)]">
+  {% if h.meta_chips %}
+  <div class="hero-meta mb-4 flex flex-wrap gap-2">
+    {% for chip in h.meta_chips %}
+    <span class="hchip rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] hchip-{{ chip.style }} {% if chip.style == 'mva' %}border-emerald-700/25 bg-emerald-700/10 text-emerald-700{% elif chip.style == 'mvg' %}border-indigo-700/25 bg-indigo-700/10 text-indigo-700{% endif %}">{{ chip.text }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div class="kicker mb-3.5 block font-mono text-[11px] uppercase tracking-[0.28em] text-[var(--prac)]">{{ h.kicker }}</div>
+  <h1>{{ h.h1_pre }}</h1>
+  {% if h.title_en %}<p class="hero-title-en m-0 -mt-[0.3em] mb-[0.5em] font-serif italic text-[clamp(1.5rem,3.8vw,3rem)] font-normal leading-tight text-slate-500">{{ h.title_en }}</p>{% endif %}
+  <p class="lede m-0 text-[clamp(1rem,1.5vw,1.16rem)] leading-relaxed text-slate-500">{{ h.lede }}</p>
+  {% if h.chips %}
+  <div class="hero-chips mt-5 flex flex-wrap gap-2 [&_span]:rounded-full [&_span]:border-[1.5px] [&_span]:border-[var(--prac)] [&_span]:bg-white [&_span]:px-[13px] [&_span]:py-[5px] [&_span]:font-mono [&_span]:text-[11px] [&_span]:font-medium [&_span]:tracking-wide [&_span]:text-[var(--prac)]">
+    {% for chip in h.chips %}<span>{{ chip }}</span>{% endfor %}
+  </div>
+  {% elif h.pillars %}
+  <div class="pillars mt-6 flex flex-wrap gap-2.5 [&_span]:rounded-full [&_span]:border [&_span]:border-slate-900 [&_span]:bg-white [&_span]:px-3.5 [&_span]:py-[7px] [&_span]:font-mono [&_span]:text-xs [&_span]:tracking-wide">
+    {% for p in h.pillars %}<span>{{ p }}</span>{% endfor %}
+  </div>
+  {% endif %}
+  {% if h.alpha_bar %}
+  <div class="alpha-bar mt-5 flex flex-wrap items-center gap-2 rounded-[10px] border border-[var(--prac)]/20 bg-slate-50 px-3.5 py-2.5 font-mono text-[11px]">
+    <span class="ab-label font-bold tracking-wide text-[var(--prac)]">{{ h.alpha_bar.label }}</span>
+    <span class="ab-states text-slate-500">{{ h.alpha_bar.states | replace('**', '') }}</span>
+  </div>
+  {% endif %}
+</header>
+{% endmacro %}
+
+{# Section heading with number #}
+{% macro sec_head(num, title) %}
+<div class="sec-head mb-2 flex items-center gap-3 border-b border-slate-300 pb-2 [&_h2]:m-0 [&_h2]:font-serif [&_h2]:text-[1.6rem] [&_h2]:font-semibold">
+  <span class="num rounded bg-[var(--prac)] px-2 py-0.5 font-mono text-[11px] text-white">{{ num }}</span>
+  <h2>{{ title }}</h2>
+</div>
+{% endmacro %}
+
+{# Panel callout — optional href makes it a link #}
+{% macro panel(p, extra_class='') %}
+{% if p.href %}
+<a class="panel transition-shadow mt-[18px] rounded-[13px] border border-l-4 border-slate-300 border-l-[var(--prac)] bg-slate-50 px-5 py-[18px] [&_h3]:m-0 [&_h3]:mb-1.5 [&_h3]:font-serif [&_h3]:text-[1.16rem] [&_p]:mb-2.5 [&_p]:text-[0.95rem] [&_p]:text-slate-500 [&_p:last-child]:mb-0 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline {{ p.border_color | default('') | replace('--', 'border-l-[var(--') | replace(')]', ')]') }} block text-[inherit] {{ extra_class }}" href="{{ p.href }}">
+  <h3>{{ p.title }}</h3>
+  {% for para in p.body %}<p>{{ para | safe }}</p>{% endfor %}
+  {% if p.cta %}<p class="m-0 text-[var(--mvg)] text-[.875rem] font-semibold">{{ p.cta }}</p>{% endif %}
+</a>
+{% else %}
+<div class="panel transition-shadow mt-[18px] rounded-[13px] border border-l-4 border-slate-300 border-l-[var(--prac)] bg-slate-50 px-5 py-[18px] [&_h3]:m-0 [&_h3]:mb-1.5 [&_h3]:font-serif [&_h3]:text-[1.16rem] [&_p]:mb-2.5 [&_p]:text-[0.95rem] [&_p]:text-slate-500 [&_p:last-child]:mb-0 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline {{ extra_class }}">
+  <h3>{{ p.title }}</h3>
+  {% for para in p.body %}<p>{{ para | safe }}</p>{% endfor %}
+</div>
+{% endif %}
+{% endmacro %}
+
+{# Activity-map chip by kind #}
+{% macro act_chip(kind, text, phase, spoor) %}
+{% if kind == 'space' %}
+  {% if phase == 'analyse' %}
+    <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] space bg-blue-700/10 text-blue-700">{{ text }}</span>
+  {% elif spoor == 'enterprise' %}
+    <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] space bg-[rgba(39,64,107,.1)] text-[var(--ent)]">{{ text }}</span>
+  {% else %}
+    <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] space bg-[rgba(15,110,99,.1)] text-[var(--sol)]">{{ text }}</span>
+  {% endif %}
+{% elif kind == 'comp' %}
+    <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] comp bg-indigo-700/10 text-indigo-700">{{ text }}</span>
+{% elif kind == 'alpha' %}
+    <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] alpha bg-emerald-700/10 text-emerald-700">{{ text }}</span>
+{% endif %}
+{% endmacro %}
+
+{# WoW activity card #}
+{% macro act_row(act, num_color, spoor) %}
+<a href="{{ act.href }}" class="act-row grid grid-cols-[52px_1fr_auto] overflow-hidden rounded-[13px] border border-slate-300 bg-white text-inherit no-underline transition hover:-translate-y-0.5 hover:shadow-sm [&_.ar-num]:flex [&_.ar-num]:items-center [&_.ar-num]:justify-center [&_.ar-num]:font-serif [&_.ar-num]:text-[1.4rem] [&_.ar-num]:font-bold [&_.ar-num]:text-white [&_.ar-body]:px-4 [&_.ar-body]:py-[13px] [&_.ar-title]:m-0 [&_.ar-title]:mb-[3px] [&_.ar-title]:font-serif [&_.ar-title]:text-[1.12rem] [&_.ar-title]:font-semibold [&_.ar-desc]:m-0 [&_.ar-desc]:mb-[7px] [&_.ar-desc]:text-[0.86rem] [&_.ar-desc]:text-slate-500 [&_.ar-meta]:flex [&_.ar-meta]:flex-wrap [&_.ar-meta]:gap-1.5 [&_.ar-arrow]:flex [&_.ar-arrow]:items-center [&_.ar-arrow]:px-[18px] [&_.ar-arrow]:font-mono [&_.ar-arrow]:text-lg [&_.ar-arrow]:text-slate-500 a-{{ act.phase }} [&_.ar-num]:{{ num_color }}">
+  <div class="ar-num">{{ act.num }}</div>
+  <div class="ar-body">
+    <div class="ar-title">{{ act.title }}</div>
+    <div class="ar-desc">{{ act.desc }}</div>
+    <div class="ar-meta">
+      {{ act_chip('space', act.chips.space, act.phase, spoor) }}
+      {{ act_chip('comp', act.chips.comp, act.phase, spoor) }}
+      {{ act_chip('alpha', act.chips.alpha, act.phase, spoor) }}
+    </div>
+    {% if act.inputs or act.outputs or act.patterns %}
+    <div class="ar-flow mt-2 flex flex-col gap-[5px] border-t border-dashed border-slate-300 pt-2">
+      {% if act.inputs %}
+      <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
+        <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500">Verwerkt</span>
+        {% for i in act.inputs %}
+        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] wp-in border border-slate-300 bg-slate-100 text-slate-500">{{ i }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% if act.outputs %}
+      <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
+        <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500">Produceert</span>
+        {% for o in act.outputs %}
+        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] wp-out border border-yellow-600/30 bg-yellow-600/10 text-yellow-700">{{ o }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% if act.patterns %}
+      <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
+        <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500">Patroon</span>
+        {% for pattern in act.patterns %}
+        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] pattern border border-red-700/25 bg-red-700/10 text-red-700">{{ pattern }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+  <div class="ar-arrow">→</div>
+</a>
+{% endmacro %}
+
+{# Activity space header row #}
+{% macro act_space(item) %}
+{% if item.gap %}
+<div class="amap-sp mt-1.5 flex items-baseline gap-2.5 border-b border-slate-300 pb-[7px] first:mt-0 [&_.amap-sp-n]:shrink-0 [&_.amap-sp-n]:font-mono [&_.amap-sp-n]:text-[9px] [&_.amap-sp-n]:font-semibold [&_.amap-sp-n]:uppercase [&_.amap-sp-n]:tracking-[0.14em] [&_.amap-sp-n]:text-slate-500 [&_.amap-sp-name]:font-serif [&_.amap-sp-name]:text-[0.98rem] [&_.amap-sp-name]:font-semibold [&_.amap-sp-name]:text-slate-900 is-gap border-dashed opacity-60 [&_.amap-sp-name]:font-medium">
+  <span class="amap-sp-n">{{ item.code }}</span>
+  <div class="amap-sp-main min-w-0 flex-1">
+    <span class="amap-sp-name">{{ item.name }}</span><span class="amap-sp-badge ml-1.5 align-middle rounded-[10px] border border-orange-700/25 bg-orange-700/10 px-2 py-0.5 font-mono text-[8.5px] font-semibold uppercase tracking-[0.1em] text-orange-700">niet gedekt</span>
+    {% if item.desc %}<span class="amap-sp-desc mt-[3px] block text-[0.82rem] leading-snug text-slate-500">{{ item.desc }}</span>{% endif %}
+  </div>
+</div>
+{% else %}
+<div class="amap-sp mt-1.5 flex items-baseline gap-2.5 border-b border-slate-300 pb-[7px] first:mt-0 [&_.amap-sp-n]:shrink-0 [&_.amap-sp-n]:font-mono [&_.amap-sp-n]:text-[9px] [&_.amap-sp-n]:font-semibold [&_.amap-sp-n]:uppercase [&_.amap-sp-n]:tracking-[0.14em] [&_.amap-sp-n]:text-slate-500 [&_.amap-sp-name]:font-serif [&_.amap-sp-name]:text-[0.98rem] [&_.amap-sp-name]:font-semibold [&_.amap-sp-name]:text-slate-900">
+  <span class="amap-sp-n">{{ item.code }}</span>
+  <span class="amap-sp-name">{{ item.name }}</span>
+</div>
+{% endif %}
+{% endmacro %}

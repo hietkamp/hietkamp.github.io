@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:ewow="https://hietkamp.nl/essence/vocab#"
+>
+
+  <ess:Practice rdf:about="practice/solution-architecture">
+    <ess:name xml:lang="nl">Solution Architectuur</ess:name>
+    <ess:briefDescription xml:lang="nl">Richt, kies, bewijs en plan de minimale architectuurkeuzes voor een specifieke COTS-solution.</ess:briefDescription>
+
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Werkt binnen de enterprise-architectuurkaders en maakt de solution-specifieke architectuurkeuzes: verfijnt drivers naar solution-kwaliteitsattributen, selecteert COTS-componenten, bewijst risicovolle integratiekeuzes en maakt de solution-roadmap.</p>
+<p>Deze practice levert de zes activiteiten die de Project Levenscyclus over haar zes fasen verdeelt.</p>
+<p>De volgorde van activiteiten in deze practice komt overeen met hoe de Project Levenscyclus ze over haar zes fasen verdeelt: Richten en Roadmap ontwikkelen in Fase 1, Requirements in Fase 2, Bouwstenen bepalen in Fase 3, Implementatie leiden in Fase 4, en Prestaties bewaken in Fase 5/6.</p>
+]]></ess:description>
+
+    <ess:objective xml:lang="nl">Maakt de minimale set architectuurkeuzes die nodig zijn om een COTS-solution te implementeren binnen de enterprise-kaders.</ess:objective>
+
+    <ess:entry xml:lang="nl">De enterprise-architectuurkaders en de paved road zijn gepubliceerd (Enterprise Architectuur heeft minimaal de toestand Omlijnd bereikt); scope en stakeholders van de solution zijn geïdentificeerd; een Architecture Sponsor heeft opdracht gegeven voor het solution-traject.</ess:entry>
+
+    <ess:result xml:lang="nl">Solution-specifieke architectuurkeuzes zijn vastgelegd als ADR's; het architectuurmodel is uitgewerkt tot op codeniveau (context, container, component, code); risicovolle integratiekeuzes zijn bewezen via proof-of-concepts; de solution functioneert aantoonbaar conform de enterprise-kaders in productie.</ess:result>
+
+    <ess:measures xml:lang="nl">Aantal architectuurbeslissingen (ADR's) per alpha-toestand; percentage architectuurbepalende eisen dat is afgedekt door minimaal één ADR; aantal open, onopgeloste integratierisico's; conformance-score bij systeemtest.</ess:measures>
+
+    <ess:consistencyRules xml:lang="nl">Een architectuurbeslissing (ADR) mag pas de toestand Besloten bereiken nadat de bijbehorende architectuurbepalende eis de toestand Acceptable heeft bereikt. Elke afwijking van de paved road wordt vastgelegd als off-road ADR en ter beoordeling voorgelegd aan Architectuursturing (activiteit Levering Besturen) vóórdat de bijbehorende fase-gate wordt gepasseerd.</ess:consistencyRules>
+
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:referredElements rdf:resource="practice/enterprise-architecture"/>
+    <ess:referredElements rdf:resource="practice/architectural-governance"/>
+    <ess:ownedElements rdf:resource="activity/solution-envision"/>
+    <ess:ownedElements rdf:resource="activity/solution-gather-requirements"/>
+    <ess:ownedElements rdf:resource="activity/solution-design"/>
+    <ess:ownedElements rdf:resource="activity/solution-lead-implementation"/>
+    <ess:ownedElements rdf:resource="activity/solution-develop-roadmap"/>
+    <ess:ownedElements rdf:resource="activity/solution-monitor-performance"/>
+    <ess:ownedElements rdf:resource="workproduct/architecture-model"/>
+    <ess:ownedElements rdf:resource="workproduct/architecture-decisions"/>
+    <ess:ownedElements rdf:resource="workproduct/review-records"/>
+    <ess:associations rdf:resource="pattern-association/solution-architecture/performed-by"/>
+  </ess:Practice>
+
+  <ess:PatternAssociation rdf:about="pattern-association/solution-architecture/performed-by">
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="role/architecture-owner"/>
+  </ess:PatternAssociation>
+
+
+  <!-- ================= Activity 1 — Envision Solution ================= -->
+  <ess:Activity rdf:about="activity/solution-envision">
+    <ess:name xml:lang="nl">Richten (Solution)</ess:name>
+    <ess:briefDescription xml:lang="nl">Begrijp de solution-context binnen de enterprise-kaders en formuleer de architectuuropdracht: scope, stakeholders, governance-afspraken en succescriteria.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p><strong>Wat het betekent:</strong> voordat er ook maar één ontwerpkeuze wordt gemaakt, brengt de architect de context van de solution in kaart: wat is het probleem of de kans, wie zijn de stakeholders, en binnen welke enterprise-kaders (reeds vastgesteld door Enterprise Architectuur) moet dit gaan werken? Het resultaat is een compacte architectuuropdracht: scope, stakeholders, governance-afspraken voor dit traject en de criteria waaraan succes wordt afgemeten.</p>
+<p><strong>Verwerkt:</strong> architectuurbepalende eisen (ASR's) en architectuurvisie (beide geleverd door Enterprise Architectuur, of in eerste opzet door de opdrachtgever).</p>
+<p><strong>Produceert:</strong> de architectuuropdracht &mdash; het startdocument van het hele solution-traject. Dit is nog geen formeel gedefinieerd werkproduct in deze practice; overweeg dit als aparte <em>ess:WorkProduct</em> vast te leggen zodra de overige practices zijn afgerond.</p>
+<p><strong>Alpha-status na afronding:</strong> Architectuur &rarr; <strong>Gericht</strong>.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Activity>
+
+
+  <!-- ================= Activity 2 — Select Architecturally Significant Requirements ================= -->
+  <ess:Activity rdf:about="activity/solution-gather-requirements">
+    <ess:name xml:lang="nl">Verzamel architectuurbepalende eisen</ess:name>
+    <ess:briefDescription xml:lang="nl">Selecteer de architectuurbepalende eisen uit de requirements van de business analist en leg de solution-richting vast binnen de enterprise-kaders.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p><strong>Wat het betekent:</strong> een project heeft vaak tientallen tot honderden requirements, maar niet elke eis is architectuurbepalend. Deze activiteit filtert uit de volledige requirements-set specifiek de eisen die daadwerkelijk van invloed zijn op de architectuur &mdash; bijvoorbeeld eisen rond beveiliging, beschikbaarheid, performance, integraties of wettelijke verplichtingen (vaak "Architecturally Significant Requirements" of ASR's genoemd, een term die ook buiten TOGAF gangbaar is, onder andere bij Rozanski &amp; Woods en in arc42). De overige, functionele requirements blijven bij de business analist en het projectteam.</p>
+<p><strong>Verwerkt:</strong> architectuurbepalende eisen (ASR's, eerste ruwe selectie) en de paved road (de goedgekeurde catalogus van producten, patronen en referentie-instellingen van Enterprise Architectuur).</p>
+<p><strong>Produceert:</strong> de architectuurvisie op solution-niveau: de vastgestelde scope en randvoorwaarden waarbinnen het ontwerp moet blijven. Let op: Enterprise Architectuur kent een gelijknamig werkproduct op enterprise-niveau; verduidelijk bij het formaliseren van beide practices of dit hetzelfde werkproduct is (hergebruikt/verfijnd op solution-niveau) of een apart, solution-specifiek werkproduct.</p>
+<p><strong>Alpha-status na afronding:</strong> Requirements &rarr; <strong>Acceptable</strong>.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Activity>
+
+
+  <!-- ================= Activity 3 — Define the Solution Building Blocks ================= -->
+  <ess:Activity rdf:about="activity/solution-design">
+    <ess:name xml:lang="nl">Bepaal de oplossingsbouwstenen</ess:name>
+    <ess:briefDescription xml:lang="nl">Definieer solution-bouwstenen en interfaces binnen enterprise-kaders; selecteer COTS-componenten op basis van sturende eisen.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p><strong>Wat het betekent:</strong> de architect definieert de bouwstenen van de oplossing en hun onderlinge samenhang, passend binnen de enterprise-kaders. Waar mogelijk wordt gekozen voor bestaande, kant-en-klare (COTS-)componenten in plaats van zelf bouwen. Wijkt een keuze af van de paved road, dan wordt dat expliciet gedocumenteerd en gemotiveerd als een "off-road" ADR. Het ontwerp wordt uitgewerkt op vier steeds gedetailleerdere niveaus (het C4-model): context, container, component en code.</p>
+<p><strong>Verwerkt:</strong> de paved road.</p>
+<p><strong>Produceert:</strong> architectuurbeslissingen (ADR's, werkproduct <em>architecture-decisions</em>) en het architectuurmodel (werkproduct <em>architecture-model</em>) op de niveaus context, container, component en code.</p>
+<p><strong>Alpha-status na afronding:</strong> Architectuur &rarr; <strong>Omlijnd</strong> &middot; Architectuurbeslissingen &rarr; <strong>Besloten</strong>.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Activity>
+
+
+  <!-- ================= Activity 4 — Lead Implementation ================= -->
+  <ess:Activity rdf:about="activity/solution-lead-implementation">
+    <ess:name xml:lang="nl">Implementatie leiden</ess:name>
+    <ess:briefDescription xml:lang="nl">Stuur de implementatie actief op paved-road-conformance en bewijs risicovolle integratiekeuzes via een proof-of-concept.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p><strong>Wat het betekent:</strong> tijdens de bouw verschuift de rol van de architect van ontwerpen naar bewaken: is wat er wordt gebouwd nog steeds in lijn met het ontwerp en de paved road? Voor de meest risicovolle keuzes &mdash; bijvoorbeeld een nieuwe integratie of een specifiek COTS-product &mdash; wordt eerst een kleine proef gedaan (proof-of-concept of architectuurspike), vóórdat er verder wordt gebouwd. Bevindingen worden gerapporteerd en gebruikt om het ontwerp waar nodig bij te stellen.</p>
+<p><strong>Verwerkt:</strong> architectuurbeslissingen (ADR's).</p>
+<p><strong>Produceert:</strong> reviewresultaten (werkproduct <em>review-records</em>) en een bijgewerkt architectuurmodel.</p>
+<p><strong>Alpha-status na afronding:</strong> Architectuur &rarr; <strong>Bewezen</strong> &middot; Architectuurbeslissingen &rarr; <strong>Gevalideerd</strong>.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Activity>
+
+
+  <!-- ================= Activity 5 — Develop Roadmap ================= -->
+  <ess:Activity rdf:about="activity/solution-develop-roadmap">
+    <ess:name xml:lang="nl">Roadmap ontwikkelen</ess:name>
+    <ess:briefDescription xml:lang="nl">Maak de solution-roadmap binnen de enterprise-context: koppel horizons aan backlog en release-planning.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p><strong>Wat het betekent:</strong> een globale planning van de architectuur, opgeknipt in horizons (opeenvolgende periodes of mijlpalen). Deze horizons worden gekoppeld aan de backlog en de release-planning, zodat helder wordt welke architectuurbeslissingen wanneer genomen moeten worden en hoe de tussenstappen (transitiestaten) naar het einddoel eruitzien.</p>
+<p><strong>Verwerkt:</strong> het architectuurmodel.</p>
+<p><strong>Produceert:</strong> de architectuurroadmap en transitiestaten.</p>
+<p><strong>Alpha-status na afronding:</strong> Architectuur &rarr; <strong>Gericht</strong> (verdere uitwerking van de richting uit de vorige activiteit; volgt altijd direct op Richten (Solution), binnen Fase 1).</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Activity>
+
+
+  <!-- ================= Activity 6 — Monitor Performance ================= -->
+  <ess:Activity rdf:about="activity/solution-monitor-performance">
+    <ess:name xml:lang="nl">Prestaties bewaken</ess:name>
+    <ess:briefDescription xml:lang="nl">Beheer de solution-architectuur continu in productie: actualiseer beslissingsrecords en hervalideer sturende eisen.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p><strong>Wat het betekent:</strong> zowel tijdens de systeemtest als na uitrol blijft de architect de solution-architectuur actief beheren. Er wordt conformance-bewijs verzameld op het niveau van het hele systeem, beslissingsrecords worden bijgewerkt op basis van praktijkervaring, en de architectuurbepalende eisen worden opnieuw beoordeeld zodra de context of de eisen veranderen.</p>
+<p><strong>Verwerkt:</strong> de architectuurroadmap en transitiestaten.</p>
+<p><strong>Produceert:</strong> architectuurbeslissingen (ADR's) en een bijgewerkt architectuurmodel; op systeemniveau tevens conformance-bewijs.</p>
+<p><strong>Alpha-status na afronding:</strong> Architectuur &rarr; <strong>Bruikbaar</strong> (bij systeemvalidatie) of <strong>Evoluerend</strong> (bij doorlopend beheer in productie) &middot; Architectuurbepalende eisen &rarr; <strong>Bijgehouden</strong>.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Activity>
+
+
+  <!-- ================= Work product 1 — Architecture Model ================= -->
+  <ess:WorkProduct rdf:about="workproduct/architecture-model">
+    <ess:name xml:lang="nl">Architectuurmodel</ess:name>
+    <ess:briefDescription xml:lang="nl">Het ontwerp van de solution, uitgewerkt op vier niveaus van detail (C4-model): context, container, component en code.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Het architectuurmodel legt vast hoe de solution is opgebouwd, op vier steeds gedetailleerdere niveaus (het C4-model van Simon Brown, breed gebruikt naast en aanvullend op TOGAF):</p>
+<ul>
+<li><strong>Context</strong> &mdash; hoe de solution zich verhoudt tot gebruikers en andere systemen.</li>
+<li><strong>Container</strong> &mdash; de belangrijkste, technisch losstaande onderdelen (bijvoorbeeld een applicatie, database of COTS-pakket).</li>
+<li><strong>Component</strong> &mdash; de belangrijkste bouwstenen binnen een container.</li>
+<li><strong>Code</strong> &mdash; waar relevant, de daadwerkelijke implementatiestructuur.</li>
+</ul>
+<p><strong>Wordt bijgewerkt door:</strong> Bepaal de oplossingsbouwstenen, Implementatie leiden, Prestaties bewaken.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:WorkProduct>
+
+
+  <!-- ================= Work product 2 — Architecture Decisions ================= -->
+  <ess:WorkProduct rdf:about="workproduct/architecture-decisions">
+    <ess:name xml:lang="nl">Architectuurbeslissingen (ADR's)</ess:name>
+    <ess:briefDescription xml:lang="nl">Vastgelegde architectuurbeslissingen, inclusief motivatie, in het formaat Architecture Decision Record (ADR).</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Een ADR (Architecture Decision Record, een lichtgewicht formaat geïntroduceerd door Michael Nygard en inmiddels industriebreed gangbaar naast TOGAF) legt per belangrijke architectuurbeslissing vast: de context, de overwogen opties, de gemaakte keuze en de motivatie. Dit werkproduct is de belangrijkste bron van herleidbaarheid in deze practice: waarom is voor een bepaald COTS-product, integratiepatroon of technische keuze gekozen?</p>
+<p>Een ADR die afwijkt van de paved road wordt expliciet gemarkeerd als <strong>off-road</strong> en apart beoordeeld door Architectuursturing (activiteit Levering Besturen) &mdash; zie de consistencyRule van deze practice.</p>
+<p><strong>Wordt geproduceerd door:</strong> Bepaal de oplossingsbouwstenen. <strong>Wordt bijgewerkt/gevalideerd door:</strong> Implementatie leiden, Prestaties bewaken.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:WorkProduct>
+
+
+  <!-- ================= Work product 3 — Review Records ================= -->
+  <ess:WorkProduct rdf:about="workproduct/review-records">
+    <ess:name xml:lang="nl">Reviewresultaten</ess:name>
+    <ess:briefDescription xml:lang="nl">Bevindingen uit proof-of-concepts, architectuurspikes en compliance-reviews tijdens de implementatie.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Reviewresultaten documenteren wat er is getoetst tijdens de bouw, en wat daaruit is gebleken: werkt een risicovolle integratie zoals bedoeld? Voldoet een COTS-component aan de gestelde eisen? Deze bevindingen zijn het bewijs waarop de alpha-status Bewezen wordt gebaseerd, en vormen de basis voor eventuele bijstelling van het architectuurmodel of de architectuurbeslissingen.</p>
+<p><strong>Wordt geproduceerd door:</strong> Implementatie leiden. <strong>Wordt verwerkt door:</strong> Prestaties bewaken.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:WorkProduct>
+
+
+  <!-- ================= Activity associations — volgorde afgestemd op project-lifecycle.rdf =================
+       Volgorde: Richten (Solution) → Roadmap ontwikkelen → Verzamel architectuurbepalende eisen →
+       Bepaal de oplossingsbouwstenen → Implementatie leiden → Prestaties bewaken.
+       Dit komt overeen met hoe de Project Levenscyclus deze activiteiten over de fasen verdeelt:
+       Fase 1 (Richten + Roadmap) → Fase 2 (Requirements) → Fase 3 (Ontwerp) → Fase 4 (Implementatie)
+       → Fase 5/6 (Prestaties bewaken). -->
+  <ess:ActivityAssociation rdf:about="activity-association/solution-envision/end-before-start/solution-develop-roadmap">
+    <ess:name>solution-envision end-before-start solution-develop-roadmap</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/solution-envision"/>
+    <ess:end2 rdf:resource="activity/solution-develop-roadmap"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:ActivityAssociation rdf:about="activity-association/solution-develop-roadmap/end-before-start/solution-gather-requirements">
+    <ess:name>solution-develop-roadmap end-before-start solution-gather-requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/solution-develop-roadmap"/>
+    <ess:end2 rdf:resource="activity/solution-gather-requirements"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:ActivityAssociation rdf:about="activity-association/solution-gather-requirements/end-before-start/solution-design">
+    <ess:name>solution-gather-requirements end-before-start solution-design</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/solution-gather-requirements"/>
+    <ess:end2 rdf:resource="activity/solution-design"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:ActivityAssociation rdf:about="activity-association/solution-design/end-before-start/solution-lead-implementation">
+    <ess:name>solution-design end-before-start solution-lead-implementation</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/solution-design"/>
+    <ess:end2 rdf:resource="activity/solution-lead-implementation"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:ActivityAssociation rdf:about="activity-association/solution-lead-implementation/end-before-start/solution-monitor-performance">
+    <ess:name>solution-lead-implementation end-before-start solution-monitor-performance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/solution-lead-implementation"/>
+    <ess:end2 rdf:resource="activity/solution-monitor-performance"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+</rdf:RDF>

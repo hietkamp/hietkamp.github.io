@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:Pattern rdf:about="pattern/document-a-decisions">
+    <ess:name xml:lang="nl">ADR-gedreven besluitvorming</ess:name>
+    <ess:name xml:lang="en">ADR-Driven Decision Making</ess:name>
+    <ess:briefDescription xml:lang="nl">Leg elke significante architectuurkeuze vast als een klein, traceerbaar beslissingsrecord met context, opties, keuze, rationale en consequenties.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Leg elke significante architectuurkeuze vast als een klein, traceerbaar beslissingsrecord met context, opties, keuze, rationale en consequenties.</p>
+<p><strong>Doel:</strong> Maak architectuurkeuzes navolgbaar zonder een zwaar documentatieproces te introduceren.</p>
+<p><strong>Context:</strong> COTS-keuzes, integratiekeuzes, platformkeuzes en afwijkingen van de paved road.</p>
+<p><strong>Probleem:</strong> Beslissingen worden vaak genomen in overleggen of vendorselecties en verliezen daarna hun rationale.</p>
+<p><strong>Oplossing:</strong> Behandel de ADR als de minimale eenheid van architectuurbesluitvorming en koppel hem aan drivers, ASR's, reviewrecords en architectuurweergaven.</p>
+<p><strong>Resultaat:</strong> Beslissingen blijven toetsbaar en kunnen later gevalideerd, vervangen of herzien worden.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/document-a-decisions/uses"/>
+    <ess:associations rdf:resource="pattern-association/document-a-decisions/related-workproducts"/>
+    <ess:tags rdf:resource="tag/mva"/>
+    <ess:tags rdf:resource="tag/decision"/>
+  </ess:Pattern>
+
+  <ess:Tag rdf:about="tag/mva">
+    <ess:value>MVA</ess:value>
+  </ess:Tag>
+
+  <ess:Tag rdf:about="tag/decision">
+    <ess:value>Decision</ess:value>
+  </ess:Tag>
+
+  <ess:PatternAssociation rdf:about="pattern-association/document-a-decisions/uses">
+    <ess:name xml:lang="en">uses</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/enterprise-design"/>
+    <ess:elements rdf:resource="activity/solution-design"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/document-a-decisions/related-workproducts">
+    <ess:name xml:lang="en">related-workproducts</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="workproduct/architecture-decisions"/>
+  </ess:PatternAssociation>
+
+</rdf:RDF>

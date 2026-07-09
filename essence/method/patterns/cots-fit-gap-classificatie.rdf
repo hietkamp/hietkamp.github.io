@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:Pattern rdf:about="pattern/cots-fit-gap-classificatie">
+    <ess:name xml:lang="nl">COTS Fit/Gap-classificatie</ess:name>
+    <ess:name xml:lang="en">COTS Fit/Gap Classification</ess:name>
+    <ess:briefDescription xml:lang="nl">Classificeer requirements tegen productmogelijkheden als fit, configuratie, procesaanpassing, integratie of gap, en vertaal die classificatie naar werkpakketten.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Classificeer requirements tegen productmogelijkheden als fit, configuratie, procesaanpassing, integratie of gap, en vertaal die classificatie naar werkpakketten.</p>
+<p><strong>Doel:</strong> Maak zichtbaar wat de vendor levert, wat geconfigureerd wordt en wat de organisatie zelf moet bouwen of accepteren.</p>
+<p><strong>Context:</strong> Koop-en-configureer trajecten waarin requirements botsen met standaardproductgedrag.</p>
+<p><strong>Probleem:</strong> Teams behandelen gaps vaak als projectissues, terwijl ze architectuurscope, integratierisico en governance-impact bepalen.</p>
+<p><strong>Oplossing:</strong> Gebruik een vaste classificatie en koppel elke niet-fit aan proceswijziging, configuratie, integratiespoor of ADR.</p>
+<p><strong>Resultaat:</strong> De roadmap wordt gebaseerd op expliciete architectuurkeuzes in plaats van op impliciete aannames.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/cots-fit-gap-classificatie/uses"/>
+    <ess:associations rdf:resource="pattern-association/cots-fit-gap-classificatie/related-workproducts"/>
+    <ess:tags rdf:resource="tag/cots"/>
+    <ess:tags rdf:resource="tag/roadmap"/>
+  </ess:Pattern>
+
+  <ess:Tag rdf:about="tag/cots">
+    <ess:value>COTS</ess:value>
+  </ess:Tag>
+
+  <ess:Tag rdf:about="tag/roadmap">
+    <ess:value>Roadmap</ess:value>
+  </ess:Tag>
+
+  <ess:PatternAssociation rdf:about="pattern-association/cots-fit-gap-classificatie/uses">
+    <ess:name xml:lang="en">uses</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/enterprise-plan"/>
+    <ess:elements rdf:resource="activity/solution-develop-roadmap"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/cots-fit-gap-classificatie/related-workproducts">
+    <ess:name xml:lang="en">related-workproducts</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="workproduct/architectural-drivers"/>
+    <ess:elements rdf:resource="workproduct/architecture-roadmap"/>
+  </ess:PatternAssociation>
+
+</rdf:RDF>

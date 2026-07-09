@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:WorkProduct rdf:about="workproduct/architecture-principles">
+    <ess:name xml:lang="nl">Architectuurprincipes</ess:name>
+    <ess:name xml:lang="en">Architecture Principles</ess:name>
+    <ess:briefDescription xml:lang="nl">Kleine set richtinggevende principes die architectuurkeuzes sturen. Worden vastgesteld bij aanvang en bijgehouden gedurende de levenscyclus. Basis voo…</ess:briefDescription>
+    <ess:description xml:lang="nl">Kleine set richtinggevende principes die architectuurkeuzes sturen. Worden vastgesteld bij aanvang en bijgehouden gedurende de levenscyclus. Basis voor de guardrails die governance hanteert.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <!-- ess:levelOfDetail not defined -->
+    <!-- ess:icon not defined -->
+    <!-- ess:tags not defined -->
+    <!-- ess:resources not defined -->
+    <!-- ess:properties not defined -->
+    <!-- Application-specific -->
+    <ess:ownedElements rdf:resource="resource/architecture-principles/template"/>
+  </ess:WorkProduct>
+
+  <ess:TypedResource rdf:about="resource/architecture-principles/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/architecture-principles.docx</ess:content>
+  </ess:TypedResource>
+
+</rdf:RDF>

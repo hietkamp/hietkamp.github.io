@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:ewow="https://hietkamp.nl/essence/vocab#"
+>
+
+  <ess:Practice rdf:about="practice/architectural-governance">
+    <ess:name xml:lang="nl">Architectuursturing</ess:name>
+    <ess:name xml:lang="en">Architectural Governance</ess:name>
+    <ess:briefDescription xml:lang="nl">Architectuursturing</ess:briefDescription>
+    <ess:description xml:lang="nl">Stuurt architectuurkwaliteit via guardrails en uitzonderingen — geen stage gates. Biedt governance-activiteiten, een governance-alpha en koppeling met de goedgekeurde route.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:objective>Stuurt architectuurkwaliteit via guardrails en uitzonderingen — geen stage gates. Biedt governance-activiteiten, een governance-alpha en koppeling met de goedgekeurde route.</ess:objective>
+    <ess:measures/>
+    <ess:entry/>
+    <ess:result/>
+    <ess:consistencyRules/>
+    <ess:ownedElements rdf:resource="activity/governance-establish-governance"/>
+    <ess:ownedElements rdf:resource="activity/governance-engage-cadence"/>
+    <ess:ownedElements rdf:resource="activity/governance-govern-delivery"/>
+    <ess:ownedElements rdf:resource="activity/governance-assure-evidence"/>
+    <ess:ownedElements rdf:resource="activity/governance-tune-governance"/>
+    <ess:ownedElements rdf:resource="workproduct/architecture-principles"/>
+    <ess:ownedElements rdf:resource="workproduct/architecture-working-agreement"/>
+    <ess:ownedElements rdf:resource="workproduct/architecture-repository"/>
+    <ess:ownedElements rdf:resource="workproduct/conformance-evidence"/>
+    <ess:ownedElements rdf:resource="workproduct/statement-of-architecture-work"/>
+    <ess:associations rdf:resource="pattern-association/architectural-governance/performed-by"/>
+  </ess:Practice>
+
+  <ess:PatternAssociation rdf:about="pattern-association/architectural-governance/performed-by">
+    <ess:name xml:lang="en">performed by</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="role/architecture-sponsor"/>
+    <ess:elements rdf:resource="role/governance-forum"/>
+  </ess:PatternAssociation>
+
+  <ess:ActivityAssociation rdf:about="activity-association/governance-establish-governance/end-before-start/governance-engage-cadence">
+    <ess:name>establish-governance end-before-start engage-cadence</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-establish-governance"/>
+    <ess:end2 rdf:resource="activity/governance-engage-cadence"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:ActivityAssociation rdf:about="activity-association/governance-engage-cadence/end-before-start/governance-govern-delivery">
+    <ess:name>engage-cadence end-before-start govern-delivery</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-engage-cadence"/>
+    <ess:end2 rdf:resource="activity/governance-govern-delivery"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:ActivityAssociation rdf:about="activity-association/governance-govern-delivery/end-before-start/governance-assure-evidence">
+    <ess:name>govern-delivery end-before-start assure-evidence</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-govern-delivery"/>
+    <ess:end2 rdf:resource="activity/governance-assure-evidence"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:ActivityAssociation rdf:about="activity-association/governance-assure-evidence/end-before-start/governance-tune-governance">
+    <ess:name>assure-evidence end-before-start tune-governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-assure-evidence"/>
+    <ess:end2 rdf:resource="activity/governance-tune-governance"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+</rdf:RDF>

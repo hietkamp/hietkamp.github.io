@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <ess:Activity rdf:about="activity/governance-establish-governance">
+    <ess:name xml:lang="nl">Governance Inrichten</ess:name>
+    <ess:name xml:lang="en">Establish Governance</ess:name>
+    <ess:briefDescription xml:lang="nl">Kom beslissingsbevoegdheden en minimale guardrails overeen. Bekrachtig een kleine set Architecture Principles. Stel de bestuurde Architecture Reposito…</ess:briefDescription>
+    <ess:description xml:lang="nl">Kom beslissingsbevoegdheden en minimale guardrails overeen. Bekrachtig een kleine set Architecture Principles. Stel de bestuurde Architecture Repository in als het enkele thuis voor alle architectuurartefacten. Dit is de funderingsactiviteit die alle andere mogelijk maakt.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <ess:approach rdf:resource="approach/governance-establish-governance/default"/>
+    <ess:action rdf:resource="action/governance-establish-governance/create/architecture-principles"/>
+    <ess:action rdf:resource="action/governance-establish-governance/create/architecture-repository"/>
+    <ess:action rdf:resource="action/governance-establish-governance/create/architecture-working-agreement"/>
+    <ess:action rdf:resource="action/governance-establish-governance/update-alpha/governance"/>
+    <ess:action rdf:resource="action/governance-establish-governance/update-alpha/way-of-working"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/governance-establish-governance/completion/governance"/>
+    <ess:criterion rdf:resource="criterion/governance-establish-governance/completion/way-of-working"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/governance-establish-governance/default">
+    <ess:name xml:lang="nl">Governance Inrichten</ess:name>
+    <ess:name xml:lang="en">Establish Governance</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Kom beslissingsbevoegdheden en minimale guardrails overeen. Bekrachtig een kleine set Architecture Principles. Stel de bestuurde Architecture Repository in als het enkele thuis voor alle architectuurartefacten. Dit is de funderingsactiviteit die alle andere mogelijk maakt.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/governance-establish-governance/create/architecture-principles">
+    <ess:name>Create Architecture Principles</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-principles"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-establish-governance/create/architecture-repository">
+    <ess:name>Create Architecture Repository</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-repository"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-establish-governance/create/architecture-working-agreement">
+    <ess:name>Create Architecture Working Agreement</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-working-agreement"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-establish-governance/update-alpha/governance">
+    <ess:name>Update Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/governance"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-establish-governance/update-alpha/way-of-working">
+    <ess:name>Update Way Of Working</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/governance-establish-governance/part-of/prepare-to-do-the-work">
+    <ess:name>Establish Governance part-of Prepare To Do The Work</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-establish-governance"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#PreparetodotheWork"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:CompletionCriterion rdf:about="criterion/governance-establish-governance/completion/governance">
+    <ess:name>Completion: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/initiated"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/governance-establish-governance/completion/way-of-working">
+    <ess:name>Completion: Way Of Working</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

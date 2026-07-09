@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:Method rdf:about="method/essence-architecture-method">
+    <ess:name xml:lang="nl">Architectuurwerkwijze</ess:name>
+    <ess:name xml:lang="en">Enterprise Architecture Way of Working</ess:name>
+    <ess:briefDescription xml:lang="nl">Stuur architectuurkeuzes, paved road-adoptie en governance voor COTS-implementaties op enterprise en solution niveau.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Een gecomponeerde methode die het Essence-kernel combineert met de MVA- en MVG-praktijken voor enterprise architectuur in een COTS buy-and-configure context.</p>
+<p>De methode bestaat uit vijf practices: <strong>Enterprise Architectuur</strong> (sturen van architectuurkeuzes op enterprise niveau), <strong>Solution Architectuur</strong> (sturen van architectuurkeuzes op solution niveau), <strong>Architectuursturing</strong> (governance via guardrails en uitzonderingen), <strong>Portfolio Levenscyclus</strong> (iteratief PMI-ritme voor strategische enterprise- en governancesturing) en <strong>Watervalaanpak</strong> (sequentieel V-model voor project-specifieke solution-architectuur).</p>]]></ess:description>
+    <ess:purpose xml:lang="nl">Stuur architectuurkeuzes, paved road-adoptie en governance voor COTS-implementaties op enterprise en solution niveau.</ess:purpose>
+    <ess:purpose xml:lang="en">Steer architecture decisions, paved road adoption and governance for COTS implementations at enterprise and solution level.</ess:purpose>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:baseKernel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EssenceKernel"/>
+    <ess:ownedElements rdf:resource="practice/enterprise-architecture"/>
+    <ess:ownedElements rdf:resource="practice/solution-architecture"/>
+    <ess:ownedElements rdf:resource="practice/architectural-governance"/>
+    <ess:ownedElements rdf:resource="practice/project-lifecycle"/>
+    <ess:ownedElements rdf:resource="practice/portfolio-lifecycle"/>
+  </ess:Method>
+
+  <ess:UserDefinedType rdf:about="type/template">
+    <ess:name xml:lang="nl">Sjabloon</ess:name>
+    <ess:name xml:lang="en">Template</ess:name>
+    <ess:constraint>Content must be a resolvable URL to a downloadable file.</ess:constraint>
+  </ess:UserDefinedType>
+
+</rdf:RDF>

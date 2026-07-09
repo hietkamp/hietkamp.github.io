@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:ewow="https://hietkamp.nl/essence/vocab#"
+>
+
+  <ess:Pattern rdf:about="role/architecture-owner">
+    <ess:name xml:lang="nl">Architecture Owner</ess:name>
+    <ess:name xml:lang="en">Architecture Owner</ess:name>
+    <ess:briefDescription xml:lang="nl">De meest technisch ervaren persoon in het team (conform Disciplined Agile Delivery). Voert het solution-spoor uit binnen de door de Enterprise Archite…</ess:briefDescription>
+    <ess:description xml:lang="nl">De meest technisch ervaren persoon in het team (conform Disciplined Agile Delivery). Voert het solution-spoor uit binnen de door de Enterprise Architect geleverde context. Verfijnt enterprise-drivers naar solution-specifieke kwaliteitsattributen, selecteert COTS-componenten, bewijst de risicovolste integratiekeuzes, maakt de solution-roadmap en faciliteert met het team de architectuurevolutie in productie. Rapporteert afwijkingen van enterprise-standaarden terug aan de Enterprise Architect via beslissingsrecords en reviewrecords.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ewow:level>Solution niveau · C4 Level 2–3</ewow:level>
+    <ewow:owns>Architecture Vision (solution) · Architecture Definition · ADRs · Review Records · Roadmap (solution)</ewow:owns>
+    <ewow:intro>De Architecture Owner is eigenaar van het architectuurproces op solution-scope, en werkt altijd binnen de kaders en context die de Enterprise Architect heeft geleverd.</ewow:intro>
+    <ess:associations rdf:resource="pattern-association/architecture-owner/requires-competency"/>
+    <ess:associations rdf:resource="pattern-association/architecture-owner/participates-in"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/architecture-owner/requires-competency">
+    <ess:name xml:lang="en">requires competency</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Analysis"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StakeholderRepresentation"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/architecture-owner/participates-in">
+    <ess:name xml:lang="en">participates in</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/solution-lead-implementation"/>
+  </ess:PatternAssociation>
+
+</rdf:RDF>

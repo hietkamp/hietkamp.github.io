@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:ewow="https://hietkamp.nl/essence/vocab#"
+>
+
+  <ess:Pattern rdf:about="role/architecture-sponsor">
+    <ess:name xml:lang="nl">Architectuursponsor</ess:name>
+    <ess:name xml:lang="en">Architecture Sponsor</ess:name>
+    <ess:briefDescription xml:lang="nl">Verleent het mandaat en de financiering die MVG laten werken. Stelt de beslissingsbevoegdheden in en beschermt ze: wie beslist wat, op welk niveau, en…</ess:briefDescription>
+    <ess:description xml:lang="nl">Verleent het mandaat en de financiering die MVG laten werken. Stelt de beslissingsbevoegdheden in en beschermt ze: wie beslist wat, op welk niveau, en wat de escalatieroute is. Zonder mandaat heeft het Architectuurforum geen tanden.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/architecture-sponsor/requires-competency"/>
+    <ess:associations rdf:resource="pattern-association/architecture-sponsor/participates-in"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/architecture-sponsor/requires-competency">
+    <ess:name xml:lang="en">requires competency</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/architecture-sponsor/participates-in">
+    <ess:name xml:lang="en">participates in</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/governance-establish-governance"/>
+    <ess:elements rdf:resource="activity/governance-tune-governance"/>
+  </ess:PatternAssociation>
+
+</rdf:RDF>

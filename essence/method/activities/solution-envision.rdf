@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <ess:Activity rdf:about="activity/solution-envision">
+    <ess:name xml:lang="nl">Richten (Solution)</ess:name>
+    <ess:name xml:lang="en">Envision Solution</ess:name>
+    <ess:briefDescription xml:lang="nl">Begrijp de solution-context binnen de enterprise-kaders en formuleer de architectuuropdracht: scope, stakeholders, governance-afspraken en succescriteria voor het solution-traject.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Begrijp de solution-context binnen de enterprise-kaders en formuleer de architectuuropdracht. De enterprise-architectuurvisie en paved road zijn gegeven; de solution-architect maakt ze concreet voor dit specifieke traject.</p>
+<p><strong>Doel:</strong> Leg de scope, stakeholders, governance-afspraken en succescriteria vast in de Architecturopdracht zodat alle betrokkenen weten wat er gebouwd wordt, binnen welke kaders en wie waarvoor verantwoordelijk is.</p>
+<p><strong>Input:</strong> Enterprise-architectuurvisie, architectuurdrivers en paved road uit de Portfolio Levenscyclus.</p>
+<p><strong>Output:</strong> Architecturopdracht (Statement of Architecture Work) — goedgekeurd door de Architecture Sponsor.</p>
+<p><strong>Gereed wanneer:</strong> De Architecture Sponsor heeft de architectuuropdracht goedgekeurd; scope en governance zijn vastgesteld; gate 1 kan worden gepasseerd.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/solution-architecture"/>
+    <ess:approach rdf:resource="approach/solution-envision/default"/>
+    <ess:action rdf:resource="action/solution-envision/read/architectural-drivers"/>
+    <ess:action rdf:resource="action/solution-envision/read/architecture-vision"/>
+    <ess:action rdf:resource="action/solution-envision/create/statement-of-architecture-work"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/solution-envision/entry/requirements"/>
+    <ess:criterion rdf:resource="criterion/solution-envision/completion/architecture"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/solution-envision/default">
+    <ess:name xml:lang="nl">Richten (Solution)</ess:name>
+    <ess:name xml:lang="en">Envision Solution</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Analyseer de enterprise-architectuurvisie en drivers; vertaal de enterprise-kaders naar een concrete architectuuropdracht voor dit solution-traject; laat de opdracht goedkeuren door de Architecture Sponsor.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/solution-envision/read/architectural-drivers">
+    <ess:name>Read Architectural Drivers</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architectural-drivers"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-envision/read/architecture-vision">
+    <ess:name>Read Architecture Vision</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-vision"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-envision/create/statement-of-architecture-work">
+    <ess:name>Create Statement of Architecture Work</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/statement-of-architecture-work"/>
+  </ess:Action>
+
+  <ess:EntryCriterion rdf:about="criterion/solution-envision/entry/requirements">
+    <ess:name>Entry: Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/solution-envision/completion/architecture">
+    <ess:name>Completion: Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/architecture/envisioned"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

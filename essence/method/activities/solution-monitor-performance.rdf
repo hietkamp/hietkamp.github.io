@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <ess:Activity rdf:about="activity/solution-monitor-performance">
+    <ess:name xml:lang="nl">Prestaties bewaken</ess:name>
+    <ess:name xml:lang="en">Monitor Performance</ess:name>
+    <ess:briefDescription xml:lang="nl">Beheer de solution-architectuur continu in productie: actualiseer beslissingsrecords op basis van operationele inzichten, hervalideer sturende eisen w…</ess:briefDescription>
+    <ess:description xml:lang="nl">Beheer de solution-architectuur continu in productie: actualiseer beslissingsrecords op basis van operationele inzichten, hervalideer sturende eisen wanneer de context verandert, en rapporteer structurele wijzigingen terug aan de Enterprise Architect.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/solution-architecture"/>
+    <ess:approach rdf:resource="approach/solution-monitor-performance/default"/>
+    <ess:action rdf:resource="action/solution-monitor-performance/create/architecture-decisions"/>
+    <ess:action rdf:resource="action/solution-monitor-performance/create/architecture-model"/>
+    <ess:action rdf:resource="action/solution-monitor-performance/read/architecture-roadmap"/>
+    <ess:action rdf:resource="action/solution-monitor-performance/update-alpha/architecture"/>
+    <ess:action rdf:resource="action/solution-monitor-performance/update-alpha/architectural-drivers"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/solution-monitor-performance/entry/architecture"/>
+    <ess:criterion rdf:resource="criterion/solution-monitor-performance/completion/architecture"/>
+    <ess:criterion rdf:resource="criterion/solution-monitor-performance/completion/architectural-drivers"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/solution-monitor-performance/default">
+    <ess:name xml:lang="nl">Prestaties bewaken</ess:name>
+    <ess:name xml:lang="en">Monitor Performance</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Beheer de solution-architectuur continu in productie: actualiseer beslissingsrecords op basis van operationele inzichten, hervalideer sturende eisen wanneer de context verandert, en rapporteer structurele wijzigingen terug aan de Enterprise Architect.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/solution-monitor-performance/create/architecture-decisions">
+    <ess:name>Create Architecture Decisions</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-monitor-performance/create/architecture-model">
+    <ess:name>Create Architecture Definition</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-model"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-monitor-performance/read/architecture-roadmap">
+    <ess:name>Read Architecture Roadmap</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-roadmap"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-monitor-performance/update-alpha/architecture">
+    <ess:name>Update Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/architecture"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-monitor-performance/update-alpha/architectural-drivers">
+    <ess:name>Update Architectural Drivers</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/architectural-drivers"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/solution-monitor-performance/part-of/shape-the-system">
+    <ess:name>Prestaties bewaken part-of Shape The System</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/solution-monitor-performance"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/solution-monitor-performance/entry/architecture">
+    <ess:name>Entry: Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/architecture/established"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/solution-monitor-performance/completion/architecture">
+    <ess:name>Completion: Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/architecture/evolving"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/solution-monitor-performance/completion/architectural-drivers">
+    <ess:name>Completion: Architectural Drivers</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/architectural-drivers/sustained"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

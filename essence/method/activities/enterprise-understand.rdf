@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:ewow="https://hietkamp.nl/essence/vocab#"
+>
+
+  <ess:Activity rdf:about="activity/enterprise-understand">
+    <ess:name xml:lang="nl">Begrijpen</ess:name>
+    <ess:name xml:lang="en">Understand</ess:name>
+    <ess:briefDescription xml:lang="nl">Identificeer en kwantificeer de sturende eisen; stel meetbare succescriteria vast in een discovery workshop met stakeholders.</ess:briefDescription>
+    <ess:description xml:lang="nl">Identificeer en kwantificeer de sturende eisen; stel meetbare succescriteria vast in een discovery workshop met stakeholders.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:approach rdf:resource="approach/enterprise-understand/default"/>
+    <ess:action rdf:resource="action/enterprise-understand/create/architectural-drivers"/>
+    <ess:action rdf:resource="action/enterprise-understand/read/statement-of-architecture-work"/>
+    <ess:action rdf:resource="action/enterprise-understand/update-alpha/architectural-drivers"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/enterprise-understand/completion/architectural-drivers"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/enterprise-understand/default">
+    <ess:name xml:lang="nl">Begrijpen</ess:name>
+    <ess:name xml:lang="en">Understand</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Identificeer en kwantificeer de sturende eisen; stel meetbare succescriteria vast in een discovery workshop met stakeholders.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/enterprise-understand/create/architectural-drivers">
+    <ess:name>Create Architectural Drivers</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architectural-drivers"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-understand/read/statement-of-architecture-work">
+    <ess:name>Read Statement Of Architecture Work</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/statement-of-architecture-work"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-understand/update-alpha/architectural-drivers">
+    <ess:name>Update Architectural Drivers</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/architectural-drivers"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/enterprise-understand/part-of/understand-the-requirements">
+    <ess:name>Begrijpen part-of Understand The Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/enterprise-understand"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-understand/completion/architectural-drivers">
+    <ess:name>Completion: Architectural Drivers</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/architectural-drivers/quantified"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

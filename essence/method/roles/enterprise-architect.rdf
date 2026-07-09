@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:ewow="https://hietkamp.nl/essence/vocab#"
+>
+
+  <ess:Pattern rdf:about="role/enterprise-architect">
+    <ess:name xml:lang="nl">Enterprise Architect</ess:name>
+    <ess:name xml:lang="en">Enterprise Architect</ess:name>
+    <ess:briefDescription xml:lang="nl">Beheert de architectuur op ondernemingsniveau. Leidt het enterprise-spoor: stelt enterprise-brede sturende eisen vast, maakt de richting zichtbaar, de…</ess:briefDescription>
+    <ess:description xml:lang="nl">Beheert de architectuur op ondernemingsniveau. Leidt het enterprise-spoor: stelt enterprise-brede sturende eisen vast, maakt de richting zichtbaar, definieert de reference architecture en bouwt de goedgekeurde route. Werkt met de CIO, business-owners en het Architectuurforum. De uitkomsten worden de kaders en context die elke solution erft.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ewow:level>Enterprise niveau · C4 Level 1–2</ewow:level>
+    <ewow:owns>ASR · Architecture Vision · Paved Road · Architecture Definition (enterprise) · Roadmap (enterprise) · enterprise ADRs</ewow:owns>
+    <ewow:intro>De Enterprise Architect is eigenaar van het volledige architectuurproces op enterprise-scope. Op de activiteitspagina's staat uitgewerkt hoe de Enterprise Architect samenwerkt met de Architecture Owners van de afzonderlijke solutions.</ewow:intro>
+    <ess:associations rdf:resource="pattern-association/enterprise-architect/requires-competency"/>
+    <ess:associations rdf:resource="pattern-association/enterprise-architect/participates-in"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/requires-competency">
+    <ess:name xml:lang="en">requires competency</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Analysis"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Leadership"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/participates-in">
+    <ess:name xml:lang="en">participates in</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/solution-lead-implementation"/>
+  </ess:PatternAssociation>
+
+</rdf:RDF>

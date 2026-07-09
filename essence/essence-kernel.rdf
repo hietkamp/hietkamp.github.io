@@ -1,0 +1,2094 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel">
+    <rdfs:label xml:lang="en">Essence Kernel (RDF data)</rdfs:label>
+    <dcterms:source>OMG document ptc/25-05-01, Kernel and Language for Engineering Methods (Essence), v2.0 beta 2</dcterms:source>
+    <rdfs:comment xml:lang="en">The Essence Kernel (clause 8 of OMG Essence v2.0 beta 2) expressed as plain RDF instance data in the vocabulary of the Essence language ontology (https://www.hietkamp.nl/ontologies/essence-language). Not an OWL ontology: the kernel is a model written IN the Essence language, not an extension OF it.</rdfs:comment>
+    <dcterms:conformsTo rdf:resource="https://www.hietkamp.nl/ontologies/essence-language"/>
+  </rdf:Description>
+  <ess:Kernel rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#EssenceKernel">
+    <ess:briefDescription>The Essence Kernel: the alphas, activity spaces and competencies that form a common ground for software/system engineering endeavors (OMG Essence v2.0 beta 2, clause 8).</ess:briefDescription>
+    <ess:name>Essence Kernel</ess:name>
+    <ess:ownedElements>
+      <ess:Competency rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Analysis">
+        <ess:briefDescription>The ability to understand opportunities and their related stakeholder needs, and transform them into an agreed and consistent set of requirements; includes providing input to decisions during system design.</ess:briefDescription>
+        <ess:name>Analysis</ess:name>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Applies"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Assists"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+      </ess:Competency>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity">
+        <ess:briefDescription>Co-ordinate and direct the team's work, including all ongoing planning and re-planning of the work.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity_CC_2"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity_EC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity_EC_2"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+        <ess:name>Coordinate Activity</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Tag rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern">
+        <ess:value>Customer area of concern</ess:value>
+      </ess:Tag>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#DeploytheSystem">
+        <ess:briefDescription>Take the tested system and make it available for use outside the development team.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#DeploytheSystem_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#DeploytheSystem_EC_1"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+        <ess:name>Deploy the System</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Competency rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Development">
+        <ess:briefDescription>The ability to design and produce effective systems following the standards and norms agreed by the team.</ess:briefDescription>
+        <ess:name>Development</ess:name>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Applies"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Assists"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+      </ess:Competency>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Tag rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern">
+        <ess:value>Endeavor area of concern</ess:value>
+      </ess:Tag>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#EnsureStakeholderSatisfaction">
+        <ess:briefDescription>Share the results of the development work with the stakeholders to gain their acceptance of the system produced and verify that the opportunity has been successfully addressed.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EnsureStakeholderSatisfaction_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EnsureStakeholderSatisfaction_CC_2"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EnsureStakeholderSatisfaction_EC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EnsureStakeholderSatisfaction_EC_2"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:name>Ensure Stakeholder Satisfaction</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#ExplorePossibilities">
+        <ess:briefDescription>Explore the possibilities presented by the creation of a new or improved system, including analysis of the opportunity and identification of the stakeholders.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ExplorePossibilities_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ExplorePossibilities_CC_2"/>
+        <ess:name>Explore Possibilities</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#ImplementtheSystem">
+        <ess:briefDescription>Build a system by implementing, testing, and integrating one or more system elements, including defect fixing and system element testing.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ImplementtheSystem_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ImplementtheSystem_EC_1"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+        <ess:name>Implement the System</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Competency rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Leadership">
+        <ess:briefDescription>The ability to inspire and motivate a group of people to achieve a successful conclusion to their work and to meet their objectives.</ess:briefDescription>
+        <ess:name>Leadership</ess:name>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Applies"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Assists"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+      </ess:Competency>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Competency rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Management">
+        <ess:briefDescription>The ability to coordinate, plan, and track the work done by a team.</ess:briefDescription>
+        <ess:name>Management</ess:name>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Applies"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Assists"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+      </ess:Competency>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#OperatetheSystem">
+        <ess:briefDescription>Support the use of the system in the live environment.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#OperatetheSystem_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#OperatetheSystem_EC_1"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+        <ess:name>Operate the System</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Alpha rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity">
+        <ess:briefDescription>The set of circumstances that makes it appropriate to develop or change a system.</ess:briefDescription>
+        <ess:name>Opportunity</ess:name>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_BenefitAccrued"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Identified"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
+      </ess:Alpha>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_focuses_Requirements">
+        <ess:description>Opportunity focuses Requirements.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:name>focuses</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#PreparetodotheWork">
+        <ess:briefDescription>Set up the team and its working environment; understand and commit to completing the work.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#PreparetodotheWork_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#PreparetodotheWork_CC_2"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#PreparetodotheWork_CC_3"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders"/>
+        <ess:name>Prepare to do the Work</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Alpha rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements">
+        <ess:briefDescription>What the system must do to address the opportunity and satisfy the stakeholders.</ess:briefDescription>
+        <ess:name>Requirements</ess:name>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Addressed"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Conceived"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Fulfilled"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+      </ess:Alpha>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_scopesandconstrains_Work">
+        <ess:description>Requirements scopes and constrains Work.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+        <ess:name>scopes and constrains</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem">
+        <ess:briefDescription>Shape the system so that it is easy to develop, change and maintain, and can cope with current and expected future demands; includes overall design and architecting.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem_CC_2"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem_EC_1"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+        <ess:name>Shape the System</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Tag rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern">
+        <ess:value>Solution area of concern</ess:value>
+      </ess:Tag>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Competency rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#StakeholderRepresentation">
+        <ess:briefDescription>The ability to gather, communicate, and balance the needs of other stakeholders, and accurately represent their views.</ess:briefDescription>
+        <ess:name>Stakeholder Representation</ess:name>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Applies"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Assists"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
+      </ess:Competency>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Alpha rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders">
+        <ess:briefDescription>The people, groups, or organizations who affect or are affected by a system.</ess:briefDescription>
+        <ess:name>Stakeholders</ess:name>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Involved"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Recognized"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Represented"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedforDeployment"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedinUse"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
+      </ess:Alpha>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_demand_Requirements">
+        <ess:description>Stakeholders demand Requirements.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:name>demand</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_provide_Opportunity">
+        <ess:description>Stakeholders provide Opportunity.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+        <ess:name>provide</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_support_Team">
+        <ess:description>Stakeholders support Team.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team"/>
+        <ess:name>support</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_useandconsume_System">
+        <ess:description>Stakeholders use and consume System.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:name>use and consume</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork">
+        <ess:briefDescription>Shut down the engineering endeavor and hand over the team's responsibilities.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork_CC_2"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork_CC_3"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork_EC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork_EC_2"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork_EC_3"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+        <ess:name>Stop the Work</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#SupporttheTeam">
+        <ess:briefDescription>Help the team members to help themselves, collaborate, and improve their way of working.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SupporttheTeam_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SupporttheTeam_CC_2"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SupporttheTeam_EC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SupporttheTeam_EC_2"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+        <ess:name>Support the Team</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Alpha rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System">
+        <ess:briefDescription>A set of elements interacting to achieve a defined purpose, including one or more of: hardware, software, data, humans, processes, services, procedures, facilities, materials and naturally occurring entities.</ess:briefDescription>
+        <ess:name>System</ess:name>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Operational"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Retired"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+      </ess:Alpha>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_fulfills_Requirements">
+        <ess:description>System fulfills Requirements.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:name>fulfills</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_helpstoaddress_Opportunity">
+        <ess:description>System helps to address Opportunity.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+        <ess:name>helps to address</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Alpha rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team">
+        <ess:briefDescription>A group of people actively engaged in the development, maintenance, delivery, or support of a specific system.</ess:briefDescription>
+        <ess:name>Team</ess:name>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Adjourned"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Collaborating"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Performing"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+      </ess:Alpha>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_applies_WayofWorking">
+        <ess:description>Team applies Way-of-Working.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+        <ess:name>applies</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_performsandplans_Work">
+        <ess:description>Team performs and plans Work.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+        <ess:name>performs and plans</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_produces_System">
+        <ess:description>Team produces System.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:name>produces</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Competency rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Testing">
+        <ess:briefDescription>The ability to test a system, including validating that the system meets the needs of users and verifying that the system meets the requirements.</ess:briefDescription>
+        <ess:name>Testing</ess:name>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Applies"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Assists"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
+        <ess:possibleLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+      </ess:Competency>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#TesttheSystem">
+        <ess:briefDescription>Verify that the system produced meets the stakeholders' requirements.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TesttheSystem_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TesttheSystem_CC_2"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TesttheSystem_EC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TesttheSystem_EC_2"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+        <ess:name>Test the System</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress">
+        <ess:briefDescription>Measure and assess the progress made by the team.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress_CC_2"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress_CC_3"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress_EC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress_EC_2"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress_EC_3"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+        <ess:name>Track Progress</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds">
+        <ess:briefDescription>Engage with the stakeholders to understand their needs and ensure that the right results are produced.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds_CC_2"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds_EC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds_EC_2"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:name>Understand Stakeholder Needs</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandtheRequirements">
+        <ess:briefDescription>Establish a shared understanding of what the system to be produced must do.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandtheRequirements_CC_1"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+        <ess:name>Understand the Requirements</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:ActivitySpace rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#UsetheSystem">
+        <ess:briefDescription>Observe the use of the system in an operational environment and how it benefits the stakeholders.</ess:briefDescription>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UsetheSystem_CC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UsetheSystem_CC_2"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UsetheSystem_EC_1"/>
+        <ess:criterion rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UsetheSystem_EC_2"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders"/>
+        <ess:input rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:name>Use the System</ess:name>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
+      </ess:ActivitySpace>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Alpha rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking">
+        <ess:briefDescription>The tailored set of practices and tools used by a team to guide and support their work.</ess:briefDescription>
+        <ess:name>Way-of-Working</ess:name>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InPlace"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InUse"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_PrinciplesEstablished"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_Retired"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+      </ess:Alpha>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_guides_Work">
+        <ess:description>Way-of-Working guides Work.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+        <ess:name>guides</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:Alpha rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work">
+        <ess:briefDescription>Activity involving mental or physical effort done in order to achieve a result.</ess:briefDescription>
+        <ess:name>Work</ess:name>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Concluded"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Initiated"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Started"/>
+        <ess:states rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_UnderControl"/>
+        <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+      </ess:Alpha>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_setuptoaddress_Opportunity">
+        <ess:description>Work set up to address Opportunity.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+        <ess:name>set up to address</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+    <ess:ownedElements>
+      <ess:AlphaAssociation rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_updatesandchanges_System">
+        <ess:description>Work updates and changes System.</ess:description>
+        <ess:end1 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+        <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+        <ess:name>updates and changes</ess:name>
+      </ess:AlphaAssociation>
+    </ess:ownedElements>
+  </ess:Kernel>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InUse_6">
+    <ess:description>The practices and tools support team communication and collaboration.</ess:description>
+    <ess:name>6</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Fulfilled">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Fulfilled_1">
+        <ess:description>The stakeholders accept the requirements as accurately capturing what they require to fully satisfy the need for a new system.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Fulfilled_2">
+        <ess:description>There are no outstanding requirement items preventing the system from being accepted as fully satisfying the requirements.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Fulfilled_3">
+        <ess:description>The system is accepted by the stakeholders as fully satisfying the requirements.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The requirements that have been addressed fully satisfy the need for a new system.</ess:description>
+    <ess:name>Fulfilled</ess:name>
+  </ess:State>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress_EC_3">
+    <ess:description>Work::Started</ess:description>
+    <ess:state>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Started">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Started_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Started_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Started_3"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Started_4"/>
+        <ess:description>The work is proceeding.</ess:description>
+        <ess:name>Started</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_UnderControl"/>
+      </ess:State>
+    </ess:state>
+  </ess:EntryCriterion>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#TesttheSystem_CC_2">
+    <ess:description>System::Ready</ess:description>
+    <ess:state>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready_3"/>
+        <ess:description>The system (as a whole) has been accepted for deployment in a live environment.</ess:description>
+        <ess:name>Ready</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Operational"/>
+      </ess:State>
+    </ess:state>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable_1">
+    <ess:description>Key architectural characteristics have been demonstrated.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed_1">
+        <ess:description>Individual responsibilities are understood.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed_10">
+        <ess:description>Each team member commits to working on the team as defined.</ess:description>
+        <ess:name>10</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed_2">
+        <ess:description>Enough team members have been recruited to enable the work to progress.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed_3">
+        <ess:description>Every team member understands how the team is organized and what their individual role is.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed_4">
+        <ess:description>All team members understand how to perform their work.</ess:description>
+        <ess:name>4</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed_5">
+        <ess:description>The team members have met (perhaps virtually) and are beginning to get to know each other.</ess:description>
+        <ess:name>5</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed_6">
+        <ess:description>The team members understand their responsibilities and how they align with their competencies.</ess:description>
+        <ess:name>6</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed_7">
+        <ess:description>Team members are accepting work.</ess:description>
+        <ess:name>7</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed_8">
+        <ess:description>Any external collaborators (organizations, teams and individuals) are identified.</ess:description>
+        <ess:name>8</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed_9">
+        <ess:description>Team communication mechanisms have been defined.</ess:description>
+        <ess:name>9</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The team has been populated with enough committed people to start to pursue the team mission.</ess:description>
+    <ess:name>Formed</ess:name>
+    <ess:successor>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Collaborating">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Collaborating_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Collaborating_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Collaborating_3"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Collaborating_4"/>
+        <ess:description>The team members are working together as one unit.</ess:description>
+        <ess:name>Collaborating</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Performing"/>
+      </ess:State>
+    </ess:successor>
+  </ess:State>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable_5">
+    <ess:description>The system is sufficiently documented.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_6">
+    <ess:description>Acceptance criteria are defined and agreed with client.</ess:description>
+    <ess:name>6</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Operational_3">
+    <ess:description>The system is fully supported to the agreed service levels.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable_1">
+        <ess:description>The system can be operated by stakeholders who use it.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable_2">
+        <ess:description>The functionality provided by the system has been tested.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable_3">
+        <ess:description>The performance of the system is acceptable to the stakeholders.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable_4">
+        <ess:description>Defect levels are acceptable to the stakeholders.</ess:description>
+        <ess:name>4</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable_5"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable_6">
+        <ess:description>Released system elements are known.</ess:description>
+        <ess:name>6</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable_7">
+        <ess:description>The added value provided by the system is clear.</ess:description>
+        <ess:name>7</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable_8">
+        <ess:description>Documentation on how to deploy and use the system in its intended environment is available.</ess:description>
+        <ess:name>8</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The system is usable and demonstrates all of the quality characteristics of an operational system.</ess:description>
+    <ess:name>Usable</ess:name>
+    <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready"/>
+  </ess:State>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_7">
+    <ess:description>The work is broken down sufficiently for productive work to start.</ess:description>
+    <ess:name>7</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InPlace_3">
+    <ess:description>The whole team is involved in the inspection and adaptation of the way-of-working.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded_1">
+    <ess:description>The stakeholders in the opportunity and the proposed solution have been identified.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Started_4">
+    <ess:description>Team members are accepting and progressing tasks.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#OperatetheSystem_EC_1">
+    <ess:description>System::Ready</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready"/>
+  </ess:EntryCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished_2">
+    <ess:description>Enough practices for work to start are agreed to by the team.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished_5">
+    <ess:description>The desired outcomes required of the solution are clear and quantified.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_PrinciplesEstablished_4">
+    <ess:description>A recommendation for the approach to be taken is available.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent_5">
+    <ess:description>The requirements communicate the essential characteristics of the system to be delivered.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable_3">
+    <ess:description>The value provided by implementing the requirements is clear.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds_CC_2">
+    <ess:description>Opportunity::Viable</ess:description>
+    <ess:state>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_3"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_4"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_5"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_6"/>
+        <ess:description>It is agreed that a solution can be produced quickly and cheaply enough to successfully address the opportunity.</ess:description>
+        <ess:name>Viable</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed"/>
+      </ess:State>
+    </ess:state>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InUse_4">
+    <ess:description>The use of the practices and tools is supported by the team.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#ImplementtheSystem_EC_1">
+    <ess:description>System::Architecture Selected</ess:description>
+    <ess:state>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_3"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_4"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_5"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_6"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_7"/>
+        <ess:description>An architecture has been selected that addresses the key technical risks and any applicable organizational constraints.</ess:description>
+        <ess:name>Architecture Selected</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable"/>
+      </ess:State>
+    </ess:state>
+  </ess:EntryCriterion>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds_CC_1">
+    <ess:description>Stakeholders::In Agreement</ess:description>
+    <ess:state>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement_3"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement_4"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement_5"/>
+        <ess:description>The stakeholder representatives are in agreement.</ess:description>
+        <ess:name>In Agreement</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedforDeployment"/>
+      </ess:State>
+    </ess:state>
+  </ess:CompletionCriterion>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Concluded">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Concluded_1">
+        <ess:description>All outstanding tasks are administrative housekeeping or related to preparing the next piece of work.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Concluded_2">
+        <ess:description>Work results have been achieved.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Concluded_3">
+        <ess:description>The stakeholder(s) has accepted the resulting system.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The work to produce the results has been concluded.</ess:description>
+    <ess:name>Concluded</ess:name>
+    <ess:successor>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed_3"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed_4"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed_5"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed_6"/>
+        <ess:description>All remaining housekeeping tasks have been completed and the work has been officially closed.</ess:description>
+        <ess:name>Closed</ess:name>
+      </ess:State>
+    </ess:successor>
+  </ess:State>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Initiated_7">
+    <ess:description>The priority of the work is clear.</ess:description>
+    <ess:name>7</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_1">
+    <ess:description>A solution has been outlined.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_UnderControl">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_UnderControl_1">
+        <ess:description>Tasks are being completed.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_UnderControl_2">
+        <ess:description>Unplanned work is under control.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_UnderControl_3">
+        <ess:description>Risks are under control as the impact if they occur and the likelihood of them occurring have been reduced to acceptable levels.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_UnderControl_4">
+        <ess:description>Estimates are revised to reflect the team's performance.</ess:description>
+        <ess:name>4</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_UnderControl_5">
+        <ess:description>Measures are available to show progress and velocity.</ess:description>
+        <ess:name>5</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_UnderControl_6">
+        <ess:description>Re-work is under control.</ess:description>
+        <ess:name>6</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_UnderControl_7">
+        <ess:description>Tasks are consistently completed on time and within their estimates.</ess:description>
+        <ess:name>7</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The work is going well, risks are under control, and productivity levels are sufficient to achieve a satisfactory result.</ess:description>
+    <ess:name>Under Control</ess:name>
+    <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Concluded"/>
+  </ess:State>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Identified">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Identified_1">
+        <ess:description>An idea for a way of improving current ways of working, increasing market share, or applying a new or innovative system has been identified.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Identified_2">
+        <ess:description>At least one of the stakeholders wishes to make an investment in better understanding the opportunity and the value associated with addressing it.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Identified_3">
+        <ess:description>The other stakeholders who share the opportunity have been identified.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>A commercial, social, or business opportunity has been identified that could be addressed by a system-based solution.</ess:description>
+    <ess:name>Identified</ess:name>
+    <ess:successor>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded_3"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded_4"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded_5"/>
+        <ess:description>The need for a system-based solution has been confirmed.</ess:description>
+        <ess:name>Solution Needed</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished"/>
+      </ess:State>
+    </ess:successor>
+  </ess:State>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Performing">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Performing_1">
+        <ess:description>The team consistently meets its commitments.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Performing_2">
+        <ess:description>The team continuously adapts to the changing context.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Performing_3">
+        <ess:description>The team identifies and addresses problems without outside help.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Performing_4">
+        <ess:description>Effective progress is being achieved with minimal avoidable backtracking and reworking.</ess:description>
+        <ess:name>4</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Performing_5">
+        <ess:description>Wasted work and the potential for wasted work are continuously identified and eliminated.</ess:description>
+        <ess:name>5</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The team is working effectively and efficiently.</ess:description>
+    <ess:name>Performing</ess:name>
+    <ess:successor>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Adjourned">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Adjourned_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Adjourned_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Adjourned_3"/>
+        <ess:description>The team is no longer accountable for carrying out its mission.</ess:description>
+        <ess:name>Adjourned</ess:name>
+      </ess:State>
+    </ess:successor>
+  </ess:State>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InPlace">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InPlace_1">
+        <ess:description>The practices and tools are being used by the whole team to perform their work.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InPlace_2">
+        <ess:description>All team members have access to the practices and tools required to do their work.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InPlace_3"/>
+    <ess:description>All team members are using the way of working to accomplish their work.</ess:description>
+    <ess:name>In Place</ess:name>
+    <ess:successor>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell_3"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell_4"/>
+        <ess:description>The team's way of working is working well for the team.</ess:description>
+        <ess:name>Working Well</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_Retired"/>
+      </ess:State>
+    </ess:successor>
+  </ess:State>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Represented">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Represented_1">
+        <ess:description>The stakeholder representatives have agreed to take on their responsibilities.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Represented_2">
+        <ess:description>The stakeholder representatives are authorized to carry out their responsibilities.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Represented_3">
+        <ess:description>The collaboration approach among the stakeholder representatives has been agreed.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Represented_4">
+        <ess:description>The stakeholder representatives support and respect the team's way of working.</ess:description>
+        <ess:name>4</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The mechanisms for involving the stakeholders are agreed and the stakeholder representatives have been appointed.</ess:description>
+    <ess:name>Represented</ess:name>
+    <ess:successor>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Involved">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Involved_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Involved_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Involved_3"/>
+        <ess:description>The stakeholder representatives are actively involved in the work and fulfilling their responsibilities.</ess:description>
+        <ess:name>Involved</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement"/>
+      </ess:State>
+    </ess:successor>
+  </ess:State>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_Retired">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_Retired_1">
+        <ess:description>The team's way of working is no longer being used.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_Retired_2">
+        <ess:description>Lessons learned are shared for future use.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The way of working is no longer in use by the team.</ess:description>
+    <ess:name>Retired</ess:name>
+  </ess:State>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished_4">
+    <ess:description>The gaps that exist between the practices and tools that are needed and the practices and tools that are available have been analyzed and understood.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished_4">
+    <ess:description>The success criteria by which the deployment of the system is to be judged are clear.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork_CC_3">
+    <ess:description>Work::Closed</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Retired_4">
+    <ess:description>Updates to the system will no longer be produced.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent_2">
+    <ess:description>The origin of the requirements is clear.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Addressed_3">
+    <ess:description>The set of requirement items implemented provide clear value to the stakeholders.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#SupporttheTeam_CC_1">
+    <ess:description>Team::Collaborating</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Collaborating"/>
+  </ess:CompletionCriterion>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#UsetheSystem_EC_2">
+    <ess:description>Opportunity::Addressed</ess:description>
+    <ess:state>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed_3"/>
+        <ess:description>A solution has been produced that demonstrably addresses the opportunity.</ess:description>
+        <ess:name>Addressed</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_BenefitAccrued"/>
+      </ess:State>
+    </ess:state>
+  </ess:EntryCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Involved_2">
+    <ess:description>The stakeholder representatives provide feedback and take part in decision making in a timely manner.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_7">
+    <ess:description>The level of team commitment is clear.</ess:description>
+    <ess:name>7</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Addressed">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Addressed_1">
+        <ess:description>Enough of the requirements are addressed for the resulting system to be acceptable to the stakeholders.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Addressed_2">
+        <ess:description>The stakeholders accept the requirements as accurately reflecting what the system does and does not do.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Addressed_3"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Addressed_4">
+        <ess:description>The system implementing the requirements is accepted by the stakeholders as worth making operational.</ess:description>
+        <ess:name>4</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>Enough of the requirements have been addressed to satisfy the need for a new system in a way that is acceptable to the stakeholders.</ess:description>
+    <ess:name>Addressed</ess:name>
+    <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Fulfilled"/>
+  </ess:State>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_4">
+    <ess:description>System boundary is known.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Operational">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Operational_1">
+        <ess:description>The system has been made available to the stakeholders intended to use it.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Operational_2">
+        <ess:description>At least one example of the system is fully operational.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Operational_3"/>
+    <ess:description>The system is in use in an operational environment.</ess:description>
+    <ess:name>Operational</ess:name>
+    <ess:successor>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Retired">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Retired_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Retired_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Retired_3"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Retired_4"/>
+        <ess:description>The system is no longer supported.</ess:description>
+        <ess:name>Retired</ess:name>
+      </ess:State>
+    </ess:successor>
+  </ess:State>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed_3">
+    <ess:description>The stakeholders are satisfied that the solution produced addresses the opportunity.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded_2">
+    <ess:description>The stakeholders agree on the purpose of the new system.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_6">
+    <ess:description>It is clear that the pursuit of the opportunity is viable.</ess:description>
+    <ess:name>6</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_2">
+    <ess:description>The architecture's key concepts and properties are clearly defined.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Retired_2">
+    <ess:description>The system is no longer supported.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent_1">
+        <ess:description>The requirements are captured and shared with the team and the stakeholders.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent_2"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent_3">
+        <ess:description>The rationale behind the requirements is clear.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent_4">
+        <ess:description>Conflicting requirements are identified and attended to.</ess:description>
+        <ess:name>4</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent_5"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent_6">
+        <ess:description>The most important usage scenarios for the system can be explained.</ess:description>
+        <ess:name>6</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent_7">
+        <ess:description>The priority of the requirements is clear.</ess:description>
+        <ess:name>7</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent_8">
+        <ess:description>The impact of implementing the requirements is understood.</ess:description>
+        <ess:name>8</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent_9">
+        <ess:description>The team understands what has to be delivered and agrees to deliver it.</ess:description>
+        <ess:name>9</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The requirements provide a consistent description of the essential characteristics of the new system.</ess:description>
+    <ess:name>Coherent</ess:name>
+    <ess:successor>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable_3"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable_4"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable_5"/>
+        <ess:description>The requirements describe a system that is acceptable to the stakeholders.</ess:description>
+        <ess:name>Acceptable</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Addressed"/>
+      </ess:State>
+    </ess:successor>
+  </ess:State>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell_4">
+    <ess:description>The team continually tunes their use of the practices and tools.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#PreparetodotheWork_CC_2">
+    <ess:description>Way-of-Working::Foundation Established</ess:description>
+    <ess:state>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished_3"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished_4"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished_5"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished_6"/>
+        <ess:description>The key practices, and tools, that form the foundation of the way of working are selected and ready for use.</ess:description>
+        <ess:name>Foundation Established</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InUse"/>
+      </ess:State>
+    </ess:state>
+  </ess:CompletionCriterion>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#UsetheSystem_CC_2">
+    <ess:description>Opportunity::Benefit Accrued</ess:description>
+    <ess:state>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_BenefitAccrued">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_BenefitAccrued_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_BenefitAccrued_2"/>
+        <ess:description>The operational use or sale of the solution is creating tangible benefits.</ess:description>
+        <ess:name>Benefit Accrued</ess:name>
+      </ess:State>
+    </ess:state>
+  </ess:CompletionCriterion>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity_CC_1">
+    <ess:description>Team::Formed</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Conceived_2">
+    <ess:description>The stakeholders that will use the new system are identified.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Initiated_4">
+    <ess:description>The initiator of the work is clearly identified.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InUse_3">
+    <ess:description>The practices and tools are being adapted to the team's context.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress_CC_2">
+    <ess:description>Way-of-Working::Working Well</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded_4">
+    <ess:description>It has been confirmed that a system-based solution is needed.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_PrinciplesEstablished_5">
+    <ess:description>The context within which the team will operate is understood.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded_1">
+        <ess:description>The stakeholders involved in developing the new system are identified.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded_2"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded_3">
+        <ess:description>It is clear what success is for the new system.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded_4">
+        <ess:description>The stakeholders have a shared understanding of the extent of the proposed solution.</ess:description>
+        <ess:name>4</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded_5">
+        <ess:description>The way the requirements will be described is agreed upon.</ess:description>
+        <ess:name>5</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded_6">
+        <ess:description>The mechanisms for managing the requirements are in place.</ess:description>
+        <ess:name>6</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded_7">
+        <ess:description>The prioritization scheme is clear.</ess:description>
+        <ess:name>7</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded_8">
+        <ess:description>Constraints are identified and considered.</ess:description>
+        <ess:name>8</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded_9">
+        <ess:description>Assumptions are clearly stated.</ess:description>
+        <ess:name>9</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The purpose and extent of the new system are clear.</ess:description>
+    <ess:name>Bounded</ess:name>
+    <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent"/>
+  </ess:State>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed_5">
+    <ess:description>The team has been released.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed_3">
+    <ess:description>Everything has been archived.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress_CC_1">
+    <ess:description>Team::Performing</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Performing"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement_1">
+    <ess:description>The stakeholder representatives have agreed upon their minimal expectations for the next deployment of the new system.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_1">
+    <ess:description>The team mission has been defined in terms of the opportunities and outcomes.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished_1">
+        <ess:description>The value of addressing the opportunity has been quantified either in absolute terms or in returns or savings per time period.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished_2">
+        <ess:description>The impact of the solution on the stakeholders is understood.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished_3">
+        <ess:description>The value that the system offers to the stakeholders that fund and use the system is understood.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished_4"/>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished_5"/>
+    <ess:description>The value of a successful solution has been established.</ess:description>
+    <ess:name>Value Established</ess:name>
+    <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable"/>
+  </ess:State>
+  <ess:CompetencyLevel rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates">
+    <ess:briefDescription>A recognized expert, able to extend the concepts to new contexts and inspire others.</ess:briefDescription>
+    <ess:level rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</ess:level>
+    <ess:name>Innovates</ess:name>
+  </ess:CompetencyLevel>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Initiated_1">
+    <ess:description>The result required of the work being initiated is clear.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement_2">
+    <ess:description>The stakeholder representatives are happy with their involvement in the work.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_10">
+    <ess:description>Funding to start the work is in place.</ess:description>
+    <ess:name>10</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished_3">
+    <ess:description>All non-negotiable practices and tools have been identified.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished_1">
+    <ess:description>The key practices and tools that form the foundation of the way-of-working are selected.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Recognized">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Recognized_1">
+        <ess:description>All the different groups of stakeholders that are, or will be, affected by the development and operation of the system are identified.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Recognized_2">
+        <ess:description>There is agreement on the stakeholder groups to be represented. At a minimum, the stakeholders' groups that fund, use, support, and maintain the system have been considered.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Recognized_3">
+        <ess:description>The responsibilities of the stakeholder representatives have been defined.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>Stakeholders have been identified.</ess:description>
+    <ess:name>Recognized</ess:name>
+    <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Represented"/>
+  </ess:State>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_9">
+    <ess:description>A credible plan is in place.</ess:description>
+    <ess:name>9</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#SupporttheTeam_CC_2">
+    <ess:description>Way-of-Working::In Place</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InPlace"/>
+  </ess:CompletionCriterion>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem_CC_2">
+    <ess:description>System::Architecture Selected</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected"/>
+  </ess:CompletionCriterion>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds_EC_2">
+    <ess:description>Opportunity::Value Established</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished"/>
+  </ess:EntryCriterion>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InUse">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InUse_1">
+        <ess:description>The practices and tools are being used to do real work.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InUse_2">
+        <ess:description>The use of the practices and tools selected are regularly inspected.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InUse_3"/>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InUse_4"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InUse_5">
+        <ess:description>Procedures are in place to handle feedback on the team's way of working.</ess:description>
+        <ess:name>5</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InUse_6"/>
+    <ess:description>Some members of the team are using, and adapting, the way-of-working.</ess:description>
+    <ess:name>In Use</ess:name>
+    <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InPlace"/>
+  </ess:State>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded">
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_1"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_10">
+        <ess:description>Governance rules are defined.</ess:description>
+        <ess:name>10</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_11">
+        <ess:description>Leadership model is determined.</ess:description>
+        <ess:name>11</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_2">
+        <ess:description>Constraints on the team's operation are known.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_3">
+        <ess:description>Mechanisms to grow the team are in place.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_4">
+        <ess:description>The composition of the team is defined.</ess:description>
+        <ess:name>4</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_5">
+        <ess:description>Any constraints on where and how the work is carried out are defined.</ess:description>
+        <ess:name>5</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_6">
+        <ess:description>The team's responsibilities are outlined.</ess:description>
+        <ess:name>6</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_7"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_8">
+        <ess:description>Required competencies are identified.</ess:description>
+        <ess:name>8</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_9">
+        <ess:description>The team size is determined.</ess:description>
+        <ess:name>9</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The team's mission is clear and the know-how needed to grow the team is in place.</ess:description>
+    <ess:name>Seeded</ess:name>
+    <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed"/>
+  </ess:State>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress_EC_2">
+    <ess:description>Way-of-Working::In Place</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_InPlace"/>
+  </ess:EntryCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Conceived_4">
+    <ess:description>There is a clear opportunity for the new system to address.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable_5">
+    <ess:description>The requirements are testable.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_1">
+    <ess:description>The criteria to be used when selecting the architecture have been agreed on.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Collaborating_1">
+    <ess:description>The team is working as one cohesive unit.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#EnsureStakeholderSatisfaction_EC_1">
+    <ess:description>Stakeholders::In Agreement</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement"/>
+  </ess:EntryCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_2">
+    <ess:description>Cost and effort of the work are estimated.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedforDeployment">
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedforDeployment_1">
+        <ess:description>The stakeholder representatives provide feedback on the system from their stakeholder group perspective.</ess:description>
+        <ess:name>1</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedforDeployment_2">
+        <ess:description>The stakeholder representatives confirm that they agree that the system is ready for deployment.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The minimal expectations of the stakeholder representatives have been achieved.</ess:description>
+    <ess:name>Satisfied for Deployment</ess:name>
+    <ess:successor>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedinUse">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedinUse_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedinUse_2"/>
+        <ess:description>The system has met or exceeds the minimal stakeholder expectations.</ess:description>
+        <ess:name>Satisfied in Use</ess:name>
+      </ess:State>
+    </ess:successor>
+  </ess:State>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement_5">
+    <ess:description>The stakeholder representatives agree with how their different priorities and perspectives are being balanced to provide a clear direction for the team.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity_CC_2">
+    <ess:description>Work::Under Control</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_UnderControl"/>
+  </ess:CompletionCriterion>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Initiated">
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Initiated_1"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Initiated_2">
+        <ess:description>Any constraints on the work's performance are clearly identified.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Initiated_3">
+        <ess:description>The stakeholders that will fund the work are known.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Initiated_4"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Initiated_5">
+        <ess:description>The stakeholders that will accept the results are known.</ess:description>
+        <ess:name>5</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Initiated_6">
+        <ess:description>The source of funding is clear.</ess:description>
+        <ess:name>6</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Initiated_7"/>
+    <ess:description>The work has been requested.</ess:description>
+    <ess:name>Initiated</ess:name>
+    <ess:successor>
+      <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared">
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_1"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_10"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_11"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_12"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_2"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_3"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_4"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_5"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_6"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_7"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_8"/>
+        <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_9"/>
+        <ess:description>All pre-conditions for starting the work have been met.</ess:description>
+        <ess:name>Prepared</ess:name>
+        <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Started"/>
+      </ess:State>
+    </ess:successor>
+  </ess:State>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity_EC_1">
+    <ess:description>Team::Seeded</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded"/>
+  </ess:EntryCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Adjourned_3">
+    <ess:description>No further effort is being put in by the team to complete the mission.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress_EC_1">
+    <ess:description>Team::Collaborating</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Collaborating"/>
+  </ess:EntryCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_5">
+    <ess:description>Significant decisions about the organization of the system have been made.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_BenefitAccrued_1">
+    <ess:description>The solution has started to accrue benefits for the stakeholders.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:CompetencyLevel rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Applies">
+    <ess:briefDescription>Able to apply the concepts in simple contexts by routinely applying the experience gained so far.</ess:briefDescription>
+    <ess:level rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</ess:level>
+    <ess:name>Applies</ess:name>
+  </ess:CompetencyLevel>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#PreparetodotheWork_CC_3">
+    <ess:description>Work::Prepared</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Collaborating_3">
+    <ess:description>The team is focused on achieving the team mission.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed_2">
+    <ess:description>Metrics have been made available.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#TesttheSystem_EC_1">
+    <ess:description>Requirements::Acceptable</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable"/>
+  </ess:EntryCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Adjourned_1">
+    <ess:description>The team responsibilities have been handed over or fulfilled.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#ExplorePossibilities_CC_1">
+    <ess:description>Stakeholders::Recognized</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Recognized"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished_6">
+    <ess:description>The selected practices and tools have been integrated to form a usable way-of-working.</ess:description>
+    <ess:name>6</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable_5">
+    <ess:description>The integration with other existing systems has been demonstrated.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:CompetencyLevel rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts">
+    <ess:briefDescription>Able to apply judgment on when and how to apply the concepts to more complex contexts. Can make it possible for others to apply the concepts.</ess:briefDescription>
+    <ess:level rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</ess:level>
+    <ess:name>Adapts</ess:name>
+  </ess:CompetencyLevel>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable_2">
+    <ess:description>The system can be exercised and its performance can be measured.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed_4">
+    <ess:description>The budget has been reconciled and closed.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity_EC_2">
+    <ess:description>Work::Prepared</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared"/>
+  </ess:EntryCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable_6">
+    <ess:description>The relevant stakeholders agree that the demonstrated architecture is appropriate.</ess:description>
+    <ess:name>6</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_BenefitAccrued_2">
+    <ess:description>The return-on-investment profile is at least as good as anticipated.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork_CC_2">
+    <ess:description>Way-of-Working::Retired</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_Retired"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_PrinciplesEstablished_1">
+    <ess:description>Principles and constraints are committed to by the team.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#TesttheSystem_EC_2">
+    <ess:description>System::Architecture Selected</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected"/>
+  </ess:EntryCriterion>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#UsetheSystem_CC_1">
+    <ess:description>Stakeholders::Satisfied in Use</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedinUse"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement_3">
+    <ess:description>The stakeholder representatives agree that their input is valued by the team and treated with respect.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed_1">
+    <ess:description>A usable system that demonstrably addresses the opportunity is available.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_PrinciplesEstablished">
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_PrinciplesEstablished_1"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_PrinciplesEstablished_2">
+        <ess:description>Principles and constraints are agreed to by the stakeholders.</ess:description>
+        <ess:name>2</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_PrinciplesEstablished_3">
+        <ess:description>The tool needs of the work and its stakeholders are agreed.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_PrinciplesEstablished_4"/>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_PrinciplesEstablished_5"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_PrinciplesEstablished_6">
+        <ess:description>The constraints that apply to the selection, acquisition, and use of practices and tools are known.</ess:description>
+        <ess:name>6</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:description>The principles, and constraints, that shape the way-of-working are established.</ess:description>
+    <ess:name>Principles Established</ess:name>
+    <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished"/>
+  </ess:State>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_6">
+    <ess:description>Buy, build, and reuse decisions have been made.</ess:description>
+    <ess:name>6</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded_5">
+    <ess:description>At least one system-based solution has been proposed.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#OperatetheSystem_CC_1">
+    <ess:description>System::Retired</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Retired"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Collaborating_2">
+    <ess:description>Communication within the team is open and honest.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready_1">
+    <ess:description>The stakeholder representatives accept the system as fit-for-purpose.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable">
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable_1"/>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable_2"/>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable_3">
+        <ess:description>Critical configurations of the architecture have been demonstrated.</ess:description>
+        <ess:name>3</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem>
+      <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable_4">
+        <ess:description>Critical interfaces have been demonstrated.</ess:description>
+        <ess:name>4</ess:name>
+      </ess:Checkpoint>
+    </ess:checkListItem>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable_5"/>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable_6"/>
+    <ess:description>A demonstrable version of the system is available that demonstrates the architecture is fit for purpose and supports testing.</ess:description>
+    <ess:name>Demonstrable</ess:name>
+    <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable"/>
+  </ess:State>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork_EC_1">
+    <ess:description>Team::Performing</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Performing"/>
+  </ess:EntryCriterion>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork_CC_1">
+    <ess:description>Team::Adjourned</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Adjourned"/>
+  </ess:CompletionCriterion>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#EnsureStakeholderSatisfaction_EC_2">
+    <ess:description>Opportunity::Value Established</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished"/>
+  </ess:EntryCriterion>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem_CC_1">
+    <ess:description>Requirements::Acceptable</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable"/>
+  </ess:CompletionCriterion>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandtheRequirements_CC_1">
+    <ess:description>Requirements::Coherent</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed_1">
+    <ess:description>Lessons learned have been itemized, recorded and discussed.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready_3">
+    <ess:description>Operational support is in place.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:CompetencyLevel rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Assists">
+    <ess:briefDescription>Demonstrates a basic understanding of the concepts involved and can follow instructions.</ess:briefDescription>
+    <ess:level rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ess:level>
+    <ess:name>Assists</ess:name>
+  </ess:CompetencyLevel>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Started_1">
+    <ess:description>Development work has been started.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedinUse_1">
+    <ess:description>Stakeholders are using the new system and providing feedback on their experiences.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Retired_3">
+    <ess:description>There are no "official" stakeholders who still use the system.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Conceived_1">
+    <ess:description>The initial set of stakeholders agrees that a system is to be produced.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Conceived_3">
+    <ess:description>The stakeholders that will fund the initial work on the new system are identified.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell_1">
+    <ess:description>Team members are making progress as planned by using and adapting the way-of-working to suit their current context.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_3">
+    <ess:description>Resource availability is understood.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_4">
+    <ess:description>The indicative (ball-park) costs of the solution are less than the anticipated value of the opportunity.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_12">
+    <ess:description>Integration and delivery points are defined.</ess:description>
+    <ess:name>12</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded_2">
+    <ess:description>The stakeholders' needs that generate the opportunity have been established.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Involved_1">
+    <ess:description>The stakeholder representatives assist the team in accordance with their responsibilities.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#EnsureStakeholderSatisfaction_CC_2">
+    <ess:description>Opportunity::Addressed</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed"/>
+  </ess:CompletionCriterion>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork_EC_3">
+    <ess:description>Work::Concluded</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Concluded"/>
+  </ess:EntryCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Started_3">
+    <ess:description>The work is being broken down into actionable work items with clear definitions of done.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Started_2">
+    <ess:description>Work progress is monitored.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#DeploytheSystem_CC_1">
+    <ess:description>System::Operational</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Operational"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_3">
+    <ess:description>The selected architecture is clearly conceived.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Adjourned_2">
+    <ess:description>The team members are available for assignment to other teams.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedinUse_2">
+    <ess:description>The stakeholders confirm that the new system meets their expectations.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Conceived">
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Conceived_1"/>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Conceived_2"/>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Conceived_3"/>
+    <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Conceived_4"/>
+    <ess:description>The need for a new system has been agreed.</ess:description>
+    <ess:name>Conceived</ess:name>
+    <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded"/>
+  </ess:State>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_2">
+    <ess:description>The indications are that the solution can be developed and deployed within constraints.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_3">
+    <ess:description>The risks associated with the solution are acceptable and manageable.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#UsetheSystem_EC_1">
+    <ess:description>Stakeholders::Satisfied for Deployment</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedforDeployment"/>
+  </ess:EntryCriterion>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem_EC_1">
+    <ess:description>Requirements::Coherent</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent"/>
+  </ess:EntryCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Closed_6">
+    <ess:description>There are no outstanding, uncompleted tasks.</ess:description>
+    <ess:name>6</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#ImplementtheSystem_CC_1">
+    <ess:description>System::Ready</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell_2">
+    <ess:description>The team naturally applies the practices without thinking about them.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_7">
+    <ess:description>Key technical risks agreed to.</ess:description>
+    <ess:name>7</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#EnsureStakeholderSatisfaction_CC_1">
+    <ess:description>Stakeholders::Satisfied for Deployment</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedforDeployment"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_4">
+    <ess:description>Governance policies and procedures are clear.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed_2">
+    <ess:description>The stakeholders agree that the available solution is worth deploying.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Collaborating_4">
+    <ess:description>The team members know and trust each other.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Retired_1">
+    <ess:description>The system has been replaced or discontinued.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_8">
+    <ess:description>Tasks have been identified and prioritized by the team and stakeholders.</ess:description>
+    <ess:name>8</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable_4">
+    <ess:description>The parts of the opportunity satisfied by the requirements are clear.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:CompetencyLevel rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Masters">
+    <ess:briefDescription>Able to apply the concepts in most contexts and has the experience to work without supervision.</ess:briefDescription>
+    <ess:level rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</ess:level>
+    <ess:name>Masters</ess:name>
+  </ess:CompetencyLevel>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable_1">
+    <ess:description>The stakeholders accept that the requirements describe an acceptable solution.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement_4">
+    <ess:description>The team members agree that their input is valued by the stakeholder representatives and treated with respect.</ess:description>
+    <ess:name>4</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell_3">
+    <ess:description>The tools naturally support the way that the team works.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#StoptheWork_EC_2">
+    <ess:description>Way-of-Working::Working Well</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell"/>
+  </ess:EntryCriterion>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#DeploytheSystem_EC_1">
+    <ess:description>System::Ready</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready"/>
+  </ess:EntryCriterion>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds_EC_1">
+    <ess:description>Stakeholders::Recognized</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Recognized"/>
+  </ess:EntryCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready_2">
+    <ess:description>The stakeholder representatives want to make the system available for use.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#TesttheSystem_CC_1">
+    <ess:description>Requirements::Fulfilled</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Fulfilled"/>
+  </ess:CompletionCriterion>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#SupporttheTeam_EC_2">
+    <ess:description>Way-of-Working::Foundation Established</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished"/>
+  </ess:EntryCriterion>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#PreparetodotheWork_CC_1">
+    <ess:description>Team::Seeded</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded"/>
+  </ess:CompletionCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_11">
+    <ess:description>The team or at least some of the team members are ready to start the work.</ess:description>
+    <ess:name>11</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable_2">
+    <ess:description>The rate of change to the agreed requirements is relatively low and under control.</ess:description>
+    <ess:name>2</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded_3">
+    <ess:description>Any underlying problems and their root causes have been identified.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished_5">
+    <ess:description>The capability gaps that exist between what is needed to execute the desired way of working and the capability levels of the team have been analyzed and understood.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_5">
+    <ess:description>The reasons for the development of a system-based solution are understood by all members of the team.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:EntryCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#SupporttheTeam_EC_1">
+    <ess:description>Team::Formed</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Formed"/>
+  </ess:EntryCriterion>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_1">
+    <ess:description>Commitment is made.</ess:description>
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_5">
+    <ess:description>Risk exposure is understood.</ess:description>
+    <ess:name>5</ess:name>
+  </ess:Checkpoint>
+  <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Involved_3">
+    <ess:description>The stakeholder representatives promptly communicate changes that are relevant for their stakeholder groups.</ess:description>
+    <ess:name>3</ess:name>
+  </ess:Checkpoint>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#ExplorePossibilities_CC_2">
+    <ess:description>Opportunity::Value Established</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished"/>
+  </ess:CompletionCriterion>
+  <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress_CC_3">
+    <ess:description>Work::Concluded</ess:description>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Concluded"/>
+  </ess:CompletionCriterion>
+</rdf:RDF>

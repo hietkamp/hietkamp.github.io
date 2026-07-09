@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:WorkProduct rdf:about="workproduct/architecture-repository">
+    <ess:name xml:lang="nl">Architectuurrepository</ess:name>
+    <ess:name xml:lang="en">Architecture Repository</ess:name>
+    <ess:briefDescription xml:lang="nl">Bestuurde centrale opslagplaats voor alle architectuurartefacten: ADRs, architecture definitions, review records en de paved road. Één bron van waarhe…</ess:briefDescription>
+    <ess:description xml:lang="nl">Bestuurde centrale opslagplaats voor alle architectuurartefacten: ADRs, architecture definitions, review records en de paved road. Één bron van waarheid voor het hele architectuurlandgoed.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <!-- ess:levelOfDetail not defined -->
+    <!-- ess:icon not defined -->
+    <!-- ess:tags not defined -->
+    <!-- ess:resources not defined -->
+    <!-- ess:properties not defined -->
+    <!-- Application-specific -->
+    <ess:ownedElements rdf:resource="resource/architecture-repository/template"/>
+  </ess:WorkProduct>
+
+  <ess:TypedResource rdf:about="resource/architecture-repository/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/architecture-repository.docx</ess:content>
+  </ess:TypedResource>
+
+</rdf:RDF>

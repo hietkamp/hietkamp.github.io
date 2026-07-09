@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <ess:Activity rdf:about="activity/enterprise-plan">
+    <ess:name xml:lang="nl">Plannen</ess:name>
+    <ess:name xml:lang="en">Plan</ess:name>
+    <ess:briefDescription xml:lang="nl">Identificeer de hiaten; orden de implementatiestappen van baseline naar doel; detailleer alleen de volgende horizon. Elke horizon bevat een expliciete…</ess:briefDescription>
+    <ess:description xml:lang="nl">Identificeer de hiaten; orden de implementatiestappen van baseline naar doel; detailleer alleen de volgende horizon. Elke horizon bevat een expliciete onomkeerbare grens.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:approach rdf:resource="approach/enterprise-plan/default"/>
+    <ess:action rdf:resource="action/enterprise-plan/read/architecture-model"/>
+    <ess:action rdf:resource="action/enterprise-plan/create/architecture-roadmap"/>
+    <ess:action rdf:resource="action/enterprise-plan/read/paved-road"/>
+    <ess:action rdf:resource="action/enterprise-plan/update-alpha/architecture"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/enterprise-plan/completion/architecture"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/enterprise-plan/default">
+    <ess:name xml:lang="nl">Plannen</ess:name>
+    <ess:name xml:lang="en">Plan</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Identificeer de hiaten; orden de implementatiestappen van baseline naar doel; detailleer alleen de volgende horizon. Elke horizon bevat een expliciete onomkeerbare grens.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/enterprise-plan/read/architecture-model">
+    <ess:name>Read Architecture Definition</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-model"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-plan/create/architecture-roadmap">
+    <ess:name>Create Architecture Roadmap</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-roadmap"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-plan/read/paved-road">
+    <ess:name>Read Paved Road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/paved-road"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-plan/update-alpha/architecture">
+    <ess:name>Update Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/architecture"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/enterprise-plan/part-of/shape-the-system">
+    <ess:name>Plannen part-of Shape The System</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/enterprise-plan"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-plan/completion/architecture">
+    <ess:name>Completion: Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/architecture/usable"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

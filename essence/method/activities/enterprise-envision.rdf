@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <ess:Activity rdf:about="activity/enterprise-envision">
+    <ess:name xml:lang="nl">Richten</ess:name>
+    <ess:name xml:lang="en">Envision</ess:name>
+    <ess:briefDescription xml:lang="nl">Selecteer de architectuurbepalende eisen. Maak de richting op één pagina zichtbaar: doel, scope, principes en uitsluitingscriteria, voordat vendor- of…</ess:briefDescription>
+    <ess:description xml:lang="nl">Selecteer de architectuurbepalende eisen. Maak de richting op één pagina zichtbaar: doel, scope, principes en uitsluitingscriteria, voordat vendor- of platformkeuzes vastlopen.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:approach rdf:resource="approach/enterprise-envision/default"/>
+    <ess:action rdf:resource="action/enterprise-envision/read/architectural-drivers"/>
+    <ess:action rdf:resource="action/enterprise-envision/create/architecture-vision"/>
+    <ess:action rdf:resource="action/enterprise-envision/update-alpha/requirements"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/enterprise-envision/entry/requirements"/>
+    <ess:criterion rdf:resource="criterion/enterprise-envision/completion/requirements"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/enterprise-envision/default">
+    <ess:name xml:lang="nl">Richten</ess:name>
+    <ess:name xml:lang="en">Envision</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Selecteer de architectuurbepalende eisen. Maak de richting op één pagina zichtbaar: doel, scope, principes en uitsluitingscriteria, voordat vendor- of platformkeuzes vastlopen.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/enterprise-envision/read/architectural-drivers">
+    <ess:name>Read Architectural Drivers</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architectural-drivers"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-envision/create/architecture-vision">
+    <ess:name>Create Architecture Vision</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-vision"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-envision/update-alpha/requirements">
+    <ess:name>Update Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/enterprise-envision/part-of/understand-the-requirements">
+    <ess:name>Richten part-of Understand The Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/enterprise-envision"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandtheRequirements"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/enterprise-envision/entry/requirements">
+    <ess:name>Entry: Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-envision/completion/requirements">
+    <ess:name>Completion: Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

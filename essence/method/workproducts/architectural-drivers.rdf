@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:WorkProduct rdf:about="workproduct/architectural-drivers">
+    <ess:name xml:lang="nl">Architectuurbepalende Eisen (ASRs)</ess:name>
+    <ess:name xml:lang="en">Architectural Drivers (ASRs)</ess:name>
+    <ess:briefDescription xml:lang="nl">Vertaal doelen, kwaliteitsattributen en beperkingen naar toetsbare architectuurcriteria.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De requirements die significant genoeg zijn om de architectuur te vormen — zowel kwaliteitsattributen (NFRs) als functionele requirements met verborgen architecturele impact. Elk met een meetbaar succescriterium, gekoppeld aan een driver. Niet alles is architectureel significant — dit werkproduct helpt te kiezen en te expliciteren wat er impliciet in stond.</p>
+<p><strong>Rol:</strong> Requirementselectie die expliciet maakt welke eisen architectureel significant zijn.</p>
+<p><strong>Beantwoordt:</strong> Welke eisen sturen de architectuur en hoe meten we of eraan voldaan is?</p>
+<p><strong>Scope:</strong> Bevat alleen architectureel significante requirements; gewone functionele backlog-items blijven buiten dit object.</p>
+<p><strong>Publiek:</strong> Architecture Owner, business analyst, Enterprise Architect, Product Owner en vendorselectieteam.</p>
+<h3>Informatie-elementen</h3><table><thead><tr><th>Element</th><th>Betekenis</th><th>Verplicht</th></tr></thead><tbody><tr><td>Driver</td><td>De zakelijke, technische of compliance-reden achter de eis.</td><td>Ja</td></tr><tr><td>ASR-scenario</td><td>Stimulus, omgeving, respons en meetbare drempelwaarde.</td><td>Ja</td></tr><tr><td>Prioriteit</td><td>De relatieve zwaarte van de eis bij trade-offs.</td><td>Ja</td></tr><tr><td>COTS-selectiecriterium</td><td>Of en hoe de eis product- of leverancierskeuze beïnvloedt.</td><td>Ja</td></tr></tbody></table>
+<h3>Kwaliteitscriteria</h3><ul><li><strong>Architectureel significant</strong> — De eis beïnvloedt structuur, productkeuze, integratie of governance.</li><li><strong>Meetbaar</strong> — De eis bevat een drempel, norm of toetsbare uitkomst.</li><li><strong>Herleidbaar</strong> — Elke ASR verwijst naar een driver en later naar ADR of reviewbewijs.</li></ul>
+<p><strong>Bijwerken wanneer:</strong> Bij requirementswijziging, nieuwe constraint, vendorfit/gap of herprioritering van drivers.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:ownedElements rdf:resource="resource/architectural-drivers/template"/>
+  </ess:WorkProduct>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/architectural-drivers/architectural-drivers">
+    <ess:workProduct rdf:resource="workproduct/architectural-drivers"/>
+    <ess:alpha rdf:resource="alpha/architectural-drivers"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:WorkProductManifest>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/architectural-drivers/requirements">
+    <ess:workProduct rdf:resource="workproduct/architectural-drivers"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:WorkProductManifest>
+
+  <ess:TypedResource rdf:about="resource/architectural-drivers/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/architectural-drivers.docx</ess:content>
+  </ess:TypedResource>
+
+</rdf:RDF>

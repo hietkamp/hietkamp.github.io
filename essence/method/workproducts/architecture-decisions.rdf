@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:WorkProduct rdf:about="workproduct/architecture-decisions">
+    <ess:name xml:lang="nl">Architectuurbeslissingen (ADRs)</ess:name>
+    <ess:name xml:lang="en">Architecture Decisions (ADRs)</ess:name>
+    <ess:briefDescription xml:lang="nl">Bewaar de rationale achter een significante keuze zodat die later gevalideerd, herzien of vervangen kan worden.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Een <strong>Architectural Decision (AD)</strong> is een beredeneerde ontwerpkeuze die een architectureel significante functionele of niet-functionele eis adresseert. Een ADR legt één zo'n beslissing vast: context, opties, keuze, consequenties. Het is de eenheid van voortgang in MVA — elke alpha-toestand van Architecture Decisions vereist aantoonbare ADR's.</p>
+<p><strong>Rol:</strong> Beslissingsrecord dat één architectuurbesluit als object vastlegt.</p>
+<p><strong>Beantwoordt:</strong> Waarom kiezen we deze optie, gegeven deze context en deze alternatieven?</p>
+<p><strong>Scope:</strong> Een ADR beschrijft één beslissing; achtergrondanalyse, standaardbeleid en review-oordeel horen in gekoppelde werkproducten.</p>
+<p><strong>Publiek:</strong> Architecture Owner, Enterprise Architect, Architectuurforum en teams die de keuze moeten toepassen.</p>
+<h3>Informatie-elementen</h3><table><thead><tr><th>Element</th><th>Betekenis</th><th>Verplicht</th></tr></thead><tbody><tr><td>Context</td><td>De situatie, driver of beperking waardoor de beslissing nodig is.</td><td>Ja</td></tr><tr><td>Opties</td><td>De onderzochte alternatieven inclusief nul-optie en relevante trade-offs.</td><td>Ja</td></tr><tr><td>Keuze en consequenties</td><td>De gekozen richting, rationale, positieve gevolgen en te beheren gevolgen.</td><td>Ja</td></tr><tr><td>Validatiecriterium</td><td>Het falsifieerbare criterium waarmee de beslissing later bewezen of herzien wordt.</td><td>Ja</td></tr></tbody></table>
+<h3>Kwaliteitscriteria</h3><ul><li><strong>Atomair</strong> — De tekst bevat precies één beslissing en verwijst naar andere ADRs voor afhankelijke keuzes.</li><li><strong>Traceerbaar</strong> — Elke beslissing verwijst naar minimaal één driver, ASR of paved-road element.</li><li><strong>Falsifieerbaar</strong> — Er staat expliciet wanneer de beslissing als bewezen, mislukt of achterhaald geldt.</li></ul>
+<p><strong>Bijwerken wanneer:</strong> Immutable na acceptatie; wijziging gebeurt via superseding ADR.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/solution-architecture"/>
+    <ess:ownedElements rdf:resource="resource/architecture-decisions/template"/>
+  </ess:WorkProduct>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/architecture-decisions/architecture-decisions">
+    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
+    <ess:alpha rdf:resource="alpha/architecture-decisions"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:WorkProductManifest>
+
+  <ess:TypedResource rdf:about="resource/architecture-decisions/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/architecture-decisions.docx</ess:content>
+  </ess:TypedResource>
+
+</rdf:RDF>

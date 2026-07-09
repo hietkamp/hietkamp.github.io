@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:Practice rdf:about="practice/project-lifecycle">
+    <ess:name xml:lang="nl">Project levenscyclus</ess:name>
+    <ess:name xml:lang="en">Project Lifecycle</ess:name>
+    <ess:briefDescription xml:lang="nl">De projectlevenscyclus bestaat uit zes fasen, gescheiden door vijf beslismomenten (gates). Elke gate markeert een gecontroleerde overgang naar de volgende fase: van initiatief en eisen, via ontwerp, realisatie en validatie, tot een stabiele en beheerde oplossing. De gates zijn risicogestuurd: projecten die binnen de architectuurkaders (guardrails) blijven, stromen grotendeels automatisch door. Alleen afwijkingen of uitzonderingen worden expliciet beoordeeld, waardoor architectuursturing en projectgovernance elkaar op de juiste momenten versterken.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De projectlevenscyclus beschrijft hoe de architectuur van een oplossing (de solution-architectuur) binnen een project tot stand komt: van het eerste idee tot een werkende en gevalideerde oplossing. Het proces bestaat uit zes opeenvolgende fasen. Elke fase levert een concreet resultaat op. Pas wanneer dit resultaat is beoordeeld en goedgekeurd bij een gate, start de volgende fase.</p><p>De fasen volgen elkaar bewust op. Eerst bepalen we de richting en de eisen, daarna werken we het ontwerp uit, bouwen we de oplossing, valideren we deze en nemen we haar in gebruik. Zo ontstaat stap voor stap een oplossing waarvan de kwaliteit en samenhang aantoonbaar zijn.</p>
+  </br><p><strong>Reikwijdte</strong></p>
+  <p>Deze levenscyclus richt zich uitsluitend op de architectuur binnen een project. Ze beschrijft welke architectuuractiviteiten in elke fase plaatsvinden, welke resultaten worden opgeleverd en wanneer deze gereed zijn om naar de volgende fase te gaan.</p>
+  <p>Projectmanagement valt buiten de scope van deze levenscyclus. Zaken zoals planning, budget, risicomanagement, teamsturing en voortgangsbewaking blijven onderdeel van de gebruikte projectmanagementmethode, zoals PRINCE2 of PMI/PMBOK.</p>
+  </br><p><strong>Toepassingsgebied</strong></p>
+  <p>Deze projectlevenscyclus is bedoeld voor projecten waarin een <strong>bestaand softwaresysteem wordt aangeschaft, geconfigureerd of uitgebreid</strong>, zoals de selectie, inrichting en implementatie van een standaardsoftwarepakket (COTS).</p>
+  <p>Bij dit type projecten blijft de solution-architectuur bewust op een <strong>hoger abstractieniveau</strong> dan bij softwareontwikkeling. De architectuur beschrijft de gewenste inrichting van de oplossing, de plaats van het pakket binnen het applicatielandschap, de benodigde integraties en de belangrijkste architectuur- en kwaliteitskeuzes. De interne werking van het pakket wordt daarbij niet verder uitgewerkt.</p>
+  <p>Ook het <strong>programma van eisen</strong> blijft op een hoger abstractieniveau. Het beschrijft welke functionaliteit en kwaliteitseisen het pakket moet ondersteunen, maar bevat niet de gedetailleerde requirements die nodig zijn om software te ontwikkelen. Omdat de oplossingsruimte grotendeels wordt bepaald door de mogelijkheden van het gekozen pakket, is de kans op wijzigingen tijdens het project relatief klein. Daardoor sluit een sequentiële aanpak met formele besluitmomenten (gates) goed aan op dit type implementatietraject.</p>
+  <p>Voor projecten waarin <strong>nieuwe software wordt ontwikkeld</strong> of <strong>bestaande software ingrijpend wordt aangepast</strong>, is een andere projectlevenscyclus beter geschikt. In dergelijke projecten wordt de solution-architectuur veel verder uitgewerkt en vormen gedetailleerde requirements de basis voor de ontwikkeling. Nieuwe inzichten tijdens het project leiden daarbij vaker tot wijzigingen in ontwerp en implementatie, waardoor een meer iteratieve ontwikkelaanpak beter past.</p>
+  </br><p><strong>Opbouw van de fasen</strong></p>
+  <p>Elke fase bestaat uit drie onderdelen:</p>
+  <ul>
+  <li><strong>Activiteiten</strong> – het werk dat in de fase wordt uitgevoerd, inclusief de gebruikte input en de opgeleverde resultaten.</li>
+  <li><strong>Status</strong> – de voortgang van de architectuur, bijvoorbeeld van een eerste richting via een uitgewerkt ontwerp naar een bewezen oplossing.</li>
+  <li><strong>Gate</strong> – het formele beslismoment waarop wordt vastgesteld of de fase succesvol is afgerond en de volgende fase kan starten.</li>
+  </ul>
+  <p>Niet iedere fase heeft een eigen gate. Zo vormen de ontwerp- en implementatiefase één logisch geheel en worden deze gezamenlijk afgesloten met Gate 3: Architectuur Bewezen.</p>
+  </br><p><strong>Relatie met projectmanagement</strong></p>
+  <p>De projectlevenscyclus sluit aan op de projectbesturing via de gates. Iedere gate verwijst naar de practice <strong>Architectuursturing</strong>, waarin wordt gewerkt met vooraf vastgestelde guardrails, zoals architectuurprincipes en de paved road. Zolang een project binnen deze kaders blijft, kunnen beslissingen zonder aanvullende beoordeling worden genomen.</p>
+  <p>Alleen wanneer een project bewust afwijkt van de afgesproken kaders (off-road) of een belangrijke, onomkeerbare architectuurbeslissing neemt, is een expliciete beoordeling nodig. Een gate controleert daarom niet het hele project opnieuw, maar toetst of dergelijke uitzonderingen correct zijn beoordeeld en goedgekeurd.</p>
+  <p>Wanneer een afwijking uitsluitend gevolgen heeft voor de architectuur, vindt de besluitvorming plaats binnen Architectuursturing, bijvoorbeeld door de <strong>Architectuursponsor</strong> of het <strong>Architectuurforum</strong>. Heeft de afwijking ook invloed op planning, budget, scope of risico's, dan wordt de besluitvorming gedeeld met de projectgovernance, zoals de Stuurgroep (PRINCE2) of de Sponsor (PMI/PMBOK). De wijze waarop dat gezamenlijke besluit tot stand komt, wordt bepaald door de gebruikte projectmanagementmethode en valt buiten deze levenscyclus.</p>
+  <p>De fasen in deze levenscyclus zijn daarom geen directe vertaling van PRINCE2-stages of PMI-processen, maar sluiten er functioneel op aan.</p>
+]]></ess:description>
+    <ess:objective xml:lang="nl">Lever architectuurproducten op via herkenbare, sequentiële V-model-fasen met formele gates die alpha-toestanden als meetbaar completionscriterium gebruiken.</ess:objective>
+    <ess:objective xml:lang="en">Deliver architecture products through recognisable, sequential V-model phases with formal gates that use alpha states as measurable completion criteria.</ess:objective>
+    <ess:entry xml:lang="nl">De scope en stakeholders zijn geïdentificeerd; een Architecture Sponsor heeft de noodzaak voor architectuurwerk erkend.</ess:entry>
+    <ess:entry xml:lang="en">Scope and stakeholders are identified; an Architecture Sponsor has recognised the need for architecture work.</ess:entry>
+    <ess:result xml:lang="nl">De architectuur is gevestigd en evolueert; conformance is aangetoond; governance stuurt op bewijs voor toekomstige trajecten.</ess:result>
+    <ess:result xml:lang="en">The architecture is established and evolving; conformance is demonstrated; governance steers on evidence for future trajectories.</ess:result>
+    <ess:measures xml:lang="nl">Verhouding gates goedgekeurd / totaal gates; alpha-toestand per gate; aantal openstaande architectuurrisico's per fase; conformance-score na systeemtest.</ess:measures>
+    <ess:measures xml:lang="en">Ratio of gates approved / total gates; alpha state per gate; number of outstanding architecture risks per phase; conformance score after system test.</ess:measures>
+    <ess:consistencyRules>Iedere gate vereist dat de architectuur de bijbehorende alpha-toestand heeft bereikt vóórdat de volgende fase start. De rechterkant van de V (tests) mag pas starten nadat de bijbehorende linkerkant (ontwerp) volledig is afgerond. / Each gate requires that the architecture has reached the corresponding alpha state before the next phase starts. The right side of the V (tests) may only start after the corresponding left side (design) is complete.</ess:consistencyRules>
+
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:referredElements rdf:resource="practice/enterprise-architecture"/>
+    <ess:referredElements rdf:resource="practice/solution-architecture"/>
+    <ess:referredElements rdf:resource="practice/architectural-governance"/>
+    <ess:ownedElements rdf:resource="pattern/project-lifecycle/initiation"/>
+    <ess:ownedElements rdf:resource="pattern/project-lifecycle/requirements"/>
+    <ess:ownedElements rdf:resource="pattern/project-lifecycle/analysisdesign"/>
+    <ess:ownedElements rdf:resource="pattern/project-lifecycle/implementation"/>
+    <ess:ownedElements rdf:resource="pattern/project-lifecycle/testing"/>
+    <ess:ownedElements rdf:resource="pattern/project-lifecycle/deployment"/>
+    <ess:ownedElements rdf:resource="pattern/project-lifecycle/gate-1-gericht"/>
+    <ess:ownedElements rdf:resource="pattern/project-lifecycle/gate-2-omschreven"/>
+    <ess:ownedElements rdf:resource="pattern/project-lifecycle/gate-3-bewezen"/>
+    <ess:ownedElements rdf:resource="pattern/project-lifecycle/gate-4-bruikbaar"/>
+    <ess:ownedElements rdf:resource="pattern/project-lifecycle/gate-5-gevestigd"/>
+    <ess:ownedElements rdf:resource="activity-association/project-lifecycle/enterprise-design/end-before-start/solution-design"/>
+    <ess:ownedElements rdf:resource="activity-association/project-lifecycle/governance-govern-delivery/end-before-start/solution-lead-implementation"/>
+    <ess:ownedElements rdf:resource="activity-association/project-lifecycle/governance-assure-evidence/end-before-start/solution-monitor-performance"/>
+  </ess:Practice>
+
+
+  <!-- ================= Phase 1 — Initiation ================= -->
+  <ess:Pattern rdf:about="pattern/project-lifecycle/initiation">
+    <ess:name xml:lang="nl">Fase 1 — Initiatie</ess:name>
+    <ess:name xml:lang="en">Phase 1 — Initiation</ess:name>
+    <ess:briefDescription xml:lang="nl">Begrijp de solution-context en formuleer de architectuurvisie op solution-niveau; gebruik de enterprise-kaders uit de Portfolio Levenscyclus als startpunt.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>In de eerste fase wordt de basis gelegd voor het vervolg van het traject. Voordat inhoudelijke keuzes worden gemaakt, moet duidelijk zijn waarom het traject wordt gestart, welk doel het heeft, wat de gewenste resultaten zijn en welke belanghebbenden daarbij betrokken zijn.</p>
+<p>Het doel van deze fase is om de context te begrijpen, de uitgangspunten vast te stellen en een gezamenlijke visie op de gewenste oplossing of verandering te formuleren. Daarbij wordt aangesloten op de geldende organisatiekaders, beleidsuitgangspunten en eerder genomen besluiten.</p>
+<p>Aan het einde van deze fase is er een gedeeld beeld van de opgave, de scope, de belangrijkste stakeholders en de richting waarin het traject zich moet ontwikkelen. Deze visie vormt het fundament voor alle volgende fasen en wordt formeel vastgesteld voordat het traject verdergaat.</p>
+
+]]></ess:description>
+   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/initiation/includes"/>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/initiation/concluded-by"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/initiation/concluded-by">
+    <ess:name xml:lang="nl">afgesloten door</ess:name>
+    <ess:name xml:lang="en">concluded by</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="pattern/project-lifecycle/gate-1-gericht"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/initiation/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/solution-envision"/>
+    <ess:elements rdf:resource="activity/solution-develop-roadmap"/>
+  </ess:PatternAssociation>
+
+
+  <!-- ================= Phase 2 — Requirements ================= -->
+  <ess:Pattern rdf:about="pattern/project-lifecycle/requirements">
+    <ess:name xml:lang="nl">Fase 2 — Requirements</ess:name>
+    <ess:name xml:lang="en">Phase 2 — Requirements</ess:name>
+    <ess:briefDescription xml:lang="nl">Selecteer de architectuurbepalende eisen en leg de solution-richting vast binnen de enterprise-kaders.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>In deze fase worden alle verzamelde wensen, eisen en randvoorwaarden geanalyseerd en wordt bepaald welke daarvan bepalend zijn voor de verdere uitwerking van de oplossing. Niet iedere eis heeft dezelfde impact; de focus ligt op de eisen en uitgangspunten die richting geven aan de keuzes die in de volgende fasen worden gemaakt.</p>
+<p>Het doel van deze fase is om een helder en gedragen kader vast te stellen waarbinnen de oplossing wordt ontworpen en gerealiseerd. Daarbij worden de relevante eisen geselecteerd, geprioriteerd en afgestemd met de betrokken stakeholders.</p>
+<p>Aan het einde van deze fase is duidelijk welke eisen en uitgangspunten leidend zijn voor het vervolg van het traject. Deze vormen het toetsingskader voor ontwerp, realisatie en validatie en worden formeel vastgesteld voordat de volgende fase start.</p>
+]]></ess:description>
+   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/requirements/includes"/>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/requirements/concluded-by"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/requirements/concluded-by">
+    <ess:name xml:lang="nl">afgesloten door</ess:name>
+    <ess:name xml:lang="en">concluded by</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="pattern/project-lifecycle/gate-2-omschreven"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/requirements/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/solution-gather-requirements"/>
+  </ess:PatternAssociation>
+
+
+  <!-- ================= Phase 3 — Analysis & design ================= -->
+  <ess:Pattern rdf:about="pattern/project-lifecycle/analysisdesign">
+    <ess:name xml:lang="nl">Fase 3 — Analyse &amp; ontwerp</ess:name>
+    <ess:name xml:lang="en">Phase 3 — Analysis &amp; design</ess:name>
+    <ess:briefDescription xml:lang="nl">De enterprise-architect past de paved road toe op het solution-traject en levert het globale architectuurontwerp (HLD) als kader voor het low-level design.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>In deze fase wordt de gekozen oplossingsrichting uitgewerkt tot een volledig en realiseerbaar ontwerp. Op basis van de vastgestelde eisen en uitgangspunten worden de architectuur, structuur en technische keuzes verder uitgewerkt, zodat duidelijk is hoe de oplossing wordt gerealiseerd.</p>
+<p>Het doel van deze fase is om een compleet ontwerp op te leveren dat als basis dient voor de implementatie. Alle belangrijke ontwerpbeslissingen worden vastgelegd en onderbouwd, zodat de realisatie gecontroleerd en consistent kan plaatsvinden.</p>
+<p>Aan het einde van deze fase is het ontwerp volledig uitgewerkt en gereed om te worden gerealiseerd.</p>
+]]></ess:description>
+   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/analysisdesign/includes"/>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/analysisdesign/lod"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/analysisdesign/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/solution-design"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/analysisdesign/lod">
+    <ess:name xml:lang="nl">detailniveau</ess:name>
+    <ess:name xml:lang="en">level of detail</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="lod/architecture-model/context"/>
+    <ess:elements rdf:resource="lod/architecture-model/container"/>
+    <ess:elements rdf:resource="lod/architecture-model/component"/>
+    <ess:elements rdf:resource="lod/architecture-model/code"/>
+  </ess:PatternAssociation>
+
+
+  <!-- ================= Phase 4 — Implementation ================= -->
+  <ess:Pattern rdf:about="pattern/project-lifecycle/implementation">
+    <ess:name xml:lang="nl">Fase 4 — Implementatie</ess:name>
+    <ess:name xml:lang="en">Phase 4 — Implementation</ess:name>
+    <ess:briefDescription xml:lang="nl">Stuur de implementatie actief op paved-road-conformance en bewijs risicovolle integratiekeuzes via een proof-of-concept.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>In deze fase wordt het ontwerp daadwerkelijk gerealiseerd. De oplossing wordt gebouwd, geconfigureerd of ingericht volgens het vastgestelde ontwerp. Tijdens de uitvoering wordt bewaakt dat de realisatie blijft voldoen aan de gemaakte afspraken, ontwerpkeuzes en geldende kaders.</p>
+<p>Het doel van deze fase is om de oplossing gecontroleerd te realiseren en de belangrijkste ontwerpkeuzes in de praktijk te verifiëren. Waar nodig worden risico's vooraf verminderd door bijvoorbeeld een proefopstelling, prototype of andere vorm van validatie.</p>
+<p>Aan het einde van deze fase is de oplossing gerealiseerd en is aangetoond dat de belangrijkste technische en architectonische keuzes uitvoerbaar zijn. Daarmee is de oplossing gereed voor de integrale validatie in de volgende fase.</p>
+]]></ess:description>
+   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/implementation/includes"/>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/implementation/concluded-by"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/implementation/concluded-by">
+    <ess:name xml:lang="nl">afgesloten door</ess:name>
+    <ess:name xml:lang="en">concluded by</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="pattern/project-lifecycle/gate-3-bewezen"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/implementation/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/solution-lead-implementation"/>
+  </ess:PatternAssociation>
+
+
+  <!-- ================= Phase 5 — Testing ================= -->
+  <ess:Pattern rdf:about="pattern/project-lifecycle/testing">
+    <ess:name xml:lang="nl">Fase 5 — Testen</ess:name>
+    <ess:name xml:lang="en">Phase 5 — Testing</ess:name>
+    <ess:briefDescription xml:lang="nl">Plan de solution-transitie en verzamel conformance-bewijs op systeemniveau; valideer de solution ten opzichte van het high-level design.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>In deze fase wordt vastgesteld of de gerealiseerde oplossing als geheel voldoet aan de gestelde eisen, de afgesproken uitgangspunten en de beoogde doelstellingen. De verschillende onderdelen functioneren niet alleen afzonderlijk, maar vormen samen een samenhangende en werkende oplossing.</p>
+<p>Het doel van deze fase is om aan te tonen dat de oplossing gereed is voor ingebruikname. Door middel van integrale validatie en acceptatie wordt vastgesteld dat de oplossing voldoet aan de kwaliteitscriteria en geschikt is voor de beoogde bedrijfsvoering.</p>
+<p>Aan het einde van deze fase is de oplossing als geheel gevalideerd en formeel geaccepteerd. Daarmee kan de volgende fase, waarin de oplossing in productie wordt genomen en wordt overgedragen aan de beheerorganisatie, worden gestart.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/testing/includes"/>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/testing/concluded-by"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/testing/concluded-by">
+    <ess:name xml:lang="nl">afgesloten door</ess:name>
+    <ess:name xml:lang="en">concluded by</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="pattern/project-lifecycle/gate-4-bruikbaar"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/testing/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/solution-monitor-performance"/>
+  </ess:PatternAssociation>
+
+
+  <!-- ================= Phase 6 — Deployment ================= -->
+  <ess:Pattern rdf:about="pattern/project-lifecycle/deployment">
+    <ess:name xml:lang="nl">Fase 6 — Uitrollen</ess:name>
+    <ess:name xml:lang="en">Phase 6 — Deployment</ess:name>
+    <ess:briefDescription xml:lang="nl">Begeleid en verbeter de solution in productie; valideer de architectuur ten opzichte van de requirementsdefinitie en voer lessen terug naar de Portfolio Levenscyclus.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p></p>
+<p></p>
+<p></p>
+]]></ess:description>
+   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/deployment/includes"/>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/deployment/concluded-by"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/deployment/concluded-by">
+    <ess:name xml:lang="nl">afgesloten door</ess:name>
+    <ess:name xml:lang="en">concluded by</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="pattern/project-lifecycle/gate-5-gevestigd"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/deployment/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/solution-monitor-performance"/>
+  </ess:PatternAssociation>
+
+
+  <!-- ================= Gate 1 — Architecture Envisioned ================= -->
+  <ess:Pattern rdf:about="pattern/project-lifecycle/gate-1-gericht">
+    <ess:name xml:lang="nl">Gate 1 — Architectuur Gericht</ess:name>
+    <ess:name xml:lang="en">Gate 1 — Architecture Envisioned</ess:name>
+    <ess:briefDescription xml:lang="nl">Fase 1 is afgerond als de architectuur de toestand Gericht heeft bereikt: de visie is overeengekomen en governance is ingesteld.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Fase 1 is afgerond als de architectuur de toestand Gericht heeft bereikt: de visie is overeengekomen en governance is ingesteld.</p>
+<p><strong>Criterium:</strong> Architecture Sponsor heeft de architectuurvisie formeel goedgekeurd op enterprise- én solution-niveau; governance-kaders en cadentie zijn ingesteld.</p>
+<p><strong>Wie beoordeelt dit:</strong> de Architecture Sponsor.</p>
+<p><strong>&rarr; Levering Besturen.</strong> Deze gate is niet het moment waarop alles opnieuw wordt beoordeeld. Beslissingen uit deze fase die binnen de guardrails vallen (architectuurprincipes en werkafspraken), stromen vrij door. Alleen afwijkende of significante beslissingen worden apart beoordeeld door Architectuursturing.</p>
+]]></ess:description>
+   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-1-gericht/aligns"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/gate-1-gericht/aligns">
+    <ess:name xml:lang="nl">sluit aan op</ess:name>
+    <ess:name xml:lang="en">aligns</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="state/architecture/envisioned"/>
+    <ess:elements rdf:resource="activity/governance-govern-delivery"/>
+  </ess:PatternAssociation>
+
+
+  <!-- ================= Gate 2 — Architecture Outlined ================= -->
+  <ess:Pattern rdf:about="pattern/project-lifecycle/gate-2-omschreven">
+    <ess:name xml:lang="nl">Gate 2 — Architectuur Omschreven</ess:name>
+    <ess:name xml:lang="en">Gate 2 — Architecture Outlined</ess:name>
+    <ess:briefDescription xml:lang="nl">Fase 2 is afgerond als de architectuur de toestand Omschreven heeft bereikt: enterprise-kaders zijn vastgesteld, paved road is gepubliceerd en roadmap is goedgekeurd.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Fase 2 is afgerond als de architectuur de toestand Omschreven heeft bereikt: enterprise-kaders zijn vastgesteld, paved road is gepubliceerd en roadmap is goedgekeurd.</p>
+<p><strong>Criterium:</strong> Enterprise-architectuurontwerp is goedgekeurd; paved road is gepubliceerd als catalogus; architectuurroadmap is vastgesteld door de Architecture Sponsor.</p>
+<p><strong>Wie beoordeelt dit:</strong> de Architecture Sponsor.</p>
+<p><strong>&rarr; Levering Besturen.</strong> Alleen eisen die buiten de afgesproken guardrails vallen (bijvoorbeeld een eis die niet binnen de paved road past) worden apart beoordeeld door Architectuursturing; de rest wordt geaccepteerd zonder aparte review.</p>
+]]></ess:description>
+   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-2-omschreven/aligns"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/gate-2-omschreven/aligns">
+    <ess:name xml:lang="nl">sluit aan op</ess:name>
+    <ess:name xml:lang="en">aligns</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="state/architecture/outlined"/>
+    <ess:elements rdf:resource="activity/governance-govern-delivery"/>
+  </ess:PatternAssociation>
+
+
+  <!-- ================= Gate 3 — Architecture Demonstrated (closes Phase 3 + Phase 4 jointly) ================= -->
+  <ess:Pattern rdf:about="pattern/project-lifecycle/gate-3-bewezen">
+    <ess:name xml:lang="nl">Gate 3 — Architectuur Bewezen</ess:name>
+    <ess:name xml:lang="en">Gate 3 — Architecture Demonstrated</ess:name>
+    <ess:briefDescription xml:lang="nl">Fase 4 is afgerond als de architectuur de toestand Bewezen heeft bereikt: risicovolle COTS-integratiekeuzes zijn aangetoond via een PoC.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Fase 4 is afgerond als de architectuur de toestand Bewezen heeft bereikt: risicovolle COTS-integratiekeuzes zijn aangetoond via een PoC. Deze gate sluit tevens het ontwerpwerk uit Fase 3 formeel af: het Omlijnd/Besloten-ontwerp wordt hier voor het eerst extern getoetst.</p>
+<p><strong>Criterium:</strong> Alle kritieke integratiekeuzes zijn bewezen; PoC-resultaten zijn gedocumenteerd als reviewrecords en gekoppeld aan ADR's; geen onacceptabele integratierisico's meer open.</p>
+<p><strong>Wie beoordeelt dit:</strong> de Architecture Sponsor, met een advies van het architectuurforum.</p>
+<p><strong>&rarr; Levering Besturen.</strong> Dit is doorgaans het moment met de meeste "off-road" ADR's (afwijkingen van de paved road). Alleen die afwijkingen worden hier daadwerkelijk beoordeeld; ontwerpkeuzes die binnen de paved road blijven, stromen vrij door. Raakt een afwijking ook tijd of geld van het project, dan wordt dit tevens voorgelegd aan de projectgovernance (bijvoorbeeld de Stuurgroep in PRINCE2 of de Sponsor in PMI/PMBOK).</p>
+]]></ess:description>
+   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-3-bewezen/aligns"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/gate-3-bewezen/aligns">
+    <ess:name xml:lang="nl">sluit aan op</ess:name>
+    <ess:name xml:lang="en">aligns</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="state/architecture/demonstrated"/>
+    <ess:elements rdf:resource="activity/governance-govern-delivery"/>
+  </ess:PatternAssociation>
+
+
+  <!-- ================= Gate 4 — Architecture Usable ================= -->
+  <ess:Pattern rdf:about="pattern/project-lifecycle/gate-4-bruikbaar">
+    <ess:name xml:lang="nl">Gate 4 — Architectuur Bruikbaar</ess:name>
+    <ess:name xml:lang="en">Gate 4 — Architecture Usable</ess:name>
+    <ess:briefDescription xml:lang="nl">Fase 5 is afgerond als de architectuur de toestand Bruikbaar heeft bereikt: het systeem is als geheel gevalideerd en conformance is aangetoond.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Fase 5 is afgerond als de architectuur de toestand Bruikbaar heeft bereikt: het systeem is als geheel gevalideerd en conformance is aangetoond.</p>
+<p><strong>Criterium:</strong> Conformance-bewijs is verzameld en goedgekeurd door het architectuurforum; alle off-road afwijkingen zijn gedocumenteerd en geaccepteerd of geremedieerd; solution-transitie is gepland.</p>
+<p><strong>Wie beoordeelt dit:</strong> de Architecture Sponsor, met een advies van de testmanager.</p>
+<p><strong>&rarr; Levering Besturen.</strong> Conformance wordt hier aangetoond op basis van bewijs (testresultaten, reviewuitkomsten), niet op basis van documentatie alleen.</p>
+]]></ess:description>
+   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-4-bruikbaar/aligns"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/gate-4-bruikbaar/aligns">
+    <ess:name xml:lang="nl">sluit aan op</ess:name>
+    <ess:name xml:lang="en">aligns</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="state/architecture/usable"/>
+    <ess:elements rdf:resource="activity/governance-govern-delivery"/>
+  </ess:PatternAssociation>
+
+
+  <!-- ================= Gate 5 — Architecture Established ================= -->
+  <ess:Pattern rdf:about="pattern/project-lifecycle/gate-5-gevestigd">
+    <ess:name xml:lang="nl">Gate 5 — Architectuur Gevestigd</ess:name>
+    <ess:name xml:lang="en">Gate 5 — Architecture Established</ess:name>
+    <ess:briefDescription xml:lang="nl">Fase 6 is afgerond als de architectuur de toestand Gevestigd heeft bereikt: de methode en governance zijn verbeterd op basis van productie-ervaringen.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Fase 6 is afgerond als de architectuur de toestand Gevestigd heeft bereikt: de methode en governance zijn verbeterd op basis van productie-ervaringen.</p>
+<p><strong>Criterium:</strong> Paved road is geactualiseerd op basis van productie-ervaringen; architectuurmethode is bijgesteld; governance-mechanisme is geëvalueerd en bijgesteld voor het volgende traject.</p>
+<p><strong>Wie beoordeelt dit:</strong> de beheerorganisatie, in afstemming met de Architecture Sponsor. Dit is tegelijk het moment waarop de architectuur formeel wordt overgedragen aan reguliere beheer- en onderhoudsactiviteiten.</p>
+<p><strong>&rarr; Levering Besturen.</strong> Vanaf hier loopt de governance niet meer via deze projectgates, maar via de doorlopende guardrails van Architectuursturing en, op enterprise- en portfolioniveau, via de Portfolio Levenscyclus.</p>
+]]></ess:description>
+  <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-5-gevestigd/aligns"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/gate-5-gevestigd/aligns">
+    <ess:name xml:lang="nl">sluit aan op</ess:name>
+    <ess:name xml:lang="en">aligns</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="state/architecture/established"/>
+    <ess:elements rdf:resource="activity/governance-govern-delivery"/>
+  </ess:PatternAssociation>
+
+
+  <!-- ================= Cross-practice activity associations (unchanged) ================= -->
+  <ess:ActivityAssociation rdf:about="activity-association/project-lifecycle/enterprise-design/end-before-start/solution-design">
+    <ess:name>project-lifecycle enterprise-design end-before-start solution-design</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/enterprise-design"/>
+    <ess:end2 rdf:resource="activity/solution-design"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:ActivityAssociation rdf:about="activity-association/project-lifecycle/governance-govern-delivery/end-before-start/solution-lead-implementation">
+    <ess:name>project-lifecycle governance-govern-delivery end-before-start solution-lead-implementation</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-govern-delivery"/>
+    <ess:end2 rdf:resource="activity/solution-lead-implementation"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:ActivityAssociation rdf:about="activity-association/project-lifecycle/governance-assure-evidence/end-before-start/solution-monitor-performance">
+    <ess:name>project-lifecycle governance-assure-evidence end-before-start solution-monitor-performance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-assure-evidence"/>
+    <ess:end2 rdf:resource="activity/solution-monitor-performance"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+</rdf:RDF>

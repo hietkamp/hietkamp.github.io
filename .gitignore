@@ -1,0 +1,6 @@
+docs/
+.DS_Store
+.claude/
+*.bkp
+__pycache__/
+*.pyc

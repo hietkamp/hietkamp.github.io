@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <ess:Activity rdf:about="activity/solution-lead-implementation">
+    <ess:name xml:lang="nl">Implementatie leiden</ess:name>
+    <ess:name xml:lang="en">Lead Implementation</ess:name>
+    <ess:briefDescription xml:lang="nl">Voer solution-level PoC's en architectuurspikes uit. Toets de integratielaag en COTS-fit tegen de criteria uit de sturende eisen. Rapporteer bevinding…</ess:briefDescription>
+    <ess:description xml:lang="nl">Voer solution-level PoC's en architectuurspikes uit. Toets de integratielaag en COTS-fit tegen de criteria uit de sturende eisen. Rapporteer bevindingen die enterprise-beslissingen raken terug aan de Enterprise Architect.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/solution-architecture"/>
+    <ess:approach rdf:resource="approach/solution-lead-implementation/default"/>
+    <ess:action rdf:resource="action/solution-lead-implementation/read/architecture-decisions"/>
+    <ess:action rdf:resource="action/solution-lead-implementation/update/architecture-model"/>
+    <ess:action rdf:resource="action/solution-lead-implementation/read/review-records"/>
+    <ess:action rdf:resource="action/solution-lead-implementation/update-alpha/architecture"/>
+    <ess:action rdf:resource="action/solution-lead-implementation/update-alpha/architecture-decisions"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/solution-lead-implementation/completion/architecture"/>
+    <ess:criterion rdf:resource="criterion/solution-lead-implementation/completion/architecture-decisions"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/solution-lead-implementation/default">
+    <ess:name xml:lang="nl">Implementatie leiden</ess:name>
+    <ess:name xml:lang="en">Lead Implementation</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Voer solution-level PoC's en architectuurspikes uit. Toets de integratielaag en COTS-fit tegen de criteria uit de sturende eisen. Rapporteer bevindingen die enterprise-beslissingen raken terug aan de Enterprise Architect.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/solution-lead-implementation/read/architecture-decisions">
+    <ess:name>Read Architecture Decisions</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-lead-implementation/update/architecture-model">
+    <ess:name>Update Architecture Definition</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-model"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-lead-implementation/read/review-records">
+    <ess:name>Read Review Records</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/review-records"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-lead-implementation/update-alpha/architecture">
+    <ess:name>Update Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/architecture"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-lead-implementation/update-alpha/architecture-decisions">
+    <ess:name>Update Architecture Decisions</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/architecture-decisions"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/solution-lead-implementation/part-of/shape-the-system">
+    <ess:name>Implementatie leiden part-of Shape The System</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/solution-lead-implementation"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:CompletionCriterion rdf:about="criterion/solution-lead-implementation/completion/architecture">
+    <ess:name>Completion: Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/architecture/demonstrated"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/solution-lead-implementation/completion/architecture-decisions">
+    <ess:name>Completion: Architecture Decisions</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/architecture-decisions/validated"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

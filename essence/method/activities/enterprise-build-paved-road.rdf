@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <ess:Activity rdf:about="activity/enterprise-build-paved-road">
+    <ess:name xml:lang="nl">Goedgekeurde route bouwen</ess:name>
+    <ess:name xml:lang="en">Build Paved Road</ess:name>
+    <ess:briefDescription xml:lang="nl">Vertaal sturende eisen in een catalogus van goedgekeurde COTS-producten, integratiepatronen en referentie-instellingen. Behandel de Paved Road als een…</ess:briefDescription>
+    <ess:description xml:lang="nl">Vertaal sturende eisen in een catalogus van goedgekeurde COTS-producten, integratiepatronen en referentie-instellingen. Behandel de Paved Road als een product: zelfbedienbaar, versiegebonden en meetbaar in adoptie.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:approach rdf:resource="approach/enterprise-build-paved-road/default"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/read/architecture-model"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/create/paved-road"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/update-alpha/paved-road"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/entry/paved-road"/>
+    <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/completion/paved-road"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/enterprise-build-paved-road/default">
+    <ess:name xml:lang="nl">Goedgekeurde route bouwen</ess:name>
+    <ess:name xml:lang="en">Build Paved Road</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Vertaal sturende eisen in een catalogus van goedgekeurde COTS-producten, integratiepatronen en referentie-instellingen. Behandel de Paved Road als een product: zelfbedienbaar, versiegebonden en meetbaar in adoptie.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/enterprise-build-paved-road/read/architecture-model">
+    <ess:name>Read Architecture Definition</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-model"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-build-paved-road/create/paved-road">
+    <ess:name>Create Paved Road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/paved-road"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-build-paved-road/update-alpha/paved-road">
+    <ess:name>Update Paved Road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/paved-road"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/enterprise-build-paved-road/part-of/shape-the-system">
+    <ess:name>Goedgekeurde route bouwen part-of Shape The System</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/enterprise-build-paved-road"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/enterprise-build-paved-road/entry/paved-road">
+    <ess:name>Entry: Paved Road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/paved-road/seeded"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-build-paved-road/completion/paved-road">
+    <ess:name>Completion: Paved Road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/paved-road/established"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

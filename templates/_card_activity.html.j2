@@ -1,0 +1,176 @@
+{# ─── Essence Activity Card ───────────────────────────────────────────────────
+   Een standalone Jinja2 macro voor één activity card.
+   Layout: gelijk aan de act-row kaarten op wow-enterprise-architecture.html.
+
+   Gebruik:
+     {% from "_card_activity.html.j2" import activity_card %}
+     {{ activity_card(act, href='act/envision-the-architecture.html#enterprise', spoor='enterprise') }}
+
+   Verwachte velden in `act` (na node_to_dict uit de RDF vocab):
+
+   Beide typen:
+     title / name     – Nederlandse naam  (bijv. "Begrijpen")
+     desc             – korte omschrijving
+     chips.space      – Activity Space chip  (bijv. "AS 1–2 · Understand Stakeholder Needs")
+     chips.comp       – Competency chip      (bijv. "Analyse")
+     chips.alpha      – Alpha chip           (bijv. "Drivers")
+     inputs           – lijst van verwerkte work products (labels)
+     outputs          – lijst van geproduceerde work products (labels)
+
+   Level-specific (enterprise-begrijpen, solution-richten, ...):
+     num              – volgnummer  ("01")
+     phase            – "analyse" | "dev"
+     practice_level   – "Enterprise" | "Solution" | "Spans"
+
+   Top-level practice-activiteiten (envision-the-architecture, ...):
+     act_num          – "Activiteit 02 / 05"
+     act_name / title – Nederlandse naam
+     title_en         – Engelse naam  ("Envision the Architecture")
+     lede             – langere intro-tekst (valt terug op desc)
+     alpha_bar        – alpha-progressiebalk HTML  ("Drivers → <b>Quantified</b>")
+#}
+
+{% macro activity_card(act, href='', num_color='', num_text_color='text-white', spoor='enterprise') %}
+
+{# ── Afleidbare display-waarden ──────────────────────────────────────────── #}
+{% set _title = act.title | default(act.name | default(act.act_name | default(''))) %}
+{% set _desc  = act.desc  | default(act.lede  | default('')) %}
+{% set _href  = href or act.href | default('#') %}
+{% set _phase = act.phase | default('dev') %}
+{% set _level = act.practice_level | default('') %}
+
+{# Volgnummer: ewow:num (level-specific) of extraheer uit ewow:actNum ("Activiteit 02 / 05") #}
+{% set _num_raw = act.num | default('') %}
+{% if not _num_raw and act.act_num %}
+  {% set _num_parts = act.act_num.split(' ') %}
+  {% set _num_raw = _num_parts[1] if _num_parts | length > 1 else '·' %}
+{% endif %}
+{% set _num = _num_raw if _num_raw else '·' %}
+
+{# Badge-kleur: argument wint; anders afgeleid van phase/level #}
+{% set _num_color = num_color if num_color
+    else ('bg-blue-700'   if _phase == 'analyse'
+    else  ('bg-yellow-600' if _level == 'Solution'
+    else   'bg-slate-700')) %}
+
+{# ── Card markup ─────────────────────────────────────────────────────────── #}
+<a href="{{ _href }}"
+   class="act-row grid grid-cols-[52px_1fr_auto] overflow-hidden rounded-[13px]
+          border border-slate-300 bg-white text-inherit no-underline transition
+          hover:-translate-y-0.5 hover:shadow-sm
+          [&_.ar-num]:flex [&_.ar-num]:items-center [&_.ar-num]:justify-center
+          [&_.ar-num]:font-serif [&_.ar-num]:text-[1.4rem] [&_.ar-num]:font-bold [&_.ar-num]:{{ num_text_color }}
+          [&_.ar-body]:px-4 [&_.ar-body]:py-[13px]
+          [&_.ar-title]:m-0 [&_.ar-title]:mb-[3px] [&_.ar-title]:font-serif
+          [&_.ar-title]:text-[1.12rem] [&_.ar-title]:font-semibold
+          [&_.ar-desc]:m-0 [&_.ar-desc]:mb-[7px] [&_.ar-desc]:text-[0.86rem] [&_.ar-desc]:text-slate-500
+          [&_.ar-meta]:flex [&_.ar-meta]:flex-wrap [&_.ar-meta]:gap-1.5
+          [&_.ar-arrow]:flex [&_.ar-arrow]:items-center [&_.ar-arrow]:px-[18px]
+          [&_.ar-arrow]:font-mono [&_.ar-arrow]:text-lg [&_.ar-arrow]:text-slate-500
+          a-{{ _phase }} [&_.ar-num]:{{ _num_color }}">
+
+  {# ── Nummer badge ──────────────────────────────────────────────────────── #}
+  <div class="ar-num">{{ _num }}</div>
+
+  {# ── Card body ─────────────────────────────────────────────────────────── #}
+  <div class="ar-body">
+
+    {# Nederlandse naam #}
+    <div class="ar-title">{{ _title }}</div>
+
+    {# Engelse naam als ondertitel (alleen top-level practice-activiteiten) #}
+    {% if act.title_en and act.title_en != _title %}
+    <div class="ar-en mb-[5px] font-mono text-[10px] text-slate-400">{{ act.title_en }}</div>
+    {% endif %}
+
+    {# Practice-level badge (Enterprise / Solution / Spans) #}
+    {% if _level %}
+    <div class="mb-[6px]">
+      {% if _level == 'Enterprise' %}
+      <span class="rounded-full border border-slate-700/20 bg-slate-700/10 px-[9px] py-[2px]
+                   font-mono text-[8.5px] font-semibold uppercase tracking-[0.12em] text-slate-700">Enterprise</span>
+      {% elif _level == 'Solution' %}
+      <span class="rounded-full border border-yellow-600/20 bg-yellow-600/10 px-[9px] py-[2px]
+                   font-mono text-[8.5px] font-semibold uppercase tracking-[0.12em] text-yellow-700">Solution</span>
+      {% elif _level == 'Spans' %}
+      <span class="rounded-full border border-indigo-700/20 bg-indigo-700/10 px-[9px] py-[2px]
+                   font-mono text-[8.5px] font-semibold uppercase tracking-[0.12em] text-indigo-700">Spans</span>
+      {% else %}
+      <span class="rounded-full border border-slate-300 bg-slate-50 px-[9px] py-[2px]
+                   font-mono text-[8.5px] font-semibold uppercase tracking-[0.12em] text-slate-500">{{ _level }}</span>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {# Korte omschrijving (max. ~200 tekens voor de card) #}
+    <div class="ar-desc">{{ _desc | truncate(200) }}</div>
+
+    {# Alpha-progressiebalk (alleen top-level practice-activiteiten) #}
+    {% if act.alpha_bar %}
+    <div class="ar-alpha mb-[7px] mt-1 rounded-md border border-emerald-700/15 bg-emerald-700/5
+                px-2.5 py-1.5 font-mono text-[9px] text-emerald-700">{{ act.alpha_bar | safe }}</div>
+    {% endif %}
+
+    {# Essence-chips: Activity Space · Competency · Alpha #}
+    {% if act.chips %}
+    <div class="ar-meta">
+      {% if act.chips.space %}
+        {% if _phase == 'analyse' %}
+        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
+                     uppercase tracking-[0.1em] space bg-blue-700/10 text-blue-700">{{ act.chips.space }}</span>
+        {% elif spoor == 'enterprise' %}
+        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
+                     uppercase tracking-[0.1em] space bg-[rgba(39,64,107,.1)] text-[var(--ent)]">{{ act.chips.space }}</span>
+        {% else %}
+        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
+                     uppercase tracking-[0.1em] space bg-[rgba(15,110,99,.1)] text-[var(--sol)]">{{ act.chips.space }}</span>
+        {% endif %}
+      {% endif %}
+      {% if act.chips.comp %}
+      <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
+                   uppercase tracking-[0.1em] comp bg-indigo-700/10 text-indigo-700">{{ act.chips.comp }}</span>
+      {% endif %}
+      {% if act.chips.alpha %}
+      <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
+                   uppercase tracking-[0.1em] alpha bg-emerald-700/10 text-emerald-700">{{ act.chips.alpha }}</span>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {# Work product flow: Verwerkt → Produceert #}
+    {% if act.inputs or act.outputs %}
+    <div class="ar-flow mt-2 flex flex-col gap-[5px] border-t border-dashed border-slate-300 pt-2">
+      {% if act.inputs %}
+      <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
+        <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold
+                     uppercase tracking-[0.14em] text-slate-500">Verwerkt</span>
+        {% for i in act.inputs %}
+        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
+                     uppercase tracking-[0.1em] wp-in border border-slate-300 bg-slate-100 text-slate-500">{{ i }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% if act.outputs %}
+      <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
+        <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold
+                     uppercase tracking-[0.14em] text-slate-500">Produceert</span>
+        {% for o in act.outputs %}
+        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
+                     uppercase tracking-[0.1em] wp-out border border-yellow-600/30 bg-yellow-600/10 text-yellow-700">{{ o.name }}</span>
+        {% for lod in o.lods %}
+        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
+                     uppercase tracking-[0.1em] border border-slate-300 bg-slate-50 text-slate-500">{{ lod }}</span>
+        {% endfor %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+
+  {# ── Pijl rechts ───────────────────────────────────────────────────────── #}
+  <div class="ar-arrow">→</div>
+
+</a>
+{% endmacro %}

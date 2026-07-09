@@ -1,0 +1,62 @@
+{% extends "_base.html.j2" %}
+{% from "_macros.html.j2" import hero, sec_head, panel %}
+
+{% block content %}
+{{ hero(hero_data) }}
+
+<nav class="toolbar sticky top-[100px] z-20 my-[22px] mb-1 flex flex-wrap items-center gap-[7px] bg-gradient-to-b from-white from-80% to-transparent py-[13px] pb-[11px] backdrop-blur-[2px] max-[600px]:flex-nowrap max-[600px]:overflow-x-auto max-[600px]:pb-3" aria-label="Spring naar">
+  <span class="lbl mr-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">Ga naar</span>
+  {% for link in toolbar %}
+  <a class="f inline-flex cursor-pointer items-center rounded-full border border-slate-900 bg-white px-3 py-1.5 font-mono text-xs text-slate-900 no-underline transition hover:bg-slate-900 hover:text-white [&.active]:border-[var(--prac)] [&.active]:bg-[var(--prac)] [&.active]:text-white" href="{{ link.href }}">{{ link.label }}</a>
+  {% endfor %}
+  <button class="print ml-auto border-dashed max-[600px]:hidden f inline-flex cursor-pointer items-center rounded-full border border-slate-900 bg-white px-3 py-1.5 font-mono text-xs text-slate-900 no-underline transition hover:bg-slate-900 hover:text-white" onclick="window.print()">⎙ Afdrukken</button>
+</nav>
+
+<main>
+
+{# ── 1. Path chooser ── #}
+<section id="start" class="mt-8">
+  {{ sec_head(sections.start.num, sections.start.title) }}
+  <p class="prose">{{ sections.start.intro }}</p>
+  <div class="path-grid mt-3.5 grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] gap-4">
+    {% for path in sections.start.paths %}
+    <a class="path-card flex flex-col rounded-lg border border-t-[3px] border-slate-300 bg-white px-6 py-[22px] pb-5 text-inherit no-underline transition hover:shadow-md [&_h3]:m-0 [&_h3]:mb-2.5 [&_h3]:font-serif [&_h3]:text-[1.65rem] [&_h3]:font-black [&_h3]:leading-tight [&_.pc-level]:mb-1 [&_.pc-level]:font-mono [&_.pc-level]:text-[10px] [&_.pc-level]:uppercase [&_.pc-level]:tracking-[0.1em] [&_.pc-level]:text-slate-400 [&_.pc-role]:mb-3 [&_.pc-role]:font-mono [&_.pc-role]:text-[11px] [&_.pc-role]:font-semibold [&_.pc-role]:tracking-wide [&_.pc-role]:text-slate-500 [&_.pc-desc]:m-0 [&_.pc-desc]:mb-3.5 [&_.pc-desc]:text-[0.875rem] [&_.pc-desc]:leading-relaxed [&_.pc-desc]:text-slate-500 [&_.pc-bullets]:mb-[18px] [&_.pc-bullets]:border-t [&_.pc-bullets]:border-dashed [&_.pc-bullets]:border-slate-300 [&_.pc-bullets]:pt-2.5 [&_.pc-bullets]:font-mono [&_.pc-bullets]:text-[10px] [&_.pc-bullets]:leading-loose [&_.pc-bullets]:tracking-wide [&_.pc-bullets]:text-slate-500 [&_.pc-bullets_b]:font-semibold [&_.pc-bullets_b]:text-slate-900 [&_.pc-cta]:mt-auto [&_.pc-cta]:inline-block [&_.pc-cta]:self-start [&_.pc-cta]:rounded-md [&_.pc-cta]:px-4 [&_.pc-cta]:py-2 [&_.pc-cta]:font-mono [&_.pc-cta]:text-[10px] [&_.pc-cta]:font-bold [&_.pc-cta]:uppercase [&_.pc-cta]:tracking-[0.1em] [&_.pc-cta]:text-white {{ path.css }}" href="{{ path.href }}">
+      <div class="pc-level">{{ path.level }}</div>
+      <div class="pc-role">{{ path.role }}</div>
+      <h3>{{ path.title }}</h3>
+      <p class="pc-desc">{{ path.desc }}</p>
+      <div class="pc-bullets">
+        {% for b in path.bullets %}<b>{{ b.label }}</b> → {{ b.text }}<br>{% endfor %}
+      </div>
+      <span class="pc-cta">{{ path.cta }} →</span>
+    </a>
+    {% endfor %}
+  </div>
+  <p class="path-note mt-2.5 font-mono text-[10.5px] text-slate-400">{{ sections.start.note }}</p>
+</section>
+
+{# ── 2. Practices ── #}
+<section id="achtergrond" class="mt-12">
+  {{ sec_head(sections.achtergrond.num, sections.achtergrond.title) }}
+  <p class="prose">{{ sections.achtergrond.intro }}</p>
+  <div class="deck-grid mt-2.5 grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-3">
+    {% for deck in sections.achtergrond.decks %}
+    <a class="deck flex flex-col overflow-hidden rounded-lg border border-slate-300 bg-white text-inherit no-underline transition hover:shadow-md [&_.top]:h-1 [&_.body]:flex [&_.body]:flex-1 [&_.body]:flex-col [&_.body]:px-3.5 [&_.body]:py-3 [&_.body]:pb-3.5 [&_.tag]:mb-1 [&_.tag]:font-mono [&_.tag]:text-[10px] [&_.tag]:font-semibold [&_.tag]:uppercase [&_.tag]:tracking-[0.1em] [&_h4]:m-0 [&_h4]:mb-1 [&_h4]:font-serif [&_h4]:text-[1.05rem] [&_h4]:font-semibold [&_h4]:leading-tight [&_.one]:m-0 [&_.one]:mb-2.5 [&_.one]:text-[0.82rem] [&_.one]:leading-relaxed [&_.one]:text-slate-500 [&_.open]:mt-auto [&_.open]:font-mono [&_.open]:text-[10px] [&_.open]:font-semibold [&_.open]:uppercase [&_.open]:tracking-[0.08em]" href="{{ deck.href }}">
+      <div class="top bg-[var(--{{ deck.color }})]"></div>
+      <div class="body">
+        <div class="tag text-[var(--{{ deck.color }})]">{{ deck.tag }}</div>
+        <h4>{{ deck.title }}</h4>
+        <p class="one">{{ deck.desc }}</p>
+        <div class="open text-[var(--{{ deck.color }})]">{{ deck.open }} →</div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="panel transition-shadow mt-[18px] rounded-[13px] border border-l-4 border-slate-300 border-l-[var(--prac)] bg-slate-50 px-5 py-[18px] [&_h3]:m-0 [&_h3]:mb-1.5 [&_h3]:font-serif [&_h3]:text-[1.16rem] [&_p]:mb-2.5 [&_p]:text-[0.95rem] [&_p]:text-slate-500 [&_p:last-child]:mb-0 mt-[20px]">
+    <h3>{{ sections.achtergrond.panel.title }}</h3>
+    <p>{{ sections.achtergrond.panel.body }}</p>
+  </div>
+</section>
+
+</main>
+{% endblock %}

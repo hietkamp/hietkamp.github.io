@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <ess:Activity rdf:about="activity/solution-develop-roadmap">
+    <ess:name xml:lang="nl">Roadmap ontwikkelen</ess:name>
+    <ess:name xml:lang="en">Develop Roadmap</ess:name>
+    <ess:briefDescription xml:lang="nl">Maak de solution-roadmap binnen de enterprise-context. Koppel horizons aan backlog en release-planning. Definieer per horizon welke solution-beslissin…</ess:briefDescription>
+    <ess:description xml:lang="nl">Maak de solution-roadmap binnen de enterprise-context. Koppel horizons aan backlog en release-planning. Definieer per horizon welke solution-beslissingen definitief worden en rapporteer afwijkingen terug aan de EA.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/solution-architecture"/>
+    <ess:approach rdf:resource="approach/solution-develop-roadmap/default"/>
+    <ess:action rdf:resource="action/solution-develop-roadmap/read/architecture-model"/>
+    <ess:action rdf:resource="action/solution-develop-roadmap/create/architecture-roadmap"/>
+    <ess:action rdf:resource="action/solution-develop-roadmap/update-alpha/architecture"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/solution-develop-roadmap/completion/architecture"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/solution-develop-roadmap/default">
+    <ess:name xml:lang="nl">Roadmap ontwikkelen</ess:name>
+    <ess:name xml:lang="en">Develop Roadmap</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Maak de solution-roadmap binnen de enterprise-context. Koppel horizons aan backlog en release-planning. Definieer per horizon welke solution-beslissingen definitief worden en rapporteer afwijkingen terug aan de EA.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/solution-develop-roadmap/read/architecture-model">
+    <ess:name>Read Architecture Definition</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-model"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-develop-roadmap/create/architecture-roadmap">
+    <ess:name>Create Architecture Roadmap</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-roadmap"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-develop-roadmap/update-alpha/architecture">
+    <ess:name>Update Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/architecture"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/solution-develop-roadmap/part-of/shape-the-system">
+    <ess:name>Roadmap ontwikkelen part-of Shape The System</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/solution-develop-roadmap"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:CompletionCriterion rdf:about="criterion/solution-develop-roadmap/completion/architecture">
+    <ess:name>Completion: Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/architecture/usable"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

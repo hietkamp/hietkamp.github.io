@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <ess:Activity rdf:about="activity/governance-govern-delivery">
+    <ess:name xml:lang="nl">Levering Besturen</ess:name>
+    <ess:name xml:lang="en">Govern the Delivery</ess:name>
+    <ess:briefDescription xml:lang="nl">Laat beslissingen die binnen de guardrails vallen vrij stromen. Review alleen de uitzonderingen: off-road ADRs, significante onomkeerbare beslissingen…</ess:briefDescription>
+    <ess:description xml:lang="nl">Laat beslissingen die binnen de guardrails vallen vrij stromen. Review alleen de uitzonderingen: off-road ADRs, significante onomkeerbare beslissingen en escalaties. Deblokkeer teams actief — governance is een dienst, geen controlepunt.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <ess:approach rdf:resource="approach/governance-govern-delivery/default"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/read/architecture-decisions"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/read/architecture-roadmap"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/create/conformance-evidence"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/update-alpha/governance"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/governance-govern-delivery/completion/governance"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/governance-govern-delivery/default">
+    <ess:name xml:lang="nl">Levering Besturen</ess:name>
+    <ess:name xml:lang="en">Govern the Delivery</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Laat beslissingen die binnen de guardrails vallen vrij stromen. Review alleen de uitzonderingen: off-road ADRs, significante onomkeerbare beslissingen en escalaties. Deblokkeer teams actief — governance is een dienst, geen controlepunt.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/governance-govern-delivery/read/architecture-decisions">
+    <ess:name>Read Architecture Decisions</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-govern-delivery/read/architecture-roadmap">
+    <ess:name>Read Architecture Roadmap</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-roadmap"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-govern-delivery/create/conformance-evidence">
+    <ess:name>Create Conformance Evidence</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/conformance-evidence"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-govern-delivery/update-alpha/governance">
+    <ess:name>Update Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/governance"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/governance-govern-delivery/part-of/coordinate-activity">
+    <ess:name>Govern the Delivery part-of Coordinate Activity</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-govern-delivery"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:CompletionCriterion rdf:about="criterion/governance-govern-delivery/completion/governance">
+    <ess:name>Completion: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/guiding"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

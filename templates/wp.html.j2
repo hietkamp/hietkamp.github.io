@@ -1,0 +1,119 @@
+{% extends "_base.html.j2" %}
+{% block content %}
+<div class="breadcrumb flex flex-wrap items-center gap-2 pt-[18px] font-mono text-[11px] text-slate-500 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline">
+  <a href="{{ breadcrumb.parent_href }}">{{ breadcrumb.parent_label }}</a>
+  <span>/</span>
+  <span>{{ breadcrumb.current }}</span>
+</div>
+
+<header class="hero border-b-2 border-[var(--prac)] py-14 pb-8 [&_h1]:m-0 [&_h1]:mb-[0.45em] [&_h1]:font-serif [&_h1]:text-[clamp(2.3rem,5.6vw,4.4rem)] [&_h1]:font-black [&_h1]:leading-none [&_h1_em]:font-medium [&_h1_em]:italic [&_h1_em]:text-[var(--prac)] max-[600px]:py-8 max-[600px]:pb-4 max-[600px]:[&_h1]:text-[clamp(1.9rem,8vw,3rem)]">
+  <div class="kicker mb-3.5 block font-mono text-[11px] uppercase tracking-[0.28em] text-[var(--prac)]">{{ kicker }}</div>
+  <h1>{{ h1_pre }}</h1>
+  {% if h1_em %}<p class="hero-title-en m-0 -mt-[0.25em] mb-[0.5em] font-serif italic text-[clamp(1.5rem,3.8vw,3rem)] font-normal leading-tight text-slate-500">{{ h1_em }}</p>{% endif %}
+  <p class="lede m-0 text-[clamp(1rem,1.5vw,1.16rem)] leading-relaxed text-slate-500">{{ lede | safe }}</p>
+  <div class="meta-pills mt-5 flex flex-wrap gap-2 [&_span]:rounded-full [&_span]:border [&_span]:border-slate-300 [&_span]:bg-slate-50 [&_span]:px-3 [&_span]:py-[5px] [&_span]:font-mono [&_span]:text-[11px] [&_span]:tracking-wide [&_span]:text-slate-500">
+    {% for pill in meta_pills %}
+    <span>{{ pill }}</span>
+    {% endfor %}
+  </div>
+</header>
+
+{% if manifests %}
+<section class="content-section mt-[38px] mb-8 scroll-mt-[164px]" id="manifests">
+  <h2 class="mb-4 border-b border-slate-300 pb-1.5 font-serif text-[1.45rem] font-semibold text-slate-900">Werkproduct vertelt over</h2>
+  <ul class="m-0 list-none space-y-1.5 p-0">
+    {% for m in manifests %}
+    <li class="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-3 py-2">
+      <span class="shrink-0 rounded-full border px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] {% if m.is_kernel %}border-slate-400/30 bg-slate-100 text-slate-500{% else %}border-emerald-700/30 bg-emerald-700/10 text-emerald-700{% endif %}">{% if m.is_kernel %}Kernel{% else %}Methode{% endif %}</span>
+      <span class="flex-1 text-[0.88rem] font-medium text-slate-700">{{ m.alpha }}</span>
+      {% if m.lower_bound == '1' %}<span class="shrink-0 font-mono text-[9px] uppercase tracking-wide text-slate-400">Verplicht</span>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% for sec in sections %}
+<section class="content-section mt-[38px] mb-8 scroll-mt-[164px] [&_h2]:border-b [&_h2]:border-slate-300 [&_h2]:pb-1.5 [&_h2]:font-serif [&_h2]:text-[1.45rem] [&_h2]:font-semibold [&_p]:m-0 [&_p]:mb-2.5 [&_p]:text-slate-500 [&_ul]:m-0 [&_ul]:mb-2.5 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:text-slate-500 [&_ol]:m-0 [&_ol]:mb-2.5 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:text-slate-500 [&_li]:mb-1{% if sec.extra_class %} {{ sec.extra_class }}{% endif %}" data-section-kind="{{ sec.section_kind | default('content') }}"{% if sec.id %} id="{{ sec.id }}"{% endif %}>
+  <h2>{{ sec.h2 }}</h2>
+  {{ sec.body_html | safe }}
+</section>
+{% endfor %}
+
+{% if download %}
+  <div class="download-strip mt-6 mb-7 flex items-center justify-between gap-5 rounded-xl border border-l-[5px] border-slate-300 border-l-[var(--prac)] bg-white px-[22px] py-[18px] max-[600px]:flex-col max-[600px]:items-start">
+    <div class="dl-info flex items-center gap-4">
+      <div class="dl-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px]">
+        {% if download.type == 'xlsx' %}
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <rect width="36" height="36" rx="8" fill="#dcfce7"/>
+          <rect x="7" y="7" width="22" height="22" rx="2" fill="#16a34a" opacity=".12"/>
+          <rect x="7" y="7" width="22" height="22" rx="2" stroke="#16a34a" stroke-width="1.5" fill="none"/>
+          <line x1="7" y1="13" x2="29" y2="13" stroke="#16a34a" stroke-width="1.2"/>
+          <line x1="7" y1="19" x2="29" y2="19" stroke="#16a34a" stroke-width="1.2"/>
+          <line x1="7" y1="25" x2="29" y2="25" stroke="#16a34a" stroke-width="1.2"/>
+          <line x1="14" y1="7" x2="14" y2="29" stroke="#16a34a" stroke-width="1.2"/>
+          <line x1="21" y1="7" x2="21" y2="29" stroke="#16a34a" stroke-width="1.2"/>
+        </svg>
+        {% else %}
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <rect width="36" height="36" rx="8" fill="#dbeafe"/>
+          <path d="M10 8h11l7 7v13a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z" fill="#2563eb" opacity=".12"/>
+          <path d="M10 8h11l7 7v13a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z" stroke="#2563eb" stroke-width="1.5" fill="none"/>
+          <polyline points="21 8 21 15 28 15" stroke="#2563eb" stroke-width="1.5" fill="none"/>
+          <line x1="13" y1="20" x2="23" y2="20" stroke="#2563eb" stroke-width="1.2"/>
+          <line x1="13" y1="24" x2="20" y2="24" stroke="#2563eb" stroke-width="1.2"/>
+        </svg>
+        {% endif %}
+      </div>
+      <div>
+        <div class="dl-label mb-0.5 font-mono text-[9.5px] uppercase tracking-[0.16em] text-[var(--prac)]">Sjabloon</div>
+        <div class="dl-name mb-px font-serif text-[1.1rem] font-semibold">{{ download.filename }}</div>
+        <div class="dl-desc text-[0.83rem] text-slate-500">{{ download.desc }}</div>
+      </div>
+    </div>
+    <a class="dl-btn inline-flex shrink-0 items-center gap-[7px] whitespace-nowrap rounded-full border-2 border-[var(--prac)] bg-[var(--prac)] px-5 py-2.5 font-mono text-xs font-semibold tracking-wide text-white no-underline transition hover:bg-transparent hover:text-[var(--prac)]" href="{{ download.url }}" download>⬇ Download {{ download.type | upper }}</a>
+  </div>
+
+{% endif %}
+
+
+{% if lod_list %}
+<section class="content-section mt-[38px] mb-8 scroll-mt-[164px]" id="lod">
+  <h2 class="mb-4 border-b border-slate-300 pb-1.5 font-serif text-[1.45rem] font-semibold text-slate-900">Detailniveaus</h2>
+  <ol class="m-0 list-none space-y-2 p-0">
+    {% for lod in lod_list %}
+    <li class="overflow-hidden rounded-xl border {% if lod.sufficient %}border-[var(--prac)]/40 bg-[var(--prac)]/5{% else %}border-slate-200 bg-white{% endif %}">
+      <div class="flex items-center gap-3 px-4 py-3">
+        <span class="flex-1 font-serif text-[1rem] font-semibold text-slate-900">{{ lod.name }}</span>
+        {% if lod.sufficient %}<span class="shrink-0 rounded-full border border-[var(--prac)]/30 bg-[var(--prac)]/10 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-[var(--prac)]">Voldoende</span>{% endif %}
+      </div>
+      {% if lod.desc or lod.checks %}
+      <div class="border-t border-slate-100 px-4 pb-3 pt-2">
+        {% if lod.desc %}<p class="m-0 mb-2 text-[0.87rem] leading-snug text-slate-500">{{ lod.desc }}</p>{% endif %}
+        {% for check in lod.checks %}
+        <p class="m-0 flex items-start gap-2 text-[0.84rem] text-slate-600"><span class="mt-0.5 text-emerald-600">✓</span>{{ check }}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
+
+{% if resources %}
+<section class="content-section mt-[38px] mb-8 scroll-mt-[164px]" id="resources">
+  <h2 class="mb-4 border-b border-slate-300 pb-1.5 font-serif text-[1.45rem] font-semibold text-slate-900">Bronnen</h2>
+  <ul class="m-0 list-none space-y-1.5 p-0">
+    {% for url in resources %}
+    <li class="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-3 py-2">
+      <svg class="shrink-0 text-slate-400" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8.5l3-3M8 5l1.5-1.5a2.12 2.12 0 013 3L11 8M6 9l-1.5 1.5a2.12 2.12 0 01-3-3L3 6"/></svg>
+      <a href="{{ url }}" class="text-[0.88rem] text-[var(--prac)] no-underline hover:underline" target="_blank" rel="noopener">{{ url }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% endblock %}

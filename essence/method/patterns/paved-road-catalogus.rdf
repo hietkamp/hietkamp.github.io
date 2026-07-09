@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:Pattern rdf:about="pattern/paved-road-catalogus">
+    <ess:name xml:lang="nl">Paved Road als catalogus</ess:name>
+    <ess:name xml:lang="en">Paved Road as Catalogue</ess:name>
+    <ess:briefDescription xml:lang="nl">Publiceer goedgekeurde producten, patronen, standaarden en referentie-instellingen als zelfbedienbare catalogus in plaats van als beleidsdocument.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Publiceer goedgekeurde producten, patronen, standaarden en referentie-instellingen als zelfbedienbare catalogus in plaats van als beleidsdocument.</p>
+<p><strong>Doel:</strong> Maak de conforme keuze de gemakkelijkste keuze voor solution-teams.</p>
+<p><strong>Context:</strong> Enterprise-architectuur die herhaalbare keuzes wil hergebruiken over meerdere solutions.</p>
+<p><strong>Probleem:</strong> Standaarden blijven ongebruikt wanneer ze alleen als beleid bestaan of te laat in reviews verschijnen.</p>
+<p><strong>Oplossing:</strong> Behandel de paved road als product: eigenaar, status, versie, gebruiksvoorbeeld, adoptiemeting en duidelijke off-road-procedure per catalogusitem.</p>
+<p><strong>Resultaat:</strong> Teams kunnen zelfstandig on-road keuzes maken en governance kan sturen op adoptie in plaats van op voorafgaande goedkeuring.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/paved-road-catalogus/uses"/>
+    <ess:associations rdf:resource="pattern-association/paved-road-catalogus/related-workproducts"/>
+    <ess:tags rdf:resource="tag/mva"/>
+    <ess:tags rdf:resource="tag/mvg"/>
+  </ess:Pattern>
+
+  <ess:Tag rdf:about="tag/mva">
+    <ess:value>MVA</ess:value>
+  </ess:Tag>
+
+  <ess:Tag rdf:about="tag/mvg">
+    <ess:value>MVG</ess:value>
+  </ess:Tag>
+
+  <ess:PatternAssociation rdf:about="pattern-association/paved-road-catalogus/uses">
+    <ess:name xml:lang="en">uses</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/enterprise-build-paved-road"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/paved-road-catalogus/related-workproducts">
+    <ess:name xml:lang="en">related-workproducts</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="workproduct/paved-road"/>
+    <ess:elements rdf:resource="workproduct/paved-road-adoptie"/>
+  </ess:PatternAssociation>
+
+</rdf:RDF>

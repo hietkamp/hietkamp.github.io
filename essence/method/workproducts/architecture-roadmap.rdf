@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:WorkProduct rdf:about="workproduct/architecture-roadmap">
+    <ess:name xml:lang="nl"><![CDATA[Architectuurroadmap en Transitiestaten]]></ess:name>
+    <ess:name xml:lang="en"><![CDATA[Architecture Roadmap & Transition States]]></ess:name>
+    <ess:briefDescription xml:lang="nl">Maak de route van baseline naar doeltoestand bestuurbaar zonder verre horizons te overspecificeren.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Het pad van baseline naar doel als implementatiestappen — in twee parallelle sporen: een <strong>configuratiespoor</strong> (wat de vendor levert) en een <strong>integratiespoor</strong> (wat de architect bouwt). Beide sporen worden gestart vanuit de fit/gap-analyse en gesynchroniseerd op checkpoints. Geen big-bang — pilot → wave → volledige uitrol. Alleen de volgende horizon is gedetailleerd uitgewerkt.</p>
+<p><strong>Rol:</strong> Transitieplan dat architectuurkeuzes omzet naar horizons, werkpakketten en meetbare toestanden.</p>
+<p><strong>Beantwoordt:</strong> Welke stappen brengen ons naar de doelarchitectuur en welke alpha-toestand bewijst elke stap?</p>
+<p><strong>Scope:</strong> Plant werkpakketten, horizons en afhankelijkheden; detailontwerp en besluitrationale horen elders.</p>
+<p><strong>Publiek:</strong> Architecture Owner, Enterprise Architect, Product Owner, delivery lead en Architectuurforum.</p>
+<h3>Informatie-elementen</h3><table><thead><tr><th>Element</th><th>Betekenis</th><th>Verplicht</th></tr></thead><tbody><tr><td>Horizon</td><td>De planningsperiode met detailniveau; horizon 1 is concreet, latere horizons blijven grof.</td><td>Ja</td></tr><tr><td>Werkpakket</td><td>Een uitvoerbare stap met eigenaar, deliverables, afhankelijkheden en acceptatiecriteria.</td><td>Ja</td></tr><tr><td>Alpha-toestandsdoel</td><td>De Essence-toestand die het werkpakket aantoonbaar moet bereiken.</td><td>Ja</td></tr><tr><td>Onomkeerbare grens</td><td>Het moment waarop terugdraaien kostbaar wordt en een ADR of review nodig is.</td><td>Ja</td></tr></tbody></table>
+<h3>Kwaliteitscriteria</h3><ul><li><strong>Rolling horizon</strong> — Alleen de eerstvolgende horizon is uitgewerkt op werkpakketdetail.</li><li><strong>Meetbaar gereed</strong> — Elk werkpakket verwijst naar een alpha-toestandsdoel en acceptatiebewijs.</li><li><strong>Spoorbewust</strong> — Configuratiespoor en integratiespoor zijn apart zichtbaar en op checkpoints gesynchroniseerd.</li></ul>
+<p><strong>Bijwerken wanneer:</strong> Rolling horizon: bij horizoneinde, nieuwe ADR, fit/gap-wijziging of reviewbevinding.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:ownedElements rdf:resource="resource/architecture-roadmap/template"/>
+  </ess:WorkProduct>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/architecture-roadmap/architecture">
+    <ess:workProduct rdf:resource="workproduct/architecture-roadmap"/>
+    <ess:alpha rdf:resource="alpha/architecture"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:WorkProductManifest>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/architecture-roadmap/work">
+    <ess:workProduct rdf:resource="workproduct/architecture-roadmap"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:WorkProductManifest>
+
+  <ess:TypedResource rdf:about="resource/architecture-roadmap/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/architecture-roadmap.docx</ess:content>
+  </ess:TypedResource>
+
+</rdf:RDF>

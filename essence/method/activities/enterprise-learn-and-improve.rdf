@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <ess:Activity rdf:about="activity/enterprise-learn-and-improve">
+    <ess:name xml:lang="nl">Leren en verbeteren</ess:name>
+    <ess:name xml:lang="en">Learn and Improve</ess:name>
+    <ess:briefDescription xml:lang="nl">Beheer de architectuur continu in productie: actualiseer de goedgekeurde route op basis van reviewinzichten, pensioneer verouderde standaarden en herv…</ess:briefDescription>
+    <ess:description xml:lang="nl">Beheer de architectuur continu in productie: actualiseer de goedgekeurde route op basis van reviewinzichten, pensioneer verouderde standaarden en hervalideer sturende eisen wanneer de context verandert.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:approach rdf:resource="approach/enterprise-learn-and-improve/default"/>
+    <ess:action rdf:resource="action/enterprise-learn-and-improve/read/architecture-decisions"/>
+    <ess:action rdf:resource="action/enterprise-learn-and-improve/create/architecture-model"/>
+    <ess:action rdf:resource="action/enterprise-learn-and-improve/create/paved-road"/>
+    <ess:action rdf:resource="action/enterprise-learn-and-improve/read/paved-road-adoptie"/>
+    <ess:action rdf:resource="action/enterprise-learn-and-improve/update-alpha/architecture"/>
+    <ess:action rdf:resource="action/enterprise-learn-and-improve/update-alpha/architectural-drivers"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/enterprise-learn-and-improve/entry/architecture"/>
+    <ess:criterion rdf:resource="criterion/enterprise-learn-and-improve/completion/architecture"/>
+    <ess:criterion rdf:resource="criterion/enterprise-learn-and-improve/completion/architectural-drivers"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/enterprise-learn-and-improve/default">
+    <ess:name xml:lang="nl">Leren en verbeteren</ess:name>
+    <ess:name xml:lang="en">Learn and Improve</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">Beheer de architectuur continu in productie: actualiseer de goedgekeurde route op basis van reviewinzichten, pensioneer verouderde standaarden en hervalideer sturende eisen wanneer de context verandert.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/enterprise-learn-and-improve/read/architecture-decisions">
+    <ess:name>Read Architecture Decisions</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-learn-and-improve/create/architecture-model">
+    <ess:name>Create Architecture Definition</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-model"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-learn-and-improve/create/paved-road">
+    <ess:name>Create Paved Road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/paved-road"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-learn-and-improve/read/paved-road-adoptie">
+    <ess:name>Read Paved Road Adoptie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/paved-road-adoptie"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-learn-and-improve/update-alpha/architecture">
+    <ess:name>Update Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/architecture"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-learn-and-improve/update-alpha/architectural-drivers">
+    <ess:name>Update Architectural Drivers</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="alpha/architectural-drivers"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/enterprise-learn-and-improve/part-of/shape-the-system">
+    <ess:name>Leren en verbeteren part-of Shape The System</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/enterprise-learn-and-improve"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/enterprise-learn-and-improve/entry/architecture">
+    <ess:name>Entry: Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/architecture/established"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-learn-and-improve/completion/architecture">
+    <ess:name>Completion: Architecture</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/architecture/evolving"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-learn-and-improve/completion/architectural-drivers">
+    <ess:name>Completion: Architectural Drivers</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/architectural-drivers/sustained"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

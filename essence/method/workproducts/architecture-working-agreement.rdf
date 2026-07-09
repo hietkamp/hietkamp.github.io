@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:WorkProduct rdf:about="workproduct/architecture-working-agreement">
+    <ess:name xml:lang="nl">Architectuur Werkafspraken</ess:name>
+    <ess:name xml:lang="en">Architecture Working Agreement</ess:name>
+    <ess:briefDescription xml:lang="nl">Afspraken over wie welke architectuurbeslissingen mag nemen, wat de escalatieroute is, en wat het ritme van governance-interacties is. Vastgesteld bij…</ess:briefDescription>
+    <ess:description xml:lang="nl">Afspraken over wie welke architectuurbeslissingen mag nemen, wat de escalatieroute is, en wat het ritme van governance-interacties is. Vastgesteld bij Establish Governance, bijgehouden bij Tune the Governance.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <!-- ess:levelOfDetail not defined -->
+    <!-- ess:icon not defined -->
+    <!-- ess:tags not defined -->
+    <!-- ess:resources not defined -->
+    <!-- ess:properties not defined -->
+    <!-- Application-specific -->
+    <ess:ownedElements rdf:resource="resource/architecture-working-agreement/template"/>
+  </ess:WorkProduct>
+
+  <ess:TypedResource rdf:about="resource/architecture-working-agreement/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/architecture-working-agreement.docx</ess:content>
+  </ess:TypedResource>
+
+</rdf:RDF>

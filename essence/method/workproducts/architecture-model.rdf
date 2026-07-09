@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <ess:WorkProduct rdf:about="workproduct/architecture-model">
+    <ess:name xml:lang="nl">Architectuurmodel</ess:name>
+    <ess:name xml:lang="en">Architecture Model</ess:name>
+    <ess:briefDescription xml:lang="nl">Maak de minimale set bouwstenen, relaties en grenzen zichtbaar waarop stakeholders nu moeten handelen.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De minimale set bouwstenen en weergaven die nodig zijn voor de huidige beslissingen. Niet meer. Elk weergave bestaat voor één stakeholderbehoefte.</p>
+<canvas src="assets/images/system-landscape.png" alt="Applicatielandschap" style="max-width:80%;height:auto;margin:1rem 0;">
+<p><strong>Rol:</strong> Architectuurbeschrijving van het systeem van interesse op de huidige scope.</p>
+<p><strong>Beantwoordt:</strong> Welke structurele keuzes vormen deze oplossing en hoe hangen de bouwstenen samen?</p>
+<p><strong>Scope:</strong> Beschrijft de gekozen architectuur en expliciet uitgestelde weergaven; besluitrationale hoort in ADRs.</p>
+<p><strong>Publiek:</strong> Architecture Owner, deliveryteam, Enterprise Architect, leveranciers en reviewers.</p>
+<h3>Informatie-elementen</h3><table><thead><tr><th>Element</th><th>Betekenis</th><th>Verplicht</th></tr></thead><tbody><tr><td>Systeemgrens</td><td>Wat binnen en buiten het systeem van interesse valt.</td><td>Ja</td></tr><tr><td>Bouwstenen</td><td>COTS-componenten, integratielaag, databases, platformdiensten en externe systemen.</td><td>Ja</td></tr><tr><td>Relaties en interfaces</td><td>De communicatieroutes, protocollen, data-eigenaarschap en afhankelijkheden tussen bouwstenen.</td><td>Ja</td></tr><tr><td>Bewust uitgesteld</td><td>De weergaven of beslissingen die nog niet nodig zijn, inclusief trigger om ze alsnog uit te werken.</td><td>Ja</td></tr></tbody></table>
+<h3>Kwaliteitscriteria</h3><ul><li><strong>Minimaal maar beslisbaar</strong> — Elke weergave ondersteunt een concrete stakeholderbeslissing.</li><li><strong>ADR-gekoppeld</strong> — Elke significante bouwsteen of interface verwijst naar de beslissing die hem verantwoordt.</li><li><strong>Integratie first-class</strong> — Glueware, adapters en interface-eigenaarschap zijn expliciet zichtbaar.</li></ul>
+<p><strong>Bijwerken wanneer:</strong> Bij elke significante ADR, reviewbevinding of wijziging in de systeemgrens.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/solution-architecture"/>
+    <ess:levelOfDetail rdf:resource="lod/architecture-model/context"/>
+    <ess:levelOfDetail rdf:resource="lod/architecture-model/container"/>
+    <ess:levelOfDetail rdf:resource="lod/architecture-model/component"/>
+    <ess:levelOfDetail rdf:resource="lod/architecture-model/code"/>
+    <ess:resources rdf:resource="resource/architecture-model/c4-reference"/>
+    <ess:ownedElements rdf:resource="resource/architecture-model/template"/>
+  </ess:WorkProduct>
+
+  <ess:LevelOfDetail rdf:about="lod/architecture-model/context">
+    <ess:name xml:lang="nl">1. Context</ess:name>
+    <ess:name xml:lang="en">1. Context</ess:name>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
+    <ess:successor rdf:resource="lod/architecture-model/container"/>
+    <ess:checkListItem rdf:nodeID="checkpoint_lod_context_1"/>
+  </ess:LevelOfDetail>
+
+  <ess:Checkpoint rdf:nodeID="checkpoint_lod_context_1">
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+
+  <ess:LevelOfDetail rdf:about="lod/architecture-model/container">
+    <ess:name xml:lang="nl">2. Container</ess:name>
+    <ess:name xml:lang="en">2. Container</ess:name>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
+    <ess:successor rdf:resource="lod/architecture-model/component"/>
+    <ess:checkListItem rdf:nodeID="checkpoint_lod_container_1"/>
+  </ess:LevelOfDetail>
+
+  <ess:Checkpoint rdf:nodeID="checkpoint_lod_container_1">
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+
+  <ess:LevelOfDetail rdf:about="lod/architecture-model/component">
+    <ess:name xml:lang="nl">3. Component</ess:name>
+    <ess:name xml:lang="en">3. Component</ess:name>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
+    <ess:successor rdf:resource="lod/architecture-model/code"/>
+    <ess:checkListItem rdf:nodeID="checkpoint_lod_component_1"/>
+  </ess:LevelOfDetail>
+
+  <ess:Checkpoint rdf:nodeID="checkpoint_lod_component_1">
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+
+  <ess:LevelOfDetail rdf:about="lod/architecture-model/code">
+    <ess:name xml:lang="nl">4. Code</ess:name>
+    <ess:name xml:lang="en">4. Code</ess:name>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
+    <ess:checkListItem rdf:nodeID="checkpoint_lod_code_1"/>
+  </ess:LevelOfDetail>
+
+  <ess:Checkpoint rdf:nodeID="checkpoint_lod_code_1">
+    <ess:name>1</ess:name>
+  </ess:Checkpoint>
+
+  <ess:Resource rdf:about="resource/architecture-model/c4-reference">
+    <ess:content>https://c4model.com/</ess:content>
+  </ess:Resource>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/architecture-model/architecture">
+    <ess:workProduct rdf:resource="workproduct/architecture-model"/>
+    <ess:alpha rdf:resource="alpha/architecture"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:WorkProductManifest>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/architecture-model/system">
+    <ess:workProduct rdf:resource="workproduct/architecture-model"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ess:lowerBound>
+    <ess:upperBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ess:upperBound>
+  </ess:WorkProductManifest>
+
+  <ess:TypedResource rdf:about="resource/architecture-model/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/architecture-model.docx</ess:content>
+  </ess:TypedResource>
+
+</rdf:RDF>

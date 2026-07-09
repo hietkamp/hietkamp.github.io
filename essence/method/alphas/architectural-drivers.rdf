@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:Alpha rdf:about="alpha/architectural-drivers">
+    <ess:name xml:lang="nl">Architectuurbepalende Eisen</ess:name>
+    <ess:name xml:lang="en">Architectural Drivers</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl">De architectuurbepalende eisen — kwaliteitsattributen, beperkingen en bedrijfsdoelen — die architectuurkeuzes sturen en beperken.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:states rdf:resource="state/architectural-drivers/identified"/>
+    <ess:states rdf:resource="state/architectural-drivers/prioritised"/>
+    <ess:states rdf:resource="state/architectural-drivers/quantified"/>
+    <ess:states rdf:resource="state/architectural-drivers/addressed"/>
+    <ess:states rdf:resource="state/architectural-drivers/sustained"/>
+  </ess:Alpha>
+
+  <ess:State rdf:about="state/architectural-drivers/identified">
+    <ess:name xml:lang="nl">Geïdentificeerd</ess:name>
+    <ess:name xml:lang="en">Identified</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/architectural-drivers/identified/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/architectural-drivers/identified/2"/>
+    <ess:successor rdf:resource="state/architectural-drivers/prioritised"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/architectural-drivers/identified/1">
+    <ess:name xml:lang="nl">De architectuurbepalende eisen en hun eigenaren zijn in beeld…</ess:name>
+    <ess:name xml:lang="en">The architecturally-significant concerns and their owners ar…</ess:name>
+    <ess:description xml:lang="nl">De architectuurbepalende eisen en hun eigenaren zijn in beeld gebracht.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/architectural-drivers/identified/2">
+    <ess:name xml:lang="nl">Er bestaat een kandidatenlijst van drivers.</ess:name>
+    <ess:name xml:lang="en">A candidate list of drivers exists.</ess:name>
+    <ess:description xml:lang="nl">Er bestaat een kandidatenlijst van drivers.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:State rdf:about="state/architectural-drivers/prioritised">
+    <ess:name xml:lang="nl">Geprioriteerd</ess:name>
+    <ess:name xml:lang="en">Prioritised</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/architectural-drivers/prioritised/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/architectural-drivers/prioritised/2"/>
+    <ess:successor rdf:resource="state/architectural-drivers/quantified"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/architectural-drivers/prioritised/1">
+    <ess:name xml:lang="nl">De significante weinige drivers zijn overeengekomen en gerangschikt.</ess:name>
+    <ess:name xml:lang="en">The significant few drivers are agreed and ranked.</ess:name>
+    <ess:description xml:lang="nl">De significante weinige drivers zijn overeengekomen en gerangschikt.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/architectural-drivers/prioritised/2">
+    <ess:name xml:lang="nl">De triviale velen zijn expliciet uitgesteld.</ess:name>
+    <ess:name xml:lang="en">The trivial many are explicitly deferred.</ess:name>
+    <ess:description xml:lang="nl">De triviale velen zijn expliciet uitgesteld.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:State rdf:about="state/architectural-drivers/quantified">
+    <ess:name xml:lang="nl">Gekwantificeerd</ess:name>
+    <ess:name xml:lang="en">Quantified</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/architectural-drivers/quantified/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/architectural-drivers/quantified/2"/>
+    <ess:successor rdf:resource="state/architectural-drivers/addressed"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/architectural-drivers/quantified/1">
+    <ess:name xml:lang="nl">Elke significante driver heeft een meetbaar succescriterium.</ess:name>
+    <ess:name xml:lang="en">Each significant driver has a measurable success criterion.</ess:name>
+    <ess:description xml:lang="nl">Elke significante driver heeft een meetbaar succescriterium.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/architectural-drivers/quantified/2">
+    <ess:name xml:lang="nl">De criteria zijn overeengekomen met de stakeholders.</ess:name>
+    <ess:name xml:lang="en">The criteria are agreed with the stakeholders.</ess:name>
+    <ess:description xml:lang="nl">De criteria zijn overeengekomen met de stakeholders.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:State rdf:about="state/architectural-drivers/addressed">
+    <ess:name xml:lang="nl">Geadresseerd</ess:name>
+    <ess:name xml:lang="en">Addressed</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/architectural-drivers/addressed/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/architectural-drivers/addressed/2"/>
+    <ess:successor rdf:resource="state/architectural-drivers/sustained"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/architectural-drivers/addressed/1">
+    <ess:name xml:lang="nl">De drivers zijn weerspiegeld in de beslissingen en de architect…</ess:name>
+    <ess:name xml:lang="en">The drivers are reflected in the decisions and the architect…</ess:name>
+    <ess:description xml:lang="nl">De drivers zijn weerspiegeld in de beslissingen en de architectuur.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/architectural-drivers/addressed/2">
+    <ess:name xml:lang="nl">Bewijs toont aan dat de drivers worden behaald.</ess:name>
+    <ess:name xml:lang="en">Evidence shows the drivers are being met.</ess:name>
+    <ess:description xml:lang="nl">Bewijs toont aan dat de drivers worden behaald.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:State rdf:about="state/architectural-drivers/sustained">
+    <ess:name xml:lang="nl">Bijgehouden</ess:name>
+    <ess:name xml:lang="en">Sustained</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/architectural-drivers/sustained/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/architectural-drivers/sustained/2"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/architectural-drivers/sustained/1">
+    <ess:name xml:lang="nl">De drivers worden bewaakt naarmate de context verandert.</ess:name>
+    <ess:name xml:lang="en">The drivers are monitored as the context changes.</ess:name>
+    <ess:description xml:lang="nl">De drivers worden bewaakt naarmate de context verandert.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/architectural-drivers/sustained/2">
+    <ess:name xml:lang="nl">De drivers worden hervalideerd en bijgewerkt wanneer nodig.</ess:name>
+    <ess:name xml:lang="en">The drivers are re-validated and updated when needed.</ess:name>
+    <ess:description xml:lang="nl">De drivers worden hervalideerd en bijgewerkt wanneer nodig.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:AlphaContainment rdf:about="alpha-containment/architectural-drivers">
+    <ess:superAlpha rdf:resource="alpha/requirements"/>
+    <ess:subordinateAlpha rdf:resource="alpha/architectural-drivers"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:AlphaContainment>
+
+</rdf:RDF>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:Pattern rdf:about="pattern/c4-archimate-viewpoints">
+    <ess:name xml:lang="nl">C4-ArchiMate-weergaven</ess:name>
+    <ess:name xml:lang="en">C4-ArchiMate Viewpoints</ess:name>
+    <ess:briefDescription xml:lang="nl">Gebruik C4-niveaus om de informatiedichtheid van architectuurweergaven te sturen en map de elementen expliciet naar ArchiMate-lagen.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Gebruik C4-niveaus om de informatiedichtheid van architectuurweergaven te sturen en map de elementen expliciet naar ArchiMate-lagen.</p>
+<p><strong>Doel:</strong> Maak architectuurbeelden consistent, leesbaar en traceerbaar naar formele architectuurtaal.</p>
+<p><strong>Context:</strong> Architecture Vision en Architecture Definition op enterprise-, solution- en componentniveau.</p>
+<p><strong>Probleem:</strong> C4 is goed leesbaar, ArchiMate is formeel; zonder mapping ontstaan dubbele modelwerelden.</p>
+<p><strong>Oplossing:</strong> Kies per werkproduct het juiste C4-niveau en leg per elementtype vast welk ArchiMate-element of stereotype wordt gebruikt.</p>
+<p><strong>Resultaat:</strong> Teams krijgen begrijpelijke diagrammen, terwijl architectuurrepository en governance dezelfde semantiek behouden.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/c4-archimate-viewpoints/uses"/>
+    <ess:associations rdf:resource="pattern-association/c4-archimate-viewpoints/related-workproducts"/>
+    <ess:tags rdf:resource="tag/c4"/>
+    <ess:tags rdf:resource="tag/archimate"/>
+  </ess:Pattern>
+
+  <ess:Tag rdf:about="tag/c4">
+    <ess:value>C4</ess:value>
+  </ess:Tag>
+
+  <ess:Tag rdf:about="tag/archimate">
+    <ess:value>ArchiMate</ess:value>
+  </ess:Tag>
+
+  <ess:PatternAssociation rdf:about="pattern-association/c4-archimate-viewpoints/uses">
+    <ess:name xml:lang="en">uses</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/enterprise-design"/>
+    <ess:elements rdf:resource="activity/solution-design"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/c4-archimate-viewpoints/related-workproducts">
+    <ess:name xml:lang="en">related-workproducts</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="workproduct/architecture-model"/>
+    <ess:elements rdf:resource="workproduct/architecture-vision"/>
+  </ess:PatternAssociation>
+
+</rdf:RDF>
