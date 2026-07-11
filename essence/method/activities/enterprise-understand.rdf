@@ -9,7 +9,7 @@
 >
 
   <ess:Activity rdf:about="activity/enterprise-understand">
-    <ess:name xml:lang="nl">Begrijpen</ess:name>
+    <ess:name xml:lang="nl">Sturende eisen funderen</ess:name>
     <ess:name xml:lang="en">Understand</ess:name>
     <ess:briefDescription xml:lang="nl">Identificeer en kwantificeer de sturende eisen; stel meetbare succescriteria vast in een discovery workshop met stakeholders.</ess:briefDescription>
     <ess:description xml:lang="nl">Identificeer en kwantificeer de sturende eisen; stel meetbare succescriteria vast in een discovery workshop met stakeholders.</ess:description>
@@ -21,10 +21,11 @@
     <ess:action rdf:resource="action/enterprise-understand/update-alpha/architectural-drivers"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/enterprise-understand/completion/architectural-drivers"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/enterprise-understand/default">
-    <ess:name xml:lang="nl">Begrijpen</ess:name>
+    <ess:name xml:lang="nl">Sturende eisen funderen</ess:name>
     <ess:name xml:lang="en">Understand</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl">Identificeer en kwantificeer de sturende eisen; stel meetbare succescriteria vast in een discovery workshop met stakeholders.</ess:description>
@@ -53,7 +54,7 @@
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/enterprise-understand/part-of/understand-the-requirements">
-    <ess:name>Begrijpen part-of Understand The Requirements</ess:name>
+    <ess:name>Sturende eisen funderen part-of Understand The Requirements</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/enterprise-understand"/>
     <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds"/>

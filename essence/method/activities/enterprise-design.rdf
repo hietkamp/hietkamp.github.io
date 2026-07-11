@@ -9,10 +9,10 @@
 >
 
   <ess:Activity rdf:about="activity/enterprise-design">
-    <ess:name xml:lang="nl">Kiezen</ess:name>
+    <ess:name xml:lang="nl">Basis- en doelarchitectuur bepalen</ess:name>
     <ess:name xml:lang="en">Design</ess:name>
-    <ess:briefDescription xml:lang="nl">Definieer de enterprise-brede bouwstenen: major systems, integratiearchitectuur en vendor-categorieën. Leg onomkeerbare keuzes op landgoedniveau vast …</ess:briefDescription>
-    <ess:description xml:lang="nl">Definieer de enterprise-brede bouwstenen: major systems, integratiearchitectuur en vendor-categorieën. Leg onomkeerbare keuzes op landgoedniveau vast als beslissingsrecords. De uitkomsten vormen het fundament van de goedgekeurde route.</ess:description>
+    <ess:briefDescription xml:lang="nl">Breng de basisarchitectuur in kaart, bepaal de doelarchitectuur en leg onomkeerbare keuzes vast via een gap-analyse.</ess:briefDescription>
+    <ess:description xml:lang="nl">Breng eerst de bestaande (baseline) architectuur in kaart: welke major systems, integratiearchitectuur en vendor-categorieën zijn nu al in gebruik? Definieer vervolgens de gewenste doelarchitectuur: de enterprise-brede bouwstenen die nodig zijn om de sturende eisen te realiseren. Voer een gap-analyse uit tussen de basis- en doelarchitectuur om te bepalen welke veranderingen nodig zijn. Leg de onomkeerbare keuzes op landgoedniveau vast als architectuurbeslissingen (ADR's).</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
     <ess:approach rdf:resource="approach/enterprise-design/default"/>
@@ -24,13 +24,14 @@
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/enterprise-design/completion/architecture"/>
     <ess:criterion rdf:resource="criterion/enterprise-design/completion/architecture-decisions"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/enterprise-design/default">
-    <ess:name xml:lang="nl">Kiezen</ess:name>
+    <ess:name xml:lang="nl">Basis- en doelarchitectuur bepalen</ess:name>
     <ess:name xml:lang="en">Design</ess:name>
     <ess:briefDescription/>
-    <ess:description xml:lang="nl">Definieer de enterprise-brede bouwstenen: major systems, integratiearchitectuur en vendor-categorieën. Leg onomkeerbare keuzes op landgoedniveau vast als beslissingsrecords. De uitkomsten vormen het fundament van de goedgekeurde route.</ess:description>
+    <ess:description xml:lang="nl">Breng eerst de bestaande (baseline) architectuur in kaart: welke major systems, integratiearchitectuur en vendor-categorieën zijn nu al in gebruik? Definieer vervolgens de gewenste doelarchitectuur: de enterprise-brede bouwstenen die nodig zijn om de sturende eisen te realiseren. Voer een gap-analyse uit tussen de basis- en doelarchitectuur om te bepalen welke veranderingen nodig zijn. Leg de onomkeerbare keuzes op landgoedniveau vast als architectuurbeslissingen (ADR's).</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
@@ -70,7 +71,7 @@
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/enterprise-design/part-of/shape-the-system">
-    <ess:name>Kiezen part-of Shape The System</ess:name>
+    <ess:name>Basis- en doelarchitectuur bepalen part-of Shape The System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/enterprise-design"/>
     <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>

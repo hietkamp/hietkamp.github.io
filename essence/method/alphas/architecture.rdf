@@ -20,6 +20,7 @@
     <ess:states rdf:resource="state/architecture/usable"/>
     <ess:states rdf:resource="state/architecture/established"/>
     <ess:states rdf:resource="state/architecture/evolving"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Alpha>
 
   <ess:State rdf:about="state/architecture/envisioned">

@@ -54,7 +54,7 @@
   </div>
   <div class="panel transition-shadow mt-[18px] rounded-[13px] border border-l-4 border-slate-300 border-l-[var(--prac)] bg-slate-50 px-5 py-[18px] [&_h3]:m-0 [&_h3]:mb-1.5 [&_h3]:font-serif [&_h3]:text-[1.16rem] [&_p]:mb-2.5 [&_p]:text-[0.95rem] [&_p]:text-slate-500 [&_p:last-child]:mb-0 mt-[20px]">
     <h3>{{ sections.achtergrond.panel.title }}</h3>
-    <p>{{ sections.achtergrond.panel.body }}</p>
+    {% for para in sections.achtergrond.panel.body %}<p>{{ para }}</p>{% endfor %}
   </div>
 </section>
 

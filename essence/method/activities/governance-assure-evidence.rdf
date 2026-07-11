@@ -23,6 +23,7 @@
     <ess:action rdf:resource="action/governance-assure-evidence/update-alpha/governance"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/governance-assure-evidence/completion/governance"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/governance-assure-evidence/default">

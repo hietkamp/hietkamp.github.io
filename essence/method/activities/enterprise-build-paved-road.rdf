@@ -22,6 +22,7 @@
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/entry/paved-road"/>
     <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/completion/paved-road"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/enterprise-build-paved-road/default">

@@ -26,7 +26,7 @@
   <li><strong>Status</strong> – de voortgang van de architectuur, bijvoorbeeld van een eerste richting via een uitgewerkt ontwerp naar een bewezen oplossing.</li>
   <li><strong>Gate</strong> – het formele beslismoment waarop wordt vastgesteld of de fase succesvol is afgerond en de volgende fase kan starten.</li>
   </ul>
-  <p>Niet iedere fase heeft een eigen gate. Zo vormen de ontwerp- en implementatiefase één logisch geheel en worden deze gezamenlijk afgesloten met Gate 3: Architectuur Bewezen.</p>
+  <p>Niet iedere fase heeft een eigen gate. Zo vormen de ontwerp- en implementatiefase één logisch geheel en worden deze gezamenlijk afgesloten met Gate 3: System Usable.</p>
   </br><p><strong>Relatie met projectmanagement</strong></p>
   <p>De projectlevenscyclus sluit aan op de projectbesturing via de gates. Iedere gate verwijst naar de practice <strong>Architectuursturing</strong>, waarin wordt gewerkt met vooraf vastgestelde guardrails, zoals architectuurprincipes en de paved road. Zolang een project binnen deze kaders blijft, kunnen beslissingen zonder aanvullende beoordeling worden genomen.</p>
   <p>Alleen wanneer een project bewust afwijkt van de afgesproken kaders (off-road) of een belangrijke, onomkeerbare architectuurbeslissing neemt, is een expliciete beoordeling nodig. Een gate controleert daarom niet het hele project opnieuw, maar toetst of dergelijke uitzonderingen correct zijn beoordeeld en goedgekeurd.</p>
@@ -78,6 +78,7 @@
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/initiation/includes"/>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/initiation/concluded-by"/>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/initiation/lod"/>
   </ess:Pattern>
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/initiation/concluded-by">
@@ -95,6 +96,13 @@
     <ess:elements rdf:resource="activity/solution-develop-roadmap"/>
   </ess:PatternAssociation>
 
+  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/analysisdesign/lod">
+    <ess:name xml:lang="nl">detailniveau</ess:name>
+    <ess:name xml:lang="en">level of detail</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="lod/architecture-model/context"/>
+    <ess:elements rdf:resource="lod/architecture-model/container"/>
+  </ess:PatternAssociation>
 
   <!-- ================= Phase 2 — Requirements ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/requirements">
@@ -102,12 +110,27 @@
     <ess:name xml:lang="en">Phase 2 — Requirements</ess:name>
     <ess:briefDescription xml:lang="nl">Selecteer de architectuurbepalende eisen en leg de solution-richting vast binnen de enterprise-kaders.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
-<p>In deze fase worden alle verzamelde wensen, eisen en randvoorwaarden geanalyseerd en wordt bepaald welke daarvan bepalend zijn voor de verdere uitwerking van de oplossing. Niet iedere eis heeft dezelfde impact; de focus ligt op de eisen en uitgangspunten die richting geven aan de keuzes die in de volgende fasen worden gemaakt.</p>
-<p>Het doel van deze fase is om een helder en gedragen kader vast te stellen waarbinnen de oplossing wordt ontworpen en gerealiseerd. Daarbij worden de relevante eisen geselecteerd, geprioriteerd en afgestemd met de betrokken stakeholders.</p>
-<p>Aan het einde van deze fase is duidelijk welke eisen en uitgangspunten leidend zijn voor het vervolg van het traject. Deze vormen het toetsingskader voor ontwerp, realisatie en validatie en worden formeel vastgesteld voordat de volgende fase start.</p>
+<p>In deze fase worden de behoeften van de organisatie, gebruikers en andere stakeholders vertaald naar <strong>functionele en niet-functionele requirements</strong>. Als uitgangspunt worden de functionele requirements beschreven in de vorm van <strong>use cases</strong>. Elke use case beschrijft een concreet gebruiksdoel, de betrokken actoren en de interactie met de oplossing, zodat duidelijk wordt welke functionaliteit de oplossing moet bieden en in welke context deze wordt gebruikt. Naast de functionele requirements worden ook de niet-functionele requirements beschreven zoals kwaliteitseisen en overige randvoorwaarden.</p>
+<p>Het doel van deze fase is om een complete, consistente en begrijpelijke set requirements op te leveren die de basis vormt voor de analyse- en ontwerpfase. Door de functionele requirements als use cases te beschrijven, ontstaat een gedeeld begrip van het gewenste gebruik van de oplossing en kunnen de architectuurbepalende requirements in de volgende fase worden geanalyseerd en vertaald naar een passend ontwerp.</p>
+<p>Aan het einde van deze fase zijn de requirements formeel vastgesteld en vormen zij de input voor de analyse- en ontwerpfase.</p>
 ]]></ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/requirements/includes"/>
+  </ess:Pattern>
+
+  <!-- ================= Phase 3 — Analysis & design ================= -->
+  <ess:Pattern rdf:about="pattern/project-lifecycle/analysisdesign">
+    <ess:name xml:lang="nl">Fase 3 — Analyse &amp; ontwerp</ess:name>
+    <ess:name xml:lang="en">Phase 3 — Analysis &amp; design</ess:name>
+    <ess:briefDescription xml:lang="nl">De enterprise-architect past de paved road toe op het solution-traject en levert het globale architectuurontwerp (HLD) als kader voor het low-level design.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>In deze fase worden de verzamelde wensen, eisen en randvoorwaarden geanalyseerd en wordt vastgesteld welke daarvan bepalend zijn voor de verdere uitwerking van de oplossing. Niet iedere eis heeft dezelfde impact; de nadruk ligt op de eisen en uitgangspunten die richting geven aan de architectuur- en ontwerpkeuzes in het vervolg van het traject. Deze eisen worden geselecteerd, geprioriteerd en afgestemd met de betrokken stakeholders, zodat een helder en gedragen kader ontstaat waarbinnen de oplossing wordt ontworpen en gerealiseerd.</p>
+<p>Vervolgens wordt de gekozen oplossingsrichting uitgewerkt tot een volledig, samenhangend en realiseerbaar ontwerp. Op basis van de vastgestelde eisen en uitgangspunten worden de architectuur, structuur en technische keuzes verder uitgewerkt, zodat duidelijk is hoe de oplossing zal worden gerealiseerd. Alle belangrijke ontwerpbeslissingen worden daarbij vastgelegd en onderbouwd, zodat de realisatie gecontroleerd en consistent kan plaatsvinden.</p>
+<p>Aan het einde van deze fase zijn zowel de leidende eisen en uitgangspunten als het volledige ontwerp formeel vastgesteld. Daarmee is een eenduidig toetsingskader beschikbaar voor de realisatie en de daaropvolgende validatie, en is de oplossing gereed om in de volgende fase te worden gerealiseerd.</p>
+]]></ess:description>
+   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/analysisdesign/includes"/>
+    <ess:associations rdf:resource="pattern-association/project-lifecycle/analysisdesign/lod"/>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/requirements/concluded-by"/>
   </ess:Pattern>
 
@@ -122,29 +145,13 @@
     <ess:name xml:lang="nl">bevat</ess:name>
     <ess:name xml:lang="en">includes</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="activity/solution-gather-requirements"/>
   </ess:PatternAssociation>
-
-
-  <!-- ================= Phase 3 — Analysis & design ================= -->
-  <ess:Pattern rdf:about="pattern/project-lifecycle/analysisdesign">
-    <ess:name xml:lang="nl">Fase 3 — Analyse &amp; ontwerp</ess:name>
-    <ess:name xml:lang="en">Phase 3 — Analysis &amp; design</ess:name>
-    <ess:briefDescription xml:lang="nl">De enterprise-architect past de paved road toe op het solution-traject en levert het globale architectuurontwerp (HLD) als kader voor het low-level design.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[
-<p>In deze fase wordt de gekozen oplossingsrichting uitgewerkt tot een volledig en realiseerbaar ontwerp. Op basis van de vastgestelde eisen en uitgangspunten worden de architectuur, structuur en technische keuzes verder uitgewerkt, zodat duidelijk is hoe de oplossing wordt gerealiseerd.</p>
-<p>Het doel van deze fase is om een compleet ontwerp op te leveren dat als basis dient voor de implementatie. Alle belangrijke ontwerpbeslissingen worden vastgelegd en onderbouwd, zodat de realisatie gecontroleerd en consistent kan plaatsvinden.</p>
-<p>Aan het einde van deze fase is het ontwerp volledig uitgewerkt en gereed om te worden gerealiseerd.</p>
-]]></ess:description>
-   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:associations rdf:resource="pattern-association/project-lifecycle/analysisdesign/includes"/>
-    <ess:associations rdf:resource="pattern-association/project-lifecycle/analysisdesign/lod"/>
-  </ess:Pattern>
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/analysisdesign/includes">
     <ess:name xml:lang="nl">bevat</ess:name>
     <ess:name xml:lang="en">includes</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/solution-gather-requirements"/>
     <ess:elements rdf:resource="activity/solution-design"/>
   </ess:PatternAssociation>
 
@@ -152,8 +159,6 @@
     <ess:name xml:lang="nl">detailniveau</ess:name>
     <ess:name xml:lang="en">level of detail</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="lod/architecture-model/context"/>
-    <ess:elements rdf:resource="lod/architecture-model/container"/>
     <ess:elements rdf:resource="lod/architecture-model/component"/>
     <ess:elements rdf:resource="lod/architecture-model/code"/>
   </ess:PatternAssociation>
@@ -249,17 +254,12 @@
   </ess:PatternAssociation>
 
 
-  <!-- ================= Gate 1 — Architecture Envisioned ================= -->
+  <!-- ================= Gate 1 — Solution Needed ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-1-gericht">
-    <ess:name xml:lang="nl">Gate 1 — Architectuur Gericht</ess:name>
-    <ess:name xml:lang="en">Gate 1 — Architecture Envisioned</ess:name>
-    <ess:briefDescription xml:lang="nl">Fase 1 is afgerond als de architectuur de toestand Gericht heeft bereikt: de visie is overeengekomen en governance is ingesteld.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[
-<p>Fase 1 is afgerond als de architectuur de toestand Gericht heeft bereikt: de visie is overeengekomen en governance is ingesteld.</p>
-<p><strong>Criterium:</strong> Architecture Sponsor heeft de architectuurvisie formeel goedgekeurd op enterprise- én solution-niveau; governance-kaders en cadentie zijn ingesteld.</p>
-<p><strong>Wie beoordeelt dit:</strong> de Architecture Sponsor.</p>
-<p><strong>&rarr; Levering Besturen.</strong> Deze gate is niet het moment waarop alles opnieuw wordt beoordeeld. Beslissingen uit deze fase die binnen de guardrails vallen (architectuurprincipes en werkafspraken), stromen vrij door. Alleen afwijkende of significante beslissingen worden apart beoordeeld door Architectuursturing.</p>
-]]></ess:description>
+    <ess:name xml:lang="nl">Gate 1 — Solution Needed</ess:name>
+    <ess:name xml:lang="en">Gate 1 — Solution Needed</ess:name>
+    <ess:briefDescription xml:lang="nl">Deze gate is gehaald als: de stakeholders bij de opportunity en de voorgestelde oplossing zijn geïdentificeerd; hun onderliggende behoeften zijn vastgesteld; eventuele onderliggende problemen en hun oorzaken zijn geïdentificeerd; is bevestigd dat een systeemgebaseerde oplossing nodig is; en er minstens één systeemgebaseerde oplossing is voorgesteld.</ess:briefDescription>
+    <ess:description xml:lang="nl">Deze gate is gehaald als: de stakeholders bij de opportunity en de voorgestelde oplossing zijn geïdentificeerd; hun onderliggende behoeften zijn vastgesteld; eventuele onderliggende problemen en hun oorzaken zijn geïdentificeerd; is bevestigd dat een systeemgebaseerde oplossing nodig is; en er minstens één systeemgebaseerde oplossing is voorgesteld.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-1-gericht/aligns"/>
   </ess:Pattern>
@@ -268,22 +268,17 @@
     <ess:name xml:lang="nl">sluit aan op</ess:name>
     <ess:name xml:lang="en">aligns</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="state/architecture/envisioned"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>
   </ess:PatternAssociation>
 
 
-  <!-- ================= Gate 2 — Architecture Outlined ================= -->
+  <!-- ================= Gate 2 — Architecture Selected ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-2-omschreven">
-    <ess:name xml:lang="nl">Gate 2 — Architectuur Omschreven</ess:name>
-    <ess:name xml:lang="en">Gate 2 — Architecture Outlined</ess:name>
-    <ess:briefDescription xml:lang="nl">Fase 2 is afgerond als de architectuur de toestand Omschreven heeft bereikt: enterprise-kaders zijn vastgesteld, paved road is gepubliceerd en roadmap is goedgekeurd.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[
-<p>Fase 2 is afgerond als de architectuur de toestand Omschreven heeft bereikt: enterprise-kaders zijn vastgesteld, paved road is gepubliceerd en roadmap is goedgekeurd.</p>
-<p><strong>Criterium:</strong> Enterprise-architectuurontwerp is goedgekeurd; paved road is gepubliceerd als catalogus; architectuurroadmap is vastgesteld door de Architecture Sponsor.</p>
-<p><strong>Wie beoordeelt dit:</strong> de Architecture Sponsor.</p>
-<p><strong>&rarr; Levering Besturen.</strong> Alleen eisen die buiten de afgesproken guardrails vallen (bijvoorbeeld een eis die niet binnen de paved road past) worden apart beoordeeld door Architectuursturing; de rest wordt geaccepteerd zonder aparte review.</p>
-]]></ess:description>
+    <ess:name xml:lang="nl">Gate 2 — Architecture Selected</ess:name>
+    <ess:name xml:lang="en">Gate 2 — Architecture Selected</ess:name>
+    <ess:briefDescription xml:lang="nl">Deze gate is gehaald als: de criteria voor het selecteren van de architectuur zijn overeengekomen; de kernconcepten en eigenschappen van de architectuur zijn helder gedefinieerd; de gekozen architectuur is duidelijk doordacht; de systeemgrens is bekend; belangrijke beslissingen over de opbouw van het systeem zijn genomen; buy/build/reuse-beslissingen zijn gemaakt; en de belangrijkste technische risico's zijn onderkend en geaccepteerd.</ess:briefDescription>
+    <ess:description xml:lang="nl">Deze gate is gehaald als: de criteria voor het selecteren van de architectuur zijn overeengekomen; de kernconcepten en eigenschappen van de architectuur zijn helder gedefinieerd; de gekozen architectuur is duidelijk doordacht; de systeemgrens is bekend; belangrijke beslissingen over de opbouw van het systeem zijn genomen; buy/build/reuse-beslissingen zijn gemaakt; en de belangrijkste technische risico's zijn onderkend en geaccepteerd.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-2-omschreven/aligns"/>
   </ess:Pattern>
@@ -292,22 +287,17 @@
     <ess:name xml:lang="nl">sluit aan op</ess:name>
     <ess:name xml:lang="en">aligns</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="state/architecture/outlined"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>
   </ess:PatternAssociation>
 
 
-  <!-- ================= Gate 3 — Architecture Demonstrated (closes Phase 3 + Phase 4 jointly) ================= -->
+  <!-- ================= Gate 3 — System Usable (closes Phase 3 + Phase 4 jointly) ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-3-bewezen">
-    <ess:name xml:lang="nl">Gate 3 — Architectuur Bewezen</ess:name>
-    <ess:name xml:lang="en">Gate 3 — Architecture Demonstrated</ess:name>
-    <ess:briefDescription xml:lang="nl">Fase 4 is afgerond als de architectuur de toestand Bewezen heeft bereikt: risicovolle COTS-integratiekeuzes zijn aangetoond via een PoC.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[
-<p>Fase 4 is afgerond als de architectuur de toestand Bewezen heeft bereikt: risicovolle COTS-integratiekeuzes zijn aangetoond via een PoC. Deze gate sluit tevens het ontwerpwerk uit Fase 3 formeel af: het Omlijnd/Besloten-ontwerp wordt hier voor het eerst extern getoetst.</p>
-<p><strong>Criterium:</strong> Alle kritieke integratiekeuzes zijn bewezen; PoC-resultaten zijn gedocumenteerd als reviewrecords en gekoppeld aan ADR's; geen onacceptabele integratierisico's meer open.</p>
-<p><strong>Wie beoordeelt dit:</strong> de Architecture Sponsor, met een advies van het architectuurforum.</p>
-<p><strong>&rarr; Levering Besturen.</strong> Dit is doorgaans het moment met de meeste "off-road" ADR's (afwijkingen van de paved road). Alleen die afwijkingen worden hier daadwerkelijk beoordeeld; ontwerpkeuzes die binnen de paved road blijven, stromen vrij door. Raakt een afwijking ook tijd of geld van het project, dan wordt dit tevens voorgelegd aan de projectgovernance (bijvoorbeeld de Stuurgroep in PRINCE2 of de Sponsor in PMI/PMBOK).</p>
-]]></ess:description>
+    <ess:name xml:lang="nl">Gate 3 — System Usable</ess:name>
+    <ess:name xml:lang="en">Gate 3 — System Usable</ess:name>
+    <ess:briefDescription xml:lang="nl">Deze gate is gehaald als: de belangrijkste architectuurkenmerken zijn aangetoond; het systeem kan worden bevraagd en de prestaties kunnen worden gemeten; kritieke configuraties en interfaces van de architectuur zijn gedemonstreerd; de integratie met bestaande systemen is aangetoond; en de relevante stakeholders zijn het erover eens dat de gedemonstreerde architectuur passend is (Demonstrable) — én aanvullend: het systeem kan door de gebruikersstakeholders zelf worden bediend; de geboden functionaliteit is getest; de prestaties en het aantal defecten zijn acceptabel voor de stakeholders; het systeem is voldoende gedocumenteerd; de opgeleverde systeemonderdelen zijn bekend; en de toegevoegde waarde van het systeem is duidelijk (Usable).</ess:briefDescription>
+    <ess:description xml:lang="nl">Deze gate is gehaald als: de belangrijkste architectuurkenmerken zijn aangetoond; het systeem kan worden bevraagd en de prestaties kunnen worden gemeten; kritieke configuraties en interfaces van de architectuur zijn gedemonstreerd; de integratie met bestaande systemen is aangetoond; en de relevante stakeholders zijn het erover eens dat de gedemonstreerde architectuur passend is (Demonstrable) — én aanvullend: het systeem kan door de gebruikersstakeholders zelf worden bediend; de geboden functionaliteit is getest; de prestaties en het aantal defecten zijn acceptabel voor de stakeholders; het systeem is voldoende gedocumenteerd; de opgeleverde systeemonderdelen zijn bekend; en de toegevoegde waarde van het systeem is duidelijk (Usable).</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-3-bewezen/aligns"/>
   </ess:Pattern>
@@ -316,22 +306,17 @@
     <ess:name xml:lang="nl">sluit aan op</ess:name>
     <ess:name xml:lang="en">aligns</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="state/architecture/demonstrated"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>
   </ess:PatternAssociation>
 
 
-  <!-- ================= Gate 4 — Architecture Usable ================= -->
+  <!-- ================= Gate 4 — System Ready ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-4-bruikbaar">
-    <ess:name xml:lang="nl">Gate 4 — Architectuur Bruikbaar</ess:name>
-    <ess:name xml:lang="en">Gate 4 — Architecture Usable</ess:name>
-    <ess:briefDescription xml:lang="nl">Fase 5 is afgerond als de architectuur de toestand Bruikbaar heeft bereikt: het systeem is als geheel gevalideerd en conformance is aangetoond.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[
-<p>Fase 5 is afgerond als de architectuur de toestand Bruikbaar heeft bereikt: het systeem is als geheel gevalideerd en conformance is aangetoond.</p>
-<p><strong>Criterium:</strong> Conformance-bewijs is verzameld en goedgekeurd door het architectuurforum; alle off-road afwijkingen zijn gedocumenteerd en geaccepteerd of geremedieerd; solution-transitie is gepland.</p>
-<p><strong>Wie beoordeelt dit:</strong> de Architecture Sponsor, met een advies van de testmanager.</p>
-<p><strong>&rarr; Levering Besturen.</strong> Conformance wordt hier aangetoond op basis van bewijs (testresultaten, reviewuitkomsten), niet op basis van documentatie alleen.</p>
-]]></ess:description>
+    <ess:name xml:lang="nl">Gate 4 — System Ready</ess:name>
+    <ess:name xml:lang="en">Gate 4 — System Ready</ess:name>
+    <ess:briefDescription xml:lang="nl">Deze gate is gehaald als: documentatie over het inzetten en gebruiken van het systeem in de beoogde omgeving beschikbaar is; de stakeholder-vertegenwoordigers het systeem accepteren als geschikt voor het doel; zij het systeem daadwerkelijk beschikbaar willen maken voor gebruik; en de operationele ondersteuning is ingericht.</ess:briefDescription>
+    <ess:description xml:lang="nl">Deze gate is gehaald als: documentatie over het inzetten en gebruiken van het systeem in de beoogde omgeving beschikbaar is; de stakeholder-vertegenwoordigers het systeem accepteren als geschikt voor het doel; zij het systeem daadwerkelijk beschikbaar willen maken voor gebruik; en de operationele ondersteuning is ingericht.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-4-bruikbaar/aligns"/>
   </ess:Pattern>
@@ -340,22 +325,17 @@
     <ess:name xml:lang="nl">sluit aan op</ess:name>
     <ess:name xml:lang="en">aligns</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="state/architecture/usable"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>
   </ess:PatternAssociation>
 
 
-  <!-- ================= Gate 5 — Architecture Established ================= -->
+  <!-- ================= Gate 5 — System Operational ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-5-gevestigd">
-    <ess:name xml:lang="nl">Gate 5 — Architectuur Gevestigd</ess:name>
-    <ess:name xml:lang="en">Gate 5 — Architecture Established</ess:name>
-    <ess:briefDescription xml:lang="nl">Fase 6 is afgerond als de architectuur de toestand Gevestigd heeft bereikt: de methode en governance zijn verbeterd op basis van productie-ervaringen.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[
-<p>Fase 6 is afgerond als de architectuur de toestand Gevestigd heeft bereikt: de methode en governance zijn verbeterd op basis van productie-ervaringen.</p>
-<p><strong>Criterium:</strong> Paved road is geactualiseerd op basis van productie-ervaringen; architectuurmethode is bijgesteld; governance-mechanisme is geëvalueerd en bijgesteld voor het volgende traject.</p>
-<p><strong>Wie beoordeelt dit:</strong> de beheerorganisatie, in afstemming met de Architecture Sponsor. Dit is tegelijk het moment waarop de architectuur formeel wordt overgedragen aan reguliere beheer- en onderhoudsactiviteiten.</p>
-<p><strong>&rarr; Levering Besturen.</strong> Vanaf hier loopt de governance niet meer via deze projectgates, maar via de doorlopende guardrails van Architectuursturing en, op enterprise- en portfolioniveau, via de Portfolio Levenscyclus.</p>
-]]></ess:description>
+    <ess:name xml:lang="nl">Gate 5 — System Operational</ess:name>
+    <ess:name xml:lang="en">Gate 5 — System Operational</ess:name>
+    <ess:briefDescription xml:lang="nl">Deze gate is gehaald als: het systeem beschikbaar is gesteld aan de beoogde gebruikers; er minstens één instantie van het systeem volledig operationeel is; en het systeem volledig wordt ondersteund conform de afgesproken servicelevels.</ess:briefDescription>
+    <ess:description xml:lang="nl">Deze gate is gehaald als: het systeem beschikbaar is gesteld aan de beoogde gebruikers; er minstens één instantie van het systeem volledig operationeel is; en het systeem volledig wordt ondersteund conform de afgesproken servicelevels.</ess:description>
   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-5-gevestigd/aligns"/>
   </ess:Pattern>
@@ -364,7 +344,7 @@
     <ess:name xml:lang="nl">sluit aan op</ess:name>
     <ess:name xml:lang="en">aligns</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="state/architecture/established"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Operational"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>
   </ess:PatternAssociation>
 

@@ -9,7 +9,7 @@
 >
 
   <ess:Pattern rdf:about="role/architecture-owner">
-    <ess:name xml:lang="nl">Architecture Owner</ess:name>
+    <ess:name xml:lang="nl">Architectuureigenaar</ess:name>
     <ess:name xml:lang="en">Architecture Owner</ess:name>
     <ess:briefDescription xml:lang="nl">De meest technisch ervaren persoon in het team (conform Disciplined Agile Delivery). Voert het solution-spoor uit binnen de door de Enterprise Archite…</ess:briefDescription>
     <ess:description xml:lang="nl">De meest technisch ervaren persoon in het team (conform Disciplined Agile Delivery). Voert het solution-spoor uit binnen de door de Enterprise Architect geleverde context. Verfijnt enterprise-drivers naar solution-specifieke kwaliteitsattributen, selecteert COTS-componenten, bewijst de risicovolste integratiekeuzes, maakt de solution-roadmap en faciliteert met het team de architectuurevolutie in productie. Rapporteert afwijkingen van enterprise-standaarden terug aan de Enterprise Architect via beslissingsrecords en reviewrecords.</ess:description>

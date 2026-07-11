@@ -19,6 +19,7 @@
     <ess:states rdf:resource="state/paved-road/adopted"/>
     <ess:states rdf:resource="state/paved-road/pervasive"/>
     <ess:states rdf:resource="state/paved-road/evolving"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
   </ess:Alpha>
 
   <ess:State rdf:about="state/paved-road/seeded">

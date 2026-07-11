@@ -97,14 +97,14 @@
 </section>
 {% endif %}
 
-{% if role %}
+{% if roles and roles.cards %}
 <section class="sec mt-[38px] scroll-mt-[164px]" id="roles">
-  <h2 class="sh m-0 mb-1 font-serif text-[1.4rem] font-semibold">Rol</h2>
-  <p class="sec-intro my-1.5 mb-[18px] text-[0.98rem] text-slate-500">{{ role.intro }}</p>
-  <div class="role-grid mt-3.5 grid grid-cols-1 gap-4 max-w-[600px] max-[900px]:grid-cols-1">
-    <div class="role-card overflow-hidden rounded-[13px] border border-slate-300 [&_.rc-head]:flex [&_.rc-head]:flex-col [&_.rc-head]:gap-[3px] [&_.rc-head]:px-4 [&_.rc-head]:py-[13px] [&_.rc-head]:text-white [&_.rc-level]:font-mono [&_.rc-level]:text-[9px] [&_.rc-level]:uppercase [&_.rc-level]:tracking-[0.18em] [&_.rc-level]:opacity-85 [&_.rc-head_h3]:m-0 [&_.rc-head_h3]:font-serif [&_.rc-head_h3]:text-[1.15rem] [&_.rc-head_h3]:font-semibold [&_.rc-body]:bg-white [&_.rc-body]:px-4 [&_.rc-body]:py-[13px] [&_.rc-body_p]:m-0 [&_.rc-body_p]:mb-2.5 [&_.rc-body_p]:text-[0.88rem] [&_.rc-body_p]:text-slate-500 rc-{{ role.id }} [&_.rc-head]:{{ role.head_color }}">
+  <h2 class="sh m-0 mb-1 font-serif text-[1.4rem] font-semibold">{{ 'Rollen' if roles.cards|length > 1 else 'Rol' }}</h2>
+  <p class="sec-intro my-1.5 mb-[18px] text-[0.98rem] text-slate-500">{{ roles.intro }}</p>
+  <div class="role-grid mt-3.5 grid gap-4 {{ 'grid-cols-2 max-[900px]:grid-cols-1' if roles.cards|length > 1 else 'grid-cols-1 max-w-[600px]' }}">
+    {% for role in roles.cards %}
+    <div class="role-card overflow-hidden rounded-[13px] border border-slate-300 [&_.rc-head]:flex [&_.rc-head]:flex-col [&_.rc-head]:gap-[3px] [&_.rc-head]:px-4 [&_.rc-head]:py-[13px] [&_.rc-head]:text-white [&_.rc-head_h3]:m-0 [&_.rc-head_h3]:font-serif [&_.rc-head_h3]:text-[1.15rem] [&_.rc-head_h3]:font-semibold [&_.rc-body]:bg-white [&_.rc-body]:px-4 [&_.rc-body]:py-[13px] [&_.rc-body_p]:m-0 [&_.rc-body_p]:mb-2.5 [&_.rc-body_p]:text-[0.88rem] [&_.rc-body_p]:text-slate-500 rc-{{ role.id }} [&_.rc-head]:{{ role.head_color }}">
       <div class="rc-head">
-        <span class="rc-level">{{ role.level }}</span>
         <h3>{{ role.name }}</h3>
       </div>
       <div class="rc-body">
@@ -117,6 +117,7 @@
         <div class="rc-acts mt-2.5 border-t border-dashed border-slate-300 pt-2 font-mono text-[0.8rem] text-slate-500 [&_b]:text-slate-900"><b>Primair eigenaar van:</b> {{ role.owns }}</div>
       </div>
     </div>
+    {% endfor %}
   </div>
 </section>
 {% endif %}

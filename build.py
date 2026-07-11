@@ -29,94 +29,56 @@ DOCS_DIR = ROOT / "docs"
 # Visual config — things not in RDF (colours, icons, UI text)
 # ---------------------------------------------------------------------------
 
+# A Practice is never itself in an area of concern (Customer/Solution/Endeavor) —
+# only Alphas and Activities are, via ess:tags in the RDF. Practices therefore all
+# get the same neutral colour; per-activity colouring comes from activity_domain_color().
+NEUTRAL = "#0f172a"
+
 PRACTICE_CFG = {
     "enterprise-architecture": {
-        "color":       "mva",
-        "css_var":     "#27406b",
+        "color":       "neutral",
         "spoor":       "enterprise",
-        "template":    "wow.html.j2",
-        "num_color":   "bg-[#27406b]",
-        "css":         "bg-[#27406b]",
-        "gradient":    "from-[#27406b] to-[#1a2f5a]",
-        "domain_name": "Enterprise Architectuur",
-        "level_label": "Enterprise",
+        "num_color":   f"bg-[{NEUTRAL}]",
+        "css":         f"bg-[{NEUTRAL}]",
+        "gradient":    f"from-[{NEUTRAL}] to-[{NEUTRAL}]",
         "icon_path":   "<rect x='2' y='2' width='5' height='5'/><rect x='9' y='2' width='5' height='5'/>"
                        "<rect x='2' y='9' width='5' height='5'/><rect x='9' y='9' width='5' height='5'/>",
     },
     "solution-architecture": {
-        "color":       "sol",
-        "css_var":     "#0f6e63",
+        "color":       "neutral",
         "spoor":       "solution",
-        "template":    "wow.html.j2",
-        "num_color":   "bg-[#0f6e63]",
-        "css":         "bg-[#0f6e63]",
-        "gradient":    "from-[#0f6e63] to-[#0a4d45]",
-        "domain_name": "Solution Architectuur",
-        "level_label": "Solution",
-        "domain_colored": True,
+        "num_color":   f"bg-[{NEUTRAL}]",
+        "css":         f"bg-[{NEUTRAL}]",
+        "gradient":    f"from-[{NEUTRAL}] to-[{NEUTRAL}]",
         "icon_path":   "<path d='M8 2L2 14h12L8 2zm0 4l3 6H5l3-6z'/>",
     },
     "architectural-governance": {
-        "color":        "mvg",
-        "css_var":      "#4f46e5",
+        "color":        "neutral",
         "spoor":        "governance",
-        "template":     "governance.html.j2",
-        "num_color":    "bg-indigo-200",
-        "css":          "bg-indigo-100",
-        "gradient":     "from-indigo-100 to-indigo-200",
-        "header_light": True,
-        "domain_name":  "Architectuursturing",
-        "level_label":  "Governance",
+        "num_color":    f"bg-[{NEUTRAL}]",
+        "css":          f"bg-[{NEUTRAL}]",
+        "gradient":     f"from-[{NEUTRAL}] to-[{NEUTRAL}]",
         "icon_path":    "<path d='M8 1L1 5v4c0 3.55 2.96 6.88 7 7.93C12.04 15.88 15 12.55 15 9V5L8 1z'/>",
     },
     "portfolio-lifecycle": {
-        "color":       "port",
-        "css_var":     "#b45309",
+        "color":       "neutral",
         "spoor":       "enterprise",
-        "template":    "wow.html.j2",
-        "num_color":   "bg-amber-700",
-        "css":         "bg-amber-700",
-        "gradient":    "from-amber-700 to-amber-800",
-        "domain_name": "Portfolio Levenscyclus",
-        "level_label": "Portfolio",
+        "num_color":   f"bg-[{NEUTRAL}]",
+        "css":         f"bg-[{NEUTRAL}]",
+        "gradient":    f"from-[{NEUTRAL}] to-[{NEUTRAL}]",
         "icon_path":   "<rect x='2' y='2' width='4' height='4'/><rect x='8' y='2' width='4' height='4'/>"
                        "<rect x='2' y='8' width='4' height='4'/><rect x='8' y='8' width='4' height='4'/>",
     },
     "project-lifecycle": {
-        "color":        "wf",
-        "css_var":      "#EAB308",
+        "color":        "neutral",
         "spoor":        "solution",
-        "template":     "wow.html.j2",
-        "num_color":    "bg-yellow-500",
-        "css":          "bg-yellow-500",
-        "gradient":     "from-yellow-500 to-yellow-700",
-        "header_light": True,
-        "domain_name":  "Project levenscyclus",
-        "level_label":  "Solution",
-        "nav_title":    "Project levenscyclus",
+        "num_color":    f"bg-[{NEUTRAL}]",
+        "css":          f"bg-[{NEUTRAL}]",
+        "gradient":     f"from-[{NEUTRAL}] to-[{NEUTRAL}]",
         "icon_path":    "<path d='M2 2h12v2H2V2zm1 3h10v2H3V5zm1 3h8v2H4V8zm1 3h6v2H5v-2zm1 3h4v2H6v-2z'/>",
-        "show_comp":    False,
     },
 }
 
-ROLE_CFG = {
-    "enterprise-architect": {
-        "head_color":    "bg-[#27406b]",
-        "competencies":  ["Analyse", "Architectuur", "Leadership"],
-    },
-    "architecture-owner": {
-        "head_color":    "bg-[#0f6e63]",
-        "competencies":  ["Analyse", "Stakeholder Rep.", "Leadership"],
-    },
-    "architecture-sponsor": {
-        "head_color":    "bg-indigo-200",
-        "competencies":  ["Leadership", "Management"],
-    },
-    "governance-forum": {
-        "head_color":    "bg-indigo-200",
-        "competencies":  ["Analyse", "Leadership", "Management"],
-    },
-}
 
 # Phase heuristic: first two activities in chain → analyse, rest → dev
 ANALYSE_KERNEL_SPACES = {
@@ -124,39 +86,32 @@ ANALYSE_KERNEL_SPACES = {
     str(KERN.UnderstandtheRequirements),
 }
 
-# Essence Kernel domain colours (OMG ptc/25-05-01): Solution, Customer, Endeavour.
-# Maps the local name of an alpha (kernel or method-specific) to the kernel
-# domain it belongs to, so activity cards can be tinted per touched alpha.
-ALPHA_DOMAIN_CFG = {
-    # Solution domain — System / Software System
-    "architecture":           "solution",
-    "architecture-decisions": "solution",
-    "System":                 "solution",
-    # Customer domain — Opportunity / Stakeholders / Requirements
-    "architectural-drivers":  "customer",
-    "Requirements":           "customer",
-    "Opportunity":            "customer",
-    "Stakeholders":           "customer",
-    # Endeavour domain — Work / Way of Working / Team
-    "paved-road":             "endeavour",
-    "governance":             "endeavour",
-    "Work":                   "endeavour",
-    "WayofWorking":           "endeavour",
-    "Team":                   "endeavour",
+# Essence Kernel areas of concern (OMG ptc/25-05-01): Solution, Customer, Endeavor.
+# Alphas and Activities carry their area of concern directly in the RDF via
+# ess:tags (rdf:resource pointing at esk:CustomerAreaOfConcern / SolutionAreaOfConcern /
+# EndeavorAreaOfConcern) — this just maps that RDF Tag's local name to our colour key.
+AREA_OF_CONCERN_DOMAIN = {
+    "CustomerAreaOfConcern":  "customer",
+    "SolutionAreaOfConcern":  "solution",
+    "EndeavorAreaOfConcern":  "endeavour",
 }
 
+# Solid `-700`-weight fills with white text, matching the existing phase badges
+# (bg-blue-700 for "analyse", bg-slate-700 for "dev") — one consistent num-badge
+# language site-wide, with hues chosen to avoid the blue-700/indigo-700/emerald-700
+# already used by the chips.space/comp/alpha chips on the same card.
 DOMAIN_COLOR_CFG = {
     "solution": {
-        "num_color":      "bg-[#FFFF7F]",
-        "num_text_color": "text-slate-800",
+        "num_color":      "bg-yellow-600",
+        "num_text_color": "text-white",
     },
     "customer": {
-        "num_color":      "bg-[#D4FECE]",
-        "num_text_color": "text-slate-800",
+        "num_color":      "bg-green-700",
+        "num_text_color": "text-white",
     },
     "endeavour": {
-        "num_color":      "bg-indigo-100",
-        "num_text_color": "text-slate-800",
+        "num_color":      "bg-sky-700",
+        "num_text_color": "text-white",
     },
 }
 
@@ -264,12 +219,34 @@ def activity_inputs(g: Graph, activity_uri) -> list[str]:
                     names.append(n)
     return names
 
+def _activity_completion_lods(g: Graph, activity_uri) -> dict:
+    """Return {wp_uri: [lod_name, ...]} derived from this activity's own
+    CompletionCriterion.levelOfDetail — the specific LOD this activity's completion
+    is judged against, as opposed to every LOD the work product happens to have."""
+    result: dict = {}
+    for crit in g.objects(activity_uri, ESS.criterion):
+        if (crit, RDF.type, ESS.CompletionCriterion) not in g:
+            continue
+        for lod in g.objects(crit, ESS.levelOfDetail):
+            if (lod, RDF.type, ESS.LevelOfDetail) not in g:
+                continue
+            wp = next(
+                (s for s in g.subjects(ESS.levelOfDetail, lod)
+                 if (s, RDF.type, ESS.WorkProduct) in g),
+                None,
+            )
+            if wp:
+                result.setdefault(wp, []).append(get_name(g, lod))
+    return result
+
 def activity_outputs(g: Graph, activity_uri, lod_filter: dict = None) -> list[dict]:
     """Return [{"name": str, "lods": [str]}] for each WP created/updated by the activity.
 
     lod_filter: {wp_uri: [lod_name, ...]} — when provided, only show the listed LOD names
-    for that WP; WPs not in the filter get no LODs shown.
+    for that WP; WPs not in the filter get no LODs shown. The activity's own
+    CompletionCriterion.levelOfDetail (if any) takes priority over lod_filter.
     """
+    completion_lods = _activity_completion_lods(g, activity_uri)
     results = []
     seen: set = set()
     for action in g.objects(activity_uri, ESS.action):
@@ -279,7 +256,9 @@ def activity_outputs(g: Graph, activity_uri, lod_filter: dict = None) -> list[di
                 seen.add(wp)
                 n = get_name(g, wp)
                 if n:
-                    if lod_filter is not None:
+                    if wp in completion_lods:
+                        lods = sorted(completion_lods[wp])
+                    elif lod_filter is not None:
                         lods = sorted(lod_filter.get(wp, []))
                     else:
                         lods = sorted(
@@ -403,15 +382,13 @@ def _alpha_key(uri) -> str:
     return s.split("#")[-1] if "#" in s else s.rstrip("/").split("/")[-1]
 
 def activity_domain_color(g: Graph, activity_uri) -> dict:
-    """Return the Essence Kernel domain colour (Solution/Customer/Endeavour) for
-    the alpha this activity primarily works on, or {} if no mapping applies."""
-    alpha = primary_alpha_uri(g, activity_uri)
-    if alpha is None:
-        return {}
-    domain = ALPHA_DOMAIN_CFG.get(_alpha_key(alpha))
-    if not domain:
-        return {}
-    return {"domain": domain, **DOMAIN_COLOR_CFG[domain]}
+    """Return the Essence Kernel area-of-concern colour (Solution/Customer/Endeavour)
+    tagged directly on this activity via ess:tags, or {} if untagged."""
+    for tag in g.objects(activity_uri, ESS.tags):
+        domain = AREA_OF_CONCERN_DOMAIN.get(_alpha_key(tag))
+        if domain:
+            return {"domain": domain, **DOMAIN_COLOR_CFG[domain]}
+    return {}
 
 # ---------------------------------------------------------------------------
 # Helper: workproduct → owning practice role
@@ -511,7 +488,7 @@ def build_nav_practices(g: Graph, root: str = "") -> list[dict]:
             "id":    s,
             "title": cfg.get("nav_title") or get_name(g, practice),
             "href":  practice_href(s, root),
-            "color": cfg.get("color", "mva"),
+            "color": cfg.get("color", "neutral"),
         })
     return result
 
@@ -546,81 +523,13 @@ def build_index_ctx(g: Graph) -> dict:
             "title": get_name(g, practice),
             "brief": get_brief(g, practice),
             "href":  practice_href(s),
-            "color": cfg.get("color", "mva"),
+            "color": cfg.get("color", "neutral"),
         })
 
-    # Path cards: portfolio and project entry points
-    port_uri = URIRef(BASE + "practice/portfolio-lifecycle")
-    wf_uri   = URIRef(BASE + "practice/project-lifecycle")
+    # Path cards: portfolio and project entry points, fully derived from RDF
     paths = [
-        {
-            "level": "Portfolio context",
-            "role":  "Enterprise Architect · Portfolio Manager",
-            "title": "Portfolio",
-            "desc":  get_brief(g, port_uri) or "Stuur de architectuurvolwassenheid over meerdere projecten heen via fases en gates.",
-            "bullets": [
-                {"label": "Fases",  "text": "Initiatie · Planning · Uitvoering · Optimalisatie"},
-                {"label": "Gates",  "text": "Gericht · Bruikbaar · Gevestigd"},
-                {"label": "Alpha",  "text": "Architectuur · Governance"},
-            ],
-            "cta":  "Portfolio spoor",
-            "href": practice_href("portfolio-lifecycle"),
-            "css":  "border-t-[var(--port)] hover:border-t-[var(--port)]",
-        },
-        {
-            "level": "Project context",
-            "role":  "Architecture Owner · Projectleider",
-            "title": "Project",
-            "desc":  get_brief(g, wf_uri) or "Begeleid één project van requirementsdefinitie tot operationele test via vaste fases.",
-            "bullets": [
-                {"label": "Fases",  "text": "Requirementsdefinitie → Operationele test"},
-                {"label": "Gates",  "text": "Gericht · Omschreven · Bewezen · Bruikbaar · Gevestigd"},
-                {"label": "Alpha",  "text": "Architectuur · Architectuurbeslissingen"},
-            ],
-            "cta":  "Project",
-            "href": practice_href("project-lifecycle"),
-            "css":  "border-t-[var(--wf)] hover:border-t-[var(--wf)]",
-        },
-    ]
-
-    # Process steps
-    steps = [
-        {
-            "num": "01",
-            "title": "Begrijpen",
-            "desc": "Identificeer en kwantificeer de sturende eisen met meetbare succescriteria.",
-            "metric": "ASRs geïdentificeerd",
-        },
-        {
-            "num": "02",
-            "title": "Richten",
-            "desc": "Maak de architectuurrichting zichtbaar in een beknopte visie.",
-            "metric": "Architectuur Gericht",
-        },
-        {
-            "num": "03",
-            "title": "Kiezen",
-            "desc": "Neem en documenteer de architectureel significante beslissingen.",
-            "metric": "Beslissingen Beslist",
-        },
-        {
-            "num": "04",
-            "title": "Bewijzen",
-            "desc": "Bewijs de risicovolste integratiekeuzes via prototypes of PoC's.",
-            "metric": "Architectuur Aangetoond",
-        },
-        {
-            "num": "05",
-            "title": "Plannen",
-            "desc": "Maak de roadmap en stel de transitiestaten vast.",
-            "metric": "Architectuur Bruikbaar",
-        },
-        {
-            "num": "06",
-            "title": "Borgen",
-            "desc": "Begeleid de levering en stel governance bij op basis van bewijs.",
-            "metric": "Governance Effectief",
-        },
+        _phase_entrypoint_card(g, URIRef(BASE + "practice/portfolio-lifecycle")),
+        _phase_entrypoint_card(g, URIRef(BASE + "practice/project-lifecycle")),
     ]
 
     # Background decks: the 5 practices
@@ -635,7 +544,7 @@ def build_index_ctx(g: Graph) -> dict:
             "open":  "Bekijk practice",
         })
 
-    ctx = _base_ctx(g, root="", data_prac="mva",
+    ctx = _base_ctx(g, root="", data_prac="neutral",
                     title=method_name, description=method_brief)
     ctx.update({
         "hero_data": {
@@ -695,12 +604,12 @@ def build_practices_ctx(g: Graph) -> dict:
             "href":      practice_href(s),
             "title":     get_name(g, practice),
             "desc":      get_brief(g, practice),
-            "color":     cfg.get("color", "mva"),
+            "color":     cfg.get("color", "neutral"),
             "tags":      tags,
             "icon_path": cfg.get("icon_path", ""),
         })
 
-    ctx = _base_ctx(g, root="", data_prac="mva",
+    ctx = _base_ctx(g, root="", data_prac="neutral",
                     title="Practices", description="Overzicht van alle practices")
     ctx.update({
         "hero_data": {
@@ -790,6 +699,54 @@ def _phase_lod_filter(g: Graph, phase_uri) -> dict:
                     result.setdefault(wp, []).append(get_name(g, el))
             return result
     return {}
+
+
+def _strip_fase_prefix(name: str) -> str:
+    """Strip a leading 'Fase N — ' / 'Gate N — ' label down to its own name."""
+    return name.split("—", 1)[1].strip() if "—" in name else name
+
+
+def _phase_entrypoint_card(g: Graph, practice_uri) -> dict:
+    """Build a homepage entry-point card for a phase-based practice (portfolio-
+    lifecycle, project-lifecycle), fully derived from its RDF: phases, gates,
+    and the roles/alphas of the activities it includes."""
+    s = slug(practice_uri)
+    cfg = PRACTICE_CFG.get(s, {})
+    phases, gates = _phase_patterns(g, practice_uri)
+
+    acts = []
+    for phase in phases:
+        acts.extend(_phase_activities(g, phase))
+
+    owners = {o for a in acts for o in g.objects(a, ESS.owner)}
+    roles: list = []
+    for owner in owners:
+        for r in practice_role_uris(g, owner):
+            n = get_name(g, r)
+            if n and n not in roles:
+                roles.append(n)
+
+    alphas: list = []
+    for a in acts:
+        n = primary_alpha_name(g, a)
+        if n and n not in alphas:
+            alphas.append(n)
+
+    color = cfg.get("color", "neutral")
+    return {
+        "level": cfg.get("spoor", "").capitalize(),
+        "role":  " · ".join(roles),
+        "title": get_name(g, practice_uri),
+        "desc":  get_brief(g, practice_uri),
+        "bullets": [
+            {"label": "Fases", "text": " · ".join(_strip_fase_prefix(get_name(g, p)) for p in phases)},
+            {"label": "Gates", "text": " · ".join(_strip_fase_prefix(get_name(g, gt)) for gt in gates)},
+            {"label": "Alpha", "text": " · ".join(alphas)},
+        ],
+        "cta":  "Bekijk practice",
+        "href": practice_href(s),
+        "css":  f"border-t-[var(--{color})] hover:border-t-[var(--{color})] [&_.pc-cta]:bg-[var(--{color})]",
+    }
 
 
 def _gate_state(g: Graph, gate_uri):
@@ -925,7 +882,7 @@ def build_phase_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
     prose_parts = re.findall(r'<p[^>]*>(.*?)</p>', desc, re.DOTALL)
     prose_text = " ".join(_strip_tags(p) for p in prose_parts[:2] if p.strip())
 
-    ctx = _base_ctx(g, root="../", data_prac=cfg.get("color", "mva"),
+    ctx = _base_ctx(g, root="../", data_prac=cfg.get("color", "neutral"),
                     title=title, description=brief)
 
     # Collect description sections (phase details come from the desc HTML)
@@ -959,7 +916,6 @@ def build_phase_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
             "domains": domains,
         },
         "diff_grid":  None,
-        "role":       None,
         "work_products": [],
         "closing_panel": {
             "title": "Over deze practice",
@@ -974,7 +930,7 @@ def _activity_dict(g: Graph, act_uri, num: int, total: int,
                    practice_slug: str, lod_filter: dict = None) -> dict:
     s = slug(act_uri)
     cfg = PRACTICE_CFG.get(practice_slug, {})
-    domain_color = activity_domain_color(g, act_uri) if cfg.get("domain_colored") else {}
+    domain_color = activity_domain_color(g, act_uri)
     return {
         "type":           "activity",
         "href":           activity_href(s, root="../"),
@@ -985,10 +941,8 @@ def _activity_dict(g: Graph, act_uri, num: int, total: int,
         "desc":           get_brief(g, act_uri),
         "lede":           get_brief(g, act_uri),
         "phase":          activity_phase(g, act_uri),
-        "practice_level": cfg.get("level_label", ""),
         "chips": {
             "space": activity_space_chip(g, act_uri),
-            "comp":  "" if not cfg.get("show_comp", True) else "Masters",
             "alpha": primary_alpha_name(g, act_uri),
         },
         "inputs":    activity_inputs(g, act_uri),
@@ -1001,12 +955,34 @@ def _activity_dict(g: Graph, act_uri, num: int, total: int,
     }
 
 
+def practice_role_uris(g: Graph, practice_uri) -> list:
+    """Return the role URIs that perform this practice, via its 'performed by' association."""
+    for assoc_uri in g.objects(practice_uri, ESS.associations):
+        if get_name(g, assoc_uri, lang="en").lower() != "performed by":
+            continue
+        return list(g.objects(assoc_uri, ESS.elements))
+    return []
+
+
+def role_competencies(g: Graph, role_uri) -> list:
+    """Return the names of Competency individuals required by this role, via its
+    'requires competency' association. Skips non-Competency elements (e.g. a
+    required CompetencyLevel such as Masters, which is a level, not an area)."""
+    for assoc_uri in g.objects(role_uri, ESS.associations):
+        if get_name(g, assoc_uri, lang="en").lower() != "requires competency":
+            continue
+        return [
+            get_name(g, el) for el in g.objects(assoc_uri, ESS.elements)
+            if (el, RDF.type, ESS.Competency) in g
+        ]
+    return []
+
+
 def build_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
     s = slug(practice_uri)
     if s in PHASE_PRACTICES:
         return build_phase_practice_ctx(g, practice_uri)
     cfg = PRACTICE_CFG.get(s, {})
-    template = cfg.get("template", "wow.html.j2")
 
     acts = sorted_activities(g, practice_uri)
     total = len(acts)
@@ -1030,27 +1006,16 @@ def build_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
 
     # Role(s) for this practice
     role_dicts = []
-    for assoc_uri in g.objects(practice_uri, ESS.associations):
-        assoc_name_en = get_name(g, assoc_uri, lang="en")
-        if assoc_name_en.lower() != "performed by":
-            continue
-        role_uris = list(g.objects(assoc_uri, ESS.elements))
-        for r in role_uris:
-            rs = slug(r)
-            rcfg = ROLE_CFG.get(rs, {})
-            role_dicts.append({
-                "id":           rs,
-                "name":         get_name(g, r),
-                "desc":         get_brief(g, r),
-                "level":        cfg.get("level_label", ""),
-                "head_color":   rcfg.get("head_color", "bg-slate-700"),
-                "competencies": rcfg.get("competencies", []),
-                "owns":         ", ".join(wp["title"] for wp in wps[:3]),
-                "intro":        "De volgende rol voert de activiteiten in deze practice uit.",
-                "involves":     ", ".join(get_name(g, a) for a in acts),
-            })
-        break
-    role_dict = role_dicts[0] if role_dicts else None
+    for r in practice_role_uris(g, practice_uri):
+        rs = slug(r)
+        role_dicts.append({
+            "id":           rs,
+            "name":         get_name(g, r),
+            "desc":         get_brief(g, r),
+            "head_color":   f"bg-[{NEUTRAL}]",
+            "competencies": role_competencies(g, r),
+            "owns":         ", ".join(wp["title"] for wp in wps[:3]),
+        })
 
     domain_name = cfg.get("domain_name", get_name(g, practice_uri))
     # Alphas touched by activities in this practice
@@ -1076,7 +1041,7 @@ def build_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
     title = get_name(g, practice_uri)
     brief = get_brief(g, practice_uri)
 
-    ctx = _base_ctx(g, root="../", data_prac=cfg.get("color", "mva"),
+    ctx = _base_ctx(g, root="../", data_prac=cfg.get("color", "neutral"),
                     title=title, description=brief)
     ctx.update({
         "hero_data": {
@@ -1098,19 +1063,17 @@ def build_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
             "domains": domains,
         },
         "diff_grid": None,
-        "role": role_dict,
         "closing_panel": {
             "title": "Meer over deze practice",
             "body":  [brief, get_desc(g, practice_uri)],
         },
         "work_products": wps,
-        # for governance.html.j2 compatibility
         "roles": {
             "intro": "Rollen die deze practice uitvoeren.",
             "cards": role_dicts,
         },
     })
-    return ctx, template
+    return ctx, "wow.html.j2"
 
 
 # ── activity page ────────────────────────────────────────────────────────────
@@ -1132,11 +1095,13 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
     wp_cards = []
     for wp_uri in output_wps:
         ws = slug(wp_uri)
+        wp_owner = next(g.objects(wp_uri, ESS.owner), None)
         wp_cards.append({
-            "title":  get_name(g, wp_uri),
-            "desc":   get_brief(g, wp_uri),
-            "proves": wp_proves(g, wp_uri),
-            "href":   wp_href(ws, root="../"),
+            "title":    get_name(g, wp_uri),
+            "desc":     get_brief(g, wp_uri),
+            "proves":   wp_proves(g, wp_uri),
+            "href":     wp_href(ws, root="../"),
+            "practice": get_name(g, wp_owner) if wp_owner else "",
         })
 
     # Approach
@@ -1147,18 +1112,11 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
         if ap_desc:
             approach = {
                 "name": get_name(g, approach_uri),
-                "desc": ap_desc,
+                "desc": fix_desc_paths(ap_desc, "../"),
             }
 
-    # Prose from description — split on <p> tags; fall back to raw desc, then brief
-    desc_html = get_desc(g, act_uri)
-    prose_parts = re.findall(r'<p[^>]*>(.*?)</p>', desc_html, re.DOTALL)
-    if prose_parts:
-        prose = [p.strip() for p in prose_parts if p.strip()]
-    elif desc_html.strip():
-        prose = [desc_html.strip()]
-    else:
-        prose = []
+    # Full description HTML, rendered as-is (like wow.html.j2's rdf_prose)
+    desc_html = fix_desc_paths(get_desc(g, act_uri), "../")
 
     # Actions on work products and alphas
     _kind_nl  = {"create": "Aanmaken", "read": "Lezen", "update": "Bijwerken"}
@@ -1243,10 +1201,29 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
     sequence = {"predecessors": predecessors, "successors": successors} \
         if predecessors or successors else None
 
+    # Role(s) that perform the owning practice, and so this activity
+    role_cards = []
+    for r in practice_role_uris(g, practice_uri):
+        rs = slug(r)
+        role_cards.append({
+            "id":           rs,
+            "role":         get_name(g, r),
+            "scope":        get_name(g, practice_uri),
+            "desc":         get_brief(g, r),
+            "makes":        ", ".join(wp["title"] for wp in wp_cards[:3]),
+            "competencies": role_competencies(g, r),
+            "lc_css":       f"[&_.lc-head]:bg-[{NEUTRAL}]",
+        })
+    roles = {
+        "intro": "Rol die deze activiteit uitvoert." if len(role_cards) == 1
+                 else "Rollen die deze activiteit uitvoeren.",
+        "cards": role_cards,
+    } if role_cards else None
+
     title = get_name(g, act_uri)
     brief = get_brief(g, act_uri)
 
-    ctx = _base_ctx(g, root="../", data_prac=cfg.get("color", "mva"),
+    ctx = _base_ctx(g, root="../", data_prac=cfg.get("color", "neutral"),
                     title=title, description=brief)
     ctx.update({
         "act_name":  title,
@@ -1262,19 +1239,18 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
         },
         "chips": {
             "space": activity_space_chip(g, act_uri),
-            "comp":  "" if not cfg.get("show_comp", True) else "Masters",
         },
         "extra_chips": [],
         "alpha_bar":  alpha_bar_html(g, act_uri),
         "approach":   approach,
-        "prose":      prose,
+        "desc_html":  desc_html,
         "actions":    actions,
         "steps":      [],
         "cots_box":   None,
         "work_products": wp_cards,
         "completion_criteria": completion_criteria,
         "sequence":  sequence,
-        "roles": None,
+        "roles": roles,
         "nav": {
             "prev": {
                 "href":  f"../act/{slug(prev_act)}.html",
@@ -1366,6 +1342,7 @@ def build_wp_ctx(g: Graph, wp_uri) -> dict:
         if not lod_desc:
             for obj in g.objects(lod_uri, ESS.description):
                 lod_desc = str(obj); break
+        lod_desc = fix_desc_paths(lod_desc, "../")
         lod_list.append({
             "name":      get_name(g, lod_uri),
             "desc":      lod_desc,
@@ -1402,7 +1379,7 @@ def build_wp_ctx(g: Graph, wp_uri) -> dict:
             "desc":    f"Sjabloon voor {title}",
         }
 
-    ctx = _base_ctx(g, root="../", data_prac=cfg.get("color", "mva"),
+    ctx = _base_ctx(g, root="../", data_prac=cfg.get("color", "neutral"),
                     title=title, description=brief)
     ctx.update({
         "kicker":     "Werkproduct",

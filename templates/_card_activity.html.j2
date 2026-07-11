@@ -12,7 +12,6 @@
      title / name     – Nederlandse naam  (bijv. "Begrijpen")
      desc             – korte omschrijving
      chips.space      – Activity Space chip  (bijv. "AS 1–2 · Understand Stakeholder Needs")
-     chips.comp       – Competency chip      (bijv. "Analyse")
      chips.alpha      – Alpha chip           (bijv. "Drivers")
      inputs           – lijst van verwerkte work products (labels)
      outputs          – lijst van geproduceerde work products (labels)
@@ -20,7 +19,6 @@
    Level-specific (enterprise-begrijpen, solution-richten, ...):
      num              – volgnummer  ("01")
      phase            – "analyse" | "dev"
-     practice_level   – "Enterprise" | "Solution" | "Spans"
 
    Top-level practice-activiteiten (envision-the-architecture, ...):
      act_num          – "Activiteit 02 / 05"
@@ -37,7 +35,6 @@
 {% set _desc  = act.desc  | default(act.lede  | default('')) %}
 {% set _href  = href or act.href | default('#') %}
 {% set _phase = act.phase | default('dev') %}
-{% set _level = act.practice_level | default('') %}
 
 {# Volgnummer: ewow:num (level-specific) of extraheer uit ewow:actNum ("Activiteit 02 / 05") #}
 {% set _num_raw = act.num | default('') %}
@@ -47,11 +44,10 @@
 {% endif %}
 {% set _num = _num_raw if _num_raw else '·' %}
 
-{# Badge-kleur: argument wint; anders afgeleid van phase/level #}
+{# Badge-kleur: argument wint; anders afgeleid van phase #}
 {% set _num_color = num_color if num_color
-    else ('bg-blue-700'   if _phase == 'analyse'
-    else  ('bg-yellow-600' if _level == 'Solution'
-    else   'bg-slate-700')) %}
+    else ('bg-blue-700' if _phase == 'analyse'
+    else  'bg-slate-700') %}
 
 {# ── Card markup ─────────────────────────────────────────────────────────── #}
 <a href="{{ _href }}"
@@ -83,25 +79,6 @@
     <div class="ar-en mb-[5px] font-mono text-[10px] text-slate-400">{{ act.title_en }}</div>
     {% endif %}
 
-    {# Practice-level badge (Enterprise / Solution / Spans) #}
-    {% if _level %}
-    <div class="mb-[6px]">
-      {% if _level == 'Enterprise' %}
-      <span class="rounded-full border border-slate-700/20 bg-slate-700/10 px-[9px] py-[2px]
-                   font-mono text-[8.5px] font-semibold uppercase tracking-[0.12em] text-slate-700">Enterprise</span>
-      {% elif _level == 'Solution' %}
-      <span class="rounded-full border border-yellow-600/20 bg-yellow-600/10 px-[9px] py-[2px]
-                   font-mono text-[8.5px] font-semibold uppercase tracking-[0.12em] text-yellow-700">Solution</span>
-      {% elif _level == 'Spans' %}
-      <span class="rounded-full border border-indigo-700/20 bg-indigo-700/10 px-[9px] py-[2px]
-                   font-mono text-[8.5px] font-semibold uppercase tracking-[0.12em] text-indigo-700">Spans</span>
-      {% else %}
-      <span class="rounded-full border border-slate-300 bg-slate-50 px-[9px] py-[2px]
-                   font-mono text-[8.5px] font-semibold uppercase tracking-[0.12em] text-slate-500">{{ _level }}</span>
-      {% endif %}
-    </div>
-    {% endif %}
-
     {# Korte omschrijving (max. ~200 tekens voor de card) #}
     <div class="ar-desc">{{ _desc | truncate(200) }}</div>
 
@@ -125,10 +102,6 @@
         <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
                      uppercase tracking-[0.1em] space bg-[rgba(15,110,99,.1)] text-[var(--sol)]">{{ act.chips.space }}</span>
         {% endif %}
-      {% endif %}
-      {% if act.chips.comp %}
-      <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
-                   uppercase tracking-[0.1em] comp bg-indigo-700/10 text-indigo-700">{{ act.chips.comp }}</span>
       {% endif %}
       {% if act.chips.alpha %}
       <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
@@ -157,10 +130,13 @@
         {% for o in act.outputs %}
         <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
                      uppercase tracking-[0.1em] wp-out border border-yellow-600/30 bg-yellow-600/10 text-yellow-700">{{ o.name }}</span>
+        {% if o.lods %}
+        <span class="self-center font-mono text-[9px] uppercase tracking-[0.1em] text-slate-400">uitwerking op detailniveau:</span>
         {% for lod in o.lods %}
         <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
                      uppercase tracking-[0.1em] border border-slate-300 bg-slate-50 text-slate-500">{{ lod }}</span>
         {% endfor %}
+        {% endif %}
         {% endfor %}
       </div>
       {% endif %}

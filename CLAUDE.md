@@ -53,7 +53,7 @@ Method base URI = `https://hietkamp.nl/essence/`
 | `ess:elements` | object property | PatternAssociation → gerefereerde elementen |
 | `ess:workProduct` | object property | Action/Manifest → WorkProduct |
 | `ess:alpha` | object property | Action/Manifest/Criterion → Alpha |
-| `ess:tags` | object property | Pattern → Tag |
+| `ess:tags` | object property | Pattern → Tag; ook Alpha/Activity → `esk:CustomerAreaOfConcern` \| `SolutionAreaOfConcern` \| `EndeavorAreaOfConcern` |
 | `ess:end1` / `ess:end2` | object property | ActivityAssociation endpoints |
 | `ess:associationKind` | `xsd:string` | bv. `"end-before-start"`, `"part-of"` |
 
@@ -84,8 +84,7 @@ essencev3/
 │   ├── _collection_activities.html.j2  # Macro: collectie activiteitskaarten
 │   ├── index.html.j2              # Methode-startpagina
 │   ├── practices.html.j2          # Practices-overzicht
-│   ├── wow.html.j2                # Way of Working (activiteitenkaart per practice)
-│   ├── governance.html.j2         # Governance practice (variant van wow)
+│   ├── wow.html.j2                # Way of Working — enige practice-detailtemplate (alle 5 practices, incl. architectural-governance)
 │   ├── act.html.j2                # Individuele activiteitspagina
 │   ├── wp.html.j2                 # Werkproductpagina
 │   └── resources.html.j2          # Downloads/bronnen
@@ -169,7 +168,7 @@ def output_path(kind: str, id_slug: str) -> str:
 |---------------|----------|----------|
 | `docs/index.html` | `index.html.j2` | `ess:Method` |
 | `docs/practices.html` | `practices.html.j2` | alle `ess:Practice` |
-| `docs/practice/{id}.html` | `wow.html.j2` of `governance.html.j2` | `ess:Practice` + ownedElements |
+| `docs/practice/{id}.html` | `wow.html.j2` (alle 5 practices, geen aparte template per practice) | `ess:Practice` + ownedElements |
 | `docs/act/{id}.html` | `act.html.j2` | `ess:Activity` + actions + criteria |
 | `docs/wp/{id}.html` | `wp.html.j2` | `ess:WorkProduct` + manifests |
 
@@ -183,7 +182,7 @@ def output_path(kind: str, id_slug: str) -> str:
     "description": str,     # meta description
     "root": str,            # relatief pad naar root, bv. "../" of ""
     "css_path": str,        # pad naar style.css
-    "data_prac": str,       # CSS-klasse voor practice-kleur, bv. "mva"
+    "data_prac": str,       # CSS-klasse voor practice-kleur, altijd "neutral"
 }
 ```
 
@@ -198,7 +197,7 @@ def output_path(kind: str, id_slug: str) -> str:
             "href": str,        # bv. "practice/enterprise-architecture.html"
             "title": str,       # ess:name (nl)
             "desc": str,        # ess:briefDescription (nl)
-            "color": str,       # CSS-variabelenaam zonder --, bv. "mva"
+            "color": str,       # CSS-variabelenaam zonder --, altijd "neutral" (practices zijn nooit domein-gekleurd)
             "tags": [str],      # ownedElements-slugs of tags
             "icon_path": str,   # SVG path-data
         }
@@ -234,8 +233,7 @@ def output_path(kind: str, id_slug: str) -> str:
                         "title": str,
                         "desc": str,
                         "phase": "analyse" | "dev",
-                        "practice_level": "Enterprise" | "Solution" | "Spans",
-                        "chips": {"space": str, "comp": str, "alpha": str},
+                        "chips": {"space": str, "alpha": str},
                         "inputs": [str],    # WP-namen
                         "outputs": [str],   # WP-namen
                         "patterns": [str],  # patroon-namen
@@ -246,7 +244,12 @@ def output_path(kind: str, id_slug: str) -> str:
         ]
     },
     "diff_grid": None | { ... },
-    "role": { "id": str, "name": str, "desc": str, "head_color": str, "level": str, "competencies": [str], "owns": str },
+    "roles": {
+        "intro": str,
+        "cards": [
+            { "id": str, "name": str, "desc": str, "head_color": str, "competencies": [str], "owns": str }
+        ],  # 1 kaart voor de meeste practices, 2 voor architectural-governance — wow.html.j2 rendert altijd als grid
+    },
     "closing_panel": {"title": str, "body": [str]},
 }
 ```
@@ -264,10 +267,10 @@ def output_path(kind: str, id_slug: str) -> str:
         "parents": [{"href": str, "label": str}],
         "current": str,
     },
-    "chips": {"space": str, "comp": str},
+    "chips": {"space": str},
     "extra_chips": [],
     "alpha_bar": str,       # HTML voor alpha-voortgangsbalk
-    "prose": [str],         # paragrafen uit ess:description
+    "desc_html": str,       # volledige ess:description HTML, gerenderd via rdf_prose() (macro uit _macros.html.j2), net als op wow.html.j2
     "steps": [{"title": str, "desc": str}],
     "cots_box": str,        # optioneel HTML (COTS-context)
     "work_products": [
@@ -276,11 +279,12 @@ def output_path(kind: str, id_slug: str) -> str:
             "desc": str,
             "proves": str,  # alpha-state-progressie tekst
             "href": str | None,
+            "practice": str,  # naam van de practice die het werkproduct bezit (ess:owner)
         }
     ],
     "roles": None | {
         "intro": str,
-        "cards": [{ "level_label": str, "role": str, "scope": str, "desc": str,
+        "cards": [{ "role": str, "scope": str, "desc": str,
                     "makes": str, "competencies": [str], "lc_css": str, "id": str }]
     },
     "nav": {
@@ -433,43 +437,54 @@ jobs:
 
 ## CSS-variabelen en practice-kleuren
 
-De templates gebruiken CSS custom properties voor practice-kleuren. Definieer deze in `docs/style.css`:
+**Een Practice bevindt zich nooit in een domein/area of concern** — alleen `ess:Alpha` en `ess:Activity` doen dat (zie hieronder). Practices krijgen daarom allemaal dezelfde neutrale kleur. Definieer deze in `docs/style.css`:
 
 ```css
 :root {
-  --prac: #27406b;   /* standaard / methode */
-  --mva:  #27406b;   /* Enterprise Architectuur */
-  --mvg:  #4f46e5;   /* Architectuursturing */
-  --ent:  #27406b;   /* enterprise-spoor */
-  --sol:  #0f6e63;   /* solution-spoor */
+  --neutral: #0f172a;   /* neutrale practice-kleur, voor alle 5 practices */
+  --prac:    var(--neutral); /* overridden by data-prac selector below */
 }
-[data-prac="mva"]  { --prac: var(--mva); }
-[data-prac="mvg"]  { --prac: var(--mvg); }
+[data-prac="neutral"] { --prac: var(--neutral); }
 ```
 
-## Practice-ID → kleur mapping
+Alle practice-headers (`enterprise-architecture`, `solution-architecture`, `architectural-governance`, `portfolio-lifecycle`, `project-lifecycle`) renderen met `bg-[#0f172a]` en witte tekst — geen enkele practice krijgt een eigen kleur. De kleur die je per activiteit ziet komt uitsluitend van de area-of-concern-tag op die activiteit (zie hieronder).
 
-| Practice-slug | CSS-var / kleur | Opmerking |
-|---------------|-----------------|-----------|
-| `enterprise-architecture` | `--mva` / `--ent` `#27406b` | donkerblauw, witte tekst |
-| `solution-architecture` | `--sol` `#0f6e63` | donkergroen, witte tekst |
-| `architectural-governance` | `--mvg` `#4f46e5` | indigo, witte tekst |
-| `portfolio-lifecycle` | `--port` amber | amber, witte tekst |
-| `project-lifecycle` | `yellow-500` → `yellow-700` | Gradient amber-geel (Tailwind `#EAB308` → `#A16207`); **donkere tekst** (`text-slate-800`) op fase-headers en activiteitsbadges |
+## Essence Kernel areas of concern (Customer / Solution / Endeavor)
 
-## Essence Kernel domein-kleuren
+De Essence Kernel onderscheidt drie areas of concern. Dit is **RDF-content, geen build.py-config**: elke `ess:Alpha` en `ess:Activity` (kernel én method-specifiek) draagt zijn area of concern rechtstreeks via `ess:tags`:
 
-De Essence Kernel onderscheidt drie domeinen met vaste achtergrondkleuren (uit de OMG-standaard):
+```xml
+<ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+```
 
-| Domein | Hex | Toepassing |
-|--------|-----|------------|
-| Solution | `#FFFF7F` | Alphas / toestanden in het Solution-domein (System, Software System) |
-| Customer | `#D4FECE` | Alphas / toestanden in het Customer-domein (Opportunity, Stakeholders, Requirements) |
-| Endeavour | `bg-indigo-100` (`#e0e7ff`) | Alphas / toestanden in het Endeavour-domein (Work, Way of Working, Team); ook gebruikt voor de `architectural-governance` practice en gate-blokken |
+De drie tag-individuals (`esk:CustomerAreaOfConcern`, `esk:SolutionAreaOfConcern`, `esk:EndeavorAreaOfConcern`) staan gedefinieerd in `essence/essence-kernel.rdf` en worden daar al gebruikt op alle Kernel-Alphas en -ActivitySpaces. Dezelfde tags staan nu ook op de 5 method-Alphas (`essence/method/alphas/*.rdf`) en de 17 method-Activities (`essence/method/activities/*.rdf`).
+
+`build.py` leest deze tag puur via rdflib (`activity_domain_color()`, build.py) — er is **geen** hardcoded Alpha→domein-mapping meer. `AREA_OF_CONCERN_DOMAIN` in build.py is uitsluitend een technische vertaling van de RDF Tag-URI naar een interne kleursleutel, geen inhoudelijke aanname.
+
+Alle drie de kleuren zijn een solide `-700`-gewicht vulling met witte tekst — dezelfde stijl als de bestaande fase-badges (`bg-blue-700` voor "analyse", `bg-slate-700` voor "dev"), zodat het num-badge overal op de site één consistente taal spreekt. De tinten zijn zo gekozen dat ze niet botsen met `blue-700`/`indigo-700`/`emerald-700`, die al gebruikt worden door de chips.space/comp/alpha-chips op dezelfde kaart:
+
+| Area of concern | Kleur | Hex | Toepassing |
+|--------|-----|-----|------------|
+| Solution | `bg-amber-700` | `#B45309` | Activiteiten/alphas getagd `SolutionAreaOfConcern` (architectuur, architectuurbeslissingen, architectuurbepalende eisen, requirements) |
+| Customer | `bg-teal-700` | `#0F766E` | Activiteiten/alphas getagd `CustomerAreaOfConcern` (stakeholders, opportunity, scope/mandaat) |
+| Endeavor | `bg-violet-700` | `#6D28D9` | Activiteiten/alphas getagd `EndeavorAreaOfConcern` (governance, paved road, way of working, team) |
+
+Tekstkleur is altijd `text-white` (niet `text-slate-800`), passend bij de verzadigde `-700`-achtergrond.
+
+Een Activity zonder `ess:tags` toont geen domeinkleur en valt terug op de neutrale practice-kleur.
 
 ## Regels en beslissingen
 
 1. **RDF is de enige bron**. Geen inhoud hardcoden in `build.py` of templates die ook in RDF staat. Gebruik SPARQL of rdflib-queries om alle tekst, namen en relaties op te halen.
+
+   **Concreet verboden patroon**: een Python-lijst of -dict met copy-tekst rechtstreeks in een context-builder-functie, bijvoorbeeld:
+   ```python
+   steps = [
+       {"num": "01", "title": "Begrijpen", "desc": "Identificeer en kwantificeer de sturende eisen…"},
+       ...
+   ]
+   ```
+   Dit soort blokken duplicerene (en raken vrijwel gegarandeerd) namen/teksten die al in de RDF staan — zo verwees een dergelijk blok in `build_index_ctx()` nog naar activiteitnamen die allang hernoemd waren in de RDF. Titels, beschrijvingen, rollen, fases, gates en alpha's moeten altijd via `get_name()`/`get_brief()`/`get_desc()` of een SPARQL-query worden opgehaald, ook voor kaarten/hero-secties op `index.html`. Puur presentationele config (kleuren, CSS-klassen, icon-paths, welke template) mag wel in `build.py` staan — dat is geen "inhoud".
 
 2. **Nederlandse primaire taal**. Filter altijd op `xml:lang="nl"` voor namen en beschrijvingen. Engelse tekst als ondertitel of fallback.
 
@@ -486,6 +501,8 @@ De Essence Kernel onderscheidt drie domeinen met vaste achtergrondkleuren (uit d
 8. **Activiteitsolgorde via ActivityAssociation**. De volgorde van activiteiten binnen een practice wordt bepaald door de `end-before-start`-ketens in de RDF, niet door de volgorde van `ess:ownedElements`.
 
 9. **WorkProductManifest koppelt WP aan Alpha**. Gebruik `ess:WorkProductManifest` om te tonen welke alpha's een werkproduct bewijst.
+
+10. **Area of concern (Customer/Solution/Endeavor) hoort bij Alpha en Activity, nooit bij Practice**. Een Practice krijgt altijd de neutrale practice-kleur (`#0f172a`); domeinkleur komt uitsluitend uit de `ess:tags`-property op de Alpha of Activity zelf. Voeg bij nieuwe Alphas/Activities altijd een `ess:tags`-verwijzing naar één van de drie `esk:*AreaOfConcern`-individuals toe — laat dit nooit afleiden of gokken in `build.py`.
 
 ## Veel voorkomende SPARQL-queries
 
@@ -535,5 +552,15 @@ SELECT ?pattern ?pname WHERE {
              a ess:Pattern ;
              ess:name ?pname .
     FILTER(LANG(?pname) = "nl")
+}
+```
+
+### Area of concern van een Alpha of Activity
+```sparql
+PREFIX ess: <https://www.hietkamp.nl/ontologies/essence-language#>
+SELECT ?tag WHERE {
+    <ALPHA_OF_ACTIVITY_URI> ess:tags ?tag .
+    FILTER(STRSTARTS(STR(?tag), "https://www.hietkamp.nl/ontologies/essence-kernel#") &&
+           STRENDS(STR(?tag), "AreaOfConcern"))
 }
 ```

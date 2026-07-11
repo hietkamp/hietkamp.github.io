@@ -25,6 +25,7 @@
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/governance-establish-governance/completion/governance"/>
     <ess:criterion rdf:resource="criterion/governance-establish-governance/completion/way-of-working"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/governance-establish-governance/default">

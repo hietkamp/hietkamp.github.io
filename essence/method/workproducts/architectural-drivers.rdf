@@ -8,8 +8,8 @@
 >
 
   <ess:WorkProduct rdf:about="workproduct/architectural-drivers">
-    <ess:name xml:lang="nl">Architectuurbepalende Eisen (ASRs)</ess:name>
-    <ess:name xml:lang="en">Architectural Drivers (ASRs)</ess:name>
+    <ess:name xml:lang="nl">Architectuurbepalende Eisen</ess:name>
+    <ess:name xml:lang="en">Architectural Drivers</ess:name>
     <ess:briefDescription xml:lang="nl">Vertaal doelen, kwaliteitsattributen en beperkingen naar toetsbare architectuurcriteria.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>De requirements die significant genoeg zijn om de architectuur te vormen — zowel kwaliteitsattributen (NFRs) als functionele requirements met verborgen architecturele impact. Elk met een meetbaar succescriterium, gekoppeld aan een driver. Niet alles is architectureel significant — dit werkproduct helpt te kiezen en te expliciteren wat er impliciet in stond.</p>
 <p><strong>Rol:</strong> Requirementselectie die expliciet maakt welke eisen architectureel significant zijn.</p>

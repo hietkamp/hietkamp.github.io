@@ -19,6 +19,7 @@
     <ess:states rdf:resource="state/governance/guiding"/>
     <ess:states rdf:resource="state/governance/assured"/>
     <ess:states rdf:resource="state/governance/effective"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
   </ess:Alpha>
 
   <ess:State rdf:about="state/governance/initiated">

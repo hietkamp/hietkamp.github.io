@@ -2,27 +2,25 @@
 
 /* ── CSS custom properties ─────────────────────────────────────────────── */
 :root {
-  /* Practice colours */
-  --mva:  #27406b; /* Enterprise Architectuur */
-  --sol:  #0f6e63; /* Solution Architectuur */
-  --mvg:  #4f46e5; /* Lichte Architectuursturing */
-  --port: #b45309; /* Portfolio Levenscyclus */
-  --wf:   #475569; /* Watervalaanpak */
-
-  /* Aliases */
-  --ent:  var(--mva);
-  --prac: var(--mva); /* overridden by data-prac selector below */
+  /* A Practice is never itself in an area of concern (Customer/Solution/Endeavor) —
+     only Alphas and Activities are, tagged in the RDF. All practices therefore
+     share one neutral colour; per-activity colouring is handled separately
+     (see DOMAIN_COLOR_CFG in build.py). */
+  --neutral: #0f172a;
+  --ent:     var(--neutral);
+  --sol:     var(--neutral);
+  --mva:     var(--neutral);
+  --mvg:     var(--neutral);
+  --port:    var(--neutral);
+  --wf:      var(--neutral);
+  --prac:    var(--neutral); /* overridden by data-prac selector below */
 
   /* Foreground */
   --fg: #0f172a;
 }
 
-/* ── Practice colour overrides ─────────────────────────────────────────── */
-[data-prac="mva"]  { --prac: var(--mva); }
-[data-prac="sol"]  { --prac: var(--sol); }
-[data-prac="mvg"]  { --prac: var(--mvg); }
-[data-prac="port"] { --prac: var(--port); }
-[data-prac="wf"]   { --prac: var(--wf);  }
+/* ── Practice colour override ──────────────────────────────────────────── */
+[data-prac="neutral"] { --prac: var(--neutral); }
 
 /* ── Base resets ───────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }

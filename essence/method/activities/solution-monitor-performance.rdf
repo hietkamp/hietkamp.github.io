@@ -9,7 +9,7 @@
 >
 
   <ess:Activity rdf:about="activity/solution-monitor-performance">
-    <ess:name xml:lang="nl">Prestaties bewaken</ess:name>
+    <ess:name xml:lang="nl">Conformance bewaken</ess:name>
     <ess:name xml:lang="en">Monitor Performance</ess:name>
     <ess:briefDescription xml:lang="nl">Beheer de solution-architectuur continu in productie: actualiseer beslissingsrecords op basis van operationele inzichten, hervalideer sturende eisen w…</ess:briefDescription>
     <ess:description xml:lang="nl">Beheer de solution-architectuur continu in productie: actualiseer beslissingsrecords op basis van operationele inzichten, hervalideer sturende eisen wanneer de context verandert, en rapporteer structurele wijzigingen terug aan de Enterprise Architect.</ess:description>
@@ -25,10 +25,11 @@
     <ess:criterion rdf:resource="criterion/solution-monitor-performance/entry/architecture"/>
     <ess:criterion rdf:resource="criterion/solution-monitor-performance/completion/architecture"/>
     <ess:criterion rdf:resource="criterion/solution-monitor-performance/completion/architectural-drivers"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/solution-monitor-performance/default">
-    <ess:name xml:lang="nl">Prestaties bewaken</ess:name>
+    <ess:name xml:lang="nl">Conformance bewaken</ess:name>
     <ess:name xml:lang="en">Monitor Performance</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl">Beheer de solution-architectuur continu in productie: actualiseer beslissingsrecords op basis van operationele inzichten, hervalideer sturende eisen wanneer de context verandert, en rapporteer structurele wijzigingen terug aan de Enterprise Architect.</ess:description>
@@ -71,7 +72,7 @@
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/solution-monitor-performance/part-of/shape-the-system">
-    <ess:name>Prestaties bewaken part-of Shape The System</ess:name>
+    <ess:name>Conformance bewaken part-of Shape The System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/solution-monitor-performance"/>
     <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>
@@ -85,9 +86,9 @@
   </ess:EntryCriterion>
 
   <ess:CompletionCriterion rdf:about="criterion/solution-monitor-performance/completion/architecture">
-    <ess:name>Completion: Architecture</ess:name>
+    <ess:name>Completion: System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architecture/evolving"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready"/>
   </ess:CompletionCriterion>
 
   <ess:CompletionCriterion rdf:about="criterion/solution-monitor-performance/completion/architectural-drivers">

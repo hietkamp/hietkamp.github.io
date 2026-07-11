@@ -23,6 +23,7 @@
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/solution-gather-requirements/entry/requirements"/>
     <ess:criterion rdf:resource="criterion/solution-gather-requirements/completion/requirements"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/solution-gather-requirements/default">
@@ -33,18 +34,11 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/solution-gather-requirements/read/architectural-drivers">
-    <ess:name>Read Architectural Drivers</ess:name>
+  <ess:Action rdf:about="action/solution-gather-requirements/read-alpha/requirements">
+    <ess:name>Read Requirement</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/architectural-drivers"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/solution-gather-requirements/create/architecture-vision">
-    <ess:name>Create Architecture Vision</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-vision"/>
+    <ess:alpha rdf:resource="alpha/requirements"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-gather-requirements/read/paved-road">
@@ -54,31 +48,18 @@
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-gather-requirements/update-alpha/requirements">
-    <ess:name>Update Requirements</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
-  </ess:Action>
-
   <ess:ActivityAssociation rdf:about="activity-association/solution-gather-requirements/part-of/understand-the-requirements">
-    <ess:name>Requirements verzamelen part-of Understand The Requirements</ess:name>
+    <ess:name>Verzamel architectuurbepalende eisen part-of Shape The System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/solution-gather-requirements"/>
-    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandtheRequirements"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:EntryCriterion rdf:about="criterion/solution-gather-requirements/entry/requirements">
-    <ess:name>Entry: Requirements</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded"/>
-  </ess:EntryCriterion>
-
   <ess:CompletionCriterion rdf:about="criterion/solution-gather-requirements/completion/requirements">
-    <ess:name>Completion: Requirements</ess:name>
+    <ess:name>Completion: System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected"/>
   </ess:CompletionCriterion>
 
 </rdf:RDF>

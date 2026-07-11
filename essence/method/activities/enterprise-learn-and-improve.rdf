@@ -9,7 +9,7 @@
 >
 
   <ess:Activity rdf:about="activity/enterprise-learn-and-improve">
-    <ess:name xml:lang="nl">Leren en verbeteren</ess:name>
+    <ess:name xml:lang="nl">Architectuurverandering besturen</ess:name>
     <ess:name xml:lang="en">Learn and Improve</ess:name>
     <ess:briefDescription xml:lang="nl">Beheer de architectuur continu in productie: actualiseer de goedgekeurde route op basis van reviewinzichten, pensioneer verouderde standaarden en herv…</ess:briefDescription>
     <ess:description xml:lang="nl">Beheer de architectuur continu in productie: actualiseer de goedgekeurde route op basis van reviewinzichten, pensioneer verouderde standaarden en hervalideer sturende eisen wanneer de context verandert.</ess:description>
@@ -26,10 +26,11 @@
     <ess:criterion rdf:resource="criterion/enterprise-learn-and-improve/entry/architecture"/>
     <ess:criterion rdf:resource="criterion/enterprise-learn-and-improve/completion/architecture"/>
     <ess:criterion rdf:resource="criterion/enterprise-learn-and-improve/completion/architectural-drivers"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/enterprise-learn-and-improve/default">
-    <ess:name xml:lang="nl">Leren en verbeteren</ess:name>
+    <ess:name xml:lang="nl">Architectuurverandering besturen</ess:name>
     <ess:name xml:lang="en">Learn and Improve</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl">Beheer de architectuur continu in productie: actualiseer de goedgekeurde route op basis van reviewinzichten, pensioneer verouderde standaarden en hervalideer sturende eisen wanneer de context verandert.</ess:description>
@@ -79,7 +80,7 @@
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/enterprise-learn-and-improve/part-of/shape-the-system">
-    <ess:name>Leren en verbeteren part-of Shape The System</ess:name>
+    <ess:name>Architectuurverandering besturen part-of Shape The System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/enterprise-learn-and-improve"/>
     <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>

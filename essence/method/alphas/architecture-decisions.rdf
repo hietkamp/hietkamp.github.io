@@ -19,6 +19,7 @@
     <ess:states rdf:resource="state/architecture-decisions/decided"/>
     <ess:states rdf:resource="state/architecture-decisions/communicated"/>
     <ess:states rdf:resource="state/architecture-decisions/validated"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Alpha>
 
   <ess:State rdf:about="state/architecture-decisions/needed">

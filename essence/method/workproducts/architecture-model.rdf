@@ -34,6 +34,8 @@
   <ess:LevelOfDetail rdf:about="lod/architecture-model/context">
     <ess:name xml:lang="nl">1. Context</ess:name>
     <ess:name xml:lang="en">1. Context</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[<p>Toont hoe de solution zich verhoudt tot gebruikers en andere systemen, zonder interne details.</p>
+<canvas src="assets/images/solution-hld-context.png" alt="Voorbeeld van een C4 System Context-diagram" style="max-width:80%;height:auto;margin:1rem 0;">]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
     <ess:successor rdf:resource="lod/architecture-model/container"/>
     <ess:checkListItem rdf:nodeID="checkpoint_lod_context_1"/>
@@ -46,6 +48,8 @@
   <ess:LevelOfDetail rdf:about="lod/architecture-model/container">
     <ess:name xml:lang="nl">2. Container</ess:name>
     <ess:name xml:lang="en">2. Container</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[<p>Toont de belangrijkste, technisch losstaande onderdelen van de solution (bijvoorbeeld een applicatie, database of COTS-pakket) en hun onderlinge interacties.</p>
+<canvas src="assets/images/solution-hld-containers.png" alt="Voorbeeld van een C4 Container-diagram" style="max-width:80%;height:auto;margin:1rem 0;">]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
     <ess:successor rdf:resource="lod/architecture-model/component"/>
     <ess:checkListItem rdf:nodeID="checkpoint_lod_container_1"/>

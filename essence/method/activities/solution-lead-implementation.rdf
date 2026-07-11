@@ -9,7 +9,7 @@
 >
 
   <ess:Activity rdf:about="activity/solution-lead-implementation">
-    <ess:name xml:lang="nl">Implementatie leiden</ess:name>
+    <ess:name xml:lang="nl">Implementatiegovernance voeren</ess:name>
     <ess:name xml:lang="en">Lead Implementation</ess:name>
     <ess:briefDescription xml:lang="nl">Voer solution-level PoC's en architectuurspikes uit. Toets de integratielaag en COTS-fit tegen de criteria uit de sturende eisen. Rapporteer bevinding…</ess:briefDescription>
     <ess:description xml:lang="nl">Voer solution-level PoC's en architectuurspikes uit. Toets de integratielaag en COTS-fit tegen de criteria uit de sturende eisen. Rapporteer bevindingen die enterprise-beslissingen raken terug aan de Enterprise Architect.</ess:description>
@@ -24,10 +24,11 @@
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/solution-lead-implementation/completion/architecture"/>
     <ess:criterion rdf:resource="criterion/solution-lead-implementation/completion/architecture-decisions"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/solution-lead-implementation/default">
-    <ess:name xml:lang="nl">Implementatie leiden</ess:name>
+    <ess:name xml:lang="nl">Implementatiegovernance voeren</ess:name>
     <ess:name xml:lang="en">Lead Implementation</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl">Voer solution-level PoC's en architectuurspikes uit. Toets de integratielaag en COTS-fit tegen de criteria uit de sturende eisen. Rapporteer bevindingen die enterprise-beslissingen raken terug aan de Enterprise Architect.</ess:description>
@@ -70,7 +71,7 @@
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/solution-lead-implementation/part-of/shape-the-system">
-    <ess:name>Implementatie leiden part-of Shape The System</ess:name>
+    <ess:name>Implementatiegovernance voeren part-of Shape The System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/solution-lead-implementation"/>
     <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>
@@ -78,9 +79,9 @@
   </ess:ActivityAssociation>
 
   <ess:CompletionCriterion rdf:about="criterion/solution-lead-implementation/completion/architecture">
-    <ess:name>Completion: Architecture</ess:name>
+    <ess:name>Completion: System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architecture/demonstrated"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable"/>
   </ess:CompletionCriterion>
 
   <ess:CompletionCriterion rdf:about="criterion/solution-lead-implementation/completion/architecture-decisions">

@@ -9,7 +9,7 @@
 >
 
   <ess:Activity rdf:about="activity/solution-design">
-    <ess:name xml:lang="nl">Bepaal de oplossingsbouwstenen</ess:name>
+    <ess:name xml:lang="nl">Maak Low-Level Design</ess:name>
     <ess:name xml:lang="en">Define the solution building blocks</ess:name>
     <ess:briefDescription xml:lang="nl">Hero. Definieer solution-bouwstenen en interfaces binnen enterprise-kaders. Selecteer COTS-componenten op basis van sturende eisen. Documenteer afwijkingen …</ess:briefDescription>
     <ess:description xml:lang="nl">Beschrijving. Definieer solution-bouwstenen en interfaces binnen enterprise-kaders. Selecteer COTS-componenten op basis van sturende eisen. Documenteer afwijkingen van enterprise-standaarden als beslissingsrecord op C4 Level 2–3.</ess:description>
@@ -17,14 +17,12 @@
     <ess:owner rdf:resource="practice/solution-architecture"/>
     <ess:approach rdf:resource="approach/solution-design/default"/>
     <ess:action rdf:resource="action/solution-design/create/architecture-decisions"/>
-    <ess:action rdf:resource="action/solution-design/create/architecture-model"/>
-    <ess:action rdf:resource="action/solution-design/read/architecture-vision"/>
+    <ess:action rdf:resource="action/solution-design/update/architecture-model"/>
     <ess:action rdf:resource="action/solution-design/read/paved-road"/>
-    <ess:action rdf:resource="action/solution-design/update-alpha/architecture"/>
-    <ess:action rdf:resource="action/solution-design/update-alpha/architecture-decisions"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/solution-design/completion/architecture"/>
     <ess:criterion rdf:resource="criterion/solution-design/completion/architecture-decisions"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/solution-design/default">
@@ -42,10 +40,10 @@
     <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-design/create/architecture-model">
-    <ess:name>Create Architecture Model</ess:name>
+  <ess:Action rdf:about="action/solution-design/update/architecture-model">
+    <ess:name>Update Architecture Model</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
@@ -54,20 +52,6 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/solution-design/update-alpha/architecture">
-    <ess:name>Update Architecture</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:alpha rdf:resource="alpha/architecture"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/solution-design/update-alpha/architecture-decisions">
-    <ess:name>Update Architecture Decisions</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:alpha rdf:resource="alpha/architecture-decisions"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/solution-design/part-of/shape-the-system">
@@ -79,15 +63,11 @@
   </ess:ActivityAssociation>
 
   <ess:CompletionCriterion rdf:about="criterion/solution-design/completion/architecture">
-    <ess:name>Completion: Architecture</ess:name>
+    <ess:name>Completion: System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architecture/outlined"/>
-  </ess:CompletionCriterion>
-
-  <ess:CompletionCriterion rdf:about="criterion/solution-design/completion/architecture-decisions">
-    <ess:name>Completion: Architecture Decisions</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architecture-decisions/decided"/>
+    <ess:levelOfDetail rdf:resource="lod/architecture-model/component"/>
+    <ess:levelOfDetail rdf:resource="lod/architecture-model/code"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected"/>
   </ess:CompletionCriterion>
 
 </rdf:RDF>
