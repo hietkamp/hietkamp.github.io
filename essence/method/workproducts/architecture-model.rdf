@@ -12,15 +12,23 @@
     <ess:name xml:lang="nl">Architectuurmodel</ess:name>
     <ess:name xml:lang="en">Architecture Model</ess:name>
     <ess:briefDescription xml:lang="nl">Maak de minimale set bouwstenen, relaties en grenzen zichtbaar waarop stakeholders nu moeten handelen.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[<p>De minimale set bouwstenen en weergaven die nodig zijn voor de huidige beslissingen. Niet meer. Elk weergave bestaat voor één stakeholderbehoefte.</p>
-<canvas src="assets/images/system-landscape.png" alt="Applicatielandschap" style="max-width:80%;height:auto;margin:1rem 0;">
-<p><strong>Rol:</strong> Architectuurbeschrijving van het systeem van interesse op de huidige scope.</p>
-<p><strong>Beantwoordt:</strong> Welke structurele keuzes vormen deze oplossing en hoe hangen de bouwstenen samen?</p>
-<p><strong>Scope:</strong> Beschrijft de gekozen architectuur en expliciet uitgestelde weergaven; besluitrationale hoort in ADRs.</p>
-<p><strong>Publiek:</strong> Architecture Owner, deliveryteam, Enterprise Architect, leveranciers en reviewers.</p>
-<h3>Informatie-elementen</h3><table><thead><tr><th>Element</th><th>Betekenis</th><th>Verplicht</th></tr></thead><tbody><tr><td>Systeemgrens</td><td>Wat binnen en buiten het systeem van interesse valt.</td><td>Ja</td></tr><tr><td>Bouwstenen</td><td>COTS-componenten, integratielaag, databases, platformdiensten en externe systemen.</td><td>Ja</td></tr><tr><td>Relaties en interfaces</td><td>De communicatieroutes, protocollen, data-eigenaarschap en afhankelijkheden tussen bouwstenen.</td><td>Ja</td></tr><tr><td>Bewust uitgesteld</td><td>De weergaven of beslissingen die nog niet nodig zijn, inclusief trigger om ze alsnog uit te werken.</td><td>Ja</td></tr></tbody></table>
-<h3>Kwaliteitscriteria</h3><ul><li><strong>Minimaal maar beslisbaar</strong> — Elke weergave ondersteunt een concrete stakeholderbeslissing.</li><li><strong>ADR-gekoppeld</strong> — Elke significante bouwsteen of interface verwijst naar de beslissing die hem verantwoordt.</li><li><strong>Integratie first-class</strong> — Glueware, adapters en interface-eigenaarschap zijn expliciet zichtbaar.</li></ul>
-<p><strong>Bijwerken wanneer:</strong> Bij elke significante ADR, reviewbevinding of wijziging in de systeemgrens.</p>]]></ess:description>
+    <ess:description xml:lang="nl"><![CDATA[
+    <p>Het <strong>Architectuurmodel</strong> is de formele beschrijving van de solution en vormt het centrale stuurmiddel voor ontwerp, realisatie en toetsing. Het legt vast uit welke bouwstenen de oplossing bestaat, welke verantwoordelijkheden en grenzen deze bouwstenen hebben en hoe zij onderling samenwerken. Daarmee maakt het model inzichtelijk welke structurele keuzes voor de oplossing zijn gemaakt en biedt het de basis om deze keuzes gedurende het project te beoordelen en te bewaken.</p>
+    <p>Het model beschrijft zowel de relevante delen van de <strong>bestaande situatie</strong> als de <strong>beoogde situatie</strong>. De bestaande architectuur wordt echter uitsluitend opgenomen voor zover dit noodzakelijk is om de verandering te begrijpen en te kunnen beoordelen. De daadwerkelijke scope van het project wordt immers bepaald door het verschil tussen de huidige en de gewenste situatie. Onderdelen die ongewijzigd blijven, worden daarom niet opnieuw uitgewerkt. Hierdoor blijft het architectuurmodel beperkt tot datgene wat nodig is om de voorgenomen verandering te onderbouwen en besluitvorming mogelijk te maken.</p>
+    <p>De uitwerking van het architectuurmodel groeit gedurende het project mee met de voortgang van de architectuur. In de vroege fasen bevat het model uitsluitend de informatie die nodig is om richtinggevende keuzes te maken. Naarmate meer ontwerpbeslissingen worden genomen, wordt het model verder uitgewerkt tot het detailniveau dat nodig is om de oplossing te realiseren en te toetsen. Ook per architectuurweergave geldt dat alleen de verschillen tussen de huidige en de gewenste situatie worden gemodelleerd wanneer deze onderdeel zijn van de te nemen beslissing.</p>
+    <p>Het architectuurmodel geeft antwoord op vragen als:</p>
+    <ul>
+    <li>welke structurele keuzes vormen de oplossing</li>
+    <li>hoe hangen de bouwstenen in de huidige en de gewenste situatie samen</li>
+    <li>wat verandert er</li>
+    <li>tot welk detailniveau moeten deze keuzes op dit moment worden vastgelegd om ontwerp, realisatie en toetsing mogelijk te maken?</li>
+    </ul>
+    <p>De onderbouwing van de gemaakte architectuurbeslissingen maakt geen onderdeel uit van het architectuurmodel zelf. Deze wordt vastgelegd in afzonderlijke Architecture Decision Records (ADR's), zodat het model zich uitsluitend richt op de architectuur en de structuur van de oplossing, terwijl de motivatie en afwegingen achter de keuzes afzonderlijk worden beheerd.</p>
+    <p>Het architectuurmodel is bedoeld voor alle betrokkenen die verantwoordelijk zijn voor of betrokken zijn bij de architectuur van de oplossing, waaronder de Architectuureigenaar, het deliveryteam, de Enterprise Architect, leveranciers en reviewers. Hierdoor vormt het gedurende de gehele levenscyclus van het project het gemeenschappelijke referentiekader voor ontwerp, implementatie en conformance-toetsing.</p>
+    <br /><p><strong>Vooorbeeld van een applicatielandschap</strong></p>
+    <p>Onderstaand voorbeeld toont een applicatielandschap voor het proces Cliëntenregistratie. Het diagram brengt de belangrijkste gebruikers, applicaties, externe systemen en hun onderlinge interacties in beeld. Zo wordt duidelijk welke applicaties onderdeel zijn van de solution, hoe gegevens worden uitgewisseld en waar de systeemgrenzen (en verantwoordelijkheden) liggen. Het diagram is opgesteld volgens het C4-architectuurmodel en ondersteunt het maken, communiceren en toetsen van architectuurbeslissingen.</p>
+    <canvas src="assets/images/system-landscape.png" alt="Applicatielandschap" style="max-width:80%;height:auto;margin:1rem 0;">
+]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
     <ess:levelOfDetail rdf:resource="lod/architecture-model/context"/>
@@ -34,8 +42,12 @@
   <ess:LevelOfDetail rdf:about="lod/architecture-model/context">
     <ess:name xml:lang="nl">1. Context</ess:name>
     <ess:name xml:lang="en">1. Context</ess:name>
-    <ess:description xml:lang="nl"><![CDATA[<p>Toont hoe de solution zich verhoudt tot gebruikers en andere systemen, zonder interne details.</p>
-<canvas src="assets/images/solution-hld-context.png" alt="Voorbeeld van een C4 System Context-diagram" style="max-width:80%;height:auto;margin:1rem 0;">]]></ess:description>
+    <ess:description xml:lang="nl"><![CDATA[
+    <p>Op dit detailniveau blijft het datamodel een black box. De interne gegevensstructuur wordt nog niet beschreven; uitsluitend de gegevensuitwisselingen over de systeemgrenzen heen worden vastgelegd, bijvoorbeeld 'Levert FHIR-resources (primair gebruik)' of 'Verstuurt meetgegevens'. Het model laat daarmee zien welke gegevens worden uitgewisseld, met welke partijen en via welke systeemgrenzen, zonder in te gaan op de interne opslag of verwerking van gegevens.</p>
+    <p>Dit detailniveau is van belang zodra de architectuur moet aantonen dat de grenzen van de solution duidelijk zijn afgebakend en dat de belangrijkste buy-, build- en reuse-keuzes op hoofdlijnen zijn gemaakt. Het betreft een van de eerste architectuurweergaven die met de opdrachtgever en de eigenaren van omliggende systemen wordt besproken. Omdat deze weergave de scope van de oplossing vastlegt, verandert zij gedurende het project doorgaans weinig. Een wijziging op contextniveau duidt meestal op een wijziging van de projectscope en niet op een verdere uitwerking van de architectuur.</p>
+    <p>Onderstaand voorbeeld toont een contextdiagram op dit detailniveau. Het diagram laat zien welke personen, software- en externe systemen onderdeel uitmaken van de solution en welke gegevens over de systeemgrenzen worden uitgewisseld. De interne opbouw van de afzonderlijke systemen blijft daarbij buiten beschouwing; de nadruk ligt volledig op de context van de oplossing en haar interacties met de omgeving.</p>
+    <canvas src="assets/images/solution-hld-context.png" alt="Voorbeeld van een C4 System Context-diagram" style="display:block;max-width:100%;width:auto;height:600px;object-fit:contain;margin:1rem auto;">
+]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
     <ess:successor rdf:resource="lod/architecture-model/container"/>
     <ess:checkListItem rdf:nodeID="checkpoint_lod_context_1"/>
@@ -48,8 +60,12 @@
   <ess:LevelOfDetail rdf:about="lod/architecture-model/container">
     <ess:name xml:lang="nl">2. Container</ess:name>
     <ess:name xml:lang="en">2. Container</ess:name>
-    <ess:description xml:lang="nl"><![CDATA[<p>Toont de belangrijkste, technisch losstaande onderdelen van de solution (bijvoorbeeld een applicatie, database of COTS-pakket) en hun onderlinge interacties.</p>
-<canvas src="assets/images/solution-hld-containers.png" alt="Voorbeeld van een C4 Container-diagram" style="max-width:80%;height:auto;margin:1rem 0;">]]></ess:description>
+    <ess:description xml:lang="nl"><![CDATA[
+    <p>Op dit detailniveau wordt voor het eerst concreet vastgelegd <strong>welke bouwsteen verantwoordelijk is voor welke gegevens</strong> en op <strong>welke wijze gegevens tussen de bouwstenen worden uitgewisseld</strong>. Daarbij wordt niet alleen bepaald waar gegevens worden beheerd, maar ook in welke vorm zij worden uitgewisseld, bijvoorbeeld als een real-time gebeurtenis, batchbestand, query of FHIR-resource. In het voorbeeld van het Health Data Platform is dit het niveau waarop de Clinical Data Repository wordt onderscheiden als de persistente bron voor klinische gegevens en de OMOP Datastore als afgeleide onderzoeksdataset. Ook wordt op dit niveau de scheiding tussen primair en secundair gegevensgebruik expliciet gemaakt.</p>
+    <p>Dit is het detailniveau waarop de meeste architectuurbeslissingen daadwerkelijk kunnen worden beoordeeld. De verantwoordelijkheden van de verschillende bouwstenen zijn duidelijk afgebakend, de belangrijkste interfaces en gegevensstromen zijn vastgelegd en architectuurprincipes, zoals de scheiding tussen primair en secundair gebruik, kunnen worden getoetst. Voor de meeste solution-architecturen is dit daarom het niveau waarop architectuurgovernance haar oordeel kan vormen en goedkeuring kan geven. Verdere detaillering is doorgaans alleen nodig voor onderdelen waarvan de interne werking of implementatie onderwerp van ontwerp of besluitvorming is.</p>
+    <p>Onderstaand voorbeeld toont een containerdiagram op dit detailniveau. Het diagram laat zien hoe de solution is opgebouwd uit afzonderlijke applicaties, services, databases en andere technische bouwstenen, welke verantwoordelijkheden zij hebben en hoe gegevens tussen deze bouwstenen worden uitgewisseld. Hiermee vormt het containerdiagram voor de meeste projecten de belangrijkste architectuurweergave voor ontwerp, implementatie en conformance-toetsing.</p>
+    <canvas src="assets/images/solution-hld-containers.png" alt="Voorbeeld van een C4 Container-diagram" style="display:block;max-width:100%;width:auto;height:700px;object-fit:contain;margin:1rem auto;">
+]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
     <ess:successor rdf:resource="lod/architecture-model/component"/>
     <ess:checkListItem rdf:nodeID="checkpoint_lod_container_1"/>
@@ -62,6 +78,11 @@
   <ess:LevelOfDetail rdf:about="lod/architecture-model/component">
     <ess:name xml:lang="nl">3. Component</ess:name>
     <ess:name xml:lang="en">3. Component</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[
+    <p>Dit detailniveau wordt alleen uitgewerkt voor containers waarvoor een <strong>architectuurbepalende eis</strong>, een <strong>aanzienlijk technisch risico</strong> of een <strong>belangrijke ontwerpbeslissing</strong> bestaat. Het is daarom geen standaardonderdeel voor iedere container binnen de solution, maar wordt alleen toegepast wanneer verdere detaillering noodzakelijk is om ontwerpkeuzes te kunnen onderbouwen, implementeren of toetsen.</p>
+    <p>Op dit niveau wordt de interne structuur van de container zichtbaar. De architectuur beschrijft hoe de container intern is opgebouwd, welke componenten daarin samenwerken en hoe gegevens binnen de container worden opgeslagen, verwerkt en uitgewisseld. Daarbij kunnen onder andere interne componenten, gegevensstructuren, berichtkanalen, API-contracten en andere technische bouwstenen worden gemodelleerd, voor zover deze architectuurbepalend zijn.</p>
+    <p>De uitwerking van dit detailniveau vindt plaats wanneer dit voor een specifieke container noodzakelijk is. Dit gebeurt doorgaans later in het project, zodra de realisatie van de container wordt voorbereid of wanneer technische risico's of kwaliteitseisen daarom vragen. De detaillering wordt veelal in samenwerking met het ontwikkelteam opgesteld, waarbij de solution architect verantwoordelijk blijft voor het bewaken van de architectuurkaders en de samenhang met de rest van de solution.</p>
+]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
     <ess:successor rdf:resource="lod/architecture-model/code"/>
     <ess:checkListItem rdf:nodeID="checkpoint_lod_component_1"/>
@@ -74,6 +95,10 @@
   <ess:LevelOfDetail rdf:about="lod/architecture-model/code">
     <ess:name xml:lang="nl">4. Code</ess:name>
     <ess:name xml:lang="en">4. Code</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[
+    <p>Dit detailniveau maakt slechts in uitzonderlijke gevallen onderdeel uit van het Architectuurmodel. Het wordt alleen toegepast wanneer een architectuurbeslissing uitsluitend op code- of implementatieniveau eenduidig kan worden vastgelegd, bijvoorbeeld bij een verplicht gegevensschema, een beveiligingspatroon of een technisch protocol dat bepalend is voor de architectuur.</p>
+  <p>Op dit niveau betreft het datamodel de fysieke implementatie, zoals databaseschema's, tabeldefinities, berichtformaten of andere implementatieartefacten. Deze uitwerking behoort in de praktijk meestal tot het Design Model of de broncode zelf. Het Architectuurmodel verwijst hier hooguit naar wanneer dit nodig is om een architectuurbeslissing of een ontwerpkeuze te onderbouwen, maar neemt deze implementatiedetails niet zelf op. Hierdoor blijft het Architectuurmodel gericht op de structurele opbouw van de solution en wordt onnodige duplicatie van ontwerp- en implementatieinformatie voorkomen.</p>
+]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
     <ess:checkListItem rdf:nodeID="checkpoint_lod_code_1"/>
   </ess:LevelOfDetail>

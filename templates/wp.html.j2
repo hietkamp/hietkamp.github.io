@@ -35,9 +35,9 @@
 {% endif %}
 
 {% for sec in sections %}
-<section class="content-section mt-[38px] mb-8 scroll-mt-[164px] [&_h2]:border-b [&_h2]:border-slate-300 [&_h2]:pb-1.5 [&_h2]:font-serif [&_h2]:text-[1.45rem] [&_h2]:font-semibold [&_p]:m-0 [&_p]:mb-2.5 [&_p]:text-slate-500 [&_ul]:m-0 [&_ul]:mb-2.5 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:text-slate-500 [&_ol]:m-0 [&_ol]:mb-2.5 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:text-slate-500 [&_li]:mb-1{% if sec.extra_class %} {{ sec.extra_class }}{% endif %}" data-section-kind="{{ sec.section_kind | default('content') }}"{% if sec.id %} id="{{ sec.id }}"{% endif %}>
+<section class="content-section mt-[38px] mb-8 scroll-mt-[164px] [&_h2]:mb-4 [&_h2]:border-b [&_h2]:border-slate-300 [&_h2]:pb-2 [&_h2]:font-serif [&_h2]:text-[1.45rem] [&_h2]:font-semibold [&_h2]:text-slate-900{% if sec.extra_class %} {{ sec.extra_class }}{% endif %}" data-section-kind="{{ sec.section_kind | default('content') }}"{% if sec.id %} id="{{ sec.id }}"{% endif %}>
   <h2>{{ sec.h2 }}</h2>
-  {{ sec.body_html | safe }}
+  {{ rdf_prose(sec.body_html) }}
 </section>
 {% endfor %}
 
