@@ -11,18 +11,58 @@
     <ess:name xml:lang="nl">Architectuurbeslissingen (ADRs)</ess:name>
     <ess:name xml:lang="en">Architecture Decisions (ADRs)</ess:name>
     <ess:briefDescription xml:lang="nl">Bewaar de rationale achter een significante keuze zodat die later gevalideerd, herzien of vervangen kan worden.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[<p>Een <strong>Architectural Decision (AD)</strong> is een beredeneerde ontwerpkeuze die een architectureel significante functionele of niet-functionele eis adresseert. Een ADR legt één zo'n beslissing vast: context, opties, keuze, consequenties. Het is de eenheid van voortgang in MVA — elke alpha-toestand van Architecture Decisions vereist aantoonbare ADR's.</p>
-<p><strong>Rol:</strong> Beslissingsrecord dat één architectuurbesluit als object vastlegt.</p>
-<p><strong>Beantwoordt:</strong> Waarom kiezen we deze optie, gegeven deze context en deze alternatieven?</p>
-<p><strong>Scope:</strong> Een ADR beschrijft één beslissing; achtergrondanalyse, standaardbeleid en review-oordeel horen in gekoppelde werkproducten.</p>
-<p><strong>Publiek:</strong> Architecture Owner, Enterprise Architect, Architectuurforum en teams die de keuze moeten toepassen.</p>
-<h3>Informatie-elementen</h3><table><thead><tr><th>Element</th><th>Betekenis</th><th>Verplicht</th></tr></thead><tbody><tr><td>Context</td><td>De situatie, driver of beperking waardoor de beslissing nodig is.</td><td>Ja</td></tr><tr><td>Opties</td><td>De onderzochte alternatieven inclusief nul-optie en relevante trade-offs.</td><td>Ja</td></tr><tr><td>Keuze en consequenties</td><td>De gekozen richting, rationale, positieve gevolgen en te beheren gevolgen.</td><td>Ja</td></tr><tr><td>Validatiecriterium</td><td>Het falsifieerbare criterium waarmee de beslissing later bewezen of herzien wordt.</td><td>Ja</td></tr></tbody></table>
-<h3>Kwaliteitscriteria</h3><ul><li><strong>Atomair</strong> — De tekst bevat precies één beslissing en verwijst naar andere ADRs voor afhankelijke keuzes.</li><li><strong>Traceerbaar</strong> — Elke beslissing verwijst naar minimaal één driver, ASR of paved-road element.</li><li><strong>Falsifieerbaar</strong> — Er staat expliciet wanneer de beslissing als bewezen, mislukt of achterhaald geldt.</li></ul>
-<p><strong>Bijwerken wanneer:</strong> Immutable na acceptatie; wijziging gebeurt via superseding ADR.</p>]]></ess:description>
+    <ess:description xml:lang="nl"><![CDATA[<p>Een <strong>Architectuurbeslissing</strong> is een onderbouwde keuze waarmee invulling wordt gegeven aan een architectuurbepalende eis: een eis die een aantoonbare invloed heeft op de structuur, samenhang of kwaliteit van de solution. Niet iedere ontwerp- of technische keuze is daarom een architectuurbeslissing. Alleen keuzes die de architectuur daadwerkelijk richting geven of de toekomstige onderhoudbaarheid, flexibiliteit, veiligheid of andere kwaliteitsaspecten beïnvloeden, worden als architectuurbeslissing vastgelegd.</p>
+<p>Architectuurbeslissingen vormen gezamenlijk het besluitvormingslog van de solution. Zij leggen niet alleen vast welke keuze is gemaakt, maar vooral waarom deze keuze is gemaakt, welke alternatieven zijn overwogen en welke consequenties daarbij zijn geaccepteerd. Hierdoor blijven de gemaakte afwegingen ook na afloop van het project herleidbaar en kunnen toekomstige wijzigingen beter worden beoordeeld.</p>
+<p>De architectuurbeslissing vormt de schakel tussen de Architectuurbepalende Eisen en het Architectuurmodel. De architectuurbepalende eisen beschrijven waarom een beslissing noodzakelijk is. De architectuurbeslissing legt vast welke oplossing is gekozen en waarom deze de voorkeur heeft boven de alternatieven. Het architectuurmodel laat vervolgens zien hoe deze keuze in de architectuur is uitgewerkt. Waar het architectuurmodel de structuur van de solution beschrijft, legt de architectuurbeslissing de onderliggende afwegingen vast.</p>
+<p>Een architectuurbeslissing geeft antwoord op de vragen: welke keuze is gemaakt, welke alternatieven zijn overwogen, waarom is voor deze oplossing gekozen en welke gevolgen heeft deze keuze voor de architectuur van de solution?</p>
+<p>Elke architectuurbeslissing beschrijft precies één architectuurkeuze. Een verzameling van dergelijke beslissingen vormt samen het volledige besluitvormingslog van de solution. Het werkproduct is bedoeld voor de Architectuureigenaar, het deliveryteam, de Enterprise Architect, reviewers, toekomstige beheerders en de Architectuursturing.</p>
+]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
+    <ess:levelOfDetail rdf:resource="lod/architecture-decisions/lightweight"/>
+    <ess:levelOfDetail rdf:resource="lod/architecture-decisions/full"/>
+    <ess:resources rdf:resource="resource/architecture-decisions/adr-github"/>
+    <ess:resources rdf:resource="resource/architecture-decisions/ad-practices"/>
+    <ess:resources rdf:resource="resource/architecture-decisions/adr-templates"/>
     <ess:ownedElements rdf:resource="resource/architecture-decisions/template"/>
   </ess:WorkProduct>
+
+  <ess:LevelOfDetail rdf:about="lod/architecture-decisions/lightweight">
+    <ess:name xml:lang="nl">Lichtgewicht (één zin)</ess:name>
+    <ess:name xml:lang="en">Lightweight (one sentence)</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[<p>"Gegeven ⟨situatie⟩ en ⟨knelpunt⟩ kiezen we voor ⟨optie⟩ om ⟨kwaliteit⟩ te bereiken, met als geaccepteerd nadeel ⟨nadeel⟩." Geschikt voor de meeste dagelijkse, herkenbare keuzes — de "paved road"-beslissingen.</p>]]></ess:description>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
+    <ess:successor rdf:resource="lod/architecture-decisions/full"/>
+  </ess:LevelOfDetail>
+
+  <ess:LevelOfDetail rdf:about="lod/architecture-decisions/full">
+    <ess:name xml:lang="nl">Volledig</ess:name>
+    <ess:name xml:lang="en">Full</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[<p>Context, alle overwogen opties met hun voor- en nadelen, de afweging en het vervolgplan. Reserveer dit voor beslissingen waar het optieveld écht openstaat, de impact groot is, of waar Architectuursturing een expliciet oordeel moet vellen — de "off-road"-gevallen.</p>
+<p>Iedere architectuurbeslissing bevat ten minste de volgende onderdelen:</p>
+<ul>
+<li>de context en de aanleiding van de beslissing;</li>
+<li>de architectuurbepalende eis waarop de beslissing betrekking heeft;</li>
+<li>de overwogen alternatieven;</li>
+<li>de gekozen oplossing en de onderbouwing daarvan;</li>
+<li>de verwachte gevolgen, inclusief de geaccepteerde nadelen en risico's;</li>
+<li>de status van de beslissing, bijvoorbeeld voorgesteld, vastgesteld of vervangen.</li>
+</ul>
+<p>Hierdoor ontstaat een volledig en herleidbaar overzicht van de gemaakte afweging.</p>]]></ess:description>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
+  </ess:LevelOfDetail>
+
+  <ess:Resource rdf:about="resource/architecture-decisions/adr-github">
+    <ess:content>https://adr.github.io</ess:content>
+  </ess:Resource>
+
+  <ess:Resource rdf:about="resource/architecture-decisions/ad-practices">
+    <ess:content>https://adr.github.io/ad-practices/</ess:content>
+  </ess:Resource>
+
+  <ess:Resource rdf:about="resource/architecture-decisions/adr-templates">
+    <ess:content>https://adr.github.io/adr-templates/</ess:content>
+  </ess:Resource>
 
   <ess:WorkProductManifest rdf:about="workproduct-manifest/architecture-decisions/architecture-decisions">
     <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
