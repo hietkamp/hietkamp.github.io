@@ -1,8 +1,9 @@
 {% extends "_base.html.j2" %}
-{% from "_macros.html.j2" import breadcrumb, hero, panel, act_space, rdf_prose %}
+{% from "_macros.html.j2" import breadcrumb, hero, panel, act_space, rdf_prose, sec_head %}
 {% from "_card_activity.html.j2" import activity_card %}
 
 {% block content %}
+{% set nsec = namespace(n=0) %}
 {{ breadcrumb(crumbs) }}
 {{ hero(hero_data) }}
 
@@ -17,11 +18,15 @@
 {% endif %}
 
 <section class="sec mt-[38px] scroll-mt-[164px]" id="process">
-  <h2 class="sh m-0 mb-1 font-serif text-[1.4rem] font-semibold">{{ activities.title }}</h2>
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), activities.title) }}
   {{ rdf_prose(activities.intro, 'sec-intro my-1.5 mb-[18px]') }}
 
   {% if activities.domains_title %}
-  <h2 class="sh m-0 mb-3 mt-[26px] font-serif text-[1.4rem] font-semibold">{{ activities.domains_title }}</h2>
+</section>
+<section class="sec mt-[38px] scroll-mt-[164px]" id="fasen-activiteiten">
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), activities.domains_title) }}
   {% endif %}
 
   <div class="amap mt-2 flex flex-col">
@@ -78,7 +83,8 @@
 
 {% if diff_grid %}
 <section class="sec mt-[38px] scroll-mt-[164px]" id="niveaus">
-  <h2 class="sh m-0 mb-1 font-serif text-[1.4rem] font-semibold">{{ diff_grid.title }}</h2>
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), diff_grid.title) }}
   <div class="diff-grid grid grid-cols-2 gap-4 max-[900px]:grid-cols-1">
     {% for card in diff_grid.cards %}
     <div class="diff-card overflow-hidden rounded-[13px] border border-slate-300 [&_.dc-head]:px-4 [&_.dc-head]:py-[11px] [&_.dc-head]:text-white [&_.dc-level]:mb-0.5 [&_.dc-level]:font-mono [&_.dc-level]:text-[9px] [&_.dc-level]:uppercase [&_.dc-level]:tracking-[0.18em] [&_.dc-level]:opacity-85 [&_.dc-head_h3]:m-0 [&_.dc-head_h3]:font-serif [&_.dc-head_h3]:text-[1.05rem] [&_.dc-head_h3]:font-semibold [&_.dc-body]:bg-white [&_.dc-body]:px-4 [&_.dc-body]:py-[13px] [&_.dc-body_p]:m-0 [&_.dc-body_p]:mb-2 [&_.dc-body_p]:text-[0.88rem] [&_.dc-body_p]:text-slate-500 [&_.dc-body_ul]:m-0 [&_.dc-body_ul]:pl-[18px] [&_.dc-body_ul]:text-[0.88rem] [&_.dc-body_ul]:text-slate-500 dc-{{ card.id }} [&_.dc-head]:{{ card.head_color }}">
@@ -99,7 +105,8 @@
 
 {% if roles and roles.cards %}
 <section class="sec mt-[38px] scroll-mt-[164px]" id="roles">
-  <h2 class="sh m-0 mb-1 font-serif text-[1.4rem] font-semibold">{{ 'Rollen' if roles.cards|length > 1 else 'Rol' }}</h2>
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), 'Rollen' if roles.cards|length > 1 else 'Rol') }}
   <p class="sec-intro my-1.5 mb-[18px] text-[0.98rem] text-slate-500">{{ roles.intro }}</p>
   <div class="role-grid mt-3.5 grid gap-4 {{ 'grid-cols-2 max-[900px]:grid-cols-1' if roles.cards|length > 1 else 'grid-cols-1 max-w-[600px]' }}">
     {% for role in roles.cards %}

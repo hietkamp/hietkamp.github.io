@@ -1,6 +1,7 @@
 {% extends "_base.html.j2" %}
-{% from "_macros.html.j2" import rdf_prose %}
+{% from "_macros.html.j2" import rdf_prose, sec_head %}
 {% block content %}
+{% set nsec = namespace(n=0) %}
 <div class="breadcrumb flex flex-wrap items-center gap-2 pt-[18px] font-mono text-[11px] text-slate-500 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline">
   {% for parent in breadcrumb.parents %}
   <a href="{{ parent.href }}">{{ parent.label }}</a>
@@ -53,8 +54,9 @@
 </div>
 {% endif %}
 
-<section class="sec mt-[38px] scroll-mt-[164px] [&_h2]:mb-4 [&_h2]:border-b [&_h2]:border-slate-300 [&_h2]:pb-2 [&_h2]:font-serif [&_h2]:text-[1.45rem] [&_h2]:font-semibold [&_h2]:text-slate-900" id="beschrijving">
-  <h2>Beschrijving</h2>
+<section class="sec mt-[38px] scroll-mt-[164px]" id="beschrijving">
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), 'Beschrijving') }}
   {{ rdf_prose(desc_html) }}
   {% if steps %}
   <ul class="steps mt-3 mb-0 list-none space-y-2 p-0 [counter-reset:step] [&>li]:relative [&>li]:rounded-xl [&>li]:border [&>li]:border-slate-300 [&>li]:bg-white [&>li]:p-4 [&>li]:pl-12">
@@ -76,8 +78,9 @@
   {% endif %}
 </section>
 
-<section class="sec mt-[38px] scroll-mt-[164px] [&_h2]:mb-4 [&_h2]:border-b [&_h2]:border-slate-300 [&_h2]:pb-2 [&_h2]:font-serif [&_h2]:text-[1.45rem] [&_h2]:font-semibold [&_h2]:text-slate-900" id="aanpak">
-  <h2>Aanpak</h2>
+<section class="sec mt-[38px] scroll-mt-[164px]" id="aanpak">
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), 'Aanpak') }}
   {% if approach and approach.desc %}
   {{ rdf_prose(approach.desc, 'mb-5') }}
   {% endif %}
@@ -124,8 +127,9 @@
 </section>
 
 {% if completion_criteria %}
-<section class="sec mt-[38px] scroll-mt-[164px] [&_h2]:mb-4 [&_h2]:border-b [&_h2]:border-slate-300 [&_h2]:pb-2 [&_h2]:font-serif [&_h2]:text-[1.45rem] [&_h2]:font-semibold [&_h2]:text-slate-900" id="criteria">
-  <h2>Voltooiingscriteria</h2>
+<section class="sec mt-[38px] scroll-mt-[164px]" id="criteria">
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), 'Voltooiingscriteria') }}
   <ul class="m-0 mt-3 list-none space-y-1.5 p-0">
     {% for c in completion_criteria %}
     <li class="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-3 py-2">
@@ -138,8 +142,9 @@
 {% endif %}
 
 {% if roles %}
-<section class="sec mt-[38px] scroll-mt-[164px] [&_h2]:mb-4 [&_h2]:border-b [&_h2]:border-slate-300 [&_h2]:pb-2 [&_h2]:font-serif [&_h2]:text-[1.45rem] [&_h2]:font-semibold [&_h2]:text-slate-900" id="rollen">
-  <h2>{{ 'Rollen' if roles.cards|length > 1 else 'Rol' }}</h2>
+<section class="sec mt-[38px] scroll-mt-[164px]" id="rollen">
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), 'Rollen' if roles.cards|length > 1 else 'Rol') }}
   <p class="prose">{{ roles.intro }}</p>
   <div class="level-grid mt-3 grid grid-cols-2 gap-4 max-[900px]:grid-cols-1">
     {% for card in roles.cards %}

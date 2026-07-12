@@ -1,6 +1,7 @@
 {% extends "_base.html.j2" %}
-{% from "_macros.html.j2" import rdf_prose %}
+{% from "_macros.html.j2" import rdf_prose, sec_head %}
 {% block content %}
+{% set nsec = namespace(n=0) %}
 <div class="breadcrumb flex flex-wrap items-center gap-2 pt-[18px] font-mono text-[11px] text-slate-500 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline">
   <a href="{{ breadcrumb.parent_href }}">{{ breadcrumb.parent_label }}</a>
   <span>/</span>
@@ -21,7 +22,8 @@
 
 {% if manifests %}
 <section class="content-section mt-[38px] mb-8 scroll-mt-[164px]" id="manifests">
-  <h2 class="mb-4 border-b border-slate-300 pb-1.5 font-serif text-[1.45rem] font-semibold text-slate-900">Werkproduct vertelt over</h2>
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), 'Werkproduct vertelt over') }}
   <ul class="m-0 list-none space-y-1.5 p-0">
     {% for m in manifests %}
     <li class="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-3 py-2">
@@ -35,8 +37,9 @@
 {% endif %}
 
 {% for sec in sections %}
-<section class="content-section mt-[38px] mb-8 scroll-mt-[164px] [&_h2]:mb-4 [&_h2]:border-b [&_h2]:border-slate-300 [&_h2]:pb-2 [&_h2]:font-serif [&_h2]:text-[1.45rem] [&_h2]:font-semibold [&_h2]:text-slate-900{% if sec.extra_class %} {{ sec.extra_class }}{% endif %}" data-section-kind="{{ sec.section_kind | default('content') }}"{% if sec.id %} id="{{ sec.id }}"{% endif %}>
-  <h2>{{ sec.h2 }}</h2>
+<section class="content-section mt-[38px] mb-8 scroll-mt-[164px]{% if sec.extra_class %} {{ sec.extra_class }}{% endif %}" data-section-kind="{{ sec.section_kind | default('content') }}"{% if sec.id %} id="{{ sec.id }}"{% endif %}>
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), sec.h2) }}
   {{ rdf_prose(sec.body_html) }}
 </section>
 {% endfor %}
@@ -81,7 +84,8 @@
 
 {% if lod_list %}
 <section class="content-section mt-[38px] mb-8 scroll-mt-[164px]" id="lod">
-  <h2 class="mb-4 border-b border-slate-300 pb-1.5 font-serif text-[1.45rem] font-semibold text-slate-900">Detailniveaus</h2>
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), 'Detailniveaus') }}
   <ol class="m-0 list-none space-y-2 p-0">
     {% for lod in lod_list %}
     <li class="overflow-hidden rounded-xl border {% if lod.sufficient %}border-[var(--prac)]/40 bg-[var(--prac)]/5{% else %}border-slate-200 bg-white{% endif %}">
@@ -105,7 +109,8 @@
 
 {% if resources %}
 <section class="content-section mt-[38px] mb-8 scroll-mt-[164px]" id="resources">
-  <h2 class="mb-4 border-b border-slate-300 pb-1.5 font-serif text-[1.45rem] font-semibold text-slate-900">Bronnen</h2>
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), 'Bronnen') }}
   <ul class="m-0 list-none space-y-1.5 p-0">
     {% for url in resources %}
     <li class="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-3 py-2">
