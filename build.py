@@ -557,6 +557,7 @@ def build_index_ctx(g: Graph) -> dict:
         "toolbar": [
             {"href": "#start",       "label": "Kies de context"},
             {"href": "#achtergrond", "label": "Practices"},
+            {"href": "#licentie",    "label": "Licentie"},
         ],
         "sections": {
             "start": {
@@ -576,6 +577,24 @@ def build_index_ctx(g: Graph) -> dict:
                     "body":  [
                         "De methode is uitgedrukt in de Essence-taal (OMG ptc/25-05-01). "
                         "De ontologie, kernel en alle method-elementen zijn beschikbaar als RDF.",
+                    ],
+                },
+            },
+            "licentie": {
+                "num":   "03",
+                "title": "Open source licentie",
+                "intro": "Zowel de methode-inhoud als de website die je nu bekijkt zijn open source.",
+                "panel": {
+                    "title": "GNU General Public License v3.0",
+                    "body":  [
+                        "Deze site en de bijbehorende RDF-bronbestanden zijn vrijgegeven onder de "
+                        "GNU General Public License v3.0 (GPLv3). Je mag de broncode en de methode-inhoud "
+                        "vrij bekijken, hergebruiken en aanpassen, mits afgeleide werken onder dezelfde "
+                        "licentie beschikbaar blijven.",
+                        "De volledige licentietekst en broncode staan op "
+                        "<a href=\"https://github.com/hietkamp/hietkamp.github.io\" target=\"_blank\" rel=\"noopener\">GitHub</a>, "
+                        "in het bestand "
+                        "<a href=\"https://github.com/hietkamp/hietkamp.github.io/blob/main/LICENSE\" target=\"_blank\" rel=\"noopener\">LICENSE</a>.",
                     ],
                 },
             },
@@ -1179,7 +1198,10 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
             "state": _state_label(state),
         })
 
-    # Sequence: end-before-start associations
+    # Sequence: end-before-start associations, limited to activities owned by
+    # this same practice — cross-practice associations (e.g. project-lifecycle
+    # phase ordering) describe a different kind of sequencing and don't belong
+    # in this per-practice "Volgorde" widget.
     predecessors = []
     successors = []
     for assoc in g.subjects(RDF.type, ESS.ActivityAssociation):
@@ -1188,12 +1210,12 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
             continue
         a1 = next(g.objects(assoc, ESS.end1), None)
         a2 = next(g.objects(assoc, ESS.end2), None)
-        if a2 == act_uri and a1:
+        if a2 == act_uri and a1 and next(g.objects(a1, ESS.owner), None) == practice_uri:
             predecessors.append({
                 "name": get_name(g, a1),
                 "href": f"../act/{slug(str(a1))}.html",
             })
-        if a1 == act_uri and a2:
+        if a1 == act_uri and a2 and next(g.objects(a2, ESS.owner), None) == practice_uri:
             successors.append({
                 "name": get_name(g, a2),
                 "href": f"../act/{slug(str(a2))}.html",

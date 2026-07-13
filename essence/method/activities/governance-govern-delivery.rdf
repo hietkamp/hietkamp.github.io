@@ -17,7 +17,7 @@
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <ess:approach rdf:resource="approach/governance-govern-delivery/default"/>
     <ess:action rdf:resource="action/governance-govern-delivery/read/architecture-decisions"/>
-    <ess:action rdf:resource="action/governance-govern-delivery/read/architecture-roadmap"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/read/solution-roadmap"/>
     <ess:action rdf:resource="action/governance-govern-delivery/create/conformance-evidence"/>
     <ess:action rdf:resource="action/governance-govern-delivery/update-alpha/governance"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
@@ -41,11 +41,11 @@
     <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/governance-govern-delivery/read/architecture-roadmap">
-    <ess:name>Read Architecture Roadmap</ess:name>
+  <ess:Action rdf:about="action/governance-govern-delivery/read/solution-roadmap">
+    <ess:name>Read Solution Roadmap</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-roadmap"/>
+    <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-govern-delivery/create/conformance-evidence">

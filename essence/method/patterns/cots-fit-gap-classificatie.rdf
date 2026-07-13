@@ -42,7 +42,9 @@
     <ess:name xml:lang="en">related-workproducts</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="workproduct/architectural-drivers"/>
+    <ess:elements rdf:resource="workproduct/solution-architectural-drivers"/>
     <ess:elements rdf:resource="workproduct/architecture-roadmap"/>
+    <ess:elements rdf:resource="workproduct/solution-roadmap"/>
   </ess:PatternAssociation>
 
 </rdf:RDF>

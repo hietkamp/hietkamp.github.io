@@ -8,14 +8,14 @@
 >
 
   <ess:WorkProduct rdf:about="workproduct/architectural-drivers">
-    <ess:name xml:lang="nl">Architectuurbepalende Eisen</ess:name>
-    <ess:name xml:lang="en">Architectural Drivers</ess:name>
-    <ess:briefDescription xml:lang="nl">Vertaal doelen, kwaliteitsattributen en beperkingen naar toetsbare architectuurcriteria.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[<p>De requirements die significant genoeg zijn om de architectuur te vormen — zowel kwaliteitsattributen (NFRs) als functionele requirements met verborgen architecturele impact. Elk met een meetbaar succescriterium, gekoppeld aan een driver. Niet alles is architectureel significant — dit werkproduct helpt te kiezen en te expliciteren wat er impliciet in stond.</p>
-<p><strong>Rol:</strong> Requirementselectie die expliciet maakt welke eisen architectureel significant zijn.</p>
-<p><strong>Beantwoordt:</strong> Welke eisen sturen de architectuur en hoe meten we of eraan voldaan is?</p>
-<p><strong>Scope:</strong> Bevat alleen architectureel significante requirements; gewone functionele backlog-items blijven buiten dit object.</p>
-<p><strong>Publiek:</strong> Architecture Owner, business analyst, Enterprise Architect, Product Owner en vendorselectieteam.</p>
+    <ess:name xml:lang="nl">Sturende Eisen</ess:name>
+    <ess:name xml:lang="en">Governing Requirements</ess:name>
+    <ess:briefDescription xml:lang="nl">Vertaal enterprise-brede doelen, kwaliteitsattributen en beperkingen naar toetsbare, sturende criteria.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De requirements die significant genoeg zijn om de enterprise-architectuur te vormen — zowel kwaliteitsattributen (NFRs) als functionele requirements met verborgen architecturele impact, op ondernemingsniveau. Elk met een meetbaar succescriterium, gekoppeld aan een driver. Niet alles is architectureel significant — dit werkproduct helpt te kiezen en te expliciteren wat er impliciet in stond.</p>
+<p><strong>Rol:</strong> Requirementselectie die expliciet maakt welke eisen enterprise-breed sturend zijn.</p>
+<p><strong>Beantwoordt:</strong> Welke eisen sturen de enterprise-architectuur en hoe meten we of eraan voldaan is?</p>
+<p><strong>Scope:</strong> Bevat alleen enterprise-brede, architectureel significante requirements; solution-specifieke architectuurbepalende eisen horen bij de solution.</p>
+<p><strong>Publiek:</strong> Enterprise Architect, business analyst, Architecture Sponsor en Architectuurforum.</p>
 <h3>Informatie-elementen</h3><table><thead><tr><th>Element</th><th>Betekenis</th><th>Verplicht</th></tr></thead><tbody><tr><td>Driver</td><td>De zakelijke, technische of compliance-reden achter de eis.</td><td>Ja</td></tr><tr><td>ASR-scenario</td><td>Stimulus, omgeving, respons en meetbare drempelwaarde.</td><td>Ja</td></tr><tr><td>Prioriteit</td><td>De relatieve zwaarte van de eis bij trade-offs.</td><td>Ja</td></tr><tr><td>COTS-selectiecriterium</td><td>Of en hoe de eis product- of leverancierskeuze beïnvloedt.</td><td>Ja</td></tr></tbody></table>
 <h3>Kwaliteitscriteria</h3><ul><li><strong>Architectureel significant</strong> — De eis beïnvloedt structuur, productkeuze, integratie of governance.</li><li><strong>Meetbaar</strong> — De eis bevat een drempel, norm of toetsbare uitkomst.</li><li><strong>Herleidbaar</strong> — Elke ASR verwijst naar een driver en later naar ADR of reviewbewijs.</li></ul>
 <p><strong>Bijwerken wanneer:</strong> Bij requirementswijziging, nieuwe constraint, vendorfit/gap of herprioritering van drivers.</p>]]></ess:description>

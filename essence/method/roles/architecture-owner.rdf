@@ -15,7 +15,7 @@
     <ess:description xml:lang="nl">De meest technisch ervaren persoon in het team (conform Disciplined Agile Delivery). Voert het solution-spoor uit binnen de door de Enterprise Architect geleverde context. Verfijnt enterprise-drivers naar solution-specifieke kwaliteitsattributen, selecteert COTS-componenten, bewijst de risicovolste integratiekeuzes, maakt de solution-roadmap en faciliteert met het team de architectuurevolutie in productie. Rapporteert afwijkingen van enterprise-standaarden terug aan de Enterprise Architect via beslissingsrecords en reviewrecords.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ewow:level>Solution niveau · C4 Level 2–3</ewow:level>
-    <ewow:owns>Architecture Vision (solution) · Architecture Definition · ADRs · Review Records · Roadmap (solution)</ewow:owns>
+    <ewow:owns>Architecture Vision (solution) · Architectuurbepalende Eisen (solution) · Architecture Definition · ADRs · Review Records · Roadmap (solution)</ewow:owns>
     <ewow:intro>De Architecture Owner is eigenaar van het architectuurproces op solution-scope, en werkt altijd binnen de kaders en context die de Enterprise Architect heeft geleverd.</ewow:intro>
     <ess:associations rdf:resource="pattern-association/architecture-owner/requires-competency"/>
     <ess:associations rdf:resource="pattern-association/architecture-owner/participates-in"/>

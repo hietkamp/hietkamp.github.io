@@ -58,5 +58,15 @@
   </div>
 </section>
 
+{# ── 3. Licentie ── #}
+<section id="licentie" class="mt-12">
+  {{ sec_head(sections.licentie.num, sections.licentie.title) }}
+  <p class="prose">{{ sections.licentie.intro }}</p>
+  <div class="panel transition-shadow mt-[18px] rounded-[13px] border border-l-4 border-slate-300 border-l-[var(--prac)] bg-slate-50 px-5 py-[18px] [&_h3]:m-0 [&_h3]:mb-1.5 [&_h3]:font-serif [&_h3]:text-[1.16rem] [&_p]:mb-2.5 [&_p]:text-[0.95rem] [&_p]:text-slate-500 [&_p:last-child]:mb-0 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline mt-[20px]">
+    <h3>{{ sections.licentie.panel.title }}</h3>
+    {% for para in sections.licentie.panel.body %}<p>{{ para | safe }}</p>{% endfor %}
+  </div>
+</section>
+
 </main>
 {% endblock %}

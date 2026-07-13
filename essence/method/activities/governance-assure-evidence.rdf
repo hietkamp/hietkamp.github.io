@@ -16,7 +16,7 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <ess:approach rdf:resource="approach/governance-assure-evidence/default"/>
-    <ess:action rdf:resource="action/governance-assure-evidence/read/architecture-roadmap"/>
+    <ess:action rdf:resource="action/governance-assure-evidence/read/solution-roadmap"/>
     <ess:action rdf:resource="action/governance-assure-evidence/create/conformance-evidence"/>
     <ess:action rdf:resource="action/governance-assure-evidence/read/paved-road-adoptie"/>
     <ess:action rdf:resource="action/governance-assure-evidence/read/review-records"/>
@@ -34,11 +34,11 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/governance-assure-evidence/read/architecture-roadmap">
-    <ess:name>Read Architecture Roadmap</ess:name>
+  <ess:Action rdf:about="action/governance-assure-evidence/read/solution-roadmap">
+    <ess:name>Read Solution Roadmap</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-roadmap"/>
+    <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-assure-evidence/create/conformance-evidence">

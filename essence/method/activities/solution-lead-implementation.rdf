@@ -11,8 +11,11 @@
   <ess:Activity rdf:about="activity/solution-lead-implementation">
     <ess:name xml:lang="nl">Implementatiegovernance voeren</ess:name>
     <ess:name xml:lang="en">Lead Implementation</ess:name>
-    <ess:briefDescription xml:lang="nl">Voer solution-level PoC's en architectuurspikes uit. Toets de integratielaag en COTS-fit tegen de criteria uit de sturende eisen. Rapporteer bevinding…</ess:briefDescription>
-    <ess:description xml:lang="nl">Voer solution-level PoC's en architectuurspikes uit. Toets de integratielaag en COTS-fit tegen de criteria uit de sturende eisen. Rapporteer bevindingen die enterprise-beslissingen raken terug aan de Enterprise Architect.</ess:description>
+    <ess:briefDescription xml:lang="nl">Tijdens deze activiteit werkt de architectuureigenaar actief mee in het project en bewaakt van daaruit dat de oplossing conform de vastgestelde architectuur wordt gebouwd en geconfigureerd. Architectuurbeslissingen worden doorlopend gevalideerd, risicovolle keuzes worden waar nodig getoetst, en eventuele afwijkingen worden expliciet vastgelegd en beoordeeld. Zo blijft de architectuur gedurende de implementatie actueel en vormt zij een betrouwbaar uitgangspunt voor de formele conformance-toetsing.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Tijdens deze activiteit maakt de architectuureigenaar deel uit van het project en bewaakt van daaruit dat de oplossing conform de vastgestelde architectuur wordt gebouwd of geconfigureerd. In de rol van design authority ontstaat het zicht op de voortgang niet via losstaande toetsingsmomenten, maar via actieve deelname aan het bestaande werkritme van het team: refinements, ontwerpoverleg, sprint reviews en de dagelijkse samenwerking met ontwikkelaars en configuratiespecialisten. Daarbij wordt niet alleen gevolgd of de implementatie overeenkomt met het ontwerp, maar ook of de eerder genomen architectuurbeslissingen — gezien de inzichten die tijdens de realisatie ontstaan — nog steeds passend zijn.</p>
+<p>De nadruk ligt op het tijdig signaleren en beheersen van architectuurrisico's. Risicovolle ontwerpkeuzes, complexe integraties en de toepassing van standaardsoftware worden waar nodig gevalideerd met proefopstellingen, technische experimenten of andere vormen van verificatie. Hiermee wordt vroegtijdig vastgesteld of de gekozen oplossingsrichting daadwerkelijk voldoet aan de architectuurbepalende eisen en de beoogde kwaliteitseisen.</p>
+<p>Wordt tijdens de realisatie afgeweken van de vastgestelde architectuur, dan wordt deze afwijking expliciet beoordeeld. Tijdelijke of noodzakelijke afwijkingen worden vastgelegd als dispensatie, inclusief de onderbouwing, voorwaarden en een einddatum. Geven nieuwe inzichten aanleiding om de architectuur aan te passen, dan worden het architectuurmodel en de bijbehorende architectuurbeslissingen bijgewerkt. Bevindingen die gevolgen hebben buiten de scope van de solution worden teruggekoppeld aan de Enterprise Architect en, waar nodig, voorgelegd aan de architectuurgovernance.</p>
+<p>Het resultaat van deze activiteit is een oplossing waarvan aantoonbaar is dat deze conform de vastgestelde architectuur wordt gerealiseerd, of dat afwijkingen bewust, beheerst en navolgbaar zijn geaccepteerd. Hiermee ontstaat een actueel architectuurbeeld dat als uitgangspunt dient voor de formele conformance-toetsing in de volgende fase van het project.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
     <ess:approach rdf:resource="approach/solution-lead-implementation/default"/>
@@ -31,7 +34,24 @@
     <ess:name xml:lang="nl">Implementatiegovernance voeren</ess:name>
     <ess:name xml:lang="en">Lead Implementation</ess:name>
     <ess:briefDescription/>
-    <ess:description xml:lang="nl">Voer solution-level PoC's en architectuurspikes uit. Toets de integratielaag en COTS-fit tegen de criteria uit de sturende eisen. Rapporteer bevindingen die enterprise-beslissingen raken terug aan de Enterprise Architect.</ess:description>
+    <ess:description xml:lang="nl"><![CDATA[
+    <p><strong>Werk actief mee in het project</strong></p>
+    <p>De architectuureigenaar maakt deel uit van het team. Het zicht op architectuurconformance ontstaat vanuit die actieve deelname — niet vanuit toetsingsmomenten die los van het team en van buitenaf worden ingepland.</p>
+    <p>Dat betekent: meedraaien in het bestaande werkritme van het team, zoals refinement, ontwerpoverleg en sprint review. Zo volgt de architectuureigenaar de voortgang vanzelf, en signaleert tijdig wanneer de realisatie of een eerder genomen architectuurbeslissing aandacht nodig heeft.</p>
+    <p>Deze doorlopende betrokkenheid is iets anders dan de formele conformance-beoordeling bij de gate review. Die gate review blijft de formele, enterprise-geborgde toetsing. Deze activiteit gaat daaraan vooraf en bepaalt mede hoe goed die toetsing straks verloopt.</p>
+    <br /><p><strong>Beoordeel zowel de realisatie als de architectuur</strong></p>
+    <p>Volg niet alleen of de oplossing conform het ontwerp wordt gerealiseerd, maar beoordeel ook of de vastgestelde architectuurbeslissingen nog steeds de juiste zijn. Nieuwe inzichten, technische beperkingen of gewijzigde omstandigheden kunnen aanleiding geven om een eerder genomen architectuurbeslissing te heroverwegen. De architectuureigenaar bewaakt daarmee niet alleen de naleving van de architectuur, maar ook de kwaliteit en actualiteit ervan.</p>
+    <br /><p><strong>Beheer architectuurwijzigingen expliciet</strong></p>
+    <p>Moeten tijdens de realisatie ontwerpkeuzes worden aangepast als gevolg van technische, organisatorische of projectmatige beperkingen, dan worden deze wijzigingen bewust beoordeeld. De gevolgen voor de architectuur worden inzichtelijk gemaakt en, waar nodig, vastgelegd als een nieuwe of aangepaste architectuurbeslissing. Hierdoor blijft de ontwikkeling van de architectuur navolgbaar en beheerst.</p>
+    <br /><p><strong>Valideer risicovolle ontwerpkeuzes</strong></p>
+    <p>Richt de verificatie op de onderdelen met het grootste technische of functionele risico. Complexe integraties, innovatieve oplossingen en de toepassing van standaardsoftware kunnen waar nodig worden gevalideerd met een proefopstelling, prototype of technische verkenning. Op deze manier worden risico's vroegtijdig onderkend en kan worden vastgesteld of de gekozen oplossingsrichting daadwerkelijk voldoet aan de architectuurbepalende eisen.</p>
+    <br /><p><strong>Besteed bijzondere aandacht aan integraties</strong></p>
+    <p>Volg tijdens de realisatie expliciet of integraties worden gerealiseerd volgens de vastgestelde architectuur. Beoordeel of de gekozen integratiepatronen correct zijn toegepast, of authenticatie- en autorisatiemechanismen functioneren zoals ontworpen, en of tijdelijke koppelingen daadwerkelijk tijdelijk blijven. Hiermee wordt voorkomen dat pragmatische oplossingen ongemerkt onderdeel worden van de definitieve architectuur.</p>
+    <br /><p><strong>Leg afwijkingen gecontroleerd vast</strong></p>
+    <p>Wijkt de realisatie af van de vastgestelde architectuur, dan wordt dit expliciet vastgelegd als dispensatie. Daarbij worden de aanleiding, de gevolgen, de geldigheidsduur en de voorwaarden voor herstel beschreven. Afwijkingen worden beoordeeld binnen de architectuurgovernance, zodat duidelijk blijft welke onderdelen van de oplossing afwijken van de doelarchitectuur en waarom.</p>
+    <br /><p><strong>Deel bevindingen met de enterprise-architectuur</strong></p>
+    <p>Wanneer tijdens de realisatie inzichten ontstaan die gevolgen hebben buiten de scope van de solution, worden deze teruggekoppeld aan de Enterprise Architect. Dit geldt bijvoorbeeld voor beperkingen van standaardsoftware, nieuwe technische risico's of generieke oplossingspatronen die ook voor andere projecten relevant kunnen zijn. Zo dragen de ervaringen uit de implementatie bij aan de verdere ontwikkeling van de enterprise-architectuur en de organisatiebrede architectuurkaders.</p>
+]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
@@ -57,10 +77,10 @@
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-lead-implementation/update-alpha/architecture">
-    <ess:name>Update Architecture</ess:name>
+    <ess:name>Update System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:alpha rdf:resource="alpha/architecture"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-lead-implementation/update-alpha/architecture-decisions">
