@@ -20,22 +20,6 @@
   </div>
 </header>
 
-{% if manifests %}
-<section class="content-section mt-[38px] mb-8 scroll-mt-[164px]" id="manifests">
-  {% set nsec.n = nsec.n + 1 %}
-  {{ sec_head('%02d'|format(nsec.n), 'Werkproduct vertelt over') }}
-  <ul class="m-0 list-none space-y-1.5 p-0">
-    {% for m in manifests %}
-    <li class="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-3 py-2">
-      <span class="shrink-0 rounded-full border px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] {% if m.is_kernel %}border-slate-400/30 bg-slate-100 text-slate-500{% else %}border-emerald-700/30 bg-emerald-700/10 text-emerald-700{% endif %}">{% if m.is_kernel %}Kernel{% else %}Methode{% endif %}</span>
-      <span class="flex-1 text-[0.88rem] font-medium text-slate-700">{{ m.alpha }}</span>
-      {% if m.lower_bound == '1' %}<span class="shrink-0 font-mono text-[9px] uppercase tracking-wide text-slate-400">Verplicht</span>{% endif %}
-    </li>
-    {% endfor %}
-  </ul>
-</section>
-{% endif %}
-
 {% for sec in sections %}
 <section class="content-section mt-[38px] mb-8 scroll-mt-[164px]{% if sec.extra_class %} {{ sec.extra_class }}{% endif %}" data-section-kind="{{ sec.section_kind | default('content') }}"{% if sec.id %} id="{{ sec.id }}"{% endif %}>
   {% set nsec.n = nsec.n + 1 %}
@@ -115,7 +99,11 @@
     {% for url in resources %}
     <li class="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-3 py-2">
       <svg class="shrink-0 text-slate-400" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8.5l3-3M8 5l1.5-1.5a2.12 2.12 0 013 3L11 8M6 9l-1.5 1.5a2.12 2.12 0 01-3-3L3 6"/></svg>
+      {% if url.startswith('http://') or url.startswith('https://') %}
       <a href="{{ url }}" class="text-[0.88rem] text-[var(--prac)] no-underline hover:underline" target="_blank" rel="noopener">{{ url }}</a>
+      {% else %}
+      <span class="text-[0.88rem] text-slate-600">{{ url }}</span>
+      {% endif %}
     </li>
     {% endfor %}
   </ul>

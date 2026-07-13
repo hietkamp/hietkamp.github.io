@@ -9,20 +9,57 @@
 
   <ess:WorkProduct rdf:about="workproduct/solution-architectural-drivers">
     <ess:name xml:lang="nl">Architectuurbepalende Eisen</ess:name>
-    <ess:name xml:lang="en">Architectural Drivers</ess:name>
-    <ess:briefDescription xml:lang="nl">Vertaal de requirements van de solution naar toetsbare eisen die daadwerkelijk richting geven aan de architectuur.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[<p>De requirements uit de solution-requirementsset die significant genoeg zijn om de solution-architectuur te vormen — zowel kwaliteitsattributen (NFRs) als functionele requirements met verborgen architecturele impact. Elk met een meetbaar succescriterium, gekoppeld aan een driver. Niet alles is architectureel significant — dit werkproduct helpt te kiezen en te expliciteren wat er impliciet in stond.</p>
-<p><strong>Rol:</strong> Requirementselectie die expliciet maakt welke eisen de solution-architectuur bepalen.</p>
-<p><strong>Beantwoordt:</strong> Welke eisen sturen de solution-architectuur en hoe meten we of eraan voldaan is?</p>
-<p><strong>Scope:</strong> Bevat alleen architectureel significante requirements van de solution; gewone functionele backlog-items blijven buiten dit object.</p>
-<p><strong>Publiek:</strong> Architecture Owner, business analyst, Product Owner, vendorselectieteam en Enterprise Architect.</p>
-<h3>Informatie-elementen</h3><table><thead><tr><th>Element</th><th>Betekenis</th><th>Verplicht</th></tr></thead><tbody><tr><td>Driver</td><td>De zakelijke, technische of compliance-reden achter de eis.</td><td>Ja</td></tr><tr><td>ASR-scenario</td><td>Stimulus, omgeving, respons en meetbare drempelwaarde.</td><td>Ja</td></tr><tr><td>Prioriteit</td><td>De relatieve zwaarte van de eis bij trade-offs.</td><td>Ja</td></tr><tr><td>COTS-selectiecriterium</td><td>Of en hoe de eis product- of leverancierskeuze beïnvloedt.</td><td>Ja</td></tr></tbody></table>
-<h3>Kwaliteitscriteria</h3><ul><li><strong>Architectureel significant</strong> — De eis beïnvloedt structuur, productkeuze, integratie of governance.</li><li><strong>Meetbaar</strong> — De eis bevat een drempel, norm of toetsbare uitkomst.</li><li><strong>Herleidbaar</strong> — Elke ASR verwijst naar een driver en later naar ADR of reviewbewijs.</li></ul>
-<p><strong>Bijwerken wanneer:</strong> Bij requirementswijziging, nieuwe constraint, vendorfit/gap of herprioritering van drivers.</p>]]></ess:description>
+    <ess:name xml:lang="en">Architecturally Significant Requirements</ess:name>
+    <ess:briefDescription xml:lang="nl">Filter uit de volledige requirements-set de eisen die de architectuur van de solution daadwerkelijk richting geven.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Een project kent vaak tientallen tot honderden requirements, maar niet elke eis is architectuurbepalend. Een architectuurbepalende eis — ook wel Architecturally Significant Requirement (ASR) genoemd — is een eis die een aantoonbare invloed heeft op de structuur, samenhang of kwaliteit van de solution: eisen rond beveiliging, beschikbaarheid, performance, integraties of wettelijke verplichtingen zijn hier veelal voorbeelden van. Gewone functionele wensen en implementatiedetails horen hier niet bij.</p>
+<p>Het onderscheid volgt een eenvoudige toets: kan een eis op meerdere manieren worden gerealiseerd zonder verlies van kwaliteit, of is er in de praktijk maar één houdbare manier om eraan te voldoen? Alleen in het laatste geval is sprake van een architectuurbepalende eis. "De applicatie moet snel zijn" is geen architectuurbepalende eis; "de applicatie verwerkt 3.000 gelijktijdige requests binnen 500 ms (95e percentiel)" is dat wel, omdat deze eis de keuze voor bepaalde architectuurpatronen, technologie of infrastructuur direct afdwingt.</p>
+<p>Elke architectuurbepalende eis wordt daarom herschreven tot een meetbaar scenario, bestaande uit vier onderdelen: de bron (wie of wat de eis stelt), de stimulus (de gebeurtenis of conditie die de eis activeert), de respons (wat de solution moet doen) en de meetwaarde (het criterium waarmee wordt getoetst of aan de eis is voldaan). Deze scenariovorm maakt een eis toetsbaar in plaats van een kwalitatieve wens.</p>
+<p>De volledige set architectuurbepalende eisen wordt gegroepeerd en geprioriteerd via een utility tree: eerst onderverdeeld naar kwaliteitscategorie (bijvoorbeeld volgens ISO/IEC 25010 — functionaliteit, prestaties, compatibiliteit, bruikbaarheid, betrouwbaarheid, beveiliging, onderhoudbaarheid, portabiliteit), vervolgens verfijnd tot concrete scenario's, en ten slotte geprioriteerd op bedrijfswaarde en technisch risico. Zo wordt zichtbaar waar de zwaarste architectuurkeuzes moeten worden gemaakt, en waar juist ruimte is voor eenvoudigere oplossingen.</p>
+<p>De architectuurbepalende eisen vormen de schakel tussen de requirements van de business analist en de architectuur van de solution. Zij beschrijven waarom een architectuurbeslissing noodzakelijk is; de Architectuurbeslissing legt vervolgens vast welke oplossing daarvoor is gekozen, en het Architectuurmodel toont hoe die keuze in de architectuur is uitgewerkt. Waar de architectuurbepalende eis de aanleiding vastlegt, leggen de andere twee werkproducten de keuze en de uitwerking vast.</p>
+<p>Een architectuurbepalende eis geeft antwoord op de vragen:</p>
+<ul>
+<li>Is deze eis architectuurbepalend, of is dit een implementatiedetail?</li>
+<li>Wat is het meetbare scenario waaraan de solution moet voldoen?</li>
+<li>Tot welke kwaliteitscategorie behoort deze eis?</li>
+<li>Wat is de prioriteit, gegeven bedrijfswaarde en technisch risico?</li>
+</ul>
+<p>Het werkproduct is bedoeld voor de architectuureigenaar, de business analist (als bron van de volledige requirements-set), de Enterprise Architect en Architectuursturing, die de architectuurbepalende eisen gebruikt om afwijkingen tijdens de uitvoering te beoordelen.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
+    <ess:levelOfDetail rdf:resource="lod/solution-architectural-drivers/utility-tree"/>
+    <ess:levelOfDetail rdf:resource="lod/solution-architectural-drivers/scenario"/>
+    <ess:resources rdf:resource="resource/solution-architectural-drivers/sei-qaw"/>
+    <ess:resources rdf:resource="resource/solution-architectural-drivers/atam"/>
+    <ess:resources rdf:resource="resource/solution-architectural-drivers/iso25010"/>
     <ess:ownedElements rdf:resource="resource/solution-architectural-drivers/template"/>
   </ess:WorkProduct>
+
+  <ess:LevelOfDetail rdf:about="lod/solution-architectural-drivers/utility-tree">
+    <ess:name xml:lang="nl">Utility tree (overzicht)</ess:name>
+    <ess:name xml:lang="en">Utility tree (overview)</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[<p>Alle kandidaat-eisen gecategoriseerd naar kwaliteitsattribuut en geprioriteerd op bedrijfswaarde en risico, zonder dat elk scenario al volledig is uitgewerkt. Voldoende om te bepalen welke eisen daadwerkelijk architectuurbepalend zijn en waar de aandacht in Maak Low-Level Design naartoe moet.</p>]]></ess:description>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
+    <ess:successor rdf:resource="lod/solution-architectural-drivers/scenario"/>
+  </ess:LevelOfDetail>
+
+  <ess:LevelOfDetail rdf:about="lod/solution-architectural-drivers/scenario">
+    <ess:name xml:lang="nl">Scenario (volledig)</ess:name>
+    <ess:name xml:lang="en">Scenario (full)</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[<p>Elke architectuurbepalende eis individueel uitgewerkt als volledig scenario: bron, stimulus, respons en meetwaarde. Dit detailniveau is nodig zodra een eis daadwerkelijk als basis dient voor een architectuurbeslissing of voor conformance-toetsing tijdens en na realisatie.</p>]]></ess:description>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
+  </ess:LevelOfDetail>
+
+  <ess:Resource rdf:about="resource/solution-architectural-drivers/sei-qaw">
+    <ess:content>Software Engineering Institute (SEI), Quality Attribute Workshops</ess:content>
+  </ess:Resource>
+
+  <ess:Resource rdf:about="resource/solution-architectural-drivers/atam">
+    <ess:content>Architecture Tradeoff Analysis Method (ATAM) — utility tree-methode</ess:content>
+  </ess:Resource>
+
+  <ess:Resource rdf:about="resource/solution-architectural-drivers/iso25010">
+    <ess:content>ISO/IEC 25010 — Software product quality model</ess:content>
+  </ess:Resource>
 
   <ess:WorkProductManifest rdf:about="workproduct-manifest/solution-architectural-drivers/architectural-drivers">
     <ess:workProduct rdf:resource="workproduct/solution-architectural-drivers"/>
@@ -30,15 +67,10 @@
     <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
   </ess:WorkProductManifest>
 
-  <ess:WorkProductManifest rdf:about="workproduct-manifest/solution-architectural-drivers/requirements">
-    <ess:workProduct rdf:resource="workproduct/solution-architectural-drivers"/>
-    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
-    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
-  </ess:WorkProductManifest>
-
   <ess:TypedResource rdf:about="resource/solution-architectural-drivers/template">
     <ess:kind rdf:resource="type/template"/>
-    <ess:content>https://hietkamp.nl/essence/downloads/solution-architectural-drivers.docx</ess:content>
+    <ess:briefDescription xml:lang="nl">Sjabloon voor Architectuurbepalende Eisen (nog te maken)</ess:briefDescription>
+    <ess:content>https://hietkamp.nl/essence/downloads/architecturally-significant-requirements.docx</ess:content>
   </ess:TypedResource>
 
 </rdf:RDF>

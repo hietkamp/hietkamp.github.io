@@ -8,36 +8,66 @@
 >
 
   <ess:WorkProduct rdf:about="workproduct/solution-roadmap">
-    <ess:name xml:lang="nl"><![CDATA[Solution-roadmap en Transitiestaten]]></ess:name>
+    <ess:name xml:lang="nl"><![CDATA[Solution Roadmap & Transition States]]></ess:name>
     <ess:name xml:lang="en"><![CDATA[Solution Roadmap & Transition States]]></ess:name>
-    <ess:briefDescription xml:lang="nl">Maak de route van de solution-baseline naar de doeltoestand bestuurbaar zonder verre horizons te overspecificeren.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[<p>Het pad van de solution-baseline naar het doel als transitiestappen — in twee parallelle sporen: een <strong>configuratiespoor</strong> (wat de vendor levert) en een <strong>integratiespoor</strong> (wat de architect bouwt). Beide sporen worden gestart vanuit de fit/gap-analyse en gesynchroniseerd op checkpoints. Geen big-bang — pilot → wave → volledige uitrol. Alleen de eerstvolgende horizon is gedetailleerd uitgewerkt.</p>
-<p><strong>Rol:</strong> Transitieplan dat solution-architectuurkeuzes omzet naar horizons, werkpakketten en meetbare toestanden.</p>
-<p><strong>Beantwoordt:</strong> Welke stappen brengen de solution naar de doelarchitectuur en welke alpha-toestand bewijst elke stap?</p>
-<p><strong>Scope:</strong> Plant werkpakketten, horizons en afhankelijkheden binnen de solution; detailontwerp en besluitrationale horen elders.</p>
-<p><strong>Publiek:</strong> Architecture Owner, Product Owner, delivery lead en Architectuurforum.</p>
-<h3>Informatie-elementen</h3><table><thead><tr><th>Element</th><th>Betekenis</th><th>Verplicht</th></tr></thead><tbody><tr><td>Horizon</td><td>De planningsperiode met detailniveau; horizon 1 is concreet, latere horizons blijven grof.</td><td>Ja</td></tr><tr><td>Werkpakket</td><td>Een uitvoerbare stap met eigenaar, deliverables, afhankelijkheden en acceptatiecriteria.</td><td>Ja</td></tr><tr><td>Alpha-toestandsdoel</td><td>De Essence-toestand die het werkpakket aantoonbaar moet bereiken.</td><td>Ja</td></tr><tr><td>Onomkeerbare grens</td><td>Het moment waarop terugdraaien kostbaar wordt en een ADR of review nodig is.</td><td>Ja</td></tr></tbody></table>
-<h3>Kwaliteitscriteria</h3><ul><li><strong>Rolling horizon</strong> — Alleen de eerstvolgende horizon is uitgewerkt op werkpakketdetail.</li><li><strong>Meetbaar gereed</strong> — Elk werkpakket verwijst naar een alpha-toestandsdoel en acceptatiebewijs.</li><li><strong>Spoorbewust</strong> — Configuratiespoor en integratiespoor zijn apart zichtbaar en op checkpoints gesynchroniseerd.</li></ul>
-<p><strong>Bijwerken wanneer:</strong> Rolling horizon: bij horizoneinde, nieuwe ADR, fit/gap-wijziging of reviewbevinding.</p>]]></ess:description>
+    <ess:briefDescription xml:lang="nl">Bepaal een haalbare volgorde van transitiestappen tussen baseline en doelarchitectuur, zodat op elk moment een werkend geheel bestaat.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De Solution Roadmap is een geordende reeks transitiestaten — plateaus — die de overgang beschrijft van de huidige (baseline) naar de gewenste (doel-)architectuur van de solution. Elk plateau is een stabiele, operationeel verdedigbare tussentoestand: een moment waarop de solution als geheel functioneert, ook al is de doelarchitectuur nog niet volledig gerealiseerd. Tussen plateaus in mag nooit een "half werkende" toestand ontstaan die de bedrijfsvoering breekt.</p>
+<p>Dit onderscheidt de roadmap van een planning of een lijst met taken. Een taaklijst beschrijft wát er moet gebeuren; de roadmap beschrijft in welke volgorde de solution stabiel van de ene naar de andere toestand beweegt, en waarom die volgorde de juiste is. Bij een migratie betekent dit: de volgorde waarin functionaliteit, data en integraties van bron- naar doelsysteem verhuizen. Bij de introductie van een standaardsoftwaresysteem betekent dit: de volgorde waarin het pakket wordt ingevoerd, welke integraties daarbij op welk moment ontstaan of worden uitgefaseerd, en welke bestaande systemen wanneer worden afgebouwd.</p>
+<p>Per transitiestaat legt het werkproduct vast:</p>
+<ul>
+<li>wat op dat moment werkt en operationeel is;</li>
+<li>wat nog parallel loopt (bijvoorbeeld een oud en een nieuw systeem naast elkaar);</li>
+<li>welke integraties op dat moment bestaan, en welke daarvan tijdelijk zijn;</li>
+<li>de belangrijkste afhankelijkheden en risico's die het bereiken van deze staat bepalen.</li>
+</ul>
+<p>De volgorde van de plateaus wordt onderbouwd op vier gronden: data-afhankelijkheid (welke gegevens moeten eerst beschikbaar zijn), technische afhankelijkheid tussen integratiepunten, risico (waar zit de grootste onzekerheid of impact), en niet-technische realiteit (budget, contracten, organisatorische gereedheid). Deze onderbouwing maakt de prioritering navolgbaar in plaats van impliciet, en vormt de basis waarop Architectuursturing afwijkingen tijdens uitvoering kan beoordelen.</p>
+<p>Tijdelijke tussenoplossingen — zoals een parallelle koppeling die alleen tijdens een migratieperiode bestaat — worden expliciet als tijdelijk gemarkeerd, inclusief het moment waarop ze weer verdwijnen. Zonder deze markering wordt een uitzondering stilzwijgend de norm.</p>
+<p>Een Solution Roadmap geeft antwoord op de vragen:</p>
+<ul>
+<li>Uit welke stabiele tussentoestanden bestaat het traject van baseline naar doelarchitectuur?</li>
+<li>Wat verandert er per stap, en wat blijft ongewijzigd?</li>
+<li>Welke integraties zijn permanent, en welke zijn tijdelijk?</li>
+<li>Welke afhankelijkheden en risico's bepalen de volgorde?</li>
+</ul>
+<p>Het werkproduct is bedoeld voor de architectuureigenaar, het deliveryteam, de Enterprise Architect en Architectuursturing. Het vormt voor Architectuursturing de referentie waartegen afwijkingen tijdens de uitvoering (off-road) worden herkend en beoordeeld, en voor de Enterprise Architect het aanknopingspunt om de solution-roadmap te toetsen aan de enterprise-roadmap.</p>
+<br /><p><strong>Voorbeeld in ArchiMate-notatie</strong></p>
+<p>Onderstaand voorbeeld toont een vereenvoudigde roadmap volgens de ArchiMate Implementation &amp; Migration-laag. De Baseline en de Doelarchitectuur zijn elk een Plateau; Transitiestaat 1 is een tussenliggend plateau waarin oud en nieuw systeem tijdelijk naast elkaar bestaan. Elke overgang tussen twee plateaus wordt gerealiseerd door een Work Package (WP 1, WP 2) — het werkpakket bevat de concrete migratie- of integratieactiviteiten die nodig zijn om van het ene naar het andere plateau te komen. Dit patroon herhaalt zich voor elk paar opeenvolgende plateaus in de roadmap.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
+    <ess:levelOfDetail rdf:resource="lod/solution-roadmap/near"/>
+    <ess:levelOfDetail rdf:resource="lod/solution-roadmap/far"/>
+    <ess:resources rdf:resource="resource/solution-roadmap/togaf-transition-architecture"/>
     <ess:ownedElements rdf:resource="resource/solution-roadmap/template"/>
   </ess:WorkProduct>
 
-  <ess:WorkProductManifest rdf:about="workproduct-manifest/solution-roadmap/architecture">
-    <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>
-    <ess:alpha rdf:resource="alpha/architecture"/>
-    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
-  </ess:WorkProductManifest>
+  <ess:LevelOfDetail rdf:about="lod/solution-roadmap/near">
+    <ess:name xml:lang="nl">Nabije horizon</ess:name>
+    <ess:name xml:lang="en">Near horizon</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[<p>Plateaus die op korte termijn worden bereikt, worden volledig uitgewerkt: welke integraties precies ontstaan of verdwijnen, welke systemen op dat moment naast elkaar draaien, en welke afhankelijkheden en risico's die stap concreet bepalen. Dit detailniveau is nodig om de eerstvolgende stap daadwerkelijk te kunnen plannen en uitvoeren.</p>]]></ess:description>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
+    <ess:successor rdf:resource="lod/solution-roadmap/far"/>
+  </ess:LevelOfDetail>
 
-  <ess:WorkProductManifest rdf:about="workproduct-manifest/solution-roadmap/work">
+  <ess:LevelOfDetail rdf:about="lod/solution-roadmap/far">
+    <ess:name xml:lang="nl">Verre horizon</ess:name>
+    <ess:name xml:lang="en">Far horizon</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[<p>Plateaus die verder in de tijd liggen, blijven bewust grof: de volgorde en de belangrijkste gaps ten opzichte van de doelarchitectuur zijn bekend, maar de precieze invulling wordt pas scherpgesteld wanneer die plateau dichterbij komt — bijvoorbeeld in een volgende iteratie van Roadmap opstellen, of tijdens Verzamel architectuurbepalende eisen. Te vroeg scherpstellen op een verre plateau levert overspecificatie op die bij het naderen van die stap toch weer wordt herzien.</p>]]></ess:description>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
+  </ess:LevelOfDetail>
+
+  <ess:Resource rdf:about="resource/solution-roadmap/togaf-transition-architecture">
+    <ess:content>The Open Group, TOGAF® Series Guide: A Practitioners' Approach to Developing Enterprise Architecture Following the TOGAF® ADM (2025) — hoofdstukken over baseline/target/transition states en Transition Architecture</ess:content>
+  </ess:Resource>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/solution-roadmap/opportunity">
     <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>
-    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Work"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
     <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
   </ess:WorkProductManifest>
 
   <ess:TypedResource rdf:about="resource/solution-roadmap/template">
     <ess:kind rdf:resource="type/template"/>
+    <ess:briefDescription xml:lang="nl">Sjabloon voor Solution Roadmap &amp; Transition States (nog te maken)</ess:briefDescription>
     <ess:content>https://hietkamp.nl/essence/downloads/solution-roadmap.docx</ess:content>
   </ess:TypedResource>
 

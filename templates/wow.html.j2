@@ -73,11 +73,6 @@
 
     {% endfor %}
 
-    <div class="amap-legend mt-3 flex flex-wrap gap-3.5 font-mono text-[10px] tracking-wide">
-      <div class="amap-li flex items-center gap-[7px] text-slate-500"><div class="amap-li-dot h-2.5 w-2.5 shrink-0 rounded-sm analyse bg-blue-700"></div> Analyse-fase (01–02)</div>
-      <div class="amap-li flex items-center gap-[7px] text-slate-500"><div class="amap-li-dot h-2.5 w-2.5 shrink-0 rounded-sm dev bg-slate-700"></div> Ontwerp- en ontwikkelwerk (03–06)</div>
-      <div class="amap-li flex items-center gap-[7px] text-slate-500"><div class="amap-li-dot h-2.5 w-2.5 shrink-0 rounded-sm gap border border-orange-700/30 bg-orange-700/15"></div> Werkgebied niet gedekt in deze practiceset</div>
-    </div>
   </div>
 </section>
 
@@ -129,8 +124,4 @@
 </section>
 {% endif %}
 
-<div class="panel transition-shadow mt-[18px] rounded-[13px] border border-l-4 border-slate-300 border-l-[var(--prac)] bg-slate-50 px-5 py-[18px] [&_h3]:m-0 [&_h3]:mb-1.5 [&_h3]:font-serif [&_h3]:text-[1.16rem] [&_p]:mb-2.5 [&_p]:text-[0.95rem] [&_p]:text-slate-500 [&_p:last-child]:mb-0 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline">
-  <h3>{{ closing_panel.title }}</h3>
-  {% for para in closing_panel.body %}<p>{{ para | safe }}</p>{% endfor %}
-</div>
 {% endblock %}

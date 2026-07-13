@@ -936,10 +936,6 @@ def build_phase_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
         },
         "diff_grid":  None,
         "work_products": [],
-        "closing_panel": {
-            "title": "Over deze practice",
-            "body":  [brief],
-        },
         "roles": {"intro": "", "cards": []},
     })
     return ctx, "wow.html.j2"
@@ -1077,15 +1073,12 @@ def build_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
         "spoor": cfg.get("spoor", "enterprise"),
         "inherited_context": None,
         "activities": {
-            "title": "Activiteiten",
+            "title": "Beschrijving",
             "intro": fix_desc_paths(get_desc(g, practice_uri), "../") or brief,
+            "domains_title": "Activiteiten",
             "domains": domains,
         },
         "diff_grid": None,
-        "closing_panel": {
-            "title": "Meer over deze practice",
-            "body":  [brief, get_desc(g, practice_uri)],
-        },
         "work_products": wps,
         "roles": {
             "intro": "Rollen die deze practice uitvoeren.",
@@ -1383,12 +1376,14 @@ def build_wp_ctx(g: Graph, wp_uri) -> dict:
     # TypedResource with kind=type/template
     TEMPLATE_TYPE = URIRef(BASE + "type/template")
     template_url = None
+    template_uri = None
     for owned in g.objects(wp_uri, ESS.ownedElements):
         if (owned, RDF.type, ESS.TypedResource) not in g:
             continue
         kind = next(g.objects(owned, ESS.kind), None)
         if kind == TEMPLATE_TYPE:
             template_url = str(next(g.objects(owned, ESS.content), "")) or None
+            template_uri = owned
             break
 
     download = None
@@ -1398,7 +1393,7 @@ def build_wp_ctx(g: Graph, wp_uri) -> dict:
             "type":    ext,
             "url":     template_url,
             "filename": template_url.rsplit("/", 1)[-1],
-            "desc":    f"Sjabloon voor {title}",
+            "desc":    get_brief(g, template_uri) or f"Sjabloon voor {title}",
         }
 
     ctx = _base_ctx(g, root="../", data_prac=cfg.get("color", "neutral"),
