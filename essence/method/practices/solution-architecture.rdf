@@ -18,9 +18,9 @@
 <p>De volgorde van activiteiten in deze practice komt overeen met hoe de Project Levenscyclus ze over haar zes fasen verdeelt: Maak High-Level Design en Roadmap opstellen in Fase 1, Verzamel architectuurbepalende eisen in Fase 2, Maak Low-Level Design in Fase 3, Implementatiegovernance voeren in Fase 4, en Conformance bewaken in Fase 5/6.</p>
 ]]></ess:description>
 
-    <ess:objective xml:lang="nl">Maakt de minimale set architectuurkeuzes die nodig zijn om een COTS-solution te implementeren binnen de enterprise-kaders.</ess:objective>
+    <ess:objective xml:lang="nl">Maakt de minimale set architectuurkeuzes die nodig zijn om een standaardsoftware-solution te implementeren binnen de enterprise-kaders.</ess:objective>
 
-    <ess:entry xml:lang="nl">De enterprise-architectuurkaders en de paved road zijn gepubliceerd (Enterprise Architectuur heeft minimaal de toestand Omlijnd bereikt); scope en stakeholders van de solution zijn geïdentificeerd; een Architecture Sponsor heeft opdracht gegeven voor het solution-traject.</ess:entry>
+    <ess:entry xml:lang="nl">De enterprise-architectuurkaders en de paved road zijn gepubliceerd (Enterprise Architectuur heeft minimaal de toestand Omlijnd bereikt); scope en stakeholders van de solution zijn geïdentificeerd; een Opdrachtgever heeft opdracht gegeven voor het solution-traject.</ess:entry>
 
     <ess:result xml:lang="nl">Solution-specifieke architectuurkeuzes zijn vastgelegd als ADR's; het architectuurmodel is uitgewerkt tot op codeniveau (context, container, component, code); risicovolle integratiekeuzes zijn bewezen via proof-of-concepts; de solution functioneert aantoonbaar conform de enterprise-kaders in productie.</ess:result>
 

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:Practice rdf:about="practice/change-management-lifecycle">
+    <ess:name xml:lang="nl">Verandermanagement Levenscyclus</ess:name>
+    <ess:name xml:lang="en">Change Management Lifecycle</ess:name>
+    <ess:briefDescription xml:lang="nl">Het COEF-ritme waarmee Enterprise Architectuur een architectuurverandering laat landen: Visie &amp; Strategie, Ontwerpen, Realiseren en Verankeren, met Adopteren &amp; Valideren als continu, centraal element.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Een architectuurkeuze die niemand overneemt, verandert niets — hoe degelijk ze ook is uitgewerkt. Verandermanagement-theorie herkent daarom van oudsher hetzelfde patroon, in welke vorm het ook wordt opgeschreven: eerst wordt duidelijk gemaakt waaróm iets moet veranderen en waar het naartoe gaat, dan wordt die richting vertaald naar een concreet ontwerp, vervolgens wordt de overgang zelf gemaakt — bij voorkeur in behapbare stappen in plaats van in één sprong — en tot slot wordt de verandering verankerd, want zonder actieve bekrachtiging valt een organisatie terug in het oude patroon. Steeds terugkerend daarin is één inzicht: mensen nemen een verandering niet over omdat ze eenmalig is uitgelegd, maar omdat adoptie voortdurend wordt gevolgd en bijgestuurd, van begin tot eind.</p>
+<p>Het COEF-model zet dat patroon in vier fasen, met een vijfde, centrale schil die niet ná de andere vier komt maar er dwars doorheen loopt. <strong>Visie &amp; Strategie</strong> maakt de noodzaak en de richting expliciet. <strong>Ontwerpen</strong> vertaalt die richting naar een concreet beeld van de gewenste situatie en de bouwstenen daarvoor. <strong>Realiseren</strong> zet dat ontwerp om in een haalbare, gefaseerde overgang, en houdt de architectuur vervolgens ook continu werkend terwijl teams erop bouwen. <strong>Verankeren</strong> zorgt dat de verandering blijft hangen nadat de aandacht is verschoven naar het volgende initiatief. En <strong>Adopteren &amp; Valideren</strong> — in het model bewust in het midden geplaatst — is geen vijfde fase na de vierde, maar de doorlopende toets of de verandering daadwerkelijk wordt overgenomen, langs alle andere fasen heen.</p>
+<p>Deze levenscyclus vertaalt dat patroon naar de werkwijze van Enterprise Architectuur en bevat uitsluitend haar activiteiten. Solution-trajecten die op basis van de architectuurroadmap worden gerealiseerd, lopen via de Watervalaanpak of de Portfolio Levenscyclus; die zijn geen onderdeel van déze levenscyclus. Architectuursturing is eveneens een aparte, parallel lopende practice: haar evidentie over guardrail-naleving en paved road-gebruik is een waardevolle, externe bron voor Adopteren &amp; Valideren, maar wordt hier niet bezeten.</p>
+]]></ess:description>
+    <ess:objective xml:lang="nl">Laat een architectuurverandering daadwerkelijk landen: van erkende noodzaak, via ontwerp en gefaseerde realisatie, tot een verankerde en aantoonbaar geadopteerde nieuwe situatie.</ess:objective>
+    <ess:objective xml:lang="en">Make an architectural change actually land: from recognised necessity, through design and phased realisation, to an anchored and demonstrably adopted new state.</ess:objective>
+    <ess:entry xml:lang="nl">Een Opdrachtgever heeft de noodzaak voor een architectuurverandering erkend; er is voldoende samenhang tussen de betrokken initiatieven om ze als één verandering te sturen in plaats van los van elkaar.</ess:entry>
+    <ess:entry xml:lang="en">A Sponsor has recognised the need for an architectural change; there is enough coherence between the initiatives involved to steer them as a single change rather than separately.</ess:entry>
+    <ess:result xml:lang="nl">De architectuurverandering is ontworpen, gefaseerd gerealiseerd en verankerd; adoptie is aantoonbaar, niet verondersteld; lessen zijn vastgelegd voor de volgende verandering.</ess:result>
+    <ess:result xml:lang="en">The architectural change has been designed, realised in phases and anchored; adoption is demonstrated, not assumed; lessons are recorded for the next change.</ess:result>
+    <ess:measures xml:lang="nl">Adoptiegraad van de nieuwe architectuur en paved road per team; aantal teruggevallen of afgehaakte trajecten; tijd tussen ontwerp en aantoonbare adoptie; governance-evidentie over guardrail-naleving, extern aangeleverd door Architectuursturing.</ess:measures>
+    <ess:measures xml:lang="en">Adoption rate of the new architecture and paved road per team; number of trajectories that revert or disengage; time between design and demonstrated adoption; governance evidence on guardrail compliance, supplied externally by Architectural Governance.</ess:measures>
+    <ess:consistencyRules xml:lang="nl">Adopteren &amp; Valideren loopt doorlopend over alle vier fasen; Ontwerpen start pas nadat Visie &amp; Strategie is afgerond; Realiseren omvat zowel de gefaseerde overgang als het continu beheren van de architectuur in productie. Verankeren heeft geen eigen enterprise-architectuuractiviteit en steunt op de evidentie uit Adopteren &amp; Valideren en op wat Architectuursturing extern aanlevert. Architectuursturing en de Watervalaanpak/Portfolio Levenscyclus zijn geen fase van deze levenscyclus; hun evidentie en uitvoering zijn externe gegevens.</ess:consistencyRules>
+    <ess:consistencyRules xml:lang="en">Adopt &amp; Validate runs continuously across all four phases; Design only starts once Vision &amp; Strategy is complete; Realise covers both the phased transition and the continuous operation of the architecture in production. Anchor has no dedicated enterprise architecture activity and relies on evidence from Adopt &amp; Validate and on what Architectural Governance supplies externally. Architectural Governance and the Waterfall Approach/Portfolio Lifecycle are not phases of this lifecycle; their evidence and delivery are external inputs.</ess:consistencyRules>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:referredElements rdf:resource="practice/enterprise-architecture"/>
+    <ess:referredElements rdf:resource="practice/architectural-governance"/>
+    <ess:referredElements rdf:resource="practice/portfolio-lifecycle"/>
+    <ess:ownedElements rdf:resource="pattern/coef/visie-strategie"/>
+    <ess:ownedElements rdf:resource="pattern/coef/ontwerpen"/>
+    <ess:ownedElements rdf:resource="pattern/coef/realiseren"/>
+    <ess:ownedElements rdf:resource="pattern/coef/verankeren"/>
+    <ess:ownedElements rdf:resource="pattern/coef/adopteren-valideren"/>
+  </ess:Practice>
+
+  <!-- Phase 1: Visie & Strategie -->
+  <ess:Pattern rdf:about="pattern/coef/visie-strategie">
+    <ess:name xml:lang="nl">Visie &amp; Strategie</ess:name>
+    <ess:name xml:lang="en">Vision &amp; Strategy</ess:name>
+    <ess:briefDescription xml:lang="nl">Maak de noodzaak voor verandering en de gewenste richting expliciet, vóórdat er iets wordt ontworpen.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Geen enkele verandermethode slaat deze stap over, ook al heet hij overal anders: een verandering die niemand als noodzakelijk herkent, krijgt geen tractie, hoe goed het plan er ook uitziet. Voordat er iets wordt ontworpen, moet daarom eerst duidelijk zijn wat de aanleiding is en waar de verandering naartoe gaat — niet als formaliteit, maar omdat elke volgende fase op die richting terugvalt zodra het lastig wordt.</p>
+<p>Voor de architectuurportfolio betekent dat: de Opdrachtgever erkent de noodzaak voor een architectuurverandering en geeft daarvoor opdracht. Vanuit die opdracht worden de sturende eisen gefundeerd — welke kwaliteitsattributen, beperkingen en bedrijfsdoelen moeten de verandering dienen — en wordt daarop een architectuurvisie geformuleerd: waar de architectuur naartoe moet, wat de scope is, en wat er bewust buiten valt. De Opdrachtgever stelt die visie uiteindelijk vast; zonder die vaststelling heeft niets wat in de volgende fasen wordt ontworpen een gedeeld doel om naartoe te werken.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/coef/visie-strategie/includes"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/coef/visie-strategie/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/enterprise-understand"/>
+    <ess:elements rdf:resource="activity/enterprise-envision"/>
+  </ess:PatternAssociation>
+
+  <!-- Phase 2: Ontwerpen -->
+  <ess:Pattern rdf:about="pattern/coef/ontwerpen">
+    <ess:name xml:lang="nl">Ontwerpen</ess:name>
+    <ess:name xml:lang="en">Design</ess:name>
+    <ess:briefDescription xml:lang="nl">Vertaal de visie naar een concreet beeld van de gewenste architectuur en naar de bouwstenen waarmee teams zelfstandig kunnen werken.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Een visie beschrijft een richting, geen bestemming waarop gebouwd kan worden. Deze fase is waar verandermanagement omslaat van "waarom" naar "wat": de gewenste situatie krijgt vorm, en er ontstaat iets tastbaars waarmee mensen kunnen werken in plaats van iets waar ze het alleen over eens zijn. Dat is nadrukkelijk nog geen uitvoering — het is het ontwerp dat de uitvoering mogelijk maakt.</p>
+<p>Voor de architectuurverandering betekent dat eerst het in kaart brengen van de bestaande architectuur naast de gewenste doelarchitectuur, via een gap-analyse die zichtbaar maakt wat er moet veranderen; onomkeerbare keuzes daarin worden vastgelegd als architectuurbeslissingen. Vanuit die doelarchitectuur wordt vervolgens de paved road gebouwd: een catalogus van vooraf goedgekeurde standaardkeuzes die teams zelfstandig kunnen volgen. Zonder die goedgekeurde route blijft een architectuurontwerp een document dat mensen moeten interpreteren in plaats van een weg die ze kunnen volgen.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/coef/ontwerpen/includes"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/coef/ontwerpen/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/enterprise-design"/>
+    <ess:elements rdf:resource="activity/enterprise-build-paved-road"/>
+  </ess:PatternAssociation>
+
+  <!-- Phase 3: Realiseren -->
+  <ess:Pattern rdf:about="pattern/coef/realiseren">
+    <ess:name xml:lang="nl">Realiseren</ess:name>
+    <ess:name xml:lang="en">Realise</ess:name>
+    <ess:briefDescription xml:lang="nl">Zet het ontwerp om in een haalbare, gefaseerde overgang, en houd de architectuur vervolgens continu werkend in productie.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Verandering die in één keer wordt doorgevoerd, is verandering die meestal vastloopt: te veel tegelijk, te weinig ruimte om bij te sturen, te grote klap voor wie moet meebewegen. Beproefde verandermethoden kiezen daarom vrijwel altijd voor gefaseerde beweging — kleine, zichtbare stappen die vertrouwen opbouwen — boven een big-bang-overgang. Deze fase geeft die fasering vorm, en blijft actief zolang de verandering daadwerkelijk wordt gerealiseerd — niet alleen tot aan de eerste oplevering.</p>
+<p>De hiaten tussen basis- en doelarchitectuur worden eerst geordend tot horizons: opeenvolgende stappen die stap voor stap dichter bij de doelarchitectuur komen. Alleen de eerstvolgende horizon wordt gedetailleerd; latere horizons blijven bewust globaal, met bij elke horizon een expliciete onomkeerbare grens. Het resultaat is de architectuurroadmap — het enterprise-brede kader waarbinnen de daadwerkelijke oplevering plaatsvindt via de Watervalaanpak of de Portfolio Levenscyclus.</p>
+<p>Realiseren stopt niet bij het vaststellen van die roadmap: zodra teams daadwerkelijk gaan bouwen, moet de architectuur blijven kloppen terwijl de wereld eromheen verandert. Daarom hoort ook het continu beheren van de architectuur in productie bij deze fase — de paved road actualiseren op basis van feitelijk gebruik, verouderde standaarden pensioneren, sturende eisen hervalideren wanneer de context wezenlijk verandert. Dat is geen aparte stap ná de realisatie, maar het voortzetten ervan: realiseren is een proces, geen opleverdatum.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/coef/realiseren/includes"/>
+  </ess:Pattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/coef/realiseren/includes">
+    <ess:name xml:lang="nl">bevat</ess:name>
+    <ess:name xml:lang="en">includes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/enterprise-plan"/>
+    <ess:elements rdf:resource="activity/enterprise-learn-and-improve"/>
+  </ess:PatternAssociation>
+
+  <!-- Phase 4: Verankeren -->
+  <ess:Pattern rdf:about="pattern/coef/verankeren">
+    <ess:name xml:lang="nl">Verankeren</ess:name>
+    <ess:name xml:lang="en">Anchor</ess:name>
+    <ess:briefDescription xml:lang="nl">Bekrachtig de verandering actief, want zonder dat valt een organisatie terug in het oude patroon.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Elke gevestigde verandertheorie waarschuwt voor hetzelfde risico: een verandering die niet actief wordt bekrachtigd, vervaagt vanzelf, niet omdat mensen tegenwerken maar omdat het oude patroon nooit is weggenomen — alleen tijdelijk overstemd. Verankeren is daarom geen afrondende formaliteit ná de realisatie.</p>
+<p>Deze fase heeft bewust geen eigen enterprise-architectuuractiviteit: het continu beheren van de architectuur — de paved road actueel houden, verouderde standaarden pensioneren — hoort al bij Realiseren, omdat dat onderhoud niet los te zien is van het daadwerkelijk realiseren van de verandering. Verankeren steunt in plaats daarvan op wat Adopteren &amp; Valideren doorlopend oplevert, en op de externe evidentie die Architectuursturing als aparte practice aanlevert: houden teams zich blijvend aan de guardrails, en is de nieuwe manier van werken de norm geworden in plaats van een uitzondering die wordt gedoogd?</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Pattern>
+
+  <!-- Continuous, central: Adopteren & Valideren -->
+  <ess:Pattern rdf:about="pattern/coef/adopteren-valideren">
+    <ess:name xml:lang="nl">Adopteren &amp; Valideren</ess:name>
+    <ess:name xml:lang="en">Adopt &amp; Validate</ess:name>
+    <ess:briefDescription xml:lang="nl">Toets doorlopend, dwars door alle vier fasen heen, of de verandering daadwerkelijk wordt overgenomen — niet als eenmalige controle, maar als constant gegeven.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>In het COEF-model staat dit element bewust in het midden, niet als vijfde fase ná Verankeren. Dat is geen vormgevingskeuze: adoptie is geen status die je op één moment bereikt en daarna loslaat. Nieuwe medewerkers komen binnen zonder de aanleiding te kennen, prioriteiten verschuiven, en wat vorig kwartaal was geadopteerd, kan dit kwartaal weer wegzakken. Verandertheorie die adoptie als lineaire eindstap behandelt, mist daarom voortdurend een deel van de realiteit; adoptie moet steeds opnieuw worden bevestigd, niet één keer worden afgevinkt.</p>
+<p>Voor de architectuurverandering betekent dat: doorlopend volgen hoeveel teams de paved road daadwerkelijk gebruiken, hoe de architectuurroadmap vordert, en of de sturende eisen nog kloppen met de praktijk — dezelfde continue tracking als bij Monitor &amp; Control in de Portfolio Levenscyclus, hier toegepast op één specifieke verandering in plaats van op het hele portfolio. Architectuursturing levert daarnaast, als aparte practice, haar eigen onafhankelijke evidentie: houden teams zich aan de guardrails, en wordt de paved road gebruikt zoals bedoeld? Die twee stromen — adoptiedata van Enterprise Architectuur en externe governance-evidentie — worden naast elkaar gelegd om te bepalen of de verandering al dan niet daadwerkelijk is geland.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Pattern>
+
+</rdf:RDF>

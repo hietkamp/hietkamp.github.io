@@ -11,8 +11,12 @@
   <ess:Activity rdf:about="activity/enterprise-plan">
     <ess:name xml:lang="nl">Migratie plannen</ess:name>
     <ess:name xml:lang="en">Plan</ess:name>
-    <ess:briefDescription xml:lang="nl">Identificeer de hiaten; orden de implementatiestappen van baseline naar doel; detailleer alleen de volgende horizon. Elke horizon bevat een expliciete…</ess:briefDescription>
-    <ess:description xml:lang="nl">Identificeer de hiaten; orden de implementatiestappen van baseline naar doel; detailleer alleen de volgende horizon. Elke horizon bevat een expliciete onomkeerbare grens.</ess:description>
+    <ess:briefDescription xml:lang="nl">Ordent de implementatiestappen van basis- naar doelarchitectuur in horizons, en detailleert alleen de eerstvolgende.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Een big-bang transformatie van basis- naar doelarchitectuur is zelden realistisch en bijna altijd riskant. Deze activiteit knipt de gap-analyse uit Basis- en doelarchitectuur bepalen op in behapbare stappen, zodat de organisatie niet in één keer hoeft te veranderen.</p>
+<p>De hiaten tussen basis en doel worden geordend tot horizons: opeenvolgende stappen die stap voor stap dichter bij de doelarchitectuur komen. Alleen de eerstvolgende horizon wordt gedetailleerd uitgewerkt; latere horizons blijven bewust globaal, omdat ze toch bijgesteld worden zodra er meer bekend is. Elke horizon krijgt een expliciete onomkeerbare grens: welke keuze kan na deze horizon niet meer worden teruggedraaid?</p>
+<p>Het resultaat is de architectuurroadmap: het enterprise-brede kader waarbinnen solution-roadmaps van individuele trajecten opereren. Waar de paved road teams helpt om dagelijkse keuzes te maken, helpt de architectuurroadmap de organisatie om te bepalen wélke trajecten wanneer aan de beurt zijn.</p>
+]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
     <ess:approach rdf:resource="approach/enterprise-plan/default"/>
@@ -29,12 +33,20 @@
     <ess:name xml:lang="nl">Migratie plannen</ess:name>
     <ess:name xml:lang="en">Plan</ess:name>
     <ess:briefDescription/>
-    <ess:description xml:lang="nl">Identificeer de hiaten; orden de implementatiestappen van baseline naar doel; detailleer alleen de volgende horizon. Elke horizon bevat een expliciete onomkeerbare grens.</ess:description>
+    <ess:description xml:lang="nl"><![CDATA[
+<ul>
+<li>Identificeer de hiaten tussen basis- en doelarchitectuur, op basis van de gap-analyse uit Basis- en doelarchitectuur bepalen.</li>
+<li>Orden de implementatiestappen in horizons, van baseline naar doel.</li>
+<li>Detailleer alleen de eerstvolgende horizon; houd latere horizons globaal totdat ze aan de beurt zijn.</li>
+<li>Benoem bij elke horizon de expliciete onomkeerbare grens: welke keuze kan na deze horizon niet meer worden teruggedraaid?</li>
+<li>Leg de horizons vast als architectuurroadmap — het enterprise-brede kader waarbinnen solution-roadmaps opereren.</li>
+</ul>
+]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
   <ess:Action rdf:about="action/enterprise-plan/read/architecture-model">
-    <ess:name>Read Architecture Definition</ess:name>
+    <ess:name>Read Architecture Model</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>

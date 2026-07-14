@@ -10,8 +10,11 @@
   <ess:Alpha rdf:about="alpha/architecture">
     <ess:name xml:lang="nl">Architectuur</ess:name>
     <ess:name xml:lang="en">Architecture</ess:name>
-    <ess:briefDescription/>
-    <ess:description xml:lang="nl">De fundamentele concepten en eigenschappen van een systeem, belichaamd in zijn elementen, relaties en de principes van zijn ontwerp en evolutie.</ess:description>
+    <ess:briefDescription xml:lang="nl">De fundamentele concepten en eigenschappen van een systeem, belichaamd in zijn elementen, relaties en de principes van zijn ontwerp en evolutie.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Deze alpha volgt hoe volwassen de architectuur van een systeem is: van een gedeelde richting op één pagina, via een bewezen en bruikbare structuur, tot een gevestigde architectuur die onder beheerste verandering evolueert. De zes toestanden zijn generiek voor elk systeem en worden op solution-niveau ingevuld door de practice Solution Architectuur, binnen de kaders die Enterprise Architectuur op portfolio-niveau vaststelt.</p>
+<p>Deze alpha staat niet op zichzelf: Architectuurbepalende Eisen sturen welke keuzes gemaakt moeten worden, Architectuurbeslissingen leggen vast welke keuzes zijn gemaakt en waarom, en de Paved Road bepaalt welk deel van die keuzes al vooraf is goedgekeurd en dus geen aparte beoordeling meer nodig heeft.</p>
+]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
     <ess:states rdf:resource="state/architecture/envisioned"/>

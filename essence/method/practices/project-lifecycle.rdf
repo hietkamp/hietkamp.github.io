@@ -35,8 +35,8 @@
 ]]></ess:description>
     <ess:objective xml:lang="nl">Lever architectuurproducten op via herkenbare, sequentiële V-model-fasen met formele gates die alpha-toestanden als meetbaar completionscriterium gebruiken.</ess:objective>
     <ess:objective xml:lang="en">Deliver architecture products through recognisable, sequential V-model phases with formal gates that use alpha states as measurable completion criteria.</ess:objective>
-    <ess:entry xml:lang="nl">De scope en stakeholders zijn geïdentificeerd; een Architecture Sponsor heeft de noodzaak voor architectuurwerk erkend.</ess:entry>
-    <ess:entry xml:lang="en">Scope and stakeholders are identified; an Architecture Sponsor has recognised the need for architecture work.</ess:entry>
+    <ess:entry xml:lang="nl">De scope en stakeholders zijn geïdentificeerd; een Opdrachtgever heeft de noodzaak voor architectuurwerk erkend.</ess:entry>
+    <ess:entry xml:lang="en">Scope and stakeholders are identified; a Commissioning Sponsor has recognised the need for architecture work.</ess:entry>
     <ess:result xml:lang="nl">De architectuur is gevestigd en evolueert; conformance is aangetoond; governance stuurt op bewijs voor toekomstige trajecten.</ess:result>
     <ess:result xml:lang="en">The architecture is established and evolving; conformance is demonstrated; governance steers on evidence for future trajectories.</ess:result>
     <ess:measures xml:lang="nl">Verhouding gates goedgekeurd / totaal gates; alpha-toestand per gate; aantal openstaande architectuurrisico's per fase; conformance-score na systeemtest.</ess:measures>

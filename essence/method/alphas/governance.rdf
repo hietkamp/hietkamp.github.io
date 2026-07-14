@@ -10,8 +10,12 @@
   <ess:Alpha rdf:about="alpha/governance">
     <ess:name xml:lang="nl">Governance</ess:name>
     <ess:name xml:lang="en">Governance</ess:name>
-    <ess:briefDescription/>
-    <ess:description xml:lang="nl">Het systeem van guardrails, beslissingsrechten en ritmes dat architectuurkwaliteit stuurt zonder stage gates. Beslissingen stromen binnen guardrails; alleen uitzonderingen worden beoordeeld.</ess:description>
+    <ess:briefDescription xml:lang="nl">Het systeem van guardrails, beslissingsrechten, cadans en werkwijze-eigenaarschap waarmee het Architectuurforum architectuurkwaliteit stuurt, in dienst van de gates uit Project- en Portfolio Levenscyclus.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Deze alpha volgt hoe ver de sturing is: van een net opgericht forum tot een governance die aantoonbaar werkt én zichzelf actief bijstelt. De vijf toestanden volgen de cyclus van de practice Architectuursturing.</p>
+<p>Governance inrichten brengt de alpha naar <strong>Opgericht</strong> en direct door naar <strong>Actief</strong>: het fundament (beslissingsbevoegdheid, principes, repository, eigenaarschap van de werkwijze, opdracht aan Enterprise Architectuur voor architectuurvisie en paved road, en de objectives voor de governance zelf) staat, en het Architectuurforum vergadert op een vaste, vooraf gepubliceerde cadans. Levering besturen brengt de alpha naar <strong>Sturend</strong>: nieuwe initiatieven zijn formeel onder governance gebracht en beslissingen stromen binnen de guardrails. Werking van de governance toetsen brengt de alpha naar <strong>Geborgd</strong>: niet door de architectuur opnieuw te beoordelen — dat is al gebeurd bij Levering besturen — maar door de opgetelde reviewuitkomsten en het paved-road-gebruik te vergelijken met de objectives uit Governance inrichten, en te toetsen of ook de werkwijze zelf nog aansluit. Governance bijstellen sluit de cyclus met <strong>Effectief</strong>: principes, working agreement en waar nodig de werkwijze zelf zijn bijgesteld op basis van dat bewijs.</p>
+<p>Deze alpha vervangt de gates uit de Project Levenscyclus en de Portfolio Levenscyclus niet — ze bedient ze: zolang een initiatief binnen de guardrails blijft, stroomt het door de gates heen; alleen afwijkingen krijgen een expliciete beoordeling door het forum.</p>
+]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <ess:states rdf:resource="state/governance/initiated"/>
@@ -30,6 +34,9 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:checkListItem rdf:resource="checkpoint/governance/initiated/1"/>
     <ess:checkListItem rdf:resource="checkpoint/governance/initiated/2"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/initiated/3"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/initiated/4"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/initiated/5"/>
     <ess:successor rdf:resource="state/governance/engaged"/>
   </ess:State>
 
@@ -49,6 +56,30 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Checkpoint>
 
+  <ess:Checkpoint rdf:about="checkpoint/governance/initiated/3">
+    <ess:name xml:lang="nl">Het eigenaarschap van de architectuur-werkwijze is belegd bij het Architectuurforum.</ess:name>
+    <ess:name xml:lang="en">Ownership of the architecture way of working is assigned to the Architecture Forum.</ess:name>
+    <ess:description xml:lang="nl">Het eigenaarschap van de architectuur-werkwijze is belegd bij het Architectuurforum.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/initiated/4">
+    <ess:name xml:lang="nl">Enterprise Architectuur heeft opdracht voor de architectuurvisie en de paved road.</ess:name>
+    <ess:name xml:lang="en">Enterprise Architecture is commissioned for the architecture vision and the paved road.</ess:name>
+    <ess:description xml:lang="nl">Enterprise Architectuur heeft opdracht voor de architectuurvisie en de paved road.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/initiated/5">
+    <ess:name xml:lang="nl">De objectives voor de governance zelf zijn vastgelegd.</ess:name>
+    <ess:name xml:lang="en">The objectives for the governance itself are recorded.</ess:name>
+    <ess:description xml:lang="nl">De objectives voor de governance zelf zijn vastgelegd — de meetlat waartegen Werking van de governance toetsen later vergelijkt.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
   <ess:State rdf:about="state/governance/engaged">
     <ess:name xml:lang="nl">Actief</ess:name>
     <ess:name xml:lang="en">Engaged</ess:name>
@@ -57,13 +88,14 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:checkListItem rdf:resource="checkpoint/governance/engaged/1"/>
     <ess:checkListItem rdf:resource="checkpoint/governance/engaged/2"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/engaged/3"/>
     <ess:successor rdf:resource="state/governance/guiding"/>
   </ess:State>
 
   <ess:Checkpoint rdf:about="checkpoint/governance/engaged/1">
-    <ess:name xml:lang="nl">Een lean governance-ritme is actief.</ess:name>
-    <ess:name xml:lang="en">A lean governance cadence operates.</ess:name>
-    <ess:description xml:lang="nl">Een lean governance-ritme is actief.</ess:description>
+    <ess:name xml:lang="nl">Het Architectuurforum vergadert op een vaste, vooraf gepubliceerde cadans.</ess:name>
+    <ess:name xml:lang="en">The Architecture Forum meets on a fixed, pre-published cadence.</ess:name>
+    <ess:description xml:lang="nl">Het Architectuurforum vergadert op een vaste, vooraf gepubliceerde cadans en is niet op afroep beschikbaar.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Checkpoint>
@@ -76,6 +108,14 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Checkpoint>
 
+  <ess:Checkpoint rdf:about="checkpoint/governance/engaged/3">
+    <ess:name xml:lang="nl">Er is een lichte manier om onderwerpen vooraf bij het forum aan te melden.</ess:name>
+    <ess:name xml:lang="en">A lightweight way to submit topics to the forum in advance exists.</ess:name>
+    <ess:description xml:lang="nl">Er is een lichte manier om onderwerpen vooraf bij het forum aan te melden.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
   <ess:State rdf:about="state/governance/guiding">
     <ess:name xml:lang="nl">Sturend</ess:name>
     <ess:name xml:lang="en">Guiding</ess:name>
@@ -84,6 +124,7 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:checkListItem rdf:resource="checkpoint/governance/guiding/1"/>
     <ess:checkListItem rdf:resource="checkpoint/governance/guiding/2"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/guiding/3"/>
     <ess:successor rdf:resource="state/governance/assured"/>
   </ess:State>
 
@@ -103,6 +144,14 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Checkpoint>
 
+  <ess:Checkpoint rdf:about="checkpoint/governance/guiding/3">
+    <ess:name xml:lang="nl">Nieuwe initiatieven zijn formeel onder governance gebracht via een Statement of Architecture Work.</ess:name>
+    <ess:name xml:lang="en">New initiatives are formally brought under governance via a Statement of Architecture Work.</ess:name>
+    <ess:description xml:lang="nl">Nieuwe initiatieven zijn formeel onder governance gebracht via een Statement of Architecture Work.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
   <ess:State rdf:about="state/governance/assured">
     <ess:name xml:lang="nl">Geborgd</ess:name>
     <ess:name xml:lang="en">Assured</ess:name>
@@ -111,21 +160,30 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:checkListItem rdf:resource="checkpoint/governance/assured/1"/>
     <ess:checkListItem rdf:resource="checkpoint/governance/assured/2"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/assured/3"/>
     <ess:successor rdf:resource="state/governance/effective"/>
   </ess:State>
 
   <ess:Checkpoint rdf:about="checkpoint/governance/assured/1">
-    <ess:name xml:lang="nl">Conformiteit is aangetoond waar het er echt toe doet.</ess:name>
-    <ess:name xml:lang="en">Conformance is evidenced where it genuinely matters.</ess:name>
-    <ess:description xml:lang="nl">Conformiteit is aangetoond waar het er echt toe doet.</ess:description>
+    <ess:name xml:lang="nl">De feitelijke werking is vergeleken met de objectives uit Governance inrichten.</ess:name>
+    <ess:name xml:lang="en">Actual performance has been compared against the objectives from Establish Governance.</ess:name>
+    <ess:description xml:lang="nl">De feitelijke werking is vergeleken met de objectives uit Governance inrichten.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Checkpoint>
 
   <ess:Checkpoint rdf:about="checkpoint/governance/assured/2">
-    <ess:name xml:lang="nl">De architectuurbeoordelingen worden opgevolgd.</ess:name>
-    <ess:name xml:lang="en">The architecture reviews are acted upon.</ess:name>
-    <ess:description xml:lang="nl">De architectuurbeoordelingen worden opgevolgd.</ess:description>
+    <ess:name xml:lang="nl">Afwijkingen van de objectives zijn gesignaleerd naar Governance bijstellen.</ess:name>
+    <ess:name xml:lang="en">Deviations from the objectives are flagged to Tune the Governance.</ess:name>
+    <ess:description xml:lang="nl">Afwijkingen van de objectives zijn gesignaleerd naar Governance bijstellen.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/assured/3">
+    <ess:name xml:lang="nl">De werkwijze zelf is getoetst: activiteiten en werkproducten worden gebruikt zoals bedoeld.</ess:name>
+    <ess:name xml:lang="en">The way of working itself is checked: activities and work products are used as intended.</ess:name>
+    <ess:description xml:lang="nl">De werkwijze zelf is getoetst: activiteiten en werkproducten worden gebruikt zoals bedoeld.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Checkpoint>
@@ -149,9 +207,9 @@
   </ess:Checkpoint>
 
   <ess:Checkpoint rdf:about="checkpoint/governance/effective/2">
-    <ess:name xml:lang="nl">De governance zelf wordt continu bijgesteld en verlicht.</ess:name>
-    <ess:name xml:lang="en">The governance itself is continuously tuned and lightened.</ess:name>
-    <ess:description xml:lang="nl">De governance zelf wordt continu bijgesteld en verlicht.</ess:description>
+    <ess:name xml:lang="nl">De governance én de werkwijze zelf worden continu bijgesteld en verlicht.</ess:name>
+    <ess:name xml:lang="en">The governance and the way of working itself are continuously tuned and lightened.</ess:name>
+    <ess:description xml:lang="nl">De governance én de werkwijze zelf worden continu bijgesteld en verlicht.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Checkpoint>

@@ -10,8 +10,11 @@
   <ess:Alpha rdf:about="alpha/architectural-drivers">
     <ess:name xml:lang="nl">Architectuurbepalende Eisen</ess:name>
     <ess:name xml:lang="en">Architectural Drivers</ess:name>
-    <ess:briefDescription/>
-    <ess:description xml:lang="nl">De architectuurbepalende eisen — kwaliteitsattributen, beperkingen en bedrijfsdoelen — die architectuurkeuzes sturen en beperken.</ess:description>
+    <ess:briefDescription xml:lang="nl">De architectuurbepalende eisen — kwaliteitsattributen, beperkingen en bedrijfsdoelen — die architectuurkeuzes sturen en beperken.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Deze alpha volgt hoe ver de architectuurbepalende eisen zijn uitgewerkt: van een herkende, geprioriteerde lijst, via meetbaar gekwantificeerde criteria, tot eisen die aantoonbaar zijn geadresseerd in de architectuur en die bewaakt blijven naarmate de context verandert. De significante weinige eisen krijgen aandacht; de triviale velen worden expliciet uitgesteld.</p>
+<p>Een architectuurbeslissing (ADR) mag pas de toestand Besloten bereiken nadat de bijbehorende architectuurbepalende eis hier de toestand Acceptable heeft bereikt — deze alpha stuurt daarmee rechtstreeks de voortgang van Architectuurbeslissingen.</p>
+]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
     <ess:states rdf:resource="state/architectural-drivers/identified"/>

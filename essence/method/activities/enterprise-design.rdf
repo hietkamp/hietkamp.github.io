@@ -11,8 +11,12 @@
   <ess:Activity rdf:about="activity/enterprise-design">
     <ess:name xml:lang="nl">Basis- en doelarchitectuur bepalen</ess:name>
     <ess:name xml:lang="en">Design</ess:name>
-    <ess:briefDescription xml:lang="nl">Breng de basisarchitectuur in kaart, bepaal de doelarchitectuur en leg onomkeerbare keuzes vast via een gap-analyse.</ess:briefDescription>
-    <ess:description xml:lang="nl">Breng eerst de bestaande (baseline) architectuur in kaart: welke major systems, integratiearchitectuur en vendor-categorieën zijn nu al in gebruik? Definieer vervolgens de gewenste doelarchitectuur: de enterprise-brede bouwstenen die nodig zijn om de sturende eisen te realiseren. Voer een gap-analyse uit tussen de basis- en doelarchitectuur om te bepalen welke veranderingen nodig zijn. Leg de onomkeerbare keuzes op landgoedniveau vast als architectuurbeslissingen (ADR's).</ess:description>
+    <ess:briefDescription xml:lang="nl">Brengt de bestaande architectuur in kaart, bepaalt de gewenste doelarchitectuur en legt onomkeerbare keuzes vast via een gap-analyse.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Je kunt geen route uitstippelen zonder te weten waar je vandaan komt én waar je heen wilt. Deze activiteit legt beide vast, in díe volgorde: eerst de bestaande situatie, dan de gewenste.</p>
+<p>De basisarchitectuur (baseline) brengt in kaart welke major systems, integratiepatronen en leverancierscategorieën nu al in gebruik zijn — niet uitputtend, maar toereikend om straks een gap-analyse op te kunnen doen. De doelarchitectuur beschrijft vervolgens de enterprise-brede bouwstenen die nodig zijn om de sturende eisen uit de architectuurvisie te realiseren. Hetzelfde principe als bij het architectuurmodel op solution-niveau geldt ook hier: onveranderde delen van de bestaande architectuur worden niet opnieuw gedocumenteerd, alleen wat verandert krijgt aandacht.</p>
+<p>De gap-analyse tussen basis en doel maakt zichtbaar welke veranderingen nodig zijn. Onomkeerbare keuzes op enterprise-niveau worden vastgelegd als architectuurbeslissingen (ADR's) — in dezelfde vorm en met dezelfde supersessie-discipline als op solution-niveau, zodat een latere wijziging altijd zichtbaar een eerdere versie vervangt.</p>
+]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
     <ess:approach rdf:resource="approach/enterprise-design/default"/>
@@ -31,7 +35,14 @@
     <ess:name xml:lang="nl">Basis- en doelarchitectuur bepalen</ess:name>
     <ess:name xml:lang="en">Design</ess:name>
     <ess:briefDescription/>
-    <ess:description xml:lang="nl">Breng eerst de bestaande (baseline) architectuur in kaart: welke major systems, integratiearchitectuur en vendor-categorieën zijn nu al in gebruik? Definieer vervolgens de gewenste doelarchitectuur: de enterprise-brede bouwstenen die nodig zijn om de sturende eisen te realiseren. Voer een gap-analyse uit tussen de basis- en doelarchitectuur om te bepalen welke veranderingen nodig zijn. Leg de onomkeerbare keuzes op landgoedniveau vast als architectuurbeslissingen (ADR's).</ess:description>
+    <ess:description xml:lang="nl"><![CDATA[
+<ul>
+<li>Breng de basisarchitectuur in kaart: welke major systems, integratiepatronen en leverancierscategorieën zijn nu in gebruik? Documenteer alleen wat relevant is voor de gap-analyse.</li>
+<li>Definieer de doelarchitectuur: de enterprise-brede bouwstenen die nodig zijn om de sturende eisen uit de architectuurvisie te realiseren.</li>
+<li>Voer de gap-analyse uit tussen basis en doel om te bepalen welke veranderingen nodig zijn.</li>
+<li>Leg onomkeerbare keuzes op enterprise-niveau vast als architectuurbeslissingen (ADR's), met dezelfde supersessie-discipline als op solution-niveau.</li>
+</ul>
+]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
@@ -43,7 +54,7 @@
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-design/create/architecture-model">
-    <ess:name>Create Architecture Definition</ess:name>
+    <ess:name>Create Architecture Model</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>

@@ -77,6 +77,14 @@ PRACTICE_CFG = {
         "gradient":     f"from-[{NEUTRAL}] to-[{NEUTRAL}]",
         "icon_path":    "<path d='M2 2h12v2H2V2zm1 3h10v2H3V5zm1 3h8v2H4V8zm1 3h6v2H5v-2zm1 3h4v2H6v-2z'/>",
     },
+    "change-management-lifecycle": {
+        "color":        "neutral",
+        "spoor":        "enterprise",
+        "num_color":    f"bg-[{NEUTRAL}]",
+        "css":          f"bg-[{NEUTRAL}]",
+        "gradient":     f"from-[{NEUTRAL}] to-[{NEUTRAL}]",
+        "icon_path":    "<path d='M8 1a7 7 0 015.9 3.2l-1.7.9A5 5 0 008 3V1zm5.9 3.2A7 7 0 0115 8h-2a5 5 0 00-1.8-3.9l1.7-.9zM15 8a7 7 0 01-3.2 5.9l-.9-1.7A5 5 0 0013 8h2zM11.8 13.9A7 7 0 018 15v-2a5 5 0 003.9-1.8l1.9 1.7zM8 15a7 7 0 01-5.9-3.2l1.7-.9A5 5 0 008 13v2zM2.1 11.8A7 7 0 011 8h2a5 5 0 001.8 3.9l-1.7 1.9zM1 8a7 7 0 013.2-5.9l.9 1.7A5 5 0 003 8H1zM4.2 2.1A7 7 0 018 1v2a5 5 0 00-3.9 1.8L2.2 2.1z'/>",
+    },
 }
 
 
@@ -526,10 +534,13 @@ def build_index_ctx(g: Graph) -> dict:
             "color": cfg.get("color", "neutral"),
         })
 
-    # Path cards: portfolio and project entry points, fully derived from RDF
+    # Path cards: one entry point per phase-based practice (portfolio, project,
+    # change management, ...), fully derived from RDF — any practice that
+    # organises its activities into phases automatically gets a card here.
     paths = [
-        _phase_entrypoint_card(g, URIRef(BASE + "practice/portfolio-lifecycle")),
-        _phase_entrypoint_card(g, URIRef(BASE + "practice/project-lifecycle")),
+        _phase_entrypoint_card(g, practice)
+        for practice in g.objects(METHOD_URI, ESS.ownedElements)
+        if (practice, RDF.type, ESS.Practice) in g and _is_phase_practice(g, practice)
     ]
 
     # Background decks: the 5 practices
@@ -563,9 +574,9 @@ def build_index_ctx(g: Graph) -> dict:
             "start": {
                 "num":   "01",
                 "title": "Kies de context",
-                "intro": "De methode ondersteunt twee contexten — kies het spoor dat bij jouw situatie past.",
+                "intro": "De methode ondersteunt meerdere contexten — kies het spoor dat bij jouw situatie past.",
                 "paths": paths,
-                "note":  "Beide sporen delen dezelfde practices en werken samen — portfolio levert de kaders voor projecten.",
+                "note":  "Alle sporen delen dezelfde practices en werken samen — verandermanagement levert de architectuurroadmap waarbinnen portfolio en projecten opleveren.",
             },
             "achtergrond": {
                 "num":   "02",
@@ -612,7 +623,7 @@ def build_practices_ctx(g: Graph) -> dict:
             continue
         s = slug(practice)
         cfg = PRACTICE_CFG.get(s, {})
-        if s in PHASE_PRACTICES:
+        if _is_phase_practice(g, practice):
             phases, _ = _phase_patterns(g, practice)
             tags = [get_name(g, p) for p in phases[:3] if get_name(g, p)]
         else:
@@ -645,9 +656,13 @@ def build_practices_ctx(g: Graph) -> dict:
 
 # ── practice page (wow / governance) ────────────────────────────────────────
 
-# Practices that organise activities into phases (ess:Pattern) rather than
-# owning them directly as ess:Activity elements.
-PHASE_PRACTICES = {"project-lifecycle", "portfolio-lifecycle"}
+def _is_phase_practice(g: Graph, practice_uri) -> bool:
+    """True if this practice organises activities into phases (ess:Pattern
+    ownedElements with 'bevat'/'includes' PatternAssociations) rather than
+    owning ess:Activity elements directly. Derived from the RDF structure
+    itself, not a hardcoded practice list."""
+    phases, _ = _phase_patterns(g, practice_uri)
+    return bool(phases)
 
 
 def _phase_patterns(g: Graph, practice_uri) -> tuple[list, list]:
@@ -726,9 +741,9 @@ def _strip_fase_prefix(name: str) -> str:
 
 
 def _phase_entrypoint_card(g: Graph, practice_uri) -> dict:
-    """Build a homepage entry-point card for a phase-based practice (portfolio-
-    lifecycle, project-lifecycle), fully derived from its RDF: phases, gates,
-    and the roles/alphas of the activities it includes."""
+    """Build a homepage entry-point card for any phase-based practice, fully
+    derived from its RDF: phases, gates, and the roles/alphas of the
+    activities it includes."""
     s = slug(practice_uri)
     cfg = PRACTICE_CFG.get(s, {})
     phases, gates = _phase_patterns(g, practice_uri)
@@ -758,9 +773,11 @@ def _phase_entrypoint_card(g: Graph, practice_uri) -> dict:
         "title": get_name(g, practice_uri),
         "desc":  get_brief(g, practice_uri),
         "bullets": [
-            {"label": "Fases", "text": " · ".join(_strip_fase_prefix(get_name(g, p)) for p in phases)},
-            {"label": "Gates", "text": " · ".join(_strip_fase_prefix(get_name(g, gt)) for gt in gates)},
-            {"label": "Alpha", "text": " · ".join(alphas)},
+            b for b in [
+                {"label": "Fases", "text": " · ".join(_strip_fase_prefix(get_name(g, p)) for p in phases)},
+                {"label": "Gates", "text": " · ".join(_strip_fase_prefix(get_name(g, gt)) for gt in gates)},
+                {"label": "Alpha", "text": " · ".join(alphas)},
+            ] if b["text"]
         ],
         "cta":  "Bekijk practice",
         "href": practice_href(s),
@@ -995,7 +1012,7 @@ def role_competencies(g: Graph, role_uri) -> list:
 
 def build_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
     s = slug(practice_uri)
-    if s in PHASE_PRACTICES:
+    if _is_phase_practice(g, practice_uri):
         return build_phase_practice_ctx(g, practice_uri)
     cfg = PRACTICE_CFG.get(s, {})
 
