@@ -19,9 +19,9 @@
     <ess:ownedElements rdf:resource="practice/enterprise-architecture"/>
     <ess:ownedElements rdf:resource="practice/solution-architecture"/>
     <ess:ownedElements rdf:resource="practice/architectural-governance"/>
-    <ess:ownedElements rdf:resource="practice/project-lifecycle"/>
-    <ess:ownedElements rdf:resource="practice/portfolio-lifecycle"/>
     <ess:ownedElements rdf:resource="practice/change-management-lifecycle"/>
+    <ess:ownedElements rdf:resource="practice/portfolio-lifecycle"/>
+    <ess:ownedElements rdf:resource="practice/project-lifecycle"/>
   </ess:Method>
 
   <ess:UserDefinedType rdf:about="type/template">
