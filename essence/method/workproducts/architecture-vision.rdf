@@ -15,7 +15,7 @@
 <p><strong>Rol:</strong> Richtingsdocument dat intentie, scope en keuzecriteria vastlegt vóór structurele uitwerking.</p>
 <p><strong>Beantwoordt:</strong> Welke waarde, scope en principes sturen de architectuurkeuzes?</p>
 <p><strong>Scope:</strong> Beschrijft richting en uitsluitingscriteria; bevat nog geen uitgewerkte bouwstenen of transitieplanning.</p>
-<p><strong>Publiek:</strong> Sponsor, stakeholders, Enterprise Architect, Architecture Owner en business analyst.</p>
+<p><strong>Publiek:</strong> Sponsor, stakeholders, Enterprise architect, Architectuureigenaar en business analyst.</p>
 <h3>Informatie-elementen</h3><table><thead><tr><th>Element</th><th>Betekenis</th><th>Verplicht</th></tr></thead><tbody><tr><td>Waardeverklaring</td><td>De beoogde waarde voor afnemers en organisatie in gewone taal.</td><td>Ja</td></tr><tr><td>Scope en buiten scope</td><td>De grens van het initiatief en expliciete uitsluitingen.</td><td>Ja</td></tr><tr><td>Drivers en meetcriteria</td><td>De belangrijkste drijfveren met falsifieerbare criteria.</td><td>Ja</td></tr><tr><td>Principes en uitsluitingscriteria</td><td>Regels waarmee component- en vendoropties worden gekozen of uitgesloten.</td><td>Ja</td></tr></tbody></table>
 <h3>Kwaliteitscriteria</h3><ul><li><strong>Besluitvormend</strong> — De tekst helpt opties afwijzen; algemene waarden zonder keuze-effect tellen niet.</li><li><strong>Falsifieerbaar</strong> — Drivers zijn meetbaar genoeg om later te testen.</li><li><strong>Bekrachtigd</strong> — De sponsorende stakeholder kan expliciet instemmen met scope en richting.</li></ul>
 <p><strong>Bijwerken wanneer:</strong> Bij scopewijziging, nieuwe top-driver of sponsorbesluit.</p>]]></ess:description>

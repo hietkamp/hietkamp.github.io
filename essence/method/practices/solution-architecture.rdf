@@ -9,24 +9,24 @@
 >
 
   <ess:Practice rdf:about="practice/solution-architecture">
-    <ess:name xml:lang="nl">Solution Architectuur</ess:name>
+    <ess:name xml:lang="nl">Solution architectuur</ess:name>
     <ess:briefDescription xml:lang="nl">Richt, kies, bewijs en plan de minimale architectuurkeuzes voor een specifieke solution — van High-Level Design en roadmap, via architectuurbepalende eisen en Low-Level Design, tot implementatiegovernance en conformance na oplevering.</ess:briefDescription>
 
     <ess:description xml:lang="nl"><![CDATA[
 <p>Werkt binnen de enterprise-architectuurkaders en maakt de solution-specifieke architectuurkeuzes: verfijnt drivers naar solution-kwaliteitsattributen, selecteert standaardsoftware-componenten, bewijst risicovolle integratiekeuzes en maakt de solution-roadmap.</p>
-<p>Deze practice levert de zes activiteiten die de Project Levenscyclus over haar zes fasen verdeelt.</p>
-<p>De volgorde van activiteiten in deze practice komt overeen met hoe de Project Levenscyclus ze over haar zes fasen verdeelt: Maak High-Level Design en Roadmap opstellen in Fase 1, Verzamel architectuurbepalende eisen in Fase 2, Maak Low-Level Design in Fase 3, Implementatiegovernance voeren in Fase 4, en Conformance bewaken in Fase 5/6.</p>
+<p>Deze practice levert de zes activiteiten die de Project levenscyclus over haar zes fasen verdeelt.</p>
+<p>De volgorde van activiteiten in deze practice komt overeen met hoe de Project levenscyclus ze over haar zes fasen verdeelt: Maak High-Level Design en Roadmap opstellen in Fase 1, Verzamel architectuurbepalende eisen in Fase 2, Maak Low-Level Design in Fase 3, Implementatiegovernance voeren in Fase 4, en Conformance bewaken in Fase 5/6.</p>
 ]]></ess:description>
 
     <ess:objective xml:lang="nl">Maakt de minimale set architectuurkeuzes die nodig zijn om een standaardsoftware-solution te implementeren binnen de enterprise-kaders.</ess:objective>
 
-    <ess:entry xml:lang="nl">De enterprise-architectuurkaders en de paved road zijn gepubliceerd (Enterprise Architectuur heeft minimaal de toestand Omlijnd bereikt); scope en stakeholders van de solution zijn geïdentificeerd; een Opdrachtgever heeft opdracht gegeven voor het solution-traject.</ess:entry>
+    <ess:entry xml:lang="nl">De enterprise-architectuurkaders en de paved road zijn gepubliceerd (Enterprise architectuur heeft minimaal de toestand Omlijnd bereikt); scope en stakeholders van de solution zijn geïdentificeerd; een Opdrachtgever heeft opdracht gegeven voor het solution-traject.</ess:entry>
 
     <ess:result xml:lang="nl">Solution-specifieke architectuurkeuzes zijn vastgelegd als ADR's; het architectuurmodel is uitgewerkt tot op codeniveau (context, container, component, code); risicovolle integratiekeuzes zijn bewezen via proof-of-concepts; de solution functioneert aantoonbaar conform de enterprise-kaders in productie.</ess:result>
 
     <ess:measures xml:lang="nl">Aantal architectuurbeslissingen (ADR's) per alpha-toestand; percentage architectuurbepalende eisen dat is afgedekt door minimaal één ADR; aantal open, onopgeloste integratierisico's; conformance-score bij systeemtest.</ess:measures>
 
-    <ess:consistencyRules xml:lang="nl">Een architectuurbeslissing (ADR) mag pas de toestand Besloten bereiken nadat de bijbehorende architectuurbepalende eis de toestand Acceptable heeft bereikt. Elke afwijking van de paved road wordt vastgelegd als off-road ADR en ter beoordeling voorgelegd aan Architectuursturing (activiteit Levering Besturen) vóórdat de bijbehorende fase-gate wordt gepasseerd.</ess:consistencyRules>
+    <ess:consistencyRules xml:lang="nl">Een architectuurbeslissing (ADR) mag pas de toestand Besloten bereiken nadat de bijbehorende architectuurbepalende eis de toestand Acceptable heeft bereikt. Elke afwijking van de paved road wordt vastgelegd als off-road ADR en ter beoordeling voorgelegd aan Architectuursturing (activiteit Levering besturen) vóórdat de bijbehorende fase-gate wordt gepasseerd.</ess:consistencyRules>
 
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:referredElements rdf:resource="practice/enterprise-architecture"/>

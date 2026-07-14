@@ -8,12 +8,12 @@
 >
 
   <ess:Alpha rdf:about="alpha/paved-road">
-    <ess:name xml:lang="nl">Paved Road</ess:name>
+    <ess:name xml:lang="nl">Paved road</ess:name>
     <ess:name xml:lang="en">Paved Road</ess:name>
     <ess:briefDescription xml:lang="nl">De catalogus van goedgekeurde standaardsoftware-componenten, integratiepatronen en referentie-instellingen die teams mogen toepassen zonder voorafgaande beoordeling — de conforme keuze is de gemakkelijkste keuze.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
-<p>De paved road is het technische tegenwicht van de architectuurprincipes: waar principes begrenzen wat een team <em>niet</em> mag doen, is de paved road wat Enterprise Architectuur teams <em>wel</em> aanreikt om te gebruiken. Deze alpha volgt hoe volwassen die catalogus is, van een eerste kiem tot een levende, zelf-onderhoudende standaard.</p>
-<p>Het Architectuurforum geeft bij Governance inrichten opdracht aan Enterprise Architectuur om de paved road te ontwikkelen en te onderhouden, afgeleid van beleid en de architectuurvisie op portfolio-niveau. Teams die binnen de paved road blijven, hoeven niet langs een gate voor architectuurgoedkeuring; alleen afwijkingen (off-road) worden expliciet beoordeeld door Architectuursturing.</p>
+<p>De paved road is het technische tegenwicht van de architectuurprincipes: waar principes begrenzen wat een team <em>niet</em> mag doen, is de paved road wat Enterprise architectuur teams <em>wel</em> aanreikt om te gebruiken. Deze alpha volgt hoe volwassen die catalogus is, van een eerste kiem tot een levende, zelf-onderhoudende standaard.</p>
+<p>Het Architectuurforum geeft bij Governance inrichten opdracht aan Enterprise architectuur om de paved road te ontwikkelen en te onderhouden, afgeleid van beleid en de architectuurvisie op ondernemingsniveau. Teams die binnen de paved road blijven, hoeven niet langs een gate voor architectuurgoedkeuring; alleen afwijkingen (off-road) worden expliciet beoordeeld door Architectuursturing.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>

@@ -8,7 +8,7 @@
 >
 
   <ess:WorkProduct rdf:about="workproduct/paved-road-adoptie">
-    <ess:name xml:lang="nl">Paved Road-adoptie</ess:name>
+    <ess:name xml:lang="nl">Paved road-adoptie</ess:name>
     <ess:name xml:lang="en">Paved Road Adoption</ess:name>
     <ess:briefDescription xml:lang="nl">Meetgegeven dat aangeeft in welke mate teams de paved road volgen. Basis voor governance-zekerheid en voor het verbreden of pensioneren van standaarde…</ess:briefDescription>
     <ess:description xml:lang="nl">Meetgegeven dat aangeeft in welke mate teams de paved road volgen. Basis voor governance-zekerheid en voor het verbreden of pensioneren van standaarden.</ess:description>

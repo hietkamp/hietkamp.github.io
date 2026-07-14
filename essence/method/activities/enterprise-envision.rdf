@@ -35,7 +35,7 @@
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <ul>
-<li>Selecteer uit de Architectuurbepalende Eisen welke de richting daadwerkelijk bepalen — niet alles hoeft in de visie.</li>
+<li>Selecteer uit de Architectuurbepalende eisen welke de richting daadwerkelijk bepalen — niet alles hoeft in de visie.</li>
 <li>Verwoord op één pagina: het doel, de scope, de leidende principes en de uitsluitingscriteria.</li>
 <li>Benoem expliciet wat buiten scope valt; dat voorkomt scope creep net zo goed als wat wél in scope staat.</li>
 <li>Toets de visie bij de belangrijkste stakeholders vóórdat vendor- of platformkeuzes worden gemaakt.</li>

@@ -8,7 +8,7 @@
 >
 
   <ess:Alpha rdf:about="alpha/architectural-drivers">
-    <ess:name xml:lang="nl">Architectuurbepalende Eisen</ess:name>
+    <ess:name xml:lang="nl">Architectuurbepalende eisen</ess:name>
     <ess:name xml:lang="en">Architectural Drivers</ess:name>
     <ess:briefDescription xml:lang="nl">De architectuurbepalende eisen — kwaliteitsattributen, beperkingen en bedrijfsdoelen — die architectuurkeuzes sturen en beperken.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[

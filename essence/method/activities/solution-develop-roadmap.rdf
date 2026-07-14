@@ -53,7 +53,7 @@
     <br /><p><strong>Houd de roadmap op het juiste detailniveau</strong></p>
     <p>De roadmap beschrijft de architectuurtransitie op hoofdlijnen. Het detailniveau is voldoende om de transitiestappen, afhankelijkheden en belangrijkste risico's inzichtelijk te maken, maar bevat nog geen gedetailleerde technische ontwerpen. Verdere detaillering volgt in latere fasen van het project, zodra de betreffende transitiestaat wordt voorbereid.</p>
     <br /><p><strong>Stem de roadmap af</strong></p>
-    <p>Sluit de activiteit af door de roadmap af te stemmen met de opdrachtgever, de betrokken stakeholders, de Enterprise Architect en de project- of releaseplanning. Controleer daarbij of elke transitiestaat een stabiele en operationeel verantwoorde situatie oplevert, of de roadmap aansluit op de enterprise-architectuur, en of de gekozen volgorde uitvoerbaar en beheersbaar is. Na deze afstemming vormt de roadmap het uitgangspunt voor de verdere uitvoering van het project en de architectuurgovernance.</p>
+    <p>Sluit de activiteit af door de roadmap af te stemmen met de opdrachtgever, de betrokken stakeholders, de Enterprise architect en de project- of releaseplanning. Controleer daarbij of elke transitiestaat een stabiele en operationeel verantwoorde situatie oplevert, of de roadmap aansluit op de enterprise-architectuur, en of de gekozen volgorde uitvoerbaar en beheersbaar is. Na deze afstemming vormt de roadmap het uitgangspunt voor de verdere uitvoering van het project en de architectuurgovernance.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>

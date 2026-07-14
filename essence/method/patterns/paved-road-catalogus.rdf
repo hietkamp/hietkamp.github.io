@@ -7,7 +7,7 @@
 >
 
   <ess:Pattern rdf:about="pattern/paved-road-catalogus">
-    <ess:name xml:lang="nl">Paved Road als catalogus</ess:name>
+    <ess:name xml:lang="nl">Paved road als catalogus</ess:name>
     <ess:name xml:lang="en">Paved Road as Catalogue</ess:name>
     <ess:briefDescription xml:lang="nl">Publiceer goedgekeurde producten, patronen, standaarden en referentie-instellingen als zelfbedienbare catalogus in plaats van als beleidsdocument.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Publiceer goedgekeurde producten, patronen, standaarden en referentie-instellingen als zelfbedienbare catalogus in plaats van als beleidsdocument.</p>

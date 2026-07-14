@@ -60,15 +60,6 @@ PRACTICE_CFG = {
         "gradient":     f"from-[{NEUTRAL}] to-[{NEUTRAL}]",
         "icon_path":    "<path d='M8 1L1 5v4c0 3.55 2.96 6.88 7 7.93C12.04 15.88 15 12.55 15 9V5L8 1z'/>",
     },
-    "portfolio-lifecycle": {
-        "color":       "neutral",
-        "spoor":       "enterprise",
-        "num_color":   f"bg-[{NEUTRAL}]",
-        "css":         f"bg-[{NEUTRAL}]",
-        "gradient":    f"from-[{NEUTRAL}] to-[{NEUTRAL}]",
-        "icon_path":   "<rect x='2' y='2' width='4' height='4'/><rect x='8' y='2' width='4' height='4'/>"
-                       "<rect x='2' y='8' width='4' height='4'/><rect x='8' y='8' width='4' height='4'/>",
-    },
     "project-lifecycle": {
         "color":        "neutral",
         "spoor":        "solution",
@@ -534,7 +525,7 @@ def build_index_ctx(g: Graph) -> dict:
             "color": cfg.get("color", "neutral"),
         })
 
-    # Path cards: one entry point per phase-based practice (portfolio, project,
+    # Path cards: one entry point per phase-based practice (project,
     # change management, ...), fully derived from RDF — any practice that
     # organises its activities into phases automatically gets a card here.
     paths = [
@@ -559,7 +550,7 @@ def build_index_ctx(g: Graph) -> dict:
                     title=method_name, description=method_brief)
     ctx.update({
         "hero_data": {
-            "kicker":   "Essence Methode",
+            "kicker":   "Essence methode",
             "h1_pre":   method_name,
             "title_en": get_name(g, METHOD_URI, lang="en") or "Way of Working",
             "lede":     method_brief,
@@ -576,7 +567,7 @@ def build_index_ctx(g: Graph) -> dict:
                 "title": "Kies de context",
                 "intro": "De methode ondersteunt meerdere contexten — kies het spoor dat bij jouw situatie past.",
                 "paths": paths,
-                "note":  "Alle sporen delen dezelfde practices en werken samen — verandermanagement levert de architectuurroadmap waarbinnen portfolio en projecten opleveren.",
+                "note":  "Alle sporen delen dezelfde practices en werken samen — verandermanagement levert de architectuurroadmap waarbinnen projecten opleveren.",
             },
             "achtergrond": {
                 "num":   "02",
@@ -643,7 +634,7 @@ def build_practices_ctx(g: Graph) -> dict:
                     title="Practices", description="Overzicht van alle practices")
     ctx.update({
         "hero_data": {
-            "kicker": "Essence Methode",
+            "kicker": "Essence methode",
             "h1_pre": "Practices",
             "h1_br":  False,
             "h1_em":  "",
@@ -894,7 +885,7 @@ def _build_phase_domains(g: Graph, practice_uri, practice_slug: str) -> list[dic
 
 
 def build_phase_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
-    """Context builder for waterfall / portfolio-lifecycle (phase-based practices)."""
+    """Context builder for phase-based practices (waterfall, project-lifecycle, ...)."""
     s = slug(practice_uri)
     cfg = PRACTICE_CFG.get(s, {})
 

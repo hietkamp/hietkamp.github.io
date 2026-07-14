@@ -10,11 +10,11 @@
   <ess:Alpha rdf:about="alpha/governance">
     <ess:name xml:lang="nl">Governance</ess:name>
     <ess:name xml:lang="en">Governance</ess:name>
-    <ess:briefDescription xml:lang="nl">Het systeem van guardrails, beslissingsrechten, cadans en werkwijze-eigenaarschap waarmee het Architectuurforum architectuurkwaliteit stuurt, in dienst van de gates uit Project- en Portfolio Levenscyclus.</ess:briefDescription>
+    <ess:briefDescription xml:lang="nl">Het systeem van guardrails, beslissingsrechten, cadans en werkwijze-eigenaarschap waarmee het Architectuurforum architectuurkwaliteit stuurt, in dienst van de gates uit de Project levenscyclus.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Deze alpha volgt hoe ver de sturing is: van een net opgericht forum tot een governance die aantoonbaar werkt én zichzelf actief bijstelt. De vijf toestanden volgen de cyclus van de practice Architectuursturing.</p>
-<p>Governance inrichten brengt de alpha naar <strong>Opgericht</strong> en direct door naar <strong>Actief</strong>: het fundament (beslissingsbevoegdheid, principes, repository, eigenaarschap van de werkwijze, opdracht aan Enterprise Architectuur voor architectuurvisie en paved road, en de objectives voor de governance zelf) staat, en het Architectuurforum vergadert op een vaste, vooraf gepubliceerde cadans. Levering besturen brengt de alpha naar <strong>Sturend</strong>: nieuwe initiatieven zijn formeel onder governance gebracht en beslissingen stromen binnen de guardrails. Werking van de governance toetsen brengt de alpha naar <strong>Geborgd</strong>: niet door de architectuur opnieuw te beoordelen — dat is al gebeurd bij Levering besturen — maar door de opgetelde reviewuitkomsten en het paved-road-gebruik te vergelijken met de objectives uit Governance inrichten, en te toetsen of ook de werkwijze zelf nog aansluit. Governance bijstellen sluit de cyclus met <strong>Effectief</strong>: principes, working agreement en waar nodig de werkwijze zelf zijn bijgesteld op basis van dat bewijs.</p>
-<p>Deze alpha vervangt de gates uit de Project Levenscyclus en de Portfolio Levenscyclus niet — ze bedient ze: zolang een initiatief binnen de guardrails blijft, stroomt het door de gates heen; alleen afwijkingen krijgen een expliciete beoordeling door het forum.</p>
+<p>Governance inrichten brengt de alpha naar <strong>Opgericht</strong> en direct door naar <strong>Actief</strong>: het fundament (beslissingsbevoegdheid, principes, repository, eigenaarschap van de werkwijze, opdracht aan Enterprise architectuur voor architectuurvisie en paved road, en de objectives voor de governance zelf) staat, en het Architectuurforum vergadert op een vaste, vooraf gepubliceerde cadans. Levering besturen brengt de alpha naar <strong>Sturend</strong>: nieuwe initiatieven zijn formeel onder governance gebracht en beslissingen stromen binnen de guardrails. Werking van de governance toetsen brengt de alpha naar <strong>Geborgd</strong>: niet door de architectuur opnieuw te beoordelen — dat is al gebeurd bij Levering besturen — maar door de opgetelde reviewuitkomsten en het paved-road-gebruik te vergelijken met de objectives uit Governance inrichten, en te toetsen of ook de werkwijze zelf nog aansluit. Governance bijstellen sluit de cyclus met <strong>Effectief</strong>: principes, working agreement en waar nodig de werkwijze zelf zijn bijgesteld op basis van dat bewijs.</p>
+<p>Deze alpha vervangt de gates uit de Project levenscyclus niet — ze bedient ze: zolang een initiatief binnen de guardrails blijft, stroomt het door de gates heen; alleen afwijkingen krijgen een expliciete beoordeling door het forum.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
@@ -65,9 +65,9 @@
   </ess:Checkpoint>
 
   <ess:Checkpoint rdf:about="checkpoint/governance/initiated/4">
-    <ess:name xml:lang="nl">Enterprise Architectuur heeft opdracht voor de architectuurvisie en de paved road.</ess:name>
+    <ess:name xml:lang="nl">Enterprise architectuur heeft opdracht voor de architectuurvisie en de paved road.</ess:name>
     <ess:name xml:lang="en">Enterprise Architecture is commissioned for the architecture vision and the paved road.</ess:name>
-    <ess:description xml:lang="nl">Enterprise Architectuur heeft opdracht voor de architectuurvisie en de paved road.</ess:description>
+    <ess:description xml:lang="nl">Enterprise architectuur heeft opdracht voor de architectuurvisie en de paved road.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Checkpoint>

@@ -13,7 +13,7 @@
     <ess:name xml:lang="en">Learn and Improve</ess:name>
     <ess:briefDescription xml:lang="nl">Beheert de architectuur continu in productie: actualiseert de goedgekeurde route, pensioneert verouderde standaarden en hervalideert sturende eisen wanneer de context verandert.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
-<p>Architectuur is nooit af. Waar de vorige activiteiten de enterprise-architectuur vestigen, houdt deze activiteit haar levend: de doorlopende tegenhanger van Governance bijstellen, maar dan gericht op wat Enterprise Architectuur zelf beheert.</p>
+<p>Architectuur is nooit af. Waar de vorige activiteiten de enterprise-architectuur vestigen, houdt deze activiteit haar levend: de doorlopende tegenhanger van Governance bijstellen, maar dan gericht op wat Enterprise architectuur zelf beheert.</p>
 <p>Signalen komen voor een groot deel van elders: Governance bijstellen meldt wanneer een uitzondering op de paved road structureel is geworden, en adoptiedata laat zien welk deel van de teams de route daadwerkelijk volgt. Deze activiteit verwerkt die signalen: de paved road wordt actueel gehouden, en standaarden die hun waarde hebben verloren, worden even actief gepensioneerd als nieuwe worden toegevoegd. Een verouderde standaard die blijft bestaan, kost net zoveel verwarring als een principe dat niemand meer begrijpt.</p>
 <p>Wanneer de context wezenlijk verandert — een nieuwe strategie, een gewijzigde markt — worden de sturende eisen hervalideerd, en zo nodig de architectuurvisie bijgewerkt. Daarmee sluit deze activiteit de enterprise-architectuurcyclus: ze brengt het gesprek terug naar waar het begon, bij Sturende eisen funderen, zonder dat hele traject over te hoeven doen.</p>
 ]]></ess:description>

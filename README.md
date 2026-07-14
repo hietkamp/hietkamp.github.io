@@ -1,6 +1,6 @@
 # Essence Architecture Method — GitHub Pages Generator
 
-Een statische website die de **Essence Architecture Method** beschrijft (Enterprise Architecture, Solution Architecture, Architectuursturing, Portfolio- en Project-levenscyclus), volledig gegenereerd uit RDF-bronbestanden.
+Een statische website die de **Essence Architecture Method** beschrijft (Enterprise Architecture, Solution Architecture, Architectuursturing, Verandermanagement- en Project-levenscyclus), volledig gegenereerd uit RDF-bronbestanden.
 
 **RDF is de enige bron van waarheid.** Namen, beschrijvingen, volgorde van activiteiten, in-/outputs, rollen en patronen komen allemaal uit `essence/`. `build.py` en de Jinja2-templates in `templates/` bevatten geen inhoud — alleen logica om die RDF-data op te halen en weer te geven.
 
@@ -25,8 +25,8 @@ RDF (essence/)  --rdflib-->  Graph  --build.py-->  Jinja2 context  --templates/-
 | `essence-kernel.rdf` | De Essence Kernel (OMG ptc/25-05-01) | — |
 | `method/essence-architecture-method.rdf` | De samengestelde methode (`ess:Method`), verwijst naar alle practices | 1 |
 | `method/practices/*.rdf` | Practices | 5 |
-| `method/activities/*.rdf` | Activiteiten binnen practices | 17 |
-| `method/workproducts/*.rdf` | Werkproducten | 13 |
+| `method/activities/*.rdf` | Activiteiten binnen practices | 16 |
+| `method/workproducts/*.rdf` | Werkproducten | 15 |
 | `method/alphas/*.rdf` | Alphas (toestandsruimtes) | 5 |
 | `method/roles/*.rdf` | Rollen | 4 |
 | `method/patterns/*.rdf` | Patronen | 5 |
@@ -36,7 +36,7 @@ RDF (essence/)  --rdflib-->  Graph  --build.py-->  Jinja2 context  --templates/-
 Belangrijkste onderdelen, van boven naar beneden:
 
 - **Namespaces & constanten** — `ESS`, `KERN`, `BASE`, `METHOD_URI`, paden (`ROOT`, `TEMPLATES_DIR`, `DOCS_DIR`).
-- **`PRACTICE_CFG`** — de *enige* plek met visuele configuratie die niet uit RDF komt: kleuren, CSS-klassen, iconen (SVG path-data), welk template (`wow.html.j2` vs `governance.html.j2`) per practice-slug gebruikt wordt. Dit is bewust gescheiden van inhoud: als je een nieuwe practice toevoegt in de RDF, moet je hier een entry toevoegen zodat de pagina weet welke kleur/template te gebruiken.
+- **`PRACTICE_CFG`** — de *enige* plek met visuele configuratie die niet uit RDF komt: kleuren, CSS-klassen, iconen (SVG path-data) per practice-slug. Dit is bewust gescheiden van inhoud: als je een nieuwe practice toevoegt in de RDF, moet je hier een entry toevoegen zodat de pagina weet welke kleur/icoon te gebruiken.
 - **`ROLE_CFG`** — vergelijkbare visuele config per rol (kopkleur, competentie-labels).
 - **Graph-helpers** — `load_graph()`, `get_name()`, `get_brief()`, `get_desc()` (NL-first met EN-fallback), `slug()`, `local_path()`.
 - **Volgorde-logica** — `sorted_activities()` reconstrueert de activiteitenvolgorde per practice uit `ess:ActivityAssociation`-ketens (`end-before-start`), **niet** uit de volgorde van `ess:ownedElements`.
@@ -54,12 +54,9 @@ Belangrijkste onderdelen, van boven naar beneden:
 | `_macros.html.j2`, `_card_activity.html.j2` | Herbruikbare Jinja2-macro's (o.a. activiteitskaarten). |
 | `index.html.j2` | Methode-startpagina. |
 | `practices.html.j2` | Overzicht van alle practices. |
-| `wow.html.j2` | "Way of Working"-pagina per practice (Enterprise/Solution/Portfolio/Project). |
-| `governance.html.j2` | Variant van `wow.html.j2` specifiek voor de Architectuursturing-practice. |
+| `wow.html.j2` | "Way of Working"-pagina — enige practice-detailtemplate, gebruikt voor alle 5 practices (Enterprise architectuur, Solution architectuur, Architectuursturing, Verandermanagement, Project). |
 | `act.html.j2` | Individuele activiteitspagina. |
 | `wp.html.j2` | Individuele werkproductpagina. |
-
-`PRACTICE_CFG[<slug>]["template"]` bepaalt welk van `wow.html.j2` / `governance.html.j2` per practice gebruikt wordt.
 
 ## Pipeline (GitHub Actions)
 
@@ -108,8 +105,9 @@ Draai daarna `python build.py` opnieuw; de RDF-wijziging verschijnt automatisch 
 ### Nieuwe practice toevoegen
 
 1. Nieuw `.rdf`-bestand in `essence/method/practices/`, gekoppeld via `ess:ownedElements` vanuit `essence-architecture-method.rdf`.
-2. Voeg een entry toe aan `PRACTICE_CFG` in `build.py` (slug, kleur, template, icoon) — dit is de enige plek waar niet-RDF (visuele) configuratie per practice hoort.
-3. Voeg zo nodig de kleur toe aan `docs/style.css` (CSS custom property, zie `CLAUDE.md`).
+2. Voeg een entry toe aan `PRACTICE_CFG` in `build.py` (slug, kleur, icoon) — dit is de enige plek waar niet-RDF (visuele) configuratie per practice hoort.
+3. Voeg een link toe in de hoofdnavigatie (`templates/_base.html.j2`) als de practice een eigen instappunt (spoor) moet krijgen.
+4. Voeg zo nodig de kleur toe aan `docs/style.css` (CSS custom property, zie `CLAUDE.md`).
 
 ### Layout/stijl wijzigen
 

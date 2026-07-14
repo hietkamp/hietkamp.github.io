@@ -29,7 +29,7 @@
 <li>Welke integraties zijn permanent, en welke zijn tijdelijk?</li>
 <li>Welke afhankelijkheden en risico's bepalen de volgorde?</li>
 </ul>
-<p>Het werkproduct is bedoeld voor de architectuureigenaar, het deliveryteam, de Enterprise Architect en Architectuursturing. Het vormt voor Architectuursturing de referentie waartegen afwijkingen tijdens de uitvoering (off-road) worden herkend en beoordeeld, en voor de Enterprise Architect het aanknopingspunt om de solution-roadmap te toetsen aan de enterprise-roadmap.</p>
+<p>Het werkproduct is bedoeld voor de architectuureigenaar, het deliveryteam, de Enterprise architect en Architectuursturing. Het vormt voor Architectuursturing de referentie waartegen afwijkingen tijdens de uitvoering (off-road) worden herkend en beoordeeld, en voor de Enterprise architect het aanknopingspunt om de solution-roadmap te toetsen aan de enterprise-roadmap.</p>
 <br /><p><strong>Voorbeeld in ArchiMate-notatie</strong></p>
 <p>Onderstaand voorbeeld toont een vereenvoudigde roadmap volgens de ArchiMate Implementation &amp; Migration-laag. De Baseline en de Doelarchitectuur zijn elk een Plateau; Transitiestaat 1 is een tussenliggend plateau waarin oud en nieuw systeem tijdelijk naast elkaar bestaan. Elke overgang tussen twee plateaus wordt gerealiseerd door een Work Package (WP 1, WP 2) — het werkpakket bevat de concrete migratie- of integratieactiviteiten die nodig zijn om van het ene naar het andere plateau te komen. Dit patroon herhaalt zich voor elk paar opeenvolgende plateaus in de roadmap.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>

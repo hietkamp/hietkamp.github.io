@@ -13,7 +13,7 @@
     <ess:briefDescription xml:lang="nl">De set significante architectuurbeslissingen, elk vastleggend context, opties, rationale en consequenties voor een specifieke architectuurkeuze.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Deze alpha volgt hoe ver een architectuurbeslissing is: van een herkend beslispunt, via framing en de eigenlijke keuze, tot een besluit dat gecommuniceerd is en door bewijs is gevalideerd. Een beslissing bereikt de toestand Besloten pas nadat de bijbehorende Architectuurbepalende Eis de toestand Acceptable heeft bereikt — de vraag moet er zijn voordat het antwoord vastligt.</p>
-<p>Elke afwijking van de Paved Road wordt vastgelegd als een off-road beslissing en ter beoordeling voorgelegd aan Architectuursturing (activiteit Levering besturen) vóórdat de bijbehorende fase-gate wordt gepasseerd. Wijzigingen aan een eerder vastgelegde beslissing gebeuren altijd via expliciete supersessie: een nieuwe versie vervangt de oude zichtbaar, in plaats van dat de oude stilzwijgend wordt aangepast.</p>
+<p>Elke afwijking van de Paved road wordt vastgelegd als een off-road beslissing en ter beoordeling voorgelegd aan Architectuursturing (activiteit Levering besturen) vóórdat de bijbehorende fase-gate wordt gepasseerd. Wijzigingen aan een eerder vastgelegde beslissing gebeuren altijd via expliciete supersessie: een nieuwe versie vervangt de oude zichtbaar, in plaats van dat de oude stilzwijgend wordt aangepast.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>

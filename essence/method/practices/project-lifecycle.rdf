@@ -66,9 +66,9 @@
 
   <!-- ================= Phase 1 — Initiation ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/initiation">
-    <ess:name xml:lang="nl">Fase 1 — Initiatie</ess:name>
+    <ess:name xml:lang="nl">Fase 1 — initiatie</ess:name>
     <ess:name xml:lang="en">Phase 1 — Initiation</ess:name>
-    <ess:briefDescription xml:lang="nl">Begrijp de solution-context en formuleer de architectuurvisie op solution-niveau; gebruik de enterprise-kaders uit de Portfolio Levenscyclus als startpunt.</ess:briefDescription>
+    <ess:briefDescription xml:lang="nl">Begrijp de solution-context en formuleer de architectuurvisie op solution-niveau; gebruik de enterprise-kaders van Enterprise architectuur als startpunt.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>In de eerste fase wordt de basis gelegd voor het vervolg van het traject. Voordat inhoudelijke keuzes worden gemaakt, moet duidelijk zijn waarom het traject wordt gestart, welk doel het heeft, wat de gewenste resultaten zijn en welke belanghebbenden daarbij betrokken zijn.</p>
 <p>Het doel van deze fase is om de context te begrijpen, de uitgangspunten vast te stellen en een gezamenlijke visie op de gewenste oplossing of verandering te formuleren. Daarbij wordt aangesloten op de geldende organisatiekaders, beleidsuitgangspunten en eerder genomen besluiten.</p>
@@ -106,7 +106,7 @@
 
   <!-- ================= Phase 2 — Requirements ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/requirements">
-    <ess:name xml:lang="nl">Fase 2 — Requirements</ess:name>
+    <ess:name xml:lang="nl">Fase 2 — requirements</ess:name>
     <ess:name xml:lang="en">Phase 2 — Requirements</ess:name>
     <ess:briefDescription xml:lang="nl">Selecteer de architectuurbepalende eisen en leg de solution-richting vast binnen de enterprise-kaders.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
@@ -120,7 +120,7 @@
 
   <!-- ================= Phase 3 — Analysis & design ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/analysisdesign">
-    <ess:name xml:lang="nl">Fase 3 — Analyse &amp; ontwerp</ess:name>
+    <ess:name xml:lang="nl">Fase 3 — analyse &amp; ontwerp</ess:name>
     <ess:name xml:lang="en">Phase 3 — Analysis &amp; design</ess:name>
     <ess:briefDescription xml:lang="nl">De enterprise-architect past de paved road toe op het solution-traject en levert het globale architectuurontwerp (HLD) als kader voor het low-level design.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
@@ -166,7 +166,7 @@
 
   <!-- ================= Phase 4 — Implementation ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/implementation">
-    <ess:name xml:lang="nl">Fase 4 — Implementatie</ess:name>
+    <ess:name xml:lang="nl">Fase 4 — implementatie</ess:name>
     <ess:name xml:lang="en">Phase 4 — Implementation</ess:name>
     <ess:briefDescription xml:lang="nl">Stuur de implementatie actief op paved-road-conformance en bewijs risicovolle integratiekeuzes via een proof-of-concept.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
@@ -196,7 +196,7 @@
 
   <!-- ================= Phase 5 — Testing ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/testing">
-    <ess:name xml:lang="nl">Fase 5 — Testen</ess:name>
+    <ess:name xml:lang="nl">Fase 5 — testen</ess:name>
     <ess:name xml:lang="en">Phase 5 — Testing</ess:name>
     <ess:briefDescription xml:lang="nl">Plan de solution-transitie en verzamel conformance-bewijs op systeemniveau; valideer de solution ten opzichte van het high-level design.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
@@ -226,9 +226,9 @@
 
   <!-- ================= Phase 6 — Deployment ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/deployment">
-    <ess:name xml:lang="nl">Fase 6 — Uitrollen</ess:name>
+    <ess:name xml:lang="nl">Fase 6 — uitrollen</ess:name>
     <ess:name xml:lang="en">Phase 6 — Deployment</ess:name>
-    <ess:briefDescription xml:lang="nl">Begeleid en verbeter de solution in productie; valideer de architectuur ten opzichte van de requirementsdefinitie en voer lessen terug naar de Portfolio Levenscyclus.</ess:briefDescription>
+    <ess:briefDescription xml:lang="nl">Begeleid en verbeter de solution in productie; valideer de architectuur ten opzichte van de requirementsdefinitie en voer lessen terug naar Enterprise architectuur.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p></p>
 <p></p>

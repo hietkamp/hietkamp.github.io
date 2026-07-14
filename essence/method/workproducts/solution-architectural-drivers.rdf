@@ -8,7 +8,7 @@
 >
 
   <ess:WorkProduct rdf:about="workproduct/solution-architectural-drivers">
-    <ess:name xml:lang="nl">Architectuurbepalende Eisen</ess:name>
+    <ess:name xml:lang="nl">Architectuurbepalende eisen</ess:name>
     <ess:name xml:lang="en">Architecturally Significant Requirements</ess:name>
     <ess:briefDescription xml:lang="nl">Filter uit de volledige requirements-set de eisen die de architectuur van de solution daadwerkelijk richting geven.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Een project kent vaak tientallen tot honderden requirements, maar niet elke eis is architectuurbepalend. Een architectuurbepalende eis — ook wel Architecturally Significant Requirement (ASR) genoemd — is een eis die een aantoonbare invloed heeft op de structuur, samenhang of kwaliteit van de solution: eisen rond beveiliging, beschikbaarheid, performance, integraties of wettelijke verplichtingen zijn hier veelal voorbeelden van. Gewone functionele wensen en implementatiedetails horen hier niet bij.</p>
@@ -23,7 +23,7 @@
 <li>Tot welke kwaliteitscategorie behoort deze eis?</li>
 <li>Wat is de prioriteit, gegeven bedrijfswaarde en technisch risico?</li>
 </ul>
-<p>Het werkproduct is bedoeld voor de architectuureigenaar, de business analist (als bron van de volledige requirements-set), de Enterprise Architect en Architectuursturing, die de architectuurbepalende eisen gebruikt om afwijkingen tijdens de uitvoering te beoordelen.</p>]]></ess:description>
+<p>Het werkproduct is bedoeld voor de architectuureigenaar, de business analist (als bron van de volledige requirements-set), de Enterprise architect en Architectuursturing, die de architectuurbepalende eisen gebruikt om afwijkingen tijdens de uitvoering te beoordelen.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
     <ess:levelOfDetail rdf:resource="lod/solution-architectural-drivers/utility-tree"/>
@@ -69,7 +69,7 @@
 
   <ess:TypedResource rdf:about="resource/solution-architectural-drivers/template">
     <ess:kind rdf:resource="type/template"/>
-    <ess:briefDescription xml:lang="nl">Sjabloon voor Architectuurbepalende Eisen (nog te maken)</ess:briefDescription>
+    <ess:briefDescription xml:lang="nl">Sjabloon voor Architectuurbepalende eisen (nog te maken)</ess:briefDescription>
     <ess:content>https://hietkamp.nl/essence/downloads/architecturally-significant-requirements.docx</ess:content>
   </ess:TypedResource>
 
