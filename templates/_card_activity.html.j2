@@ -12,9 +12,8 @@
      title / name     – Nederlandse naam  (bijv. "Begrijpen")
      desc             – korte omschrijving
      chips.space      – Activity Space chip  (bijv. "AS 1–2 · Understand Stakeholder Needs")
-     chips.alpha      – Alpha chip           (bijv. "Drivers")
-     actions          – ess:Action's gegroepeerd per CRUD-kind, zelfde kind_nl/kind_css
-                         als de "Acties"-lijst op de activiteitpagina:
+     actions          – ess:Action's (op werkproduct én alpha) gegroepeerd per CRUD-kind,
+                         zelfde kind_nl/kind_css als de "Acties"-lijst op de activiteitpagina:
                          [{"kind", "kind_nl", "kind_css", "wps": [{"name"}]}]
 
    Level-specific (enterprise-begrijpen, solution-richten, ...):
@@ -97,10 +96,6 @@
         <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
                      uppercase tracking-[0.1em] space bg-[rgba(15,110,99,.1)] text-[var(--sol)]">{{ act.chips.space }}</span>
         {% endif %}
-      {% endif %}
-      {% if act.chips.alpha %}
-      <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
-                   uppercase tracking-[0.1em] alpha bg-emerald-700/10 text-emerald-700">{{ act.chips.alpha }}</span>
       {% endif %}
     </div>
     {% endif %}

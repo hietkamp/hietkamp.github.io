@@ -229,7 +229,8 @@ def activity_actions_by_kind(g: Graph, activity_uri) -> list[dict]:
     """Return [{"kind", "kind_nl", "kind_css", "wps": [{"name"}]}] for each
     CRUD kind (create/read/update/delete) that this activity has actions for, in that
     canonical order — the same kind labels/colours as the activity detail page's
-    "Acties" list, so the overview and detail pages stay consistent.
+    "Acties" list, so the overview and detail pages stay consistent. Covers actions
+    on both work products and alphas (an action always targets exactly one of the two).
     """
     by_kind: dict = {}
     seen: set = set()
@@ -237,11 +238,12 @@ def activity_actions_by_kind(g: Graph, activity_uri) -> list[dict]:
         kind = _action_kind(g, action)
         if kind not in ACTION_KIND_NL:
             continue
-        wp = next(g.objects(action, ESS.workProduct), None)
-        if not wp or (kind, wp) in seen:
+        target = next(g.objects(action, ESS.workProduct), None) \
+            or next(g.objects(action, ESS.alpha), None)
+        if not target or (kind, target) in seen:
             continue
-        seen.add((kind, wp))
-        n = get_name(g, wp)
+        seen.add((kind, target))
+        n = get_name(g, target)
         if not n:
             continue
         by_kind.setdefault(kind, []).append({"name": n})
@@ -928,7 +930,6 @@ def _activity_dict(g: Graph, act_uri, num: int, total: int,
         "phase":          activity_phase(g, act_uri),
         "chips": {
             "space": activity_space_chip(g, act_uri),
-            "alpha": primary_alpha_name(g, act_uri),
         },
         "actions":   activity_actions_by_kind(g, act_uri),
         "patterns":  activity_patterns(g, act_uri),
@@ -940,20 +941,39 @@ def _activity_dict(g: Graph, act_uri, num: int, total: int,
 
 
 def practice_role_uris(g: Graph, practice_uri) -> list:
-    """Return the role URIs that perform this practice, via its 'performed by' association."""
+    """Return the role URIs that perform this practice, via its 'performed by' association.
+    Matched on the association's URI slug rather than ess:name — these
+    PatternAssociations carry no ess:name literal."""
     for assoc_uri in g.objects(practice_uri, ESS.associations):
-        if get_name(g, assoc_uri, lang="en").lower() != "performed by":
+        if slug(assoc_uri) != "performed-by":
             continue
         return list(g.objects(assoc_uri, ESS.elements))
     return []
 
 
+def activity_role_uris(g: Graph, activity_uri) -> list:
+    """Return the role URIs that participate in this activity, via each role's
+    own 'participates in' PatternAssociation (the reverse of practice_role_uris:
+    a role lists the activities it participates in, not the other way round)."""
+    roles = []
+    for assoc_uri in g.subjects(ESS.elements, activity_uri):
+        if slug(assoc_uri) != "participates-in":
+            continue
+        if (assoc_uri, RDF.type, ESS.PatternAssociation) not in g:
+            continue
+        role = next(g.subjects(ESS.associations, assoc_uri), None)
+        if role is not None and role not in roles:
+            roles.append(role)
+    return roles
+
+
 def role_competencies(g: Graph, role_uri) -> list:
     """Return the names of Competency individuals required by this role, via its
     'requires competency' association. Skips non-Competency elements (e.g. a
-    required CompetencyLevel such as Masters, which is a level, not an area)."""
+    required CompetencyLevel such as Masters, which is a level, not an area).
+    Matched on the association's URI slug — see practice_role_uris."""
     for assoc_uri in g.objects(role_uri, ESS.associations):
-        if get_name(g, assoc_uri, lang="en").lower() != "requires competency":
+        if slug(assoc_uri) != "requires-competency":
             continue
         return [
             get_name(g, el) for el in g.objects(assoc_uri, ESS.elements)
@@ -1141,6 +1161,33 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
         parts = local.split("_")
         return parts[0] if len(parts) > 1 else ""
 
+    def _lod_groups(crit_uri) -> list[dict]:
+        """Group this criterion's ess:levelOfDetail refs by their owning work
+        product, so each work product gets its own row of LOD chips."""
+        groups: dict = {}
+        order: list = []
+        for lod in g.objects(crit_uri, ESS.levelOfDetail):
+            name = get_name(g, lod)
+            if not name:
+                continue
+            wp = next(
+                (s for s in g.subjects(ESS.levelOfDetail, lod)
+                 if (s, RDF.type, ESS.WorkProduct) in g),
+                None,
+            )
+            if wp not in groups:
+                groups[wp] = []
+                order.append(wp)
+            groups[wp].append(name)
+        return [
+            {
+                "wp_name": get_name(g, wp) if wp else "",
+                "wp_href": wp_href(slug(wp), root="../") if wp else None,
+                "lod_names": groups[wp],
+            }
+            for wp in order
+        ]
+
     completion_criteria = []
     for crit_uri in g.objects(act_uri, ESS.criterion):
         if (crit_uri, RDF.type, ESS.CompletionCriterion) not in g:
@@ -1149,8 +1196,9 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
         if not state:
             continue
         completion_criteria.append({
-            "alpha": _alpha_from_state(state),
-            "state": _state_label(state),
+            "alpha":      _alpha_from_state(state),
+            "state":      _state_label(state),
+            "lod_groups": _lod_groups(crit_uri),
         })
 
     # Sequence: end-before-start associations, limited to activities owned by
@@ -1178,9 +1226,10 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
     sequence = {"predecessors": predecessors, "successors": successors} \
         if predecessors or successors else None
 
-    # Role(s) that perform the owning practice, and so this activity
+    # Role(s) that participate in this specific activity (via each role's own
+    # 'participates in' association), not just any role performing the practice.
     role_cards = []
-    for r in practice_role_uris(g, practice_uri):
+    for r in activity_role_uris(g, act_uri):
         rs = slug(r)
         role_cards.append({
             "id":           rs,
@@ -1192,8 +1241,8 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
             "lc_css":       f"[&_.lc-head]:bg-[{NEUTRAL}]",
         })
     roles = {
-        "intro": "Rol die deze activiteit uitvoert." if len(role_cards) == 1
-                 else "Rollen die deze activiteit uitvoeren.",
+        "intro": "Rol die in deze activiteit participeert." if len(role_cards) == 1
+                 else "Rollen die in deze activiteit participeren.",
         "cards": role_cards,
     } if role_cards else None
 

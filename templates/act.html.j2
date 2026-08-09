@@ -131,9 +131,21 @@
   {{ sec_head('%02d'|format(nsec.n), 'Voltooiingscriteria') }}
   <ul class="m-0 mt-3 list-none space-y-1.5 p-0">
     {% for c in completion_criteria %}
-    <li class="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-3 py-2">
-      {% if c.alpha %}<span class="shrink-0 rounded-full border border-emerald-700/30 bg-emerald-700/10 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-emerald-700">{{ c.alpha }}</span>{% endif %}
-      <span class="text-[0.88rem] text-slate-700">{{ c.state }}</span>
+    <li class="rounded-lg border border-slate-200 bg-white px-3 py-2">
+      <div class="flex flex-wrap items-center gap-2.5">
+        {% if c.alpha %}<span class="shrink-0 rounded-full border border-emerald-700/30 bg-emerald-700/10 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-emerald-700">{{ c.alpha }}</span>{% endif %}
+        <span class="text-[0.88rem] text-slate-700">{{ c.state }}</span>
+      </div>
+      {% for group in c.lod_groups | default([]) %}
+      <div class="mt-1.5 flex flex-wrap items-center gap-2 border-t border-dashed border-slate-200 pt-1.5">
+        {% if group.wp_href %}<a href="{{ group.wp_href }}" class="shrink-0 rounded-full border border-slate-300 bg-slate-100 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600 no-underline hover:underline">{{ group.wp_name }}</a>
+        {% else %}<span class="shrink-0 rounded-full border border-slate-300 bg-slate-100 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600">{{ group.wp_name }}</span>{% endif %}
+        <span class="text-[0.82rem] text-slate-600">op detailniveau van</span>
+        {% for lod in group.lod_names %}
+        <span class="shrink-0 rounded-full border border-slate-300 bg-slate-50 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500">{{ lod }}</span>
+        {% endfor %}
+      </div>
+      {% endfor %}
     </li>
     {% endfor %}
   </ul>

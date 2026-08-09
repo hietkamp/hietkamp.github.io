@@ -15,7 +15,7 @@
     <ess:description xml:lang="nl"><![CDATA[
 <p>Werkt binnen de enterprise-architectuurkaders en maakt de solution-specifieke architectuurkeuzes: verfijnt drivers naar solution-kwaliteitsattributen, selecteert standaardsoftware-componenten, bewijst risicovolle integratiekeuzes en maakt de solution-roadmap.</p>
 <p>Deze practice levert de zes activiteiten die de Project levenscyclus over haar zes fasen verdeelt.</p>
-<p>De volgorde van activiteiten in deze practice komt overeen met hoe de Project levenscyclus ze over haar zes fasen verdeelt: Maak High-Level Design en Roadmap opstellen in Fase 1, Verzamel architectuurbepalende eisen in Fase 2, Maak Low-Level Design in Fase 3, Implementatiegovernance voeren in Fase 4, en Conformance bewaken in Fase 5/6.</p>
+<p>De volgorde van activiteiten in deze practice komt overeen met hoe de Project levenscyclus ze over haar zes fasen verdeelt: Maak High-Level Design en Roadmap opstellen in Fase 1, Identificeer architectuurbepalende eisen in Fase 2, Maak Low-Level Design in Fase 3, Implementatiegovernance voeren in Fase 4, en Conformance bewaken in Fase 5/6.</p>
 ]]></ess:description>
 
     <ess:objective xml:lang="nl">Maakt de minimale set architectuurkeuzes die nodig zijn om een standaardsoftware-solution te implementeren binnen de enterprise-kaders.</ess:objective>
@@ -32,7 +32,7 @@
     <ess:referredElements rdf:resource="practice/enterprise-architecture"/>
     <ess:referredElements rdf:resource="practice/architectural-governance"/>
     <ess:ownedElements rdf:resource="activity/solution-envision"/>
-    <ess:ownedElements rdf:resource="activity/solution-gather-requirements"/>
+    <ess:ownedElements rdf:resource="activity/solution-identify-requirements"/>
     <ess:ownedElements rdf:resource="activity/solution-design"/>
     <ess:ownedElements rdf:resource="activity/solution-lead-implementation"/>
     <ess:ownedElements rdf:resource="activity/solution-develop-roadmap"/>
@@ -41,7 +41,6 @@
     <ess:ownedElements rdf:resource="workproduct/architecture-decisions"/>
     <ess:ownedElements rdf:resource="workproduct/review-records"/>
     <ess:ownedElements rdf:resource="workproduct/solution-roadmap"/>
-    <ess:ownedElements rdf:resource="workproduct/solution-architectural-drivers"/>
     <ess:associations rdf:resource="pattern-association/solution-architecture/performed-by"/>
   </ess:Practice>
 
@@ -52,7 +51,7 @@
 
 
   <!-- ================= Activity associations — volgorde afgestemd op project-lifecycle.rdf =================
-       Volgorde: Solution-architectuurvisie opstellen → Roadmap opstellen → Verzamel architectuurbepalende eisen →
+       Volgorde: Solution-architectuurvisie opstellen → Roadmap opstellen → Identificeer architectuurbepalende eisen →
        Maak Low-Level Design → Implementatiegovernance voeren → Conformance bewaken.
        Dit komt overeen met hoe de Project Levenscyclus deze activiteiten over de fasen verdeelt:
        Fase 1 (Architectuurvisie + Roadmap) → Fase 2 (Requirements) → Fase 3 (Ontwerp) → Fase 4 (Implementatiegovernance)
@@ -65,18 +64,18 @@
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:ActivityAssociation rdf:about="activity-association/solution-develop-roadmap/end-before-start/solution-gather-requirements">
-    <ess:name>solution-develop-roadmap end-before-start solution-gather-requirements</ess:name>
+  <ess:ActivityAssociation rdf:about="activity-association/solution-develop-roadmap/end-before-start/solution-identify-requirements">
+    <ess:name>solution-develop-roadmap end-before-start solution-identify-requirements</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/solution-develop-roadmap"/>
-    <ess:end2 rdf:resource="activity/solution-gather-requirements"/>
+    <ess:end2 rdf:resource="activity/solution-identify-requirements"/>
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:ActivityAssociation rdf:about="activity-association/solution-gather-requirements/end-before-start/solution-design">
-    <ess:name>solution-gather-requirements end-before-start solution-design</ess:name>
+  <ess:ActivityAssociation rdf:about="activity-association/solution-identify-requirements/end-before-start/solution-design">
+    <ess:name>solution-identify-requirements end-before-start solution-design</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:end1 rdf:resource="activity/solution-gather-requirements"/>
+    <ess:end1 rdf:resource="activity/solution-identify-requirements"/>
     <ess:end2 rdf:resource="activity/solution-design"/>
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>

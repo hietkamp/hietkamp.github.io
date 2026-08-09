@@ -36,8 +36,8 @@
     <ess:action rdf:resource="action/solution-envision/create/architecture-model"/>
     <ess:action rdf:resource="action/solution-envision/create/architecture-decisions"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/solution-envision/entry/requirements"/>
-    <ess:criterion rdf:resource="criterion/solution-envision/completion/architecture"/>
+    <ess:criterion rdf:resource="criterion/solution-envision/entry/opportunity-identified"/>
+    <ess:criterion rdf:resource="criterion/solution-envision/completion/opportunity-solutionneeded"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
   </ess:Activity>
 
@@ -99,13 +99,13 @@
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:EntryCriterion rdf:about="criterion/solution-envision/entry/requirements">
-    <ess:name>Entry: Requirements</ess:name>
+  <ess:EntryCriterion rdf:about="criterion/solution-envision/entry/opportunity-identified">
+    <ess:name>Entry: Opportunity</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Identified"/>
   </ess:EntryCriterion>
 
-  <ess:CompletionCriterion rdf:about="criterion/solution-envision/completion/architecture">
+  <ess:CompletionCriterion rdf:about="criterion/solution-envision/completion/opportunity-solutionneeded">
     <ess:name>Completion: Opportunity</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:levelOfDetail rdf:resource="lod/architecture-model/container"/>

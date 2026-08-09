@@ -48,7 +48,7 @@
 
   <ess:LevelOfDetail rdf:about="lod/solution-roadmap/far">
     <ess:name xml:lang="nl">Verre horizon</ess:name>
-    <ess:description xml:lang="nl"><![CDATA[<p>Plateaus die verder in de tijd liggen, blijven bewust grof: de volgorde en de belangrijkste gaps ten opzichte van de doelarchitectuur zijn bekend, maar de precieze invulling wordt pas scherpgesteld wanneer die plateau dichterbij komt — bijvoorbeeld in een volgende iteratie van Roadmap opstellen, of tijdens Verzamel architectuurbepalende eisen. Te vroeg scherpstellen op een verre plateau levert overspecificatie op die bij het naderen van die stap toch weer wordt herzien.</p>]]></ess:description>
+    <ess:description xml:lang="nl"><![CDATA[<p>Plateaus die verder in de tijd liggen, blijven bewust grof: de volgorde en de belangrijkste gaps ten opzichte van de doelarchitectuur zijn bekend, maar de precieze invulling wordt pas scherpgesteld wanneer die plateau dichterbij komt — bijvoorbeeld in een volgende iteratie van Roadmap opstellen, of tijdens Identificeer architectuurbepalende eisen. Te vroeg scherpstellen op een verre plateau levert overspecificatie op die bij het naderen van die stap toch weer wordt herzien.</p>]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
   </ess:LevelOfDetail>
 

@@ -29,7 +29,12 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/architecture-owner/participates-in">
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/solution-envision"/>
+    <ess:elements rdf:resource="activity/solution-identify-requirements"/>
+    <ess:elements rdf:resource="activity/solution-design"/>
     <ess:elements rdf:resource="activity/solution-lead-implementation"/>
+    <ess:elements rdf:resource="activity/solution-develop-roadmap"/>
+    <ess:elements rdf:resource="activity/solution-monitor-performance"/>
   </ess:PatternAssociation>
 
 </rdf:RDF>
