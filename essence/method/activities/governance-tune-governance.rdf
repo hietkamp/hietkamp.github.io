@@ -10,7 +10,6 @@
 
   <ess:Activity rdf:about="activity/governance-tune-governance">
     <ess:name xml:lang="nl">Governance bijstellen</ess:name>
-    <ess:name xml:lang="en">Tune the Governance</ess:name>
     <ess:briefDescription xml:lang="nl">Herziet periodiek principes, working agreement én de werkwijze zelf op basis van bewijs en reviewpatronen, en verwijdert net zo actief guardrails of werkwijze-onderdelen die hun waarde hebben verloren.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Governance die nooit verandert, veroudert vanzelf. Deze activiteit is het geweten van de sturing: ze kijkt kritisch terug of de guardrails nog kloppen, en durft ze net zo hard weg te halen als toe te voegen.</p>
@@ -33,7 +32,6 @@
 
   <ess:Approach rdf:about="approach/governance-tune-governance/default">
     <ess:name xml:lang="nl">Governance bijstellen</ess:name>
-    <ess:name xml:lang="en">Tune the Governance</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <ul>
@@ -48,28 +46,28 @@
   </ess:Approach>
 
   <ess:Action rdf:about="action/governance-tune-governance/update/architecture-principles">
-    <ess:name>Update Architecture Principles</ess:name>
+    <ess:name xml:lang="nl">Werk architectuurprincipes bij</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
     <ess:workProduct rdf:resource="workproduct/architecture-principles"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-tune-governance/update/architecture-working-agreement">
-    <ess:name>Update Architecture Working Agreement</ess:name>
+    <ess:name xml:lang="nl">Werk architectuur werkafspraken bij</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
     <ess:workProduct rdf:resource="workproduct/architecture-working-agreement"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-tune-governance/read/conformance-evidence">
-    <ess:name>Read Conformance Evidence</ess:name>
+    <ess:name xml:lang="nl">Lees conformiteitsbewijs</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/conformance-evidence"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-tune-governance/read/review-records">
-    <ess:name>Read Review Records</ess:name>
+    <ess:name xml:lang="nl">Lees reviewresultaten</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/review-records"/>

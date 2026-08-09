@@ -10,7 +10,6 @@
 
   <ess:Activity rdf:about="activity/enterprise-design">
     <ess:name xml:lang="nl">Basis- en doelarchitectuur bepalen</ess:name>
-    <ess:name xml:lang="en">Design</ess:name>
     <ess:briefDescription xml:lang="nl">Brengt de bestaande architectuur in kaart, bepaalt de gewenste doelarchitectuur en legt onomkeerbare keuzes vast via een gap-analyse.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Je kunt geen route uitstippelen zonder te weten waar je vandaan komt én waar je heen wilt. Deze activiteit legt beide vast, in díe volgorde: eerst de bestaande situatie, dan de gewenste.</p>
@@ -23,8 +22,6 @@
     <ess:action rdf:resource="action/enterprise-design/create/architecture-decisions"/>
     <ess:action rdf:resource="action/enterprise-design/create/architecture-model"/>
     <ess:action rdf:resource="action/enterprise-design/read/architecture-vision"/>
-    <ess:action rdf:resource="action/enterprise-design/update-alpha/architecture"/>
-    <ess:action rdf:resource="action/enterprise-design/update-alpha/architecture-decisions"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/enterprise-design/completion/architecture"/>
     <ess:criterion rdf:resource="criterion/enterprise-design/completion/architecture-decisions"/>
@@ -33,7 +30,6 @@
 
   <ess:Approach rdf:about="approach/enterprise-design/default">
     <ess:name xml:lang="nl">Basis- en doelarchitectuur bepalen</ess:name>
-    <ess:name xml:lang="en">Design</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <ul>
@@ -47,38 +43,24 @@
   </ess:Approach>
 
   <ess:Action rdf:about="action/enterprise-design/create/architecture-decisions">
-    <ess:name>Create Architecture Decisions</ess:name>
+    <ess:name xml:lang="nl">Maak architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-design/create/architecture-model">
-    <ess:name>Create Architecture Model</ess:name>
+    <ess:name xml:lang="nl">Maak architectuurmodel</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-design/read/architecture-vision">
-    <ess:name>Read Architecture Vision</ess:name>
+    <ess:name xml:lang="nl">Lees architectuurvisie</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/architecture-vision"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/enterprise-design/update-alpha/architecture">
-    <ess:name>Update Architecture</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:alpha rdf:resource="alpha/architecture"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/enterprise-design/update-alpha/architecture-decisions">
-    <ess:name>Update Architecture Decisions</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:alpha rdf:resource="alpha/architecture-decisions"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/enterprise-design/part-of/shape-the-system">

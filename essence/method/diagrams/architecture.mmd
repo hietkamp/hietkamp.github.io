@@ -1,0 +1,17 @@
+%% State diagram: Architectuur (alpha/architecture)
+%% Pijlen zonder label: transitie volgt uit de state-volgorde, maar is niet expliciet
+%% aan een activiteit gekoppeld via een completion-criterion in de rdf.
+stateDiagram-v2
+    Envisioned: Gericht
+    Outlined: Omlijnd
+    Demonstrated: Bewezen
+    Usable: Bruikbaar
+    Established: Gevestigd
+    Evolving: Evoluerend
+
+    [*] --> Envisioned
+    Envisioned --> Outlined : Basis- en doelarchitectuur bepalen
+    Outlined --> Demonstrated
+    Demonstrated --> Usable : Migratie plannen
+    Usable --> Established
+    Established --> Evolving : Architectuurverandering besturen

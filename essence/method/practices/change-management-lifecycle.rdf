@@ -8,7 +8,6 @@
 
   <ess:Practice rdf:about="practice/change-management-lifecycle">
     <ess:name xml:lang="nl">Verandermanagement levenscyclus</ess:name>
-    <ess:name xml:lang="en">Change Management Lifecycle</ess:name>
     <ess:briefDescription xml:lang="nl">Het COEF-ritme waarmee de onderneming een verandering onder architectuur doorvoert: Visie &amp; strategie, Ontwerpen, Realiseren en Verankeren, met Adopteren &amp; valideren als continu, centraal element.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Een architectuurkeuze die niemand overneemt, verandert niets — hoe degelijk ze ook is uitgewerkt. Verandermanagement-theorie herkent daarom van oudsher hetzelfde patroon, in welke vorm het ook wordt opgeschreven: eerst wordt duidelijk gemaakt waaróm iets moet veranderen en waar het naartoe gaat, dan wordt die richting vertaald naar een concreet ontwerp, vervolgens wordt de overgang zelf gemaakt — bij voorkeur in behapbare stappen in plaats van in één sprong — en tot slot wordt de verandering verankerd, want zonder actieve bekrachtiging valt een organisatie terug in het oude patroon. Steeds terugkerend daarin is één inzicht: mensen nemen een verandering niet over omdat ze eenmalig is uitgelegd, maar omdat adoptie voortdurend wordt gevolgd en bijgestuurd, van begin tot eind.</p>
@@ -38,7 +37,6 @@
   <!-- Phase 1: Visie & Strategie -->
   <ess:Pattern rdf:about="pattern/coef/visie-strategie">
     <ess:name xml:lang="nl">Visie &amp; strategie</ess:name>
-    <ess:name xml:lang="en">Vision &amp; Strategy</ess:name>
     <ess:briefDescription xml:lang="nl">Maak de noodzaak voor verandering en de gewenste richting expliciet, vóórdat er iets wordt ontworpen.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Geen enkele verandermethode slaat deze stap over, ook al heet hij overal anders: een verandering die niemand als noodzakelijk herkent, krijgt geen tractie, hoe goed het plan er ook uitziet. Voordat er iets wordt ontworpen, moet daarom eerst duidelijk zijn wat de aanleiding is en waar de verandering naartoe gaat — niet als formaliteit, maar omdat elke volgende fase op die richting terugvalt zodra het lastig wordt.</p>
@@ -50,7 +48,6 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/coef/visie-strategie/includes">
     <ess:name xml:lang="nl">bevat</ess:name>
-    <ess:name xml:lang="en">includes</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/enterprise-understand"/>
     <ess:elements rdf:resource="activity/enterprise-envision"/>
@@ -59,7 +56,6 @@
   <!-- Phase 2: Ontwerpen -->
   <ess:Pattern rdf:about="pattern/coef/ontwerpen">
     <ess:name xml:lang="nl">Ontwerpen</ess:name>
-    <ess:name xml:lang="en">Design</ess:name>
     <ess:briefDescription xml:lang="nl">Vertaal de visie naar een concreet beeld van de gewenste architectuur en naar de bouwstenen waarmee teams zelfstandig kunnen werken.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Een visie beschrijft een richting, geen bestemming waarop gebouwd kan worden. Deze fase is waar verandermanagement omslaat van "waarom" naar "wat": de gewenste situatie krijgt vorm, en er ontstaat iets tastbaars waarmee mensen kunnen werken in plaats van iets waar ze het alleen over eens zijn. Dat is nadrukkelijk nog geen uitvoering — het is het ontwerp dat de uitvoering mogelijk maakt.</p>
@@ -71,7 +67,6 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/coef/ontwerpen/includes">
     <ess:name xml:lang="nl">bevat</ess:name>
-    <ess:name xml:lang="en">includes</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/enterprise-design"/>
     <ess:elements rdf:resource="activity/enterprise-build-paved-road"/>
@@ -80,7 +75,6 @@
   <!-- Phase 3: Realiseren -->
   <ess:Pattern rdf:about="pattern/coef/realiseren">
     <ess:name xml:lang="nl">Realiseren</ess:name>
-    <ess:name xml:lang="en">Realise</ess:name>
     <ess:briefDescription xml:lang="nl">Zet het ontwerp om in een haalbare, gefaseerde overgang, en houd de architectuur vervolgens continu werkend in productie.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Verandering die in één keer wordt doorgevoerd, is verandering die meestal vastloopt: te veel tegelijk, te weinig ruimte om bij te sturen, te grote klap voor wie moet meebewegen. Beproefde verandermethoden kiezen daarom vrijwel altijd voor gefaseerde beweging — kleine, zichtbare stappen die vertrouwen opbouwen — boven een big-bang-overgang. Deze fase geeft die fasering vorm, en blijft actief zolang de verandering daadwerkelijk wordt gerealiseerd — niet alleen tot aan de eerste oplevering.</p>
@@ -93,7 +87,6 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/coef/realiseren/includes">
     <ess:name xml:lang="nl">bevat</ess:name>
-    <ess:name xml:lang="en">includes</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/enterprise-plan"/>
     <ess:elements rdf:resource="activity/enterprise-learn-and-improve"/>
@@ -102,7 +95,6 @@
   <!-- Phase 4: Verankeren -->
   <ess:Pattern rdf:about="pattern/coef/verankeren">
     <ess:name xml:lang="nl">Verankeren</ess:name>
-    <ess:name xml:lang="en">Anchor</ess:name>
     <ess:briefDescription xml:lang="nl">Bekrachtig de verandering actief, want zonder dat valt een organisatie terug in het oude patroon.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Elke gevestigde verandertheorie waarschuwt voor hetzelfde risico: een verandering die niet actief wordt bekrachtigd, vervaagt vanzelf, niet omdat mensen tegenwerken maar omdat het oude patroon nooit is weggenomen — alleen tijdelijk overstemd. Verankeren is daarom geen afrondende formaliteit ná de realisatie.</p>
@@ -114,7 +106,6 @@
   <!-- Continuous, central: Adopteren & Valideren -->
   <ess:Pattern rdf:about="pattern/coef/adopteren-valideren">
     <ess:name xml:lang="nl">Adopteren &amp; valideren</ess:name>
-    <ess:name xml:lang="en">Adopt &amp; Validate</ess:name>
     <ess:briefDescription xml:lang="nl">Toets doorlopend, dwars door alle vier fasen heen, of de verandering daadwerkelijk wordt overgenomen — niet als eenmalige controle, maar als constant gegeven.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>In het COEF-model staat dit element bewust in het midden, niet als vijfde fase ná Verankeren. Dat is geen vormgevingskeuze: adoptie is geen status die je op één moment bereikt en daarna loslaat. Nieuwe medewerkers komen binnen zonder de aanleiding te kennen, prioriteiten verschuiven, en wat vorig kwartaal was geadopteerd, kan dit kwartaal weer wegzakken. Verandertheorie die adoptie als lineaire eindstap behandelt, mist daarom voortdurend een deel van de realiteit; adoptie moet steeds opnieuw worden bevestigd, niet één keer worden afgevinkt.</p>

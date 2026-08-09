@@ -13,13 +13,12 @@
 <header class="hero border-b-2 border-[var(--prac)] py-14 pb-8 [&_h1]:m-0 [&_h1]:mb-[0.45em] [&_h1]:font-serif [&_h1]:text-[clamp(2.3rem,5.6vw,4.4rem)] [&_h1]:font-black [&_h1]:leading-none [&_h1_em]:font-medium [&_h1_em]:italic [&_h1_em]:text-[var(--prac)] max-[600px]:py-8 max-[600px]:pb-4 max-[600px]:[&_h1]:text-[clamp(1.9rem,8vw,3rem)]">
   <div class="act-meta mb-4 flex flex-wrap items-center gap-2">
     {% if act_num %}<span class="act-num rounded-full border-[1.5px] border-blue-700 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.1em] text-blue-700">{{ act_num }}</span>{% endif %}
-    {% if chips is defined and chips.space is defined %}<span class="act-chip rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] chip-space border-blue-700/25 bg-blue-700/10 text-blue-700">{{ chips.space }}</span>{% endif %}
+    {% if chips is defined and chips.space is defined %}<span class="act-chip rounded-full border-[1.5px] border-dashed px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] chip-space {{ chips.space_css | default('border-blue-700/25 bg-blue-700/10 text-blue-700') }}">{{ chips.space }}</span>{% endif %}
     {% for chip in extra_chips | default([]) %}
     <span class="act-chip rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] {{ chip.css }}">{{ chip.label }}</span>
     {% endfor %}
   </div>
   <h1>{{ act_name | default(title) | default('') }}</h1>
-  {% if title_en %}<p class="hero-title-en m-0 -mt-[0.25em] mb-[0.5em] font-serif italic text-[clamp(1.5rem,3.8vw,3rem)] font-normal leading-tight text-slate-500">{{ title_en }}</p>{% endif %}
   <p class="lede m-0 text-[clamp(1rem,1.5vw,1.16rem)] leading-relaxed text-slate-500">{{ lede | default(desc) | default('') }}</p>
   {% if alpha_bar %}
   <div class="alpha-bar mt-5 flex flex-wrap items-center gap-2 rounded-[10px] border border-[var(--prac)]/20 bg-slate-50 px-3.5 py-2.5 font-mono text-[11px]">

@@ -9,7 +9,6 @@
 
   <ess:WorkProduct rdf:about="workproduct/architecture-vision">
     <ess:name xml:lang="nl">Architectuurvisie</ess:name>
-    <ess:name xml:lang="en">Architecture Vision</ess:name>
     <ess:briefDescription xml:lang="nl">Creëer gedeelde richting zodat vendor-, platform- en integratiekeuzes niet willekeurig worden.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>De doelrichting, scope en waarde overeengekomen op één pagina. Het startpunt voor elke architectuurinspanning — voordat er één lijn architectuur wordt getekend.</p>
 <p><strong>Rol:</strong> Richtingsdocument dat intentie, scope en keuzecriteria vastlegt vóór structurele uitwerking.</p>

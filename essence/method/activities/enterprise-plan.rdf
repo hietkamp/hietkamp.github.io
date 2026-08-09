@@ -10,7 +10,6 @@
 
   <ess:Activity rdf:about="activity/enterprise-plan">
     <ess:name xml:lang="nl">Migratie plannen</ess:name>
-    <ess:name xml:lang="en">Plan</ess:name>
     <ess:briefDescription xml:lang="nl">Ordent de implementatiestappen van basis- naar doelarchitectuur in horizons, en detailleert alleen de eerstvolgende.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Een big-bang transformatie van basis- naar doelarchitectuur is zelden realistisch en bijna altijd riskant. Deze activiteit knipt de gap-analyse uit Basis- en doelarchitectuur bepalen op in behapbare stappen, zodat de organisatie niet in één keer hoeft te veranderen.</p>
@@ -23,7 +22,6 @@
     <ess:action rdf:resource="action/enterprise-plan/read/architecture-model"/>
     <ess:action rdf:resource="action/enterprise-plan/create/architecture-roadmap"/>
     <ess:action rdf:resource="action/enterprise-plan/read/paved-road"/>
-    <ess:action rdf:resource="action/enterprise-plan/update-alpha/architecture"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/enterprise-plan/completion/architecture"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
@@ -31,7 +29,6 @@
 
   <ess:Approach rdf:about="approach/enterprise-plan/default">
     <ess:name xml:lang="nl">Migratie plannen</ess:name>
-    <ess:name xml:lang="en">Plan</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <ul>
@@ -46,31 +43,24 @@
   </ess:Approach>
 
   <ess:Action rdf:about="action/enterprise-plan/read/architecture-model">
-    <ess:name>Read Architecture Model</ess:name>
+    <ess:name xml:lang="nl">Lees architectuurmodel</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-plan/create/architecture-roadmap">
-    <ess:name>Create Architecture Roadmap</ess:name>
+    <ess:name xml:lang="nl">Maak architectuurroadmap</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-roadmap"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-plan/read/paved-road">
-    <ess:name>Read Paved Road</ess:name>
+    <ess:name xml:lang="nl">Lees paved road</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/enterprise-plan/update-alpha/architecture">
-    <ess:name>Update Architecture</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:alpha rdf:resource="alpha/architecture"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/enterprise-plan/part-of/shape-the-system">

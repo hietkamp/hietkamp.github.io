@@ -8,14 +8,10 @@
 
   <ess:Pattern rdf:about="pattern/document-a-decisions">
     <ess:name xml:lang="nl">ADR-gedreven besluitvorming</ess:name>
-    <ess:name xml:lang="en">ADR-Driven Decision Making</ess:name>
     <ess:briefDescription xml:lang="nl">Leg elke significante architectuurkeuze vast als een klein, traceerbaar beslissingsrecord met context, opties, keuze, rationale en consequenties.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[<p>Leg elke significante architectuurkeuze vast als een klein, traceerbaar beslissingsrecord met context, opties, keuze, rationale en consequenties.</p>
-<p><strong>Doel:</strong> Maak architectuurkeuzes navolgbaar zonder een zwaar documentatieproces te introduceren.</p>
-<p><strong>Context:</strong> COTS-keuzes, integratiekeuzes, platformkeuzes en afwijkingen van de paved road.</p>
-<p><strong>Probleem:</strong> Beslissingen worden vaak genomen in overleggen of vendorselecties en verliezen daarna hun rationale.</p>
-<p><strong>Oplossing:</strong> Behandel de ADR als de minimale eenheid van architectuurbesluitvorming en koppel hem aan drivers, ASR's, reviewrecords en architectuurweergaven.</p>
-<p><strong>Resultaat:</strong> Beslissingen blijven toetsbaar en kunnen later gevalideerd, vervangen of herzien worden.</p>]]></ess:description>
+    <ess:description xml:lang="nl"><![CDATA[<p>Belangrijke architectuurbeslissingen — over COTS-keuzes, integraties, platforms of afwijkingen van de paved road — worden vaak genomen in overleggen of vendorselecties. Zodra het overleg voorbij is, verdwijnt meestal ook de rationale: waarom is voor deze optie gekozen, en welke alternatieven zijn afgewogen?</p>
+<p>ADR-gedreven besluitvorming behandelt de Architecture Decision Record (ADR) als de minimale eenheid van architectuurbesluitvorming: een klein, traceerbaar record met context, overwogen opties, de gemaakte keuze, de rationale erachter en de consequenties. Elke significante keuze wordt op deze manier vastgelegd en gekoppeld aan de drivers, architectuurbepalende eisen, reviewrecords en architectuurweergaven waar hij bij hoort.</p>
+<p>Zo blijven beslissingen toetsbaar, ook lang nadat de discussie is verstomd, en kunnen ze later worden gevalideerd, vervangen of herzien zonder dat de oorspronkelijke overwegingen verloren gaan.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/document-a-decisions/uses"/>
     <ess:associations rdf:resource="pattern-association/document-a-decisions/related-workproducts"/>
@@ -32,14 +28,12 @@
   </ess:Tag>
 
   <ess:PatternAssociation rdf:about="pattern-association/document-a-decisions/uses">
-    <ess:name xml:lang="en">uses</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/enterprise-design"/>
     <ess:elements rdf:resource="activity/solution-design"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/document-a-decisions/related-workproducts">
-    <ess:name xml:lang="en">related-workproducts</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="workproduct/architecture-decisions"/>
   </ess:PatternAssociation>

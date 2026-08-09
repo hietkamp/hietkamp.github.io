@@ -13,8 +13,9 @@
      desc             – korte omschrijving
      chips.space      – Activity Space chip  (bijv. "AS 1–2 · Understand Stakeholder Needs")
      chips.alpha      – Alpha chip           (bijv. "Drivers")
-     inputs           – lijst van verwerkte work products (labels)
-     outputs          – lijst van geproduceerde work products (labels)
+     actions          – ess:Action's gegroepeerd per CRUD-kind, zelfde kind_nl/kind_css
+                         als de "Acties"-lijst op de activiteitpagina:
+                         [{"kind", "kind_nl", "kind_css", "wps": [{"name"}]}]
 
    Level-specific (enterprise-begrijpen, solution-richten, ...):
      num              – volgnummer  ("01")
@@ -23,7 +24,6 @@
    Top-level practice-activiteiten (envision-the-architecture, ...):
      act_num          – "Activiteit 02 / 05"
      act_name / title – Nederlandse naam
-     title_en         – Engelse naam  ("Envision the Architecture")
      lede             – langere intro-tekst (valt terug op desc)
      alpha_bar        – alpha-progressiebalk HTML  ("Drivers → <b>Quantified</b>")
 #}
@@ -74,11 +74,6 @@
     {# Nederlandse naam #}
     <div class="ar-title">{{ _title }}</div>
 
-    {# Engelse naam als ondertitel (alleen top-level practice-activiteiten) #}
-    {% if act.title_en and act.title_en != _title %}
-    <div class="ar-en mb-[5px] font-mono text-[10px] text-slate-400">{{ act.title_en }}</div>
-    {% endif %}
-
     {# Korte omschrijving (max. ~200 tekens voor de card) #}
     <div class="ar-desc">{{ _desc | truncate(200) }}</div>
 
@@ -110,36 +105,19 @@
     </div>
     {% endif %}
 
-    {# Work product flow: Verwerkt → Produceert #}
-    {% if act.inputs or act.outputs %}
+    {# Work products per ess:Action CRUD-kind (Aanmaken/Lezen/Wijzigen/Verwijderen) #}
+    {% if act.actions %}
     <div class="ar-flow mt-2 flex flex-col gap-[5px] border-t border-dashed border-slate-300 pt-2">
-      {% if act.inputs %}
+      {% for group in act.actions %}
       <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
-        <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold
-                     uppercase tracking-[0.14em] text-slate-500">Verwerkt</span>
-        {% for i in act.inputs %}
+        <span class="ar-flow-lbl w-[76px] shrink-0 rounded-full border px-2 py-[2px] text-center font-mono text-[9px] font-semibold
+                     uppercase tracking-[0.1em] {{ group.kind_css }}">{{ group.kind_nl }}</span>
+        {% for wp in group.wps %}
         <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
-                     uppercase tracking-[0.1em] wp-in border border-slate-300 bg-slate-100 text-slate-500">{{ i }}</span>
+                     uppercase tracking-[0.1em] border border-slate-300 bg-slate-100 text-slate-500">{{ wp.name }}</span>
         {% endfor %}
       </div>
-      {% endif %}
-      {% if act.outputs %}
-      <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
-        <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold
-                     uppercase tracking-[0.14em] text-slate-500">Produceert</span>
-        {% for o in act.outputs %}
-        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
-                     uppercase tracking-[0.1em] wp-out border border-yellow-600/30 bg-yellow-600/10 text-yellow-700">{{ o.name }}</span>
-        {% if o.lods %}
-        <span class="self-center font-mono text-[9px] uppercase tracking-[0.1em] text-slate-400">uitwerking op detailniveau:</span>
-        {% for lod in o.lods %}
-        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
-                     uppercase tracking-[0.1em] border border-slate-300 bg-slate-50 text-slate-500">{{ lod }}</span>
-        {% endfor %}
-        {% endif %}
-        {% endfor %}
-      </div>
-      {% endif %}
+      {% endfor %}
     </div>
     {% endif %}
 

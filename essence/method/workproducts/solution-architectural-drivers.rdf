@@ -9,7 +9,6 @@
 
   <ess:WorkProduct rdf:about="workproduct/solution-architectural-drivers">
     <ess:name xml:lang="nl">Architectuurbepalende eisen</ess:name>
-    <ess:name xml:lang="en">Architecturally Significant Requirements</ess:name>
     <ess:briefDescription xml:lang="nl">Filter uit de volledige requirements-set de eisen die de architectuur van de solution daadwerkelijk richting geven.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Een project kent vaak tientallen tot honderden requirements, maar niet elke eis is architectuurbepalend. Een architectuurbepalende eis — ook wel Architecturally Significant Requirement (ASR) genoemd — is een eis die een aantoonbare invloed heeft op de structuur, samenhang of kwaliteit van de solution: eisen rond beveiliging, beschikbaarheid, performance, integraties of wettelijke verplichtingen zijn hier veelal voorbeelden van. Gewone functionele wensen en implementatiedetails horen hier niet bij.</p>
 <p>Het onderscheid volgt een eenvoudige toets: kan een eis op meerdere manieren worden gerealiseerd zonder verlies van kwaliteit, of is er in de praktijk maar één houdbare manier om eraan te voldoen? Alleen in het laatste geval is sprake van een architectuurbepalende eis. "De applicatie moet snel zijn" is geen architectuurbepalende eis; "de applicatie verwerkt 3.000 gelijktijdige requests binnen 500 ms (95e percentiel)" is dat wel, omdat deze eis de keuze voor bepaalde architectuurpatronen, technologie of infrastructuur direct afdwingt.</p>
@@ -36,7 +35,6 @@
 
   <ess:LevelOfDetail rdf:about="lod/solution-architectural-drivers/utility-tree">
     <ess:name xml:lang="nl">Utility tree (overzicht)</ess:name>
-    <ess:name xml:lang="en">Utility tree (overview)</ess:name>
     <ess:description xml:lang="nl"><![CDATA[<p>Alle kandidaat-eisen gecategoriseerd naar kwaliteitsattribuut en geprioriteerd op bedrijfswaarde en risico, zonder dat elk scenario al volledig is uitgewerkt. Voldoende om te bepalen welke eisen daadwerkelijk architectuurbepalend zijn en waar de aandacht in Maak Low-Level Design naartoe moet.</p>]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
     <ess:successor rdf:resource="lod/solution-architectural-drivers/scenario"/>
@@ -44,7 +42,6 @@
 
   <ess:LevelOfDetail rdf:about="lod/solution-architectural-drivers/scenario">
     <ess:name xml:lang="nl">Scenario (volledig)</ess:name>
-    <ess:name xml:lang="en">Scenario (full)</ess:name>
     <ess:description xml:lang="nl"><![CDATA[<p>Elke architectuurbepalende eis individueel uitgewerkt als volledig scenario: bron, stimulus, respons en meetwaarde. Dit detailniveau is nodig zodra een eis daadwerkelijk als basis dient voor een architectuurbeslissing of voor conformance-toetsing tijdens en na realisatie.</p>]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
   </ess:LevelOfDetail>

@@ -10,7 +10,6 @@
 
   <ess:Activity rdf:about="activity/governance-establish-governance">
     <ess:name xml:lang="nl">Governance inrichten</ess:name>
-    <ess:name xml:lang="en">Establish Governance</ess:name>
     <ess:briefDescription xml:lang="nl">Legt eenmalig het fundament van de sturing: beslissingsbevoegdheid onder mandaat van de Architectuursponsor, een beperkte set principes, een bestuurde repository, het eigenaarschap van de werkwijze, de opdracht van de Opdrachtgever aan Enterprise architectuur voor architectuurvisie en paved road, een vaste vergadercadans voor het forum, en de objectives waaraan de governance zelf later wordt getoetst — het minimum dat alle volgende governance mogelijk maakt.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Voordat je kunt sturen, moet er iets zijn om op te sturen. Deze activiteit legt dat fundament: wie mag welke architectuurbeslissing nemen, welke paar regels gelden voor iedereen, en waar je die regels en beslissingen straks terugvindt. Zonder dit fundament is elke volgende governance-activiteit giswerk.</p>
@@ -35,7 +34,6 @@
 
   <ess:Approach rdf:about="approach/governance-establish-governance/default">
     <ess:name xml:lang="nl">Governance inrichten</ess:name>
-    <ess:name xml:lang="en">Establish Governance</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Ga concreet als volgt te werk:</p>
@@ -58,21 +56,21 @@
   </ess:Approach>
 
   <ess:Action rdf:about="action/governance-establish-governance/create/architecture-principles">
-    <ess:name>Create Architecture Principles</ess:name>
+    <ess:name xml:lang="nl">Maak architectuurprincipes</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-principles"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-establish-governance/create/architecture-repository">
-    <ess:name>Create Architecture Repository</ess:name>
+    <ess:name xml:lang="nl">Maak architectuurrepository</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-repository"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-establish-governance/create/architecture-working-agreement">
-    <ess:name>Create Architecture Working Agreement</ess:name>
+    <ess:name xml:lang="nl">Maak architectuur werkafspraken</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-working-agreement"/>

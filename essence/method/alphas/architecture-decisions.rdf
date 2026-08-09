@@ -9,7 +9,6 @@
 
   <ess:Alpha rdf:about="alpha/architecture-decisions">
     <ess:name xml:lang="nl">Architectuurbeslissingen</ess:name>
-    <ess:name xml:lang="en">Architecture Decisions</ess:name>
     <ess:briefDescription xml:lang="nl">De set significante architectuurbeslissingen, elk vastleggend context, opties, rationale en consequenties voor een specifieke architectuurkeuze.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Deze alpha volgt hoe ver een architectuurbeslissing is: van een herkend beslispunt, via framing en de eigenlijke keuze, tot een besluit dat gecommuniceerd is en door bewijs is gevalideerd. Een beslissing bereikt de toestand Besloten pas nadat de bijbehorende Architectuurbepalende Eis de toestand Acceptable heeft bereikt — de vraag moet er zijn voordat het antwoord vastligt.</p>
@@ -27,7 +26,6 @@
 
   <ess:State rdf:about="state/architecture-decisions/needed">
     <ess:name xml:lang="nl">Noodzakelijk</ess:name>
-    <ess:name xml:lang="en">Needed</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -37,7 +35,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture-decisions/needed/1">
     <ess:name xml:lang="nl">Een significant, kostbaar-om-terug-te-draaien beslissingspunt…</ess:name>
-    <ess:name xml:lang="en">A significant, costly-to-reverse decision point is recognise…</ess:name>
     <ess:description xml:lang="nl">Een significant, kostbaar-om-terug-te-draaien beslissingspunt is herkend en eigenaarschap is belegd.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -45,7 +42,6 @@
 
   <ess:State rdf:about="state/architecture-decisions/framed">
     <ess:name xml:lang="nl">Geformuleerd</ess:name>
-    <ess:name xml:lang="en">Framed</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -55,7 +51,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture-decisions/framed/1">
     <ess:name xml:lang="nl">De opties, afwegingen en het laatste verantwoorde moment zijn…</ess:name>
-    <ess:name xml:lang="en">The options, trade-offs and the last responsible moment are…</ess:name>
     <ess:description xml:lang="nl">De opties, afwegingen en het laatste verantwoorde moment zijn begrepen.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -63,7 +58,6 @@
 
   <ess:State rdf:about="state/architecture-decisions/decided">
     <ess:name xml:lang="nl">Besloten</ess:name>
-    <ess:name xml:lang="en">Decided</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -73,7 +67,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture-decisions/decided/1">
     <ess:name xml:lang="nl">De keuze is gemaakt en vastgelegd met rationale en consequenties…</ess:name>
-    <ess:name xml:lang="en">The choice is made and recorded with rationale and consequen…</ess:name>
     <ess:description xml:lang="nl">De keuze is gemaakt en vastgelegd met rationale en consequenties (ADR).</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -81,7 +74,6 @@
 
   <ess:State rdf:about="state/architecture-decisions/communicated">
     <ess:name xml:lang="nl">Gecommuniceerd</ess:name>
-    <ess:name xml:lang="en">Communicated</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -91,7 +83,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture-decisions/communicated/1">
     <ess:name xml:lang="nl">De beslissing is bekend en geaccepteerd door degenen die het betreft.</ess:name>
-    <ess:name xml:lang="en">The decision is known and accepted by those it affects.</ess:name>
     <ess:description xml:lang="nl">De beslissing is bekend en geaccepteerd door degenen die het betreft.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -99,7 +90,6 @@
 
   <ess:State rdf:about="state/architecture-decisions/validated">
     <ess:name xml:lang="nl">Gevalideerd</ess:name>
-    <ess:name xml:lang="en">Validated</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -108,7 +98,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture-decisions/validated/1">
     <ess:name xml:lang="nl">De beslissing is bewezen door bewijs en uitkomst, of opnieuw…</ess:name>
-    <ess:name xml:lang="en">The decision is proven by evidence and outcome, or revisited…</ess:name>
     <ess:description xml:lang="nl">De beslissing is bewezen door bewijs en uitkomst, of opnieuw beoordeeld.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>

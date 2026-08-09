@@ -10,7 +10,6 @@
 
   <ess:Pattern rdf:about="role/governance-forum">
     <ess:name xml:lang="nl">Architectuurforum</ess:name>
-    <ess:name xml:lang="en">Architecture Forum</ess:name>
     <ess:briefDescription xml:lang="nl">Een kleine, snelle, op principes gebaseerde instantie — een lean Architecture Board of gilde. Beoordeelt uitsluitend uitzonderingen en off-road ADRs. …</ess:briefDescription>
     <ess:description xml:lang="nl">Een kleine, snelle, op principes gebaseerde instantie — een lean Architecture Board of gilde. Beoordeelt uitsluitend uitzonderingen en off-road ADRs. Borgt uitkomsten, geen papierwerk. Vergadert alleen als er iets te beoordelen is.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -19,7 +18,6 @@
   </ess:Pattern>
 
   <ess:PatternAssociation rdf:about="pattern-association/governance-forum/requires-competency">
-    <ess:name xml:lang="en">requires competency</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Leadership"/>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Management"/>
@@ -27,7 +25,6 @@
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/governance-forum/participates-in">
-    <ess:name xml:lang="en">participates in</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/governance-assure-evidence"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>

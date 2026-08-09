@@ -10,7 +10,6 @@
 
   <ess:Practice rdf:about="practice/enterprise-architecture">
     <ess:name xml:lang="nl">Enterprise architectuur</ess:name>
-    <ess:name xml:lang="en">Enterprise Architecture</ess:name>
     <ess:briefDescription xml:lang="nl">Richt, kies en bouw de enterprise-architectuurkaders: drivers, richting, paved road en transitie.</ess:briefDescription>
     <ess:description xml:lang="nl">Stelt enterprise-brede architectuurkaders vast: identificeert business goals en drivers, bepaalt de architectuurrichting, maakt en beheert de paved road en plant de transitie op enterprise-niveau. Levert de kaders waarbinnen solution-architectuur opereert.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -33,7 +32,6 @@
   </ess:Practice>
 
   <ess:PatternAssociation rdf:about="pattern-association/enterprise-architecture/performed-by">
-    <ess:name xml:lang="en">performed by</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="role/enterprise-architect"/>
   </ess:PatternAssociation>

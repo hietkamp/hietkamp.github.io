@@ -8,14 +8,10 @@
 
   <ess:Pattern rdf:about="pattern/paved-road-catalogus">
     <ess:name xml:lang="nl">Paved road als catalogus</ess:name>
-    <ess:name xml:lang="en">Paved Road as Catalogue</ess:name>
     <ess:briefDescription xml:lang="nl">Publiceer goedgekeurde producten, patronen, standaarden en referentie-instellingen als zelfbedienbare catalogus in plaats van als beleidsdocument.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[<p>Publiceer goedgekeurde producten, patronen, standaarden en referentie-instellingen als zelfbedienbare catalogus in plaats van als beleidsdocument.</p>
-<p><strong>Doel:</strong> Maak de conforme keuze de gemakkelijkste keuze voor solution-teams.</p>
-<p><strong>Context:</strong> Enterprise-architectuur die herhaalbare keuzes wil hergebruiken over meerdere solutions.</p>
-<p><strong>Probleem:</strong> Standaarden blijven ongebruikt wanneer ze alleen als beleid bestaan of te laat in reviews verschijnen.</p>
-<p><strong>Oplossing:</strong> Behandel de paved road als product: eigenaar, status, versie, gebruiksvoorbeeld, adoptiemeting en duidelijke off-road-procedure per catalogusitem.</p>
-<p><strong>Resultaat:</strong> Teams kunnen zelfstandig on-road keuzes maken en governance kan sturen op adoptie in plaats van op voorafgaande goedkeuring.</p>]]></ess:description>
+    <ess:description xml:lang="nl"><![CDATA[<p>Standaarden die alleen als beleidsdocument bestaan, of die pas in een review naar voren komen, blijven in de praktijk vaak ongebruikt: solution-teams kennen ze niet op het moment dat ze een keuze moeten maken. Voor een enterprise-architectuur die herhaalbare keuzes wil hergebruiken over meerdere solutions is dat een gemiste kans.</p>
+<p>Dit patroon behandelt de paved road daarom als product in plaats van als beleid: goedgekeurde producten, patronen, standaarden en referentie-instellingen worden gepubliceerd als zelfbedienbare catalogus. Elk item in die catalogus krijgt een eigenaar, status, versie, gebruiksvoorbeeld, adoptiemeting en een duidelijke procedure voor wie ervan wil afwijken.</p>
+<p>Zo wordt de conforme keuze de gemakkelijkste keuze voor solution-teams. Teams kunnen zelfstandig on-road keuzes maken, en governance kan sturen op adoptie in plaats van op voorafgaande goedkeuring.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/paved-road-catalogus/uses"/>
     <ess:associations rdf:resource="pattern-association/paved-road-catalogus/related-workproducts"/>
@@ -32,13 +28,11 @@
   </ess:Tag>
 
   <ess:PatternAssociation rdf:about="pattern-association/paved-road-catalogus/uses">
-    <ess:name xml:lang="en">uses</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/enterprise-build-paved-road"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/paved-road-catalogus/related-workproducts">
-    <ess:name xml:lang="en">related-workproducts</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="workproduct/paved-road"/>
     <ess:elements rdf:resource="workproduct/paved-road-adoptie"/>

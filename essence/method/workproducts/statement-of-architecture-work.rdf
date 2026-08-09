@@ -9,7 +9,6 @@
 
   <ess:WorkProduct rdf:about="workproduct/statement-of-architecture-work">
     <ess:name xml:lang="nl">Architecturopdracht</ess:name>
-    <ess:name xml:lang="en">Statement of Architecture Work</ess:name>
     <ess:briefDescription xml:lang="nl">Formele opdracht die scope, doelstelling en beslissingsbevoegdheden van het architectuurwerk vastlegt. Geproduceerd door MVG, verbruikt door beide WoW…</ess:briefDescription>
     <ess:description xml:lang="nl">Formele opdracht die scope, doelstelling en beslissingsbevoegdheden van het architectuurwerk vastlegt. Geproduceerd door MVG, verbruikt door beide WoW-sporen als startpunt.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>

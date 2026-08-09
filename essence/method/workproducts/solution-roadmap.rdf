@@ -9,7 +9,6 @@
 
   <ess:WorkProduct rdf:about="workproduct/solution-roadmap">
     <ess:name xml:lang="nl"><![CDATA[Solution Roadmap & Transition States]]></ess:name>
-    <ess:name xml:lang="en"><![CDATA[Solution Roadmap & Transition States]]></ess:name>
     <ess:briefDescription xml:lang="nl">Bepaal een haalbare volgorde van transitiestappen tussen baseline en doelarchitectuur, zodat op elk moment een werkend geheel bestaat.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>De Solution Roadmap is een geordende reeks transitiestaten — plateaus — die de overgang beschrijft van de huidige (baseline) naar de gewenste (doel-)architectuur van de solution. Elk plateau is een stabiele, operationeel verdedigbare tussentoestand: een moment waarop de solution als geheel functioneert, ook al is de doelarchitectuur nog niet volledig gerealiseerd. Tussen plateaus in mag nooit een "half werkende" toestand ontstaan die de bedrijfsvoering breekt.</p>
 <p>Dit onderscheidt de roadmap van een planning of een lijst met taken. Een taaklijst beschrijft wát er moet gebeuren; de roadmap beschrijft in welke volgorde de solution stabiel van de ene naar de andere toestand beweegt, en waarom die volgorde de juiste is. Bij een migratie betekent dit: de volgorde waarin functionaliteit, data en integraties van bron- naar doelsysteem verhuizen. Bij de introductie van een standaardsoftwaresysteem betekent dit: de volgorde waarin het pakket wordt ingevoerd, welke integraties daarbij op welk moment ontstaan of worden uitgefaseerd, en welke bestaande systemen wanneer worden afgebouwd.</p>
@@ -42,7 +41,6 @@
 
   <ess:LevelOfDetail rdf:about="lod/solution-roadmap/near">
     <ess:name xml:lang="nl">Nabije horizon</ess:name>
-    <ess:name xml:lang="en">Near horizon</ess:name>
     <ess:description xml:lang="nl"><![CDATA[<p>Plateaus die op korte termijn worden bereikt, worden volledig uitgewerkt: welke integraties precies ontstaan of verdwijnen, welke systemen op dat moment naast elkaar draaien, en welke afhankelijkheden en risico's die stap concreet bepalen. Dit detailniveau is nodig om de eerstvolgende stap daadwerkelijk te kunnen plannen en uitvoeren.</p>]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
     <ess:successor rdf:resource="lod/solution-roadmap/far"/>
@@ -50,7 +48,6 @@
 
   <ess:LevelOfDetail rdf:about="lod/solution-roadmap/far">
     <ess:name xml:lang="nl">Verre horizon</ess:name>
-    <ess:name xml:lang="en">Far horizon</ess:name>
     <ess:description xml:lang="nl"><![CDATA[<p>Plateaus die verder in de tijd liggen, blijven bewust grof: de volgorde en de belangrijkste gaps ten opzichte van de doelarchitectuur zijn bekend, maar de precieze invulling wordt pas scherpgesteld wanneer die plateau dichterbij komt — bijvoorbeeld in een volgende iteratie van Roadmap opstellen, of tijdens Verzamel architectuurbepalende eisen. Te vroeg scherpstellen op een verre plateau levert overspecificatie op die bij het naderen van die stap toch weer wordt herzien.</p>]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
   </ess:LevelOfDetail>

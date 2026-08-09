@@ -10,7 +10,6 @@
 
   <ess:Activity rdf:about="activity/enterprise-understand">
     <ess:name xml:lang="nl">Sturende eisen funderen</ess:name>
-    <ess:name xml:lang="en">Understand</ess:name>
     <ess:briefDescription xml:lang="nl">Identificeert en kwantificeert de sturende eisen die de enterprise-architectuur richting geven, met meetbare succescriteria als resultaat.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Voordat er een architectuurrichting gekozen kan worden, moet duidelijk zijn waaraan die richting moet voldoen. Zonder meetbare criteria eindigt elke architectuurdiscussie in een mening tegenover een andere mening; met criteria is er iets om tegen te toetsen.</p>
@@ -22,7 +21,6 @@
     <ess:approach rdf:resource="approach/enterprise-understand/default"/>
     <ess:action rdf:resource="action/enterprise-understand/create/architectural-drivers"/>
     <ess:action rdf:resource="action/enterprise-understand/read/statement-of-architecture-work"/>
-    <ess:action rdf:resource="action/enterprise-understand/update-alpha/architectural-drivers"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/enterprise-understand/completion/architectural-drivers"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
@@ -30,7 +28,6 @@
 
   <ess:Approach rdf:about="approach/enterprise-understand/default">
     <ess:name xml:lang="nl">Sturende eisen funderen</ess:name>
-    <ess:name xml:lang="en">Understand</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <ul>
@@ -45,24 +42,17 @@
   </ess:Approach>
 
   <ess:Action rdf:about="action/enterprise-understand/create/architectural-drivers">
-    <ess:name>Create Architectural Drivers</ess:name>
+    <ess:name xml:lang="nl">Maak sturende eisen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architectural-drivers"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-understand/read/statement-of-architecture-work">
-    <ess:name>Read Statement Of Architecture Work</ess:name>
+    <ess:name xml:lang="nl">Lees architectuuropdracht</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/statement-of-architecture-work"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/enterprise-understand/update-alpha/architectural-drivers">
-    <ess:name>Update Architectural Drivers</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:alpha rdf:resource="alpha/architectural-drivers"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/enterprise-understand/part-of/understand-the-requirements">

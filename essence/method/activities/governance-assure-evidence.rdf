@@ -10,7 +10,6 @@
 
   <ess:Activity rdf:about="activity/governance-assure-evidence">
     <ess:name xml:lang="nl">Werking van de governance toetsen</ess:name>
-    <ess:name xml:lang="en">Assure by Evidence</ess:name>
     <ess:briefDescription xml:lang="nl">Vergelijkt hoe de governance feitelijk werkt met de objectives die bij Governance inrichten zijn vastgelegd — geen review van architectuurproducten (dat gebeurt al bij Levering besturen), maar de vraag of het sturingssysteem zelf doet wat het moest doen.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Het is een makkelijke vergissing: opnieuw naar de architectuurbeslissingen en de paved road-conformance kijken en dat "toetsen van de governance" noemen. Maar die review is al gebeurd — Levering besturen beoordeelt elke uitzondering al op het moment dat hij zich voordoet, en legt de uitkomst vast als Review Record. Deze activiteit doet dat werk niet over.</p>
@@ -34,7 +33,6 @@
 
   <ess:Approach rdf:about="approach/governance-assure-evidence/default">
     <ess:name xml:lang="nl">Werking van de governance toetsen</ess:name>
-    <ess:name xml:lang="en">Assure by Evidence</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <ul>
@@ -50,35 +48,35 @@
   </ess:Approach>
 
   <ess:Action rdf:about="action/governance-assure-evidence/read/architecture-working-agreement">
-    <ess:name>Read Architecture Working Agreement</ess:name>
+    <ess:name xml:lang="nl">Lees architectuur werkafspraken</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/architecture-working-agreement"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-assure-evidence/read/solution-roadmap">
-    <ess:name>Read Solution Roadmap</ess:name>
+    <ess:name xml:lang="nl">Lees solution-roadmap</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-assure-evidence/create/conformance-evidence">
-    <ess:name>Create Conformance Evidence</ess:name>
+    <ess:name xml:lang="nl">Maak conformiteitsbewijs</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/conformance-evidence"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-assure-evidence/read/paved-road">
-    <ess:name>Read Paved Road</ess:name>
+    <ess:name xml:lang="nl">Lees paved road</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-assure-evidence/read/review-records">
-    <ess:name>Read Review Records</ess:name>
+    <ess:name xml:lang="nl">Lees reviewresultaten</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/review-records"/>

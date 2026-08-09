@@ -1,0 +1,19 @@
+%% State diagram: Requirements (essence-kernel#Requirements)
+%% Kernel-alpha; alleen de states die in deze werkwijze daadwerkelijk gebruikt worden
+%% (als entry- of completion-criterion) zijn gekoppeld aan een activiteit.
+%% Bounded wordt in meerdere activiteiten als entry-eis gebruikt, maar door geen van
+%% de activiteiten in deze werkwijze als completion-resultaat opgeleverd.
+stateDiagram-v2
+    Conceived: Conceived
+    Bounded: Bounded
+    Coherent: Coherent
+    Acceptable: Acceptable
+    Addressed: Addressed
+    Fulfilled: Fulfilled
+
+    [*] --> Conceived
+    Conceived --> Bounded
+    Bounded --> Coherent
+    Coherent --> Acceptable : Architectuurvisie formuleren
+    Acceptable --> Addressed
+    Addressed --> Fulfilled

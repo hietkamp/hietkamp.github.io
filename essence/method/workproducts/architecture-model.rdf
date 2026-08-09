@@ -10,7 +10,6 @@
 
   <ess:WorkProduct rdf:about="workproduct/architecture-model">
     <ess:name xml:lang="nl">Architectuurmodel</ess:name>
-    <ess:name xml:lang="en">Architecture Model</ess:name>
     <ess:briefDescription xml:lang="nl">Maak de minimale set bouwstenen, relaties en grenzen zichtbaar waarop stakeholders nu moeten handelen.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
     <p>Het Architectuurmodel is de formele beschrijving van de solution en vormt het centrale stuurmiddel voor ontwerp, realisatie en toetsing. Het legt vast uit welke bouwstenen de oplossing bestaat, welke verantwoordelijkheden en grenzen deze bouwstenen hebben en hoe zij onderling samenwerken. Daarmee maakt het model inzichtelijk welke structurele keuzes voor de oplossing zijn gemaakt en biedt het de basis om deze keuzes gedurende het project te beoordelen en te bewaken.</p>
@@ -41,7 +40,6 @@
 
   <ess:LevelOfDetail rdf:about="lod/architecture-model/context">
     <ess:name xml:lang="nl">1. Context</ess:name>
-    <ess:name xml:lang="en">1. Context</ess:name>
     <ess:description xml:lang="nl"><![CDATA[
     <p>Op dit detailniveau blijft de interne opbouw van de solution een black box. De interne gegevensstructuur wordt nog niet beschreven; uitsluitend de gegevensuitwisselingen over de systeemgrenzen heen worden vastgelegd, bijvoorbeeld 'levert FHIR-resources (primair gebruik)' of 'verstuurt meetgegevens'. Het model laat daarmee zien welke gegevens worden uitgewisseld, met welke partijen en via welke systeemgrenzen, zonder in te gaan op de interne opslag of verwerking van gegevens.</p>
     <p>Dit detailniveau is van belang zodra de architectuur moet aantonen dat de grenzen van de solution duidelijk zijn afgebakend en dat de belangrijkste buy-, build- en reuse-keuzes op hoofdlijnen zijn gemaakt. Het betreft een van de eerste architectuurweergaven die met de opdrachtgever en de eigenaren van omliggende systemen wordt besproken. Omdat deze weergave de scope van de oplossing vastlegt, verandert zij gedurende het project doorgaans weinig. Een wijziging op contextniveau duidt meestal op een wijziging van de projectscope en niet op een verdere uitwerking van de architectuur.</p>
@@ -59,7 +57,6 @@
 
   <ess:LevelOfDetail rdf:about="lod/architecture-model/container">
     <ess:name xml:lang="nl">2. Container</ess:name>
-    <ess:name xml:lang="en">2. Container</ess:name>
     <ess:description xml:lang="nl"><![CDATA[
     <p>Op dit detailniveau wordt voor het eerst concreet vastgelegd <strong>welke bouwsteen verantwoordelijk is voor welke gegevens</strong> en op <strong>welke wijze gegevens tussen de bouwstenen worden uitgewisseld</strong>. Daarbij wordt niet alleen bepaald waar gegevens worden beheerd, maar ook in welke vorm zij worden uitgewisseld, bijvoorbeeld als een real-time gebeurtenis, batchbestand, query of FHIR-resource. In het voorbeeld van het Health Data Platform is dit het niveau waarop de Clinical Data Repository wordt onderscheiden als de persistente bron voor klinische gegevens en de OMOP Datastore als afgeleide onderzoeksdataset. Ook wordt op dit niveau de scheiding tussen primair en secundair gegevensgebruik expliciet gemaakt.</p>
     <p>Dit is het detailniveau waarop de meeste architectuurbeslissingen daadwerkelijk kunnen worden beoordeeld. De verantwoordelijkheden van de verschillende bouwstenen zijn duidelijk afgebakend, de belangrijkste interfaces en gegevensstromen zijn vastgelegd en architectuurprincipes, zoals de scheiding tussen primair en secundair gebruik, kunnen worden getoetst. Voor de meeste solution-architecturen is dit daarom het niveau waarop architectuurgovernance haar oordeel kan vormen en goedkeuring kan geven. Verdere detaillering is doorgaans alleen nodig voor onderdelen waarvan de interne werking of implementatie onderwerp van ontwerp of besluitvorming is.</p>
@@ -77,7 +74,6 @@
 
   <ess:LevelOfDetail rdf:about="lod/architecture-model/component">
     <ess:name xml:lang="nl">3. Component</ess:name>
-    <ess:name xml:lang="en">3. Component</ess:name>
     <ess:description xml:lang="nl"><![CDATA[
     <p>Dit detailniveau wordt alleen uitgewerkt voor containers waarvoor een <strong>architectuurbepalende eis</strong>, een <strong>aanzienlijk technisch risico</strong> of een <strong>belangrijke ontwerpbeslissing</strong> bestaat. Het is daarom geen standaardonderdeel voor iedere container binnen de solution, maar wordt alleen toegepast wanneer verdere detaillering noodzakelijk is om ontwerpkeuzes te kunnen onderbouwen, implementeren of toetsen.</p>
     <p>Op dit niveau wordt de interne structuur van de container zichtbaar. De architectuur beschrijft hoe de container intern is opgebouwd, welke componenten daarin samenwerken en hoe gegevens binnen de container worden opgeslagen, verwerkt en uitgewisseld. Daarbij kunnen onder andere interne componenten, gegevensstructuren, berichtkanalen, API-contracten en andere technische bouwstenen worden gemodelleerd, voor zover deze architectuurbepalend zijn.</p>
@@ -94,7 +90,6 @@
 
   <ess:LevelOfDetail rdf:about="lod/architecture-model/code">
     <ess:name xml:lang="nl">4. Code</ess:name>
-    <ess:name xml:lang="en">4. Code</ess:name>
     <ess:description xml:lang="nl"><![CDATA[
     <p>Dit detailniveau maakt slechts in uitzonderlijke gevallen onderdeel uit van het Architectuurmodel. Het wordt alleen toegepast wanneer een architectuurbeslissing uitsluitend op code- of implementatieniveau eenduidig kan worden vastgelegd, bijvoorbeeld bij een verplicht gegevensschema, een beveiligingspatroon of een technisch protocol dat bepalend is voor de architectuur.</p>
   <p>Op dit niveau betreft het de fysieke implementatie, zoals databaseschema's, tabeldefinities, berichtformaten of andere implementatieartefacten. Dit wordt doorgaans vastgelegd in UML-diagrammen op klassen- of objectniveau, zoals sequence- of class-diagrammen, die het gedrag of de structuur van de implementatie in detail tonen. Deze diagrammen maken formeel onderdeel uit van het Architectuurmodel op detailniveau Code, maar worden alleen opgenomen wanneer de erin vastgelegde keuze daadwerkelijk architectuurbepalend is; voor gewone implementatiedetails volstaat de broncode zelf. Hierdoor blijft het Architectuurmodel gericht op de structurele opbouw van de solution en wordt onnodige duplicatie van ontwerp- en implementatie-informatie voorkomen.</p>

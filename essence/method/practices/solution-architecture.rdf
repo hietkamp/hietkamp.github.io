@@ -46,7 +46,6 @@
   </ess:Practice>
 
   <ess:PatternAssociation rdf:about="pattern-association/solution-architecture/performed-by">
-    <ess:name xml:lang="en">performed by</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="role/architecture-owner"/>
   </ess:PatternAssociation>

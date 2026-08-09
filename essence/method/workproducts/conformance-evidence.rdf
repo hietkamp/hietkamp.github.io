@@ -9,7 +9,6 @@
 
   <ess:WorkProduct rdf:about="workproduct/conformance-evidence">
     <ess:name xml:lang="nl">Conformiteitsbewijs</ess:name>
-    <ess:name xml:lang="en">Conformance Evidence</ess:name>
     <ess:briefDescription xml:lang="nl">Bewijs dat solutions binnen de enterprise-kaders blijven: review-beslissingen, escalatieresoluties en paved-road-adoptiemetingen. Geproduceerd door Go…</ess:briefDescription>
     <ess:description xml:lang="nl">Bewijs dat solutions binnen de enterprise-kaders blijven: review-beslissingen, escalatieresoluties en paved-road-adoptiemetingen. Geproduceerd door Govern the Delivery en Assure by Evidence.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>

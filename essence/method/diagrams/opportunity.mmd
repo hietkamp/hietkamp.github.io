@@ -1,0 +1,18 @@
+%% State diagram: Opportunity (essence-kernel#Opportunity)
+%% Kernel-alpha; alleen de states die in deze werkwijze daadwerkelijk gebruikt worden
+%% zijn gekoppeld aan een activiteit.
+stateDiagram-v2
+    Identified: Identified
+    SolutionNeeded: Solution Needed
+    ValueEstablished: Value Established
+    Viable: Viable
+    Addressed: Addressed
+    BenefitAccrued: Benefit Accrued
+
+    [*] --> Identified
+    Identified --> SolutionNeeded : Maak High-Level Design
+    Identified --> SolutionNeeded : Roadmap opstellen
+    SolutionNeeded --> ValueEstablished
+    ValueEstablished --> Viable
+    Viable --> Addressed
+    Addressed --> BenefitAccrued

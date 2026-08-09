@@ -9,7 +9,6 @@
 
   <ess:WorkProduct rdf:about="workproduct/architectural-drivers">
     <ess:name xml:lang="nl">Sturende eisen</ess:name>
-    <ess:name xml:lang="en">Governing Requirements</ess:name>
     <ess:briefDescription xml:lang="nl">Vertaal enterprise-brede doelen, kwaliteitsattributen en beperkingen naar toetsbare, sturende criteria.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>De requirements die significant genoeg zijn om de enterprise-architectuur te vormen — zowel kwaliteitsattributen (NFRs) als functionele requirements met verborgen architecturele impact, op ondernemingsniveau. Elk met een meetbaar succescriterium, gekoppeld aan een driver. Niet alles is architectureel significant — dit werkproduct helpt te kiezen en te expliciteren wat er impliciet in stond.</p>
 <p><strong>Rol:</strong> Requirementselectie die expliciet maakt welke eisen enterprise-breed sturend zijn.</p>

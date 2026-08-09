@@ -1,0 +1,18 @@
+%% State diagram: System (essence-kernel#System)
+%% Kernel-alpha; alleen de states die in deze werkwijze daadwerkelijk gebruikt worden
+%% zijn gekoppeld aan een activiteit.
+stateDiagram-v2
+    ArchitectureSelected: Architecture Selected
+    Demonstrable: Demonstrable
+    Usable: Usable
+    Ready: Ready
+    Operational: Operational
+    Retired: Retired
+
+    [*] --> ArchitectureSelected : Verzamel architectuurbepalende eisen
+    [*] --> ArchitectureSelected : Maak Low-Level Design
+    ArchitectureSelected --> Demonstrable
+    Demonstrable --> Usable : Implementatiegovernance voeren
+    Usable --> Ready : Conformance bewaken
+    Ready --> Operational
+    Operational --> Retired

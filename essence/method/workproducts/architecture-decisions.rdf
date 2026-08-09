@@ -9,7 +9,6 @@
 
   <ess:WorkProduct rdf:about="workproduct/architecture-decisions">
     <ess:name xml:lang="nl">Architectuurbeslissingen (ADRs)</ess:name>
-    <ess:name xml:lang="en">Architecture Decisions (ADRs)</ess:name>
     <ess:briefDescription xml:lang="nl">Bewaar de rationale achter een significante keuze zodat die later gevalideerd, herzien of vervangen kan worden.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Een architectuurbeslissing is een onderbouwde keuze waarmee invulling wordt gegeven aan een architectuurbepalende eis: een eis die een aantoonbare invloed heeft op de structuur, samenhang of kwaliteit van de solution. Niet iedere ontwerp- of technische keuze is daarom een architectuurbeslissing. Alleen keuzes die de architectuur daadwerkelijk richting geven of de toekomstige onderhoudbaarheid, flexibiliteit, veiligheid of andere kwaliteitsaspecten beïnvloeden, worden als architectuurbeslissing vastgelegd.</p>
 <p>Architectuurbeslissingen vormen gezamenlijk het besluitvormingslog van de solution. Zij leggen niet alleen vast welke keuze is gemaakt, maar vooral waarom deze keuze is gemaakt, welke alternatieven zijn overwogen en welke consequenties daarbij zijn geaccepteerd. Hierdoor blijven de gemaakte afwegingen ook na afloop van het project herleidbaar en kunnen toekomstige wijzigingen beter worden beoordeeld.</p>
@@ -30,7 +29,6 @@
 
   <ess:LevelOfDetail rdf:about="lod/architecture-decisions/lightweight">
     <ess:name xml:lang="nl">Lichtgewicht (één zin)</ess:name>
-    <ess:name xml:lang="en">Lightweight (one sentence)</ess:name>
     <ess:description xml:lang="nl"><![CDATA[<p>"Gegeven ⟨situatie⟩ en ⟨knelpunt⟩ kiezen we voor ⟨optie⟩ om ⟨kwaliteit⟩ te bereiken, met als geaccepteerd nadeel ⟨nadeel⟩." Geschikt voor de meeste dagelijkse, herkenbare keuzes — de "paved road"-beslissingen.</p>]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
     <ess:successor rdf:resource="lod/architecture-decisions/full"/>
@@ -38,7 +36,6 @@
 
   <ess:LevelOfDetail rdf:about="lod/architecture-decisions/full">
     <ess:name xml:lang="nl">Volledig</ess:name>
-    <ess:name xml:lang="en">Full</ess:name>
     <ess:description xml:lang="nl"><![CDATA[<p>Context, alle overwogen opties met hun voor- en nadelen, de afweging en het vervolgplan. Reserveer dit voor beslissingen waar het optieveld écht openstaat, de impact groot is, of waar Architectuursturing een expliciet oordeel moet vellen — de "off-road"-gevallen.</p>
 <p>Iedere architectuurbeslissing bevat ten minste de volgende onderdelen:</p>
 <ul>

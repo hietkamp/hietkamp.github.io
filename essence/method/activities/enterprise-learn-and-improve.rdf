@@ -10,7 +10,6 @@
 
   <ess:Activity rdf:about="activity/enterprise-learn-and-improve">
     <ess:name xml:lang="nl">Architectuurverandering besturen</ess:name>
-    <ess:name xml:lang="en">Learn and Improve</ess:name>
     <ess:briefDescription xml:lang="nl">Beheert de architectuur continu in productie: actualiseert de goedgekeurde route, pensioneert verouderde standaarden en hervalideert sturende eisen wanneer de context verandert.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Architectuur is nooit af. Waar de vorige activiteiten de enterprise-architectuur vestigen, houdt deze activiteit haar levend: de doorlopende tegenhanger van Governance bijstellen, maar dan gericht op wat Enterprise architectuur zelf beheert.</p>
@@ -24,8 +23,6 @@
     <ess:action rdf:resource="action/enterprise-learn-and-improve/create/architecture-model"/>
     <ess:action rdf:resource="action/enterprise-learn-and-improve/create/paved-road"/>
     <ess:action rdf:resource="action/enterprise-learn-and-improve/read/paved-road-adoptie"/>
-    <ess:action rdf:resource="action/enterprise-learn-and-improve/update-alpha/architecture"/>
-    <ess:action rdf:resource="action/enterprise-learn-and-improve/update-alpha/architectural-drivers"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/enterprise-learn-and-improve/entry/architecture"/>
     <ess:criterion rdf:resource="criterion/enterprise-learn-and-improve/completion/architecture"/>
@@ -35,7 +32,6 @@
 
   <ess:Approach rdf:about="approach/enterprise-learn-and-improve/default">
     <ess:name xml:lang="nl">Architectuurverandering besturen</ess:name>
-    <ess:name xml:lang="en">Learn and Improve</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <ul>
@@ -50,45 +46,31 @@
   </ess:Approach>
 
   <ess:Action rdf:about="action/enterprise-learn-and-improve/read/architecture-decisions">
-    <ess:name>Read Architecture Decisions</ess:name>
+    <ess:name xml:lang="nl">Lees architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-learn-and-improve/create/architecture-model">
-    <ess:name>Create Architecture Model</ess:name>
+    <ess:name xml:lang="nl">Maak architectuurmodel</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-learn-and-improve/create/paved-road">
-    <ess:name>Create Paved Road</ess:name>
+    <ess:name xml:lang="nl">Maak paved road</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-learn-and-improve/read/paved-road-adoptie">
-    <ess:name>Read Paved Road Adoptie</ess:name>
+    <ess:name xml:lang="nl">Lees paved road-adoptie</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/paved-road-adoptie"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/enterprise-learn-and-improve/update-alpha/architecture">
-    <ess:name>Update Architecture</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:alpha rdf:resource="alpha/architecture"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/enterprise-learn-and-improve/update-alpha/architectural-drivers">
-    <ess:name>Update Architectural Drivers</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:alpha rdf:resource="alpha/architectural-drivers"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/enterprise-learn-and-improve/part-of/shape-the-system">

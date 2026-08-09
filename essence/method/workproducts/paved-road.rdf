@@ -9,7 +9,6 @@
 
   <ess:WorkProduct rdf:about="workproduct/paved-road">
     <ess:name xml:lang="nl">Paved road</ess:name>
-    <ess:name xml:lang="en">Paved Road</ess:name>
     <ess:briefDescription xml:lang="nl">Maak de conforme keuze makkelijk en de afwijkende keuze expliciet bestuurbaar.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Een Paved road is geen policy-document maar een gestructureerd aanbod van gesanctioneerde keuzes per laag — met bijbehorende ondersteuning én een expliciete off-road-procedure voor wie ervan afwijkt. On-road betekent: geen review nodig, gewoon gebruiken. Off-road betekent: ADR verplicht vóór gebruik.</p>
 <p><strong>Rol:</strong> Normatieve catalogus van gesanctioneerde keuzes die teams zelfstandig mogen toepassen.</p>

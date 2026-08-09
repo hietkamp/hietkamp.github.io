@@ -9,7 +9,6 @@
 
   <ess:WorkProduct rdf:about="workproduct/architecture-roadmap">
     <ess:name xml:lang="nl"><![CDATA[Enterprise-architectuurroadmap en Transitiestaten]]></ess:name>
-    <ess:name xml:lang="en"><![CDATA[Enterprise Architecture Roadmap & Transition States]]></ess:name>
     <ess:briefDescription xml:lang="nl">Maak de route van de enterprise-baseline naar de doeltoestand bestuurbaar zonder verre horizons te overspecificeren.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Het pad van de enterprise-baseline naar het doel als implementatiestappen — in twee parallelle sporen: een <strong>configuratiespoor</strong> (wat de vendor levert) en een <strong>integratiespoor</strong> (wat de architect bouwt). Beide sporen worden gestart vanuit de fit/gap-analyse en gesynchroniseerd op checkpoints. Geen big-bang — pilot → wave → volledige uitrol. Alleen de volgende horizon is gedetailleerd uitgewerkt.</p>
 <p><strong>Rol:</strong> Transitieplan dat enterprise-architectuurkeuzes omzet naar horizons, werkpakketten en meetbare toestanden over de portfolio heen.</p>

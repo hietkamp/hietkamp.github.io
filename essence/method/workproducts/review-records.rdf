@@ -9,7 +9,6 @@
 
   <ess:WorkProduct rdf:about="workproduct/review-records">
     <ess:name xml:lang="nl">Reviewresultaten</ess:name>
-    <ess:name xml:lang="en">Review Records</ess:name>
     <ess:briefDescription xml:lang="nl">Maak zichtbaar of een concrete keuze voldoet aan afgesproken drivers, principes en paved-road normen.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Het Architecture Review Record beantwoordt de vraag: <em>voldoet dit aan wat we hebben afgesproken?</em> Niet: waarom hebben we dit gekozen — dat is het ADR. De ARR past de Paved road toe op een concreet geval en levert twee mogelijke uitkomsten: een <strong>Conformiteitsrecord</strong> (on-road bevestigd) of een <strong>Exception Request</strong> (off-road geformaliseerd).</p>
 <p><strong>Rol:</strong> Beoordelingsrecord dat conformiteit of afwijking als bewijs vastlegt.</p>

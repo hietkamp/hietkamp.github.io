@@ -10,7 +10,6 @@
 
   <ess:Activity rdf:about="activity/enterprise-build-paved-road">
     <ess:name xml:lang="nl">Goedgekeurde route bouwen</ess:name>
-    <ess:name xml:lang="en">Build Paved Road</ess:name>
     <ess:briefDescription xml:lang="nl">Vertaalt de doelarchitectuur naar een catalogus van goedgekeurde standaardsoftware-componenten, integratiepatronen en referentie-instellingen — de conforme keuze als de makkelijkste keuze.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Een architectuurprincipe stuurt op afstand; een goedgekeurde route stuurt door het teams simpelweg makkelijker te maken om het goede te doen dan het verkeerde. Deze activiteit bouwt die route: geen extra regel, maar een bruikbaar alternatief.</p>
@@ -22,7 +21,6 @@
     <ess:approach rdf:resource="approach/enterprise-build-paved-road/default"/>
     <ess:action rdf:resource="action/enterprise-build-paved-road/read/architecture-model"/>
     <ess:action rdf:resource="action/enterprise-build-paved-road/create/paved-road"/>
-    <ess:action rdf:resource="action/enterprise-build-paved-road/update-alpha/paved-road"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/entry/paved-road"/>
     <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/completion/paved-road"/>
@@ -31,7 +29,6 @@
 
   <ess:Approach rdf:about="approach/enterprise-build-paved-road/default">
     <ess:name xml:lang="nl">Goedgekeurde route bouwen</ess:name>
-    <ess:name xml:lang="en">Build Paved Road</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <ul>
@@ -46,24 +43,17 @@
   </ess:Approach>
 
   <ess:Action rdf:about="action/enterprise-build-paved-road/read/architecture-model">
-    <ess:name>Read Architecture Model</ess:name>
+    <ess:name xml:lang="nl">Lees architectuurmodel</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-build-paved-road/create/paved-road">
-    <ess:name>Create Paved Road</ess:name>
+    <ess:name xml:lang="nl">Maak paved road</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/enterprise-build-paved-road/update-alpha/paved-road">
-    <ess:name>Update Paved Road</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:alpha rdf:resource="alpha/paved-road"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/enterprise-build-paved-road/part-of/shape-the-system">

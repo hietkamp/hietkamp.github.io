@@ -10,7 +10,6 @@
 
   <ess:Pattern rdf:about="role/architecture-owner">
     <ess:name xml:lang="nl">Architectuureigenaar</ess:name>
-    <ess:name xml:lang="en">Architecture Owner</ess:name>
     <ess:briefDescription xml:lang="nl">De meest technisch ervaren persoon in het team (conform Disciplined Agile Delivery). Voert het solution-spoor uit binnen de door de Enterprise Archite…</ess:briefDescription>
     <ess:description xml:lang="nl">De meest technisch ervaren persoon in het team (conform Disciplined Agile Delivery). Voert het solution-spoor uit binnen de door de Enterprise architect geleverde context. Verfijnt enterprise-drivers naar solution-specifieke kwaliteitsattributen, selecteert COTS-componenten, bewijst de risicovolste integratiekeuzes, maakt de solution-roadmap en faciliteert met het team de architectuurevolutie in productie. Rapporteert afwijkingen van enterprise-standaarden terug aan de Enterprise architect via beslissingsrecords en reviewrecords.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -22,7 +21,6 @@
   </ess:Pattern>
 
   <ess:PatternAssociation rdf:about="pattern-association/architecture-owner/requires-competency">
-    <ess:name xml:lang="en">requires competency</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Analysis"/>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StakeholderRepresentation"/>
@@ -30,7 +28,6 @@
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/architecture-owner/participates-in">
-    <ess:name xml:lang="en">participates in</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/solution-lead-implementation"/>
   </ess:PatternAssociation>

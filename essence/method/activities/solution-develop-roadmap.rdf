@@ -10,7 +10,6 @@
 
   <ess:Activity rdf:about="activity/solution-develop-roadmap">
     <ess:name xml:lang="nl">Roadmap opstellen</ess:name>
-    <ess:name xml:lang="en">Develop Roadmap</ess:name>
     <ess:briefDescription xml:lang="nl">Tijdens deze activiteit wordt een architectuurroadmap opgesteld die de overgang van de huidige naar de gewenste situatie beschrijft. De roadmap bestaat uit een reeks logisch opeenvolgende transitiestaten, waarbij elke transitiestaat een stabiele en operationeel werkende situatie oplevert. Daarnaast worden de belangrijkste afhankelijkheden, risico's en randvoorwaarden vastgelegd, zodat de implementatie gecontroleerd kan verlopen en de roadmap als basis kan dienen voor de projectplanning en de architectuurgovernance.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
     <p>Tijdens deze activiteit wordt de overgang van de huidige situatie naar de beoogde solution gepland. Het doel is een haalbare, beheersbare en verdedigbare volgorde van transitiestappen vast te stellen, waarbij de organisatie gedurende het gehele traject kan blijven functioneren. Elke transitiestaat moet een operationeel werkende situatie opleveren; tijdelijke situaties waarin de bedrijfsvoering of dienstverlening niet goed functioneert, worden voorkomen.</p>
@@ -31,7 +30,6 @@
 
   <ess:Approach rdf:about="approach/solution-develop-roadmap/default">
     <ess:name xml:lang="nl">Roadmap opstellen</ess:name>
-    <ess:name xml:lang="en">Develop Roadmap</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
     <p><strong>Breng de huidige en de gewenste situatie in beeld</strong></p>
@@ -59,14 +57,14 @@
   </ess:Approach>
 
   <ess:Action rdf:about="action/solution-develop-roadmap/read/architecture-model">
-    <ess:name>Read Architecture Model</ess:name>
+    <ess:name xml:lang="nl">Lees architectuurmodel</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-develop-roadmap/create/solution-roadmap">
-    <ess:name>Create Solution Roadmap</ess:name>
+    <ess:name xml:lang="nl">Maak solution-roadmap</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>

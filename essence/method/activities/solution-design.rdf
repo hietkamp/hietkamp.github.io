@@ -10,7 +10,6 @@
 
   <ess:Activity rdf:about="activity/solution-design">
     <ess:name xml:lang="nl">Maak Low-Level Design</ess:name>
-    <ess:name xml:lang="en">Define the solution building blocks</ess:name>
     <ess:briefDescription xml:lang="nl">Tijdens deze activiteit wordt het High-Level Design uitgewerkt tot een technisch ontwerp dat als basis dient voor de realisatie van de solution. Alleen de onderdelen waarvoor verdere detaillering noodzakelijk is, worden uitgewerkt, waarbij de interne structuur, componenten, interfaces, gegevensverwerking en technische voorzieningen worden beschreven. Het resultaat is een samenhangend en realiseerbaar Low-Level Design dat de implementatie richting geeft en aansluit op de architectuurbepalende eisen, architectuurbeslissingen en enterprise-architectuurkaders.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Tijdens deze activiteit wordt het High-Level Design verder uitgewerkt tot een gedetailleerd en realiseerbaar ontwerp. Het doel is om voor de onderdelen van de solution die nadere technische uitwerking vereisen, vast te leggen hoe zij intern zijn opgebouwd, hoe zij samenwerken en op welke wijze zij worden gerealiseerd. Het Low-Level Design vormt daarmee de directe basis voor implementatie, configuratie, bouw, integratie en technische toetsing.</p>
 <p>De uitwerking richt zich niet automatisch op ieder onderdeel van de solution. Alleen bouwstenen waarvoor een architectuurbepalende eis, een aanzienlijk technisch risico, een complexe integratie of een belangrijke ontwerpbeslissing bestaat, worden verder verdiept. Voor overige onderdelen volstaat het detailniveau van het High-Level Design, of de standaarddocumentatie van het gekozen product of platform. Zo blijft het ontwerp beperkt tot de onderdelen waarvoor detaillering daadwerkelijk nodig is.</p>
@@ -32,7 +31,6 @@
 
   <ess:Approach rdf:about="approach/solution-design/default">
     <ess:name xml:lang="nl">Kiezen</ess:name>
-    <ess:name xml:lang="en">Design</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
     <p><strong>Gebruik het High-Level Design als uitgangspunt</strong></p>
@@ -54,28 +52,28 @@
   </ess:Approach>
 
   <ess:Action rdf:about="action/solution-design/create/architecture-decisions">
-    <ess:name>Create Architecture Decisions</ess:name>
+    <ess:name xml:lang="nl">Maak architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-design/update/architecture-model">
-    <ess:name>Update Architecture Model</ess:name>
+    <ess:name xml:lang="nl">Werk architectuurmodel bij</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-design/read/paved-road">
-    <ess:name>Read Paved Road</ess:name>
+    <ess:name xml:lang="nl">Lees paved road</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/solution-design/part-of/shape-the-system">
-    <ess:name>Kiezen part-of Shape The System</ess:name>
+    <ess:name>Maak Low-Level Design part-of Shape The System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/solution-design"/>
     <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>

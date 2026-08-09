@@ -103,15 +103,33 @@ DOMAIN_COLOR_CFG = {
     "solution": {
         "num_color":      "bg-yellow-600",
         "num_text_color": "text-white",
+        "chip_css":       "border-yellow-700/25 bg-yellow-700/10 text-yellow-700",
     },
     "customer": {
         "num_color":      "bg-green-700",
         "num_text_color": "text-white",
+        "chip_css":       "border-green-700/25 bg-green-700/10 text-green-700",
     },
     "endeavour": {
         "num_color":      "bg-sky-700",
         "num_text_color": "text-white",
+        "chip_css":       "border-sky-700/25 bg-sky-700/10 text-sky-700",
     },
+}
+
+# ess:Action CRUD kinds, translated once and reused everywhere an action kind
+# is shown (practice-overview activity cards, activity detail page "Acties").
+ACTION_KIND_NL = {
+    "create": "Aanmaken",
+    "read":   "Lezen",
+    "update": "Wijzigen",
+    "delete": "Verwijderen",
+}
+ACTION_KIND_CSS = {
+    "create": "border-emerald-700/30 bg-emerald-700/10 text-emerald-700",
+    "read":   "border-blue-700/30 bg-blue-700/10 text-blue-700",
+    "update": "border-amber-700/30 bg-amber-700/10 text-amber-700",
+    "delete": "border-red-700/30 bg-red-700/10 text-red-700",
 }
 
 # ---------------------------------------------------------------------------
@@ -207,65 +225,32 @@ def _action_kind(g: Graph, action_uri) -> str:
         return ""
     return str(kind_uri).split("#")[-1].lower()
 
-def activity_inputs(g: Graph, activity_uri) -> list[str]:
-    names = []
-    for action in g.objects(activity_uri, ESS.action):
-        if _action_kind(g, action) == "read":
-            wp = next(g.objects(action, ESS.workProduct), None)
-            if wp:
-                n = get_name(g, wp)
-                if n and n not in names:
-                    names.append(n)
-    return names
-
-def _activity_completion_lods(g: Graph, activity_uri) -> dict:
-    """Return {wp_uri: [lod_name, ...]} derived from this activity's own
-    CompletionCriterion.levelOfDetail — the specific LOD this activity's completion
-    is judged against, as opposed to every LOD the work product happens to have."""
-    result: dict = {}
-    for crit in g.objects(activity_uri, ESS.criterion):
-        if (crit, RDF.type, ESS.CompletionCriterion) not in g:
-            continue
-        for lod in g.objects(crit, ESS.levelOfDetail):
-            if (lod, RDF.type, ESS.LevelOfDetail) not in g:
-                continue
-            wp = next(
-                (s for s in g.subjects(ESS.levelOfDetail, lod)
-                 if (s, RDF.type, ESS.WorkProduct) in g),
-                None,
-            )
-            if wp:
-                result.setdefault(wp, []).append(get_name(g, lod))
-    return result
-
-def activity_outputs(g: Graph, activity_uri, lod_filter: dict = None) -> list[dict]:
-    """Return [{"name": str, "lods": [str]}] for each WP created/updated by the activity.
-
-    lod_filter: {wp_uri: [lod_name, ...]} — when provided, only show the listed LOD names
-    for that WP; WPs not in the filter get no LODs shown. The activity's own
-    CompletionCriterion.levelOfDetail (if any) takes priority over lod_filter.
+def activity_actions_by_kind(g: Graph, activity_uri) -> list[dict]:
+    """Return [{"kind", "kind_nl", "kind_css", "wps": [{"name"}]}] for each
+    CRUD kind (create/read/update/delete) that this activity has actions for, in that
+    canonical order — the same kind labels/colours as the activity detail page's
+    "Acties" list, so the overview and detail pages stay consistent.
     """
-    completion_lods = _activity_completion_lods(g, activity_uri)
-    results = []
+    by_kind: dict = {}
     seen: set = set()
     for action in g.objects(activity_uri, ESS.action):
-        if _action_kind(g, action) in ("create", "update"):
-            wp = next(g.objects(action, ESS.workProduct), None)
-            if wp and wp not in seen:
-                seen.add(wp)
-                n = get_name(g, wp)
-                if n:
-                    if wp in completion_lods:
-                        lods = sorted(completion_lods[wp])
-                    elif lod_filter is not None:
-                        lods = sorted(lod_filter.get(wp, []))
-                    else:
-                        lods = sorted(
-                            [get_name(g, lod) for lod in g.objects(wp, ESS.levelOfDetail)
-                             if get_name(g, lod)]
-                        )
-                    results.append({"name": n, "lods": lods})
-    return results
+        kind = _action_kind(g, action)
+        if kind not in ACTION_KIND_NL:
+            continue
+        wp = next(g.objects(action, ESS.workProduct), None)
+        if not wp or (kind, wp) in seen:
+            continue
+        seen.add((kind, wp))
+        n = get_name(g, wp)
+        if not n:
+            continue
+        by_kind.setdefault(kind, []).append({"name": n})
+    return [
+        {"kind": kind, "kind_nl": ACTION_KIND_NL[kind], "kind_css": ACTION_KIND_CSS[kind],
+         "wps": wps}
+        for kind in ("create", "read", "update", "delete")
+        if (wps := by_kind.get(kind))
+    ]
 
 def activity_output_wps(g: Graph, activity_uri) -> list:
     """Return WorkProduct URIs created/updated by the activity."""
@@ -552,7 +537,6 @@ def build_index_ctx(g: Graph) -> dict:
         "hero_data": {
             "kicker":   "Essence methode",
             "h1_pre":   method_name,
-            "title_en": get_name(g, METHOD_URI, lang="en") or "Way of Working",
             "lede":     method_brief,
             "chips":    [p["title"] for p in practices],
         },
@@ -708,24 +692,6 @@ def _phase_lods(g: Graph, phase_uri) -> list[dict]:
     return []
 
 
-def _phase_lod_filter(g: Graph, phase_uri) -> dict:
-    """Return {wp_uri: [lod_name, ...]} for the phase's 'detailniveau' association.
-    Used to restrict LOD display on activity outputs to only phase-relevant levels."""
-    for assoc in g.objects(phase_uri, ESS.associations):
-        name_nl = get_name(g, assoc, lang="nl")
-        name_en = get_name(g, assoc, lang="en")
-        if "detailniveau" in name_nl.lower() or "level of detail" in name_en.lower():
-            result: dict = {}
-            for el in g.objects(assoc, ESS.elements):
-                if (el, RDF.type, ESS.LevelOfDetail) not in g:
-                    continue
-                wp = next(g.subjects(ESS.levelOfDetail, el), None)
-                if wp:
-                    result.setdefault(wp, []).append(get_name(g, el))
-            return result
-    return {}
-
-
 def _strip_fase_prefix(name: str) -> str:
     """Strip a leading 'Fase N — ' / 'Gate N — ' label down to its own name."""
     return name.split("—", 1)[1].strip() if "—" in name else name
@@ -837,10 +803,8 @@ def _build_phase_domains(g: Graph, practice_uri, practice_slug: str) -> list[dic
     domains: list = []
     running_num = 0
     for phase, phase_acts in zip(phases, all_phase_acts):
-        lod_filter = _phase_lod_filter(g, phase)  # {} means no LODs; None means unfiltered
         items = [
-            _activity_dict(g, act, running_num + i + 1, total_all, practice_slug,
-                           lod_filter=lod_filter)
+            _activity_dict(g, act, running_num + i + 1, total_all, practice_slug)
             for i, act in enumerate(phase_acts)
         ]
         running_num += len(phase_acts)
@@ -927,7 +891,6 @@ def build_phase_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
             "kicker":   "Practice",
             "h1_pre":   title,
             "h1_br":    False,
-            "title_en": get_name(g, practice_uri, lang="en"),
             "lede":     brief,
         },
         "crumbs": [
@@ -950,7 +913,7 @@ def build_phase_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
 
 
 def _activity_dict(g: Graph, act_uri, num: int, total: int,
-                   practice_slug: str, lod_filter: dict = None) -> dict:
+                   practice_slug: str) -> dict:
     s = slug(act_uri)
     cfg = PRACTICE_CFG.get(practice_slug, {})
     domain_color = activity_domain_color(g, act_uri)
@@ -960,7 +923,6 @@ def _activity_dict(g: Graph, act_uri, num: int, total: int,
         "num":            f"{num:02d}",
         "act_num":        f"Activiteit {num:02d} / {total:02d}",
         "title":          get_name(g, act_uri),
-        "title_en":       get_name(g, act_uri, lang="en"),
         "desc":           get_brief(g, act_uri),
         "lede":           get_brief(g, act_uri),
         "phase":          activity_phase(g, act_uri),
@@ -968,8 +930,7 @@ def _activity_dict(g: Graph, act_uri, num: int, total: int,
             "space": activity_space_chip(g, act_uri),
             "alpha": primary_alpha_name(g, act_uri),
         },
-        "inputs":    activity_inputs(g, act_uri),
-        "outputs":   activity_outputs(g, act_uri, lod_filter=lod_filter),
+        "actions":   activity_actions_by_kind(g, act_uri),
         "patterns":  activity_patterns(g, act_uri),
         "alpha_bar": alpha_bar_html(g, act_uri),
         "domain":         domain_color.get("domain"),
@@ -1071,7 +1032,6 @@ def build_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
             "kicker":   "Practice",
             "h1_pre":   title,
             "h1_br":    False,
-            "title_en": get_name(g, practice_uri, lang="en"),
             "lede":     brief,
         },
         "crumbs": [
@@ -1139,12 +1099,6 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
     desc_html = fix_desc_paths(get_desc(g, act_uri), "../")
 
     # Actions on work products and alphas
-    _kind_nl  = {"create": "Aanmaken", "read": "Lezen", "update": "Bijwerken"}
-    _kind_css = {
-        "create": "border-emerald-700/30 bg-emerald-700/10 text-emerald-700",
-        "read":   "border-blue-700/30 bg-blue-700/10 text-blue-700",
-        "update": "border-amber-700/30 bg-amber-700/10 text-amber-700",
-    }
     actions = []
     for action_uri in g.objects(act_uri, ESS.action):
         kind = _action_kind(g, action_uri)
@@ -1164,8 +1118,8 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
             continue
         actions.append({
             "kind":     kind,
-            "kind_nl":  _kind_nl.get(kind, kind.capitalize()),
-            "kind_css": _kind_css.get(kind, ""),
+            "kind_nl":  ACTION_KIND_NL.get(kind, kind.capitalize()),
+            "kind_css": ACTION_KIND_CSS.get(kind, ""),
             "target":   target_name,
             "type":     target_type,
             "href":     href,
@@ -1250,7 +1204,6 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
                     title=title, description=brief)
     ctx.update({
         "act_name":  title,
-        "title_en":  get_name(g, act_uri, lang="en"),
         "lede":      brief,
         "act_num":   f"Activiteit {idx + 1:02d} / {total:02d}",
         "breadcrumb": {
@@ -1261,7 +1214,9 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
             "current": title,
         },
         "chips": {
-            "space": activity_space_chip(g, act_uri),
+            "space":     activity_space_chip(g, act_uri),
+            "space_css": activity_domain_color(g, act_uri).get(
+                "chip_css", "border-blue-700/25 bg-blue-700/10 text-blue-700"),
         },
         "extra_chips": [],
         "alpha_bar":  alpha_bar_html(g, act_uri),
@@ -1409,7 +1364,6 @@ def build_wp_ctx(g: Graph, wp_uri) -> dict:
     ctx.update({
         "kicker":     "Werkproduct",
         "h1_pre":     title,
-        "h1_em":      get_name(g, wp_uri, lang="en"),
         "lede":       brief,
         "meta_pills": meta_pills,
         "download":   download,

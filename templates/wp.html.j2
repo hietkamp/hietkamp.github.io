@@ -11,7 +11,6 @@
 <header class="hero border-b-2 border-[var(--prac)] py-14 pb-8 [&_h1]:m-0 [&_h1]:mb-[0.45em] [&_h1]:font-serif [&_h1]:text-[clamp(2.3rem,5.6vw,4.4rem)] [&_h1]:font-black [&_h1]:leading-none [&_h1_em]:font-medium [&_h1_em]:italic [&_h1_em]:text-[var(--prac)] max-[600px]:py-8 max-[600px]:pb-4 max-[600px]:[&_h1]:text-[clamp(1.9rem,8vw,3rem)]">
   <div class="kicker mb-3.5 block font-mono text-[11px] uppercase tracking-[0.28em] text-[var(--prac)]">{{ kicker }}</div>
   <h1>{{ h1_pre }}</h1>
-  {% if h1_em %}<p class="hero-title-en m-0 -mt-[0.25em] mb-[0.5em] font-serif italic text-[clamp(1.5rem,3.8vw,3rem)] font-normal leading-tight text-slate-500">{{ h1_em }}</p>{% endif %}
   <p class="lede m-0 text-[clamp(1rem,1.5vw,1.16rem)] leading-relaxed text-slate-500">{{ lede | safe }}</p>
   <div class="meta-pills mt-5 flex flex-wrap gap-2 [&_span]:rounded-full [&_span]:border [&_span]:border-slate-300 [&_span]:bg-slate-50 [&_span]:px-3 [&_span]:py-[5px] [&_span]:font-mono [&_span]:text-[11px] [&_span]:tracking-wide [&_span]:text-slate-500">
     {% for pill in meta_pills %}

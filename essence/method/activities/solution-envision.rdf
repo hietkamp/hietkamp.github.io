@@ -10,7 +10,6 @@
 
   <ess:Activity rdf:about="activity/solution-envision">
     <ess:name xml:lang="nl">Maak High-Level Design</ess:name>
-    <ess:name xml:lang="en">Envision Solution</ess:name>
     <ess:briefDescription xml:lang="nl">In deze activiteit stelt de architectuureigenaar een eerste, samenhangend High-Level Design op. Aanleiding, actoren, gebruiksdoelen en scope van de oplossing worden hierin vastgelegd op System Context-niveau (C4-model), eventueel aangevuld met een globale Container-weergave. Het resultaat vormt de basis voor de roadmap, de requirementsanalyse en de verdere architectuuruitwerking.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
     <p>In deze activiteit ontstaat een eerste, samenhangend beeld van de beoogde oplossing. De architectuureigenaar onderzoekt welke aanleiding en gebruiksdoelen aan het traject ten grondslag liggen, welke stakeholders erbij betrokken zijn en welke plaats de oplossing krijgt binnen het bestaande applicatie- en organisatielandschap.</p>
@@ -32,8 +31,8 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
     <ess:approach rdf:resource="approach/solution-envision/default"/>
-    <ess:action rdf:resource="action/solution-envision/read/architectural-drivers"/>
-    <ess:action rdf:resource="action/solution-envision/read/architecture-vision"/>
+    <ess:action rdf:resource="action/solution-envision/read/statement-of-architecture-work"/>
+    <ess:action rdf:resource="action/solution-envision/read/paved-road"/>
     <ess:action rdf:resource="action/solution-envision/create/architecture-model"/>
     <ess:action rdf:resource="action/solution-envision/create/architecture-decisions"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
@@ -44,7 +43,6 @@
 
   <ess:Approach rdf:about="approach/solution-envision/default">
     <ess:name xml:lang="nl">Maak High-Level Design</ess:name>
-    <ess:name xml:lang="en">Envision Solution</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
     <p><strong>Begrijp de aanleiding en het gebruiksdoel</strong></p>
@@ -65,29 +63,29 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/solution-envision/read/architectural-drivers">
-    <ess:name>Read Statement of Architecture Work</ess:name>
+  <ess:Action rdf:about="action/solution-envision/read/statement-of-architecture-work">
+    <ess:name xml:lang="nl">Lees architectuuropdracht</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/statement-of-architecture-work"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-envision/read/architecture-vision">
-    <ess:name>Read Paved Road</ess:name>
+  <ess:Action rdf:about="action/solution-envision/read/paved-road">
+    <ess:name xml:lang="nl">Lees paved road</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-envision/create/architecture-model">
-    <ess:name>Create Architecture Model</ess:name>
+    <ess:name xml:lang="nl">Maak architectuurmodel</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-envision/create/architecture-decisions">
-    <ess:name>Create Architecture Decisions</ess:name>
+    <ess:name xml:lang="nl">Maak architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>

@@ -1,0 +1,15 @@
+%% State diagram: Architectuurbeslissingen (alpha/architecture-decisions)
+%% Pijlen zonder label: transitie volgt uit de state-volgorde, maar is niet expliciet
+%% aan een activiteit gekoppeld via een completion-criterion in de rdf.
+stateDiagram-v2
+    Needed: Noodzakelijk
+    Framed: Geformuleerd
+    Decided: Besloten
+    Communicated: Gecommuniceerd
+    Validated: Gevalideerd
+
+    [*] --> Needed
+    Needed --> Framed
+    Framed --> Decided : Basis- en doelarchitectuur bepalen
+    Decided --> Communicated
+    Communicated --> Validated : Implementatiegovernance voeren

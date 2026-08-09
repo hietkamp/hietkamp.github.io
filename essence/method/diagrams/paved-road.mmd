@@ -1,0 +1,15 @@
+%% State diagram: Paved road (alpha/paved-road)
+%% Pijlen zonder label: transitie volgt uit de state-volgorde, maar is niet expliciet
+%% aan een activiteit gekoppeld via een completion-criterion in de rdf.
+stateDiagram-v2
+    Seeded: Gekiemd
+    Established: Gevestigd
+    Adopted: Geadopteerd
+    Pervasive: Omnipresent
+    Evolving: Evoluerend
+
+    [*] --> Seeded
+    Seeded --> Established : Goedgekeurde route bouwen
+    Established --> Adopted
+    Adopted --> Pervasive
+    Pervasive --> Evolving

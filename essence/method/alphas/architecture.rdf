@@ -9,7 +9,6 @@
 
   <ess:Alpha rdf:about="alpha/architecture">
     <ess:name xml:lang="nl">Architectuur</ess:name>
-    <ess:name xml:lang="en">Architecture</ess:name>
     <ess:briefDescription xml:lang="nl">De fundamentele concepten en eigenschappen van een systeem, belichaamd in zijn elementen, relaties en de principes van zijn ontwerp en evolutie.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Deze alpha volgt hoe volwassen de architectuur van een systeem is: van een gedeelde richting op één pagina, via een bewezen en bruikbare structuur, tot een gevestigde architectuur die onder beheerste verandering evolueert. De zes toestanden zijn generiek voor elk systeem en worden op solution-niveau ingevuld door de practice Solution architectuur, binnen de kaders die Enterprise architectuur vaststelt.</p>
@@ -28,7 +27,6 @@
 
   <ess:State rdf:about="state/architecture/envisioned">
     <ess:name xml:lang="nl">Gericht</ess:name>
-    <ess:name xml:lang="en">Envisioned</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -39,7 +37,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture/envisioned/1">
     <ess:name xml:lang="nl">De doelrichting, scope en waarde zijn op één pagina overeengekomen.</ess:name>
-    <ess:name xml:lang="en">The target direction, scope and value are agreed on a page.</ess:name>
     <ess:description xml:lang="nl">De doelrichting, scope en waarde zijn op één pagina overeengekomen.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -47,7 +44,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture/envisioned/2">
     <ess:name xml:lang="nl">De belangrijkste stakeholders delen de visie.</ess:name>
-    <ess:name xml:lang="en">The key stakeholders share the vision.</ess:name>
     <ess:description xml:lang="nl">De belangrijkste stakeholders delen de visie.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -55,7 +51,6 @@
 
   <ess:State rdf:about="state/architecture/outlined">
     <ess:name xml:lang="nl">Omlijnd</ess:name>
-    <ess:name xml:lang="en">Outlined</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -66,7 +61,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture/outlined/1">
     <ess:name xml:lang="nl">De minimale levensvatbare structuur, grenzen en interfaces zijn…</ess:name>
-    <ess:name xml:lang="en">The minimum viable structure, boundaries and interfaces are…</ess:name>
     <ess:description xml:lang="nl">De minimale levensvatbare structuur, grenzen en interfaces zijn gedefinieerd.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -74,7 +68,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture/outlined/2">
     <ess:name xml:lang="nl">Alleen de nu benodigde bouwstenen zijn opgenomen.</ess:name>
-    <ess:name xml:lang="en">Only the building blocks needed now are included.</ess:name>
     <ess:description xml:lang="nl">Alleen de nu benodigde bouwstenen zijn opgenomen.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -82,7 +75,6 @@
 
   <ess:State rdf:about="state/architecture/demonstrated">
     <ess:name xml:lang="nl">Bewezen</ess:name>
-    <ess:name xml:lang="en">Demonstrated</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -93,7 +85,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture/demonstrated/1">
     <ess:name xml:lang="nl">De risicovolste onderdelen zijn bewezen via spike, referentie…</ess:name>
-    <ess:name xml:lang="en">The riskiest parts are proven via spike, reference or increm…</ess:name>
     <ess:description xml:lang="nl">De risicovolste onderdelen zijn bewezen via spike, referentie of increment.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -101,7 +92,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture/demonstrated/2">
     <ess:name xml:lang="nl">De sleutelbeslissingen zijn gevalideerd door bewijs.</ess:name>
-    <ess:name xml:lang="en">The key decisions are validated by evidence.</ess:name>
     <ess:description xml:lang="nl">De sleutelbeslissingen zijn gevalideerd door bewijs.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -109,7 +99,6 @@
 
   <ess:State rdf:about="state/architecture/usable">
     <ess:name xml:lang="nl">Bruikbaar</ess:name>
-    <ess:name xml:lang="en">Usable</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -120,7 +109,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture/usable/1">
     <ess:name xml:lang="nl">De architectuur stuurt en begrenst de levering actief…</ess:name>
-    <ess:name xml:lang="en">The architecture is actively guiding and constraining delive…</ess:name>
     <ess:description xml:lang="nl">De architectuur stuurt en begrenst de levering actief.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -128,7 +116,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture/usable/2">
     <ess:name xml:lang="nl">De teams bouwen er binnen.</ess:name>
-    <ess:name xml:lang="en">The teams are building within it.</ess:name>
     <ess:description xml:lang="nl">De teams bouwen er binnen.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -136,7 +123,6 @@
 
   <ess:State rdf:about="state/architecture/established">
     <ess:name xml:lang="nl">Gevestigd</ess:name>
-    <ess:name xml:lang="en">Established</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -146,7 +132,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture/established/1">
     <ess:name xml:lang="nl">De architectuur is operationeel en levert de beoogde resultaten…</ess:name>
-    <ess:name xml:lang="en">The architecture is in operation and delivering the intended…</ess:name>
     <ess:description xml:lang="nl">De architectuur is operationeel en levert de beoogde resultaten.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -154,7 +139,6 @@
 
   <ess:State rdf:about="state/architecture/evolving">
     <ess:name xml:lang="nl">Evoluerend</ess:name>
-    <ess:name xml:lang="en">Evolving</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -164,7 +148,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture/evolving/1">
     <ess:name xml:lang="nl">De architectuur verandert onder beheerde, continue aanpassing…</ess:name>
-    <ess:name xml:lang="en">The architecture is changing under managed, continuous adapt…</ess:name>
     <ess:description xml:lang="nl">De architectuur verandert onder beheerde, continue aanpassing.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -172,7 +155,6 @@
 
   <ess:Checkpoint rdf:about="checkpoint/architecture/evolving/2">
     <ess:name xml:lang="nl">Verandering wordt afgehandeld zonder big-bang rework.</ess:name>
-    <ess:name xml:lang="en">Change is handled without big-bang rework.</ess:name>
     <ess:description xml:lang="nl">Verandering wordt afgehandeld zonder big-bang rework.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>

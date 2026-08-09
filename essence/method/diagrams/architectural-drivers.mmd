@@ -1,0 +1,16 @@
+%% State diagram: Architectuurbepalende eisen (alpha/architectural-drivers)
+%% Pijlen zonder label: transitie volgt uit de state-volgorde, maar is niet expliciet
+%% aan een activiteit gekoppeld via een completion-criterion in de rdf.
+stateDiagram-v2
+    Identified: Geïdentificeerd
+    Prioritised: Geprioriteerd
+    Quantified: Gekwantificeerd
+    Addressed: Geadresseerd
+    Sustained: Bijgehouden
+
+    [*] --> Identified
+    Identified --> Prioritised
+    Prioritised --> Quantified : Sturende eisen funderen
+    Quantified --> Addressed
+    Addressed --> Sustained : Architectuurverandering besturen
+    Addressed --> Sustained : Conformance bewaken

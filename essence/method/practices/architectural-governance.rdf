@@ -10,7 +10,6 @@
 
   <ess:Practice rdf:about="practice/architectural-governance">
     <ess:name xml:lang="nl">Architectuursturing</ess:name>
-    <ess:name xml:lang="en">Architectural Governance</ess:name>
     <ess:briefDescription xml:lang="nl">Richt de sturing in — inclusief de cadans van het Architectuurforum —, laat de levering ongehinderd doorstromen binnen guardrails, toetst conformance met bewijs en stelt de governance bij — het minimale, cyclische geheel dat architectuurkwaliteit bewaakt zonder de gates uit de Project levenscyclus te dupliceren.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Architectuursturing stuurt op architectuurkwaliteit via guardrails en gerichte uitzonderingsbeoordeling, niet door elke keuze opnieuw te controleren. Het Architectuurforum voert deze sturing uit onder mandaat van de Architectuursponsor en is eigenaar van de architectuur-werkwijze; samen bepalen zij de escalatiegrens tussen wat een team zelf mag beslissen en wat naar het forum moet.</p>
@@ -42,13 +41,11 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/architectural-governance/uses">
     <ess:name xml:lang="nl">gebruikt</ess:name>
-    <ess:name xml:lang="en">uses</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="workproduct/paved-road"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/architectural-governance/performed-by">
-    <ess:name xml:lang="en">performed by</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="role/architecture-sponsor"/>
     <ess:elements rdf:resource="role/governance-forum"/>

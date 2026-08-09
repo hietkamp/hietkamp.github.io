@@ -10,7 +10,6 @@
 
   <ess:Pattern rdf:about="role/architecture-sponsor">
     <ess:name xml:lang="nl">Architectuursponsor</ess:name>
-    <ess:name xml:lang="en">Architecture Sponsor</ess:name>
     <ess:briefDescription xml:lang="nl">Verleent het mandaat en de financiering die MVG laten werken. Stelt de beslissingsbevoegdheden in en beschermt ze: wie beslist wat, op welk niveau, en…</ess:briefDescription>
     <ess:description xml:lang="nl">Verleent het mandaat en de financiering die MVG laten werken. Stelt de beslissingsbevoegdheden in en beschermt ze: wie beslist wat, op welk niveau, en wat de escalatieroute is. Zonder mandaat heeft het Architectuurforum geen tanden.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -19,13 +18,11 @@
   </ess:Pattern>
 
   <ess:PatternAssociation rdf:about="pattern-association/architecture-sponsor/requires-competency">
-    <ess:name xml:lang="en">requires competency</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/architecture-sponsor/participates-in">
-    <ess:name xml:lang="en">participates in</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/governance-establish-governance"/>
     <ess:elements rdf:resource="activity/governance-tune-governance"/>

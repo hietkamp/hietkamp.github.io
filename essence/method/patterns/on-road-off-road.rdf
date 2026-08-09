@@ -8,14 +8,10 @@
 
   <ess:Pattern rdf:about="pattern/on-road-off-road">
     <ess:name xml:lang="nl">On-road/off-road governance</ess:name>
-    <ess:name xml:lang="en">On-road/off-road Governance</ess:name>
     <ess:briefDescription xml:lang="nl">Laat standaardkeuzes vrij stromen en review alleen afwijkingen, significante onomkeerbare beslissingen en uitzonderingen.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[<p>Laat standaardkeuzes vrij stromen en review alleen afwijkingen, significante onomkeerbare beslissingen en uitzonderingen.</p>
-<p><strong>Doel:</strong> Houd governance licht zonder architectuurcontrole te verliezen.</p>
-<p><strong>Context:</strong> Organisaties met een paved road, meerdere teams en beperkte architectuurcapaciteit.</p>
-<p><strong>Probleem:</strong> Stage gates vertragen teams, terwijl volledig vrije keuzes leiden tot versnippering en verborgen risico.</p>
-<p><strong>Oplossing:</strong> Definieer on-road keuzes als zelfbediening. Leg off-road keuzes vast via ADR en beoordeel ze via Review Record of Exception Request.</p>
-<p><strong>Resultaat:</strong> Architectuursturing focust op uitzonderingen en bewijs, niet op papierwerk.</p>]]></ess:description>
+    <ess:description xml:lang="nl"><![CDATA[<p>Bij organisaties met een paved road en meerdere teams ontstaat al snel een spanningsveld: strikte stage gates vertragen elk team dat een standaardkeuze maakt, terwijl volledig vrije keuzes leiden tot versnippering en verborgen risico. On-road/off-road governance lost dit op door onderscheid te maken tussen keuzes die binnen de paved road blijven en keuzes die daarvan afwijken.</p>
+<p>Standaardkeuzes — de "on-road" opties — mogen vrij stromen als zelfbediening; daar is geen architectuurreview voor nodig. Zodra een team afwijkt van de paved road, wordt dat een "off-road" beslissing: die wordt vastgelegd via een ADR en beoordeeld via een Review Record of Exception Request.</p>
+<p>Het resultaat is dat architectuursturing zich richt op de uitzonderingen en het bewijs daarvan, in plaats van op papierwerk rond iedere keuze — governance blijft licht zonder dat de architectuurcontrole verloren gaat.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/on-road-off-road/uses"/>
     <ess:associations rdf:resource="pattern-association/on-road-off-road/related-workproducts"/>
@@ -32,7 +28,6 @@
   </ess:Tag>
 
   <ess:PatternAssociation rdf:about="pattern-association/on-road-off-road/uses">
-    <ess:name xml:lang="en">uses</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/governance-assure-evidence"/>
     <ess:elements rdf:resource="activity/enterprise-build-paved-road"/>
@@ -41,7 +36,6 @@
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/on-road-off-road/related-workproducts">
-    <ess:name xml:lang="en">related-workproducts</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="workproduct/architecture-decisions"/>
     <ess:elements rdf:resource="workproduct/conformance-evidence"/>

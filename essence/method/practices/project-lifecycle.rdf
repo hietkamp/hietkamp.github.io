@@ -8,7 +8,6 @@
 
   <ess:Practice rdf:about="practice/project-lifecycle">
     <ess:name xml:lang="nl">Project levenscyclus</ess:name>
-    <ess:name xml:lang="en">Project Lifecycle</ess:name>
     <ess:briefDescription xml:lang="nl">De projectlevenscyclus bestaat uit zes fasen, gescheiden door vijf beslismomenten (gates). Elke gate markeert een gecontroleerde overgang naar de volgende fase: van initiatief en eisen, via ontwerp, realisatie en validatie, tot een stabiele en beheerde oplossing. De gates zijn risicogestuurd: projecten die binnen de architectuurkaders (guardrails) blijven, stromen grotendeels automatisch door. Alleen afwijkingen of uitzonderingen worden expliciet beoordeeld, waardoor architectuursturing en projectgovernance elkaar op de juiste momenten versterken.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>De projectlevenscyclus beschrijft hoe de architectuur van een oplossing (de solution-architectuur) binnen een project tot stand komt: van het eerste idee tot een werkende en gevalideerde oplossing. Het proces bestaat uit zes opeenvolgende fasen. Elke fase levert een concreet resultaat op. Pas wanneer dit resultaat is beoordeeld en goedgekeurd bij een gate, start de volgende fase.</p><p>De fasen volgen elkaar bewust op. Eerst bepalen we de richting en de eisen, daarna werken we het ontwerp uit, bouwen we de oplossing, valideren we deze en nemen we haar in gebruik. Zo ontstaat stap voor stap een oplossing waarvan de kwaliteit en samenhang aantoonbaar zijn.</p>
   </br><p><strong>Reikwijdte</strong></p>
@@ -67,7 +66,6 @@
   <!-- ================= Phase 1 — Initiation ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/initiation">
     <ess:name xml:lang="nl">Fase 1 — initiatie</ess:name>
-    <ess:name xml:lang="en">Phase 1 — Initiation</ess:name>
     <ess:briefDescription xml:lang="nl">Begrijp de solution-context en formuleer de architectuurvisie op solution-niveau; gebruik de enterprise-kaders van Enterprise architectuur als startpunt.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>In de eerste fase wordt de basis gelegd voor het vervolg van het traject. Voordat inhoudelijke keuzes worden gemaakt, moet duidelijk zijn waarom het traject wordt gestart, welk doel het heeft, wat de gewenste resultaten zijn en welke belanghebbenden daarbij betrokken zijn.</p>
@@ -83,14 +81,12 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/initiation/concluded-by">
     <ess:name xml:lang="nl">afgesloten door</ess:name>
-    <ess:name xml:lang="en">concluded by</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="pattern/project-lifecycle/gate-1-gericht"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/initiation/includes">
     <ess:name xml:lang="nl">bevat</ess:name>
-    <ess:name xml:lang="en">includes</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/solution-envision"/>
     <ess:elements rdf:resource="activity/solution-develop-roadmap"/>
@@ -98,7 +94,6 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/analysisdesign/lod">
     <ess:name xml:lang="nl">detailniveau</ess:name>
-    <ess:name xml:lang="en">level of detail</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="lod/architecture-model/context"/>
     <ess:elements rdf:resource="lod/architecture-model/container"/>
@@ -107,7 +102,6 @@
   <!-- ================= Phase 2 — Requirements ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/requirements">
     <ess:name xml:lang="nl">Fase 2 — requirements</ess:name>
-    <ess:name xml:lang="en">Phase 2 — Requirements</ess:name>
     <ess:briefDescription xml:lang="nl">Selecteer de architectuurbepalende eisen en leg de solution-richting vast binnen de enterprise-kaders.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>In deze fase worden de behoeften van de organisatie, gebruikers en andere stakeholders vertaald naar <strong>functionele en niet-functionele requirements</strong>. Als uitgangspunt worden de functionele requirements beschreven in de vorm van <strong>use cases</strong>. Elke use case beschrijft een concreet gebruiksdoel, de betrokken actoren en de interactie met de oplossing, zodat duidelijk wordt welke functionaliteit de oplossing moet bieden en in welke context deze wordt gebruikt. Naast de functionele requirements worden ook de niet-functionele requirements beschreven zoals kwaliteitseisen en overige randvoorwaarden.</p>
@@ -121,7 +115,6 @@
   <!-- ================= Phase 3 — Analysis & design ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/analysisdesign">
     <ess:name xml:lang="nl">Fase 3 — analyse &amp; ontwerp</ess:name>
-    <ess:name xml:lang="en">Phase 3 — Analysis &amp; design</ess:name>
     <ess:briefDescription xml:lang="nl">De enterprise-architect past de paved road toe op het solution-traject en levert het globale architectuurontwerp (HLD) als kader voor het low-level design.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>In deze fase worden de verzamelde wensen, eisen en randvoorwaarden geanalyseerd en wordt vastgesteld welke daarvan bepalend zijn voor de verdere uitwerking van de oplossing. Niet iedere eis heeft dezelfde impact; de nadruk ligt op de eisen en uitgangspunten die richting geven aan de architectuur- en ontwerpkeuzes in het vervolg van het traject. Deze eisen worden geselecteerd, geprioriteerd en afgestemd met de betrokken stakeholders, zodat een helder en gedragen kader ontstaat waarbinnen de oplossing wordt ontworpen en gerealiseerd.</p>
@@ -136,20 +129,17 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/requirements/concluded-by">
     <ess:name xml:lang="nl">afgesloten door</ess:name>
-    <ess:name xml:lang="en">concluded by</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="pattern/project-lifecycle/gate-2-omschreven"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/requirements/includes">
     <ess:name xml:lang="nl">bevat</ess:name>
-    <ess:name xml:lang="en">includes</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/analysisdesign/includes">
     <ess:name xml:lang="nl">bevat</ess:name>
-    <ess:name xml:lang="en">includes</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/solution-gather-requirements"/>
     <ess:elements rdf:resource="activity/solution-design"/>
@@ -157,7 +147,6 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/analysisdesign/lod">
     <ess:name xml:lang="nl">detailniveau</ess:name>
-    <ess:name xml:lang="en">level of detail</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="lod/architecture-model/component"/>
     <ess:elements rdf:resource="lod/architecture-model/code"/>
@@ -167,7 +156,6 @@
   <!-- ================= Phase 4 — Implementation ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/implementation">
     <ess:name xml:lang="nl">Fase 4 — implementatie</ess:name>
-    <ess:name xml:lang="en">Phase 4 — Implementation</ess:name>
     <ess:briefDescription xml:lang="nl">Stuur de implementatie actief op paved-road-conformance en bewijs risicovolle integratiekeuzes via een proof-of-concept.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>In deze fase wordt het ontwerp daadwerkelijk gerealiseerd. De oplossing wordt gebouwd, geconfigureerd of ingericht volgens het vastgestelde ontwerp. Tijdens de uitvoering wordt bewaakt dat de realisatie blijft voldoen aan de gemaakte afspraken, ontwerpkeuzes en geldende kaders.</p>
@@ -181,14 +169,12 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/implementation/concluded-by">
     <ess:name xml:lang="nl">afgesloten door</ess:name>
-    <ess:name xml:lang="en">concluded by</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="pattern/project-lifecycle/gate-3-bewezen"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/implementation/includes">
     <ess:name xml:lang="nl">bevat</ess:name>
-    <ess:name xml:lang="en">includes</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/solution-lead-implementation"/>
   </ess:PatternAssociation>
@@ -197,7 +183,6 @@
   <!-- ================= Phase 5 — Testing ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/testing">
     <ess:name xml:lang="nl">Fase 5 — testen</ess:name>
-    <ess:name xml:lang="en">Phase 5 — Testing</ess:name>
     <ess:briefDescription xml:lang="nl">Plan de solution-transitie en verzamel conformance-bewijs op systeemniveau; valideer de solution ten opzichte van het high-level design.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>In deze fase wordt vastgesteld of de gerealiseerde oplossing als geheel voldoet aan de gestelde eisen, de afgesproken uitgangspunten en de beoogde doelstellingen. De verschillende onderdelen functioneren niet alleen afzonderlijk, maar vormen samen een samenhangende en werkende oplossing.</p>
@@ -211,14 +196,12 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/testing/concluded-by">
     <ess:name xml:lang="nl">afgesloten door</ess:name>
-    <ess:name xml:lang="en">concluded by</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="pattern/project-lifecycle/gate-4-bruikbaar"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/testing/includes">
     <ess:name xml:lang="nl">bevat</ess:name>
-    <ess:name xml:lang="en">includes</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/solution-monitor-performance"/>
   </ess:PatternAssociation>
@@ -227,7 +210,6 @@
   <!-- ================= Phase 6 — Deployment ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/deployment">
     <ess:name xml:lang="nl">Fase 6 — uitrollen</ess:name>
-    <ess:name xml:lang="en">Phase 6 — Deployment</ess:name>
     <ess:briefDescription xml:lang="nl">Begeleid en verbeter de solution in productie; valideer de architectuur ten opzichte van de requirementsdefinitie en voer lessen terug naar Enterprise architectuur.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p></p>
@@ -235,29 +217,19 @@
 <p></p>
 ]]></ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:associations rdf:resource="pattern-association/project-lifecycle/deployment/includes"/>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/deployment/concluded-by"/>
   </ess:Pattern>
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/deployment/concluded-by">
     <ess:name xml:lang="nl">afgesloten door</ess:name>
-    <ess:name xml:lang="en">concluded by</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="pattern/project-lifecycle/gate-5-gevestigd"/>
-  </ess:PatternAssociation>
-
-  <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/deployment/includes">
-    <ess:name xml:lang="nl">bevat</ess:name>
-    <ess:name xml:lang="en">includes</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="activity/solution-monitor-performance"/>
   </ess:PatternAssociation>
 
 
   <!-- ================= Gate 1 — Solution Needed ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-1-gericht">
     <ess:name xml:lang="nl">Gate 1 — Solution Needed</ess:name>
-    <ess:name xml:lang="en">Gate 1 — Solution Needed</ess:name>
     <ess:briefDescription xml:lang="nl">Deze gate is gehaald als: de stakeholders bij de opportunity en de voorgestelde oplossing zijn geïdentificeerd; hun onderliggende behoeften zijn vastgesteld; eventuele onderliggende problemen en hun oorzaken zijn geïdentificeerd; is bevestigd dat een systeemgebaseerde oplossing nodig is; en er minstens één systeemgebaseerde oplossing is voorgesteld.</ess:briefDescription>
     <ess:description xml:lang="nl">Deze gate is gehaald als: de stakeholders bij de opportunity en de voorgestelde oplossing zijn geïdentificeerd; hun onderliggende behoeften zijn vastgesteld; eventuele onderliggende problemen en hun oorzaken zijn geïdentificeerd; is bevestigd dat een systeemgebaseerde oplossing nodig is; en er minstens één systeemgebaseerde oplossing is voorgesteld.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -266,7 +238,6 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/gate-1-gericht/aligns">
     <ess:name xml:lang="nl">sluit aan op</ess:name>
-    <ess:name xml:lang="en">aligns</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>
@@ -276,7 +247,6 @@
   <!-- ================= Gate 2 — Architecture Selected ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-2-omschreven">
     <ess:name xml:lang="nl">Gate 2 — Architecture Selected</ess:name>
-    <ess:name xml:lang="en">Gate 2 — Architecture Selected</ess:name>
     <ess:briefDescription xml:lang="nl">Deze gate is gehaald als: de criteria voor het selecteren van de architectuur zijn overeengekomen; de kernconcepten en eigenschappen van de architectuur zijn helder gedefinieerd; de gekozen architectuur is duidelijk doordacht; de systeemgrens is bekend; belangrijke beslissingen over de opbouw van het systeem zijn genomen; buy/build/reuse-beslissingen zijn gemaakt; en de belangrijkste technische risico's zijn onderkend en geaccepteerd.</ess:briefDescription>
     <ess:description xml:lang="nl">Deze gate is gehaald als: de criteria voor het selecteren van de architectuur zijn overeengekomen; de kernconcepten en eigenschappen van de architectuur zijn helder gedefinieerd; de gekozen architectuur is duidelijk doordacht; de systeemgrens is bekend; belangrijke beslissingen over de opbouw van het systeem zijn genomen; buy/build/reuse-beslissingen zijn gemaakt; en de belangrijkste technische risico's zijn onderkend en geaccepteerd.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -285,7 +255,6 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/gate-2-omschreven/aligns">
     <ess:name xml:lang="nl">sluit aan op</ess:name>
-    <ess:name xml:lang="en">aligns</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>
@@ -295,7 +264,6 @@
   <!-- ================= Gate 3 — System Usable (closes Phase 3 + Phase 4 jointly) ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-3-bewezen">
     <ess:name xml:lang="nl">Gate 3 — System Usable</ess:name>
-    <ess:name xml:lang="en">Gate 3 — System Usable</ess:name>
     <ess:briefDescription xml:lang="nl">Deze gate is gehaald als: de belangrijkste architectuurkenmerken zijn aangetoond; het systeem kan worden bevraagd en de prestaties kunnen worden gemeten; kritieke configuraties en interfaces van de architectuur zijn gedemonstreerd; de integratie met bestaande systemen is aangetoond; en de relevante stakeholders zijn het erover eens dat de gedemonstreerde architectuur passend is (Demonstrable) — én aanvullend: het systeem kan door de gebruikersstakeholders zelf worden bediend; de geboden functionaliteit is getest; de prestaties en het aantal defecten zijn acceptabel voor de stakeholders; het systeem is voldoende gedocumenteerd; de opgeleverde systeemonderdelen zijn bekend; en de toegevoegde waarde van het systeem is duidelijk (Usable).</ess:briefDescription>
     <ess:description xml:lang="nl">Deze gate is gehaald als: de belangrijkste architectuurkenmerken zijn aangetoond; het systeem kan worden bevraagd en de prestaties kunnen worden gemeten; kritieke configuraties en interfaces van de architectuur zijn gedemonstreerd; de integratie met bestaande systemen is aangetoond; en de relevante stakeholders zijn het erover eens dat de gedemonstreerde architectuur passend is (Demonstrable) — én aanvullend: het systeem kan door de gebruikersstakeholders zelf worden bediend; de geboden functionaliteit is getest; de prestaties en het aantal defecten zijn acceptabel voor de stakeholders; het systeem is voldoende gedocumenteerd; de opgeleverde systeemonderdelen zijn bekend; en de toegevoegde waarde van het systeem is duidelijk (Usable).</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -304,7 +272,6 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/gate-3-bewezen/aligns">
     <ess:name xml:lang="nl">sluit aan op</ess:name>
-    <ess:name xml:lang="en">aligns</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>
@@ -314,7 +281,6 @@
   <!-- ================= Gate 4 — System Ready ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-4-bruikbaar">
     <ess:name xml:lang="nl">Gate 4 — System Ready</ess:name>
-    <ess:name xml:lang="en">Gate 4 — System Ready</ess:name>
     <ess:briefDescription xml:lang="nl">Deze gate is gehaald als: documentatie over het inzetten en gebruiken van het systeem in de beoogde omgeving beschikbaar is; de stakeholder-vertegenwoordigers het systeem accepteren als geschikt voor het doel; zij het systeem daadwerkelijk beschikbaar willen maken voor gebruik; en de operationele ondersteuning is ingericht.</ess:briefDescription>
     <ess:description xml:lang="nl">Deze gate is gehaald als: documentatie over het inzetten en gebruiken van het systeem in de beoogde omgeving beschikbaar is; de stakeholder-vertegenwoordigers het systeem accepteren als geschikt voor het doel; zij het systeem daadwerkelijk beschikbaar willen maken voor gebruik; en de operationele ondersteuning is ingericht.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -323,7 +289,6 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/gate-4-bruikbaar/aligns">
     <ess:name xml:lang="nl">sluit aan op</ess:name>
-    <ess:name xml:lang="en">aligns</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>
@@ -333,7 +298,6 @@
   <!-- ================= Gate 5 — System Operational ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-5-gevestigd">
     <ess:name xml:lang="nl">Gate 5 — System Operational</ess:name>
-    <ess:name xml:lang="en">Gate 5 — System Operational</ess:name>
     <ess:briefDescription xml:lang="nl">Deze gate is gehaald als: het systeem beschikbaar is gesteld aan de beoogde gebruikers; er minstens één instantie van het systeem volledig operationeel is; en het systeem volledig wordt ondersteund conform de afgesproken servicelevels.</ess:briefDescription>
     <ess:description xml:lang="nl">Deze gate is gehaald als: het systeem beschikbaar is gesteld aan de beoogde gebruikers; er minstens één instantie van het systeem volledig operationeel is; en het systeem volledig wordt ondersteund conform de afgesproken servicelevels.</ess:description>
   <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -342,7 +306,6 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/gate-5-gevestigd/aligns">
     <ess:name xml:lang="nl">sluit aan op</ess:name>
-    <ess:name xml:lang="en">aligns</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Operational"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>
