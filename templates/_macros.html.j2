@@ -10,6 +10,45 @@
 {% endif %}
 {% endmacro %}
 
+{# Entry/CompletionCriterion cards: one per alpha, plus one per referenced work
+   product's level of detail. Shared by act.html.j2's Toegangscriteria and
+   Voltooiingscriteria sections — the card data shape is identical, only the
+   criterion kind (entry vs completion) differs. #}
+{% macro criterion_cards(criteria) %}
+<div class="wp-grid grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-3.5">
+  {% for c in criteria %}
+  {% set card_class = "wp-card block overflow-hidden rounded-xl border border-slate-300 bg-white text-inherit no-underline transition hover:-translate-y-0.5 hover:shadow-sm [&_.wc-top]:h-[5px] [&_.wc-body]:px-3.5 [&_.wc-body]:py-3 [&_h4]:m-0 [&_h4]:mb-1 [&_h4]:mt-1.5 [&_h4]:font-serif [&_h4]:text-[1.05rem] [&_h4]:font-semibold [&_p]:m-0 [&_p]:mb-2 [&_p]:text-[0.84rem] [&_p]:text-slate-500 [&_.wc-open]:mt-1 [&_.wc-open]:font-mono [&_.wc-open]:text-[10px] [&_.wc-open]:uppercase [&_.wc-open]:tracking-[0.1em] [&_.wc-open]:text-slate-600" %}
+  {% if c.href %}
+  <a href="{{ c.href }}" class="{{ card_class }}">
+  {% else %}
+  <div class="{{ card_class }} cursor-default">
+  {% endif %}
+    <div class="wc-top {{ c.topbar }}"></div>
+    <div class="wc-body">
+      {% if c.kind == 'wp' %}
+      <span class="inline-block rounded-full border border-slate-300 bg-slate-100 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600">Werkproduct</span>
+      <h4 class="mt-1.5">{{ c.wp_name }}</h4>
+      <div class="mt-2 flex flex-wrap items-center gap-1.5">
+        <span class="shrink-0 font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500">Detailniveau:</span>
+        {% for lod in c.lod_names %}
+        <span class="shrink-0 rounded-full border border-slate-300 bg-slate-50 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500">{{ lod }}</span>
+        {% endfor %}
+      </div>
+      {% else %}
+      {% if c.alpha %}<span class="inline-block rounded-full border border-slate-300 bg-slate-100 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600">{{ c.alpha }}</span>{% endif %}
+      <h4>{{ c.state }}</h4>
+      {% if c.href %}<div class="wc-open">Bekijk alpha →</div>{% endif %}
+      {% endif %}
+    </div>
+  {% if c.href %}
+  </a>
+  {% else %}
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endmacro %}
+
 {# Breadcrumb #}
 {% macro breadcrumb(crumbs) %}
 <div class="breadcrumb flex flex-wrap items-center gap-2 pt-[18px] font-mono text-[11px] text-slate-500 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline">
@@ -73,68 +112,6 @@
   {% for para in p.body %}<p>{{ para | safe }}</p>{% endfor %}
 </div>
 {% endif %}
-{% endmacro %}
-
-{# Activity-map chip by kind #}
-{% macro act_chip(kind, text, phase, spoor) %}
-{% if kind == 'space' %}
-  {% if phase == 'analyse' %}
-    <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] space bg-blue-700/10 text-blue-700">{{ text }}</span>
-  {% elif spoor == 'enterprise' %}
-    <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] space bg-[rgba(39,64,107,.1)] text-[var(--ent)]">{{ text }}</span>
-  {% else %}
-    <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] space bg-[rgba(15,110,99,.1)] text-[var(--sol)]">{{ text }}</span>
-  {% endif %}
-{% elif kind == 'comp' %}
-    <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] comp bg-indigo-700/10 text-indigo-700">{{ text }}</span>
-{% elif kind == 'alpha' %}
-    <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] alpha bg-emerald-700/10 text-emerald-700">{{ text }}</span>
-{% endif %}
-{% endmacro %}
-
-{# WoW activity card #}
-{% macro act_row(act, num_color, spoor) %}
-<a href="{{ act.href }}" class="act-row grid grid-cols-[52px_1fr_auto] overflow-hidden rounded-[13px] border border-slate-300 bg-white text-inherit no-underline transition hover:-translate-y-0.5 hover:shadow-sm [&_.ar-num]:flex [&_.ar-num]:items-center [&_.ar-num]:justify-center [&_.ar-num]:font-serif [&_.ar-num]:text-[1.4rem] [&_.ar-num]:font-bold [&_.ar-num]:text-white [&_.ar-body]:px-4 [&_.ar-body]:py-[13px] [&_.ar-title]:m-0 [&_.ar-title]:mb-[3px] [&_.ar-title]:font-serif [&_.ar-title]:text-[1.12rem] [&_.ar-title]:font-semibold [&_.ar-desc]:m-0 [&_.ar-desc]:mb-[7px] [&_.ar-desc]:text-[0.86rem] [&_.ar-desc]:text-slate-500 [&_.ar-meta]:flex [&_.ar-meta]:flex-wrap [&_.ar-meta]:gap-1.5 [&_.ar-arrow]:flex [&_.ar-arrow]:items-center [&_.ar-arrow]:px-[18px] [&_.ar-arrow]:font-mono [&_.ar-arrow]:text-lg [&_.ar-arrow]:text-slate-500 a-{{ act.phase }} [&_.ar-num]:{{ num_color }}">
-  <div class="ar-num">{{ act.num }}</div>
-  <div class="ar-body">
-    <div class="ar-title">{{ act.title }}</div>
-    <div class="ar-desc">{{ act.desc }}</div>
-    <div class="ar-meta">
-      {{ act_chip('space', act.chips.space, act.phase, spoor) }}
-      {{ act_chip('comp', act.chips.comp, act.phase, spoor) }}
-      {{ act_chip('alpha', act.chips.alpha, act.phase, spoor) }}
-    </div>
-    {% if act.inputs or act.outputs or act.patterns %}
-    <div class="ar-flow mt-2 flex flex-col gap-[5px] border-t border-dashed border-slate-300 pt-2">
-      {% if act.inputs %}
-      <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
-        <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500">Verwerkt</span>
-        {% for i in act.inputs %}
-        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] wp-in border border-slate-300 bg-slate-100 text-slate-500">{{ i }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
-      {% if act.outputs %}
-      <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
-        <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500">Produceert</span>
-        {% for o in act.outputs %}
-        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] wp-out border border-yellow-600/30 bg-yellow-600/10 text-yellow-700">{{ o }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
-      {% if act.patterns %}
-      <div class="ar-flow-row flex flex-wrap items-start gap-[5px]">
-        <span class="ar-flow-lbl w-[76px] shrink-0 pt-[3px] font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500">Patroon</span>
-        {% for pattern in act.patterns %}
-        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] pattern border border-red-700/25 bg-red-700/10 text-red-700">{{ pattern }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
-    </div>
-    {% endif %}
-  </div>
-  <div class="ar-arrow">→</div>
-</a>
 {% endmacro %}
 
 {# Activity space header row #}

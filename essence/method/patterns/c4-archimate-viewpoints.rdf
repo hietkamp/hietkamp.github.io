@@ -30,7 +30,7 @@
   <ess:PatternAssociation rdf:about="pattern-association/c4-archimate-viewpoints/uses">
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/enterprise-design"/>
-    <ess:elements rdf:resource="activity/solution-design"/>
+    <ess:elements rdf:resource="activity/solution-low-level-design"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/c4-archimate-viewpoints/related-workproducts">

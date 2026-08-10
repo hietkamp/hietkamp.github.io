@@ -459,17 +459,15 @@ De Essence Kernel onderscheidt drie areas of concern. Dit is **RDF-content, geen
 
 De drie tag-individuals (`esk:CustomerAreaOfConcern`, `esk:SolutionAreaOfConcern`, `esk:EndeavorAreaOfConcern`) staan gedefinieerd in `essence/essence-kernel.rdf` en worden daar al gebruikt op alle Kernel-Alphas en -ActivitySpaces. Dezelfde tags staan nu ook op de 5 method-Alphas (`essence/method/alphas/*.rdf`) en de 17 method-Activities (`essence/method/activities/*.rdf`).
 
-`build.py` leest deze tag puur via rdflib (`activity_domain_color()`, build.py) — er is **geen** hardcoded Alpha→domein-mapping meer. `AREA_OF_CONCERN_DOMAIN` in build.py is uitsluitend een technische vertaling van de RDF Tag-URI naar een interne kleursleutel, geen inhoudelijke aanname.
+`build.py` leest deze tag puur via rdflib (`domain_color_for()`, build.py) — er is **geen** hardcoded Alpha→domein-mapping meer. `AREA_OF_CONCERN_DOMAIN` in build.py is uitsluitend een technische vertaling van de RDF Tag-URI naar een interne kleursleutel, geen inhoudelijke aanname.
 
-Alle drie de kleuren zijn een solide `-700`-gewicht vulling met witte tekst — dezelfde stijl als de bestaande fase-badges (`bg-blue-700` voor "analyse", `bg-slate-700` voor "dev"), zodat het num-badge overal op de site één consistente taal spreekt. De tinten zijn zo gekozen dat ze niet botsen met `blue-700`/`indigo-700`/`emerald-700`, die al gebruikt worden door de chips.space/comp/alpha-chips op dezelfde kaart:
+De drie domeinkleuren zijn een eigen drieklank (geen Tailwind-standaardtinten) met WCAG-AA tekstcontrast op elke vulling. **Kleurvullingen zijn exclusief gereserveerd voor domeinbetekenis** — alle andere chips en labels op de site zijn neutraal slate. Bron: `DOMAIN_COLOR_CFG` in build.py.
 
-| Area of concern | Kleur | Hex | Toepassing |
+| Area of concern | Hex | Tekst op vulling | Toepassing |
 |--------|-----|-----|------------|
-| Solution | `bg-amber-700` | `#B45309` | Activiteiten/alphas getagd `SolutionAreaOfConcern` (architectuur, architectuurbeslissingen, architectuurbepalende eisen, requirements) |
-| Customer | `bg-teal-700` | `#0F766E` | Activiteiten/alphas getagd `CustomerAreaOfConcern` (stakeholders, opportunity, scope/mandaat) |
-| Endeavor | `bg-violet-700` | `#6D28D9` | Activiteiten/alphas getagd `EndeavorAreaOfConcern` (governance, paved road, way of working, team) |
-
-Tekstkleur is altijd `text-white` (niet `text-slate-800`), passend bij de verzadigde `-700`-achtergrond.
+| Solution (geel) | `#F0C419` | `text-slate-900` (wit op geel haalt nooit 4,5:1) | Activiteiten/alphas getagd `SolutionAreaOfConcern` (architectuur, architectuurbeslissingen, architectuurbepalende eisen, requirements) |
+| Customer (groen) | `#1E6B52` | `text-white` (6,3:1) | Activiteiten/alphas getagd `CustomerAreaOfConcern` (stakeholders, opportunity, scope/mandaat) |
+| Endeavour (blauw) | `#2557A7` | `text-white` (6,7:1) | Activiteiten/alphas getagd `EndeavorAreaOfConcern` (governance, paved road, way of working, team, rollen) |
 
 Een Activity zonder `ess:tags` toont geen domeinkleur en valt terug op de neutrale practice-kleur.
 

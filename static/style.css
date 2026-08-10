@@ -46,6 +46,16 @@ h1, h2, h3, h4 {
   font-family: 'Fraunces', Georgia, serif;
 }
 
+/* ── Keyboard focus ────────────────────────────────────────────────────── */
+/* Cards and chips are links with hover-only affordances; give keyboard users
+   an equally clear focus signal. */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #0f172a;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* ── Skip link ─────────────────────────────────────────────────────────── */
 .skip-link {
   position: absolute;

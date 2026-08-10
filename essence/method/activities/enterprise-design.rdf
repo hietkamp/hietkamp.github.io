@@ -14,7 +14,7 @@
     <ess:description xml:lang="nl"><![CDATA[
 <p>Je kunt geen route uitstippelen zonder te weten waar je vandaan komt én waar je heen wilt. Deze activiteit legt beide vast, in díe volgorde: eerst de bestaande situatie, dan de gewenste.</p>
 <p>De basisarchitectuur (baseline) brengt in kaart welke major systems, integratiepatronen en leverancierscategorieën nu al in gebruik zijn — niet uitputtend, maar toereikend om straks een gap-analyse op te kunnen doen. De doelarchitectuur beschrijft vervolgens de enterprise-brede bouwstenen die nodig zijn om de sturende eisen uit de architectuurvisie te realiseren. Hetzelfde principe als bij het architectuurmodel op solution-niveau geldt ook hier: onveranderde delen van de bestaande architectuur worden niet opnieuw gedocumenteerd, alleen wat verandert krijgt aandacht.</p>
-<p>De gap-analyse tussen basis en doel maakt zichtbaar welke veranderingen nodig zijn. Onomkeerbare keuzes op enterprise-niveau worden vastgelegd als architectuurbeslissingen (ADR's) — in dezelfde vorm en met dezelfde supersessie-discipline als op solution-niveau, zodat een latere wijziging altijd zichtbaar een eerdere versie vervangt.</p>
+<p>De gap-analyse tussen basis en doel maakt zichtbaar welke veranderingen nodig zijn. Onomkeerbare keuzes op enterprise-niveau worden vastgelegd als architectuurbeslissingen — in dezelfde vorm en met dezelfde supersessie-discipline als op solution-niveau, zodat een latere wijziging altijd zichtbaar een eerdere versie vervangt.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
@@ -23,8 +23,6 @@
     <ess:action rdf:resource="action/enterprise-design/create/architecture-model"/>
     <ess:action rdf:resource="action/enterprise-design/read/architecture-vision"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/enterprise-design/completion/architecture"/>
-    <ess:criterion rdf:resource="criterion/enterprise-design/completion/architecture-decisions"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
@@ -36,7 +34,7 @@
 <li>Breng de basisarchitectuur in kaart: welke major systems, integratiepatronen en leverancierscategorieën zijn nu in gebruik? Documenteer alleen wat relevant is voor de gap-analyse.</li>
 <li>Definieer de doelarchitectuur: de enterprise-brede bouwstenen die nodig zijn om de sturende eisen uit de architectuurvisie te realiseren.</li>
 <li>Voer de gap-analyse uit tussen basis en doel om te bepalen welke veranderingen nodig zijn.</li>
-<li>Leg onomkeerbare keuzes op enterprise-niveau vast als architectuurbeslissingen (ADR's), met dezelfde supersessie-discipline als op solution-niveau.</li>
+<li>Leg onomkeerbare keuzes op enterprise-niveau vast als architectuurbeslissingen, met dezelfde supersessie-discipline als op solution-niveau.</li>
 </ul>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -71,16 +69,6 @@
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:CompletionCriterion rdf:about="criterion/enterprise-design/completion/architecture">
-    <ess:name>Completion: Architecture</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architecture/outlined"/>
-  </ess:CompletionCriterion>
 
-  <ess:CompletionCriterion rdf:about="criterion/enterprise-design/completion/architecture-decisions">
-    <ess:name>Completion: Architecture Decisions</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architecture-decisions/decided"/>
-  </ess:CompletionCriterion>
 
 </rdf:RDF>

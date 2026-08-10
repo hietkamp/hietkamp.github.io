@@ -23,7 +23,6 @@
     <ess:action rdf:resource="action/solution-lead-implementation/read/review-records"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/solution-lead-implementation/completion/architecture"/>
-    <ess:criterion rdf:resource="criterion/solution-lead-implementation/completion/architecture-decisions"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
@@ -86,10 +85,5 @@
     <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable"/>
   </ess:CompletionCriterion>
 
-  <ess:CompletionCriterion rdf:about="criterion/solution-lead-implementation/completion/architecture-decisions">
-    <ess:name>Completion: Architecture Decisions</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architecture-decisions/validated"/>
-  </ess:CompletionCriterion>
 
 </rdf:RDF>

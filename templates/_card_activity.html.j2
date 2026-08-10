@@ -43,10 +43,8 @@
 {% endif %}
 {% set _num = _num_raw if _num_raw else '·' %}
 
-{# Badge-kleur: argument wint; anders afgeleid van phase #}
-{% set _num_color = num_color if num_color
-    else ('bg-blue-700' if _phase == 'analyse'
-    else  'bg-slate-700') %}
+{# Badge-kleur: argument (domeinkleur) wint; zonder domein-tag neutraal slate #}
+{% set _num_color = num_color if num_color else 'bg-slate-700' %}
 
 {# ── Card markup ─────────────────────────────────────────────────────────── #}
 <a href="{{ _href }}"
@@ -78,25 +76,15 @@
 
     {# Alpha-progressiebalk (alleen top-level practice-activiteiten) #}
     {% if act.alpha_bar %}
-    <div class="ar-alpha mb-[7px] mt-1 rounded-md border border-emerald-700/15 bg-emerald-700/5
-                px-2.5 py-1.5 font-mono text-[9px] text-emerald-700">{{ act.alpha_bar | safe }}</div>
+    <div class="ar-alpha mb-[7px] mt-1 rounded-md border border-slate-300 bg-slate-50
+                px-2.5 py-1.5 font-mono text-[9px] text-slate-600 [&_b]:text-slate-900">{{ act.alpha_bar | safe }}</div>
     {% endif %}
 
-    {# Essence-chips: Activity Space · Competency · Alpha #}
-    {% if act.chips %}
+    {# Activity Space chip — neutraal; domeinkleur zit al in het num-badge #}
+    {% if act.chips and act.chips.space %}
     <div class="ar-meta">
-      {% if act.chips.space %}
-        {% if _phase == 'analyse' %}
-        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
-                     uppercase tracking-[0.1em] space bg-blue-700/10 text-blue-700">{{ act.chips.space }}</span>
-        {% elif spoor == 'enterprise' %}
-        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
-                     uppercase tracking-[0.1em] space bg-[rgba(39,64,107,.1)] text-[var(--ent)]">{{ act.chips.space }}</span>
-        {% else %}
-        <span class="ar-chip rounded-full px-2 py-[3px] font-mono text-[9px] font-semibold
-                     uppercase tracking-[0.1em] space bg-[rgba(15,110,99,.1)] text-[var(--sol)]">{{ act.chips.space }}</span>
-        {% endif %}
-      {% endif %}
+      <span class="ar-chip rounded-full border border-slate-400/40 bg-slate-100 px-2 py-[3px] font-mono
+                   text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600">{{ act.chips.space }}</span>
     </div>
     {% endif %}
 

@@ -56,12 +56,12 @@
     {% if conn is mapping and conn.is_gate %}
     <div class="amap-conn-gate relative my-0">
       <div class="absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 bg-slate-300"></div>
-      <div class="mx-auto mt-3 flex items-start gap-3 rounded-lg border border-indigo-500 bg-indigo-100 px-5 py-3 shadow-sm">
-        <span class="mt-0.5 shrink-0 text-base font-bold text-indigo-700">✓</span>
+      <div class="mx-auto mt-3 flex items-start gap-3 rounded-lg border border-slate-400 bg-slate-100 px-5 py-3 shadow-sm">
+        <span class="mt-0.5 shrink-0 text-base font-bold text-slate-600">✓</span>
         <div class="min-w-0 flex-1">
-          <div class="text-sm font-semibold text-indigo-900">{{ conn.name }}</div>
-          {% if conn.brief %}<div class="mt-0.5 text-xs text-indigo-600">{{ conn.brief }}</div>{% endif %}
-          {% if conn.govern_href %}<a href="{{ conn.govern_href }}" class="mt-1.5 inline-flex items-center gap-1 rounded-full border border-indigo-500 bg-white px-2.5 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-indigo-700 hover:bg-indigo-50">→ {{ conn.govern_name }}</a>{% endif %}
+          <div class="text-sm font-semibold text-slate-900">{{ conn.name }}</div>
+          {% if conn.brief %}<div class="mt-0.5 text-xs text-slate-500">{{ conn.brief }}</div>{% endif %}
+          {% if conn.govern_href %}<a href="{{ conn.govern_href }}" class="mt-1.5 inline-flex items-center gap-1 rounded-full border border-slate-400 bg-white px-2.5 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600 hover:bg-slate-50">→ {{ conn.govern_name }}</a>{% endif %}
         </div>
       </div>
       <div class="mx-auto mt-0 h-4 w-px bg-slate-300"></div>
@@ -113,7 +113,7 @@
         <p>{{ role.desc }}</p>
         <div class="rc-comps flex flex-wrap gap-[5px]">
           {% for comp in role.competencies %}
-          <span class="rc-comp rounded-full border border-indigo-700/20 bg-indigo-700/10 px-[9px] py-[3px] font-mono text-[9.5px] font-semibold text-indigo-700">{{ comp }}</span>
+          <span class="rc-comp rounded-full border border-slate-300 bg-slate-100 px-[9px] py-[3px] font-mono text-[9.5px] font-semibold text-slate-600">{{ comp }}</span>
           {% endfor %}
         </div>
         <div class="rc-acts mt-2.5 border-t border-dashed border-slate-300 pt-2 font-mono text-[0.8rem] text-slate-500 [&_b]:text-slate-900"><b>Primair eigenaar van:</b> {{ role.owns }}</div>

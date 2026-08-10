@@ -23,9 +23,8 @@
     <ess:action rdf:resource="action/solution-monitor-performance/create/architecture-model"/>
     <ess:action rdf:resource="action/solution-monitor-performance/read/solution-roadmap"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/solution-monitor-performance/entry/architecture"/>
     <ess:criterion rdf:resource="criterion/solution-monitor-performance/completion/architecture"/>
-    <ess:criterion rdf:resource="criterion/solution-monitor-performance/completion/architectural-drivers"/>
+    <ess:criterion rdf:resource="criterion/solution-monitor-performance/completion/requirements"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
@@ -78,11 +77,6 @@
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:EntryCriterion rdf:about="criterion/solution-monitor-performance/entry/architecture">
-    <ess:name>Entry: Architecture</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architecture/established"/>
-  </ess:EntryCriterion>
 
   <ess:CompletionCriterion rdf:about="criterion/solution-monitor-performance/completion/architecture">
     <ess:name>Completion: System</ess:name>
@@ -90,10 +84,10 @@
     <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready"/>
   </ess:CompletionCriterion>
 
-  <ess:CompletionCriterion rdf:about="criterion/solution-monitor-performance/completion/architectural-drivers">
-    <ess:name>Completion: Architectural Drivers</ess:name>
+  <ess:CompletionCriterion rdf:about="criterion/solution-monitor-performance/completion/requirements">
+    <ess:name>Completion: Requirements</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architectural-drivers/sustained"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Fulfilled"/>
   </ess:CompletionCriterion>
 
 </rdf:RDF>

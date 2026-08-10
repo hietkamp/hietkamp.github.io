@@ -8,7 +8,7 @@
 >
 
   <ess:WorkProduct rdf:about="workproduct/architecture-decisions">
-    <ess:name xml:lang="nl">Architectuurbeslissingen (ADRs)</ess:name>
+    <ess:name xml:lang="nl">Architectuurbeslissingen</ess:name>
     <ess:briefDescription xml:lang="nl">Bewaar de rationale achter een significante keuze zodat die later gevalideerd, herzien of vervangen kan worden.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Een architectuurbeslissing is een onderbouwde keuze waarmee invulling wordt gegeven aan een architectuurbepalende eis: een eis die een aantoonbare invloed heeft op de structuur, samenhang of kwaliteit van de solution. Niet iedere ontwerp- of technische keuze is daarom een architectuurbeslissing. Alleen keuzes die de architectuur daadwerkelijk richting geven of de toekomstige onderhoudbaarheid, flexibiliteit, veiligheid of andere kwaliteitsaspecten beïnvloeden, worden als architectuurbeslissing vastgelegd.</p>
 <p>Architectuurbeslissingen vormen gezamenlijk het besluitvormingslog van de solution. Zij leggen niet alleen vast welke keuze is gemaakt, maar vooral waarom deze keuze is gemaakt, welke alternatieven zijn overwogen en welke consequenties daarbij zijn geaccepteerd. Hierdoor blijven de gemaakte afwegingen ook na afloop van het project herleidbaar en kunnen toekomstige wijzigingen beter worden beoordeeld.</p>
@@ -61,12 +61,6 @@
   <ess:Resource rdf:about="resource/architecture-decisions/adr-templates">
     <ess:content>https://adr.github.io/adr-templates/</ess:content>
   </ess:Resource>
-
-  <ess:WorkProductManifest rdf:about="workproduct-manifest/architecture-decisions/architecture-decisions">
-    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
-    <ess:alpha rdf:resource="alpha/architecture-decisions"/>
-    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
-  </ess:WorkProductManifest>
 
   <ess:TypedResource rdf:about="resource/architecture-decisions/template">
     <ess:kind rdf:resource="type/template"/>

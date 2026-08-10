@@ -1,0 +1,21 @@
+{% extends "_base.html.j2" %}
+{% from "_macros.html.j2" import hero %}
+
+{% block content %}
+{{ hero(hero_data) }}
+
+<div class="wp-grid mt-8 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-3.5">
+  {% for role in roles %}
+  {% set card_class = "wp-card block overflow-hidden rounded-xl border border-slate-300 bg-white text-inherit no-underline transition hover:-translate-y-0.5 hover:shadow-sm [&_.wc-top]:h-[5px] [&_.wc-body]:px-3.5 [&_.wc-body]:py-3 [&_.wc-type]:mb-1 [&_.wc-type]:font-mono [&_.wc-type]:text-[9px] [&_.wc-type]:font-semibold [&_.wc-type]:uppercase [&_.wc-type]:tracking-[0.14em] [&_.wc-type]:text-slate-500 [&_h4]:m-0 [&_h4]:mb-1 [&_h4]:font-serif [&_h4]:text-[1.05rem] [&_h4]:font-semibold [&_p]:m-0 [&_p]:mb-2 [&_p]:text-[0.84rem] [&_p]:text-slate-500 [&_.wc-open]:mt-1 [&_.wc-open]:font-mono [&_.wc-open]:text-[10px] [&_.wc-open]:uppercase [&_.wc-open]:tracking-[0.1em] [&_.wc-open]:text-slate-600" %}
+  <a href="{{ role.href }}" class="{{ card_class }}">
+    <div class="wc-top {{ role.topbar }}"></div>
+    <div class="wc-body">
+      {% if role.level %}<div class="wc-type">{{ role.level }}</div>{% endif %}
+      <h4>{{ role.title }}</h4>
+      <p>{{ role.desc }}</p>
+      <div class="wc-open">Bekijk rol →</div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}

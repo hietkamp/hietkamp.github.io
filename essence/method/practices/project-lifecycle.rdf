@@ -57,7 +57,7 @@
     <ess:ownedElements rdf:resource="pattern/project-lifecycle/gate-3-bewezen"/>
     <ess:ownedElements rdf:resource="pattern/project-lifecycle/gate-4-bruikbaar"/>
     <ess:ownedElements rdf:resource="pattern/project-lifecycle/gate-5-gevestigd"/>
-    <ess:ownedElements rdf:resource="activity-association/project-lifecycle/enterprise-design/end-before-start/solution-design"/>
+    <ess:ownedElements rdf:resource="activity-association/project-lifecycle/enterprise-design/end-before-start/solution-low-level-design"/>
     <ess:ownedElements rdf:resource="activity-association/project-lifecycle/governance-govern-delivery/end-before-start/solution-lead-implementation"/>
     <ess:ownedElements rdf:resource="activity-association/project-lifecycle/governance-assure-evidence/end-before-start/solution-monitor-performance"/>
   </ess:Practice>
@@ -88,8 +88,7 @@
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/initiation/includes">
     <ess:name xml:lang="nl">bevat</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="activity/solution-envision"/>
-    <ess:elements rdf:resource="activity/solution-develop-roadmap"/>
+    <ess:elements rdf:resource="activity/solution-high-level-design"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/analysisdesign/lod">
@@ -142,7 +141,7 @@
     <ess:name xml:lang="nl">bevat</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/solution-identify-requirements"/>
-    <ess:elements rdf:resource="activity/solution-design"/>
+    <ess:elements rdf:resource="activity/solution-low-level-design"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/analysisdesign/lod">
@@ -313,11 +312,11 @@
 
 
   <!-- ================= Cross-practice activity associations (unchanged) ================= -->
-  <ess:ActivityAssociation rdf:about="activity-association/project-lifecycle/enterprise-design/end-before-start/solution-design">
-    <ess:name>project-lifecycle enterprise-design end-before-start solution-design</ess:name>
+  <ess:ActivityAssociation rdf:about="activity-association/project-lifecycle/enterprise-design/end-before-start/solution-low-level-design">
+    <ess:name>project-lifecycle enterprise-design end-before-start solution-low-level-design</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/enterprise-design"/>
-    <ess:end2 rdf:resource="activity/solution-design"/>
+    <ess:end2 rdf:resource="activity/solution-low-level-design"/>
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>
 

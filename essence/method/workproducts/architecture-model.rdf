@@ -22,7 +22,7 @@
     <li>Wat verandert er?</li>
     <li>Tot welk detailniveau moeten deze keuzes op dit moment worden vastgelegd om ontwerp, realisatie en toetsing mogelijk te maken?</li>
     </ul>
-    <p>De onderbouwing van de gemaakte architectuurbeslissingen maakt geen onderdeel uit van het Architectuurmodel zelf. Deze wordt vastgelegd in afzonderlijke Architectuurbeslissingen (ADR's), zodat het model zich uitsluitend richt op de architectuur en de structuur van de oplossing, terwijl de motivatie en afwegingen achter de keuzes afzonderlijk worden beheerd.</p>
+    <p>De onderbouwing van de gemaakte architectuurbeslissingen maakt geen onderdeel uit van het Architectuurmodel zelf. Deze wordt vastgelegd in afzonderlijke Architectuurbeslissingen, zodat het model zich uitsluitend richt op de architectuur en de structuur van de oplossing, terwijl de motivatie en afwegingen achter de keuzes afzonderlijk worden beheerd.</p>
     <p>Het Architectuurmodel is bedoeld voor alle betrokkenen die verantwoordelijk zijn voor of betrokken zijn bij de architectuur van de oplossing, waaronder de architectuureigenaar, het deliveryteam, de Enterprise architect, leveranciers en reviewers. Hierdoor vormt het gedurende de gehele levenscyclus van het project het gemeenschappelijke referentiekader voor ontwerp, implementatie en conformance-toetsing.</p>
     <br /><p><strong>Voorbeeld van een applicatielandschap</strong></p>
     <p>Onderstaand voorbeeld toont een applicatielandschap voor het proces Cliëntenregistratie. Het diagram brengt de belangrijkste gebruikers, applicaties, externe systemen en hun onderlinge interacties in beeld. Zo wordt duidelijk welke applicaties onderdeel zijn van de solution, hoe gegevens worden uitgewisseld en waar de systeemgrenzen (en verantwoordelijkheden) liggen. Het diagram is opgesteld volgens het C4-model en ondersteunt het maken, communiceren en toetsen van architectuurbeslissingen.</p>
@@ -105,12 +105,6 @@
   <ess:Resource rdf:about="resource/architecture-model/c4-reference">
     <ess:content>https://c4model.com/</ess:content>
   </ess:Resource>
-
-  <ess:WorkProductManifest rdf:about="workproduct-manifest/architecture-model/architecture">
-    <ess:workProduct rdf:resource="workproduct/architecture-model"/>
-    <ess:alpha rdf:resource="alpha/architecture"/>
-    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
-  </ess:WorkProductManifest>
 
   <ess:WorkProductManifest rdf:about="workproduct-manifest/architecture-model/system">
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>

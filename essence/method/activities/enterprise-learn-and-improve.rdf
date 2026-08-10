@@ -24,9 +24,7 @@
     <ess:action rdf:resource="action/enterprise-learn-and-improve/create/paved-road"/>
     <ess:action rdf:resource="action/enterprise-learn-and-improve/read/paved-road-adoptie"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/enterprise-learn-and-improve/entry/architecture"/>
-    <ess:criterion rdf:resource="criterion/enterprise-learn-and-improve/completion/architecture"/>
-    <ess:criterion rdf:resource="criterion/enterprise-learn-and-improve/completion/architectural-drivers"/>
+    <ess:criterion rdf:resource="criterion/enterprise-learn-and-improve/completion/requirements"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
@@ -81,22 +79,11 @@
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:EntryCriterion rdf:about="criterion/enterprise-learn-and-improve/entry/architecture">
-    <ess:name>Entry: Architecture</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architecture/established"/>
-  </ess:EntryCriterion>
 
-  <ess:CompletionCriterion rdf:about="criterion/enterprise-learn-and-improve/completion/architecture">
-    <ess:name>Completion: Architecture</ess:name>
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-learn-and-improve/completion/requirements">
+    <ess:name>Completion: Requirements</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architecture/evolving"/>
-  </ess:CompletionCriterion>
-
-  <ess:CompletionCriterion rdf:about="criterion/enterprise-learn-and-improve/completion/architectural-drivers">
-    <ess:name>Completion: Architectural Drivers</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architectural-drivers/sustained"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Fulfilled"/>
   </ess:CompletionCriterion>
 
 </rdf:RDF>

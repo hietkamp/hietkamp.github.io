@@ -1,5 +1,5 @@
 {% extends "_base.html.j2" %}
-{% from "_macros.html.j2" import rdf_prose, sec_head %}
+{% from "_macros.html.j2" import rdf_prose, sec_head, criterion_cards %}
 {% block content %}
 {% set nsec = namespace(n=0) %}
 <div class="breadcrumb flex flex-wrap items-center gap-2 pt-[18px] font-mono text-[11px] text-slate-500 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline">
@@ -12,14 +12,21 @@
 
 <header class="hero border-b-2 border-[var(--prac)] py-14 pb-8 [&_h1]:m-0 [&_h1]:mb-[0.45em] [&_h1]:font-serif [&_h1]:text-[clamp(2.3rem,5.6vw,4.4rem)] [&_h1]:font-black [&_h1]:leading-none [&_h1_em]:font-medium [&_h1_em]:italic [&_h1_em]:text-[var(--prac)] max-[600px]:py-8 max-[600px]:pb-4 max-[600px]:[&_h1]:text-[clamp(1.9rem,8vw,3rem)]">
   <div class="act-meta mb-4 flex flex-wrap items-center gap-2">
-    {% if act_num %}<span class="act-num rounded-full border-[1.5px] border-blue-700 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.1em] text-blue-700">{{ act_num }}</span>{% endif %}
-    {% if chips is defined and chips.space is defined %}<span class="act-chip rounded-full border-[1.5px] border-dashed px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] chip-space {{ chips.space_css | default('border-blue-700/25 bg-blue-700/10 text-blue-700') }}">{{ chips.space }}</span>{% endif %}
+    {% if act_num %}<span class="act-num rounded-full border-[1.5px] border-[var(--prac)] px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--prac)]">{{ act_num }}</span>{% endif %}
+    {% if chips is defined and chips.space is defined %}<span class="act-chip rounded-full border-[1.5px] border-dashed px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] chip-space {{ chips.space_css | default('border-slate-400/40 bg-slate-100 text-slate-600') }}">{{ chips.space }}</span>{% endif %}
     {% for chip in extra_chips | default([]) %}
     <span class="act-chip rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] {{ chip.css }}">{{ chip.label }}</span>
     {% endfor %}
   </div>
   <h1>{{ act_name | default(title) | default('') }}</h1>
   <p class="lede m-0 text-[clamp(1rem,1.5vw,1.16rem)] leading-relaxed text-slate-500">{{ lede | default(desc) | default('') }}</p>
+  {% if role_chips %}
+  <div class="role-chips mt-4 flex flex-wrap gap-2">
+    {% for r in role_chips %}
+    <a href="{{ r.href }}" class="inline-flex items-center rounded-full px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.1em] no-underline transition {{ r.css }}">{{ r.role }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
   {% if alpha_bar %}
   <div class="alpha-bar mt-5 flex flex-wrap items-center gap-2 rounded-[10px] border border-[var(--prac)]/20 bg-slate-50 px-3.5 py-2.5 font-mono text-[11px]">
     <span class="ab-label font-bold tracking-wide text-[var(--prac)]">Beweegt de alphas:</span>
@@ -77,106 +84,70 @@
   {% endif %}
 </section>
 
+{% if entry_criteria %}
+<section class="sec mt-[38px] scroll-mt-[164px]" id="toegangscriteria">
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), 'Toegangscriteria') }}
+  {{ criterion_cards(entry_criteria) }}
+</section>
+{% endif %}
+
 <section class="sec mt-[38px] scroll-mt-[164px]" id="aanpak">
   {% set nsec.n = nsec.n + 1 %}
   {{ sec_head('%02d'|format(nsec.n), 'Aanpak') }}
   {% if approach and approach.desc %}
-  {{ rdf_prose(approach.desc, 'mb-5') }}
+  {{ rdf_prose(approach.desc) }}
   {% endif %}
-  {% if actions %}
-  <h3 class="m-0 mb-2.5 font-serif text-[1.05rem] font-semibold text-slate-900">Acties</h3>
-  <ul class="m-0 mb-6 list-none space-y-1.5 p-0">
-    {% for a in actions %}
-    <li class="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-3 py-2">
-      <span class="shrink-0 rounded-full border px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] {{ a.kind_css }}">{{ a.kind_nl }}</span>
-      <span class="min-w-0 flex-1 text-[0.88rem] font-medium text-slate-700">
-        {% if a.href %}<a href="{{ a.href }}" class="text-[var(--prac)] no-underline hover:underline">{{ a.target }}</a>{% else %}{{ a.target }}{% endif %}
-      </span>
-      <span class="shrink-0 font-mono text-[9px] uppercase tracking-wide text-slate-400">{{ a.type }}</span>
-    </li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-  {% if work_products %}
-  <h3 class="m-0 mb-2.5 font-serif text-[1.05rem] font-semibold text-slate-900">Werkproducten</h3>
+</section>
+
+{% if action_groups %}
+<section class="sec mt-[38px] scroll-mt-[164px]" id="acties">
+  {% set nsec.n = nsec.n + 1 %}
+  {{ sec_head('%02d'|format(nsec.n), 'Acties') }}
+  {% for group in action_groups %}
+  <h3 class="m-0 mb-2.5{% if not loop.first %} mt-6{% endif %} font-serif text-[1.05rem] font-semibold text-slate-900">{{ group.kind_nl }}</h3>
   <div class="wp-grid grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-3.5">
-    {% for wp in work_products %}
-    {% set wp_class = "wp-card block overflow-hidden rounded-xl border border-slate-300 bg-white text-inherit no-underline transition hover:-translate-y-0.5 hover:shadow-sm [&_.wc-top]:h-[5px] [&_.wc-top]:bg-amber-800 [&_.wc-body]:px-3.5 [&_.wc-body]:py-3 [&_.wc-type]:mb-1 [&_.wc-type]:font-mono [&_.wc-type]:text-[9px] [&_.wc-type]:font-semibold [&_.wc-type]:uppercase [&_.wc-type]:tracking-[0.14em] [&_.wc-type]:text-amber-800 [&_h4]:m-0 [&_h4]:mb-1 [&_h4]:font-serif [&_h4]:text-[1.05rem] [&_h4]:font-semibold [&_p]:m-0 [&_p]:mb-2 [&_p]:text-[0.84rem] [&_p]:text-slate-500 [&_.wc-proves]:border-t [&_.wc-proves]:border-dashed [&_.wc-proves]:border-slate-300 [&_.wc-proves]:pt-1.5 [&_.wc-proves]:font-mono [&_.wc-proves]:text-[9.5px] [&_.wc-proves]:text-emerald-700 [&_.wc-open]:mt-1 [&_.wc-open]:font-mono [&_.wc-open]:text-[9px] [&_.wc-open]:uppercase [&_.wc-open]:tracking-[0.1em] [&_.wc-open]:text-amber-800" %}
-    {% if wp.href %}
-    <a href="{{ wp.href }}" class="{{ wp_class }}">
+    {% for a in group.cards %}
+    {% set card_class = "wp-card block overflow-hidden rounded-xl border border-slate-300 bg-white text-inherit no-underline transition hover:-translate-y-0.5 hover:shadow-sm [&_.wc-top]:h-[5px] [&_.wc-body]:px-3.5 [&_.wc-body]:py-3 [&_h4]:m-0 [&_h4]:font-serif [&_h4]:text-[1.05rem] [&_h4]:font-semibold" %}
+    {% if a.href %}
+    <a href="{{ a.href }}" class="{{ card_class }}">
     {% else %}
-    <div class="{{ wp_class }} cursor-default">
+    <div class="{{ card_class }} cursor-default">
     {% endif %}
-      <div class="wc-top"></div>
+      <div class="wc-top {{ a.topbar }}"></div>
       <div class="wc-body">
-        <div class="wc-type">Work Product{% if wp.practice %} · {{ wp.practice }}{% endif %}</div>
-        <h4>{{ wp.title }}</h4>
-        <p>{{ wp.desc }}</p>
-        <div class="wc-proves">{{ wp.proves }}</div>
-        {% if wp.href %}<div class="wc-open">Uitwerking &amp; sjabloon →</div>{% endif %}
+        <span class="inline-block rounded-full border border-slate-300 bg-slate-100 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600">{{ a.type }}</span>
+        <h4 class="mt-1.5">{{ a.title }}</h4>
       </div>
-    {% if wp.href %}
+    {% if a.href %}
     </a>
     {% else %}
     </div>
     {% endif %}
     {% endfor %}
   </div>
-  {% endif %}
+  {% endfor %}
 </section>
+{% endif %}
 
 {% if completion_criteria %}
 <section class="sec mt-[38px] scroll-mt-[164px]" id="criteria">
   {% set nsec.n = nsec.n + 1 %}
   {{ sec_head('%02d'|format(nsec.n), 'Voltooiingscriteria') }}
-  <ul class="m-0 mt-3 list-none space-y-1.5 p-0">
-    {% for c in completion_criteria %}
-    <li class="rounded-lg border border-slate-200 bg-white px-3 py-2">
-      <div class="flex flex-wrap items-center gap-2.5">
-        {% if c.alpha %}<span class="shrink-0 rounded-full border border-emerald-700/30 bg-emerald-700/10 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-emerald-700">{{ c.alpha }}</span>{% endif %}
-        <span class="text-[0.88rem] text-slate-700">{{ c.state }}</span>
-      </div>
-      {% for group in c.lod_groups | default([]) %}
-      <div class="mt-1.5 flex flex-wrap items-center gap-2 border-t border-dashed border-slate-200 pt-1.5">
-        {% if group.wp_href %}<a href="{{ group.wp_href }}" class="shrink-0 rounded-full border border-slate-300 bg-slate-100 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600 no-underline hover:underline">{{ group.wp_name }}</a>
-        {% else %}<span class="shrink-0 rounded-full border border-slate-300 bg-slate-100 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600">{{ group.wp_name }}</span>{% endif %}
-        <span class="text-[0.82rem] text-slate-600">op detailniveau van</span>
-        {% for lod in group.lod_names %}
-        <span class="shrink-0 rounded-full border border-slate-300 bg-slate-50 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500">{{ lod }}</span>
-        {% endfor %}
-      </div>
-      {% endfor %}
-    </li>
-    {% endfor %}
-  </ul>
+  {{ criterion_cards(completion_criteria) }}
 </section>
 {% endif %}
 
-{% if roles %}
-<section class="sec mt-[38px] scroll-mt-[164px]" id="rollen">
-  {% set nsec.n = nsec.n + 1 %}
-  {{ sec_head('%02d'|format(nsec.n), 'Rollen' if roles.cards|length > 1 else 'Rol') }}
-  <p class="prose">{{ roles.intro }}</p>
-  <div class="level-grid mt-3 grid grid-cols-2 gap-4 max-[900px]:grid-cols-1">
-    {% for card in roles.cards %}
-    <div class="level-card overflow-hidden rounded-[13px] border border-slate-300 [&_.lc-head]:px-4 [&_.lc-head]:py-3 [&_.lc-head]:text-white [&_.lc-head_h3]:m-0 [&_.lc-head_h3]:font-serif [&_.lc-head_h3]:text-[1.1rem] [&_.lc-head_h3]:font-semibold [&_.lc-body]:bg-white [&_.lc-body]:px-4 [&_.lc-body]:py-3.5 [&_.lc-scope]:mb-2 [&_.lc-scope]:font-mono [&_.lc-scope]:text-[9.5px] [&_.lc-scope]:uppercase [&_.lc-scope]:tracking-[0.08em] [&_.lc-scope]:text-slate-500 [&_.lc-body_p]:m-0 [&_.lc-body_p]:mb-2.5 [&_.lc-body_p]:text-[0.88rem] [&_.lc-body_p]:text-slate-500 [&_.lc-wp]:border-t [&_.lc-wp]:border-dashed [&_.lc-wp]:border-slate-300 [&_.lc-wp]:pt-2 [&_.lc-wp]:text-[0.84rem] [&_.lc-wp]:text-slate-500 [&_.lc-wp_b]:text-slate-900 [&_.lc-comps]:mt-2 [&_.lc-comps]:flex [&_.lc-comps]:flex-wrap [&_.lc-comps]:gap-[5px] {{ card.lc_css }} scroll-mt-[112px]"{% if card.id %} id="{{ card.id }}"{% endif %}>
-      <div class="lc-head">
-        <h3>{{ card.role }}</h3>
-      </div>
-      <div class="lc-body">
-        <div class="lc-scope">{{ card.scope }}</div>
-        <p>{{ card.desc | safe }}</p>
-        <div class="lc-wp"><b>{{ card.makes_label | default('Maakt') }}:</b> {{ card.makes }}</div>
-        <div class="lc-comps">
-          {% for comp in card.competencies %}
-          <span class="lc-comp rounded-full border border-indigo-700/20 bg-indigo-700/10 px-2 py-[3px] font-mono text-[9px] font-semibold text-indigo-700">{{ comp }}</span>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-</section>
+{% if nav %}
+<nav class="act-pager mt-12 flex items-stretch justify-between gap-3 border-t border-slate-300 pt-5" aria-label="Activiteitnavigatie">
+  {% if nav.prev %}
+  <a href="{{ nav.prev.href }}" class="inline-flex max-w-[45%] items-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-[0.88rem] font-medium text-slate-700 no-underline transition hover:border-[var(--prac)] hover:text-[var(--prac)]">{{ nav.prev.label }}</a>
+  {% else %}<span></span>{% endif %}
+  <a href="{{ nav.overview }}" class="inline-flex items-center px-2 py-3 font-mono text-[11px] uppercase tracking-[0.1em] text-slate-500 no-underline transition hover:text-[var(--prac)]">Overzicht</a>
+  {% if nav.next %}
+  <a href="{{ nav.next.href }}" class="inline-flex max-w-[45%] items-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-right text-[0.88rem] font-medium text-slate-700 no-underline transition hover:border-[var(--prac)] hover:text-[var(--prac)]">{{ nav.next.label }}</a>
+  {% else %}<span></span>{% endif %}
+</nav>
 {% endif %}
 
 {% endblock %}

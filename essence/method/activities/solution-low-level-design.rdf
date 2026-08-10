@@ -8,28 +8,31 @@
   xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
 >
 
-  <ess:Activity rdf:about="activity/solution-design">
+  <ess:Activity rdf:about="activity/solution-low-level-design">
     <ess:name xml:lang="nl">Maak Low-Level Design</ess:name>
-    <ess:briefDescription xml:lang="nl">Tijdens deze activiteit wordt het High-Level Design uitgewerkt tot een technisch ontwerp dat als basis dient voor de realisatie van de solution. Alleen de onderdelen waarvoor verdere detaillering noodzakelijk is, worden uitgewerkt, waarbij de interne structuur, componenten, interfaces, gegevensverwerking en technische voorzieningen worden beschreven. Het resultaat is een samenhangend en realiseerbaar Low-Level Design dat de implementatie richting geeft en aansluit op de architectuurbepalende eisen, architectuurbeslissingen en enterprise-architectuurkaders.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[<p>Tijdens deze activiteit wordt het High-Level Design verder uitgewerkt tot een gedetailleerd en realiseerbaar ontwerp. Het doel is om voor de onderdelen van de solution die nadere technische uitwerking vereisen, vast te leggen hoe zij intern zijn opgebouwd, hoe zij samenwerken en op welke wijze zij worden gerealiseerd. Het Low-Level Design vormt daarmee de directe basis voor implementatie, configuratie, bouw, integratie en technische toetsing.</p>
+    <ess:briefDescription xml:lang="nl">Tijdens deze activiteit wordt de architectuur uitgewerkt tot een technisch ontwerp dat als basis dient voor de implementatie van de solution. Alleen de onderdelen waarvoor verdere detaillering noodzakelijk is, worden uitgewerkt, waarbij de interne structuur, componenten, interfaces, gegevensverwerking en technische voorzieningen worden beschreven. Het resultaat is een samenhangend en realiseerbaar ontwerp dat de implementatie richting geeft en aansluit op de architectuurbepalende eisen, architectuurbeslissingen en paved road.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Tijdens deze activiteit wordt de architectuur verder uitgewerkt tot een realiseerbaar ontwerp. Het doel is om voor de onderdelen van de solution die nadere technische uitwerking vereisen, vast te leggen hoe zij intern zijn opgebouwd, hoe zij samenwerken en op welke wijze zij worden gerealiseerd. Het Low-Level Design vormt daarmee de directe basis voor implementatie, configuratie, bouw, integratie en technische toetsing.</p>
 <p>De uitwerking richt zich niet automatisch op ieder onderdeel van de solution. Alleen bouwstenen waarvoor een architectuurbepalende eis, een aanzienlijk technisch risico, een complexe integratie of een belangrijke ontwerpbeslissing bestaat, worden verder verdiept. Voor overige onderdelen volstaat het detailniveau van het High-Level Design, of de standaarddocumentatie van het gekozen product of platform. Zo blijft het ontwerp beperkt tot de onderdelen waarvoor detaillering daadwerkelijk nodig is.</p>
 <p>Per geselecteerd onderdeel wordt beschreven hoe de interne structuur eruitziet, welke componenten of modules worden onderscheiden, welke verantwoordelijkheden zij hebben en hoe zij onderling communiceren. Ook worden relevante API-contracten, berichtformaten, gegevensstructuren, opslagvormen, foutafhandeling, beveiligingsmaatregelen en technische configuraties uitgewerkt. Waar nodig wordt vastgelegd hoe niet-functionele eisen — zoals beschikbaarheid, performance, schaalbaarheid, privacy, logging en beheerbaarheid — in het ontwerp worden gerealiseerd.</p>
 <p>Het Low-Level Design maakt tevens inzichtelijk hoe gegevens binnen een onderdeel worden opgeslagen, verwerkt en uitgewisseld. Daarbij kan het logische datamodel worden vertaald naar concretere gegevensstructuren, zoals tabellen, berichten, topics, API-resources of configuraties. Fysieke implementatiedetails worden alleen opgenomen wanneer ze noodzakelijk zijn om een architectuurbeslissing eenduidig te realiseren of te toetsen. Gedetailleerde code, volledige databaseschema's en andere implementatieartefacten worden doorgaans beheerd in het Architectuurmodel, de technische documentatie of de broncode zelf; het Low-Level Design verwijst hiernaar zonder deze informatie onnodig te dupliceren.</p>
 <p>De uitwerking vindt plaats in nauwe samenwerking tussen de solution architect, ontwikkelaars, engineers, leveranciers, beheerders en security- en dataspecialisten. Het ontwikkelteam brengt de technische kennis en realiseerbaarheid in, terwijl de solution architect bewaakt dat het ontwerp aansluit op het High-Level Design, de architectuurbepalende eisen, de vastgestelde architectuurbeslissingen en de geldende enterprise-architectuurkaders. Afwijkingen worden expliciet gemaakt, onderbouwd en waar nodig als nieuwe architectuurbeslissing vastgelegd.</p>
+<p>Zodra de technische uitwerking van de eerstvolgende transitiestaat concreet genoeg is, wordt ook de migratiestrategie verder verfijnd: de solution-roadmap die tijdens Maak High-Level Design op hoofdlijnen is bepaald, wordt bijgewerkt met de nu bekende technische details van die transitiestaat — welke integraties precies ontstaan of verdwijnen, welke systemen tijdelijk naast elkaar draaien, en welke afhankelijkheden en risico's die stap concreet bepalen. Latere transitiestaten blijven bewust grof totdat zij aan de beurt zijn.</p>
 <p>Het resultaat van deze activiteit is een samenhangend en uitvoerbaar Low-Level Design waarin de technisch relevante onderdelen voldoende gedetailleerd zijn beschreven om te worden gerealiseerd en getest. Het ontwerp is gereed wanneer de verantwoordelijkheden, interne structuur, gegevensverwerking, interfaces en technische randvoorwaarden eenduidig zijn vastgelegd, de belangrijkste risico's zijn geadresseerd, en het ontwikkelteam kan aantonen dat de oplossing op basis van dit ontwerp realiseerbaar is.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
-    <ess:approach rdf:resource="approach/solution-design/default"/>
-    <ess:action rdf:resource="action/solution-design/create/architecture-decisions"/>
-    <ess:action rdf:resource="action/solution-design/update/architecture-model"/>
-    <ess:action rdf:resource="action/solution-design/read/paved-road"/>
+    <ess:approach rdf:resource="approach/solution-low-level-design/default"/>
+    <ess:action rdf:resource="action/solution-low-level-design/create/architecture-decisions"/>
+    <ess:action rdf:resource="action/solution-low-level-design/update/architecture-model"/>
+    <ess:action rdf:resource="action/solution-low-level-design/update/solution-roadmap"/>
+    <ess:action rdf:resource="action/solution-low-level-design/read/paved-road"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/solution-design/completion/architecture"/>
-    <ess:criterion rdf:resource="criterion/solution-design/completion/architecture-decisions"/>
+    <ess:criterion rdf:resource="criterion/solution-low-level-design/completion/architecture"/>
+    <ess:criterion rdf:resource="criterion/solution-low-level-design/completion/solution-roadmap"/>
+    <ess:criterion rdf:resource="criterion/solution-low-level-design/completion/architecture-decisions"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
-  <ess:Approach rdf:about="approach/solution-design/default">
+  <ess:Approach rdf:about="approach/solution-low-level-design/default">
     <ess:name xml:lang="nl">Kiezen</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
@@ -45,47 +48,62 @@
     <p>Bovenstaand voorbeeld toont een C4-deploymentdiagram voor een aanvraagplatform. Het diagram laat zien hoe de containers (webapplicatie, API en database) worden uitgerold over de productie-infrastructuur, inclusief netwerkzones, load balancing en de gebruikte Azure-voorzieningen.</p>
     <br /><p><strong>Leg architectuurbeslissingen vast</strong></p>
     <p>Zodra tijdens de uitwerking wordt afgeweken van de geldende architectuurstandaarden of enterprise-richtlijnen, wordt deze keuze expliciet vastgelegd als architectuurbeslissing. Daarbij worden de overwogen alternatieven, de motivatie voor de gekozen oplossing en de gevolgen van de afwijking beschreven. Zo blijft inzichtelijk waarom van de standaard is afgeweken, en kan de afwijking worden beoordeeld binnen de architectuurgovernance.</p>
+    <br /><p><strong>Verfijn de migratiestrategie voor de eerstvolgende transitiestaat</strong></p>
+    <p>Werk de solution-roadmap bij zodra de technische uitwerking van de eerstvolgende transitiestaat bekend is: welke integraties op dat moment precies ontstaan of verdwijnen, welke systemen tijdelijk naast elkaar functioneren, en welke afhankelijkheden of risico's die stap concreet bepalen. Houd latere transitiestaten bewust op het grovere detailniveau van het High-Level Design, totdat zij aan de beurt zijn.</p>
     <br /><p><strong>Controleer het detailniveau</strong></p>
     <p>Sluit de activiteit af door te beoordelen of het Low-Level Design het juiste detailniveau heeft bereikt. Het ontwerp moet voldoende informatie bevatten om de oplossing te kunnen realiseren, configureren en toetsen, zonder onnodige implementatiedetails of broncode voor te schrijven. Daarmee blijft een duidelijke scheiding bestaan tussen architectuur en implementatie, en behoudt het Low-Level Design zijn rol als technisch ontwerp dat de realisatie van de solution richting geeft.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/solution-design/create/architecture-decisions">
+  <ess:Action rdf:about="action/solution-low-level-design/create/architecture-decisions">
     <ess:name xml:lang="nl">Maak architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-design/update/architecture-model">
+  <ess:Action rdf:about="action/solution-low-level-design/update/architecture-model">
     <ess:name xml:lang="nl">Werk architectuurmodel bij</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-design/read/paved-road">
+  <ess:Action rdf:about="action/solution-low-level-design/update/solution-roadmap">
+    <ess:name xml:lang="nl">Werk solution-roadmap bij</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/solution-low-level-design/read/paved-road">
     <ess:name xml:lang="nl">Lees paved road</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
   </ess:Action>
 
-  <ess:ActivityAssociation rdf:about="activity-association/solution-design/part-of/shape-the-system">
+  <ess:ActivityAssociation rdf:about="activity-association/solution-low-level-design/part-of/shape-the-system">
     <ess:name>Maak Low-Level Design part-of Shape The System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:end1 rdf:resource="activity/solution-design"/>
+    <ess:end1 rdf:resource="activity/solution-low-level-design"/>
     <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:CompletionCriterion rdf:about="criterion/solution-design/completion/architecture">
+  <ess:CompletionCriterion rdf:about="criterion/solution-low-level-design/completion/architecture">
     <ess:name>Completion: System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:levelOfDetail rdf:resource="lod/architecture-model/component"/>
     <ess:levelOfDetail rdf:resource="lod/architecture-model/code"/>
     <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/solution-low-level-design/completion/solution-roadmap">
+    <ess:name>Completion: Migratiescenario</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:levelOfDetail rdf:resource="lod/solution-roadmap/operationeel"/>
   </ess:CompletionCriterion>
 
 </rdf:RDF>

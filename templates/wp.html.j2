@@ -4,7 +4,7 @@
 {% set nsec = namespace(n=0) %}
 <div class="breadcrumb flex flex-wrap items-center gap-2 pt-[18px] font-mono text-[11px] text-slate-500 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline">
   <a href="{{ breadcrumb.parent_href }}">{{ breadcrumb.parent_label }}</a>
-  <span>/</span>
+  <span>›</span>
   <span>{{ breadcrumb.current }}</span>
 </div>
 
@@ -23,7 +23,42 @@
 <section class="content-section mt-[38px] mb-8 scroll-mt-[164px]{% if sec.extra_class %} {{ sec.extra_class }}{% endif %}" data-section-kind="{{ sec.section_kind | default('content') }}"{% if sec.id %} id="{{ sec.id }}"{% endif %}>
   {% set nsec.n = nsec.n + 1 %}
   {{ sec_head('%02d'|format(nsec.n), sec.h2) }}
+  {% if sec.section_kind == 'cards' %}
+  <div class="wp-grid grid {{ 'grid-cols-1 gap-3' if sec.stacked else 'grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-3.5' }}">
+    {% for card in sec.cards %}
+    {% set card_class = "wp-card block overflow-hidden rounded-xl border border-slate-300 bg-white text-inherit no-underline transition hover:-translate-y-0.5 hover:shadow-sm [&_.wc-top]:h-[5px] [&_.wc-body]:px-3.5 [&_.wc-body]:py-3 [&_.wc-type]:mb-1 [&_.wc-type]:font-mono [&_.wc-type]:text-[9px] [&_.wc-type]:font-semibold [&_.wc-type]:uppercase [&_.wc-type]:tracking-[0.14em] [&_.wc-type]:text-slate-500 [&_h4]:m-0 [&_h4]:mb-1 [&_h4]:font-serif [&_h4]:text-[1.05rem] [&_h4]:font-semibold [&_p]:m-0 [&_p]:mb-2 [&_p]:text-[0.84rem] [&_p]:text-slate-500 [&_.wc-open]:mt-1 [&_.wc-open]:font-mono [&_.wc-open]:text-[10px] [&_.wc-open]:uppercase [&_.wc-open]:tracking-[0.1em] [&_.wc-open]:text-slate-600" %}
+    {% if card.href %}
+    <a href="{{ card.href }}" class="{{ card_class }}">
+    {% else %}
+    <div class="{{ card_class }} cursor-default">
+    {% endif %}
+      <div class="wc-top {{ card.topbar | default('') }}"></div>
+      <div class="wc-body">
+        {% if card.type %}<div class="wc-type">{{ card.type }}</div>{% endif %}
+        <h4>{{ card.title }}</h4>
+        {% if card.desc %}<p>{{ card.desc }}</p>{% endif %}
+        {% if card.checklist %}
+        <div class="mt-1.5 border-t border-dashed border-slate-200 pt-1.5">
+          <div class="mb-1 font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500">Checklist</div>
+          <ul class="m-0 mb-2 list-disc space-y-1 pl-4 text-[0.84rem] text-slate-500">
+            {% for item in card.checklist %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {% if card.href %}<div class="wc-open">Bekijk activiteit →</div>{% endif %}
+      </div>
+    {% if card.href %}
+    </a>
+    {% else %}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% else %}
   {{ rdf_prose(sec.body_html) }}
+  {% endif %}
 </section>
 {% endfor %}
 
@@ -80,7 +115,7 @@
       <div class="border-t border-slate-100 px-4 pb-3 pt-2">
         {% if lod.desc %}{{ rdf_prose(lod.desc, 'mb-2') }}{% endif %}
         {% for check in lod.checks %}
-        <p class="m-0 flex items-start gap-2 text-[0.84rem] text-slate-600"><span class="mt-0.5 text-emerald-600">✓</span>{{ check }}</p>
+        <p class="m-0 flex items-start gap-2 text-[0.84rem] text-slate-600"><span class="mt-0.5 text-slate-500">✓</span>{{ check }}</p>
         {% endfor %}
       </div>
       {% endif %}

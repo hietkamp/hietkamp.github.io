@@ -24,7 +24,6 @@
     <ess:ownedElements rdf:resource="activity/enterprise-build-paved-road"/>
     <ess:ownedElements rdf:resource="activity/enterprise-plan"/>
     <ess:ownedElements rdf:resource="activity/enterprise-learn-and-improve"/>
-    <ess:ownedElements rdf:resource="workproduct/architectural-drivers"/>
     <ess:ownedElements rdf:resource="workproduct/architecture-vision"/>
     <ess:ownedElements rdf:resource="workproduct/paved-road"/>
     <ess:ownedElements rdf:resource="workproduct/architecture-roadmap"/>

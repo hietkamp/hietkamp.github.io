@@ -18,6 +18,7 @@ from jinja2 import Environment, FileSystemLoader
 # ---------------------------------------------------------------------------
 ESS  = Namespace("https://www.hietkamp.nl/ontologies/essence-language#")
 KERN = Namespace("https://www.hietkamp.nl/ontologies/essence-kernel#")
+EWOW = Namespace("https://hietkamp.nl/essence/vocab#")
 BASE = "https://hietkamp.nl/essence/"
 METHOD_URI = URIRef(BASE + "method/essence-architecture-method")
 
@@ -31,8 +32,9 @@ DOCS_DIR = ROOT / "docs"
 
 # A Practice is never itself in an area of concern (Customer/Solution/Endeavor) —
 # only Alphas and Activities are, via ess:tags in the RDF. Practices therefore all
-# get the same neutral colour; per-activity colouring comes from activity_domain_color().
+# get the same neutral colour; per-activity/alpha colouring comes from domain_color_for().
 NEUTRAL = "#0f172a"
+NEUTRAL_TOPBAR = f"bg-[{NEUTRAL}]"
 
 PRACTICE_CFG = {
     "enterprise-architecture": {
@@ -95,25 +97,31 @@ AREA_OF_CONCERN_DOMAIN = {
     "EndeavorAreaOfConcern":  "endeavour",
 }
 
-# Solid `-700`-weight fills with white text, matching the existing phase badges
-# (bg-blue-700 for "analyse", bg-slate-700 for "dev") — one consistent num-badge
-# language site-wide, with hues chosen to avoid the blue-700/indigo-700/emerald-700
-# already used by the chips.space/comp/alpha chips on the same card.
+# Custom domain triad — still recognisably yellow/green/blue, but with more
+# character than the Tailwind defaults and WCAG-AA text contrast on every fill:
+# helder geel #F0C419 carries dark text (white on yellow never reaches 4.5:1),
+# dennengroen #1E6B52 and kobalt #2557A7 carry white text (6.3:1 / 6.7:1).
+# Chip text uses a darkened variant of the hue so it stays readable on white.
+# Colour fills are reserved exclusively for domain meaning — all other chips
+# and labels on the site are neutral slate.
 DOMAIN_COLOR_CFG = {
     "solution": {
-        "num_color":      "bg-yellow-600",
-        "num_text_color": "text-white",
-        "chip_css":       "border-yellow-700/25 bg-yellow-700/10 text-yellow-700",
+        "num_color":      "bg-[#F0C419]",
+        "num_text_color": "text-slate-900",
+        "solid_css":      "bg-[#F0C419] text-slate-900 hover:bg-[#DDB213]",
+        "chip_css":       "border-[#B89412]/50 bg-[#F0C419]/20 text-[#8A6D03]",
     },
     "customer": {
-        "num_color":      "bg-green-700",
+        "num_color":      "bg-[#1E6B52]",
         "num_text_color": "text-white",
-        "chip_css":       "border-green-700/25 bg-green-700/10 text-green-700",
+        "solid_css":      "bg-[#1E6B52] text-white hover:bg-[#175843]",
+        "chip_css":       "border-[#1E6B52]/30 bg-[#1E6B52]/10 text-[#1E6B52]",
     },
     "endeavour": {
-        "num_color":      "bg-sky-700",
+        "num_color":      "bg-[#2557A7]",
         "num_text_color": "text-white",
-        "chip_css":       "border-sky-700/25 bg-sky-700/10 text-sky-700",
+        "solid_css":      "bg-[#2557A7] text-white hover:bg-[#1E4A8F]",
+        "chip_css":       "border-[#2557A7]/30 bg-[#2557A7]/10 text-[#2557A7]",
     },
 }
 
@@ -125,11 +133,13 @@ ACTION_KIND_NL = {
     "update": "Wijzigen",
     "delete": "Verwijderen",
 }
+# Neutral on purpose: coloured fills are reserved for the domain triad, so the
+# CRUD kind reads from its label, not from a competing hue.
 ACTION_KIND_CSS = {
-    "create": "border-emerald-700/30 bg-emerald-700/10 text-emerald-700",
-    "read":   "border-blue-700/30 bg-blue-700/10 text-blue-700",
-    "update": "border-amber-700/30 bg-amber-700/10 text-amber-700",
-    "delete": "border-red-700/30 bg-red-700/10 text-red-700",
+    "create": "border-slate-300 bg-slate-100 text-slate-600",
+    "read":   "border-slate-300 bg-slate-100 text-slate-600",
+    "update": "border-slate-300 bg-slate-100 text-slate-600",
+    "delete": "border-slate-300 bg-slate-100 text-slate-600",
 }
 
 # ---------------------------------------------------------------------------
@@ -254,18 +264,6 @@ def activity_actions_by_kind(g: Graph, activity_uri) -> list[dict]:
         if (wps := by_kind.get(kind))
     ]
 
-def activity_output_wps(g: Graph, activity_uri) -> list:
-    """Return WorkProduct URIs created/updated by the activity."""
-    wps = []
-    seen = set()
-    for action in g.objects(activity_uri, ESS.action):
-        if _action_kind(g, action) in ("create", "update"):
-            wp = next(g.objects(action, ESS.workProduct), None)
-            if wp and wp not in seen:
-                wps.append(wp)
-                seen.add(wp)
-    return wps
-
 def activity_patterns(g: Graph, activity_uri) -> list[str]:
     """Return names of patterns that use this activity."""
     names = []
@@ -367,14 +365,41 @@ def _alpha_key(uri) -> str:
     s = str(uri)
     return s.split("#")[-1] if "#" in s else s.rstrip("/").split("/")[-1]
 
-def activity_domain_color(g: Graph, activity_uri) -> dict:
+def domain_color_for(g: Graph, uri) -> dict:
     """Return the Essence Kernel area-of-concern colour (Solution/Customer/Endeavour)
-    tagged directly on this activity via ess:tags, or {} if untagged."""
-    for tag in g.objects(activity_uri, ESS.tags):
+    tagged directly on this Activity or Alpha via ess:tags, or {} if untagged."""
+    for tag in g.objects(uri, ESS.tags):
         domain = AREA_OF_CONCERN_DOMAIN.get(_alpha_key(tag))
         if domain:
             return {"domain": domain, **DOMAIN_COLOR_CFG[domain]}
     return {}
+
+def _checkpoint_order(cp_uri):
+    local = _alpha_key(cp_uri)
+    return (0, int(local)) if local.isdigit() else (1, local)
+
+def state_checklist_texts(g: Graph, state_uri) -> list[str]:
+    """Return this state's checklist criteria texts, in checkpoint order —
+    the conditions that must hold for the alpha to be in this state."""
+    checkpoints = sorted(g.objects(state_uri, ESS.checkListItem), key=_checkpoint_order)
+    return [t for cp in checkpoints if (t := (get_brief(g, cp) or get_desc(g, cp)))]
+
+def alpha_ordered_states(g: Graph, alpha_uri) -> list:
+    """Return this alpha's states in life-cycle order, following ess:successor chains."""
+    states = list(g.objects(alpha_uri, ESS.states))
+    next_map = {s: next(g.objects(s, ESS.successor), None) for s in states}
+    prev_states = set(next_map.values())
+    starts = [s for s in states if s not in prev_states]
+    result: list = []
+    for start in starts:
+        cur = start
+        while cur and cur not in result:
+            result.append(cur)
+            cur = next_map.get(cur)
+    for s in states:
+        if s not in result:
+            result.append(s)
+    return result
 
 # ---------------------------------------------------------------------------
 # Helper: workproduct → owning practice role
@@ -457,6 +482,12 @@ def activity_href(act_slug: str, root: str = "") -> str:
 
 def wp_href(wp_slug: str, root: str = "") -> str:
     return f"{root}wp/{wp_slug}.html"
+
+def role_href(role_slug: str, root: str = "") -> str:
+    return f"{root}role/{role_slug}.html"
+
+def alpha_href(alpha_slug: str, root: str = "") -> str:
+    return f"{root}alpha/{alpha_slug}.html"
 
 # ---------------------------------------------------------------------------
 # Per-page context builders
@@ -627,6 +658,123 @@ def build_practices_ctx(g: Graph) -> dict:
             "lede":   "De methode bestaat uit vijf samenhangende practices.",
         },
         "practices": practices,
+    })
+    return ctx
+
+
+def build_roles_ctx(g: Graph) -> dict:
+    roles = []
+    for role in g.subjects(RDF.type, ESS.Pattern):
+        if not local_path(role).startswith("role/"):
+            continue
+        s = slug(role)
+        roles.append({
+            "href":   role_href(s),
+            "title":  get_name(g, role),
+            "desc":   get_brief(g, role),
+            "level":  str(next(g.objects(role, EWOW.level), "")) or "",
+            "topbar": DOMAIN_COLOR_CFG["endeavour"]["num_color"],
+        })
+    roles.sort(key=lambda r: r["title"])
+
+    ctx = _base_ctx(g, root="", data_prac="neutral",
+                    title="Rollen", description="Overzicht van alle rollen")
+    ctx.update({
+        "hero_data": {
+            "kicker": "Essence methode",
+            "h1_pre": "Rollen",
+            "lede":   "De rollen die de activiteiten van de methode uitvoeren.",
+        },
+        "roles": roles,
+    })
+    return ctx
+
+
+def build_alphas_ctx(g: Graph) -> dict:
+    by_domain: dict = {}
+    for alpha in g.subjects(RDF.type, ESS.Alpha):
+        als = _alpha_key(alpha)
+        domain = domain_color_for(g, alpha)
+        key = domain.get("domain")
+        if not key:
+            continue
+        by_domain.setdefault(key, []).append({
+            "href":   alpha_href(als),
+            "title":  get_name(g, alpha),
+            "desc":   get_brief(g, alpha),
+            "domain": key.capitalize(),
+            "topbar": domain.get("num_color", NEUTRAL_TOPBAR),
+        })
+
+    alpha_groups = [
+        {"domain": key.capitalize(), "alphas": sorted(by_domain[key], key=lambda a: a["title"])}
+        for key in ("customer", "solution", "endeavour")
+        if by_domain.get(key)
+    ]
+
+    ctx = _base_ctx(g, root="", data_prac="neutral",
+                    title="Alphas", description="Overzicht van alle alphas")
+    ctx.update({
+        "hero_data": {
+            "kicker": "Essence methode",
+            "h1_pre": "Alphas",
+            "lede":   "De toestandsruimtes die de voortgang van de methode bewaken.",
+        },
+        "alpha_groups": alpha_groups,
+    })
+    return ctx
+
+
+def build_workproducts_ctx(g: Graph) -> dict:
+    workproducts = []
+    for wp in g.subjects(RDF.type, ESS.WorkProduct):
+        s = slug(wp)
+        owner = next(g.objects(wp, ESS.owner), None)
+        workproducts.append({
+            "href":     wp_href(s),
+            "title":    get_name(g, wp),
+            "desc":     get_brief(g, wp),
+            "practice": get_name(g, owner) if owner else "",
+            "topbar":   NEUTRAL_TOPBAR,
+        })
+    workproducts.sort(key=lambda w: w["title"])
+
+    ctx = _base_ctx(g, root="", data_prac="neutral",
+                    title="Workproducts", description="Overzicht van alle workproducts")
+    ctx.update({
+        "hero_data": {
+            "kicker": "Essence methode",
+            "h1_pre": "Workproducts",
+            "lede":   "De werkproducten die de methode oplevert.",
+        },
+        "workproducts": workproducts,
+    })
+    return ctx
+
+
+def build_activities_ctx(g: Graph) -> dict:
+    activities = []
+    for act in g.subjects(RDF.type, ESS.Activity):
+        s = slug(act)
+        owner = next(g.objects(act, ESS.owner), None)
+        activities.append({
+            "href":     activity_href(s),
+            "title":    get_name(g, act),
+            "desc":     get_brief(g, act),
+            "practice": get_name(g, owner) if owner else "",
+            "topbar":   domain_color_for(g, act).get("num_color", NEUTRAL_TOPBAR),
+        })
+    activities.sort(key=lambda a: a["title"])
+
+    ctx = _base_ctx(g, root="", data_prac="neutral",
+                    title="Activiteiten", description="Overzicht van alle activiteiten")
+    ctx.update({
+        "hero_data": {
+            "kicker": "Essence methode",
+            "h1_pre": "Activiteiten",
+            "lede":   "De activiteiten die de practices van de methode uitvoeren.",
+        },
+        "activities": activities,
     })
     return ctx
 
@@ -918,7 +1066,7 @@ def _activity_dict(g: Graph, act_uri, num: int, total: int,
                    practice_slug: str) -> dict:
     s = slug(act_uri)
     cfg = PRACTICE_CFG.get(practice_slug, {})
-    domain_color = activity_domain_color(g, act_uri)
+    domain_color = domain_color_for(g, act_uri)
     return {
         "type":           "activity",
         "href":           activity_href(s, root="../"),
@@ -965,6 +1113,18 @@ def activity_role_uris(g: Graph, activity_uri) -> list:
         if role is not None and role not in roles:
             roles.append(role)
     return roles
+
+
+def role_activity_uris(g: Graph, role_uri) -> list:
+    """Return the activity URIs this role participates in, via its own
+    'participates in' PatternAssociation — the forward direction of
+    activity_role_uris, used to list activities on the role's own detail page."""
+    for assoc_uri in g.objects(role_uri, ESS.associations):
+        if slug(assoc_uri) != "participates-in":
+            continue
+        return [el for el in g.objects(assoc_uri, ESS.elements)
+                if (el, RDF.type, ESS.Activity) in g]
+    return []
 
 
 def role_competencies(g: Graph, role_uri) -> list:
@@ -1090,19 +1250,6 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
     prev_act = ordered_acts[idx - 1] if idx > 0 else None
     next_act = ordered_acts[idx + 1] if idx < total - 1 else None
 
-    # Work products produced (for the wp cards section)
-    output_wps = activity_output_wps(g, act_uri)
-    wp_cards = []
-    for wp_uri in output_wps:
-        ws = slug(wp_uri)
-        wp_owner = next(g.objects(wp_uri, ESS.owner), None)
-        wp_cards.append({
-            "title":    get_name(g, wp_uri),
-            "desc":     get_brief(g, wp_uri),
-            "proves":   wp_proves(g, wp_uri),
-            "href":     wp_href(ws, root="../"),
-            "practice": get_name(g, wp_owner) if wp_owner else "",
-        })
 
     # Approach
     approach_uri = next(g.objects(act_uri, ESS.approach), None)
@@ -1118,32 +1265,46 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
     # Full description HTML, rendered as-is (like wow.html.j2's rdf_prose)
     desc_html = fix_desc_paths(get_desc(g, act_uri), "../")
 
-    # Actions on work products and alphas
-    actions = []
+    # Action cards, grouped by CRUD kind (Lezen, Aanmaken, Wijzigen, Verwijderen —
+    # in that order) so the "Acties" section can head each group with its kind
+    # instead of repeating a kind badge on every card. Each card is a work
+    # product (reusing the wp-card layout) or an alpha.
+    action_by_kind: dict = {}
     for action_uri in g.objects(act_uri, ESS.action):
         kind = _action_kind(g, action_uri)
+        if kind not in ACTION_KIND_NL:
+            continue
         wp   = next(g.objects(action_uri, ESS.workProduct), None)
         alph = next(g.objects(action_uri, ESS.alpha), None)
         if wp:
-            target_name = get_name(g, wp)
-            href = wp_href(slug(str(wp)), root="../")
-            target_type = "Werkproduct"
+            title = get_name(g, wp)
+            if not title:
+                continue
+            card = {
+                "type":   "Werkproduct",
+                "title":  title,
+                "href":   wp_href(slug(wp), root="../"),
+                "topbar": NEUTRAL_TOPBAR,
+            }
         elif alph:
-            target_name = get_name(g, alph)
-            href = None
-            target_type = "Alpha"
+            title = get_name(g, alph)
+            if not title:
+                continue
+            card = {
+                "type":   "Alpha",
+                "title":  title,
+                "href":   alpha_href(_alpha_key(alph), root="../"),
+                "topbar": domain_color_for(g, alph).get("num_color", NEUTRAL_TOPBAR),
+            }
         else:
             continue
-        if not target_name:
-            continue
-        actions.append({
-            "kind":     kind,
-            "kind_nl":  ACTION_KIND_NL.get(kind, kind.capitalize()),
-            "kind_css": ACTION_KIND_CSS.get(kind, ""),
-            "target":   target_name,
-            "type":     target_type,
-            "href":     href,
-        })
+        action_by_kind.setdefault(kind, []).append(card)
+
+    action_groups = [
+        {"kind_nl": ACTION_KIND_NL[kind], "cards": action_by_kind[kind]}
+        for kind in ("read", "create", "update", "delete")
+        if action_by_kind.get(kind)
+    ]
 
     # CompletionCriteria
     def _state_label(state_uri) -> str:
@@ -1163,7 +1324,7 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
 
     def _lod_groups(crit_uri) -> list[dict]:
         """Group this criterion's ess:levelOfDetail refs by their owning work
-        product, so each work product gets its own row of LOD chips."""
+        product, so each work product gets its own card of LOD chips."""
         groups: dict = {}
         order: list = []
         for lod in g.objects(crit_uri, ESS.levelOfDetail):
@@ -1188,18 +1349,39 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
             for wp in order
         ]
 
-    completion_criteria = []
-    for crit_uri in g.objects(act_uri, ESS.criterion):
-        if (crit_uri, RDF.type, ESS.CompletionCriterion) not in g:
-            continue
-        state = next(g.objects(crit_uri, ESS.state), None)
-        if not state:
-            continue
-        completion_criteria.append({
-            "alpha":      _alpha_from_state(state),
-            "state":      _state_label(state),
-            "lod_groups": _lod_groups(crit_uri),
-        })
+    # An Entry/CompletionCriterion has two independent aspects — the alpha state
+    # it requires or reaches, and (optionally) the level of detail a work product
+    # must have — so each becomes its own card: one for the alpha, one per
+    # referenced work product. Shared between entry and completion criteria,
+    # which differ only in rdf:type.
+    def _criterion_cards(criterion_type) -> list[dict]:
+        cards = []
+        for crit_uri in g.objects(act_uri, ESS.criterion):
+            if (crit_uri, RDF.type, criterion_type) not in g:
+                continue
+            state = next(g.objects(crit_uri, ESS.state), None)
+            if state:
+                alpha_uri = next(g.subjects(ESS.states, state), None)
+                cards.append({
+                    "kind":   "alpha",
+                    "alpha":  _alpha_from_state(state),
+                    "state":  _state_label(state),
+                    "href":   alpha_href(_alpha_key(alpha_uri), root="../") if alpha_uri else None,
+                    "topbar": domain_color_for(g, alpha_uri).get("num_color", NEUTRAL_TOPBAR)
+                              if alpha_uri else NEUTRAL_TOPBAR,
+                })
+            for group in _lod_groups(crit_uri):
+                cards.append({
+                    "kind":      "wp",
+                    "wp_name":   group["wp_name"],
+                    "lod_names": group["lod_names"],
+                    "href":      group["wp_href"],
+                    "topbar":    NEUTRAL_TOPBAR,
+                })
+        return cards
+
+    entry_criteria = _criterion_cards(ESS.EntryCriterion)
+    completion_criteria = _criterion_cards(ESS.CompletionCriterion)
 
     # Sequence: end-before-start associations, limited to activities owned by
     # this same practice — cross-practice associations (e.g. project-lifecycle
@@ -1228,23 +1410,13 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
 
     # Role(s) that participate in this specific activity (via each role's own
     # 'participates in' association), not just any role performing the practice.
-    role_cards = []
-    for r in activity_role_uris(g, act_uri):
-        rs = slug(r)
-        role_cards.append({
-            "id":           rs,
-            "role":         get_name(g, r),
-            "scope":        get_name(g, practice_uri),
-            "desc":         get_brief(g, r),
-            "makes":        ", ".join(wp["title"] for wp in wp_cards[:3]),
-            "competencies": role_competencies(g, r),
-            "lc_css":       f"[&_.lc-head]:bg-[{NEUTRAL}]",
-        })
-    roles = {
-        "intro": "Rol die in deze activiteit participeert." if len(role_cards) == 1
-                 else "Rollen die in deze activiteit participeren.",
-        "cards": role_cards,
-    } if role_cards else None
+    # Shown as a chip in the hero, coloured with the endeavour domain — roles
+    # belong to the endeavour area of concern.
+    role_chips = [
+        {"role": get_name(g, r), "href": role_href(slug(r), root="../"),
+         "css":  DOMAIN_COLOR_CFG["endeavour"]["solid_css"]}
+        for r in activity_role_uris(g, act_uri)
+    ]
 
     title = get_name(g, act_uri)
     brief = get_brief(g, act_uri)
@@ -1264,20 +1436,20 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
         },
         "chips": {
             "space":     activity_space_chip(g, act_uri),
-            "space_css": activity_domain_color(g, act_uri).get(
-                "chip_css", "border-blue-700/25 bg-blue-700/10 text-blue-700"),
+            "space_css": domain_color_for(g, act_uri).get(
+                "chip_css", "border-slate-400/40 bg-slate-100 text-slate-600"),
         },
         "extra_chips": [],
         "alpha_bar":  alpha_bar_html(g, act_uri),
         "approach":   approach,
         "desc_html":  desc_html,
-        "actions":    actions,
+        "action_groups": action_groups,
         "steps":      [],
         "cots_box":   None,
-        "work_products": wp_cards,
+        "entry_criteria": entry_criteria,
         "completion_criteria": completion_criteria,
         "sequence":  sequence,
-        "roles": roles,
+        "role_chips": role_chips,
         "nav": {
             "prev": {
                 "href":  f"../act/{slug(prev_act)}.html",
@@ -1421,8 +1593,110 @@ def build_wp_ctx(g: Graph, wp_uri) -> dict:
         "resources":  wp_resources,
         "sections": sections,
         "breadcrumb": {
-            "parent_href":  f"../practice/{ps}.html",
-            "parent_label": get_name(g, practice_uri) if practice_uri else "Practices",
+            "parent_href":  "../workproducts.html",
+            "parent_label": "Workproducts",
+            "current":      title,
+        },
+    })
+    return ctx
+
+
+def build_role_ctx(g: Graph, role_uri) -> dict:
+    s = slug(role_uri)
+    title = get_name(g, role_uri)
+    brief = get_brief(g, role_uri)
+    desc = get_desc(g, role_uri)
+    intro = str(next(g.objects(role_uri, EWOW.intro), "")) or ""
+    level = str(next(g.objects(role_uri, EWOW.level), "")) or ""
+    owns = str(next(g.objects(role_uri, EWOW.owns), "")) or ""
+
+    beschrijving_html = "".join(
+        f"<p>{p}</p>" for p in (desc, intro) if p
+    )
+    if owns:
+        beschrijving_html += f"<p><strong>Eigenaar van:</strong> {owns}</p>"
+
+    competencies = role_competencies(g, role_uri)
+    competencies_html = (
+        "<ul>" + "".join(f"<li>{c}</li>" for c in competencies) + "</ul>"
+        if competencies else ""
+    )
+
+    activity_cards = []
+    for a in role_activity_uris(g, role_uri):
+        act_title = get_name(g, a)
+        if not act_title:
+            continue
+        owner = next(g.objects(a, ESS.owner), None)
+        activity_cards.append({
+            "title":  act_title,
+            "desc":   get_brief(g, a),
+            "href":   activity_href(slug(a), root="../"),
+            "type":   get_name(g, owner) if owner else "Activiteit",
+            "topbar": domain_color_for(g, a).get("num_color", NEUTRAL_TOPBAR),
+        })
+
+    sections = [
+        {"id": "beschrijving", "h2": "Beschrijving", "body_html": beschrijving_html},
+    ]
+    if competencies_html:
+        sections.append({"id": "competenties", "h2": "Competenties", "body_html": competencies_html})
+    if activity_cards:
+        sections.append({"id": "activiteiten", "h2": "Activiteiten",
+                          "section_kind": "cards", "cards": activity_cards})
+
+    ctx = _base_ctx(g, root="../", data_prac="neutral", title=title, description=brief)
+    ctx.update({
+        "kicker":     "Rol",
+        "h1_pre":     title,
+        "lede":       brief,
+        "meta_pills": [level] if level else [],
+        "sections":   sections,
+        "breadcrumb": {
+            "parent_href":  "../roles.html",
+            "parent_label": "Rollen",
+            "current":      title,
+        },
+    })
+    return ctx
+
+
+def build_alpha_ctx(g: Graph, alpha_uri) -> dict:
+    title = get_name(g, alpha_uri)
+    brief = get_brief(g, alpha_uri)
+    desc_html = fix_desc_paths(get_desc(g, alpha_uri), "../")
+    domain = domain_color_for(g, alpha_uri)
+    topbar = domain.get("num_color", NEUTRAL_TOPBAR)
+
+    state_cards = []
+    for state in alpha_ordered_states(g, alpha_uri):
+        state_cards.append({
+            "title":     get_name(g, state) or _alpha_key(state),
+            "desc":      get_brief(g, state) or get_desc(g, state),
+            "checklist": state_checklist_texts(g, state),
+            "href":      None,
+            "type":      "Toestand",
+            "topbar":    topbar,
+        })
+
+    sections = [
+        {"id": "beschrijving", "h2": "Beschrijving",
+         "body_html": desc_html or (f"<p>{brief}</p>" if brief else "")},
+    ]
+    if state_cards:
+        sections.append({"id": "toestanden", "h2": "Toestanden",
+                          "section_kind": "cards", "stacked": True, "cards": state_cards})
+
+    ctx = _base_ctx(g, root="../", data_prac="neutral", title=title, description=brief)
+    ctx.update({
+        "kicker":     "Alpha",
+        "h1_pre":     title,
+        "lede":       brief,
+        "meta_pills": [domain["domain"].capitalize()] if domain.get("domain") else [],
+        "sections":   sections,
+        "breadcrumb": {
+            "parent_href":  "../alphas.html",
+            "parent_label": "Alphas",
             "current":      title,
         },
     })
@@ -1494,6 +1768,26 @@ def main() -> None:
                build_practices_ctx(g),
                DOCS_DIR / "practices.html")
 
+    # roles.html
+    write_page(env, "roles.html.j2",
+               build_roles_ctx(g),
+               DOCS_DIR / "roles.html")
+
+    # alphas.html
+    write_page(env, "alphas.html.j2",
+               build_alphas_ctx(g),
+               DOCS_DIR / "alphas.html")
+
+    # workproducts.html
+    write_page(env, "workproducts.html.j2",
+               build_workproducts_ctx(g),
+               DOCS_DIR / "workproducts.html")
+
+    # activiteiten.html
+    write_page(env, "activiteiten.html.j2",
+               build_activities_ctx(g),
+               DOCS_DIR / "activiteiten.html")
+
     # Practice pages
     for practice in g.objects(METHOD_URI, ESS.ownedElements):
         if (practice, RDF.type, ESS.Practice) not in g:
@@ -1521,6 +1815,25 @@ def main() -> None:
         ctx = build_wp_ctx(g, wp)
         write_page(env, "wp.html.j2", ctx,
                    DOCS_DIR / "wp" / f"{ws}.html")
+
+    # Role pages (roles are ess:Pattern individuals under role/*, distinguished
+    # from other patterns by their rdf:about path — reuses wp.html.j2's generic
+    # hero + sections layout)
+    for role in g.subjects(RDF.type, ESS.Pattern):
+        if not local_path(role).startswith("role/"):
+            continue
+        rs = slug(role)
+        ctx = build_role_ctx(g, role)
+        write_page(env, "wp.html.j2", ctx,
+                   DOCS_DIR / "role" / f"{rs}.html")
+
+    # Alpha pages (method and Essence Kernel alphas alike — reuses wp.html.j2's
+    # generic hero + sections layout, same as role pages)
+    for alpha in g.subjects(RDF.type, ESS.Alpha):
+        als = _alpha_key(alpha)
+        ctx = build_alpha_ctx(g, alpha)
+        write_page(env, "wp.html.j2", ctx,
+                   DOCS_DIR / "alpha" / f"{als}.html")
 
     print("Done.")
 

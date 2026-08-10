@@ -14,7 +14,7 @@
     <ess:description xml:lang="nl">Beheert de architectuur op ondernemingsniveau. Leidt het enterprise-spoor: stelt enterprise-brede sturende eisen vast, maakt de richting zichtbaar, definieert de reference architecture en bouwt de goedgekeurde route. Werkt met de CIO, business-owners en het Architectuurforum. De uitkomsten worden de kaders en context die elke solution erft.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ewow:level>Enterprise niveau · C4 Level 1–2</ewow:level>
-    <ewow:owns>ASR · Architecture Vision · Paved Road · Architecture Definition (enterprise) · Roadmap (enterprise) · enterprise ADRs</ewow:owns>
+    <ewow:owns>ASR · Architecture Vision · Paved Road · Architecture Definition (enterprise) · Roadmap (enterprise) · Architectuurbeslissingen (enterprise)</ewow:owns>
     <ewow:intro>De Enterprise architect is eigenaar van het volledige architectuurproces op enterprise-scope. Op de activiteitspagina's staat uitgewerkt hoe de Enterprise architect samenwerkt met de Architectuureigenaars van de afzonderlijke solutions.</ewow:intro>
     <ess:associations rdf:resource="pattern-association/enterprise-architect/requires-competency"/>
     <ess:associations rdf:resource="pattern-association/enterprise-architect/participates-in"/>

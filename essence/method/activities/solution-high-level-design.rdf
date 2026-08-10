@@ -8,40 +8,27 @@
   xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
 >
 
-  <ess:Activity rdf:about="activity/solution-envision">
+  <ess:Activity rdf:about="activity/solution-high-level-design">
     <ess:name xml:lang="nl">Maak High-Level Design</ess:name>
-    <ess:briefDescription xml:lang="nl">In deze activiteit stelt de architectuureigenaar een eerste, samenhangend High-Level Design op. Aanleiding, actoren, gebruiksdoelen en scope van de oplossing worden hierin vastgelegd op System Context-niveau (C4-model), eventueel aangevuld met een globale Container-weergave. Het resultaat vormt de basis voor de roadmap, de requirementsanalyse en de verdere architectuuruitwerking.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[
-    <p>In deze activiteit ontstaat een eerste, samenhangend beeld van de beoogde oplossing. De architectuureigenaar onderzoekt welke aanleiding en gebruiksdoelen aan het traject ten grondslag liggen, welke stakeholders erbij betrokken zijn en welke plaats de oplossing krijgt binnen het bestaande applicatie- en organisatielandschap.</p>
-    <p>Het High-Level Design gaat nog niet in op afzonderlijke applicatiecomponenten of technische interfaces. Het legt de grenzen en verantwoordelijkheden van de oplossing vast, en laat zien met welke gebruikers, organisaties en omliggende systemen zij samenwerkt. Hiervoor dient primair het System Context-niveau van het C4-model. Waar dat helpt om de oplossingsrichting te verduidelijken, kan een eerste globale Container-weergave worden toegevoegd — zonder die al technisch uit te werken.</p>
-    <p>De activiteit hoort bij de initiatiefase van een project. In deze vroege fase moeten vooral de scope, het doel, de belangrijkste actoren, de globale requirements en de haalbaarheid van de oplossingsrichting helder worden. Dit wordt ook wel een architectuurvisie genoemd: een eerste vastlegging van het probleem, de beoogde oplossing, de scope en de belangrijkste kenmerken op hoofdlijnen.</p>
-    <p>Na afloop moet de opgave voldoende begrepen zijn: stakeholders herkennen de noodzaak van een oplossing, en er is overeenstemming over de waarde en de globale richting van het traject. Het C4-model legt dat gedeelde architectuurbeeld vast.</p>
-    <p>Het resultaat is een gedragen High-Level Design dat:</p>
-    <ul>
-    <li>de aanleiding en gebruiksdoelen van de oplossing beschrijft;</li>
-    <li>de scope en systeemgrenzen vastlegt;</li>
-    <li>de gebruikers en externe systemen in de solution-context toont;</li>
-    <li>de relevante enterprise-architectuurkaders en de paved road vertaalt naar het project;</li>
-    <li>de globale oplossingsrichting en belangrijkste aannames beschrijft;</li>
-    <li>duidelijk maakt welke onderwerpen in volgende activiteiten verder moeten worden onderzocht;</li>
-    <li>de basis vormt voor de roadmap, requirementsanalyse en verdere architectuuruitwerking.</li>
-    </ul>
-    <p>Deze activiteit hoort bij de initiatiefase van de projectlevenscyclus, met solution-context, enterprise-kaders, scope, stakeholders, governance en succescriteria als centrale onderwerpen. Daarmee bereikt de Essence-alpha Opportunity de toestand Solution Needed, en is er voldoende richting om de roadmap op te stellen en de requirements in de volgende fase verder uit te werken.</p>
-]]></ess:description>
+    <ess:briefDescription xml:lang="nl"><![CDATA[<p><strong>High-Level Design</strong> is een eerste, samenhangende beschrijving van een oplossing op hoofdlijnen. Het legt op System Context-niveau (C4-model) vast wat de grenzen van de solution zijn, welke gebruikers en omliggende systemen ermee samenwerken, en welke plaats zij inneemt binnen het bestaande applicatie- en organisatielandschap — desgewenst aangevuld met een globale Container-weergave. Het gaat nog niet in op afzonderlijke applicatiecomponenten of technische interfaces. Daarnaast wordt de globale migratiestrategie bepaald: de reeks transitiestaten tussen huidige en gewenste situatie.</p>]]></ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>In deze activiteit stelt de architectuureigenaar een eerste, samenhangend High-Level Design op. Aanleiding, actoren, gebruiksdoelen en scope van de oplossing worden hierin vastgelegd op System Context-niveau (C4-model), eventueel aangevuld met een globale Container-weergave. Het resultaat vormt de basis voor de verdere architectuuruitwerking.</p>
+<p>Vanuit dezelfde context bepaalt de architectuureigenaar ook de globale migratiestrategie: een reeks logisch opeenvolgende transitiestaten (plateaus) tussen de huidige en de gewenste situatie, elk een stabiele en operationeel werkende tussentoestand. Hierbij hoort een impactbepaling — welke bestaande systemen, integraties, gebruikers en bedrijfsprocessen raakt de transitie, en wat is de zwaarte van die impact? Op dit moment wordt alleen de eerstvolgende transitiestaat scherp ingevuld; latere transitiestaten blijven bewust globaal en worden verder uitgewerkt naarmate het traject vordert, onder andere tijdens Maak Low-Level Design.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
-    <ess:approach rdf:resource="approach/solution-envision/default"/>
-    <ess:action rdf:resource="action/solution-envision/read/statement-of-architecture-work"/>
-    <ess:action rdf:resource="action/solution-envision/read/paved-road"/>
-    <ess:action rdf:resource="action/solution-envision/create/architecture-model"/>
-    <ess:action rdf:resource="action/solution-envision/create/architecture-decisions"/>
+    <ess:approach rdf:resource="approach/solution-high-level-design/default"/>
+    <ess:action rdf:resource="action/solution-high-level-design/read/statement-of-architecture-work"/>
+    <ess:action rdf:resource="action/solution-high-level-design/read/paved-road"/>
+    <ess:action rdf:resource="action/solution-high-level-design/create/architecture-model"/>
+    <ess:action rdf:resource="action/solution-high-level-design/create/architecture-decisions"/>
+    <ess:action rdf:resource="action/solution-high-level-design/create/solution-roadmap"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/solution-envision/entry/opportunity-identified"/>
-    <ess:criterion rdf:resource="criterion/solution-envision/completion/opportunity-solutionneeded"/>
+    <ess:criterion rdf:resource="criterion/solution-high-level-design/entry/opportunity-identified"/>
+    <ess:criterion rdf:resource="criterion/solution-high-level-design/completion/opportunity-solutionneeded"/>
+    <ess:criterion rdf:resource="criterion/solution-high-level-design/completion/solution-roadmap"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
   </ess:Activity>
 
-  <ess:Approach rdf:about="approach/solution-envision/default">
+  <ess:Approach rdf:about="approach/solution-high-level-design/default">
     <ess:name xml:lang="nl">Maak High-Level Design</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
@@ -53,6 +40,8 @@
     <p>Met de context helder, onderzoekt de architectuureigenaar welke architectuurprincipes, referentiearchitecturen, standaarden, beleidskaders en wet- en regelgeving richtinggevend zijn voor het project — inclusief de paved road en bestaande platformvoorzieningen. Deze kaders vertalen zich naar concrete uitgangspunten voor de solution-architectuur, zodat vanaf het begin duidelijk is binnen welke randvoorwaarden de oplossing tot stand moet komen en waar spanningen of afwijkingen kunnen ontstaan.</p>
     <br /><p><strong>Formuleer de globale oplossingsrichting</strong></p>
     <p>Op basis van de context en de architectuurkaders neemt de globale oplossingsrichting vorm aan: nog geen gedetailleerd ontwerp, maar een beschrijving van hoe de oplossing zich op hoofdlijnen in het applicatielandschap positioneert. Afhankelijk van het project betekent dit bijvoorbeeld de implementatie van een standaardpakket, de uitbreiding van een bestaande applicatie, of het gebruik van bestaande enterprisevoorzieningen. Ook de belangrijkste integratiepatronen, gegevensstromen en eventuele migratiescenario's krijgen hier een eerste beschrijving. Waar dat de oplossingsrichting verder verduidelijkt, kan een conceptueel C4 Container-diagram worden toegevoegd — bewust op hoofdlijnen; de verdere detaillering van containers, componenten en interfaces is voorbehouden aan het Low-Level Design.</p>
+    <br /><p><strong>Bepaal de globale migratiestrategie en de impact ervan</strong></p>
+    <p>Breng de overgang van de huidige naar de gewenste situatie in kaart als een reeks opeenvolgende transitiestaten (plateaus). Elke transitiestaat moet een stabiele, operationeel werkende situatie opleveren; een tijdelijke toestand waarin de bedrijfsvoering niet goed functioneert, wordt voorkomen. Bepaal daarbij de impact van de transitie: welke bestaande systemen, integraties, gebruikersgroepen en bedrijfsprocessen worden geraakt, hoe groot is die impact, en welke afhankelijkheden of risico's bepalen de volgorde? Alleen de eerstvolgende transitiestaat wordt op dit moment gedetailleerd; latere transitiestaten blijven bewust globaal totdat Maak Low-Level Design ze verder uitwerkt. Leg het resultaat vast als solution-roadmap.</p>
     <br /><p><strong>Identificeer architectuurrisico's en onzekerheden</strong></p>
     <p>Deze vroege fase kent nog onzekerheden, dus besteedt de architectuureigenaar expliciet aandacht aan de belangrijkste architectuurrisico's: de aansluiting op bestaande systemen, de beschikbaarheid van interfaces, de geschiktheid van standaardsoftware, beveiliging, privacy, prestaties, migratie en afhankelijkheden van leveranciers. Elk van deze onderwerpen wordt beoordeeld op de mogelijke invloed op de haalbaarheid van de oplossing. De risico's worden hier niet opgelost, maar wel vastgelegd, zodat ze in latere fasen gericht kunnen worden onderzocht — de grootste onzekerheden het liefst zo vroeg mogelijk zichtbaar.</p>
     <br /><p><strong>Stel succescriteria vast</strong></p>
@@ -63,53 +52,66 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/solution-envision/read/statement-of-architecture-work">
+  <ess:Action rdf:about="action/solution-high-level-design/read/statement-of-architecture-work">
     <ess:name xml:lang="nl">Lees architectuuropdracht</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/statement-of-architecture-work"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-envision/read/paved-road">
+  <ess:Action rdf:about="action/solution-high-level-design/read/paved-road">
     <ess:name xml:lang="nl">Lees paved road</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-envision/create/architecture-model">
+  <ess:Action rdf:about="action/solution-high-level-design/create/architecture-model">
     <ess:name xml:lang="nl">Maak architectuurmodel</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-envision/create/architecture-decisions">
+  <ess:Action rdf:about="action/solution-high-level-design/create/architecture-decisions">
     <ess:name xml:lang="nl">Maak architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
   </ess:Action>
 
-  <ess:ActivityAssociation rdf:about="activity-association/solution-envision/part-of/understand-stakeholder-needs">
+  <ess:Action rdf:about="action/solution-high-level-design/create/solution-roadmap">
+    <ess:name xml:lang="nl">Maak solution-roadmap</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/solution-high-level-design/part-of/understand-stakeholder-needs">
     <ess:name>Maak High-Level Design part-of Understand Stakeholder Needs</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:end1 rdf:resource="activity/solution-envision"/>
+    <ess:end1 rdf:resource="activity/solution-high-level-design"/>
     <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds"/>
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:EntryCriterion rdf:about="criterion/solution-envision/entry/opportunity-identified">
+  <ess:EntryCriterion rdf:about="criterion/solution-high-level-design/entry/opportunity-identified">
     <ess:name>Entry: Opportunity</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Identified"/>
   </ess:EntryCriterion>
 
-  <ess:CompletionCriterion rdf:about="criterion/solution-envision/completion/opportunity-solutionneeded">
+  <ess:CompletionCriterion rdf:about="criterion/solution-high-level-design/completion/opportunity-solutionneeded">
     <ess:name>Completion: Opportunity</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:levelOfDetail rdf:resource="lod/architecture-model/container"/>
     <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/solution-high-level-design/completion/solution-roadmap">
+    <ess:name>Completion: Migratiescenario</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:levelOfDetail rdf:resource="lod/solution-roadmap/tactisch"/>
   </ess:CompletionCriterion>
 
 </rdf:RDF>

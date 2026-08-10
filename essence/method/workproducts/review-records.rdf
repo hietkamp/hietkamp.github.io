@@ -10,24 +10,18 @@
   <ess:WorkProduct rdf:about="workproduct/review-records">
     <ess:name xml:lang="nl">Reviewresultaten</ess:name>
     <ess:briefDescription xml:lang="nl">Maak zichtbaar of een concrete keuze voldoet aan afgesproken drivers, principes en paved-road normen.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[<p>Het Architecture Review Record beantwoordt de vraag: <em>voldoet dit aan wat we hebben afgesproken?</em> Niet: waarom hebben we dit gekozen — dat is het ADR. De ARR past de Paved road toe op een concreet geval en levert twee mogelijke uitkomsten: een <strong>Conformiteitsrecord</strong> (on-road bevestigd) of een <strong>Exception Request</strong> (off-road geformaliseerd).</p>
+    <ess:description xml:lang="nl"><![CDATA[<p>Het Architecture Review Record beantwoordt de vraag: <em>voldoet dit aan wat we hebben afgesproken?</em> Niet: waarom hebben we dit gekozen — dat is de architectuurbeslissing. De ARR past de Paved road toe op een concreet geval en levert twee mogelijke uitkomsten: een <strong>Conformiteitsrecord</strong> (on-road bevestigd) of een <strong>Exception Request</strong> (off-road geformaliseerd).</p>
 <p><strong>Rol:</strong> Beoordelingsrecord dat conformiteit of afwijking als bewijs vastlegt.</p>
 <p><strong>Beantwoordt:</strong> Voldoet dit concrete geval aan wat we hebben afgesproken, en welke condities gelden?</p>
-<p><strong>Scope:</strong> Legt oordeel en bewijs vast; de oorspronkelijke keuze-rationale blijft in ADRs.</p>
+<p><strong>Scope:</strong> Legt oordeel en bewijs vast; de oorspronkelijke keuze-rationale blijft in architectuurbeslissingen.</p>
 <p><strong>Publiek:</strong> Reviewer, Architectuureigenaar, Enterprise architect, Architectuurforum en audit/compliance stakeholders.</p>
 <h3>Informatie-elementen</h3><table><thead><tr><th>Element</th><th>Betekenis</th><th>Verplicht</th></tr></thead><tbody><tr><td>Getoetst object</td><td>Het systeem, product, leverancier, interface of besluit dat beoordeeld wordt.</td><td>Ja</td></tr><tr><td>Criteria</td><td>De drivers, principes, ASRs of paved-road items waartegen getoetst wordt.</td><td>Ja</td></tr><tr><td>Oordeel</td><td>Conform, met condities, afgekeurd of exception toegestaan.</td><td>Ja</td></tr><tr><td>Acties en geldigheid</td><td>Eigenaars, deadlines, condities en datum waarop opnieuw beoordeeld moet worden.</td><td>Ja</td></tr></tbody></table>
-<h3>Kwaliteitscriteria</h3><ul><li><strong>Bewijsbaar</strong> — Elk oordeel verwijst naar observatie, artefact, testresultaat of vastgesteld criterium.</li><li><strong>Besluitarm</strong> — Het record beoordeelt conformiteit; nieuwe rationale hoort in een ADR.</li><li><strong>Tijdgebonden</strong> — Exceptions en condities hebben eigenaar en vervaldatum.</li></ul>
+<h3>Kwaliteitscriteria</h3><ul><li><strong>Bewijsbaar</strong> — Elk oordeel verwijst naar observatie, artefact, testresultaat of vastgesteld criterium.</li><li><strong>Besluitarm</strong> — Het record beoordeelt conformiteit; nieuwe rationale hoort in een architectuurbeslissing.</li><li><strong>Tijdgebonden</strong> — Exceptions en condities hebben eigenaar en vervaldatum.</li></ul>
 <p><strong>Bijwerken wanneer:</strong> Bij reviewmoment, off-road verzoek, leveranciersbeoordeling, plateau-overgang of vervaldatum.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
     <ess:ownedElements rdf:resource="resource/review-records/template"/>
   </ess:WorkProduct>
-
-  <ess:WorkProductManifest rdf:about="workproduct-manifest/review-records/architecture-decisions">
-    <ess:workProduct rdf:resource="workproduct/review-records"/>
-    <ess:alpha rdf:resource="alpha/architecture-decisions"/>
-    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
-  </ess:WorkProductManifest>
 
   <ess:WorkProductManifest rdf:about="workproduct-manifest/review-records/paved-road">
     <ess:workProduct rdf:resource="workproduct/review-records"/>

@@ -9,8 +9,8 @@
 
   <ess:WorkProduct rdf:about="workproduct/architecture-repository">
     <ess:name xml:lang="nl">Architectuurrepository</ess:name>
-    <ess:briefDescription xml:lang="nl">Bestuurde centrale opslagplaats voor alle architectuurartefacten: ADRs, architecture definitions, review records en de paved road. Één bron van waarhe…</ess:briefDescription>
-    <ess:description xml:lang="nl">Bestuurde centrale opslagplaats voor alle architectuurartefacten: ADRs, architecture definitions, review records en de paved road. Één bron van waarheid voor het hele architectuurlandgoed.</ess:description>
+    <ess:briefDescription xml:lang="nl">Bestuurde centrale opslagplaats voor alle architectuurartefacten: architectuurbeslissingen, architecture definitions, review records en de paved road. Één bron van waarhe…</ess:briefDescription>
+    <ess:description xml:lang="nl">Bestuurde centrale opslagplaats voor alle architectuurartefacten: architectuurbeslissingen, architecture definitions, review records en de paved road. Één bron van waarheid voor het hele architectuurlandgoed.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <!-- ess:levelOfDetail not defined -->

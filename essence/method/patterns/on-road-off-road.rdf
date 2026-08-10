@@ -10,7 +10,7 @@
     <ess:name xml:lang="nl">On-road/off-road governance</ess:name>
     <ess:briefDescription xml:lang="nl">Laat standaardkeuzes vrij stromen en review alleen afwijkingen, significante onomkeerbare beslissingen en uitzonderingen.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Bij organisaties met een paved road en meerdere teams ontstaat al snel een spanningsveld: strikte stage gates vertragen elk team dat een standaardkeuze maakt, terwijl volledig vrije keuzes leiden tot versnippering en verborgen risico. On-road/off-road governance lost dit op door onderscheid te maken tussen keuzes die binnen de paved road blijven en keuzes die daarvan afwijken.</p>
-<p>Standaardkeuzes — de "on-road" opties — mogen vrij stromen als zelfbediening; daar is geen architectuurreview voor nodig. Zodra een team afwijkt van de paved road, wordt dat een "off-road" beslissing: die wordt vastgelegd via een ADR en beoordeeld via een Review Record of Exception Request.</p>
+<p>Standaardkeuzes — de "on-road" opties — mogen vrij stromen als zelfbediening; daar is geen architectuurreview voor nodig. Zodra een team afwijkt van de paved road, wordt dat een "off-road" beslissing: die wordt vastgelegd via een architectuurbeslissing en beoordeeld via een Review Record of Exception Request.</p>
 <p>Het resultaat is dat architectuursturing zich richt op de uitzonderingen en het bewijs daarvan, in plaats van op papierwerk rond iedere keuze — governance blijft licht zonder dat de architectuurcontrole verloren gaat.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/on-road-off-road/uses"/>

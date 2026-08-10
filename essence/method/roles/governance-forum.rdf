@@ -10,8 +10,8 @@
 
   <ess:Pattern rdf:about="role/governance-forum">
     <ess:name xml:lang="nl">Architectuurforum</ess:name>
-    <ess:briefDescription xml:lang="nl">Een kleine, snelle, op principes gebaseerde instantie — een lean Architecture Board of gilde. Beoordeelt uitsluitend uitzonderingen en off-road ADRs. …</ess:briefDescription>
-    <ess:description xml:lang="nl">Een kleine, snelle, op principes gebaseerde instantie — een lean Architecture Board of gilde. Beoordeelt uitsluitend uitzonderingen en off-road ADRs. Borgt uitkomsten, geen papierwerk. Vergadert alleen als er iets te beoordelen is.</ess:description>
+    <ess:briefDescription xml:lang="nl">Een kleine, snelle, op principes gebaseerde instantie — een lean Architecture Board of gilde. Beoordeelt uitsluitend uitzonderingen en off-road architectuurbeslissingen. …</ess:briefDescription>
+    <ess:description xml:lang="nl">Een kleine, snelle, op principes gebaseerde instantie — een lean Architecture Board of gilde. Beoordeelt uitsluitend uitzonderingen en off-road architectuurbeslissingen. Borgt uitkomsten, geen papierwerk. Vergadert alleen als er iets te beoordelen is.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/governance-forum/requires-competency"/>
     <ess:associations rdf:resource="pattern-association/governance-forum/participates-in"/>

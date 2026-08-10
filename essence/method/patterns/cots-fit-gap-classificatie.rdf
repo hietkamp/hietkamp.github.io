@@ -10,7 +10,7 @@
     <ess:name xml:lang="nl">COTS Fit/Gap-classificatie</ess:name>
     <ess:briefDescription xml:lang="nl">Classificeer requirements tegen productmogelijkheden als fit, configuratie, procesaanpassing, integratie of gap, en vertaal die classificatie naar werkpakketten.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>In koop-en-configureer trajecten botsen requirements onvermijdelijk met het standaardgedrag van het gekozen product. Teams behandelen die botsingen vaak als losse projectissues, terwijl ze in werkelijkheid de architectuurscope, het integratierisico en de governance-impact van de solution bepalen.</p>
-<p>De COTS Fit/Gap-classificatie maakt dit expliciet door elke requirement tegen de productmogelijkheden te toetsen en te classificeren als fit, configuratie, procesaanpassing, integratie of gap. Elke niet-fit wordt vervolgens gekoppeld aan een concreet vervolg: een proceswijziging, een configuratie, een integratiespoor of een ADR.</p>
+<p>De COTS Fit/Gap-classificatie maakt dit expliciet door elke requirement tegen de productmogelijkheden te toetsen en te classificeren als fit, configuratie, procesaanpassing, integratie of gap. Elke niet-fit wordt vervolgens gekoppeld aan een concreet vervolg: een proceswijziging, een configuratie, een integratiespoor of een architectuurbeslissing.</p>
 <p>Zo wordt in één oogopslag zichtbaar wat de vendor levert, wat er geconfigureerd wordt en wat de organisatie zelf moet bouwen of accepteren. De roadmap wordt daardoor gebaseerd op expliciete architectuurkeuzes in plaats van op impliciete aannames.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/cots-fit-gap-classificatie/uses"/>
@@ -30,12 +30,12 @@
   <ess:PatternAssociation rdf:about="pattern-association/cots-fit-gap-classificatie/uses">
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/enterprise-plan"/>
-    <ess:elements rdf:resource="activity/solution-develop-roadmap"/>
+    <ess:elements rdf:resource="activity/solution-high-level-design"/>
+    <ess:elements rdf:resource="activity/solution-low-level-design"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/cots-fit-gap-classificatie/related-workproducts">
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="workproduct/architectural-drivers"/>
     <ess:elements rdf:resource="workproduct/architecture-roadmap"/>
     <ess:elements rdf:resource="workproduct/solution-roadmap"/>
   </ess:PatternAssociation>

@@ -23,7 +23,6 @@
     <ess:action rdf:resource="action/enterprise-plan/create/architecture-roadmap"/>
     <ess:action rdf:resource="action/enterprise-plan/read/paved-road"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/enterprise-plan/completion/architecture"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
@@ -71,10 +70,5 @@
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:CompletionCriterion rdf:about="criterion/enterprise-plan/completion/architecture">
-    <ess:name>Completion: Architecture</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architecture/usable"/>
-  </ess:CompletionCriterion>
 
 </rdf:RDF>

@@ -19,10 +19,9 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
     <ess:approach rdf:resource="approach/enterprise-understand/default"/>
-    <ess:action rdf:resource="action/enterprise-understand/create/architectural-drivers"/>
     <ess:action rdf:resource="action/enterprise-understand/read/statement-of-architecture-work"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/enterprise-understand/completion/architectural-drivers"/>
+    <ess:criterion rdf:resource="criterion/enterprise-understand/completion/requirements"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
@@ -41,13 +40,6 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/enterprise-understand/create/architectural-drivers">
-    <ess:name xml:lang="nl">Maak sturende eisen</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/architectural-drivers"/>
-  </ess:Action>
-
   <ess:Action rdf:about="action/enterprise-understand/read/statement-of-architecture-work">
     <ess:name xml:lang="nl">Lees architectuuropdracht</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -63,10 +55,10 @@
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:CompletionCriterion rdf:about="criterion/enterprise-understand/completion/architectural-drivers">
-    <ess:name>Completion: Architectural Drivers</ess:name>
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-understand/completion/requirements">
+    <ess:name>Completion: Requirements</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/architectural-drivers/quantified"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded"/>
   </ess:CompletionCriterion>
 
 </rdf:RDF>
