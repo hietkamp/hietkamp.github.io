@@ -186,6 +186,45 @@ button:focus-visible {
   display: none;
 }
 
+/* mobile navbar (row 3) toggle — same idea as .topnav-toggle above, but for
+   the Hoofdnavigatie row instead of the sidenav: hidden on desktop, where
+   .navbar-menu already renders inline as the visible link row. */
+.navbar-toggle {
+  display: none;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+@media (max-width: 900px) {
+  .navbar-toggle { display: flex; }
+
+  /* Collapsed by default; JS toggles .open. Rendered as a dropdown that
+     overlays the page below the header, mirroring how .sidenav slides over
+     content on mobile instead of pushing it down. */
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 210;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.125rem;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    padding: 0.5rem;
+  }
+
+  .navbar-menu.open { display: flex; }
+  .navbar-menu .topnav-link { width: 100%; }
+}
+
 /* ── Topnav dropdown ──────────────────────────────────────────────────── */
 .topnav-drop { position: relative; }
 
@@ -330,7 +369,8 @@ button:focus-visible {
 }
 
 /* ── Utility: bar in mobile toggle ─────────────────────────────────────── */
-.topnav-toggle .bar {
+.topnav-toggle .bar,
+.navbar-toggle .bar {
   display: block;
   width: 16px;
   height: 2px;

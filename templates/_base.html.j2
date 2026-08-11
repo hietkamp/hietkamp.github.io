@@ -16,7 +16,12 @@
 </head>
 <body{% if data_prac %} data-prac="{{ data_prac }}"{% endif %} class="min-h-screen bg-white text-[var(--fg)] antialiased">
 {% set has_leftnav = sidenav and sidenav.links %}
-{% set has_toc = not no_sidenav %}
+{# no_sidenav only opts a page out of the left siblings-nav (e.g. the five flat
+   overview pages, which have no meaningful "siblings" one level above the top
+   of each hierarchy) — it must NOT also collapse the right-hand on-page TOC's
+   reserved margin, or those pages lose the mr-[220px] every other page (incl.
+   index.html) gets and their content visibly drifts right. #}
+{% set has_toc = not no_page_toc %}
 <a class="skip-link absolute -top-full left-0 z-[999] rounded-br-lg bg-slate-900 px-[18px] py-2.5 text-[13px] font-semibold text-white no-underline focus-visible:top-0" href="#main-content">Ga naar de hoofdinhoud</a>
 <header class="topnav fixed inset-x-0 top-0 z-[200] border-b border-slate-200 bg-white" role="banner" aria-label="Sitenavigatie">
   <!-- rij 1: logo + github -->
@@ -40,32 +45,38 @@
     <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" class="shrink-0"><path d="M8 1.2 1 14.5h14L8 1.2Zm0 4.3a1 1 0 0 1 1 1v3.5a1 1 0 1 1-2 0V6.5a1 1 0 0 1 1-1Zm0 6.8a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>
     <p class="m-0"><strong>Nog in ontwikkeling</strong> — inhoud kan onvolledig zijn; er kunnen geen rechten aan worden ontleend.</p>
   </div>
-  <!-- rij 3: hoofdnavigatie -->
-  <nav class="topnav-links flex h-11 items-center gap-1 border-t border-slate-100 px-5 max-[480px]:px-3" aria-label="Hoofdnavigatie">
-    <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}index.html">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6.5L8 2l6 4.5V14a1 1 0 01-1 1H3a1 1 0 01-1-1V6.5z"/><path d="M6 15v-5h4v5"/></svg>
-      Start
-    </a>
-    <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}alphas.html">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2"/></svg>
-      Alphas
-    </a>
-    <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}practices.html">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
-      Practices
-    </a>
-    <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}activiteiten.html">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="1" y="2" width="14" height="2.5" rx="1"/><rect x="1" y="6.75" width="10" height="2.5" rx="1"/><rect x="1" y="11.5" width="6" height="2.5" rx="1"/></svg>
-      Activiteiten
-    </a>
-    <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}roles.html">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="5" r="2.75"/><path d="M2.5 14c0-2.76 2.46-5 5.5-5s5.5 2.24 5.5 5"/></svg>
-      Rollen
-    </a>
-    <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}workproducts.html">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 1.5h5.5L12.5 4.5V14.5h-8.5z"/><path d="M9.5 1.5V4.5h3"/></svg>
-      Workproducts
-    </a>
+  <!-- rij 3: hoofdnavigatie — op mobiel (<900px) klapt deze rij in achter een hamburger -->
+  <nav class="topnav-links relative flex h-11 items-center border-t border-slate-100 px-5 max-[480px]:px-3" aria-label="Hoofdnavigatie">
+    <button class="navbar-toggle hidden max-[900px]:flex ml-auto h-9 cursor-pointer items-center gap-2.5 rounded-md border-0 bg-transparent px-2.5 text-[15px] font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900" aria-label="Menu openen" aria-expanded="false" aria-controls="navbar-menu">
+      <span class="navbar-toggle-bars flex shrink-0 flex-col items-center justify-center"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+      Menu
+    </button>
+    <div id="navbar-menu" class="navbar-menu">
+      <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}index.html">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6.5L8 2l6 4.5V14a1 1 0 01-1 1H3a1 1 0 01-1-1V6.5z"/><path d="M6 15v-5h4v5"/></svg>
+        Start
+      </a>
+      <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}alphas.html">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2"/></svg>
+        Alphas
+      </a>
+      <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}practices.html">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
+        Practices
+      </a>
+      <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}activiteiten.html">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="1" y="2" width="14" height="2.5" rx="1"/><rect x="1" y="6.75" width="10" height="2.5" rx="1"/><rect x="1" y="11.5" width="6" height="2.5" rx="1"/></svg>
+        Activiteiten
+      </a>
+      <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}roles.html">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="5" r="2.75"/><path d="M2.5 14c0-2.76 2.46-5 5.5-5s5.5 2.24 5.5 5"/></svg>
+        Rollen
+      </a>
+      <a class="topnav-link inline-flex h-9 items-center gap-2 rounded-md px-3.5 text-[15px] font-medium text-slate-600 no-underline transition hover:bg-slate-100 hover:text-slate-900" href="{{ root | default('') }}workproducts.html">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 1.5h5.5L12.5 4.5V14.5h-8.5z"/><path d="M9.5 1.5V4.5h3"/></svg>
+        Workproducts
+      </a>
+    </div>
   </nav>
 </header>
 {% if has_leftnav %}

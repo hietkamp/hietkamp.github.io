@@ -17,34 +17,70 @@
   window.addEventListener("resize", syncHeaderHeight);
   window.addEventListener("load", syncHeaderHeight);
 
-  // ── Mobile toggle ─────────────────────────────────────────────────────────
-  const toggle   = document.querySelector(".topnav-toggle");
-  const navItems = document.querySelector(".topnav-items");
-  const sidenav  = document.getElementById("sidenav");
-  const overlay  = document.getElementById("sidenav-overlay");
+  // ── Mobile toggles ────────────────────────────────────────────────────────
+  // Two independent mobile menus can exist on a page: the left #sidenav
+  // (page siblings, only on detail pages) and #navbar-menu (the Hoofdnavigatie
+  // row, on every page). Each has its own toggle button, but only one should
+  // be open at a time, so opening either closes the other.
+  const sidenavToggle  = document.querySelector(".topnav-toggle");
+  const sidenav        = document.getElementById("sidenav");
+  const sidenavOverlay = document.getElementById("sidenav-overlay");
 
-  function closeMobileNav() {
-    if (navItems)  navItems.classList.remove("open");
-    if (sidenav)   sidenav.classList.remove("open");
-    if (overlay)   overlay.classList.add("hidden");
-    if (toggle)    toggle.setAttribute("aria-expanded", "false");
+  const navbarToggle = document.querySelector(".navbar-toggle");
+  const navbarMenu    = document.getElementById("navbar-menu");
+
+  function closeSidenav() {
+    if (sidenav)        sidenav.classList.remove("open");
+    if (sidenavOverlay) sidenavOverlay.classList.add("hidden");
+    if (sidenavToggle)  sidenavToggle.setAttribute("aria-expanded", "false");
   }
 
-  if (toggle) {
-    toggle.addEventListener("click", function () {
+  function closeNavbarMenu() {
+    if (navbarMenu)   navbarMenu.classList.remove("open");
+    if (navbarToggle) navbarToggle.setAttribute("aria-expanded", "false");
+  }
+
+  if (sidenavToggle) {
+    sidenavToggle.addEventListener("click", function () {
       const open = sidenav && sidenav.classList.contains("open");
+      closeNavbarMenu();
       if (open) {
-        closeMobileNav();
+        closeSidenav();
       } else {
-        if (sidenav)  sidenav.classList.add("open");
-        if (overlay)  overlay.classList.remove("hidden");
-        toggle.setAttribute("aria-expanded", "true");
+        if (sidenav)        sidenav.classList.add("open");
+        if (sidenavOverlay) sidenavOverlay.classList.remove("hidden");
+        sidenavToggle.setAttribute("aria-expanded", "true");
       }
     });
   }
 
-  if (overlay) {
-    overlay.addEventListener("click", closeMobileNav);
+  if (sidenavOverlay) {
+    sidenavOverlay.addEventListener("click", closeSidenav);
+  }
+
+  if (navbarToggle && navbarMenu) {
+    navbarToggle.addEventListener("click", function () {
+      const open = navbarMenu.classList.contains("open");
+      closeSidenav();
+      if (open) {
+        closeNavbarMenu();
+      } else {
+        navbarMenu.classList.add("open");
+        navbarToggle.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    // Closing on link click and outside-click keeps the dropdown from being
+    // left open after navigating away or tapping elsewhere on the page.
+    navbarMenu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", closeNavbarMenu);
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!navbarMenu.classList.contains("open")) return;
+      if (navbarMenu.contains(e.target) || navbarToggle.contains(e.target)) return;
+      closeNavbarMenu();
+    });
   }
 
   // ── Page TOC (right column): populate from headings on the page ──────────
