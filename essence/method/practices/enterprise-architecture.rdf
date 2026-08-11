@@ -15,7 +15,7 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:objective>Stelt enterprise-brede architectuurkaders vast die elke solution erft.</ess:objective>
     <ess:measures/>
-    <ess:entry xml:lang="nl">Een Opdrachtgever heeft de noodzaak voor enterprise-architectuurwerk erkend en opdracht gegeven; strategische doelen en business drivers zijn op hoofdlijnen bekend.</ess:entry>
+    <ess:entry xml:lang="nl">Een opdrachtgever heeft de noodzaak voor enterprise-architectuurwerk erkend en opdracht gegeven; strategische doelen en business drivers zijn op hoofdlijnen bekend.</ess:entry>
     <ess:result/>
     <ess:consistencyRules/>
     <ess:ownedElements rdf:resource="activity/enterprise-envision"/>

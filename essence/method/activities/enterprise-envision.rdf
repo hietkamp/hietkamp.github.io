@@ -9,12 +9,10 @@
 >
 
   <ess:Activity rdf:about="activity/enterprise-envision">
-    <ess:name xml:lang="nl">Motiveer de architectuurverandering</ess:name>
-    <ess:briefDescription xml:lang="nl">Formuleert op één pagina de architectuurrichting — doel, scope, principes en uitsluitingscriteria — vóórdat vendor- of platformkeuzes vastlopen.</ess:briefDescription>
+    <ess:name xml:lang="nl">Beschrijf de architectuurvisie</ess:name>
+    <ess:briefDescription xml:lang="nl">Formuleert de architectuurvisie: een compact, gemotiveerd beeld van de gewenste richting dat alle latere architectuurkeuzes stuurt.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
-<p>Organisaties die zonder gedeelde richting aan vendor- of platformselectie beginnen, lopen vaak vast in discussies die eigenlijk over iets anders gaan: iedereen heeft een andere impliciete visie, en dat wordt pas zichtbaar zodra een concrete keuze op tafel ligt. Deze activiteit maakt die visie vooraf expliciet, klein genoeg om echt gelezen te worden.</p>
-<p>Op basis van de architectuuropdracht van de Opdrachtgever wordt de richting teruggebracht tot één pagina: het doel, de scope, de leidende principes en — minstens zo belangrijk — de uitsluitingscriteria: wat expliciet buiten scope valt. Een visie die alles omvat, stuurt niets; de kracht zit in wat bewust wordt weggelaten. De precieze sturende eisen worden hier nog niet uitgewerkt — dat gebeurt, binnen deze visie, bij Beschrijf de gebaande weg.</p>
-<p>De visie wordt door de Opdrachtgever formeel vastgesteld — dezelfde partij die de enterprise-architectuurcyclus in gang heeft gezet. Eenmaal vastgesteld is de visie het strategische kompas voor Beschrijf de gebaande weg en alle latere architectuurkeuzes.</p>
+<p>Deze activiteit is de agile invulling van TOGAF's Architecture Vision-fase (Phase A): in plaats van een uitgebreid visiedocument levert ze, samen met de opdrachtgever en de belangrijkste stakeholders, een compacte, gemotiveerde visie — doel, scope, principes en uitsluitingscriteria — vóórdat belangrijke ontwerpkeuzes vastlopen in impliciete aannames. De onderliggende motivatie wordt daarbij expliciet gemaakt langs de lijn van de ArchiMate-motivatielaag: drivers en stakeholderbelangen worden vertaald naar doelen en principes, zodat elke latere architectuurbeslissing herleidbaar blijft tot de reden waarom de verandering nodig is.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
@@ -30,16 +28,12 @@
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/enterprise-envision/default">
-    <ess:name xml:lang="nl">Motiveer de architectuurverandering</ess:name>
+    <ess:name xml:lang="nl">Beschrijf de architectuurvisie</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
-<ul>
-<li>Lees de architectuuropdracht en bepaal wat de richting daadwerkelijk moet bepalen — niet alles hoeft in de visie.</li>
-<li>Verwoord op één pagina: het doel, de scope, de leidende principes en de uitsluitingscriteria.</li>
-<li>Benoem expliciet wat buiten scope valt; dat voorkomt scope creep net zo goed als wat wél in scope staat.</li>
-<li>Toets de visie bij de belangrijkste stakeholders vóórdat vendor- of platformkeuzes worden gemaakt.</li>
-<li>Laat de Opdrachtgever de visie formeel vaststellen.</li>
-</ul>
+<p>De aanpak volgt TOGAF's Architecture Vision-fase, maar dan in de lichtgewicht, iteratieve vorm die de agile toepassing van TOGAF voorschrijft: in plaats van een uitputtend visiedocument dat pas na weken wordt vastgesteld, wordt de visie opgehaald en vastgesteld in één of enkele kort getimede sessies met de opdrachtgever en een kleine kern van kritieke stakeholders. Uitgangspunt is de architectuuropdracht: daaruit wordt gehaald wat de aanleiding is, wie de belanghebbenden zijn en welke driver — een strategische keuze, een compliance-eis, een gesignaleerd probleem — de verandering rechtvaardigt.</p>
+<p>Die drivers worden vervolgens, in de geest van de ArchiMate-motivatielaag, vertaald naar een klein aantal doelen en leidende principes: niet als volledig uitgewerkt motivatiemodel, maar als het minimum dat nodig is om koers te bepalen. Doel, scope en principes blijven daarbij bewust beknopt; wat een goede visie vooral onderscheidt, is echter wat er bewust buiten die scope wordt gehouden — expliciete uitsluitingscriteria die latere scope creep net zo goed voorkomen als wat wél wordt vastgelegd.</p>
+<p>De visie wordt getoetst bij de stakeholders die er het meest bij te winnen of te verliezen hebben, niet bij iedereen die ooit invloed zou kunnen hebben — dezelfde selectiviteit die agile TOGAF-toepassingen kenmerkt. Zodra die toetsing is doorlopen, stelt de opdrachtgever de visie formeel vast; vanaf dat moment is ze het kompas voor alle activiteiten en architectuurkeuzes die daarna volgen.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
@@ -59,7 +53,7 @@
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/enterprise-envision/part-of/explore-possibilities">
-    <ess:name>Motiveer de architectuurverandering part-of Explore Possibilities</ess:name>
+    <ess:name>Beschrijf de architectuurvisie part-of Explore Possibilities</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/enterprise-envision"/>
     <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ExplorePossibilities"/>

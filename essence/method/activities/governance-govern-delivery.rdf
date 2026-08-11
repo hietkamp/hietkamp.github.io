@@ -12,16 +12,12 @@
     <ess:name xml:lang="nl">Bestuur levering</ess:name>
     <ess:briefDescription xml:lang="nl">Neemt nieuwe initiatieven formeel onder governance, laat beslissingen binnen de guardrails ongehinderd doorgaan en behandelt alleen uitzonderingen als een snelle, vastgelegde review — governance als dienst, niet als vertragend controlepunt.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
-<p>Als alles binnen de afgesproken kaders blijft, hoeft niemand ernaar te kijken. Deze activiteit bewaakt de levering door vrijwel niets tegen te houden — behalve de paar beslissingen die er echt toe doen.</p>
-<p>Klassieke governance werkt vaak met stage gates: vaste momenten waarop een project een architectuurgoedkeuring moet krijgen voordat het verder mag. Dat werkt, maar vertraagt elk project even veel, ook de projecten die keurig binnen de lijntjes blijven. Het platformengineering-denken achter guardrails keert dit om: <em>maak de veilige weg de makkelijke weg</em>. Wat binnen de paved road blijft, hoeft niet langs een poort — het stroomt gewoon door. Alleen wat ervan afwijkt (in TOGAF-termen: wat een <em>dispensation</em> nodig heeft) krijgt aandacht.</p>
-<p>Concreet richt deze activiteit zich op drie soorten uitzonderingen: off-road beslissingen (een team wijkt bewust af van de paved road), significante onomkeerbare beslissingen (fouten die duur zijn om terug te draaien) en escalaties (een team loopt vast en heeft een besluit nodig om verder te kunnen). Voor elk van deze geldt: snel beoordelen, duidelijk besluiten, en vooral — het team niet onnodig laten wachten. Governance die vertraagt zonder waarde toe te voegen, ondermijnt zichzelf.</p>
+<p>Deze activiteit is de agile invulling van TOGAF's Implementation Governance-fase (Phase G): in plaats van vaste stage gates die elk project even veel vertragen, blijft wat binnen de paved road past ongehinderd doorstromen, en krijgt alleen wat ervan afwijkt — een dispensation, in TOGAF-termen — een snelle, vastgelegde review.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <ess:approach rdf:resource="approach/governance-govern-delivery/default"/>
     <ess:action rdf:resource="action/governance-govern-delivery/read/architecture-decisions"/>
-    <ess:action rdf:resource="action/governance-govern-delivery/create/solution-roadmap"/>
-    <ess:action rdf:resource="action/governance-govern-delivery/create/statement-of-architecture-work"/>
     <ess:action rdf:resource="action/governance-govern-delivery/create/review-records"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/governance-govern-delivery/completion/governance"/>
@@ -32,13 +28,8 @@
     <ess:name xml:lang="nl">Bestuur levering</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
-<ul>
-<li>Scan binnenkomende Architectuurbeslissingen alleen op signalen die de guardrails raken: off-road, hoge impact, onomkeerbaar. Beslissingen zonder die signalen passeren ongezien — er is geen reden om ernaar te kijken.</li>
-<li>Stel bij de start van een nieuw initiatief een beknopte Statement of Architecture Work op: scope, welke principes van toepassing zijn, en hoe het initiatief aansluit bij de vergadercadans van het forum. Dit is het moment waarop een initiatief formeel onder governance komt.</li>
-<li>Toets elke uitzondering tegen de Architectuurprincipes en het Migratiescenario, en geef binnen een vaste, korte termijn (bijvoorbeeld enkele werkdagen) een go/no-go. Onduidelijkheid over de termijn is zelf al een vorm van vertraging.</li>
-<li>Leg elke uitzonderingsreview vast als Review Record: wat was de vraag, wie besliste, wat was de uitkomst en de onderbouwing. Dit is het geheugen waarop latere assurance en bijstelling steunen.</li>
-<li>Deblokkeer actief: als een team wacht op een beslissing, is dat de eerstvolgende review die wordt opgepakt — niet de laatste op de stapel.</li>
-</ul>
+<p>De aanpak volgt TOGAF's Phase G, maar dan in de lichtgewicht vorm die aansluit bij platformengineering-denken over guardrails: <em>maak de veilige weg de makkelijke weg</em>. Waar klassieke implementation governance met vaste goedkeuringsmomenten werkt die elk project doorlopen moet, ongeacht hoe voorspelbaar het is, wordt hier alleen naar uitzonderingen gekeken. Binnenkomende architectuurbeslissingen worden gescand op signalen die de guardrails raken — off-road, hoge impact, onomkeerbaar; beslissingen zonder die signalen passeren ongezien, want er is geen reden om ernaar te kijken. Bij de start van een nieuw initiatief wordt wel altijd een beknopte statement of architecture work opgesteld — scope, toepasselijke principes en aansluiting bij de vergadercadans van het forum — als het moment waarop een initiatief formeel onder governance komt.</p>
+<p>Elke uitzondering die wél aandacht vraagt, wordt getoetst tegen de architectuurprincipes en het migratiescenario, met een go/no-go binnen een vaste, korte termijn — onduidelijkheid over die termijn is zelf al een vorm van vertraging. Elke review wordt vastgelegd als review record: wat was de vraag, wie besliste, wat was de uitkomst en de onderbouwing, als geheugen waarop latere assurance en bijstelling steunen. Een team dat wacht op een beslissing krijgt voorrang — dat is de eerstvolgende review die wordt opgepakt, niet de laatste op de stapel, want governance die vertraagt zonder waarde toe te voegen ondermijnt zichzelf.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
@@ -48,20 +39,6 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/governance-govern-delivery/create/solution-roadmap">
-    <ess:name xml:lang="nl">Lees solution-roadmap</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/roadmap"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/governance-govern-delivery/create/statement-of-architecture-work">
-    <ess:name xml:lang="nl">Maak architectuuropdracht</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/statement-of-architecture-work"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-govern-delivery/create/review-records">
