@@ -29,12 +29,9 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/participates-in">
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="activity/enterprise-understand"/>
     <ess:elements rdf:resource="activity/enterprise-envision"/>
-    <ess:elements rdf:resource="activity/enterprise-design"/>
     <ess:elements rdf:resource="activity/enterprise-build-paved-road"/>
-    <ess:elements rdf:resource="activity/enterprise-plan"/>
-    <ess:elements rdf:resource="activity/enterprise-learn-and-improve"/>
+    <ess:elements rdf:resource="activity/enterprise-govern-change"/>
   </ess:PatternAssociation>
 
 </rdf:RDF>

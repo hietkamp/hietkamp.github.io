@@ -35,7 +35,6 @@
   <ess:PatternAssociation rdf:about="pattern-association/paved-road-catalogus/related-workproducts">
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="workproduct/paved-road"/>
-    <ess:elements rdf:resource="workproduct/paved-road-adoptie"/>
   </ess:PatternAssociation>
 
 </rdf:RDF>

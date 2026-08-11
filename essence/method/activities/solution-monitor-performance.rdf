@@ -9,31 +9,31 @@
 >
 
   <ess:Activity rdf:about="activity/solution-monitor-performance">
-    <ess:name xml:lang="nl">Conformance bewaken</ess:name>
+    <ess:name xml:lang="nl">Bewaak conformance</ess:name>
     <ess:briefDescription xml:lang="nl">Tijdens deze activiteit wordt bewaakt of de opgeleverde en, later, operationele oplossing conform blijft aan de vastgestelde architectuur en de architectuurbepalende eisen. Bij oplevering wordt aangetoond dat de solution als geheel voldoet; in productie wordt dit doorlopend bewaakt, worden sturende eisen hervalideerd wanneer de context verandert, en worden structurele wijzigingen teruggekoppeld aan de Enterprise architect.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Deze activiteit kent twee momenten die inhoudelijk verschillen, maar op elkaar voortbouwen.</p>
-<p>Bij afronding van de bouw wordt de solution als geheel getoetst aan de architectuurbepalende eisen en de vastgestelde architectuurbeslissingen. Dit is geen herhaling van de tussentijdse toetsingen uit Implementatiegovernance voeren, maar de integrale, afsluitende vaststelling: voldoet de oplossing als geheel, inclusief de samenhang tussen onderdelen die pas zichtbaar wordt wanneer alles samenkomt? Het resultaat hiervan vormt het bewijs waarmee System de status Ready bereikt en gate 4 kan worden gepasseerd.</p>
+<p>Bij afronding van de bouw wordt de solution als geheel getoetst aan de architectuurbepalende eisen en de vastgestelde architectuurbeslissingen. Dit is geen herhaling van de tussentijdse toetsingen uit Ondersteun de implementatie, maar de integrale, afsluitende vaststelling: voldoet de oplossing als geheel, inclusief de samenhang tussen onderdelen die pas zichtbaar wordt wanneer alles samenkomt? Het resultaat hiervan vormt het bewijs waarmee System de status Ready bereikt en gate 4 kan worden gepasseerd.</p>
 <p>Zodra de oplossing operationeel is, verschuift de aard van deze activiteit: van een eenmalige, afsluitende toetsing naar een doorlopende bewaking zonder eindpunt. Dit is nadrukkelijk geen technische performancemonitoring (latency, doorvoer, uptime) — dat is een operationele verantwoordelijkheid van beheer. Het gaat om <strong>architectuurconformance</strong>: blijft de gerealiseerde oplossing overeenkomen met de vastgestelde architectuur, en blijven de architectuurbepalende eisen zelf nog geldig nu de context — techniek, gebruik, regelgeving, organisatie — verandert?</p>
 <p>Wanneer nieuwe inzichten of veranderende omstandigheden daartoe aanleiding geven, worden architectuurbeslissingen en architectuurbepalende eisen bijgewerkt. Niet elke afwijking vraagt om een volledig nieuwe architectuurronde: kleine, beheerste bijstellingen worden vastgelegd als bijgewerkte architectuurbeslissing. Pas wanneer de verandering zo fundamenteel is dat de bestaande architectuur niet langer houdbaar is, wordt dit gesignaleerd als aanleiding voor een nieuwe architectuurcyclus, in plaats van het stilzwijgend laten verwateren van de bestaande architectuur.</p>
 <p>Het resultaat van deze activiteit is een architectuurbeeld dat aantoonbaar actueel blijft: bij oplevering een afgeronde, integrale conformance-toets; daarna een doorlopend, bijgehouden beeld van de architectuurbepalende eisen dat meebeweegt met veranderingen in de operationele context.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
     <ess:approach rdf:resource="approach/solution-monitor-performance/default"/>
-    <ess:action rdf:resource="action/solution-monitor-performance/create/architecture-decisions"/>
-    <ess:action rdf:resource="action/solution-monitor-performance/create/architecture-model"/>
+    <ess:action rdf:resource="action/solution-monitor-performance/read/architecture-decisions"/>
+    <ess:action rdf:resource="action/solution-monitor-performance/read/architecture-model"/>
     <ess:action rdf:resource="action/solution-monitor-performance/read/solution-roadmap"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/solution-monitor-performance/completion/architecture"/>
-    <ess:criterion rdf:resource="criterion/solution-monitor-performance/completion/requirements"/>
-    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+    <ess:criterion rdf:resource="criterion/solution-monitor-performance/entry/system"/>
+    <ess:criterion rdf:resource="criterion/solution-monitor-performance/completion/system"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/solution-monitor-performance/default">
-    <ess:name xml:lang="nl">Conformance bewaken</ess:name>
+    <ess:name xml:lang="nl">Bewaak conformance</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
     <p><strong>Toets de solution integraal bij oplevering</strong></p>
-    <p>Beoordeel bij afronding van de bouw of de oplossing als geheel voldoet aan de architectuurbepalende eisen en de vastgestelde architectuurbeslissingen. Kijk daarbij niet alleen naar de afzonderlijke onderdelen — die zijn al eerder getoetst tijdens Implementatiegovernance voeren — maar naar de samenhang die pas zichtbaar wordt wanneer alle onderdelen samen draaien. Leg het resultaat vast als bewijs waarmee System de status Ready bereikt.</p>
+    <p>Beoordeel bij afronding van de bouw of de oplossing als geheel voldoet aan de architectuurbepalende eisen en de vastgestelde architectuurbeslissingen. Kijk daarbij niet alleen naar de afzonderlijke onderdelen — die zijn al eerder getoetst tijdens Ondersteun de implementatie — maar naar de samenhang die pas zichtbaar wordt wanneer alle onderdelen samen draaien. Leg het resultaat vast als bewijs waarmee System de status Ready bereikt.</p>
     <br /><p><strong>Bepaal wat doorlopend bewaakt moet worden</strong></p>
     <p>Stel voor de operationele fase vast welke architectuurbepalende eisen en architectuurbeslissingen gevoelig zijn voor verandering in de context — bijvoorbeeld eisen die afhankelijk zijn van gebruiksvolume, van een specifieke leverancier, van wet- en regelgeving, of van een platform dat zelf nog in ontwikkeling is. Richt de bewaking op déze eisen, in plaats van op alles in gelijke mate.</p>
     <br /><p><strong>Automatiseer waar mogelijk</strong></p>
@@ -48,17 +48,17 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/solution-monitor-performance/create/architecture-decisions">
+  <ess:Action rdf:about="action/solution-monitor-performance/read/architecture-decisions">
     <ess:name xml:lang="nl">Maak architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-monitor-performance/create/architecture-model">
+  <ess:Action rdf:about="action/solution-monitor-performance/read/architecture-model">
     <ess:name xml:lang="nl">Maak architectuurmodel</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
@@ -66,28 +66,27 @@
     <ess:name xml:lang="nl">Lees solution-roadmap</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>
+    <ess:workProduct rdf:resource="workproduct/roadmap"/>
   </ess:Action>
 
-  <ess:ActivityAssociation rdf:about="activity-association/solution-monitor-performance/part-of/shape-the-system">
-    <ess:name>Conformance bewaken part-of Shape The System</ess:name>
+  <ess:ActivityAssociation rdf:about="activity-association/solution-monitor-performance/part-of/track-progress">
+    <ess:name>Bewaak conformance part-of Track Progress</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/solution-monitor-performance"/>
-    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress"/>
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
+  <ess:EntryCriterion rdf:about="criterion/solution-monitor-performance/entry/system">
+    <ess:name>Entry: System</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable"/>
+  </ess:EntryCriterion>
 
-  <ess:CompletionCriterion rdf:about="criterion/solution-monitor-performance/completion/architecture">
+  <ess:CompletionCriterion rdf:about="criterion/solution-monitor-performance/completion/system">
     <ess:name>Completion: System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Ready"/>
-  </ess:CompletionCriterion>
-
-  <ess:CompletionCriterion rdf:about="criterion/solution-monitor-performance/completion/requirements">
-    <ess:name>Completion: Requirements</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Fulfilled"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable"/>
   </ess:CompletionCriterion>
 
 </rdf:RDF>

@@ -1,5 +1,5 @@
 {% extends "_base.html.j2" %}
-{% from "_macros.html.j2" import rdf_prose, sec_head, criterion_cards %}
+{% from "_macros.html.j2" import rdf_prose, sec_head, criterion_cards, action_flow_row %}
 {% block content %}
 {% set nsec = namespace(n=0) %}
 <div class="breadcrumb flex flex-wrap items-center gap-2 pt-[18px] font-mono text-[11px] text-slate-500 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline">
@@ -104,29 +104,11 @@
 <section class="sec mt-[38px] scroll-mt-[164px]" id="acties">
   {% set nsec.n = nsec.n + 1 %}
   {{ sec_head('%02d'|format(nsec.n), 'Acties') }}
-  {% for group in action_groups %}
-  <h3 class="m-0 mb-2.5{% if not loop.first %} mt-6{% endif %} font-serif text-[1.05rem] font-semibold text-slate-900">{{ group.kind_nl }}</h3>
-  <div class="wp-grid grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-3.5">
-    {% for a in group.cards %}
-    {% set card_class = "wp-card block overflow-hidden rounded-xl border border-slate-300 bg-white text-inherit no-underline transition hover:-translate-y-0.5 hover:shadow-sm [&_.wc-top]:h-[5px] [&_.wc-body]:px-3.5 [&_.wc-body]:py-3 [&_h4]:m-0 [&_h4]:font-serif [&_h4]:text-[1.05rem] [&_h4]:font-semibold" %}
-    {% if a.href %}
-    <a href="{{ a.href }}" class="{{ card_class }}">
-    {% else %}
-    <div class="{{ card_class }} cursor-default">
-    {% endif %}
-      <div class="wc-top {{ a.topbar }}"></div>
-      <div class="wc-body">
-        <span class="inline-block rounded-full border border-slate-300 bg-slate-100 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600">{{ a.type }}</span>
-        <h4 class="mt-1.5">{{ a.title }}</h4>
-      </div>
-    {% if a.href %}
-    </a>
-    {% else %}
-    </div>
-    {% endif %}
+  <div class="act-flow flex flex-col gap-2.5">
+    {% for group in action_groups %}
+    {{ action_flow_row(group) }}
     {% endfor %}
   </div>
-  {% endfor %}
 </section>
 {% endif %}
 

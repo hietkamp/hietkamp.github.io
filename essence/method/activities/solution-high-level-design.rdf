@@ -22,9 +22,10 @@
     <ess:action rdf:resource="action/solution-high-level-design/create/architecture-decisions"/>
     <ess:action rdf:resource="action/solution-high-level-design/create/solution-roadmap"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/solution-high-level-design/entry/opportunity-identified"/>
-    <ess:criterion rdf:resource="criterion/solution-high-level-design/completion/opportunity-solutionneeded"/>
-    <ess:criterion rdf:resource="criterion/solution-high-level-design/completion/solution-roadmap"/>
+    <ess:criterion rdf:resource="criterion/solution-high-level-design/entry/opportunity"/>
+    <ess:criterion rdf:resource="criterion/solution-high-level-design/entry/stakeholders"/>
+    <ess:criterion rdf:resource="criterion/solution-high-level-design/completion/opportunity"/>
+    <ess:criterion rdf:resource="criterion/solution-high-level-design/completion/stakeholders"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
   </ess:Activity>
 
@@ -84,7 +85,7 @@
     <ess:name xml:lang="nl">Maak solution-roadmap</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>
+    <ess:workProduct rdf:resource="workproduct/roadmap"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/solution-high-level-design/part-of/understand-stakeholder-needs">
@@ -95,23 +96,28 @@
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:EntryCriterion rdf:about="criterion/solution-high-level-design/entry/opportunity-identified">
+  <ess:EntryCriterion rdf:about="criterion/solution-high-level-design/entry/opportunity">
     <ess:name>Entry: Opportunity</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Identified"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded"/>
   </ess:EntryCriterion>
 
-  <ess:CompletionCriterion rdf:about="criterion/solution-high-level-design/completion/opportunity-solutionneeded">
+  <ess:EntryCriterion rdf:about="criterion/solution-high-level-design/entry/stakeholders">
+    <ess:name>Entry: Opportunity</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Recognized"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/solution-high-level-design/completion/opportunity">
     <ess:name>Completion: Opportunity</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:levelOfDetail rdf:resource="lod/architecture-model/container"/>
-    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable"/>
   </ess:CompletionCriterion>
 
-  <ess:CompletionCriterion rdf:about="criterion/solution-high-level-design/completion/solution-roadmap">
-    <ess:name>Completion: Migratiescenario</ess:name>
+  <ess:CompletionCriterion rdf:about="criterion/solution-high-level-design/completion/stakeholders">
+    <ess:name>Completion: Stakeholders</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:levelOfDetail rdf:resource="lod/solution-roadmap/tactisch"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement"/>
   </ess:CompletionCriterion>
 
 </rdf:RDF>

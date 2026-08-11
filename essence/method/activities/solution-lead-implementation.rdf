@@ -9,7 +9,7 @@
 >
 
   <ess:Activity rdf:about="activity/solution-lead-implementation">
-    <ess:name xml:lang="nl">Implementatiegovernance voeren</ess:name>
+    <ess:name xml:lang="nl">Ondersteun de implementatie</ess:name>
     <ess:briefDescription xml:lang="nl">Tijdens deze activiteit werkt de architectuureigenaar actief mee in het project en bewaakt van daaruit dat de oplossing conform de vastgestelde architectuur wordt gebouwd en geconfigureerd. Architectuurbeslissingen worden doorlopend gevalideerd, risicovolle keuzes worden waar nodig getoetst, en eventuele afwijkingen worden expliciet vastgelegd en beoordeeld. Zo blijft de architectuur gedurende de implementatie actueel en vormt zij een betrouwbaar uitgangspunt voor de formele conformance-toetsing.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Tijdens deze activiteit maakt de architectuureigenaar deel uit van het project en bewaakt van daaruit dat de oplossing conform de vastgestelde architectuur wordt gebouwd of geconfigureerd. In de rol van design authority ontstaat het zicht op de voortgang niet via losstaande toetsingsmomenten, maar via actieve deelname aan het bestaande werkritme van het team: refinements, ontwerpoverleg, sprint reviews en de dagelijkse samenwerking met ontwikkelaars en configuratiespecialisten. Daarbij wordt niet alleen gevolgd of de implementatie overeenkomt met het ontwerp, maar ook of de eerder genomen architectuurbeslissingen — gezien de inzichten die tijdens de realisatie ontstaan — nog steeds passend zijn.</p>
 <p>De nadruk ligt op het tijdig signaleren en beheersen van architectuurrisico's. Risicovolle ontwerpkeuzes, complexe integraties en de toepassing van standaardsoftware worden waar nodig gevalideerd met proefopstellingen, technische experimenten of andere vormen van verificatie. Hiermee wordt vroegtijdig vastgesteld of de gekozen oplossingsrichting daadwerkelijk voldoet aan de architectuurbepalende eisen en de beoogde kwaliteitseisen.</p>
@@ -20,14 +20,14 @@
     <ess:approach rdf:resource="approach/solution-lead-implementation/default"/>
     <ess:action rdf:resource="action/solution-lead-implementation/create/architecture-decisions"/>
     <ess:action rdf:resource="action/solution-lead-implementation/update/architecture-model"/>
-    <ess:action rdf:resource="action/solution-lead-implementation/read/review-records"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/solution-lead-implementation/completion/architecture"/>
-    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+    <ess:criterion rdf:resource="criterion/solution-lead-implementation/entry/system"/>
+    <ess:criterion rdf:resource="criterion/solution-lead-implementation/completion/system"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/solution-lead-implementation/default">
-    <ess:name xml:lang="nl">Implementatiegovernance voeren</ess:name>
+    <ess:name xml:lang="nl">Ondersteun de implementatie</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
     <p><strong>Werk actief mee in het project</strong></p>
@@ -64,25 +64,24 @@
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-lead-implementation/read/review-records">
-    <ess:name xml:lang="nl">Lees reviewresultaten</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/review-records"/>
-  </ess:Action>
-
   <ess:ActivityAssociation rdf:about="activity-association/solution-lead-implementation/part-of/support-the-team">
-    <ess:name>Implementatiegovernance voeren part-of Support The Team</ess:name>
+    <ess:name>Ondersteun de implementatie part-of Support The Team</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/solution-lead-implementation"/>
     <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SupporttheTeam"/>
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:CompletionCriterion rdf:about="criterion/solution-lead-implementation/completion/architecture">
+  <ess:EntryCriterion rdf:about="criterion/solution-lead-implementation/entry/system">
+    <ess:name>Entry: System</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/solution-lead-implementation/completion/system">
     <ess:name>Completion: System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Usable"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_Demonstrable"/>
   </ess:CompletionCriterion>
 
 

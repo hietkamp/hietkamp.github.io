@@ -19,13 +19,13 @@
 <h3>Kwaliteitscriteria</h3><ul><li><strong>Bewijsbaar</strong> — Elk oordeel verwijst naar observatie, artefact, testresultaat of vastgesteld criterium.</li><li><strong>Besluitarm</strong> — Het record beoordeelt conformiteit; nieuwe rationale hoort in een architectuurbeslissing.</li><li><strong>Tijdgebonden</strong> — Exceptions en condities hebben eigenaar en vervaldatum.</li></ul>
 <p><strong>Bijwerken wanneer:</strong> Bij reviewmoment, off-road verzoek, leveranciersbeoordeling, plateau-overgang of vervaldatum.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:owner rdf:resource="practice/solution-architecture"/>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
     <ess:ownedElements rdf:resource="resource/review-records/template"/>
   </ess:WorkProduct>
 
   <ess:WorkProductManifest rdf:about="workproduct-manifest/review-records/paved-road">
     <ess:workProduct rdf:resource="workproduct/review-records"/>
-    <ess:alpha rdf:resource="alpha/paved-road"/>
+    <ess:alpha rdf:resource="alpha/governance"/>
     <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
   </ess:WorkProductManifest>
 

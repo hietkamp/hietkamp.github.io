@@ -17,17 +17,16 @@
 {% macro criterion_cards(criteria) %}
 <div class="wp-grid grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-3.5">
   {% for c in criteria %}
-  {% set card_class = "wp-card block overflow-hidden rounded-xl border border-slate-300 bg-white text-inherit no-underline transition hover:-translate-y-0.5 hover:shadow-sm [&_.wc-top]:h-[5px] [&_.wc-body]:px-3.5 [&_.wc-body]:py-3 [&_h4]:m-0 [&_h4]:mb-1 [&_h4]:mt-1.5 [&_h4]:font-serif [&_h4]:text-[1.05rem] [&_h4]:font-semibold [&_p]:m-0 [&_p]:mb-2 [&_p]:text-[0.84rem] [&_p]:text-slate-500 [&_.wc-open]:mt-1 [&_.wc-open]:font-mono [&_.wc-open]:text-[10px] [&_.wc-open]:uppercase [&_.wc-open]:tracking-[0.1em] [&_.wc-open]:text-slate-600" %}
   {% if c.href %}
-  <a href="{{ c.href }}" class="{{ card_class }}">
+  <a href="{{ c.href }}" class="wp-card">
   {% else %}
-  <div class="{{ card_class }} cursor-default">
+  <div class="wp-card cursor-default">
   {% endif %}
     <div class="wc-top {{ c.topbar }}"></div>
     <div class="wc-body">
       {% if c.kind == 'wp' %}
       <span class="inline-block rounded-full border border-slate-300 bg-slate-100 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600">Werkproduct</span>
-      <h4 class="mt-1.5">{{ c.wp_name }}</h4>
+      <h4 class="!mt-1.5">{{ c.wp_name }}</h4>
       <div class="mt-2 flex flex-wrap items-center gap-1.5">
         <span class="shrink-0 font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500">Detailniveau:</span>
         {% for lod in c.lod_names %}
@@ -36,7 +35,7 @@
       </div>
       {% else %}
       {% if c.alpha %}<span class="inline-block rounded-full border border-slate-300 bg-slate-100 px-2 py-[2px] font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600">{{ c.alpha }}</span>{% endif %}
-      <h4>{{ c.state }}</h4>
+      <h4{% if c.alpha %} class="!mt-1.5"{% endif %}>{{ c.state }}</h4>
       {% if c.href %}<div class="wc-open">Bekijk alpha →</div>{% endif %}
       {% endif %}
     </div>
@@ -46,6 +45,85 @@
   </div>
   {% endif %}
   {% endfor %}
+</div>
+{% endmacro %}
+
+{# Domain-colour legend: a coloured dot + label per Customer/Solution/Endeavour,
+   for pages where cards are coloured by domain but that meaning is never
+   otherwise explained (alphas.html, activiteiten.html). #}
+{% macro domain_legend_row(items) %}
+{% if items %}
+<div class="domain-legend mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] text-slate-500">
+  <span class="uppercase tracking-[0.1em] text-slate-400">Domein</span>
+  {% for item in items %}
+  <span class="inline-flex items-center gap-1.5">
+    <span class="h-2.5 w-2.5 rounded-full {{ item.dot }}"></span>
+    {{ item.label }}
+  </span>
+  {% endfor %}
+</div>
+{% endif %}
+{% endmacro %}
+
+{# Sidenav link icon: a small swatch to the left of each sibling-nav label.
+   `kind` selects the pictogram (matches the icons already used in the topnav
+   for the same section); `item` carries per-link domain colouring for
+   activities (num_color/num_text_color, set in build.py from ess:tags);
+   `icon_css` carries the group-wide domain tint for alphas (chip_css). #}
+{% macro sidenav_icon(kind, item, icon_css='') %}
+{% if kind == 'activity' %}
+<span class="snav-badge flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold {{ item.num_color }} {{ item.num_text_color }}">{{ item.num }}</span>
+{% elif kind == 'alpha' %}
+<span class="snav-icon-wrap flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-md border {{ icon_css }}">
+  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2"/></svg>
+</span>
+{% else %}
+<span class="snav-icon-wrap group-hover:border-[var(--prac)]/40 group-hover:bg-white group-hover:text-[var(--prac)] flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-md border border-slate-200 bg-slate-50 text-slate-400 transition {{ 'border-[var(--prac)]/40 !bg-white text-[var(--prac)]' if item.current }}">
+  {% if kind == 'practice' %}
+  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
+  {% elif kind == 'wp' %}
+  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 1.5h5.5L12.5 4.5V14.5h-8.5z"/><path d="M9.5 1.5V4.5h3"/></svg>
+  {% elif kind == 'role' %}
+  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="5" r="2.75"/><path d="M2.5 14c0-2.76 2.46-5 5.5-5s5.5 2.24 5.5 5"/></svg>
+  {% endif %}
+</span>
+{% endif %}
+{% endmacro %}
+
+{# Acties flow row: one compact row per CRUD kind (ess:Action) — an icon+label
+   for the kind (Lezen/Aanmaken/Wijzigen/Verwijderen), followed by a chip per
+   target. Work-product chips stay neutral slate; alpha chips carry the
+   target's domain tint (chip_css, set in build.py from ess:tags) — the same
+   light-tint treatment used for domain chips everywhere else on the site, so
+   colour still reads as "domain", never as CRUD-kind. #}
+{% macro action_flow_row(group) %}
+<div class="act-flow-row flex flex-wrap items-start gap-x-4 gap-y-2.5 rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3.5">
+  <div class="act-flow-kind flex w-[132px] shrink-0 items-center gap-2 pt-0.5 font-mono text-[10.5px] font-bold uppercase tracking-[0.12em] text-slate-500">
+    <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-500">
+      {% if group.kind == 'read' %}
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 8S3.5 3.5 8 3.5 15 8 15 8s-2.5 4.5-7 4.5S1 8 1 8z"/><circle cx="8" cy="8" r="2"/></svg>
+      {% elif group.kind == 'create' %}
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M8 2.5v11M2.5 8h11"/></svg>
+      {% elif group.kind == 'update' %}
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 2.5l3 3L4.5 14.5l-3.5.8.8-3.5z"/><path d="M9 4l3 3"/></svg>
+      {% elif group.kind == 'delete' %}
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5h10M6.5 4.5V3a1 1 0 011-1h1a1 1 0 011 1v1.5M5 4.5l.6 9a1 1 0 001 .9h2.8a1 1 0 001-.9l.6-9"/></svg>
+      {% endif %}
+    </span>
+    {{ group.kind_nl }}
+  </div>
+  <div class="act-flow-chips flex min-w-0 flex-1 flex-wrap items-center gap-2">
+    {% for chip in group.chips %}
+    <a href="{{ chip.href }}" class="act-chip-item inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[0.82rem] font-medium leading-none no-underline transition hover:-translate-y-px hover:shadow-sm {{ chip.chip_css if chip.kind == 'alpha' else 'border-slate-300 bg-white text-slate-700 hover:border-[var(--prac)] hover:text-[var(--prac)]' }}">
+      {% if chip.kind == 'alpha' %}
+      <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" class="shrink-0" aria-hidden="true"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2"/></svg>
+      {% else %}
+      <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 opacity-70" aria-hidden="true"><path d="M4 1.5h5.5L12.5 4.5V14.5h-8.5z"/><path d="M9.5 1.5V4.5h3"/></svg>
+      {% endif %}
+      {{ chip.title }}
+    </a>
+    {% endfor %}
+  </div>
 </div>
 {% endmacro %}
 
@@ -117,16 +195,22 @@
 {# Activity space header row #}
 {% macro act_space(item) %}
 {% if item.gap %}
-<div class="amap-sp mt-1.5 flex items-baseline gap-2.5 border-b border-slate-300 pb-[7px] first:mt-0 [&_.amap-sp-n]:shrink-0 [&_.amap-sp-n]:font-mono [&_.amap-sp-n]:text-[9px] [&_.amap-sp-n]:font-semibold [&_.amap-sp-n]:uppercase [&_.amap-sp-n]:tracking-[0.14em] [&_.amap-sp-n]:text-slate-500 [&_.amap-sp-name]:font-serif [&_.amap-sp-name]:text-[0.98rem] [&_.amap-sp-name]:font-semibold [&_.amap-sp-name]:text-slate-900 is-gap border-dashed opacity-60 [&_.amap-sp-name]:font-medium">
-  <span class="amap-sp-n">{{ item.code }}</span>
+<div class="amap-sp mt-1.5 flex items-center gap-2.5 border-b border-slate-300 pb-[7px] first:mt-0 [&_.amap-sp-n]:shrink-0 [&_.amap-sp-n]:font-mono [&_.amap-sp-n]:text-[9px] [&_.amap-sp-n]:font-semibold [&_.amap-sp-n]:uppercase [&_.amap-sp-n]:tracking-[0.14em] [&_.amap-sp-n]:text-slate-500 [&_.amap-sp-name]:font-serif [&_.amap-sp-name]:text-[0.98rem] [&_.amap-sp-name]:font-semibold [&_.amap-sp-name]:text-slate-900 is-gap border-dashed opacity-60 [&_.amap-sp-name]:font-medium">
+  <span class="amap-sp-n inline-flex items-center gap-1.5 rounded-full border border-slate-300 bg-slate-50 px-2.5 py-1">
+    <svg width="7" height="7" viewBox="0 0 8 8" fill="currentColor" class="shrink-0 text-slate-400" aria-hidden="true"><rect x="1" y="1" width="6" height="6" transform="rotate(45 4 4)"/></svg>
+    {{ item.code }}
+  </span>
   <div class="amap-sp-main min-w-0 flex-1">
     <span class="amap-sp-name">{{ item.name }}</span><span class="amap-sp-badge ml-1.5 align-middle rounded-[10px] border border-orange-700/25 bg-orange-700/10 px-2 py-0.5 font-mono text-[8.5px] font-semibold uppercase tracking-[0.1em] text-orange-700">niet gedekt</span>
     {% if item.desc %}<span class="amap-sp-desc mt-[3px] block text-[0.82rem] leading-snug text-slate-500">{{ item.desc }}</span>{% endif %}
   </div>
 </div>
 {% else %}
-<div class="amap-sp mt-1.5 flex items-baseline gap-2.5 border-b border-slate-300 pb-[7px] first:mt-0 [&_.amap-sp-n]:shrink-0 [&_.amap-sp-n]:font-mono [&_.amap-sp-n]:text-[9px] [&_.amap-sp-n]:font-semibold [&_.amap-sp-n]:uppercase [&_.amap-sp-n]:tracking-[0.14em] [&_.amap-sp-n]:text-slate-500 [&_.amap-sp-name]:font-serif [&_.amap-sp-name]:text-[0.98rem] [&_.amap-sp-name]:font-semibold [&_.amap-sp-name]:text-slate-900">
-  <span class="amap-sp-n">{{ item.code }}</span>
+<div class="amap-sp mt-1.5 flex items-center gap-2.5 border-b border-slate-300 pb-[7px] first:mt-0 [&_.amap-sp-n]:shrink-0 [&_.amap-sp-n]:font-mono [&_.amap-sp-n]:text-[9px] [&_.amap-sp-n]:font-semibold [&_.amap-sp-n]:uppercase [&_.amap-sp-n]:tracking-[0.14em] [&_.amap-sp-n]:text-slate-500 [&_.amap-sp-name]:font-serif [&_.amap-sp-name]:text-[0.98rem] [&_.amap-sp-name]:font-semibold [&_.amap-sp-name]:text-slate-900">
+  <span class="amap-sp-n inline-flex items-center gap-1.5 rounded-full border border-slate-300 bg-slate-50 px-2.5 py-1">
+    <svg width="7" height="7" viewBox="0 0 8 8" fill="currentColor" class="shrink-0 text-slate-400" aria-hidden="true"><rect x="1" y="1" width="6" height="6" transform="rotate(45 4 4)"/></svg>
+    {{ item.code }}
+  </span>
   <span class="amap-sp-name">{{ item.name }}</span>
 </div>
 {% endif %}

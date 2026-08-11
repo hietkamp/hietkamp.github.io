@@ -9,12 +9,12 @@
 >
 
   <ess:Activity rdf:about="activity/governance-assure-evidence">
-    <ess:name xml:lang="nl">Werking van de governance toetsen</ess:name>
-    <ess:briefDescription xml:lang="nl">Vergelijkt hoe de governance feitelijk werkt met de objectives die bij Governance inrichten zijn vastgelegd — geen review van architectuurproducten (dat gebeurt al bij Levering besturen), maar de vraag of het sturingssysteem zelf doet wat het moest doen.</ess:briefDescription>
+    <ess:name xml:lang="nl">Toets werking governance</ess:name>
+    <ess:briefDescription xml:lang="nl">Vergelijkt hoe de governance feitelijk werkt met de objectives die bij Richt governance in zijn vastgelegd — geen review van architectuurproducten (dat gebeurt al bij Bestuur levering), maar de vraag of het sturingssysteem zelf doet wat het moest doen.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
-<p>Het is een makkelijke vergissing: opnieuw naar de architectuurbeslissingen en de paved road-conformance kijken en dat "toetsen van de governance" noemen. Maar die review is al gebeurd — Levering besturen beoordeelt elke uitzondering al op het moment dat hij zich voordoet, en legt de uitkomst vast als Review Record. Deze activiteit doet dat werk niet over.</p>
-<p>Deze activiteit stelt een andere vraag: doet de governance zelf wat bij Governance inrichten is beloofd? Daar zijn objectives vastgelegd — bijvoorbeeld dat conforme beslissingen geen vertraging ondervinden, dat escalaties binnen een vaste termijn worden afgehandeld, en dat het aantal actieve principes beperkt blijft. Deze activiteit legt de opgetelde Review Records en de Conformance Evidence uit een periode náást die objectives: worden ze gehaald, of niet?</p>
-<p>Dat is de kern van Check zoals bedoeld: de verzamelde data analyseren en de uitkomsten vergelijken met wat bij Governance inrichten is afgesproken — niet de architectuur opnieuw beoordelen, maar het sturingssysteem zelf. Blijkt de gemiddelde doorlooptijd van een escalatie toch op te lopen? Groeit het aantal actieve principes ongemerkt? Wordt de paved road structureel gemeden ondanks dat hij zelfbedienbaar zou moeten zijn? Dat zijn signalen dat de governance haar eigen doel niet meer haalt — en dat is precies de input voor Governance bijstellen.</p>
+<p>Het is een makkelijke vergissing: opnieuw naar de architectuurbeslissingen en de paved road-conformance kijken en dat "toetsen van de governance" noemen. Maar die review is al gebeurd — Bestuur levering beoordeelt elke uitzondering al op het moment dat hij zich voordoet, en legt de uitkomst vast als Review Record. Deze activiteit doet dat werk niet over.</p>
+<p>Deze activiteit stelt een andere vraag: doet de governance zelf wat bij Richt governance in is beloofd? Daar zijn objectives vastgelegd — bijvoorbeeld dat conforme beslissingen geen vertraging ondervinden, dat escalaties binnen een vaste termijn worden afgehandeld, en dat het aantal actieve principes beperkt blijft. Deze activiteit legt de opgetelde Review Records en de Conformance Evidence uit een periode náást die objectives: worden ze gehaald, of niet?</p>
+<p>Dat is de kern van Check zoals bedoeld: de verzamelde data analyseren en de uitkomsten vergelijken met wat bij Richt governance in is afgesproken — niet de architectuur opnieuw beoordelen, maar het sturingssysteem zelf. Blijkt de gemiddelde doorlooptijd van een escalatie toch op te lopen? Groeit het aantal actieve principes ongemerkt? Wordt de paved road structureel gemeden ondanks dat hij zelfbedienbaar zou moeten zijn? Dat zijn signalen dat de governance haar eigen doel niet meer haalt — en dat is precies de input voor Stel governance bij.</p>
 <p>Ook de werkwijze zelf hoort bij deze vergelijking: worden de activiteiten en werkproducten van deze practices daadwerkelijk gebruikt zoals bedoeld, of raken stappen structureel overgeslagen? Dat is niet per se een falend team — het kan er net zo goed op wijzen dat de werkwijze zelf niet meer aansluit bij hoe er gewerkt wordt.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -24,7 +24,7 @@
     <ess:action rdf:resource="action/governance-assure-evidence/read/solution-roadmap"/>
     <ess:action rdf:resource="action/governance-assure-evidence/create/conformance-evidence"/>
     <ess:action rdf:resource="action/governance-assure-evidence/read/paved-road"/>
-    <ess:action rdf:resource="action/governance-assure-evidence/read/review-records"/>
+    <ess:action rdf:resource="action/governance-assure-evidence/create/review-records"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/governance-assure-evidence/completion/governance"/>
     <ess:criterion rdf:resource="criterion/governance-assure-evidence/completion/way-of-working"/>
@@ -32,16 +32,16 @@
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/governance-assure-evidence/default">
-    <ess:name xml:lang="nl">Werking van de governance toetsen</ess:name>
+    <ess:name xml:lang="nl">Toets werking governance</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <ul>
-<li>Haal de objectives op die bij Governance inrichten zijn vastgelegd in de Architecture Working Agreement: wat moest dit sturingssysteem opleveren?</li>
-<li>Verzamel de al bestaande data over de afgelopen periode: de Review Records uit Levering besturen (aantal en aard van de uitzonderingen, doorlooptijd van escalaties) en het feitelijk gebruik van de paved road. Verzin geen nieuwe metingen — de review is al gedaan, dit is geen tweede beoordelingsronde.</li>
+<li>Haal de objectives op die bij Richt governance in zijn vastgelegd in de Architecture Working Agreement: wat moest dit sturingssysteem opleveren?</li>
+<li>Verzamel de al bestaande data over de afgelopen periode: de Review Records uit Bestuur levering (aantal en aard van de uitzonderingen, doorlooptijd van escalaties) en het feitelijk gebruik van de paved road. Verzin geen nieuwe metingen — de review is al gedaan, dit is geen tweede beoordelingsronde.</li>
 <li>Leg die data naast de objectives, niet naast de architectuur: worden escalaties binnen de afgesproken termijn afgehandeld? Blijft het aantal actieve principes beperkt? Ondervinden conforme beslissingen geen vertraging?</li>
 <li>Leg de vergelijking vast als Conformance Evidence: welke objectives worden gehaald, welke niet, en als trend — toe- of afname over tijd — niet als eenmalig oordeel.</li>
-<li>Signaleer patronen die erop wijzen dat de governance haar eigen objectives niet meer haalt — bijvoorbeeld oplopende doorlooptijden of een groeiend aantal principes — expliciet door naar Governance bijstellen.</li>
-<li>Beoordeel op dezelfde manier de werking van de werkwijze zelf: worden de activiteiten en werkproducten uit deze practices daadwerkelijk gebruikt zoals bedoeld, of raken stappen structureel overgeslagen? Signaleer ook dát expliciet door naar Governance bijstellen — dat is niet per se een falend team, maar mogelijk een werkwijze die bijstelling nodig heeft.</li>
+<li>Signaleer patronen die erop wijzen dat de governance haar eigen objectives niet meer haalt — bijvoorbeeld oplopende doorlooptijden of een groeiend aantal principes — expliciet door naar Stel governance bij.</li>
+<li>Beoordeel op dezelfde manier de werking van de werkwijze zelf: worden de activiteiten en werkproducten uit deze practices daadwerkelijk gebruikt zoals bedoeld, of raken stappen structureel overgeslagen? Signaleer ook dát expliciet door naar Stel governance bij — dat is niet per se een falend team, maar mogelijk een werkwijze die bijstelling nodig heeft.</li>
 </ul>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -58,7 +58,7 @@
     <ess:name xml:lang="nl">Lees solution-roadmap</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>
+    <ess:workProduct rdf:resource="workproduct/roadmap"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-assure-evidence/create/conformance-evidence">
@@ -75,10 +75,10 @@
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/governance-assure-evidence/read/review-records">
-    <ess:name xml:lang="nl">Lees reviewresultaten</ess:name>
+  <ess:Action rdf:about="action/governance-assure-evidence/create/review-records">
+    <ess:name xml:lang="nl">Maak reviewresultaten</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/review-records"/>
   </ess:Action>
 

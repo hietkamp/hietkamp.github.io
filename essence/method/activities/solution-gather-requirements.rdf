@@ -20,8 +20,6 @@
     <ess:action rdf:resource="action/solution-identify-requirements/read/paved-road"/>
     <ess:action rdf:resource="action/solution-identify-requirements/read/requirements"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/solution-identify-requirements/entry/opportunity"/>
-    <ess:criterion rdf:resource="criterion/solution-identify-requirements/entry/stakeholders"/>
     <ess:criterion rdf:resource="criterion/solution-identify-requirements/entry/requirements"/>
     <ess:criterion rdf:resource="criterion/solution-identify-requirements/completion/requirements"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
@@ -63,18 +61,6 @@
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:EntryCriterion rdf:about="criterion/solution-identify-requirements/entry/opportunity">
-    <ess:name>Entry: Opportunity</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable"/>
-  </ess:EntryCriterion>
-
-  <ess:EntryCriterion rdf:about="criterion/solution-identify-requirements/entry/stakeholders">
-    <ess:name>Entry: Stakeholders</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement"/>
-  </ess:EntryCriterion>
-
   <ess:EntryCriterion rdf:about="criterion/solution-identify-requirements/entry/requirements">
     <ess:name>Entry: Requirements</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -82,7 +68,7 @@
   </ess:EntryCriterion>
 
   <ess:CompletionCriterion rdf:about="criterion/solution-identify-requirements/completion/requirements">
-    <ess:name>Completion: Requirements</ess:name>
+    <ess:name>Completion: System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent"/>
   </ess:CompletionCriterion>

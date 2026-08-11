@@ -14,7 +14,7 @@
       <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">{{ practice.id }}</span>
     </div>
     <h2 class="mb-2 font-serif text-[1.45rem] font-black leading-tight text-slate-900 group-hover:text-[var(--{{ practice.color }})]">{{ practice.title }}</h2>
-    <p class="m-0 text-sm leading-relaxed text-slate-500">{{ practice.desc }}</p>
+    <p class="m-0 line-clamp-3 text-sm leading-relaxed text-slate-500">{{ practice.desc }}</p>
     <div class="mt-5 flex flex-wrap gap-1.5">
       {% for tag in practice.tags %}
       <span class="rounded-full border border-[var(--{{ practice.color }})]/30 bg-[var(--{{ practice.color }})]/8 px-2.5 py-0.5 font-mono text-[10px] text-[var(--{{ practice.color }})]">{{ tag }}</span>

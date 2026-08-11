@@ -12,7 +12,7 @@
     <ess:briefDescription xml:lang="nl">Het systeem van guardrails, beslissingsrechten, cadans en werkwijze-eigenaarschap waarmee het Architectuurforum architectuurkwaliteit stuurt, in dienst van de gates uit de Project levenscyclus.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Deze alpha volgt hoe ver de sturing is: van een net opgericht forum tot een governance die aantoonbaar werkt én zichzelf actief bijstelt. De vijf toestanden volgen de cyclus van de practice Architectuursturing.</p>
-<p>Governance inrichten brengt de alpha naar <strong>Opgericht</strong> en direct door naar <strong>Actief</strong>: het fundament (beslissingsbevoegdheid, principes, repository, eigenaarschap van de werkwijze, opdracht aan Enterprise architectuur voor architectuurvisie en paved road, en de objectives voor de governance zelf) staat, en het Architectuurforum vergadert op een vaste, vooraf gepubliceerde cadans. Levering besturen brengt de alpha naar <strong>Sturend</strong>: nieuwe initiatieven zijn formeel onder governance gebracht en beslissingen stromen binnen de guardrails. Werking van de governance toetsen brengt de alpha naar <strong>Geborgd</strong>: niet door de architectuur opnieuw te beoordelen — dat is al gebeurd bij Levering besturen — maar door de opgetelde reviewuitkomsten en het paved-road-gebruik te vergelijken met de objectives uit Governance inrichten, en te toetsen of ook de werkwijze zelf nog aansluit. Governance bijstellen sluit de cyclus met <strong>Effectief</strong>: principes, working agreement en waar nodig de werkwijze zelf zijn bijgesteld op basis van dat bewijs.</p>
+<p>Richt governance in brengt de alpha naar <strong>Opgericht</strong> en direct door naar <strong>Actief</strong>: het fundament (beslissingsbevoegdheid, principes, repository, eigenaarschap van de werkwijze, opdracht aan Enterprise architectuur voor architectuurvisie en paved road, en de objectives voor de governance zelf) staat, en het Architectuurforum vergadert op een vaste, vooraf gepubliceerde cadans. Bestuur levering brengt de alpha naar <strong>Sturend</strong>: nieuwe initiatieven zijn formeel onder governance gebracht en beslissingen stromen binnen de guardrails. Toets werking governance brengt de alpha naar <strong>Geborgd</strong>: niet door de architectuur opnieuw te beoordelen — dat is al gebeurd bij Bestuur levering — maar door de opgetelde reviewuitkomsten en het paved-road-gebruik te vergelijken met de objectives uit Richt governance in, en te toetsen of ook de werkwijze zelf nog aansluit. Stel governance bij sluit de cyclus met <strong>Effectief</strong>: principes, working agreement en waar nodig de werkwijze zelf zijn bijgesteld op basis van dat bewijs.</p>
 <p>Deze alpha vervangt de gates uit de Project levenscyclus niet — ze bedient ze: zolang een initiatief binnen de guardrails blijft, stroomt het door de gates heen; alleen afwijkingen krijgen een expliciete beoordeling door het forum.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -68,7 +68,7 @@
 
   <ess:Checkpoint rdf:about="checkpoint/governance/initiated/5">
     <ess:name xml:lang="nl">De objectives voor de governance zelf zijn vastgelegd.</ess:name>
-    <ess:description xml:lang="nl">De objectives voor de governance zelf zijn vastgelegd — de meetlat waartegen Werking van de governance toetsen later vergelijkt.</ess:description>
+    <ess:description xml:lang="nl">De objectives voor de governance zelf zijn vastgelegd — de meetlat waartegen Toets werking governance later vergelijkt.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Checkpoint>
@@ -149,15 +149,15 @@
   </ess:State>
 
   <ess:Checkpoint rdf:about="checkpoint/governance/assured/1">
-    <ess:name xml:lang="nl">De feitelijke werking is vergeleken met de objectives uit Governance inrichten.</ess:name>
-    <ess:description xml:lang="nl">De feitelijke werking is vergeleken met de objectives uit Governance inrichten.</ess:description>
+    <ess:name xml:lang="nl">De feitelijke werking is vergeleken met de objectives uit Richt governance in.</ess:name>
+    <ess:description xml:lang="nl">De feitelijke werking is vergeleken met de objectives uit Richt governance in.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Checkpoint>
 
   <ess:Checkpoint rdf:about="checkpoint/governance/assured/2">
-    <ess:name xml:lang="nl">Afwijkingen van de objectives zijn gesignaleerd naar Governance bijstellen.</ess:name>
-    <ess:description xml:lang="nl">Afwijkingen van de objectives zijn gesignaleerd naar Governance bijstellen.</ess:description>
+    <ess:name xml:lang="nl">Afwijkingen van de objectives zijn gesignaleerd naar Stel governance bij.</ess:name>
+    <ess:description xml:lang="nl">Afwijkingen van de objectives zijn gesignaleerd naar Stel governance bij.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Checkpoint>

@@ -97,6 +97,19 @@ AREA_OF_CONCERN_DOMAIN = {
     "EndeavorAreaOfConcern":  "endeavour",
 }
 
+# Canonical order of the kernel's Activity Spaces within each area of concern,
+# per the Essence Kernel spec (OMG ptc/25-05-01, §8.2.3/8.3.3/8.4.3) — the
+# lifecycle sequence each area's activity spaces are defined in, not
+# alphabetical. Used to order the activity-space subgroups on activiteiten.html.
+ACTIVITY_SPACE_ORDER = [
+    "Explore Possibilities", "Understand Stakeholder Needs",
+    "Ensure Stakeholder Satisfaction", "Use the System",
+    "Understand the Requirements", "Shape the System", "Implement the System",
+    "Test the System", "Deploy the System", "Operate the System",
+    "Prepare to do the Work", "Coordinate Activity", "Support the Team",
+    "Track Progress", "Stop the Work",
+]
+
 # Custom domain triad — still recognisably yellow/green/blue, but with more
 # character than the Tailwind defaults and WCAG-AA text contrast on every fill:
 # helder geel #F0C419 carries dark text (white on yellow never reaches 4.5:1),
@@ -124,6 +137,15 @@ DOMAIN_COLOR_CFG = {
         "chip_css":       "border-[#2557A7]/30 bg-[#2557A7]/10 text-[#2557A7]",
     },
 }
+
+def domain_legend() -> list[dict]:
+    """Legend rows explaining the domain-colour system (dot + label), for pages
+    where cards are coloured by Customer/Solution/Endeavour but that meaning
+    is never otherwise spelled out (alphas.html, activiteiten.html)."""
+    return [
+        {"label": key.capitalize(), "dot": DOMAIN_COLOR_CFG[key]["num_color"]}
+        for key in ("customer", "solution", "endeavour")
+    ]
 
 # ess:Action CRUD kinds, translated once and reused everywhere an action kind
 # is shown (practice-overview activity cards, activity detail page "Acties").
@@ -493,23 +515,6 @@ def alpha_href(alpha_slug: str, root: str = "") -> str:
 # Per-page context builders
 # ---------------------------------------------------------------------------
 
-def build_nav_practices(g: Graph, root: str = "") -> list[dict]:
-    """Build the list of practices for the top-nav dropdown."""
-    result = []
-    for practice in g.objects(METHOD_URI, ESS.ownedElements):
-        if (practice, RDF.type, ESS.Practice) not in g:
-            continue
-        s = slug(practice)
-        cfg = PRACTICE_CFG.get(s, {})
-        result.append({
-            "id":    s,
-            "title": cfg.get("nav_title") or get_name(g, practice),
-            "href":  practice_href(s, root),
-            "color": cfg.get("color", "neutral"),
-        })
-    return result
-
-
 def _base_ctx(g: Graph, root: str = "", data_prac: str = "",
               title: str = "", description: str = "") -> dict:
     return {
@@ -518,8 +523,79 @@ def _base_ctx(g: Graph, root: str = "", data_prac: str = "",
         "root":        root,
         "css_path":    f"{root}style.css",
         "data_prac":   data_prac,
-        "nav_practices": build_nav_practices(g, root),
     }
+
+
+# ── Sidenav "siblings" builders ─────────────────────────────────────────────
+# The left sidenav is site navigation, not just an in-page table of contents:
+# on a detail page it lists the siblings of the thing you're looking at (other
+# activities in the same practice, other alphas in the same domain, ...) with
+# the current one marked, so you can move sideways without going back to the
+# overview. The five flat overview pages (practices/roles/alphas/workproducts/
+# activiteiten.html) opt out via ctx["no_sidenav"] = True instead of getting
+# an empty sidenav — there's no meaningful "siblings" concept one level above
+# the top of each hierarchy.
+
+def _practice_sidenav(g: Graph, current_uri, root: str) -> dict:
+    items = []
+    for p in g.objects(METHOD_URI, ESS.ownedElements):
+        if (p, RDF.type, ESS.Practice) not in g:
+            continue
+        items.append({"href": practice_href(slug(p), root),
+                       "label": get_name(g, p), "current": p == current_uri})
+    return {"group_label": "Practices", "icon": "practice", "links": items}
+
+
+def _activity_sidenav(g: Graph, current_uri, practice_uri,
+                       ordered_acts: list, root: str) -> dict:
+    items = []
+    for i, a in enumerate(ordered_acts):
+        domain_color = domain_color_for(g, a)
+        items.append({
+            "href": activity_href(slug(a), root), "label": get_name(g, a),
+            "num": f"{i + 1:02d}", "current": a == current_uri,
+            "num_color": domain_color.get("num_color", "bg-slate-700"),
+            "num_text_color": domain_color.get("num_text_color", "text-white"),
+        })
+    return {"group_label": get_name(g, practice_uri), "icon": "activity", "links": items}
+
+
+def _wp_sidenav(g: Graph, current_uri, practice_uri, root: str) -> dict:
+    items = []
+    for wp in g.subjects(RDF.type, ESS.WorkProduct):
+        if next(g.objects(wp, ESS.owner), None) != practice_uri:
+            continue
+        items.append({"href": wp_href(slug(wp), root),
+                       "label": get_name(g, wp), "current": wp == current_uri})
+    items.sort(key=lambda i: i["label"])
+    return {"group_label": get_name(g, practice_uri) if practice_uri else "Workproducts",
+            "icon": "wp", "links": items}
+
+
+def _role_sidenav(g: Graph, current_uri, root: str) -> dict:
+    items = []
+    for r in g.subjects(RDF.type, ESS.Pattern):
+        if not local_path(r).startswith("role/"):
+            continue
+        items.append({"href": role_href(slug(r), root),
+                       "label": get_name(g, r), "current": r == current_uri})
+    items.sort(key=lambda i: i["label"])
+    return {"group_label": "Rollen", "icon": "role", "links": items}
+
+
+def _alpha_sidenav(g: Graph, current_uri, root: str) -> dict:
+    domain_color = domain_color_for(g, current_uri)
+    domain = domain_color.get("domain")
+    items = []
+    for a in g.subjects(RDF.type, ESS.Alpha):
+        if domain_color_for(g, a).get("domain") != domain:
+            continue
+        items.append({"href": alpha_href(_alpha_key(a), root),
+                       "label": get_name(g, a), "current": a == current_uri})
+    items.sort(key=lambda i: i["label"])
+    return {"group_label": domain.capitalize() if domain else "Alpha", "icon": "alpha",
+            "icon_css": domain_color.get("chip_css", "border-slate-300 bg-slate-100 text-slate-500"),
+            "links": items}
 
 
 # ── index.html ──────────────────────────────────────────────────────────────
@@ -658,6 +734,7 @@ def build_practices_ctx(g: Graph) -> dict:
             "lede":   "De methode bestaat uit vijf samenhangende practices.",
         },
         "practices": practices,
+        "no_sidenav": True,
     })
     return ctx
 
@@ -686,6 +763,7 @@ def build_roles_ctx(g: Graph) -> dict:
             "lede":   "De rollen die de activiteiten van de methode uitvoeren.",
         },
         "roles": roles,
+        "no_sidenav": True,
     })
     return ctx
 
@@ -721,23 +799,34 @@ def build_alphas_ctx(g: Graph) -> dict:
             "lede":   "De toestandsruimtes die de voortgang van de methode bewaken.",
         },
         "alpha_groups": alpha_groups,
+        "no_sidenav": True,
+        "domain_legend": domain_legend(),
     })
     return ctx
 
 
 def build_workproducts_ctx(g: Graph) -> dict:
-    workproducts = []
+    # Group work products by their owning practice, in the method's own
+    # ownedElements order — the same practice order practices.html renders.
+    by_practice: dict = {}
     for wp in g.subjects(RDF.type, ESS.WorkProduct):
-        s = slug(wp)
         owner = next(g.objects(wp, ESS.owner), None)
-        workproducts.append({
-            "href":     wp_href(s),
-            "title":    get_name(g, wp),
-            "desc":     get_brief(g, wp),
-            "practice": get_name(g, owner) if owner else "",
-            "topbar":   NEUTRAL_TOPBAR,
+        by_practice.setdefault(owner, []).append({
+            "href":   wp_href(slug(wp)),
+            "title":  get_name(g, wp),
+            "desc":   get_brief(g, wp),
+            "topbar": NEUTRAL_TOPBAR,
         })
-    workproducts.sort(key=lambda w: w["title"])
+
+    workproduct_groups = []
+    for practice in g.objects(METHOD_URI, ESS.ownedElements):
+        wps = by_practice.get(practice)
+        if not wps:
+            continue
+        workproduct_groups.append({
+            "practice":     get_name(g, practice),
+            "workproducts": sorted(wps, key=lambda w: w["title"]),
+        })
 
     ctx = _base_ctx(g, root="", data_prac="neutral",
                     title="Workproducts", description="Overzicht van alle workproducts")
@@ -747,24 +836,49 @@ def build_workproducts_ctx(g: Graph) -> dict:
             "h1_pre": "Workproducts",
             "lede":   "De werkproducten die de methode oplevert.",
         },
-        "workproducts": workproducts,
+        "workproduct_groups": workproduct_groups,
+        "no_sidenav": True,
     })
     return ctx
 
 
 def build_activities_ctx(g: Graph) -> dict:
-    activities = []
+    # Group by domain (Customer/Solution/Endeavour, from the activity's own
+    # ess:tags), then within each domain by kernel activity space — the same
+    # two-level structure the "Alphas" overview already uses for its domains.
+    by_domain: dict = {}
     for act in g.subjects(RDF.type, ESS.Activity):
-        s = slug(act)
+        domain = domain_color_for(g, act)
+        key = domain.get("domain")
+        if not key:
+            continue
         owner = next(g.objects(act, ESS.owner), None)
-        activities.append({
-            "href":     activity_href(s),
+        space = activity_space_chip(g, act) or "Overig"
+        card = {
+            "href":     activity_href(slug(act)),
             "title":    get_name(g, act),
             "desc":     get_brief(g, act),
             "practice": get_name(g, owner) if owner else "",
-            "topbar":   domain_color_for(g, act).get("num_color", NEUTRAL_TOPBAR),
-        })
-    activities.sort(key=lambda a: a["title"])
+            "topbar":   domain.get("num_color", NEUTRAL_TOPBAR),
+        }
+        by_domain.setdefault(key, {}).setdefault(space, []).append(card)
+
+    activity_groups = []
+    for key in ("customer", "solution", "endeavour"):
+        spaces = by_domain.get(key)
+        if not spaces:
+            continue
+        def _space_order(space: str) -> tuple:
+            try:
+                return (0, ACTIVITY_SPACE_ORDER.index(space))
+            except ValueError:
+                return (1, space)
+
+        space_groups = [
+            {"space": space, "activities": sorted(spaces[space], key=lambda a: a["title"])}
+            for space in sorted(spaces, key=_space_order)
+        ]
+        activity_groups.append({"domain": key.capitalize(), "spaces": space_groups})
 
     ctx = _base_ctx(g, root="", data_prac="neutral",
                     title="Activiteiten", description="Overzicht van alle activiteiten")
@@ -774,7 +888,9 @@ def build_activities_ctx(g: Graph) -> dict:
             "h1_pre": "Activiteiten",
             "lede":   "De activiteiten die de practices van de methode uitvoeren.",
         },
-        "activities": activities,
+        "activity_groups": activity_groups,
+        "no_sidenav": True,
+        "domain_legend": domain_legend(),
     })
     return ctx
 
@@ -952,7 +1068,7 @@ def _build_phase_domains(g: Graph, practice_uri, practice_slug: str) -> list[dic
 
     domains: list = []
     running_num = 0
-    for phase, phase_acts in zip(phases, all_phase_acts):
+    for phase_num, (phase, phase_acts) in enumerate(zip(phases, all_phase_acts), start=1):
         items = [
             _activity_dict(g, act, running_num + i + 1, total_all, practice_slug)
             for i, act in enumerate(phase_acts)
@@ -991,6 +1107,7 @@ def _build_phase_domains(g: Graph, practice_uri, practice_slug: str) -> list[dic
             "num_color":       cfg.get("num_color", "bg-slate-700"),
             "num_text_color":  "text-slate-800" if header_light else "text-white",
             "header_light":    header_light,
+            "phase_num":       phase_num,
             "connector_after": connector,
             "items":           items,
         })
@@ -1058,6 +1175,7 @@ def build_phase_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
         "diff_grid":  None,
         "work_products": [],
         "roles": {"intro": "", "cards": []},
+        "sidenav": _practice_sidenav(g, practice_uri, root="../"),
     })
     return ctx, "wow.html.j2"
 
@@ -1232,6 +1350,7 @@ def build_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
             "intro": "Rollen die deze practice uitvoeren.",
             "cards": role_dicts,
         },
+        "sidenav": _practice_sidenav(g, practice_uri, root="../"),
     })
     return ctx, "wow.html.j2"
 
@@ -1265,10 +1384,11 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
     # Full description HTML, rendered as-is (like wow.html.j2's rdf_prose)
     desc_html = fix_desc_paths(get_desc(g, act_uri), "../")
 
-    # Action cards, grouped by CRUD kind (Lezen, Aanmaken, Wijzigen, Verwijderen —
-    # in that order) so the "Acties" section can head each group with its kind
-    # instead of repeating a kind badge on every card. Each card is a work
-    # product (reusing the wp-card layout) or an alpha.
+    # Action chips, grouped by CRUD kind (Lezen, Aanmaken, Wijzigen, Verwijderen —
+    # in that order) so the "Acties" section can render one compact flow row per
+    # kind (icon + label, then a chip per target) instead of a full card grid.
+    # Each target is a work product (neutral chip) or an alpha (chip tinted in
+    # its ess:tags domain colour, same treatment as elsewhere on the site).
     action_by_kind: dict = {}
     for action_uri in g.objects(act_uri, ESS.action):
         kind = _action_kind(g, action_uri)
@@ -1280,28 +1400,24 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
             title = get_name(g, wp)
             if not title:
                 continue
-            card = {
-                "type":   "Werkproduct",
-                "title":  title,
-                "href":   wp_href(slug(wp), root="../"),
-                "topbar": NEUTRAL_TOPBAR,
-            }
+            chip = {"kind": "wp", "title": title, "href": wp_href(slug(wp), root="../")}
         elif alph:
             title = get_name(g, alph)
             if not title:
                 continue
-            card = {
-                "type":   "Alpha",
-                "title":  title,
-                "href":   alpha_href(_alpha_key(alph), root="../"),
-                "topbar": domain_color_for(g, alph).get("num_color", NEUTRAL_TOPBAR),
+            chip = {
+                "kind":     "alpha",
+                "title":    title,
+                "href":     alpha_href(_alpha_key(alph), root="../"),
+                "chip_css": domain_color_for(g, alph).get(
+                    "chip_css", "border-slate-300 bg-slate-100 text-slate-500"),
             }
         else:
             continue
-        action_by_kind.setdefault(kind, []).append(card)
+        action_by_kind.setdefault(kind, []).append(chip)
 
     action_groups = [
-        {"kind_nl": ACTION_KIND_NL[kind], "cards": action_by_kind[kind]}
+        {"kind": kind, "kind_nl": ACTION_KIND_NL[kind], "chips": action_by_kind[kind]}
         for kind in ("read", "create", "update", "delete")
         if action_by_kind.get(kind)
     ]
@@ -1461,6 +1577,7 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
             } if next_act else None,
             "overview": f"../practice/{ps}.html",
         },
+        "sidenav": _activity_sidenav(g, act_uri, practice_uri, ordered_acts, root="../"),
     })
     return ctx
 
@@ -1597,6 +1714,7 @@ def build_wp_ctx(g: Graph, wp_uri) -> dict:
             "parent_label": "Workproducts",
             "current":      title,
         },
+        "sidenav": _wp_sidenav(g, wp_uri, practice_uri, root="../"),
     })
     return ctx
 
@@ -1657,6 +1775,7 @@ def build_role_ctx(g: Graph, role_uri) -> dict:
             "parent_label": "Rollen",
             "current":      title,
         },
+        "sidenav": _role_sidenav(g, role_uri, root="../"),
     })
     return ctx
 
@@ -1667,16 +1786,16 @@ def build_alpha_ctx(g: Graph, alpha_uri) -> dict:
     desc_html = fix_desc_paths(get_desc(g, alpha_uri), "../")
     domain = domain_color_for(g, alpha_uri)
     topbar = domain.get("num_color", NEUTRAL_TOPBAR)
+    topbar_text = domain.get("num_text_color", "text-white")
 
     state_cards = []
     for state in alpha_ordered_states(g, alpha_uri):
         state_cards.append({
-            "title":     get_name(g, state) or _alpha_key(state),
-            "desc":      get_brief(g, state) or get_desc(g, state),
-            "checklist": state_checklist_texts(g, state),
-            "href":      None,
-            "type":      "Toestand",
-            "topbar":    topbar,
+            "title":       get_name(g, state) or _alpha_key(state),
+            "desc":        get_brief(g, state) or get_desc(g, state),
+            "checklist":   state_checklist_texts(g, state),
+            "dot":         topbar,
+            "dot_text":    topbar_text,
         })
 
     sections = [
@@ -1684,8 +1803,11 @@ def build_alpha_ctx(g: Graph, alpha_uri) -> dict:
          "body_html": desc_html or (f"<p>{brief}</p>" if brief else "")},
     ]
     if state_cards:
+        # ess:successor forms a real life-cycle sequence, not just a list — a
+        # numbered, connected stepper makes that order visible instead of
+        # showing identical stacked cards with no relation to each other.
         sections.append({"id": "toestanden", "h2": "Toestanden",
-                          "section_kind": "cards", "stacked": True, "cards": state_cards})
+                          "section_kind": "stepper", "steps": state_cards})
 
     ctx = _base_ctx(g, root="../", data_prac="neutral", title=title, description=brief)
     ctx.update({
@@ -1699,6 +1821,7 @@ def build_alpha_ctx(g: Graph, alpha_uri) -> dict:
             "parent_label": "Alphas",
             "current":      title,
         },
+        "sidenav": _alpha_sidenav(g, alpha_uri, root="../"),
     })
     return ctx
 

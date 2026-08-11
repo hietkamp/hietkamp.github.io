@@ -12,41 +12,15 @@
     <ess:briefDescription xml:lang="nl">De catalogus van goedgekeurde standaardsoftware-componenten, integratiepatronen en referentie-instellingen die teams mogen toepassen zonder voorafgaande beoordeling — de conforme keuze is de gemakkelijkste keuze.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>De paved road is het technische tegenwicht van de architectuurprincipes: waar principes begrenzen wat een team <em>niet</em> mag doen, is de paved road wat Enterprise architectuur teams <em>wel</em> aanreikt om te gebruiken. Deze alpha volgt hoe volwassen die catalogus is, van een eerste kiem tot een levende, zelf-onderhoudende standaard.</p>
-<p>Het Architectuurforum geeft bij Governance inrichten opdracht aan Enterprise architectuur om de paved road te ontwikkelen en te onderhouden, afgeleid van beleid en de architectuurvisie op ondernemingsniveau. Teams die binnen de paved road blijven, hoeven niet langs een gate voor architectuurgoedkeuring; alleen afwijkingen (off-road) worden expliciet beoordeeld door Architectuursturing.</p>
+<p>Het Architectuurforum geeft bij Richt governance in opdracht aan Enterprise architectuur om de paved road te ontwikkelen en te onderhouden, afgeleid van beleid en de architectuurvisie op ondernemingsniveau. Teams die binnen de paved road blijven, hoeven niet langs een gate voor architectuurgoedkeuring; alleen afwijkingen (off-road) worden expliciet beoordeeld door Architectuursturing.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
-    <ess:states rdf:resource="state/paved-road/seeded"/>
     <ess:states rdf:resource="state/paved-road/established"/>
     <ess:states rdf:resource="state/paved-road/adopted"/>
-    <ess:states rdf:resource="state/paved-road/pervasive"/>
     <ess:states rdf:resource="state/paved-road/evolving"/>
-    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
   </ess:Alpha>
-
-  <ess:State rdf:about="state/paved-road/seeded">
-    <ess:name xml:lang="nl">Gekiemd</ess:name>
-    <ess:briefDescription/>
-    <ess:description/>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:checkListItem rdf:resource="checkpoint/paved-road/seeded/1"/>
-    <ess:checkListItem rdf:resource="checkpoint/paved-road/seeded/2"/>
-    <ess:successor rdf:resource="state/paved-road/established"/>
-  </ess:State>
-
-  <ess:Checkpoint rdf:about="checkpoint/paved-road/seeded/1">
-    <ess:name xml:lang="nl">De behoefte aan een goedgekeurde route is erkend.</ess:name>
-    <ess:description xml:lang="nl">De behoefte aan een goedgekeurde route is erkend.</ess:description>
-    <ess:shortDescription/>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-  </ess:Checkpoint>
-
-  <ess:Checkpoint rdf:about="checkpoint/paved-road/seeded/2">
-    <ess:name xml:lang="nl">Er bestaan een of twee eerste goedgekeurde standaardkeuzes.</ess:name>
-    <ess:description xml:lang="nl">Er bestaan een of twee eerste goedgekeurde standaardkeuzes.</ess:description>
-    <ess:shortDescription/>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-  </ess:Checkpoint>
 
   <ess:State rdf:about="state/paved-road/established">
     <ess:name xml:lang="nl">Gevestigd</ess:name>
@@ -79,7 +53,7 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:checkListItem rdf:resource="checkpoint/paved-road/adopted/1"/>
     <ess:checkListItem rdf:resource="checkpoint/paved-road/adopted/2"/>
-    <ess:successor rdf:resource="state/paved-road/pervasive"/>
+    <ess:successor rdf:resource="state/paved-road/evolving"/>
   </ess:State>
 
   <ess:Checkpoint rdf:about="checkpoint/paved-road/adopted/1">
@@ -92,30 +66,6 @@
   <ess:Checkpoint rdf:about="checkpoint/paved-road/adopted/2">
     <ess:name xml:lang="nl">On-road keuzes hoeven niet te worden beoordeeld.</ess:name>
     <ess:description xml:lang="nl">On-road keuzes hoeven niet te worden beoordeeld.</ess:description>
-    <ess:shortDescription/>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-  </ess:Checkpoint>
-
-  <ess:State rdf:about="state/paved-road/pervasive">
-    <ess:name xml:lang="nl">Omnipresent</ess:name>
-    <ess:briefDescription/>
-    <ess:description/>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:checkListItem rdf:resource="checkpoint/paved-road/pervasive/1"/>
-    <ess:checkListItem rdf:resource="checkpoint/paved-road/pervasive/2"/>
-    <ess:successor rdf:resource="state/paved-road/evolving"/>
-  </ess:State>
-
-  <ess:Checkpoint rdf:about="checkpoint/paved-road/pervasive/1">
-    <ess:name xml:lang="nl">De goedgekeurde route is de norm op het gehele landgoed.</ess:name>
-    <ess:description xml:lang="nl">De goedgekeurde route is de norm op het gehele landgoed.</ess:description>
-    <ess:shortDescription/>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-  </ess:Checkpoint>
-
-  <ess:Checkpoint rdf:about="checkpoint/paved-road/pervasive/2">
-    <ess:name xml:lang="nl">Off-road gaan is de zeldzame, gerechtvaardigde uitzondering.</ess:name>
-    <ess:description xml:lang="nl">Off-road gaan is de zeldzame, gerechtvaardigde uitzondering.</ess:description>
     <ess:shortDescription/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Checkpoint>

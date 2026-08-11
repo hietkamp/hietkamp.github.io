@@ -23,9 +23,9 @@
     <ess:ownedElements rdf:resource="resource/architecture-vision/template"/>
   </ess:WorkProduct>
 
-  <ess:WorkProductManifest rdf:about="workproduct-manifest/architecture-vision/requirements">
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/architecture-vision/opportunity">
     <ess:workProduct rdf:resource="workproduct/architecture-vision"/>
-    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
     <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
   </ess:WorkProductManifest>
 

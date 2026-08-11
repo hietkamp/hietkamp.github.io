@@ -4,6 +4,10 @@
 
 Genereer een statische GitHub Pages website vanuit RDF-bestanden die een Essence-method beschrijven. De RDF is de enige bron van waarheid; templates en build-script zijn afleidingen daarvan. Niets in templates of context-dictionaries mag hardcoded inhoud bevatten die ook in de RDF staat.
 
+## Gedeeld beheer van de RDF
+
+De inhoud van de RDF-bestanden (`essence/method/**`) wordt niet alleen hier bewerkt: **vanuit Cowork worden ook rechtstreeks wijzigingen op de RDF doorgevoerd** — nieuwe/hernoemde activiteiten, verwijderde of samengevoegde alphas, bijgewerkte teksten, enzovoort, buiten deze sessie om. Zie dit soort wijzigingen in de working tree (bestanden die je zelf niet hebt aangepast) dus niet als een fout of als iets om terug te draaien; het is legitiem parallel werk aan de inhoud. Voordat je iets committen: controleer dat `python build.py` nog schoon doorloopt met de huidige RDF-staat, en neem inhoudelijke RDF-wijzigingen die je niet zelf maakte gewoon mee in de commit (tenzij de gebruiker aangeeft dat iets juist niet mee moet).
+
 ## Technische stack
 
 - **RDF-parsing**: `rdflib` (Python) — laad alle `.rdf`-bestanden in één `Graph`

@@ -29,7 +29,7 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/document-a-decisions/uses">
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="activity/enterprise-design"/>
+    <ess:elements rdf:resource="activity/enterprise-build-paved-road"/>
     <ess:elements rdf:resource="activity/solution-low-level-design"/>
   </ess:PatternAssociation>
 

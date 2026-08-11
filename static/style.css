@@ -46,6 +46,107 @@ h1, h2, h3, h4 {
   font-family: 'Fraunces', Georgia, serif;
 }
 
+/* ── wp-card component ─────────────────────────────────────────────────── */
+/* Shared by every overview grid (roles/alphas/activities/workproducts) and
+   every card list on activity/wp/role/alpha detail pages. Previously each
+   template repeated this ~500-character Tailwind arbitrary-selector string
+   inline, which had already started to drift (line-clamp missing in one
+   place, badge styling duplicated with tiny variations in another). One
+   definition here keeps every card visually identical without relying on
+   template authors to copy the string correctly. h4's own top margin is
+   deliberately 0 — templates that need extra space above the title (a badge
+   that isn't a block-level .wc-type, e.g. an inline chip) add `!mt-1.5` on
+   that specific h4 instead of this component guessing at every context. */
+.wp-card {
+  display: block;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.wp-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+.wp-card.cursor-default { cursor: default; }
+.wp-card .wc-top { height: 5px; }
+.wp-card .wc-body { padding: 0.75rem 0.875rem; }
+.wp-card .wc-type {
+  margin-bottom: 0.25rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #64748b;
+}
+.wp-card h4 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.wp-card p {
+  margin: 0 0 0.5rem;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: #64748b;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.wp-card .wc-open {
+  margin-top: 0.25rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #475569;
+}
+
+/* ── Stepper component ─────────────────────────────────────────────────── */
+/* Used for an alpha's ess:successor chain (state 1 → state 2 → …): a real
+   life-cycle sequence, so a numbered dot connected by a line encodes the
+   order directly instead of showing identical stacked cards with no visible
+   relation to each other. */
+.stepper-item {
+  position: relative;
+  padding-left: 2.5rem;
+  padding-bottom: 1.5rem;
+}
+.stepper-item:last-child { padding-bottom: 0; }
+.stepper-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+}
+.stepper-line {
+  position: absolute;
+  left: 13px;
+  top: 1.75rem;
+  bottom: 0;
+  width: 1px;
+  background: #cbd5e1;
+}
+.stepper-body {
+  border-radius: 0.75rem;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  padding: 0.75rem 0.875rem;
+}
+
 /* ── Keyboard focus ────────────────────────────────────────────────────── */
 /* Cards and chips are links with hover-only affordances; give keyboard users
    an equally clear focus signal. */
@@ -150,7 +251,10 @@ button:focus-visible {
   padding-bottom: 1.5rem;
 }
 
-/* ── Sidenav nav items (populated by nav.js) ─────────────────────────── */
+/* ── Sidenav nav items ──────────────────────────────────────────────────── */
+/* First group (siblings within the current practice/domain/collection) is
+   rendered server-side by _base.html.j2 from ctx["sidenav"]; nav.js appends
+   a second "Op deze pagina" group of in-page anchors below it. */
 .snav-section {
   padding: 0.75rem 1rem 0.25rem;
   font-family: 'IBM Plex Mono', monospace;
@@ -162,19 +266,46 @@ button:focus-visible {
 }
 
 .snav-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
   padding: 0.4rem 1rem;
   font-size: 0.8125rem;
   color: #475569;
   text-decoration: none;
   border-left: 2px solid transparent;
-  transition: color 0.12s, border-color 0.12s;
+  transition: color 0.12s, border-color 0.12s, background-color 0.12s;
 }
 
 .snav-link:hover,
 .snav-link.active {
   color: var(--prac);
   border-left-color: var(--prac);
+}
+
+/* The current page within a sibling group — distinct from .active (a
+   scrolled-to in-page anchor): filled background, bold, not just coloured. */
+.snav-link.current {
+  font-weight: 600;
+  color: var(--prac);
+  background: #f1f5f9;
+  border-left-color: var(--prac);
+}
+
+.snav-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Icon swatch structure only — colour/background for each sidenav kind is
+   set via Tailwind utility classes in the sidenav_icon() macro (neutral by
+   default, domain-tinted for activities/alphas), never here, so the two
+   never fight over the same property. */
+.snav-icon-wrap,
+.snav-badge {
+  line-height: 1;
 }
 
 /* ── Page shell ────────────────────────────────────────────────────────── */

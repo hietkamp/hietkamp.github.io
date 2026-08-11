@@ -26,11 +26,10 @@
   {% if sec.section_kind == 'cards' %}
   <div class="wp-grid grid {{ 'grid-cols-1 gap-3' if sec.stacked else 'grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-3.5' }}">
     {% for card in sec.cards %}
-    {% set card_class = "wp-card block overflow-hidden rounded-xl border border-slate-300 bg-white text-inherit no-underline transition hover:-translate-y-0.5 hover:shadow-sm [&_.wc-top]:h-[5px] [&_.wc-body]:px-3.5 [&_.wc-body]:py-3 [&_.wc-type]:mb-1 [&_.wc-type]:font-mono [&_.wc-type]:text-[9px] [&_.wc-type]:font-semibold [&_.wc-type]:uppercase [&_.wc-type]:tracking-[0.14em] [&_.wc-type]:text-slate-500 [&_h4]:m-0 [&_h4]:mb-1 [&_h4]:font-serif [&_h4]:text-[1.05rem] [&_h4]:font-semibold [&_p]:m-0 [&_p]:mb-2 [&_p]:text-[0.84rem] [&_p]:text-slate-500 [&_.wc-open]:mt-1 [&_.wc-open]:font-mono [&_.wc-open]:text-[10px] [&_.wc-open]:uppercase [&_.wc-open]:tracking-[0.1em] [&_.wc-open]:text-slate-600" %}
     {% if card.href %}
-    <a href="{{ card.href }}" class="{{ card_class }}">
+    <a href="{{ card.href }}" class="wp-card">
     {% else %}
-    <div class="{{ card_class }} cursor-default">
+    <div class="wp-card cursor-default">
     {% endif %}
       <div class="wc-top {{ card.topbar | default('') }}"></div>
       <div class="wc-body">
@@ -56,6 +55,29 @@
     {% endif %}
     {% endfor %}
   </div>
+  {% elif sec.section_kind == 'stepper' %}
+  <ol class="stepper m-0 list-none p-0">
+    {% for step in sec.steps %}
+    <li class="stepper-item">
+      <span class="stepper-dot {{ step.dot }} {{ step.dot_text }}">{{ loop.index }}</span>
+      {% if not loop.last %}<span class="stepper-line"></span>{% endif %}
+      <div class="stepper-body">
+        <h4 class="m-0 mb-1 font-serif text-[1.05rem] font-semibold">{{ step.title }}</h4>
+        {% if step.desc %}<p class="m-0 mb-2 text-[0.84rem] text-slate-500">{{ step.desc }}</p>{% endif %}
+        {% if step.checklist %}
+        <div class="mt-1.5 border-t border-dashed border-slate-200 pt-1.5">
+          <div class="mb-1 font-mono text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500">Checklist</div>
+          <ul class="m-0 mb-0 list-disc space-y-1 pl-4 text-[0.84rem] text-slate-500">
+            {% for item in step.checklist %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
   {% else %}
   {{ rdf_prose(sec.body_html) }}
   {% endif %}

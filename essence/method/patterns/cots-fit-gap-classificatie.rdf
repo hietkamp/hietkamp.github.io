@@ -29,15 +29,14 @@
 
   <ess:PatternAssociation rdf:about="pattern-association/cots-fit-gap-classificatie/uses">
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="activity/enterprise-plan"/>
+    <ess:elements rdf:resource="activity/enterprise-govern-change"/>
     <ess:elements rdf:resource="activity/solution-high-level-design"/>
     <ess:elements rdf:resource="activity/solution-low-level-design"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/cots-fit-gap-classificatie/related-workproducts">
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="workproduct/architecture-roadmap"/>
-    <ess:elements rdf:resource="workproduct/solution-roadmap"/>
+    <ess:elements rdf:resource="workproduct/roadmap"/>
   </ess:PatternAssociation>
 
 </rdf:RDF>

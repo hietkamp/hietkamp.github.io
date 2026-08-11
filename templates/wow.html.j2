@@ -33,9 +33,14 @@
     {% for domain in activities.domains %}
 
     <div class="amap-domain overflow-hidden rounded-2xl border-[1.5px] border-slate-300 bg-white">
-      <div class="amap-dhdr flex flex-wrap items-center justify-between gap-2 px-[22px] py-[13px] {% if domain.header_light %}text-slate-800{% else %}text-white{% endif %} [&_.amap-dname]:font-mono [&_.amap-dname]:text-[11px] [&_.amap-dname]:font-bold [&_.amap-dname]:uppercase [&_.amap-dname]:tracking-[0.2em] [&_.amap-dalphas]:font-mono [&_.amap-dalphas]:text-[9.5px] [&_.amap-dalphas]:tracking-wide [&_.amap-dalphas]:opacity-80 {{ domain.css }} bg-gradient-to-br {{ domain.gradient }}">
-        <span class="amap-dname">{{ domain.name }}</span>
-        <span class="amap-dalphas">{{ domain.alphas }}</span>
+      <div class="amap-dhdr relative flex items-center gap-4 overflow-hidden px-[22px] py-[13px] {% if domain.header_light %}text-slate-800{% else %}text-white{% endif %} [&_.amap-dname]:font-mono [&_.amap-dname]:text-[11px] [&_.amap-dname]:font-bold [&_.amap-dname]:uppercase [&_.amap-dname]:tracking-[0.2em] [&_.amap-dalphas]:font-mono [&_.amap-dalphas]:text-[9.5px] [&_.amap-dalphas]:tracking-wide [&_.amap-dalphas]:opacity-80 {{ domain.css }} bg-gradient-to-br {{ domain.gradient }}">
+        {% if domain.phase_num %}
+        <span class="amap-dnum shrink-0 select-none font-serif text-[2.6rem] font-black leading-none {{ 'text-slate-900/15' if domain.header_light else 'text-white/20' }}" aria-hidden="true">{{ '%02d'|format(domain.phase_num) }}</span>
+        {% endif %}
+        <div class="flex min-w-0 flex-1 flex-wrap items-center justify-between gap-2">
+          <span class="amap-dname">{{ domain.name }}</span>
+          <span class="amap-dalphas">{{ domain.alphas }}</span>
+        </div>
       </div>
       <div class="amap-body flex flex-col gap-3 px-5 py-[18px]">
         {% if domain.desc_html %}
@@ -57,7 +62,9 @@
     <div class="amap-conn-gate relative my-0">
       <div class="absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 bg-slate-300"></div>
       <div class="mx-auto mt-3 flex items-start gap-3 rounded-lg border border-slate-400 bg-slate-100 px-5 py-3 shadow-sm">
-        <span class="mt-0.5 shrink-0 text-base font-bold text-slate-600">✓</span>
+        <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-slate-400 bg-white text-slate-600">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.5 3.5L13 5"/></svg>
+        </span>
         <div class="min-w-0 flex-1">
           <div class="text-sm font-semibold text-slate-900">{{ conn.name }}</div>
           {% if conn.brief %}<div class="mt-0.5 text-xs text-slate-500">{{ conn.brief }}</div>{% endif %}
@@ -67,7 +74,9 @@
       <div class="mx-auto mt-0 h-4 w-px bg-slate-300"></div>
     </div>
     {% else %}
-    <div class="amap-conn relative flex h-9 items-center justify-center before:absolute before:bottom-0 before:left-1/2 before:top-0 before:w-px before:-translate-x-1/2 before:bg-slate-300 before:content-['']"><span class="amap-conn-lbl relative z-[1] rounded-full border border-slate-300 bg-white px-3.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-slate-500">↓</span></div>
+    <div class="amap-conn relative flex h-9 items-center justify-center before:absolute before:bottom-0 before:left-1/2 before:top-0 before:w-px before:-translate-x-1/2 before:bg-slate-300 before:content-['']"><span class="amap-conn-lbl relative z-[1] flex h-7 w-7 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-400">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v9M4 9l4 4 4-4"/></svg>
+    </span></div>
     {% endif %}
     {% endif %}
 

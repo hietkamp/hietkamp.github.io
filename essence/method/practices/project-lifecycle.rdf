@@ -7,8 +7,8 @@
 >
 
   <ess:Practice rdf:about="practice/project-lifecycle">
-    <ess:name xml:lang="nl">Project levenscyclus</ess:name>
-    <ess:briefDescription xml:lang="nl">De projectlevenscyclus bestaat uit zes fasen, gescheiden door vijf beslismomenten (gates). Elke gate markeert een gecontroleerde overgang naar de volgende fase: van initiatief en eisen, via ontwerp, realisatie en validatie, tot een stabiele en beheerde oplossing. De gates zijn risicogestuurd: projecten die binnen de architectuurkaders (guardrails) blijven, stromen grotendeels automatisch door. Alleen afwijkingen of uitzonderingen worden expliciet beoordeeld, waardoor architectuursturing en projectgovernance elkaar op de juiste momenten versterken.</ess:briefDescription>
+    <ess:name xml:lang="nl">Projectfasering</ess:name>
+    <ess:briefDescription xml:lang="nl">De projectfases bestaan uit zes fasen, gescheiden door vijf beslismomenten (gates). Elke gate markeert een gecontroleerde overgang naar de volgende fase: van initiatief en eisen, via ontwerp, realisatie en validatie, tot een stabiele en beheerde oplossing. De gates zijn risicogestuurd: projecten die binnen de architectuurkaders (guardrails) blijven, stromen grotendeels automatisch door. Alleen afwijkingen of uitzonderingen worden expliciet beoordeeld, waardoor architectuursturing en projectgovernance elkaar op de juiste momenten versterken.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>De projectlevenscyclus beschrijft hoe de architectuur van een oplossing (de solution-architectuur) binnen een project tot stand komt: van het eerste idee tot een werkende en gevalideerde oplossing. Het proces bestaat uit zes opeenvolgende fasen. Elke fase levert een concreet resultaat op. Pas wanneer dit resultaat is beoordeeld en goedgekeurd bij een gate, start de volgende fase.</p><p>De fasen volgen elkaar bewust op. Eerst bepalen we de richting en de eisen, daarna werken we het ontwerp uit, bouwen we de oplossing, valideren we deze en nemen we haar in gebruik. Zo ontstaat stap voor stap een oplossing waarvan de kwaliteit en samenhang aantoonbaar zijn.</p>
   </br><p><strong>Reikwijdte</strong></p>
   <p>Deze levenscyclus richt zich uitsluitend op de architectuur binnen een project. Ze beschrijft welke architectuuractiviteiten in elke fase plaatsvinden, welke resultaten worden opgeleverd en wanneer deze gereed zijn om naar de volgende fase te gaan.</p>
@@ -57,7 +57,7 @@
     <ess:ownedElements rdf:resource="pattern/project-lifecycle/gate-3-bewezen"/>
     <ess:ownedElements rdf:resource="pattern/project-lifecycle/gate-4-bruikbaar"/>
     <ess:ownedElements rdf:resource="pattern/project-lifecycle/gate-5-gevestigd"/>
-    <ess:ownedElements rdf:resource="activity-association/project-lifecycle/enterprise-design/end-before-start/solution-low-level-design"/>
+    <ess:ownedElements rdf:resource="activity-association/project-lifecycle/enterprise-build-paved-road/end-before-start/solution-low-level-design"/>
     <ess:ownedElements rdf:resource="activity-association/project-lifecycle/governance-govern-delivery/end-before-start/solution-lead-implementation"/>
     <ess:ownedElements rdf:resource="activity-association/project-lifecycle/governance-assure-evidence/end-before-start/solution-monitor-performance"/>
   </ess:Practice>
@@ -312,10 +312,10 @@
 
 
   <!-- ================= Cross-practice activity associations (unchanged) ================= -->
-  <ess:ActivityAssociation rdf:about="activity-association/project-lifecycle/enterprise-design/end-before-start/solution-low-level-design">
-    <ess:name>project-lifecycle enterprise-design end-before-start solution-low-level-design</ess:name>
+  <ess:ActivityAssociation rdf:about="activity-association/project-lifecycle/enterprise-build-paved-road/end-before-start/solution-low-level-design">
+    <ess:name>project-lifecycle enterprise-build-paved-road end-before-start solution-low-level-design</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:end1 rdf:resource="activity/enterprise-design"/>
+    <ess:end1 rdf:resource="activity/enterprise-build-paved-road"/>
     <ess:end2 rdf:resource="activity/solution-low-level-design"/>
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>

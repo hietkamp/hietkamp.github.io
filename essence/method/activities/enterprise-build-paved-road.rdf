@@ -9,43 +9,67 @@
 >
 
   <ess:Activity rdf:about="activity/enterprise-build-paved-road">
-    <ess:name xml:lang="nl">Goedgekeurde route bouwen</ess:name>
-    <ess:briefDescription xml:lang="nl">Vertaalt de doelarchitectuur naar een catalogus van goedgekeurde standaardsoftware-componenten, integratiepatronen en referentie-instellingen — de conforme keuze als de makkelijkste keuze.</ess:briefDescription>
+    <ess:name xml:lang="nl">Beschrijf de gebaande weg</ess:name>
+    <ess:briefDescription xml:lang="nl">Identificeert binnen de vastgestelde visie de architectuurbepalende behoeften, brengt basis- en doelarchitectuur in kaart via een gap-analyse, en vertaalt de doelarchitectuur naar een catalogus van goedgekeurde standaardsoftware-componenten, integratiepatronen en referentie-instellingen — de conforme keuze als de makkelijkste keuze.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
-<p>Een architectuurprincipe stuurt op afstand; een goedgekeurde route stuurt door het teams simpelweg makkelijker te maken om het goede te doen dan het verkeerde. Deze activiteit bouwt die route: geen extra regel, maar een bruikbaar alternatief.</p>
-<p>Vanuit de doelarchitectuur wordt afgeleid welke keuzes zich lenen voor vooraf goedkeuring: standaardsoftware-componenten, integratiepatronen en referentie-instellingen die vaak genoeg terugkomen om ze eenmalig te beoordelen in plaats van telkens opnieuw. Platformteams noemen dit self-service governance — teams die binnen de route blijven, weten vooraf dat ze compliant zijn, zonder toestemming te hoeven vragen.</p>
+<p>Een visie beschrijft een richting; voordat daarbinnen een architectuurrichting concreet gekozen kan worden, moet duidelijk zijn waaraan die richting moet voldoen. Deze activiteit begint daarom met het identificeren van de sturende eisen — kwaliteitsattributen, beperkingen en bedrijfsdoelen — binnen de kaders die de architectuurvisie al heeft gesteld, met een meetbaar succescriterium per eis. Net als bij architectuurbepalende eisen op solution-niveau geldt hier het onderscheid tussen de significante weinige en de triviale velen.</p>
+<p>Je kunt vervolgens geen route uitstippelen zonder te weten waar je vandaan komt én waar je heen wilt. De basisarchitectuur (baseline) brengt in kaart welke major systems, integratiepatronen en leverancierscategorieën nu al in gebruik zijn — niet uitputtend, maar toereikend om een gap-analyse op te kunnen doen. De doelarchitectuur beschrijft vervolgens de enterprise-brede bouwstenen die nodig zijn om de architectuurbepalende behoeften te realiseren. Hetzelfde principe als bij het architectuurmodel op solution-niveau geldt ook hier: onveranderde delen van de bestaande architectuur worden niet opnieuw gedocumenteerd, alleen wat verandert krijgt aandacht. De gap-analyse tussen basis en doel maakt zichtbaar welke veranderingen nodig zijn; onomkeerbare keuzes daarin worden vastgelegd als architectuurbeslissingen — in dezelfde vorm en met dezelfde supersessie-discipline als op solution-niveau.</p>
+<p>Een architectuurprincipe stuurt op afstand; een goedgekeurde route stuurt door het teams simpelweg makkelijker te maken om het goede te doen dan het verkeerde. Vanuit de doelarchitectuur wordt daarom afgeleid welke keuzes zich lenen voor vooraf goedkeuring: standaardsoftware-componenten, integratiepatronen en referentie-instellingen die vaak genoeg terugkomen om ze eenmalig te beoordelen in plaats van telkens opnieuw. Platformteams noemen dit self-service governance — teams die binnen de route blijven, weten vooraf dat ze compliant zijn, zonder toestemming te hoeven vragen.</p>
 <p>De paved road wordt behandeld als een product, niet als een document: zelfbedienbaar, versiegebonden en meetbaar in adoptie. Een catalogus die niemand gebruikt, is net zo waardeloos als een architectuurprincipe dat niemand kent.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
     <ess:approach rdf:resource="approach/enterprise-build-paved-road/default"/>
-    <ess:action rdf:resource="action/enterprise-build-paved-road/read/architecture-model"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/read/architecture-vision"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/create/architecture-decisions"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/create/architecture-model"/>
     <ess:action rdf:resource="action/enterprise-build-paved-road/create/paved-road"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-    <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/entry/paved-road"/>
+    <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/entry/opportunity"/>
+    <ess:criterion rdf:resource="criterion/enterprise-envision/entry/stakeholders"/>
+    <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/completion/opportunity"/>
+    <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/completion/stakeholders"/>
     <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/completion/paved-road"/>
-    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/enterprise-build-paved-road/default">
-    <ess:name xml:lang="nl">Goedgekeurde route bouwen</ess:name>
+    <ess:name xml:lang="nl">Beschrijf de gebaande weg</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <ul>
-<li>Lees de doelarchitectuur (Architectuurmodel) en leid daaruit af welke keuzes zich lenen voor vooraf goedkeuring.</li>
+<li>Identificeer, binnen de vastgestelde architectuurvisie, de sturende eisen: kwaliteitsattributen, beperkingen en bedrijfsdoelen die de architectuur moet realiseren. Onderscheid de significante weinige van de triviale velen en ken elke significante eis een meetbaar succescriterium toe.</li>
+<li>Breng de basisarchitectuur in kaart: welke major systems, integratiepatronen en leverancierscategorieën zijn nu in gebruik? Documenteer alleen wat relevant is voor de gap-analyse.</li>
+<li>Definieer de doelarchitectuur: de enterprise-brede bouwstenen die nodig zijn om de architectuurbepalende behoeften te realiseren.</li>
+<li>Voer de gap-analyse uit tussen basis en doel om te bepalen welke veranderingen nodig zijn; leg onomkeerbare keuzes vast als architectuurbeslissingen, met dezelfde supersessie-discipline als op solution-niveau.</li>
+<li>Leid uit de doelarchitectuur af welke keuzes zich lenen voor vooraf goedkeuring.</li>
 <li>Stel een eerste, beperkte set goedgekeurde standaardkeuzes samen — begin klein en groei vanuit gebruik, niet vanuit volledigheid.</li>
 <li>Publiceer de catalogus zelfbedienbaar en versiegebonden op een centrale, vindbare plek.</li>
 <li>Meet de adoptie: hoeveel teams volgen de route daadwerkelijk, en waar wijken ze af?</li>
-<li>Verbreed de catalogus op basis van signalen uit Governance bijstellen: wat structureel als uitzondering terugkeert, verdient overweging voor de standaardroute.</li>
+<li>Verbreed de catalogus op basis van signalen uit Stel governance bij: wat structureel als uitzondering terugkeert, verdient overweging voor de standaardroute.</li>
 </ul>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/enterprise-build-paved-road/read/architecture-model">
-    <ess:name xml:lang="nl">Lees architectuurmodel</ess:name>
+  <ess:Action rdf:about="action/enterprise-build-paved-road/read/architecture-vision">
+    <ess:name xml:lang="nl">Lees architectuurvisie</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-vision"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-build-paved-road/create/architecture-decisions">
+    <ess:name xml:lang="nl">Maak architectuurbeslissingen</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-build-paved-road/create/architecture-model">
+    <ess:name xml:lang="nl">Maak architectuurmodel</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/architecture-model"/>
   </ess:Action>
 
@@ -56,19 +80,37 @@
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
   </ess:Action>
 
-  <ess:ActivityAssociation rdf:about="activity-association/enterprise-build-paved-road/part-of/shape-the-system">
-    <ess:name>Goedgekeurde route bouwen part-of Shape The System</ess:name>
+  <ess:ActivityAssociation rdf:about="activity-association/enterprise-build-paved-road/part-of/understand-stakeholder-needs">
+    <ess:name>Beschrijf de gebaande weg part-of Understand Stakeholder Needs</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/enterprise-build-paved-road"/>
-    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ShapetheSystem"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds"/>
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:EntryCriterion rdf:about="criterion/enterprise-build-paved-road/entry/paved-road">
-    <ess:name>Entry: Paved Road</ess:name>
+  <ess:EntryCriterion rdf:about="criterion/enterprise-build-paved-road/entry/opportunity">
+    <ess:name>Entry: Opportunity</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="state/paved-road/seeded"/>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished"/>
   </ess:EntryCriterion>
+
+  <ess:EntryCriterion rdf:about="criterion/enterprise-envision/entry/stakeholders">
+    <ess:name>Entry: Stakeholder</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Recognized"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-build-paved-road/completion/opportunity">
+    <ess:name>Completion: Opportunity</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-build-paved-road/completion/stakeholders">
+    <ess:name>Completion: Stakeholder</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement"/>
+  </ess:CompletionCriterion>
 
   <ess:CompletionCriterion rdf:about="criterion/enterprise-build-paved-road/completion/paved-road">
     <ess:name>Completion: Paved Road</ess:name>

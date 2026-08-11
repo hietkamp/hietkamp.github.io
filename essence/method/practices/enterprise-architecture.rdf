@@ -18,15 +18,12 @@
     <ess:entry xml:lang="nl">Een Opdrachtgever heeft de noodzaak voor enterprise-architectuurwerk erkend en opdracht gegeven; strategische doelen en business drivers zijn op hoofdlijnen bekend.</ess:entry>
     <ess:result/>
     <ess:consistencyRules/>
-    <ess:ownedElements rdf:resource="activity/enterprise-understand"/>
     <ess:ownedElements rdf:resource="activity/enterprise-envision"/>
-    <ess:ownedElements rdf:resource="activity/enterprise-design"/>
     <ess:ownedElements rdf:resource="activity/enterprise-build-paved-road"/>
-    <ess:ownedElements rdf:resource="activity/enterprise-plan"/>
-    <ess:ownedElements rdf:resource="activity/enterprise-learn-and-improve"/>
+    <ess:ownedElements rdf:resource="activity/enterprise-govern-change"/>
     <ess:ownedElements rdf:resource="workproduct/architecture-vision"/>
     <ess:ownedElements rdf:resource="workproduct/paved-road"/>
-    <ess:ownedElements rdf:resource="workproduct/architecture-roadmap"/>
+    <ess:ownedElements rdf:resource="workproduct/roadmap"/>
     <ess:associations rdf:resource="pattern-association/enterprise-architecture/performed-by"/>
   </ess:Practice>
 
@@ -35,43 +32,19 @@
     <ess:elements rdf:resource="role/enterprise-architect"/>
   </ess:PatternAssociation>
 
-  <ess:ActivityAssociation rdf:about="activity-association/enterprise-understand/end-before-start/enterprise-envision">
-    <ess:name>enterprise-understand end-before-start enterprise-envision</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:end1 rdf:resource="activity/enterprise-understand"/>
-    <ess:end2 rdf:resource="activity/enterprise-envision"/>
-    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
-  </ess:ActivityAssociation>
-
-  <ess:ActivityAssociation rdf:about="activity-association/enterprise-envision/end-before-start/enterprise-design">
-    <ess:name>enterprise-envision end-before-start enterprise-design</ess:name>
+  <ess:ActivityAssociation rdf:about="activity-association/enterprise-envision/end-before-start/enterprise-build-paved-road">
+    <ess:name>enterprise-envision end-before-start enterprise-build-paved-road</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/enterprise-envision"/>
-    <ess:end2 rdf:resource="activity/enterprise-design"/>
-    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
-  </ess:ActivityAssociation>
-
-  <ess:ActivityAssociation rdf:about="activity-association/enterprise-design/end-before-start/enterprise-build-paved-road">
-    <ess:name>enterprise-design end-before-start enterprise-build-paved-road</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:end1 rdf:resource="activity/enterprise-design"/>
     <ess:end2 rdf:resource="activity/enterprise-build-paved-road"/>
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:ActivityAssociation rdf:about="activity-association/enterprise-build-paved-road/end-before-start/enterprise-plan">
-    <ess:name>enterprise-build-paved-road end-before-start enterprise-plan</ess:name>
+  <ess:ActivityAssociation rdf:about="activity-association/enterprise-build-paved-road/end-before-start/enterprise-govern-change">
+    <ess:name>enterprise-build-paved-road end-before-start enterprise-govern-change</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/enterprise-build-paved-road"/>
-    <ess:end2 rdf:resource="activity/enterprise-plan"/>
-    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
-  </ess:ActivityAssociation>
-
-  <ess:ActivityAssociation rdf:about="activity-association/enterprise-plan/end-before-start/enterprise-learn-and-improve">
-    <ess:name>enterprise-plan end-before-start enterprise-learn-and-improve</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:end1 rdf:resource="activity/enterprise-plan"/>
-    <ess:end2 rdf:resource="activity/enterprise-learn-and-improve"/>
+    <ess:end2 rdf:resource="activity/enterprise-govern-change"/>
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>
 

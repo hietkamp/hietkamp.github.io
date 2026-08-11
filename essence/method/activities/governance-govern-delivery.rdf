@@ -9,7 +9,7 @@
 >
 
   <ess:Activity rdf:about="activity/governance-govern-delivery">
-    <ess:name xml:lang="nl">Levering besturen</ess:name>
+    <ess:name xml:lang="nl">Bestuur levering</ess:name>
     <ess:briefDescription xml:lang="nl">Neemt nieuwe initiatieven formeel onder governance, laat beslissingen binnen de guardrails ongehinderd doorgaan en behandelt alleen uitzonderingen als een snelle, vastgelegde review — governance als dienst, niet als vertragend controlepunt.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>Als alles binnen de afgesproken kaders blijft, hoeft niemand ernaar te kijken. Deze activiteit bewaakt de levering door vrijwel niets tegen te houden — behalve de paar beslissingen die er echt toe doen.</p>
@@ -20,17 +20,16 @@
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <ess:approach rdf:resource="approach/governance-govern-delivery/default"/>
     <ess:action rdf:resource="action/governance-govern-delivery/read/architecture-decisions"/>
-    <ess:action rdf:resource="action/governance-govern-delivery/read/solution-roadmap"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/create/solution-roadmap"/>
     <ess:action rdf:resource="action/governance-govern-delivery/create/statement-of-architecture-work"/>
     <ess:action rdf:resource="action/governance-govern-delivery/create/review-records"/>
-    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/governance-govern-delivery/completion/governance"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/governance-govern-delivery/default">
-    <ess:name xml:lang="nl">Levering besturen</ess:name>
+    <ess:name xml:lang="nl">Bestuur levering</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <ul>
@@ -51,11 +50,11 @@
     <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/governance-govern-delivery/read/solution-roadmap">
+  <ess:Action rdf:about="action/governance-govern-delivery/create/solution-roadmap">
     <ess:name xml:lang="nl">Lees solution-roadmap</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/roadmap"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-govern-delivery/create/statement-of-architecture-work">

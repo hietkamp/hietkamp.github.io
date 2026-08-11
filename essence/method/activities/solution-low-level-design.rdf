@@ -26,9 +26,8 @@
     <ess:action rdf:resource="action/solution-low-level-design/update/solution-roadmap"/>
     <ess:action rdf:resource="action/solution-low-level-design/read/paved-road"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/solution-low-level-design/entry/requirements"/>
     <ess:criterion rdf:resource="criterion/solution-low-level-design/completion/architecture"/>
-    <ess:criterion rdf:resource="criterion/solution-low-level-design/completion/solution-roadmap"/>
-    <ess:criterion rdf:resource="criterion/solution-low-level-design/completion/architecture-decisions"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
 
@@ -74,7 +73,7 @@
     <ess:name xml:lang="nl">Werk solution-roadmap bij</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:workProduct rdf:resource="workproduct/solution-roadmap"/>
+    <ess:workProduct rdf:resource="workproduct/roadmap"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-low-level-design/read/paved-road">
@@ -92,18 +91,16 @@
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
 
+  <ess:EntryCriterion rdf:about="criterion/solution-low-level-design/entry/requirements">
+    <ess:name>Entry: Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent"/>
+  </ess:EntryCriterion>
+
   <ess:CompletionCriterion rdf:about="criterion/solution-low-level-design/completion/architecture">
     <ess:name>Completion: System</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:levelOfDetail rdf:resource="lod/architecture-model/component"/>
-    <ess:levelOfDetail rdf:resource="lod/architecture-model/code"/>
     <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected"/>
-  </ess:CompletionCriterion>
-
-  <ess:CompletionCriterion rdf:about="criterion/solution-low-level-design/completion/solution-roadmap">
-    <ess:name>Completion: Migratiescenario</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:levelOfDetail rdf:resource="lod/solution-roadmap/operationeel"/>
   </ess:CompletionCriterion>
 
 </rdf:RDF>

@@ -47,47 +47,16 @@
     overlay.addEventListener("click", closeMobileNav);
   }
 
-  // ── Practices dropdown ────────────────────────────────────────────────────
-  const pracBtn  = document.getElementById("nav-prac-btn");
-  const pracMenu = document.getElementById("prac-menu");
-
-  if (pracBtn && pracMenu) {
-    pracBtn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      const open = !pracMenu.classList.contains("hidden");
-      pracMenu.classList.toggle("hidden", open);
-      pracBtn.setAttribute("aria-expanded", String(!open));
-    });
-
-    document.addEventListener("click", function () {
-      pracMenu.classList.add("hidden");
-      pracBtn.setAttribute("aria-expanded", "false");
-    });
-
-    pracMenu.addEventListener("click", function (e) {
-      e.stopPropagation();
-    });
-
-    // Keyboard: Escape closes
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") {
-        pracMenu.classList.add("hidden");
-        pracBtn.setAttribute("aria-expanded", "false");
-      }
-    });
-  }
-
-  // ── Sidenav: populate from headings on the page ──────────────────────────
-  function buildSidenav() {
-    if (!sidenav) return;
-
-    const headings = document.querySelectorAll(
-      "main h2[id], main section[id] h2, main section[id]"
-    );
+  // ── Page TOC (right column): populate from headings on the page ──────────
+  // The left #sidenav is server-rendered site navigation (siblings) — this
+  // only ever fills the separate right-hand #page-toc with in-page anchors,
+  // so the two never mix content.
+  function buildPageToc() {
+    const toc = document.getElementById("page-toc");
+    if (!toc) return;
 
     const links = [];
 
-    // Collect <section id="..."> elements with a h2 inside
     document.querySelectorAll("main section[id]").forEach(function (sec) {
       const h2 = sec.querySelector("h2");
       if (!h2) return;
@@ -99,18 +68,18 @@
     const label = document.createElement("div");
     label.className = "snav-section";
     label.textContent = "Op deze pagina";
-    sidenav.appendChild(label);
+    toc.appendChild(label);
 
     links.forEach(function (item) {
       const a = document.createElement("a");
       a.className  = "snav-link";
       a.href       = "#" + item.id;
       a.textContent = item.label;
-      sidenav.appendChild(a);
+      toc.appendChild(a);
     });
 
     // ── Intersection observer: highlight current section ──────────────────
-    const allLinks = sidenav.querySelectorAll(".snav-link");
+    const allLinks = toc.querySelectorAll(".snav-link");
 
     const observer = new IntersectionObserver(
       function (entries) {
@@ -133,27 +102,6 @@
     });
   }
 
-  // ── Search (no-op stub — extend later) ───────────────────────────────────
-  const searchInput  = document.getElementById("site-search-input");
-  const searchResults = document.getElementById("search-results-list");
-
-  if (searchInput && searchResults) {
-    searchInput.addEventListener("input", function () {
-      if (searchInput.value.trim().length < 2) {
-        searchResults.classList.add("hidden");
-        return;
-      }
-      // Full-text search not yet implemented.
-      searchResults.classList.add("hidden");
-    });
-
-    searchInput.addEventListener("blur", function () {
-      setTimeout(function () {
-        searchResults.classList.add("hidden");
-      }, 200);
-    });
-  }
-
   // ── Init ──────────────────────────────────────────────────────────────────
-  document.addEventListener("DOMContentLoaded", buildSidenav);
+  document.addEventListener("DOMContentLoaded", buildPageToc);
 })();
