@@ -749,7 +749,6 @@ def build_roles_ctx(g: Graph) -> dict:
             "href":   role_href(s),
             "title":  get_name(g, role),
             "desc":   get_brief(g, role),
-            "level":  str(next(g.objects(role, EWOW.level), "")) or "",
             "topbar": DOMAIN_COLOR_CFG["endeavour"]["num_color"],
         })
     roles.sort(key=lambda r: r["title"])
