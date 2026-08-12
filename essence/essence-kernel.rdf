@@ -796,7 +796,7 @@
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded_1">
     <ess:description xml:lang="en">The stakeholders in the opportunity and the proposed solution have been identified.</ess:description>
-    <ess:description xml:lang="nl">De stakeholders bij de kans en de voorgestelde oplossing zijn geïdentificeerd.</ess:description>
+    <ess:description xml:lang="nl">De stakeholders bij de opportunity en de voorgestelde oplossing zijn geïdentificeerd.</ess:description>
     <ess:name>1</ess:name>
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Started_4">
@@ -1008,14 +1008,14 @@
     <ess:checkListItem>
       <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Identified_2">
         <ess:description xml:lang="en">At least one of the stakeholders wishes to make an investment in better understanding the opportunity and the value associated with addressing it.</ess:description>
-        <ess:description xml:lang="nl">Ten minste één van de stakeholders wil investeren om de kans en de waarde van het adresseren ervan beter te begrijpen.</ess:description>
+        <ess:description xml:lang="nl">Ten minste één van de stakeholders wil investeren om de opportunity en de waarde van het adresseren ervan beter te begrijpen.</ess:description>
         <ess:name>2</ess:name>
       </ess:Checkpoint>
     </ess:checkListItem>
     <ess:checkListItem>
       <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Identified_3">
         <ess:description xml:lang="en">The other stakeholders who share the opportunity have been identified.</ess:description>
-        <ess:description xml:lang="nl">De andere stakeholders die de kans delen zijn geïdentificeerd.</ess:description>
+        <ess:description xml:lang="nl">De andere stakeholders die de opportunity delen zijn geïdentificeerd.</ess:description>
         <ess:name>3</ess:name>
       </ess:Checkpoint>
     </ess:checkListItem>
@@ -1061,7 +1061,7 @@
     <ess:checkListItem>
       <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Performing_4">
         <ess:description xml:lang="en">Effective progress is being achieved with minimal avoidable backtracking and reworking.</ess:description>
-        <ess:description xml:lang="nl">Er wordt effectieve voortgang geboekt met minimale, vermijdbare herhaling en herwerk.</ess:description>
+        <ess:description xml:lang="nl">Er wordt effectieve voortgang geboekt met minimale vermijdbare herhaling en herwerk.</ess:description>
         <ess:name>4</ess:name>
       </ess:Checkpoint>
     </ess:checkListItem>
@@ -1225,7 +1225,7 @@
         <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed_2"/>
         <ess:checkListItem rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed_3"/>
         <ess:description xml:lang="en">A solution has been produced that demonstrably addresses the opportunity.</ess:description>
-        <ess:description xml:lang="nl">Er is een oplossing opgeleverd die aantoonbaar de kans adresseert.</ess:description>
+        <ess:description xml:lang="nl">Er is een oplossing opgeleverd die aantoonbaar de opportunity adresseert.</ess:description>
         <ess:name>Addressed</ess:name>
         <ess:successor rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_BenefitAccrued"/>
       </ess:State>
@@ -1307,7 +1307,7 @@
   </ess:State>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed_3">
     <ess:description xml:lang="en">The stakeholders are satisfied that the solution produced addresses the opportunity.</ess:description>
-    <ess:description xml:lang="nl">De stakeholders zijn tevreden dat de opgeleverde oplossing de kans adresseert.</ess:description>
+    <ess:description xml:lang="nl">De stakeholders zijn tevreden dat de opgeleverde oplossing de opportunity adresseert.</ess:description>
     <ess:name>3</ess:name>
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded_2">
@@ -1317,7 +1317,7 @@
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_6">
     <ess:description xml:lang="en">It is clear that the pursuit of the opportunity is viable.</ess:description>
-    <ess:description xml:lang="nl">Het is duidelijk dat het nastreven van de kans haalbaar is.</ess:description>
+    <ess:description xml:lang="nl">Het is duidelijk dat het nastreven van de opportunity haalbaar is.</ess:description>
     <ess:name>6</ess:name>
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#System_ArchitectureSelected_2">
@@ -1555,14 +1555,14 @@
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Team_Seeded_1">
     <ess:description xml:lang="en">The team mission has been defined in terms of the opportunities and outcomes.</ess:description>
-    <ess:description xml:lang="nl">De teammissie is gedefinieerd in termen van kansen en uitkomsten.</ess:description>
+    <ess:description xml:lang="nl">De teammissie is gedefinieerd in termen van opportunities en uitkomsten.</ess:description>
     <ess:name>1</ess:name>
   </ess:Checkpoint>
   <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished">
     <ess:checkListItem>
       <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished_1">
         <ess:description xml:lang="en">The value of addressing the opportunity has been quantified either in absolute terms or in returns or savings per time period.</ess:description>
-        <ess:description xml:lang="nl">De waarde van het adresseren van de kans is gekwantificeerd, hetzij in absolute termen, hetzij in rendement of besparingen per periode.</ess:description>
+        <ess:description xml:lang="nl">De waarde van het adresseren van de opportunity is gekwantificeerd, hetzij in absolute termen, hetzij in rendement of besparingen per periode.</ess:description>
         <ess:name>1</ess:name>
       </ess:Checkpoint>
     </ess:checkListItem>
@@ -1773,7 +1773,7 @@
   </ess:EntryCriterion>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Conceived_4">
     <ess:description xml:lang="en">There is a clear opportunity for the new system to address.</ess:description>
-    <ess:description xml:lang="nl">Er is een duidelijke kans die het nieuwe systeem kan adresseren.</ess:description>
+    <ess:description xml:lang="nl">Er is een duidelijke opportunity die het nieuwe systeem kan adresseren.</ess:description>
     <ess:name>4</ess:name>
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable_5">
@@ -2024,7 +2024,7 @@
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed_1">
     <ess:description xml:lang="en">A usable system that demonstrably addresses the opportunity is available.</ess:description>
-    <ess:description xml:lang="nl">Er is een bruikbaar systeem beschikbaar dat aantoonbaar de kans adresseert.</ess:description>
+    <ess:description xml:lang="nl">Er is een bruikbaar systeem beschikbaar dat aantoonbaar de opportunity adresseert.</ess:description>
     <ess:name>1</ess:name>
   </ess:Checkpoint>
   <ess:State rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_PrinciplesEstablished">
@@ -2184,7 +2184,7 @@
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable_4">
     <ess:description xml:lang="en">The indicative (ball-park) costs of the solution are less than the anticipated value of the opportunity.</ess:description>
-    <ess:description xml:lang="nl">De indicatieve (grove) kosten van de oplossing zijn lager dan de verwachte waarde van de kans.</ess:description>
+    <ess:description xml:lang="nl">De indicatieve (grove) kosten van de oplossing zijn lager dan de verwachte waarde van de opportunity.</ess:description>
     <ess:name>4</ess:name>
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Work_Prepared_12">
@@ -2194,7 +2194,7 @@
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded_2">
     <ess:description xml:lang="en">The stakeholders' needs that generate the opportunity have been established.</ess:description>
-    <ess:description xml:lang="nl">De behoeften van de stakeholders die aanleiding geven tot de kans zijn vastgesteld.</ess:description>
+    <ess:description xml:lang="nl">De behoeften van de stakeholders die aanleiding geven tot de opportunity zijn vastgesteld.</ess:description>
     <ess:name>2</ess:name>
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Involved_1">
@@ -2324,7 +2324,7 @@
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable_4">
     <ess:description xml:lang="en">The parts of the opportunity satisfied by the requirements are clear.</ess:description>
-    <ess:description xml:lang="nl">De onderdelen van de kans die door de requirements worden ingevuld, zijn duidelijk.</ess:description>
+    <ess:description xml:lang="nl">De onderdelen van de opportunity die door de requirements worden ingevuld, zijn duidelijk.</ess:description>
     <ess:name>4</ess:name>
   </ess:Checkpoint>
   <ess:CompetencyLevel rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Masters">
@@ -2425,7 +2425,7 @@
   </ess:Checkpoint>
   <ess:Checkpoint rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Involved_3">
     <ess:description xml:lang="en">The stakeholder representatives promptly communicate changes that are relevant for their stakeholder groups.</ess:description>
-    <ess:description xml:lang="nl">De stakeholdervertegenwoordigers communiceren wijzigingen die relevant zijn voor hun stakeholdergroepen tijdig.</ess:description>
+    <ess:description xml:lang="nl">De stakeholdervertegenwoordigers communiceren tijdig wijzigingen die relevant zijn voor hun stakeholdergroepen.</ess:description>
     <ess:name>3</ess:name>
   </ess:Checkpoint>
   <ess:CompletionCriterion rdf:about="https://www.hietkamp.nl/ontologies/essence-kernel#ExplorePossibilities_CC_2">

@@ -19,11 +19,20 @@
     <ess:ownedElements rdf:resource="practice/architectural-governance"/>
     <ess:ownedElements rdf:resource="practice/change-management-lifecycle"/>
     <ess:ownedElements rdf:resource="practice/project-lifecycle"/>
+    <ess:ownedElements rdf:resource="resource/method/ea-alpha-assessment"/>
   </ess:Method>
 
   <ess:UserDefinedType rdf:about="type/template">
     <ess:name xml:lang="nl">Sjabloon</ess:name>
     <ess:constraint>Content must be a resolvable URL to a downloadable file.</ess:constraint>
   </ess:UserDefinedType>
+
+  <ess:TypedResource rdf:about="resource/method/ea-alpha-assessment">
+    <ess:name xml:lang="nl">EA Alpha Assessment</ess:name>
+    <ess:briefDescription xml:lang="nl">Zelfassessment-werkblad: vink per alpha — kernel en method-specifiek — de checklistitems af, en het dashboard berekent automatisch de huidige status, voortgang en volledigheid per Customer/Solution/Endeavor-domein.</ess:briefDescription>
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>downloads/EA_Alpha_Assessment.xlsx</ess:content>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:TypedResource>
 
 </rdf:RDF>

@@ -10,9 +10,9 @@
 
   <ess:Activity rdf:about="activity/enterprise-govern-change">
     <ess:name xml:lang="nl">Bestuur de architectuurverandering</ess:name>
-    <ess:briefDescription xml:lang="nl">Ordent de implementatiestappen van basis- naar doelarchitectuur in horizons, en legt daarmee het enterprise-brede kader vast waarbinnen een startend traject zelf zijn high-level design maakt.</ess:briefDescription>
+    <ess:briefDescription xml:lang="nl">Werkt het migratiescenario uit tot tactisch niveau: ordent de implementatiestappen van basis- naar doelarchitectuur in horizons, en legt daarmee het enterprise-brede kader vast waarbinnen een startend traject zelf zijn high-level design maakt.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
-<p>Deze activiteit is de agile invulling van TOGAF's Opportunities & Solutions- en Migration Planning-fasen (Phase E en F): in plaats van één uitgewerkt implementatie- en migratieplan wordt de gap-analyse uit Beschrijf de gebaande weg iteratief omgezet in een roadmap met globale horizons. Er wordt bewust geen aparte projectstartarchitectuur opgeleverd: een startend traject vertaalt de relevante horizon en de geldende paved-road-keuzes zelf naar zijn high-level design, op dezelfde manier als elk ander traject dat doet.</p>
+<p>Deze activiteit is de agile invulling van TOGAF's Opportunities & Solutions- en Migration Planning-fasen (Phase E en F): in plaats van één uitgewerkt implementatie- en migratieplan wordt de gap-analyse uit Beschrijf de gebaande weg iteratief omgezet in het migratiescenario, hier uitgewerkt tot tactisch niveau — een enterprise-brede reeks horizons die de volgorde van migratie tussen systemen en onderdelen vastlegt. Er wordt bewust geen aparte projectstartarchitectuur opgeleverd: een startend traject vertaalt de relevante horizon en de geldende paved-road-keuzes zelf naar zijn high-level design, op dezelfde manier als elk ander traject dat doet.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
@@ -35,8 +35,8 @@
     <ess:name xml:lang="nl">Bestuur de architectuurverandering</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
-<p>De aanpak volgt TOGAF's Phase E en F, maar dan in de lichtgewicht, iteratieve vorm die de agile toepassing van TOGAF voorschrijft: in plaats van één big-bang transformatieplan wordt de gap-analyse uit Beschrijf de gebaande weg opgeknipt in horizons — opeenvolgende stappen die stap voor stap dichter bij de doelarchitectuur komen. Alleen de eerstvolgende horizon wordt gedetailleerd uitgewerkt; latere horizons blijven bewust globaal, omdat ze toch worden bijgesteld zodra er meer bekend is. Elke horizon krijgt een expliciete onomkeerbare grens: welke keuze kan na deze horizon niet meer worden teruggedraaid? Het geheel wordt vastgelegd als architectuurroadmap: het enterprise-brede kader waarbinnen solution-roadmaps van individuele trajecten opereren.</p>
-<p>TOGAF is weinig expliciet over hoe de architect het team dat een horizon gaat uitvoeren op weg helpt; dat gat wordt hier bewust niet gedicht met een aparte projectstartarchitectuur. In plaats daarvan geldt hetzelfde patroon als bij elk ander traject: het startende team leest de architectuurroadmap en de paved road, en vertaalt daaruit zelf de toepasselijke horizon en geldende standaardkeuzes naar zijn eigen high-level design. Zo blijft er één plek waar een traject zijn oplossingsrichting vastlegt, in plaats van twee overlappende documenten.</p>
+<p>De aanpak volgt TOGAF's Phase E en F, maar dan in de lichtgewicht, iteratieve vorm die de agile toepassing van TOGAF voorschrijft: in plaats van één big-bang transformatieplan wordt de gap-analyse uit Beschrijf de gebaande weg opgeknipt in horizons — opeenvolgende stappen die stap voor stap dichter bij de doelarchitectuur komen. Alleen de eerstvolgende horizon wordt gedetailleerd uitgewerkt; latere horizons blijven bewust globaal, omdat ze toch worden bijgesteld zodra er meer bekend is. Elke horizon krijgt een expliciete onomkeerbare grens: welke keuze kan na deze horizon niet meer worden teruggedraaid? Het geheel wordt vastgelegd in het migratiescenario, hier op tactisch niveau: het enterprise-brede kader van horizons waarbinnen de solution-specifieke migratiescenario's van individuele trajecten opereren.</p>
+<p>TOGAF is weinig expliciet over hoe de architect het team dat een horizon gaat uitvoeren op weg helpt; dat gat wordt hier bewust niet gedicht met een aparte projectstartarchitectuur. In plaats daarvan geldt hetzelfde patroon als bij elk ander traject: het startende team leest het migratiescenario en de paved road, en vertaalt daaruit zelf de toepasselijke horizon en geldende standaardkeuzes naar zijn eigen high-level design. Zo blijft er één plek waar een traject zijn oplossingsrichting vastlegt, in plaats van twee overlappende documenten.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
@@ -49,7 +49,7 @@
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-govern-change/create/roadmap">
-    <ess:name xml:lang="nl">Maak architectuurroadmap</ess:name>
+    <ess:name xml:lang="nl">Maak migratiescenario (tactisch niveau)</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
     <ess:workProduct rdf:resource="workproduct/roadmap"/>

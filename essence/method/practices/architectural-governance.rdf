@@ -5,7 +5,6 @@
   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
-  xmlns:ewow="https://hietkamp.nl/essence/vocab#"
 >
 
   <ess:Practice rdf:about="practice/architectural-governance">
@@ -24,12 +23,11 @@
     <ess:consistencyRules/>
     <ess:ownedElements rdf:resource="activity/governance-establish-governance"/>
     <ess:ownedElements rdf:resource="activity/governance-govern-delivery"/>
-    <ess:ownedElements rdf:resource="activity/governance-assure-evidence"/>
+    <ess:ownedElements rdf:resource="activity/governance-validate"/>
     <ess:ownedElements rdf:resource="activity/governance-tune-governance"/>
     <ess:ownedElements rdf:resource="workproduct/architecture-principles"/>
     <ess:ownedElements rdf:resource="workproduct/architecture-working-agreement"/>
     <ess:ownedElements rdf:resource="workproduct/architecture-repository"/>
-    <ess:ownedElements rdf:resource="workproduct/conformance-evidence"/>
     <ess:ownedElements rdf:resource="workproduct/statement-of-architecture-work"/>
     <!-- TODO: workproduct/review-records heeft nu een producent (Levering Besturen) en twee lezers
          (Toets werking governance, Stel governance bij), maar nog geen volledige ess:WorkProduct-definitie
@@ -59,18 +57,18 @@
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:ActivityAssociation rdf:about="activity-association/governance-govern-delivery/end-before-start/governance-assure-evidence">
+  <ess:ActivityAssociation rdf:about="activity-association/governance-govern-delivery/end-before-start/governance-validate">
     <ess:name>govern-delivery end-before-start assure-evidence</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:end1 rdf:resource="activity/governance-govern-delivery"/>
-    <ess:end2 rdf:resource="activity/governance-assure-evidence"/>
+    <ess:end2 rdf:resource="activity/governance-validate"/>
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:ActivityAssociation rdf:about="activity-association/governance-assure-evidence/end-before-start/governance-tune-governance">
+  <ess:ActivityAssociation rdf:about="activity-association/governance-validate/end-before-start/governance-tune-governance">
     <ess:name>assure-evidence end-before-start tune-governance</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:end1 rdf:resource="activity/governance-assure-evidence"/>
+    <ess:end1 rdf:resource="activity/governance-validate"/>
     <ess:end2 rdf:resource="activity/governance-tune-governance"/>
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>

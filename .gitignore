@@ -4,3 +4,4 @@ docs/
 *.bkp
 __pycache__/
 *.pyc
+~$*

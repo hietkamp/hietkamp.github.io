@@ -37,7 +37,7 @@
     <ess:ownedElements rdf:resource="pattern/project-lifecycle/gate-4-bruikbaar"/>
     <ess:ownedElements rdf:resource="activity-association/project-lifecycle/enterprise-build-paved-road/end-before-start/solution-low-level-design"/>
     <ess:ownedElements rdf:resource="activity-association/project-lifecycle/governance-govern-delivery/end-before-start/solution-lead-implementation"/>
-    <ess:ownedElements rdf:resource="activity-association/project-lifecycle/governance-assure-evidence/end-before-start/solution-monitor-performance"/>
+    <ess:ownedElements rdf:resource="activity-association/project-lifecycle/governance-validate/end-before-start/solution-monitor-performance"/>
   </ess:Practice>
 
 
@@ -200,8 +200,8 @@
   <!-- ================= Gate 1 — Solution Needed ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-1-gericht">
     <ess:name xml:lang="nl">Gate 1 — Opportunity Viable</ess:name>
-    <ess:briefDescription xml:lang="nl">Gehaald zodra het high-level design is vastgesteld en stakeholders achter de gekozen richting staan. Afwijkingen van de guardrails worden beoordeeld via de architectuursturing.</ess:briefDescription>
-    <ess:description xml:lang="nl">Gehaald zodra het high-level design is vastgesteld en stakeholders achter de gekozen richting staan. Afwijkingen van de guardrails worden beoordeeld via de architectuursturing.</ess:description>
+    <ess:briefDescription xml:lang="nl">Bijdrage geleverd zodra het high-level design is vastgesteld en stakeholders achter de gekozen richting staan. Afwijkingen van de guardrails worden beoordeeld via de architectuursturing.</ess:briefDescription>
+    <ess:description xml:lang="nl">Bijdrage geleverd zodra het high-level design is vastgesteld en stakeholders achter de gekozen richting staan. Afwijkingen van de guardrails worden beoordeeld via de architectuursturing.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-1-gericht/aligns"/>
   </ess:Pattern>
@@ -217,8 +217,8 @@
   <!-- ================= Gate 2 — Architecture Selected ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-2-omschreven">
     <ess:name xml:lang="nl">Gate 2 — Architecture Selected</ess:name>
-    <ess:briefDescription xml:lang="nl">Gehaald zodra het low-level design de architectuur onderbouwd heeft vastgelegd, getoetst aan de architectuurbepalende eisen. Afwijkingen worden beoordeeld via de architectuursturing.</ess:briefDescription>
-    <ess:description xml:lang="nl">Gehaald zodra het low-level design de architectuur onderbouwd heeft vastgelegd, getoetst aan de architectuurbepalende eisen. Afwijkingen worden beoordeeld via de architectuursturing.</ess:description>
+    <ess:briefDescription xml:lang="nl">Bijdrage geleverd zodra het low-level design de architectuur onderbouwd heeft vastgelegd, getoetst aan de architectuurbepalende eisen. Afwijkingen worden beoordeeld via de architectuursturing.</ess:briefDescription>
+    <ess:description xml:lang="nl">Bijdrage geleverd zodra het low-level design de architectuur onderbouwd heeft vastgelegd, getoetst aan de architectuurbepalende eisen. Afwijkingen worden beoordeeld via de architectuursturing.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-2-omschreven/aligns"/>
   </ess:Pattern>
@@ -234,8 +234,8 @@
   <!-- ================= Gate 3 — System Usable (closes Phase 3 + Phase 4 jointly) ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-3-bewezen">
     <ess:name xml:lang="nl">Gate 3 — System Usable</ess:name>
-    <ess:briefDescription xml:lang="nl">Gehaald zodra de oplossing is gerealiseerd conform de vastgestelde architectuur, met elke afwijking vastgelegd als architectuurbeslissing of dispensatie. De architectuursturing beoordeelt deze afwijkingen.</ess:briefDescription>
-    <ess:description xml:lang="nl">Gehaald zodra de oplossing is gerealiseerd conform de vastgestelde architectuur, met elke afwijking vastgelegd als architectuurbeslissing of dispensatie. De architectuursturing beoordeelt deze afwijkingen.</ess:description>
+    <ess:briefDescription xml:lang="nl">Bijdrage geleverd zodra de oplossing is gerealiseerd conform de vastgestelde architectuur, met elke afwijking vastgelegd als architectuurbeslissing of dispensatie. De architectuursturing beoordeelt deze afwijkingen.</ess:briefDescription>
+    <ess:description xml:lang="nl">Bijdrage geleverd zodra de oplossing is gerealiseerd conform de vastgestelde architectuur, met elke afwijking vastgelegd als architectuurbeslissing of dispensatie. De architectuursturing beoordeelt deze afwijkingen.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-3-bewezen/aligns"/>
   </ess:Pattern>
@@ -251,8 +251,8 @@
   <!-- ================= Gate 4 — System Ready ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-4-bruikbaar">
     <ess:name xml:lang="nl">Gate 4 — System Ready</ess:name>
-    <ess:briefDescription xml:lang="nl">Gehaald zodra de conformance aan het low-level design is aangetoond voor het opgeleverde systeem als geheel. Afwijkingen worden beoordeeld via de architectuursturing.</ess:briefDescription>
-    <ess:description xml:lang="nl">Gehaald zodra de conformance aan het low-level design is aangetoond voor het opgeleverde systeem als geheel. Afwijkingen worden beoordeeld via de architectuursturing.</ess:description>
+    <ess:briefDescription xml:lang="nl">Bijdrage geleverd zodra de conformance aan het low-level design is aangetoond voor het opgeleverde systeem als geheel. Afwijkingen worden beoordeeld via de architectuursturing.</ess:briefDescription>
+    <ess:description xml:lang="nl">Bijdrage geleverd zodra de conformance aan het low-level design is aangetoond voor het opgeleverde systeem als geheel. Afwijkingen worden beoordeeld via de architectuursturing.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/project-lifecycle/gate-4-bruikbaar/aligns"/>
   </ess:Pattern>
@@ -281,10 +281,10 @@
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>
 
-  <ess:ActivityAssociation rdf:about="activity-association/project-lifecycle/governance-assure-evidence/end-before-start/solution-monitor-performance">
-    <ess:name>project-lifecycle governance-assure-evidence end-before-start solution-monitor-performance</ess:name>
+  <ess:ActivityAssociation rdf:about="activity-association/project-lifecycle/governance-validate/end-before-start/solution-monitor-performance">
+    <ess:name>project-lifecycle governance-validate end-before-start solution-monitor-performance</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:end1 rdf:resource="activity/governance-assure-evidence"/>
+    <ess:end1 rdf:resource="activity/governance-validate"/>
     <ess:end2 rdf:resource="activity/solution-monitor-performance"/>
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>

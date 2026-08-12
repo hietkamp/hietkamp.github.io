@@ -1,5 +1,5 @@
 {% extends "_base.html.j2" %}
-{% from "_macros.html.j2" import hero, sec_head, panel %}
+{% from "_macros.html.j2" import hero, sec_head, panel, download_strip %}
 
 {% block content %}
 {{ hero(hero_data) }}
@@ -58,7 +58,14 @@
   </div>
 </section>
 
-{# ── 3. Licentie ── #}
+{# ── 3. Hulpmiddelen ── #}
+<section id="hulpmiddelen" class="mt-12">
+  {{ sec_head(sections.hulpmiddelen.num, sections.hulpmiddelen.title) }}
+  <p class="prose">{{ sections.hulpmiddelen.intro }}</p>
+  {{ download_strip(sections.hulpmiddelen.download) }}
+</section>
+
+{# ── 4. Licentie ── #}
 <section id="licentie" class="mt-12">
   {{ sec_head(sections.licentie.num, sections.licentie.title) }}
   <p class="prose">{{ sections.licentie.intro }}</p>

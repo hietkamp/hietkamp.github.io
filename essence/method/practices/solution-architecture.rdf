@@ -5,7 +5,6 @@
   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
-  xmlns:ewow="https://hietkamp.nl/essence/vocab#"
 >
 
   <ess:Practice rdf:about="practice/solution-architecture">

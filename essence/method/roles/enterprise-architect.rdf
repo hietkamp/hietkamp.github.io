@@ -5,26 +5,35 @@
   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
-  xmlns:ewow="https://hietkamp.nl/essence/vocab#"
 >
 
   <ess:Pattern rdf:about="role/enterprise-architect">
     <ess:name xml:lang="nl">Enterprise architect</ess:name>
-    <ess:briefDescription xml:lang="nl">Beheert de architectuur op ondernemingsniveau. Leidt het enterprise-spoor: stelt enterprise-brede sturende eisen vast, maakt de richting zichtbaar, de…</ess:briefDescription>
-    <ess:description xml:lang="nl">Beheert de architectuur op ondernemingsniveau. Leidt het enterprise-spoor: stelt enterprise-brede sturende eisen vast, maakt de richting zichtbaar, definieert de reference architecture en bouwt de goedgekeurde route. Werkt met de CIO, business-owners en het Architectuurforum. De uitkomsten worden de kaders en context die elke solution erft.</ess:description>
+    <ess:briefDescription xml:lang="nl">De Enterprise architect is verantwoordelijk voor architecturaal ontwerp en documentatie op het niveau van het volledige architectuurlandschap en technical reference model, niet van één specifieke solution — eerder een stadsplanner dan de architect van één gebouw.</ess:briefDescription>
+    <ess:description xml:lang="nl">De Enterprise architect is verantwoordelijk voor de volledigheid en samenhang van de architectuur op het niveau van het hele architectuurlandschap, niet van één specifieke solution. TOGAF vergelijkt de rol met een stadsplanner eerder dan een architect van één gebouw: het resultaat is een geplande gemeenschap, geen op zichzelf staand gebouw. De Enterprise architect bedenkt niet zelf de technische visie, maar onderhoudt de relatie met de executives van de organisatie om die visie op te halen en te verwoorden, en vertaalt haar naar een strategisch plan dat herleidbaar blijft naar de businessplannen en verankerd is in de architectuursturing, zodat ontwerpbeslissingen niet omwille van tactisch gemak worden omzeild. In deze werkwijze leidt de Enterprise architect zo het enterprise-spoor: stelt enterprise-brede sturende eisen vast, maakt de gewenste richting zichtbaar, definieert de reference architecture en bouwt de goedgekeurde paved road waarlangs solutions kunnen worden gerealiseerd — vergelijkbaar met hoe TOGAF's Enterprise Architect de documentatie en onderbouwing van high-level ontwerpbeslissingen oplevert die Solution Architects vervolgens uitvoeren. Werkt daarvoor samen met de CIO, business-owners en het Architectuurforum; de uitkomsten vormen de kaders en context die elke solution als uitgangspunt erft.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ewow:level>Enterprise niveau · C4 Level 1–2</ewow:level>
-    <ewow:owns>ASR · Architecture Vision · Paved Road · Architecture Definition (enterprise) · Roadmap (enterprise) · Architectuurbeslissingen (enterprise)</ewow:owns>
-    <ewow:intro>De Enterprise architect is eigenaar van het volledige architectuurproces op enterprise-scope. Op de activiteitspagina's staat uitgewerkt hoe de Enterprise architect samenwerkt met de Architectuureigenaars van de afzonderlijke solutions.</ewow:intro>
-    <ess:associations rdf:resource="pattern-association/enterprise-architect/requires-competency"/>
+    <ess:associations rdf:resource="pattern-association/enterprise-architect/requires-competency/analysis"/>
+    <ess:associations rdf:resource="pattern-association/enterprise-architect/requires-competency/development"/>
+    <ess:associations rdf:resource="pattern-association/enterprise-architect/requires-competency/leadership"/>
     <ess:associations rdf:resource="pattern-association/enterprise-architect/participates-in"/>
   </ess:Pattern>
 
-  <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/requires-competency">
+  <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/requires-competency/analysis">
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Analysis"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/requires-competency/development">
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Development"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/requires-competency/leadership">
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Leadership"/>
-    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Applies"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/participates-in">

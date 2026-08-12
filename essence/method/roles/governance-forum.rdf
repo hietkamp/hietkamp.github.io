@@ -5,28 +5,33 @@
   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
-  xmlns:ewow="https://hietkamp.nl/essence/vocab#"
 >
 
   <ess:Pattern rdf:about="role/governance-forum">
     <ess:name xml:lang="nl">Architectuurforum</ess:name>
-    <ess:briefDescription xml:lang="nl">Een kleine, snelle, op principes gebaseerde instantie — een lean Architecture Board of gilde. Beoordeelt uitsluitend uitzonderingen en off-road architectuurbeslissingen. …</ess:briefDescription>
-    <ess:description xml:lang="nl">Een kleine, snelle, op principes gebaseerde instantie — een lean Architecture Board of gilde. Beoordeelt uitsluitend uitzonderingen en off-road architectuurbeslissingen. Borgt uitkomsten, geen papierwerk. Vergadert alleen als er iets te beoordelen is.</ess:description>
+    <ess:briefDescription xml:lang="nl">De rol die overeenkomt met TOGAF's Architecture Board: een klein orgaan van senior architecten en executives dat namens de organisatie een zichtbaar escalatiemechanisme biedt voor architectuurbeslissingen die buiten de vastgestelde kaders vallen.</ess:briefDescription>
+    <ess:description xml:lang="nl">Het Architectuurforum is de rol die in TOGAF 10 het Architecture Board heet. TOGAF noemt als kernverantwoordelijkheden van dit orgaan: een zichtbaar escalatiemechanisme bieden voor beslissingen die buiten de vastgestelde kaders vallen en onduidelijkheden, issues of conflicten oplossen; zorgen voor effectief en consistent beheer en implementatie van architectuur binnen de organisatie; en duidelijke verantwoordelijkheid voor architectuurbeslissingen vastleggen. Leden zijn doorgaans senior managers of executives die verantwoordelijk zijn voor het onderhoud van de architectuur; het lidmaatschap kan rouleren — met behoud van continuïteit — om enterprise-brede vertegenwoordiging te waarborgen zonder het orgaan te groot te laten worden. In deze werkwijze is die rol bewust smal gehouden: het Architectuurforum beoordeelt uitsluitend uitzonderingen en off-road architectuurbeslissingen; wat binnen de guardrails past, stroomt ongehinderd door zonder tussenkomst van het forum, en het forum vergadert op de vaste cadans of als escalatie daarbuiten.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:associations rdf:resource="pattern-association/governance-forum/requires-competency"/>
+    <ess:associations rdf:resource="pattern-association/governance-forum/requires-competency/stakeholder-representation"/>
+    <ess:associations rdf:resource="pattern-association/governance-forum/requires-competency/leadership"/>
     <ess:associations rdf:resource="pattern-association/governance-forum/participates-in"/>
   </ess:Pattern>
 
-  <ess:PatternAssociation rdf:about="pattern-association/governance-forum/requires-competency">
+  <ess:PatternAssociation rdf:about="pattern-association/governance-forum/requires-competency/stakeholder-representation">
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StakeholderRepresentation"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/governance-forum/requires-competency/leadership">
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Leadership"/>
-    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Management"/>
-    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/governance-forum/participates-in">
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="activity/governance-assure-evidence"/>
+    <ess:elements rdf:resource="activity/governance-validate"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>
     <ess:elements rdf:resource="activity/governance-tune-governance"/>
   </ess:PatternAssociation>

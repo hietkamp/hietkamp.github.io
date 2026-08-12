@@ -1,5 +1,5 @@
 {% extends "_base.html.j2" %}
-{% from "_macros.html.j2" import rdf_prose, sec_head %}
+{% from "_macros.html.j2" import rdf_prose, sec_head, download_strip %}
 {% block content %}
 {% set nsec = namespace(n=0) %}
 <div class="breadcrumb flex flex-wrap items-center gap-2 pt-[18px] font-mono text-[11px] text-slate-500 [&_a]:font-semibold [&_a]:text-[var(--prac)] [&_a]:no-underline hover:[&_a]:underline">
@@ -55,6 +55,43 @@
     {% endif %}
     {% endfor %}
   </div>
+  {% elif sec.section_kind == 'competencies' %}
+  <div class="comp-groups flex flex-col gap-5">
+    {% for group in sec.groups %}
+    <div class="comp-group">
+      <div class="mb-2 flex items-center gap-2 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+        <span class="h-2 w-2 rounded-full {{ group.dot }}"></span>{{ group.label }}
+      </div>
+      <div class="comp-list flex flex-col gap-2.5">
+        {% for c in group['items'] %}
+        <div class="comp-row flex flex-col gap-2.5 rounded-xl border px-4 py-3.5 transition {% if c.checked %}{{ c.chip_css }}{% else %}border-slate-200 bg-slate-50{% endif %}">
+          <div class="flex items-start gap-2.5">
+            <span class="comp-check mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full {% if c.checked %}{{ c.dot }} {{ c.dot_text }}{% else %}border border-slate-300 bg-white{% endif %}" aria-hidden="true">
+              {% if c.checked %}
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg>
+              {% endif %}
+            </span>
+            <div>
+              <div class="font-semibold text-[0.92rem] {{ 'text-slate-900' if c.checked else 'text-slate-500' }}">{{ c.name }}</div>
+              {% if c.brief %}<p class="m-0 mt-0.5 text-[0.8rem] leading-snug {{ 'text-slate-600' if c.checked else 'text-slate-400' }}">{{ c.brief }}</p>{% endif %}
+            </div>
+          </div>
+          <div class="comp-levels flex flex-wrap items-center gap-1.5 pl-[30px]">
+            {% for lv in c['levels'] %}
+            <span class="level-pill group relative cursor-default rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wide {% if lv.checked %}{{ c.dot }} {{ c.dot_text }} border-transparent{% else %}border-slate-200 bg-white text-slate-400{% endif %}"{% if lv.brief %} tabindex="0"{% endif %}>
+              {{ lv.name }}
+              {% if lv.brief %}
+              <span class="pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 w-52 -translate-x-1/2 rounded-lg bg-slate-900 px-2.5 py-1.5 text-center font-sans text-[11px] font-normal normal-case leading-snug text-white opacity-0 shadow-lg transition duration-150 group-hover:opacity-100 group-focus:opacity-100">{{ lv.brief }}</span>
+              {% endif %}
+            </span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
   {% elif sec.section_kind == 'stepper' %}
   <ol class="stepper m-0 list-none p-0">
     {% for step in sec.steps %}
@@ -84,42 +121,7 @@
 </section>
 {% endfor %}
 
-{% if download %}
-  <div class="download-strip mt-6 mb-7 flex items-center justify-between gap-5 rounded-xl border border-l-[5px] border-slate-300 border-l-[var(--prac)] bg-white px-[22px] py-[18px] max-[600px]:flex-col max-[600px]:items-start">
-    <div class="dl-info flex items-center gap-4">
-      <div class="dl-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px]">
-        {% if download.type == 'xlsx' %}
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-          <rect width="36" height="36" rx="8" fill="#dcfce7"/>
-          <rect x="7" y="7" width="22" height="22" rx="2" fill="#16a34a" opacity=".12"/>
-          <rect x="7" y="7" width="22" height="22" rx="2" stroke="#16a34a" stroke-width="1.5" fill="none"/>
-          <line x1="7" y1="13" x2="29" y2="13" stroke="#16a34a" stroke-width="1.2"/>
-          <line x1="7" y1="19" x2="29" y2="19" stroke="#16a34a" stroke-width="1.2"/>
-          <line x1="7" y1="25" x2="29" y2="25" stroke="#16a34a" stroke-width="1.2"/>
-          <line x1="14" y1="7" x2="14" y2="29" stroke="#16a34a" stroke-width="1.2"/>
-          <line x1="21" y1="7" x2="21" y2="29" stroke="#16a34a" stroke-width="1.2"/>
-        </svg>
-        {% else %}
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-          <rect width="36" height="36" rx="8" fill="#dbeafe"/>
-          <path d="M10 8h11l7 7v13a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z" fill="#2563eb" opacity=".12"/>
-          <path d="M10 8h11l7 7v13a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z" stroke="#2563eb" stroke-width="1.5" fill="none"/>
-          <polyline points="21 8 21 15 28 15" stroke="#2563eb" stroke-width="1.5" fill="none"/>
-          <line x1="13" y1="20" x2="23" y2="20" stroke="#2563eb" stroke-width="1.2"/>
-          <line x1="13" y1="24" x2="20" y2="24" stroke="#2563eb" stroke-width="1.2"/>
-        </svg>
-        {% endif %}
-      </div>
-      <div>
-        <div class="dl-label mb-0.5 font-mono text-[9.5px] uppercase tracking-[0.16em] text-[var(--prac)]">Sjabloon</div>
-        <div class="dl-name mb-px font-serif text-[1.1rem] font-semibold">{{ download.filename }}</div>
-        <div class="dl-desc text-[0.83rem] text-slate-500">{{ download.desc }}</div>
-      </div>
-    </div>
-    <a class="dl-btn inline-flex shrink-0 items-center gap-[7px] whitespace-nowrap rounded-full border-2 border-[var(--prac)] bg-[var(--prac)] px-5 py-2.5 font-mono text-xs font-semibold tracking-wide text-white no-underline transition hover:bg-transparent hover:text-[var(--prac)]" href="{{ download.url }}" download>⬇ Download {{ download.type | upper }}</a>
-  </div>
-
-{% endif %}
+{{ download_strip(download) }}
 
 
 {% if lod_list %}

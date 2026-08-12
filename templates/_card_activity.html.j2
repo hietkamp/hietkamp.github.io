@@ -35,7 +35,7 @@
 {% set _href  = href or act.href | default('#') %}
 {% set _phase = act.phase | default('dev') %}
 
-{# Volgnummer: ewow:num (level-specific) of extraheer uit ewow:actNum ("Activiteit 02 / 05") #}
+{# Volgnummer: act.num (level-specific) of extraheer uit act.act_num ("Activiteit 02 / 05") #}
 {% set _num_raw = act.num | default('') %}
 {% if not _num_raw and act.act_num %}
   {% set _num_parts = act.act_num.split(' ') %}

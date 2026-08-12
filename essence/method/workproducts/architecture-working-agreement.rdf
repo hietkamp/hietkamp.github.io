@@ -9,8 +9,10 @@
 
   <ess:WorkProduct rdf:about="workproduct/architecture-working-agreement">
     <ess:name xml:lang="nl">Architectuur werkafspraken</ess:name>
-    <ess:briefDescription xml:lang="nl">Afspraken over wie welke architectuurbeslissingen mag nemen, wat de escalatieroute is, en wat het ritme van governance-interacties is. Vastgesteld bij…</ess:briefDescription>
-    <ess:description xml:lang="nl">Afspraken over wie welke architectuurbeslissingen mag nemen, wat de escalatieroute is, en wat het ritme van governance-interacties is. Vastgesteld bij Establish Governance, bijgehouden bij Tune the Governance.</ess:description>
+    <ess:briefDescription xml:lang="nl">De werkafspraken leggen vast wie welke architectuurbeslissing mag nemen, wat de escalatieroute is, en welk ritme de governance-interacties volgen.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De architectuur werkafspraken zijn een kort, operationeel document — geen beleidsstuk — dat vastlegt wie welke architectuurbeslissing mag nemen, op welk niveau, en wat de escalatieroute is wanneer een keuze buiten die bevoegdheid valt. Ze worden bij Richt governance in voor het eerst vastgesteld, samen met de objectives waaraan de governance zichzelf later laat toetsen.</p>
+<p>Toets werking governance gebruikt deze werkafspraken als de meetlat: worden de vastgelegde objectives daadwerkelijk gehaald? Blijken ze niet meer te kloppen met de praktijk, dan stelt Stel governance bij ze bij — via dezelfde expliciete supersessie als bij de architectuurprincipes, zodat wijzigingen zichtbaar en herleidbaar blijven.</p>
+<p>De werkafspraken bevatten in elk geval de escalatiegrens tussen wat een team zelfstandig mag beslissen en wat naar het Architectuurforum moet, de vaste vergadercadans van het forum met de lichte manier om onderwerpen aan te melden, en de objectives voor de governance zelf — bijvoorbeeld dat conforme beslissingen geen vertraging ondervinden en dat escalaties binnen een vaste termijn worden afgehandeld.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <!-- ess:levelOfDetail not defined -->

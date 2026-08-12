@@ -18,7 +18,6 @@ from jinja2 import Environment, FileSystemLoader
 # ---------------------------------------------------------------------------
 ESS  = Namespace("https://www.hietkamp.nl/ontologies/essence-language#")
 KERN = Namespace("https://www.hietkamp.nl/ontologies/essence-kernel#")
-EWOW = Namespace("https://hietkamp.nl/essence/vocab#")
 BASE = "https://hietkamp.nl/essence/"
 METHOD_URI = URIRef(BASE + "method/essence-architecture-method")
 
@@ -603,6 +602,7 @@ def _alpha_sidenav(g: Graph, current_uri, root: str) -> dict:
 def build_index_ctx(g: Graph) -> dict:
     method_name = get_name(g, METHOD_URI)
     method_brief = get_brief(g, METHOD_URI)
+    download = template_download(g, METHOD_URI)
 
     # Collect practices in order
     practices = []
@@ -650,9 +650,10 @@ def build_index_ctx(g: Graph) -> dict:
             "chips":    [p["title"] for p in practices],
         },
         "toolbar": [
-            {"href": "#start",       "label": "Kies de context"},
-            {"href": "#achtergrond", "label": "Practices"},
-            {"href": "#licentie",    "label": "Licentie"},
+            {"href": "#start",        "label": "Kies de context"},
+            {"href": "#achtergrond",  "label": "Practices"},
+            {"href": "#hulpmiddelen", "label": "Download"},
+            {"href": "#licentie",     "label": "Licentie"},
         ],
         "sections": {
             "start": {
@@ -675,8 +676,14 @@ def build_index_ctx(g: Graph) -> dict:
                     ],
                 },
             },
+            "hulpmiddelen": {
+                "num":      "03",
+                "title":    "Hulpmiddelen",
+                "intro":    "Download het werkblad om de methode direct toe te passen.",
+                "download": download,
+            },
             "licentie": {
-                "num":   "03",
+                "num":   "04",
                 "title": "Open source licentie",
                 "intro": "Zowel de methode-inhoud als de website die je nu bekijkt zijn open source.",
                 "panel": {
@@ -1244,19 +1251,80 @@ def role_activity_uris(g: Graph, role_uri) -> list:
     return []
 
 
-def role_competencies(g: Graph, role_uri) -> list:
-    """Return the names of Competency individuals required by this role, via its
-    'requires competency' association. Skips non-Competency elements (e.g. a
-    required CompetencyLevel such as Masters, which is a level, not an area).
-    Matched on the association's URI slug — see practice_role_uris."""
+def role_competency_requirements(g: Graph, role_uri) -> dict:
+    """Return {Competency URI: CompetencyLevel URI} for this role, by reading
+    every 'requires competency' PatternAssociation attached to it. A role can
+    have several such associations — one per competency — each pairing
+    exactly one ess:Competency with the one ess:CompetencyLevel required for
+    it, so different competencies can require different levels (e.g. Leadership
+    at Applies, Analysis at Masters). Matched on the association URI's slug
+    prefix — see practice_role_uris."""
+    reqs: dict = {}
     for assoc_uri in g.objects(role_uri, ESS.associations):
-        if slug(assoc_uri) != "requires-competency":
+        if "/requires-competency" not in local_path(assoc_uri):
             continue
-        return [
-            get_name(g, el) for el in g.objects(assoc_uri, ESS.elements)
-            if (el, RDF.type, ESS.Competency) in g
-        ]
-    return []
+        elements = list(g.objects(assoc_uri, ESS.elements))
+        comp = next((el for el in elements if (el, RDF.type, ESS.Competency) in g), None)
+        level = next((el for el in elements if (el, RDF.type, ESS.CompetencyLevel) in g), None)
+        if comp is not None:
+            reqs[comp] = level
+    return reqs
+
+
+def role_competencies(g: Graph, role_uri) -> list:
+    """Return the names of Competency individuals required by this role —
+    see role_competency_requirements."""
+    return [get_name(g, comp) for comp in role_competency_requirements(g, role_uri)]
+
+
+def competency_matrix(g: Graph, role_uri) -> list:
+    """Return every ess:Competency the Essence Kernel defines — not just this
+    role's own subset — each flagged whether it's in this role's 'requires
+    competency' associations. Each competency also carries its own
+    ess:possibleLevel ladder (ordered by ess:level), with that specific
+    competency's own required ess:CompetencyLevel checked — not a single
+    level shared across the whole role, since different competencies can
+    require different levels (see role_competency_requirements). Competencies
+    are grouped by their own ess:tags area of concern (Customer/Solution/
+    Endeavour — the same tag used for Alpha/Activity domain colour), in that
+    fixed Customer → Solution → Endeavour reading order."""
+    reqs = role_competency_requirements(g, role_uri)
+
+    by_domain: dict[str, list] = {}
+    for comp in g.subjects(RDF.type, ESS.Competency):
+        domain = domain_color_for(g, comp)
+        domain_key = domain.get("domain", "")
+        is_required = comp in reqs
+        required_level_name = get_name(g, reqs[comp]) if is_required and reqs[comp] is not None else ""
+        possible_levels = sorted(
+            g.objects(comp, ESS.possibleLevel),
+            key=lambda lv: int(next(g.objects(lv, ESS.level), 0)),
+        )
+        by_domain.setdefault(domain_key, []).append({
+            "name":          get_name(g, comp),
+            "brief":         get_brief(g, comp),
+            "checked":       is_required,
+            "chip_css":      domain.get("chip_css", ""),
+            "dot":           domain.get("num_color", ""),
+            "dot_text":      domain.get("num_text_color", "text-white"),
+            "levels": [
+                {"name": get_name(g, lv), "brief": get_brief(g, lv),
+                 "checked": is_required and get_name(g, lv) == required_level_name}
+                for lv in possible_levels
+            ],
+        })
+
+    groups = []
+    for key in ("customer", "solution", "endeavour"):
+        items = sorted(by_domain.get(key, []), key=lambda c: c["name"])
+        if items:
+            groups.append({
+                "domain": key,
+                "label":  key.capitalize(),
+                "dot":    DOMAIN_COLOR_CFG[key]["num_color"],
+                "items":  items,
+            })
+    return groups
 
 
 def build_practice_ctx(g: Graph, practice_uri) -> tuple[dict, str]:
@@ -1583,6 +1651,30 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
 
 # ── workproduct page ─────────────────────────────────────────────────────────
 
+TEMPLATE_TYPE = URIRef(BASE + "type/template")
+
+def template_download(g: Graph, owner_uri, fallback_desc: str = "") -> dict | None:
+    """Return a wp.html.j2-shaped download dict for owner_uri's ess:TypedResource
+    of kind type/template (an ownedElements child pointing at a downloadable
+    file via ess:content), or None if it has no such resource."""
+    for owned in g.objects(owner_uri, ESS.ownedElements):
+        if (owned, RDF.type, ESS.TypedResource) not in g:
+            continue
+        if next(g.objects(owned, ESS.kind), None) != TEMPLATE_TYPE:
+            continue
+        url = str(next(g.objects(owned, ESS.content), "")) or None
+        if not url:
+            return None
+        ext = url.rsplit(".", 1)[-1].lower() if "." in url else "docx"
+        return {
+            "type":     ext,
+            "url":      url,
+            "filename": url.rsplit("/", 1)[-1],
+            "desc":     get_brief(g, owned) or fallback_desc,
+        }
+    return None
+
+
 def build_wp_ctx(g: Graph, wp_uri) -> dict:
     s = slug(wp_uri)
     practice_uri = next(g.objects(wp_uri, ESS.owner), None)
@@ -1673,28 +1765,7 @@ def build_wp_ctx(g: Graph, wp_uri) -> dict:
 
     sections = parse_wp_desc(fix_desc_paths(get_desc(g, wp_uri), "../"))
 
-    # TypedResource with kind=type/template
-    TEMPLATE_TYPE = URIRef(BASE + "type/template")
-    template_url = None
-    template_uri = None
-    for owned in g.objects(wp_uri, ESS.ownedElements):
-        if (owned, RDF.type, ESS.TypedResource) not in g:
-            continue
-        kind = next(g.objects(owned, ESS.kind), None)
-        if kind == TEMPLATE_TYPE:
-            template_url = str(next(g.objects(owned, ESS.content), "")) or None
-            template_uri = owned
-            break
-
-    download = None
-    if template_url:
-        ext = template_url.rsplit(".", 1)[-1].lower() if "." in template_url else "docx"
-        download = {
-            "type":    ext,
-            "url":     template_url,
-            "filename": template_url.rsplit("/", 1)[-1],
-            "desc":    get_brief(g, template_uri) or f"Sjabloon voor {title}",
-        }
+    download = template_download(g, wp_uri, fallback_desc=f"Sjabloon voor {title}")
 
     ctx = _base_ctx(g, root="../", data_prac=cfg.get("color", "neutral"),
                     title=title, description=brief)
@@ -1723,21 +1794,9 @@ def build_role_ctx(g: Graph, role_uri) -> dict:
     title = get_name(g, role_uri)
     brief = get_brief(g, role_uri)
     desc = get_desc(g, role_uri)
-    intro = str(next(g.objects(role_uri, EWOW.intro), "")) or ""
-    level = str(next(g.objects(role_uri, EWOW.level), "")) or ""
-    owns = str(next(g.objects(role_uri, EWOW.owns), "")) or ""
+    beschrijving_html = f"<p>{desc}</p>" if desc else ""
 
-    beschrijving_html = "".join(
-        f"<p>{p}</p>" for p in (desc, intro) if p
-    )
-    if owns:
-        beschrijving_html += f"<p><strong>Eigenaar van:</strong> {owns}</p>"
-
-    competencies = role_competencies(g, role_uri)
-    competencies_html = (
-        "<ul>" + "".join(f"<li>{c}</li>" for c in competencies) + "</ul>"
-        if competencies else ""
-    )
+    competency_groups = competency_matrix(g, role_uri)
 
     activity_cards = []
     for a in role_activity_uris(g, role_uri):
@@ -1756,8 +1815,9 @@ def build_role_ctx(g: Graph, role_uri) -> dict:
     sections = [
         {"id": "beschrijving", "h2": "Beschrijving", "body_html": beschrijving_html},
     ]
-    if competencies_html:
-        sections.append({"id": "competenties", "h2": "Competenties", "body_html": competencies_html})
+    if competency_groups:
+        sections.append({"id": "competenties", "h2": "Competenties",
+                          "section_kind": "competencies", "groups": competency_groups})
     if activity_cards:
         sections.append({"id": "activiteiten", "h2": "Activiteiten",
                           "section_kind": "cards", "cards": activity_cards})
@@ -1767,7 +1827,7 @@ def build_role_ctx(g: Graph, role_uri) -> dict:
         "kicker":     "Rol",
         "h1_pre":     title,
         "lede":       brief,
-        "meta_pills": [level] if level else [],
+        "meta_pills": [],
         "sections":   sections,
         "breadcrumb": {
             "parent_href":  "../roles.html",
@@ -1870,6 +1930,18 @@ def main() -> None:
             print(f"  static: copied {asset} to docs/")
         else:
             print(f"  warning: static/{asset} not found — create it")
+
+    # Downloadable resources referenced from the RDF via ess:content (e.g. the
+    # method-level EA Alpha Assessment workbook) — copied verbatim into
+    # docs/downloads/ so the relative ess:content path resolves.
+    downloads_src = ROOT / "essence" / "EA_Alpha_Assessment.xlsx"
+    if downloads_src.exists():
+        downloads_dir = DOCS_DIR / "downloads"
+        downloads_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copy(downloads_src, downloads_dir / downloads_src.name)
+        print(f"  static: copied {downloads_src.name} to docs/downloads/")
+    else:
+        print(f"  warning: {downloads_src} not found")
 
     assets_src = STATIC_DIR / "assets"
     if assets_src.exists():

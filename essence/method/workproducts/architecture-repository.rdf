@@ -9,8 +9,10 @@
 
   <ess:WorkProduct rdf:about="workproduct/architecture-repository">
     <ess:name xml:lang="nl">Architectuurrepository</ess:name>
-    <ess:briefDescription xml:lang="nl">Bestuurde centrale opslagplaats voor alle architectuurartefacten: architectuurbeslissingen, architecture definitions, review records en de paved road. Één bron van waarhe…</ess:briefDescription>
-    <ess:description xml:lang="nl">Bestuurde centrale opslagplaats voor alle architectuurartefacten: architectuurbeslissingen, architecture definitions, review records en de paved road. Één bron van waarheid voor het hele architectuurlandgoed.</ess:description>
+    <ess:briefDescription xml:lang="nl">De architectuurrepository is de ene, autoritatieve plek waar alle architectuurartefacten van de organisatie hun vaste plek hebben.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De architectuurrepository is de ene, autoritatieve plek waar alle architectuurartefacten van de organisatie hun vaste plek hebben, in plaats van verspreid over losse documenten en persoonlijke mappen. Eén bron van waarheid voorkomt dat teams met verouderde of onderling tegenstrijdige informatie werken.</p>
+<p>De repository wordt bij Richt governance in ingericht, als onderdeel van het fundament waarop de rest van de sturing steunt. Vanaf dat moment krijgen ook de architectuurvisie en de paved road, zodra Enterprise architectuur ze oplevert, hier hun gepubliceerde plek, naast de architectuurprincipes, architectuurbeslissingen en reviewresultaten die gedurende de levenscyclus ontstaan. Ook de componenten van het architectuurmodel — de bouwstenen, relaties en grenzen die het model op elk detailniveau vastlegt — worden in de architectuurrepository opgenomen, zodat de structurele opbouw van elke solution op dezelfde autoritatieve plek terug te vinden is als de rest van de architectuurartefacten.</p>
+<p>Inhoudelijk bevat de repository dus geen eigen, op zichzelf staande tekst, maar fungeert ze als het geordende geheel van de andere werkproducten uit deze werkwijze: principes, werkafspraken, beslissingen, modellen en bewijs, elk terug te vinden op de plek die bij het bijbehorende werkproduct hoort.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <!-- ess:levelOfDetail not defined -->

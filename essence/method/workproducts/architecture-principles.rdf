@@ -9,8 +9,10 @@
 
   <ess:WorkProduct rdf:about="workproduct/architecture-principles">
     <ess:name xml:lang="nl">Architectuurprincipes</ess:name>
-    <ess:briefDescription xml:lang="nl">Kleine set richtinggevende principes die architectuurkeuzes sturen. Worden vastgesteld bij aanvang en bijgehouden gedurende de levenscyclus. Basis voo…</ess:briefDescription>
-    <ess:description xml:lang="nl">Kleine set richtinggevende principes die architectuurkeuzes sturen. Worden vastgesteld bij aanvang en bijgehouden gedurende de levenscyclus. Basis voor de guardrails die governance hanteert.</ess:description>
+    <ess:briefDescription xml:lang="nl">Een architectuurprincipe is een richtinggevende regel die aangeeft welke richting gewenst is, zonder elke situatie in detail voor te schrijven.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Architectuurprincipes zijn een beperkte, richtinggevende set regels die aangeven welke richting gewenst is, zonder elke situatie in detail voor te schrijven — guardrails in plaats van uitputtende standaarden. Ze worden bij Richt governance in voor het eerst vastgesteld en vormen vanaf dat moment de toetssteen waarmee het Architectuurforum beoordeelt of een architectuurbeslissing binnen de gestelde kaders past of als uitzondering moet worden behandeld.</p>
+<p>Bij Bestuur levering worden binnenkomende architectuurbeslissingen gescand op signalen die de principes raken; wat binnen de principes past stroomt ongehinderd door, wat ervan afwijkt krijgt een review. Principes zijn daarmee niet statisch: bij Stel governance bij worden ze periodiek herzien op basis van reviewpatronen — een principe dat vaak wordt omzeild, wordt aangescherpt of geschrapt — via expliciete supersessie, zodat een nieuwe versie de oude zichtbaar vervangt.</p>
+<p>Elk principe bestaat doorgaans uit een korte, eenduidige stelling, de onderliggende rationale en de implicaties voor ontwerp- en technologiekeuzes. Het aantal actieve principes blijft bewust beperkt — een richtlijn van vijf tot tien — zodat ze te onthouden, toe te passen en te handhaven blijven.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <!-- ess:levelOfDetail not defined -->

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+>
+
+  <ess:Activity rdf:about="activity/governance-validate">
+    <ess:name xml:lang="nl">Toets werking governance</ess:name>
+    <ess:briefDescription xml:lang="nl">Vergelijkt hoe de governance feitelijk werkt met de objectives die bij Richt governance in zijn vastgelegd — geen hertoetsing van architectuurproducten, maar de vraag of het sturingssysteem zelf doet wat het moest doen.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Deze activiteit toetst niet opnieuw de architectuurbeslissingen of de paved-road-conformance — dat gebeurt al bij Bestuur levering. Ze vergelijkt in plaats daarvan de opgetelde review records en het feitelijk paved-road-gebruik over een periode met de objectives die bij Richt governance in zijn afgesproken, en signaleert afwijkingen door naar Stel governance bij.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <ess:approach rdf:resource="approach/governance-validate/default"/>
+    <ess:action rdf:resource="action/governance-validate/read/architecture-working-agreement"/>
+    <ess:action rdf:resource="action/governance-validate/read/paved-road"/>
+    <ess:action rdf:resource="action/governance-validate/read/review-records"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/governance-validate/entry/governance"/>
+    <ess:criterion rdf:resource="criterion/governance-validate/entry/way-of-working"/>
+    <ess:criterion rdf:resource="criterion/governance-validate/completion/governance"/>
+    <ess:criterion rdf:resource="criterion/governance-validate/completion/way-of-working"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/governance-validate/default">
+    <ess:name xml:lang="nl">Toets werking governance</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>De aanpak begint bij de objectives die bij Richt governance in zijn vastgelegd in de werkafspraken: wat moest dit sturingssysteem opleveren? Vervolgens worden de al bestaande gegevens over de afgelopen periode verzameld: de review records uit Bestuur levering, met het aantal en de aard van de uitzonderingen en de doorlooptijd van escalaties, en het feitelijk gebruik van de paved road. Er worden bewust geen nieuwe metingen bedacht — de review is al gedaan, dit is geen tweede beoordelingsronde, maar, in TOGAF-termen, een periodieke compliance-assessment van de governance zelf.</p>
+<p>Die gegevens worden naast de objectives gelegd, niet naast de architectuur: worden escalaties binnen de afgesproken termijn afgehandeld, blijft het aantal actieve principes beperkt, ondervinden conforme beslissingen geen vertraging? Daarnaast wordt in diezelfde review records gezocht naar terugkerende frictie: welk principe wordt vaak omzeild, welke uitzondering komt telkens terug? De vergelijking levert geen eigen werkproduct op — reviewresultaten horen bij de solution, niet bij de governance zelf — maar wordt bewust als trend over tijd bekeken in plaats van als eenmalig oordeel. Patronen die erop wijzen dat de governance haar eigen objectives niet meer haalt of dat een principe structureel wringt — oplopende doorlooptijden, een groeiend aantal principes, een principe dat telkens wordt omzeild, structurele ontwijking van de paved road — worden expliciet doorgezet naar Stel governance bij.</p>
+<p>Dezelfde vergelijking geldt voor de werkwijze zelf: worden de activiteiten en werkproducten van deze practices daadwerkelijk gebruikt zoals bedoeld, of raken stappen structureel overgeslagen? Ook dat wordt expliciet gesignaleerd naar Stel governance bij — niet per se als teken van een falend team, maar mogelijk als teken dat de werkwijze zelf aan bijstelling toe is.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/governance-validate/read/architecture-working-agreement">
+    <ess:name xml:lang="nl">Lees architectuur werkafspraken</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architecture-working-agreement"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-validate/read/paved-road">
+    <ess:name xml:lang="nl">Lees paved road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/paved-road"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-validate/read/review-records">
+    <ess:name xml:lang="nl">Lees reviewresultaten</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/review-records"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/governance-validate/part-of/track-progress">
+    <ess:name>Assure by Evidence part-of Track Progress</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-validate"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/governance-validate/entry/governance">
+    <ess:name>Entry: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/guiding"/>
+  </ess:EntryCriterion>
+
+  <ess:EntryCriterion rdf:about="criterion/governance-validate/entry/way-of-working">
+    <ess:name>Entry: Way Of Working</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/governance-validate/completion/governance">
+    <ess:name>Completion: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/assured"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/governance-validate/completion/way-of-working">
+    <ess:name>Completion: Way Of Working</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell"/>
+  </ess:CompletionCriterion>
+
+</rdf:RDF>

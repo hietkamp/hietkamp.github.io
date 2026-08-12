@@ -10,22 +10,19 @@
 
   <ess:Activity rdf:about="activity/governance-tune-governance">
     <ess:name xml:lang="nl">Stel governance bij</ess:name>
-    <ess:briefDescription xml:lang="nl">Herziet periodiek principes, working agreement én de werkwijze zelf op basis van bewijs en reviewpatronen, en verwijdert net zo actief guardrails of werkwijze-onderdelen die hun waarde hebben verloren.</ess:briefDescription>
+    <ess:briefDescription xml:lang="nl">Herziet periodiek principes, werkafspraken en de werkwijze zelf op basis van bewijs en reviewpatronen, en verwijdert net zo actief guardrails of werkwijze-onderdelen die hun waarde hebben verloren.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
-<p>Governance die nooit verandert, veroudert vanzelf. Deze activiteit is het geweten van de sturing: ze kijkt kritisch terug of de guardrails nog kloppen, en durft ze net zo hard weg te halen als toe te voegen.</p>
-<p>In veel governance-modellen is bijstelling een bijzaak — iets dat "af en toe" gebeurt als er tijd voor is. In een minimale-sturingmodel is het een structureel onderdeel van de cyclus, omdat elke guardrail die geen waarde meer toevoegt alsnog kosten met zich meebrengt: teams houden er rekening mee, vragen zich af of hij nog geldt, en verliezen tijd aan een regel die niemand meer nodig heeft. Guardrails opruimen is daarom net zo belangrijk als ze instellen.</p>
-<p>Deze activiteit sluit de cirkel van de sturingspraktijk: ze gebruikt het bewijs uit Toets werking governance (welke principes worden vaak omzeild, welke uitzondering komt telkens terug) om de Architectuurprincipes en de Architecture Working Agreement bij te stellen. Waar de Review Records laten zien dat een uitzondering feitelijk de nieuwe norm is geworden, signaleert deze activiteit dat aan Enterprise architectuur, die de paved road beheert — verbreding van de paved road zelf ligt buiten deze practice. Wijzigingen aan eerder vastgelegde beslissingen gebeuren altijd via expliciete supersessie: een nieuwe versie vervangt de oude zichtbaar, in plaats van dat de oude stilzwijgend wordt aangepast.</p>
-<p>Bijstellen betekent hier meer dan principes en working agreement herzien: ook de werkwijze zelf — de activiteiten, werkproducten en volgorde van deze practices — hoort bij wat hier wordt bijgesteld. Het Architectuurforum is en blijft eigenaar van die werkwijze, dus wijzigingen erin verlopen via hetzelfde mandaat als een gewijzigd principe: expliciet besloten, niet stilzwijgend aangepast. Signalen daarvoor komen uit Toets werking governance: activiteiten die stelselmatig worden overgeslagen, of werkproducten die niemand meer raadpleegt, zijn net zo'n reden om de werkwijze te herzien als een principe dat te vaak wordt omzeild.</p>
+<p>Governance die nooit verandert, veroudert vanzelf. Deze activiteit sluit de sturingscyclus: ze gebruikt de patronen die Toets werking governance heeft gesignaleerd om de architectuurprincipes en de werkafspraken bij te stellen, en durft guardrails net zo hard weg te halen als toe te voegen.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <ess:approach rdf:resource="approach/governance-tune-governance/default"/>
     <ess:action rdf:resource="action/governance-tune-governance/update/architecture-principles"/>
     <ess:action rdf:resource="action/governance-tune-governance/update/architecture-working-agreement"/>
-    <ess:action rdf:resource="action/governance-tune-governance/read/conformance-evidence"/>
-    <ess:action rdf:resource="action/governance-tune-governance/read/review-records"/>
+    <ess:action rdf:resource="action/governance-tune-governance/create/statement-of-architecture-work"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/governance-tune-governance/entry/governance"/>
     <ess:criterion rdf:resource="criterion/governance-tune-governance/completion/governance"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
   </ess:Activity>
@@ -34,13 +31,9 @@
     <ess:name xml:lang="nl">Stel governance bij</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
-<ul>
-<li>Analyseer periodiek de Conformance Evidence en Review Records op terugkerende frictie: welk principe wordt vaak omzeild, welke uitzondering komt telkens terug?</li>
-<li>Stel op basis daarvan de Architectuurprincipes en de Architecture Working Agreement bij — via expliciete supersessie: leg vast welke versie welke vervangt en waarom, in plaats van de bestaande tekst stil te wijzigen.</li>
-<li>Signaleer aan Enterprise architectuur wanneer een uitzondering structureel terugkeert: wat drie keer een uitzondering was, verdient overweging voor de standaardroute. De paved road zelf wordt door Enterprise architectuur beheerd en verbreed, niet door deze activiteit.</li>
-<li>Schrap actief guardrails die geen waarde meer toevoegen. Vraag bij elke herziening niet alleen "wat moet erbij", maar ook "wat kan eraf" — minimale sturing bouwt net zo hard af als op.</li>
-<li>Stel ook de werkwijze zelf bij wanneer Toets werking governance daar aanleiding toe geeft: activiteiten die stelselmatig worden overgeslagen of werkproducten die niemand raadpleegt, verdienen dezelfde kritische blik als een principe dat te vaak wordt omzeild. Als eigenaar van de werkwijze autoriseert het Architectuurforum die wijziging.</li>
-</ul>
+<p>De aanpak vertrekt vanuit de patronen die Toets werking governance heeft gesignaleerd: welk principe wordt vaak omzeild, welke uitzondering komt telkens terug? De review records zelf worden hier niet opnieuw doorgenomen — dat is al gebeurd. Op basis van die signalen worden de architectuurprincipes en de werkafspraken bijgesteld, op dezelfde manier als eerder vastgelegde architectuurbeslissingen worden behandeld: via expliciete supersessie, waarbij een nieuwe versie de oude zichtbaar vervangt in plaats van dat de bestaande tekst stilzwijgend wordt aangepast.</p>
+<p>Wanneer een uitzondering structureel terugkeert, wordt dat gesignaleerd aan Enterprise architectuur: wat drie keer een uitzondering was, verdient overweging voor de standaardroute. Dat signaal krijgt waar nodig de vorm van een architectuuropdracht, zodat Enterprise architectuur een duidelijke, afgebakende opdracht heeft om de paved road op dat punt te herzien. De paved road zelf wordt door Enterprise architectuur beheerd en verbreed, niet door deze activiteit — hier wordt alleen de opdracht gegeven. Even belangrijk is het actief schrappen van guardrails die geen waarde meer toevoegen: bij elke herziening wordt niet alleen gevraagd wat erbij moet, maar ook wat eraf kan, want minimale sturing bouwt net zo hard af als op.</p>
+<p>Bijstellen reikt hier verder dan principes en werkafspraken: ook de werkwijze zelf — de activiteiten, werkproducten en volgorde van deze practices — hoort bij wat wordt herzien, telkens wanneer Toets werking governance daar aanleiding toe geeft. Activiteiten die stelselmatig worden overgeslagen of werkproducten die niemand raadpleegt, verdienen dezelfde kritische blik als een principe dat te vaak wordt omzeild. Het Architectuurforum blijft eigenaar van die werkwijze en autoriseert daarmee ook wijzigingen erin, net als bij een gewijzigd principe.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
@@ -59,18 +52,11 @@
     <ess:workProduct rdf:resource="workproduct/architecture-working-agreement"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/governance-tune-governance/read/conformance-evidence">
-    <ess:name xml:lang="nl">Lees conformiteitsbewijs</ess:name>
+  <ess:Action rdf:about="action/governance-tune-governance/create/statement-of-architecture-work">
+    <ess:name xml:lang="nl">Maak architectuuropdracht</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/conformance-evidence"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/governance-tune-governance/read/review-records">
-    <ess:name xml:lang="nl">Lees reviewresultaten</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/review-records"/>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/statement-of-architecture-work"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/governance-tune-governance/part-of/coordinate-activity">
@@ -80,6 +66,12 @@
     <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity"/>
     <ess:associationKind>part-of</ess:associationKind>
   </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/governance-tune-governance/entry/governance">
+    <ess:name>Entry: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/assured"/>
+  </ess:EntryCriterion>
 
   <ess:CompletionCriterion rdf:about="criterion/governance-tune-governance/completion/governance">
     <ess:name>Completion: Governance</ess:name>

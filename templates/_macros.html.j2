@@ -10,6 +10,47 @@
 {% endif %}
 {% endmacro %}
 
+{# Downloadable-template strip: icon (xlsx/docx) + filename + description +
+   download button. Shared by wp.html.j2 (per-workproduct template) and
+   index.html.j2 (the method-level EA Alpha Assessment). #}
+{% macro download_strip(download) %}
+{% if download %}
+<div class="download-strip mt-6 mb-7 flex items-center justify-between gap-5 rounded-xl border border-l-[5px] border-slate-300 border-l-[var(--prac)] bg-white px-[22px] py-[18px] max-[600px]:flex-col max-[600px]:items-start">
+  <div class="dl-info flex items-center gap-4">
+    <div class="dl-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px]">
+      {% if download.type == 'xlsx' %}
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <rect width="36" height="36" rx="8" fill="#dcfce7"/>
+        <rect x="7" y="7" width="22" height="22" rx="2" fill="#16a34a" opacity=".12"/>
+        <rect x="7" y="7" width="22" height="22" rx="2" stroke="#16a34a" stroke-width="1.5" fill="none"/>
+        <line x1="7" y1="13" x2="29" y2="13" stroke="#16a34a" stroke-width="1.2"/>
+        <line x1="7" y1="19" x2="29" y2="19" stroke="#16a34a" stroke-width="1.2"/>
+        <line x1="7" y1="25" x2="29" y2="25" stroke="#16a34a" stroke-width="1.2"/>
+        <line x1="14" y1="7" x2="14" y2="29" stroke="#16a34a" stroke-width="1.2"/>
+        <line x1="21" y1="7" x2="21" y2="29" stroke="#16a34a" stroke-width="1.2"/>
+      </svg>
+      {% else %}
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <rect width="36" height="36" rx="8" fill="#dbeafe"/>
+        <path d="M10 8h11l7 7v13a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z" fill="#2563eb" opacity=".12"/>
+        <path d="M10 8h11l7 7v13a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z" stroke="#2563eb" stroke-width="1.5" fill="none"/>
+        <polyline points="21 8 21 15 28 15" stroke="#2563eb" stroke-width="1.5" fill="none"/>
+        <line x1="13" y1="20" x2="23" y2="20" stroke="#2563eb" stroke-width="1.2"/>
+        <line x1="13" y1="24" x2="20" y2="24" stroke="#2563eb" stroke-width="1.2"/>
+      </svg>
+      {% endif %}
+    </div>
+    <div>
+      <div class="dl-label mb-0.5 font-mono text-[9.5px] uppercase tracking-[0.16em] text-[var(--prac)]">Sjabloon</div>
+      <div class="dl-name mb-px font-serif text-[1.1rem] font-semibold">{{ download.filename }}</div>
+      <div class="dl-desc text-[0.83rem] text-slate-500">{{ download.desc }}</div>
+    </div>
+  </div>
+  <a class="dl-btn inline-flex shrink-0 items-center gap-[7px] whitespace-nowrap rounded-full border-2 border-[var(--prac)] bg-[var(--prac)] px-5 py-2.5 font-mono text-xs font-semibold tracking-wide text-white no-underline transition hover:bg-transparent hover:text-[var(--prac)]" href="{{ download.url }}" download>⬇ Download {{ download.type | upper }}</a>
+</div>
+{% endif %}
+{% endmacro %}
+
 {# Entry/CompletionCriterion cards: one per alpha, plus one per referenced work
    product's level of detail. Shared by act.html.j2's Toegangscriteria and
    Voltooiingscriteria sections — the card data shape is identical, only the

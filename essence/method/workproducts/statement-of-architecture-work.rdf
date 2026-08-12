@@ -9,8 +9,10 @@
 
   <ess:WorkProduct rdf:about="workproduct/statement-of-architecture-work">
     <ess:name xml:lang="nl">Architectuuropdracht</ess:name>
-    <ess:briefDescription xml:lang="nl">Formele opdracht die scope, doelstelling en beslissingsbevoegdheden van het architectuurwerk vastlegt. Geproduceerd door MVG, verbruikt door beide WoW…</ess:briefDescription>
-    <ess:description xml:lang="nl">Formele opdracht die scope, doelstelling en beslissingsbevoegdheden van het architectuurwerk vastlegt. Geproduceerd door MVG, verbruikt door beide WoW-sporen als startpunt.</ess:description>
+    <ess:briefDescription xml:lang="nl">De architectuuropdracht is de formele opdracht die scope, doelstelling en beslissingsbevoegdheden van een architectuurinspanning vastlegt, voordat het eigenlijke architectuurwerk begint.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De architectuuropdracht is de formele opdracht die scope, doelstelling en beslissingsbevoegdheden van een architectuurinspanning vastlegt, vóórdat het eigenlijke architectuurwerk begint. Ze is het startpunt zowel voor een nieuwe architectuurvisie op enterprise-niveau als voor een high-level design op solution-niveau.</p>
+<p>De opdracht ontstaat op twee momenten. Bestuur levering geeft de opdracht wanneer een nieuw initiatief formeel onder governance komt: scope en toepasselijke principes worden dan voor het eerst vastgesteld. Stel governance bij geeft de opdracht wanneer een structureel terugkerende uitzondering aanleiding geeft om Enterprise architectuur een gerichte opdracht te geven, bijvoorbeeld om de paved road op dat punt te herzien. Beschrijf de architectuurvisie en Maak high-level design lezen de opdracht vervolgens als hun uitgangspunt.</p>
+<p>De architectuuropdracht bevat in elk geval de aanleiding en het doel van het initiatief, de scope en wat daarbuiten valt, de toepasselijke architectuurprincipes, en wie welke beslissing binnen dat initiatief mag nemen.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <!-- ess:levelOfDetail not defined -->
