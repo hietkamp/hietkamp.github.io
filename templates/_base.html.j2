@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="{{ css_path | default('style.css') }}">
-<style>:root{--header-h:128px}</style>
+<style>:root{--header-h:100px}</style>
 </head>
 <body{% if data_prac %} data-prac="{{ data_prac }}"{% endif %} class="min-h-screen bg-white text-[var(--fg)] antialiased">
 {% set has_leftnav = sidenav and sidenav.links %}
@@ -40,12 +40,7 @@
     </button>
     {% endif %}
   </div>
-  <!-- rij 2: ontwikkelings-disclaimer (altijd zichtbaar, geen interactie nodig) -->
-  <div class="topnav-banner flex flex-wrap items-center gap-1.5 border-t border-amber-200 bg-amber-50 px-5 py-1 text-[11.5px] leading-snug text-amber-800 max-[480px]:px-3" role="note">
-    <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" class="shrink-0"><path d="M8 1.2 1 14.5h14L8 1.2Zm0 4.3a1 1 0 0 1 1 1v3.5a1 1 0 1 1-2 0V6.5a1 1 0 0 1 1-1Zm0 6.8a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>
-    <p class="m-0"><strong>Nog in ontwikkeling</strong> — inhoud kan onvolledig zijn; er kunnen geen rechten aan worden ontleend.</p>
-  </div>
-  <!-- rij 3: hoofdnavigatie — op mobiel (<900px) klapt deze rij in achter een hamburger -->
+  <!-- rij 2: hoofdnavigatie — op mobiel (<900px) klapt deze rij in achter een hamburger -->
   <nav class="topnav-links relative flex h-11 items-center border-t border-slate-100 px-5 max-[480px]:px-3" aria-label="Hoofdnavigatie">
     <button class="navbar-toggle hidden max-[900px]:flex ml-auto h-9 cursor-pointer items-center gap-2.5 rounded-md border-0 bg-transparent px-2.5 text-[15px] font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900" aria-label="Menu openen" aria-expanded="false" aria-controls="navbar-menu">
       <span class="navbar-toggle-bars flex shrink-0 flex-col items-center justify-center"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
