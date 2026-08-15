@@ -7,7 +7,8 @@
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
 >
 
-  <ess:Pattern rdf:about="role/governance-forum">
+  <ess:TypedPattern rdf:about="role/governance-forum">
+    <ess:kind rdf:resource="type/role"/>
     <ess:name xml:lang="nl">Architectuurforum</ess:name>
     <ess:briefDescription xml:lang="nl">De rol die overeenkomt met TOGAF's Architecture Board: een klein orgaan van senior architecten en executives dat namens de organisatie een zichtbaar escalatiemechanisme biedt voor architectuurbeslissingen die buiten de vastgestelde kaders vallen.</ess:briefDescription>
     <ess:description xml:lang="nl">Het Architectuurforum is de rol die in TOGAF 10 het Architecture Board heet. TOGAF noemt als kernverantwoordelijkheden van dit orgaan: een zichtbaar escalatiemechanisme bieden voor beslissingen die buiten de vastgestelde kaders vallen en onduidelijkheden, issues of conflicten oplossen; zorgen voor effectief en consistent beheer en implementatie van architectuur binnen de organisatie; en duidelijke verantwoordelijkheid voor architectuurbeslissingen vastleggen. Leden zijn doorgaans senior managers of executives die verantwoordelijk zijn voor het onderhoud van de architectuur; het lidmaatschap kan rouleren — met behoud van continuïteit — om enterprise-brede vertegenwoordiging te waarborgen zonder het orgaan te groot te laten worden. In deze werkwijze is die rol bewust smal gehouden: het Architectuurforum beoordeelt uitsluitend uitzonderingen en off-road architectuurbeslissingen; wat binnen de guardrails past, stroomt ongehinderd door zonder tussenkomst van het forum, en het forum vergadert op de vaste cadans of als escalatie daarbuiten.</ess:description>
@@ -15,25 +16,38 @@
     <ess:associations rdf:resource="pattern-association/governance-forum/requires-competency/stakeholder-representation"/>
     <ess:associations rdf:resource="pattern-association/governance-forum/requires-competency/leadership"/>
     <ess:associations rdf:resource="pattern-association/governance-forum/participates-in"/>
-  </ess:Pattern>
+    <ess:associations rdf:resource="pattern-association/governance-forum/responsible-for"/>
+  </ess:TypedPattern>
 
   <ess:PatternAssociation rdf:about="pattern-association/governance-forum/requires-competency/stakeholder-representation">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StakeholderRepresentation"/>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/governance-forum/requires-competency/leadership">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Leadership"/>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/governance-forum/participates-in">
+    <ess:name xml:lang="nl">neemt deel aan</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/governance-validate"/>
     <ess:elements rdf:resource="activity/governance-govern-delivery"/>
     <ess:elements rdf:resource="activity/governance-tune-governance"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/governance-forum/responsible-for">
+    <ess:name xml:lang="nl">verantwoordelijk voor</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="workproduct/statement-of-architecture-work"/>
+    <ess:elements rdf:resource="workproduct/review-records"/>
+    <ess:elements rdf:resource="workproduct/architecture-principles"/>
+    <ess:elements rdf:resource="workproduct/architecture-working-agreement"/>
   </ess:PatternAssociation>
 
 </rdf:RDF>

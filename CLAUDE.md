@@ -31,11 +31,11 @@ Method base URI = `https://hietkamp.nl/essence/`
 | `ess:Activity` | Eén activiteit binnen een practice | `method/activities/*.rdf` |
 | `ess:WorkProduct` | Een werkproduct | `method/workproducts/*.rdf` |
 | `ess:Alpha` | Een alpha (toestandsruimte) | `method/alphas/*.rdf` |
-| `ess:Role` | Een rol | `method/roles/*.rdf` |
-| `ess:Pattern` | Een patroon | `method/patterns/*.rdf` |
+| `ess:TypedPattern` | Een rol — `ess:kind` = `type/role` (Essence kent géén `Role`-klasse) | `method/roles/*.rdf` |
+| `ess:Pattern` | Een patroon: fase, gate | `method/patterns/*.rdf`, practice-bestanden |
 | `ess:Action` | Create/read/update-actie op WP of Alpha | in activity-bestanden |
 | `ess:ActivityAssociation` | Volgorde/relatie tussen activiteiten | in practice-bestanden |
-| `ess:PatternAssociation` | Relatie van een practice of pattern naar andere elementen | in practice/pattern-bestanden |
+| `ess:PatternAssociation` | Benoemde relatie van een practice of pattern naar andere elementen; `ess:name` is verplicht | in practice/pattern/rol-bestanden |
 | `ess:CompletionCriterion` | Voltooiingscriterium voor een activiteit | in activity-bestanden |
 | `ess:WorkProductManifest` | Koppeling WP ↔ Alpha | in workproduct-bestanden |
 
@@ -71,8 +71,7 @@ Gebruik altijd Nederlands (`xml:lang="nl"`) als primaire taal. Engelse tekst (`x
 essencev3/
 ├── essence/
 │   ├── essence-language.owl       # Ontologie (klassen + properties)
-│   ├── essence-kernel.rdf         # Essence Kernel (OMG ptc/25-05-01)
-│   ├── ptc-25-05-01.pdf           # Essence v2.0 specificatie
+│   ├── essence-kernel.rdf         # Essence Kernel (OMG ptc/25-05-01), transcriptie — zie NOTICE.md
 │   └── method/
 │       ├── essence-architecture-method.rdf
 │       ├── practices/             # 5 practices (enterprise-architecture, solution-architecture, ...)
@@ -505,6 +504,10 @@ Een Activity zonder `ess:tags` toont geen domeinkleur en valt terug op de neutra
 9. **WorkProductManifest koppelt WP aan Alpha**. Gebruik `ess:WorkProductManifest` om te tonen welke alpha's een werkproduct bewijst.
 
 10. **Area of concern (Customer/Solution/Endeavor) hoort bij Alpha en Activity, nooit bij Practice**. Een Practice krijgt altijd de neutrale practice-kleur (`#0f172a`); domeinkleur komt uitsluitend uit de `ess:tags`-property op de Alpha of Activity zelf. Voeg bij nieuwe Alphas/Activities altijd een `ess:tags`-verwijzing naar één van de drie `esk:*AreaOfConcern`-individuals toe — laat dit nooit afleiden of gokken in `build.py`.
+
+11. **Een rol is een `ess:TypedPattern`, geen `ess:Role`**. De Essence-taal kent geen Role-klasse. Volgens de spec (v2.0, §9.3.2.13) wordt een rol gemodelleerd als een Pattern dat drie dingen samenbrengt: de vereiste competenties, de activiteiten waaraan de rol deelneemt, en de werkproducten waarvoor ze verantwoordelijk is. Gebruik `ess:TypedPattern` met `ess:kind rdf:resource="type/role"`; selecteer in `build.py` op dat type via `role_uris()`, nooit op een URI-prefix als `role/`.
+
+12. **Elke `ess:PatternAssociation` heeft een `ess:name`**. De spec schrijft `name : String [1]` voor — verplicht, cardinaliteit 1 — omdat de naam de betekenis van de gekoppelde elementen binnen het patroon draagt (§9.3.2.14). De betekenis mag niet alleen in de URI-slug zitten. Gebruikte namen: `vereist competentie`, `neemt deel aan`, `verantwoordelijk voor`, `uitgevoerd door`, `bevat`, `afgesloten door`, `detailniveau`, `gebruikt`, `sluit aan op`.
 
 ## Veel voorkomende SPARQL-queries
 

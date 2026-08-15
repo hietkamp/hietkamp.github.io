@@ -27,6 +27,7 @@
   </ess:Practice>
 
   <ess:PatternAssociation rdf:about="pattern-association/enterprise-architecture/performed-by">
+    <ess:name xml:lang="nl">uitgevoerd door</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="role/enterprise-architect"/>
   </ess:PatternAssociation>

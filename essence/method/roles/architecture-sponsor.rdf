@@ -7,25 +7,38 @@
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
 >
 
-  <ess:Pattern rdf:about="role/architecture-sponsor">
+  <ess:TypedPattern rdf:about="role/architecture-sponsor">
+    <ess:kind rdf:resource="type/role"/>
     <ess:name xml:lang="nl">Architectuursponsor</ess:name>
     <ess:briefDescription xml:lang="nl">De rol die overeenkomt met TOGAF's Architecture Sponsor: de senior executive — doorgaans de CIO — die als executive sponsor van het Architectuurforum (TOGAF's Architecture Board) het mandaat en de financiering verleent waarmee de architectuursturing daadwerkelijk kan werken.</ess:briefDescription>
     <ess:description xml:lang="nl">De Architectuursponsor is de rol die in TOGAF 10 de Architecture Sponsor heet. TOGAF's EA Capability and Governance-gids beschrijft dat het Architectuurforum weliswaar zelf de architectuur binnen de organisatie sponsort, maar op zijn beurt een executive sponsor nodig heeft — doorgaans de CIO of een andere senior executive — die het mandaat geeft. In deze werkwijze stelt de Architectuursponsor daarom de beslissingsbevoegdheden in en beschermt ze — wie beslist wat, op welk niveau, en wat de escalatieroute is — en verleent ze de financiering die dat mogelijk maakt. Net als bij TOGAF's executive sponsor hoort daar een terugkerende rol bij: TOGAF stelt dat deze sponsor periodiek het werk van het Architectuurforum beoordeelt en de effectiviteit ervan evalueert, en zo nodig het architectuurcompliance-reviewproces laat bijstellen.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/architecture-sponsor/requires-competency/leadership"/>
     <ess:associations rdf:resource="pattern-association/architecture-sponsor/participates-in"/>
-  </ess:Pattern>
+    <ess:associations rdf:resource="pattern-association/architecture-sponsor/responsible-for"/>
+  </ess:TypedPattern>
 
   <ess:PatternAssociation rdf:about="pattern-association/architecture-sponsor/requires-competency/leadership">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Leadership"/>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/architecture-sponsor/participates-in">
+    <ess:name xml:lang="nl">neemt deel aan</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/governance-establish-governance"/>
     <ess:elements rdf:resource="activity/governance-tune-governance"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/architecture-sponsor/responsible-for">
+    <ess:name xml:lang="nl">verantwoordelijk voor</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="workproduct/architecture-principles"/>
+    <ess:elements rdf:resource="workproduct/architecture-working-agreement"/>
+    <ess:elements rdf:resource="workproduct/architecture-repository"/>
+    <ess:elements rdf:resource="workproduct/statement-of-architecture-work"/>
   </ess:PatternAssociation>
 
 </rdf:RDF>

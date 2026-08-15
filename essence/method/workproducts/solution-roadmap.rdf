@@ -68,8 +68,8 @@
 
   <ess:TypedResource rdf:about="resource/solution-roadmap/template">
     <ess:kind rdf:resource="type/template"/>
-    <ess:briefDescription xml:lang="nl">Sjabloon voor Migratiescenario (nog te maken)</ess:briefDescription>
-    <ess:content>https://hietkamp.nl/essence/downloads/solution-roadmap.docx</ess:content>
+    <ess:briefDescription xml:lang="nl">Sjabloon voor Migratiescenario</ess:briefDescription>
+    <ess:content>https://hietkamp.nl/essence/downloads/roadmap.docx</ess:content>
   </ess:TypedResource>
 
 </rdf:RDF>

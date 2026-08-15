@@ -285,6 +285,23 @@ def activity_actions_by_kind(g: Graph, activity_uri) -> list[dict]:
         if (wps := by_kind.get(kind))
     ]
 
+ROLE_TYPE = URIRef(BASE + "type/role")
+
+
+def role_uris(g: Graph):
+    """Yield the role patterns, sorted by name.
+
+    Essence has no Role class: a role is a Pattern that ties required
+    competencies, the activities it participates in, and the work products it
+    is responsible for together (Essence v2.0, §9.3.2.13). Roles are modelled
+    as ess:TypedPattern with ess:kind type/role, which is what distinguishes
+    them from the phase and gate patterns — not their rdf:about path.
+    """
+    roles = [r for r in g.subjects(RDF.type, ESS.TypedPattern)
+             if next(g.objects(r, ESS.kind), None) == ROLE_TYPE]
+    return sorted(roles, key=lambda r: get_name(g, r))
+
+
 def activity_patterns(g: Graph, activity_uri) -> list[str]:
     """Return names of patterns that use this activity."""
     names = []
@@ -573,9 +590,7 @@ def _wp_sidenav(g: Graph, current_uri, practice_uri, root: str) -> dict:
 
 def _role_sidenav(g: Graph, current_uri, root: str) -> dict:
     items = []
-    for r in g.subjects(RDF.type, ESS.Pattern):
-        if not local_path(r).startswith("role/"):
-            continue
+    for r in role_uris(g):
         items.append({"href": role_href(slug(r), root),
                        "label": get_name(g, r), "current": r == current_uri})
     items.sort(key=lambda i: i["label"])
@@ -602,7 +617,7 @@ def _alpha_sidenav(g: Graph, current_uri, root: str) -> dict:
 def build_index_ctx(g: Graph) -> dict:
     method_name = get_name(g, METHOD_URI)
     method_brief = get_brief(g, METHOD_URI)
-    download = template_download(g, METHOD_URI)
+    download = template_download(g, METHOD_URI, root="")
 
     # Collect practices in order
     practices = []
@@ -748,9 +763,7 @@ def build_practices_ctx(g: Graph) -> dict:
 
 def build_roles_ctx(g: Graph) -> dict:
     roles = []
-    for role in g.subjects(RDF.type, ESS.Pattern):
-        if not local_path(role).startswith("role/"):
-            continue
+    for role in role_uris(g):
         s = slug(role)
         roles.append({
             "href":   role_href(s),
@@ -1239,16 +1252,35 @@ def activity_role_uris(g: Graph, activity_uri) -> list:
     return roles
 
 
-def role_activity_uris(g: Graph, role_uri) -> list:
-    """Return the activity URIs this role participates in, via its own
-    'participates in' PatternAssociation — the forward direction of
-    activity_role_uris, used to list activities on the role's own detail page."""
-    for assoc_uri in g.objects(role_uri, ESS.associations):
-        if slug(assoc_uri) != "participates-in":
+def _pattern_elements(g: Graph, pattern_uri, assoc_name: str, element_type) -> list:
+    """Return the elements a pattern links to through a named PatternAssociation.
+
+    Selection is on ess:name, which Essence makes mandatory precisely because
+    the name carries the meaning of the link (v2.0, §9.3.2.14) — not on the
+    association's rdf:about slug.
+    """
+    for assoc_uri in g.objects(pattern_uri, ESS.associations):
+        if get_name(g, assoc_uri).lower() != assoc_name:
             continue
         return [el for el in g.objects(assoc_uri, ESS.elements)
-                if (el, RDF.type, ESS.Activity) in g]
+                if (el, RDF.type, element_type) in g]
     return []
+
+
+def role_activity_uris(g: Graph, role_uri) -> list:
+    """Return the activity URIs this role participates in — the forward
+    direction of activity_role_uris, used on the role's own detail page."""
+    return _pattern_elements(g, role_uri, "neemt deel aan", ESS.Activity)
+
+
+def role_workproduct_uris(g: Graph, role_uri) -> list:
+    """Return the work products this role is responsible for.
+
+    Together with the required competencies and the activities it participates
+    in, this is the third leg Essence names when it describes how to model a
+    role as a pattern (v2.0, §9.3.2.13).
+    """
+    return _pattern_elements(g, role_uri, "verantwoordelijk voor", ESS.WorkProduct)
 
 
 def role_competency_requirements(g: Graph, role_uri) -> dict:
@@ -1653,10 +1685,17 @@ def build_activity_ctx(g: Graph, act_uri, practice_uri,
 
 TEMPLATE_TYPE = URIRef(BASE + "type/template")
 
-def template_download(g: Graph, owner_uri, fallback_desc: str = "") -> dict | None:
+def template_download(g: Graph, owner_uri, root: str = "",
+                      fallback_desc: str = "") -> dict | None:
     """Return a wp.html.j2-shaped download dict for owner_uri's ess:TypedResource
     of kind type/template (an ownedElements child pointing at a downloadable
-    file via ess:content), or None if it has no such resource."""
+    file via ess:content), or None if it has no such resource.
+
+    ess:content holds the canonical published location of the file, which may be
+    an absolute URL. The generated site must stay relative so it also works from
+    a local docs/ directory, so only the filename is taken from ess:content and
+    the href is rebuilt against the page's own depth via root.
+    """
     for owned in g.objects(owner_uri, ESS.ownedElements):
         if (owned, RDF.type, ESS.TypedResource) not in g:
             continue
@@ -1665,14 +1704,52 @@ def template_download(g: Graph, owner_uri, fallback_desc: str = "") -> dict | No
         url = str(next(g.objects(owned, ESS.content), "")) or None
         if not url:
             return None
-        ext = url.rsplit(".", 1)[-1].lower() if "." in url else "docx"
+        filename = url.rsplit("/", 1)[-1]
+        ext = filename.rsplit(".", 1)[-1].lower() if "." in filename else "docx"
         return {
             "type":     ext,
-            "url":      url,
-            "filename": url.rsplit("/", 1)[-1],
+            "url":      f"{root}downloads/{filename}",
+            "filename": filename,
             "desc":     get_brief(g, owned) or fallback_desc,
         }
     return None
+
+
+WPTEMPLATES_DIR = ROOT / "wptemplates"
+
+
+def copy_downloads(g: Graph) -> None:
+    """Copy every file referenced from the RDF via ess:content into docs/downloads/.
+
+    Work product templates live in wptemplates/ and are maintained by hand; the
+    other downloadable assets sit alongside the RDF in essence/. A referenced
+    file that cannot be found is reported rather than silently skipped, so a
+    dead download button shows up at build time instead of in the browser.
+    """
+    downloads_dir = DOCS_DIR / "downloads"
+    downloads_dir.mkdir(parents=True, exist_ok=True)
+
+    wanted: set[str] = set()
+    for res in g.subjects(RDF.type, ESS.TypedResource):
+        url = str(next(g.objects(res, ESS.content), ""))
+        if url:
+            wanted.add(url.rsplit("/", 1)[-1])
+    for res in g.subjects(RDF.type, ESS.Resource):
+        url = str(next(g.objects(res, ESS.content), ""))
+        if url.lower().endswith((".docx", ".xlsx", ".pdf")):
+            wanted.add(url.rsplit("/", 1)[-1])
+
+    search_dirs = (WPTEMPLATES_DIR, ROOT / "essence")
+    for filename in sorted(wanted):
+        for folder in search_dirs:
+            src = folder / filename
+            if src.exists():
+                shutil.copy(src, downloads_dir / filename)
+                print(f"  static: copied {filename} to docs/downloads/")
+                break
+        else:
+            print(f"  warning: {filename} referenced from the RDF but not found "
+                  f"in wptemplates/ or essence/")
 
 
 def build_wp_ctx(g: Graph, wp_uri) -> dict:
@@ -1765,7 +1842,8 @@ def build_wp_ctx(g: Graph, wp_uri) -> dict:
 
     sections = parse_wp_desc(fix_desc_paths(get_desc(g, wp_uri), "../"))
 
-    download = template_download(g, wp_uri, fallback_desc=f"Sjabloon voor {title}")
+    download = template_download(g, wp_uri, root="../",
+                                fallback_desc=f"Sjabloon voor {title}")
 
     ctx = _base_ctx(g, root="../", data_prac=cfg.get("color", "neutral"),
                     title=title, description=brief)
@@ -1812,6 +1890,21 @@ def build_role_ctx(g: Graph, role_uri) -> dict:
             "topbar": domain_color_for(g, a).get("num_color", NEUTRAL_TOPBAR),
         })
 
+    wp_cards = []
+    for wp in role_workproduct_uris(g, role_uri):
+        wp_title = get_name(g, wp)
+        if not wp_title:
+            continue
+        owner = next(g.objects(wp, ESS.owner), None)
+        wp_cards.append({
+            "title":  wp_title,
+            "desc":   get_brief(g, wp),
+            "href":   wp_href(slug(wp), root="../"),
+            "type":   get_name(g, owner) if owner else "Werkproduct",
+            "topbar": NEUTRAL_TOPBAR,
+        })
+    wp_cards.sort(key=lambda c: c["title"])
+
     sections = [
         {"id": "beschrijving", "h2": "Beschrijving", "body_html": beschrijving_html},
     ]
@@ -1821,6 +1914,9 @@ def build_role_ctx(g: Graph, role_uri) -> dict:
     if activity_cards:
         sections.append({"id": "activiteiten", "h2": "Activiteiten",
                           "section_kind": "cards", "cards": activity_cards})
+    if wp_cards:
+        sections.append({"id": "werkproducten", "h2": "Verantwoordelijk voor",
+                          "section_kind": "cards", "cards": wp_cards})
 
     ctx = _base_ctx(g, root="../", data_prac="neutral", title=title, description=brief)
     ctx.update({
@@ -1931,17 +2027,13 @@ def main() -> None:
         else:
             print(f"  warning: static/{asset} not found — create it")
 
-    # Downloadable resources referenced from the RDF via ess:content (e.g. the
-    # method-level EA Alpha Assessment workbook) — copied verbatim into
-    # docs/downloads/ so the relative ess:content path resolves.
-    downloads_src = ROOT / "essence" / "EA_Alpha_Assessment.xlsx"
-    if downloads_src.exists():
-        downloads_dir = DOCS_DIR / "downloads"
-        downloads_dir.mkdir(parents=True, exist_ok=True)
-        shutil.copy(downloads_src, downloads_dir / downloads_src.name)
-        print(f"  static: copied {downloads_src.name} to docs/downloads/")
-    else:
-        print(f"  warning: {downloads_src} not found")
+    # Downloadable resources referenced from the RDF via ess:content — copied
+    # verbatim into docs/downloads/ so the ess:content path resolves. Which
+    # files these are is driven entirely by the RDF: every ess:TypedResource of
+    # kind type/template contributes the basename of its ess:content URL, which
+    # is looked up in wptemplates/. The templates themselves are hand-maintained
+    # and are never regenerated by this build.
+    copy_downloads(g)
 
     assets_src = STATIC_DIR / "assets"
     if assets_src.exists():
@@ -2010,12 +2102,9 @@ def main() -> None:
         write_page(env, "wp.html.j2", ctx,
                    DOCS_DIR / "wp" / f"{ws}.html")
 
-    # Role pages (roles are ess:Pattern individuals under role/*, distinguished
-    # from other patterns by their rdf:about path — reuses wp.html.j2's generic
-    # hero + sections layout)
-    for role in g.subjects(RDF.type, ESS.Pattern):
-        if not local_path(role).startswith("role/"):
-            continue
+    # Role pages (roles are ess:TypedPattern individuals of kind type/role —
+    # reuses wp.html.j2's generic hero + sections layout)
+    for role in role_uris(g):
         rs = slug(role)
         ctx = build_role_ctx(g, role)
         write_page(env, "wp.html.j2", ctx,

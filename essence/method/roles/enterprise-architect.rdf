@@ -7,7 +7,8 @@
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
 >
 
-  <ess:Pattern rdf:about="role/enterprise-architect">
+  <ess:TypedPattern rdf:about="role/enterprise-architect">
+    <ess:kind rdf:resource="type/role"/>
     <ess:name xml:lang="nl">Enterprise architect</ess:name>
     <ess:briefDescription xml:lang="nl">De Enterprise architect is verantwoordelijk voor architecturaal ontwerp en documentatie op het niveau van het volledige architectuurlandschap en technical reference model, niet van één specifieke solution — eerder een stadsplanner dan de architect van één gebouw.</ess:briefDescription>
     <ess:description xml:lang="nl">De Enterprise architect is verantwoordelijk voor de volledigheid en samenhang van de architectuur op het niveau van het hele architectuurlandschap, niet van één specifieke solution. TOGAF vergelijkt de rol met een stadsplanner eerder dan een architect van één gebouw: het resultaat is een geplande gemeenschap, geen op zichzelf staand gebouw. De Enterprise architect bedenkt niet zelf de technische visie, maar onderhoudt de relatie met de executives van de organisatie om die visie op te halen en te verwoorden, en vertaalt haar naar een strategisch plan dat herleidbaar blijft naar de businessplannen en verankerd is in de architectuursturing, zodat ontwerpbeslissingen niet omwille van tactisch gemak worden omzeild. In deze werkwijze leidt de Enterprise architect zo het enterprise-spoor: stelt enterprise-brede sturende eisen vast, maakt de gewenste richting zichtbaar, definieert de reference architecture en bouwt de goedgekeurde paved road waarlangs solutions kunnen worden gerealiseerd — vergelijkbaar met hoe TOGAF's Enterprise Architect de documentatie en onderbouwing van high-level ontwerpbeslissingen oplevert die Solution Architects vervolgens uitvoeren. Werkt daarvoor samen met de CIO, business-owners en het Architectuurforum; de uitkomsten vormen de kaders en context die elke solution als uitgangspunt erft.</ess:description>
@@ -16,31 +17,46 @@
     <ess:associations rdf:resource="pattern-association/enterprise-architect/requires-competency/development"/>
     <ess:associations rdf:resource="pattern-association/enterprise-architect/requires-competency/leadership"/>
     <ess:associations rdf:resource="pattern-association/enterprise-architect/participates-in"/>
-  </ess:Pattern>
+    <ess:associations rdf:resource="pattern-association/enterprise-architect/responsible-for"/>
+  </ess:TypedPattern>
 
   <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/requires-competency/analysis">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Analysis"/>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/requires-competency/development">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Development"/>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/requires-competency/leadership">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Leadership"/>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Applies"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/participates-in">
+    <ess:name xml:lang="nl">neemt deel aan</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="activity/enterprise-envision"/>
     <ess:elements rdf:resource="activity/enterprise-build-paved-road"/>
     <ess:elements rdf:resource="activity/enterprise-govern-change"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/responsible-for">
+    <ess:name xml:lang="nl">verantwoordelijk voor</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="workproduct/architecture-vision"/>
+    <ess:elements rdf:resource="workproduct/paved-road"/>
+    <ess:elements rdf:resource="workproduct/roadmap"/>
+    <ess:elements rdf:resource="workproduct/architecture-model"/>
+    <ess:elements rdf:resource="workproduct/architecture-decisions"/>
   </ess:PatternAssociation>
 
 </rdf:RDF>

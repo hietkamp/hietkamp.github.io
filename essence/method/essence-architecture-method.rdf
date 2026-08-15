@@ -27,6 +27,14 @@
     <ess:constraint>Content must be a resolvable URL to a downloadable file.</ess:constraint>
   </ess:UserDefinedType>
 
+  <!-- Essence kent geen Role-klasse: een rol is een Pattern dat competenties,
+       activiteiten en werkproducten samenbrengt (Essence v2.0, §9.3.2.13).
+       Dit type onderscheidt rolpatronen van fase- en gatepatronen. -->
+  <ess:UserDefinedType rdf:about="type/role">
+    <ess:name xml:lang="nl">Rol</ess:name>
+    <ess:constraint>A role pattern associates required competencies, the activities it participates in, and the work products it is responsible for.</ess:constraint>
+  </ess:UserDefinedType>
+
   <ess:TypedResource rdf:about="resource/method/ea-alpha-assessment">
     <ess:name xml:lang="nl">EA Alpha Assessment</ess:name>
     <ess:briefDescription xml:lang="nl">Zelfassessment-werkblad: vink per alpha — kernel en method-specifiek — de checklistitems af, en het dashboard berekent automatisch de huidige status, voortgang en volledigheid per Customer/Solution/Endeavor-domein.</ess:briefDescription>

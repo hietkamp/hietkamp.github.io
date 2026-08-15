@@ -21,12 +21,7 @@
     <!-- ess:resources not defined -->
     <!-- ess:properties not defined -->
     <!-- Application-specific -->
-    <ess:ownedElements rdf:resource="resource/architecture-repository/template"/>
+    <!-- Geen sjabloon: de repository is een vindplaats, geen document. -->
   </ess:WorkProduct>
-
-  <ess:TypedResource rdf:about="resource/architecture-repository/template">
-    <ess:kind rdf:resource="type/template"/>
-    <ess:content>https://hietkamp.nl/essence/downloads/architecture-repository.docx</ess:content>
-  </ess:TypedResource>
 
 </rdf:RDF>
