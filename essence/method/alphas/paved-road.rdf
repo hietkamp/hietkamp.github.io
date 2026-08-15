@@ -23,7 +23,7 @@
   </ess:Alpha>
 
   <ess:State rdf:about="state/paved-road/established">
-    <ess:name>Established</ess:name>
+    <ess:name xml:lang="nl">Vastgesteld</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -47,7 +47,7 @@
   </ess:Checkpoint>
 
   <ess:State rdf:about="state/paved-road/adopted">
-    <ess:name>Adopted</ess:name>
+    <ess:name xml:lang="nl">Toegepast</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -71,7 +71,7 @@
   </ess:Checkpoint>
 
   <ess:State rdf:about="state/paved-road/evolving">
-    <ess:name>Evolving</ess:name>
+    <ess:name xml:lang="nl">Evoluerend</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>

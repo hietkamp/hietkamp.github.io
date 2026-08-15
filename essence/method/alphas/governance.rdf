@@ -26,7 +26,7 @@
   </ess:Alpha>
 
   <ess:State rdf:about="state/governance/initiated">
-    <ess:name>Initiated</ess:name>
+    <ess:name xml:lang="nl">Opgericht</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -74,7 +74,7 @@
   </ess:Checkpoint>
 
   <ess:State rdf:about="state/governance/engaged">
-    <ess:name>Engaged</ess:name>
+    <ess:name xml:lang="nl">Actief</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -106,7 +106,7 @@
   </ess:Checkpoint>
 
   <ess:State rdf:about="state/governance/guiding">
-    <ess:name>Guiding</ess:name>
+    <ess:name xml:lang="nl">Sturend</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -138,7 +138,7 @@
   </ess:Checkpoint>
 
   <ess:State rdf:about="state/governance/assured">
-    <ess:name>Assured</ess:name>
+    <ess:name xml:lang="nl">Geborgd</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -170,7 +170,7 @@
   </ess:Checkpoint>
 
   <ess:State rdf:about="state/governance/effective">
-    <ess:name>Effective</ess:name>
+    <ess:name xml:lang="nl">Effectief</ess:name>
     <ess:briefDescription/>
     <ess:description/>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
