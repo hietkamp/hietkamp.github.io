@@ -160,7 +160,7 @@
   <!-- ================= Phase 5 — Testing ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/testing">
     <ess:name xml:lang="nl">Fase 5 — testen</ess:name>
-    <ess:briefDescription xml:lang="nl">Toets het opgeleverde systeem als geheel integraal aan de architectuurbepalende eisen en de vastgestelde architectuurbeslissingen, als bewijs voor System Ready.</ess:briefDescription>
+    <ess:briefDescription xml:lang="nl">Toets het opgeleverde systeem als geheel integraal aan de architectuurbepalende eisen en de vastgestelde architectuurbeslissingen, als bewijs voor Systeem gereed.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
 <p>In deze fase wordt vastgesteld of de gerealiseerde oplossing als geheel voldoet aan de gestelde eisen, de afgesproken uitgangspunten en de beoogde doelstellingen. De verschillende onderdelen functioneren niet alleen afzonderlijk, maar vormen samen een samenhangende en werkende oplossing.</p>
 <p>Het doel van deze fase is om aan te tonen dat de oplossing gereed is voor ingebruikname. Door middel van integrale validatie en acceptatie wordt vastgesteld dat de oplossing voldoet aan de kwaliteitscriteria en geschikt is voor de beoogde bedrijfsvoering.</p>
@@ -199,7 +199,7 @@
 
   <!-- ================= Gate 1 — Solution Needed ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-1-gericht">
-    <ess:name xml:lang="nl">Gate 1 — Opportunity Viable</ess:name>
+    <ess:name xml:lang="nl">Gate 1 — Uitdaging haalbaar</ess:name>
     <ess:briefDescription xml:lang="nl">Bijdrage geleverd zodra het high-level design is vastgesteld en stakeholders achter de gekozen richting staan. Afwijkingen van de guardrails worden beoordeeld via de architectuursturing.</ess:briefDescription>
     <ess:description xml:lang="nl">Bijdrage geleverd zodra het high-level design is vastgesteld en stakeholders achter de gekozen richting staan. Afwijkingen van de guardrails worden beoordeeld via de architectuursturing.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -216,7 +216,7 @@
 
   <!-- ================= Gate 2 — Architecture Selected ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-2-omschreven">
-    <ess:name xml:lang="nl">Gate 2 — Architecture Selected</ess:name>
+    <ess:name xml:lang="nl">Gate 2 — Architectuur gekozen</ess:name>
     <ess:briefDescription xml:lang="nl">Bijdrage geleverd zodra het low-level design de architectuur onderbouwd heeft vastgelegd, getoetst aan de architectuurbepalende eisen. Afwijkingen worden beoordeeld via de architectuursturing.</ess:briefDescription>
     <ess:description xml:lang="nl">Bijdrage geleverd zodra het low-level design de architectuur onderbouwd heeft vastgelegd, getoetst aan de architectuurbepalende eisen. Afwijkingen worden beoordeeld via de architectuursturing.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -233,7 +233,7 @@
 
   <!-- ================= Gate 3 — System Usable (closes Phase 3 + Phase 4 jointly) ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-3-bewezen">
-    <ess:name xml:lang="nl">Gate 3 — System Usable</ess:name>
+    <ess:name xml:lang="nl">Gate 3 — Systeem bruikbaar</ess:name>
     <ess:briefDescription xml:lang="nl">Bijdrage geleverd zodra de oplossing is gerealiseerd conform de vastgestelde architectuur, met elke afwijking vastgelegd als architectuurbeslissing of dispensatie. De architectuursturing beoordeelt deze afwijkingen.</ess:briefDescription>
     <ess:description xml:lang="nl">Bijdrage geleverd zodra de oplossing is gerealiseerd conform de vastgestelde architectuur, met elke afwijking vastgelegd als architectuurbeslissing of dispensatie. De architectuursturing beoordeelt deze afwijkingen.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -250,7 +250,7 @@
 
   <!-- ================= Gate 4 — System Ready ================= -->
   <ess:Pattern rdf:about="pattern/project-lifecycle/gate-4-bruikbaar">
-    <ess:name xml:lang="nl">Gate 4 — System Ready</ess:name>
+    <ess:name xml:lang="nl">Gate 4 — Systeem gereed</ess:name>
     <ess:briefDescription xml:lang="nl">Bijdrage geleverd zodra de conformance aan het low-level design is aangetoond voor het opgeleverde systeem als geheel. Afwijkingen worden beoordeeld via de architectuursturing.</ess:briefDescription>
     <ess:description xml:lang="nl">Bijdrage geleverd zodra de conformance aan het low-level design is aangetoond voor het opgeleverde systeem als geheel. Afwijkingen worden beoordeeld via de architectuursturing.</ess:description>
    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>

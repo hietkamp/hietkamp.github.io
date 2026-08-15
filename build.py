@@ -101,12 +101,12 @@ AREA_OF_CONCERN_DOMAIN = {
 # lifecycle sequence each area's activity spaces are defined in, not
 # alphabetical. Used to order the activity-space subgroups on activiteiten.html.
 ACTIVITY_SPACE_ORDER = [
-    "Explore Possibilities", "Understand Stakeholder Needs",
-    "Ensure Stakeholder Satisfaction", "Use the System",
-    "Understand the Requirements", "Shape the System", "Implement the System",
-    "Test the System", "Deploy the System", "Operate the System",
-    "Prepare to do the Work", "Coordinate Activity", "Support the Team",
-    "Track Progress", "Stop the Work",
+    "Mogelijkheden verkennen", "Stakeholderbehoeften begrijpen",
+    "Stakeholdertevredenheid borgen", "Systeem gebruiken",
+    "Requirements begrijpen", "Systeem vormgeven", "Systeem bouwen",
+    "Systeem testen", "Systeem uitrollen", "Systeem exploiteren",
+    "Werk voorbereiden", "Activiteiten coördineren", "Team ondersteunen",
+    "Voortgang bewaken", "Werk afronden",
 ]
 
 # Custom domain triad — still recognisably yellow/green/blue, but with more
@@ -584,7 +584,7 @@ def _wp_sidenav(g: Graph, current_uri, practice_uri, root: str) -> dict:
         items.append({"href": wp_href(slug(wp), root),
                        "label": get_name(g, wp), "current": wp == current_uri})
     items.sort(key=lambda i: i["label"])
-    return {"group_label": get_name(g, practice_uri) if practice_uri else "Workproducts",
+    return {"group_label": get_name(g, practice_uri) if practice_uri else "Werkproducten",
             "icon": "wp", "links": items}
 
 
@@ -848,11 +848,11 @@ def build_workproducts_ctx(g: Graph) -> dict:
         })
 
     ctx = _base_ctx(g, root="", data_prac="neutral",
-                    title="Workproducts", description="Overzicht van alle workproducts")
+                    title="Werkproducten", description="Overzicht van alle werkproducten")
     ctx.update({
         "hero_data": {
             "kicker": "Essence methode",
-            "h1_pre": "Workproducts",
+            "h1_pre": "Werkproducten",
             "lede":   "De werkproducten die de methode oplevert.",
         },
         "workproduct_groups": workproduct_groups,
@@ -1859,7 +1859,7 @@ def build_wp_ctx(g: Graph, wp_uri) -> dict:
         "sections": sections,
         "breadcrumb": {
             "parent_href":  "../workproducts.html",
-            "parent_label": "Workproducts",
+            "parent_label": "Werkproducten",
             "current":      title,
         },
         "sidenav": _wp_sidenav(g, wp_uri, practice_uri, root="../"),
@@ -2095,7 +2095,7 @@ def main() -> None:
             write_page(env, "act.html.j2", ctx,
                        DOCS_DIR / "act" / f"{as_}.html")
 
-    # Workproduct pages
+    # Werkproductpagina's
     for wp in g.subjects(RDF.type, ESS.WorkProduct):
         ws = slug(wp)
         ctx = build_wp_ctx(g, wp)
