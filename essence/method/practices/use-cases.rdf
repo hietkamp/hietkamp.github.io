@@ -371,8 +371,6 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/use-cases"/>
     <ess:associations rdf:resource="pattern-association/requirements-engineer/requires-competency/analysis"/>
-    <ess:associations rdf:resource="pattern-association/requirements-engineer/requires-competency/stakeholder-representation"/>
-    <ess:associations rdf:resource="pattern-association/requirements-engineer/requires-competency/development"/>
     <ess:associations rdf:resource="pattern-association/requirements-engineer/participates-in"/>
     <ess:associations rdf:resource="pattern-association/requirements-engineer/responsible-for"/>
   </ess:TypedPattern>
@@ -382,20 +380,6 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Analysis"/>
     <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
-  </ess:PatternAssociation>
-
-  <ess:PatternAssociation rdf:about="pattern-association/requirements-engineer/requires-competency/stakeholder-representation">
-    <ess:name xml:lang="nl">vereist competentie</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StakeholderRepresentation"/>
-    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
-  </ess:PatternAssociation>
-
-  <ess:PatternAssociation rdf:about="pattern-association/requirements-engineer/requires-competency/development">
-    <ess:name xml:lang="nl">vereist competentie</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Development"/>
-    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Applies"/>
   </ess:PatternAssociation>
 
   <ess:PatternAssociation rdf:about="pattern-association/requirements-engineer/participates-in">
