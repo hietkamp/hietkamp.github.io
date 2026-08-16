@@ -77,6 +77,14 @@ PRACTICE_CFG = {
         "gradient":     f"from-[{NEUTRAL}] to-[{NEUTRAL}]",
         "icon_path":    "<path d='M8 1a7 7 0 015.9 3.2l-1.7.9A5 5 0 008 3V1zm5.9 3.2A7 7 0 0115 8h-2a5 5 0 00-1.8-3.9l1.7-.9zM15 8a7 7 0 01-3.2 5.9l-.9-1.7A5 5 0 0013 8h2zM11.8 13.9A7 7 0 018 15v-2a5 5 0 003.9-1.8l1.9 1.7zM8 15a7 7 0 01-5.9-3.2l1.7-.9A5 5 0 008 13v2zM2.1 11.8A7 7 0 011 8h2a5 5 0 001.8 3.9l-1.7 1.9zM1 8a7 7 0 013.2-5.9l.9 1.7A5 5 0 003 8H1zM4.2 2.1A7 7 0 018 1v2a5 5 0 00-3.9 1.8L2.2 2.1z'/>",
     },
+    "use-cases": {
+        "color":        "neutral",
+        "spoor":        "solution",
+        "num_color":    f"bg-[{NEUTRAL}]",
+        "css":          f"bg-[{NEUTRAL}]",
+        "gradient":     f"from-[{NEUTRAL}] to-[{NEUTRAL}]",
+        "icon_path":    "<ellipse cx='8' cy='8' rx='6.5' ry='4' fill='none' stroke='currentColor' stroke-width='1.4'/>",
+    },
 }
 
 
