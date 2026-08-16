@@ -17,9 +17,9 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
     <ess:approach rdf:resource="approach/enterprise-envision/default"/>
-    <ess:action rdf:resource="action/enterprise-envision/create/architecture-vision"/>
-    <ess:action rdf:resource="action/enterprise-envision/create/solution-roadmap"/>
-    <ess:action rdf:resource="action/enterprise-envision/read/statement-of-architecture-work"/>
+    <ess:action rdf:resource="action/enterprise-envision/create/architectuurvisie"/>
+    <ess:action rdf:resource="action/enterprise-envision/create/migratiescenario"/>
+    <ess:action rdf:resource="action/enterprise-envision/read/architectuuropdracht"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/enterprise-envision/entry/opportunity"/>
     <ess:criterion rdf:resource="criterion/enterprise-envision/entry/stakeholders"/>
@@ -39,25 +39,25 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/enterprise-envision/create/architecture-vision">
+  <ess:Action rdf:about="action/enterprise-envision/create/architectuurvisie">
     <ess:name xml:lang="nl">Maak architectuurvisie</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-vision"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurvisie"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/enterprise-envision/create/solution-roadmap">
+  <ess:Action rdf:about="action/enterprise-envision/create/migratiescenario">
     <ess:name xml:lang="nl">Maak migratiescenario (strategisch niveau)</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/roadmap"/>
+    <ess:workProduct rdf:resource="workproduct/migratiescenario"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/enterprise-envision/read/statement-of-architecture-work">
+  <ess:Action rdf:about="action/enterprise-envision/read/architectuuropdracht">
     <ess:name xml:lang="nl">Lees architectuuropdracht</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/statement-of-architecture-work"/>
+    <ess:workProduct rdf:resource="workproduct/architectuuropdracht"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/enterprise-envision/part-of/explore-possibilities">

@@ -7,7 +7,7 @@
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
 >
 
-  <ess:WorkProduct rdf:about="workproduct/architecture-vision">
+  <ess:WorkProduct rdf:about="workproduct/architectuurvisie">
     <ess:name xml:lang="nl">Architectuurvisie</ess:name>
     <ess:briefDescription xml:lang="nl">De architectuurvisie is het compacte, gemotiveerde beeld van de gewenste richting — doel, scope en principes — dat wordt vastgesteld voordat er architectuurkeuzes worden gemaakt.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>De architectuurvisie is het compacte, gemotiveerde beeld van de gewenste richting — doel, scope en principes — dat wordt vastgesteld vóórdat er architectuurkeuzes worden gemaakt. Ze is het startpunt van elke architectuurinspanning: het eerste document dat richting geeft, nog voordat er één bouwsteen is uitgewerkt.</p>
@@ -15,18 +15,18 @@
 <p>De architectuurvisie bevat in gewone taal de beoogde waarde voor afnemers en organisatie, de scope van het initiatief inclusief expliciete uitsluitingen, de belangrijkste drivers met meetbare criteria, en de principes en uitsluitingscriteria waarmee latere opties worden gekozen of afgewezen.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
-    <ess:ownedElements rdf:resource="resource/architecture-vision/template"/>
+    <ess:ownedElements rdf:resource="resource/architectuurvisie/template"/>
   </ess:WorkProduct>
 
-  <ess:WorkProductManifest rdf:about="workproduct-manifest/architecture-vision/opportunity">
-    <ess:workProduct rdf:resource="workproduct/architecture-vision"/>
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/architectuurvisie/opportunity">
+    <ess:workProduct rdf:resource="workproduct/architectuurvisie"/>
     <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
     <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
   </ess:WorkProductManifest>
 
-  <ess:TypedResource rdf:about="resource/architecture-vision/template">
+  <ess:TypedResource rdf:about="resource/architectuurvisie/template">
     <ess:kind rdf:resource="type/template"/>
-    <ess:content>https://hietkamp.nl/essence/downloads/architecture-vision.docx</ess:content>
+    <ess:content>https://hietkamp.nl/essence/downloads/architectuurvisie.docx</ess:content>
   </ess:TypedResource>
 
 </rdf:RDF>

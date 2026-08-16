@@ -52,11 +52,11 @@
   <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/responsible-for">
     <ess:name xml:lang="nl">verantwoordelijk voor</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="workproduct/architecture-vision"/>
+    <ess:elements rdf:resource="workproduct/architectuurvisie"/>
     <ess:elements rdf:resource="workproduct/paved-road"/>
-    <ess:elements rdf:resource="workproduct/roadmap"/>
-    <ess:elements rdf:resource="workproduct/architecture-model"/>
-    <ess:elements rdf:resource="workproduct/architecture-decisions"/>
+    <ess:elements rdf:resource="workproduct/migratiescenario"/>
+    <ess:elements rdf:resource="workproduct/architectuurmodel"/>
+    <ess:elements rdf:resource="workproduct/architectuurbeslissingen"/>
   </ess:PatternAssociation>
 
 </rdf:RDF>

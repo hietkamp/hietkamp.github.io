@@ -17,9 +17,9 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
     <ess:approach rdf:resource="approach/enterprise-build-paved-road/default"/>
-    <ess:action rdf:resource="action/enterprise-build-paved-road/read/architecture-vision"/>
-    <ess:action rdf:resource="action/enterprise-build-paved-road/create/architecture-decisions"/>
-    <ess:action rdf:resource="action/enterprise-build-paved-road/create/architecture-model"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/read/architectuurvisie"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/create/architectuurbeslissingen"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/create/architectuurmodel"/>
     <ess:action rdf:resource="action/enterprise-build-paved-road/create/paved-road"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/entry/opportunity"/>
@@ -41,25 +41,25 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/enterprise-build-paved-road/read/architecture-vision">
+  <ess:Action rdf:about="action/enterprise-build-paved-road/read/architectuurvisie">
     <ess:name xml:lang="nl">Lees architectuurvisie</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-vision"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurvisie"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/enterprise-build-paved-road/create/architecture-decisions">
+  <ess:Action rdf:about="action/enterprise-build-paved-road/create/architectuurbeslissingen">
     <ess:name xml:lang="nl">Maak architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeslissingen"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/enterprise-build-paved-road/create/architecture-model">
+  <ess:Action rdf:about="action/enterprise-build-paved-road/create/architectuurmodel">
     <ess:name xml:lang="nl">Maak architectuurmodel</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-model"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurmodel"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-build-paved-road/create/paved-road">

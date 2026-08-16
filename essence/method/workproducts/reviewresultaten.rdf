@@ -7,7 +7,7 @@
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
 >
 
-  <ess:WorkProduct rdf:about="workproduct/review-records">
+  <ess:WorkProduct rdf:about="workproduct/reviewresultaten">
     <ess:name xml:lang="nl">Reviewresultaten</ess:name>
     <ess:briefDescription xml:lang="nl">Een reviewresultaat legt vast of een concreet geval voldoet aan de afgesproken drivers, principes en paved-road-normen — conform, met condities, of als toegestane uitzondering.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Een reviewresultaat legt vast of een concreet geval voldoet aan wat is afgesproken — niet waaróm een keuze is gemaakt, dat is de architectuurbeslissing. Het past de paved road en de architectuurprincipes toe op een specifiek geval en levert een van twee uitkomsten op: bevestigde conformiteit (on-road) of een toegestane uitzondering (off-road geformaliseerd), eventueel met condities.</p>
@@ -15,18 +15,18 @@
 <p>Een reviewresultaat bevat het getoetste object — het systeem, product, de leverancier, interface of het besluit dat wordt beoordeeld —, de criteria waartegen is getoetst, het oordeel (conform, met condities, afgekeurd of exception toegestaan), en de acties en geldigheid: eigenaar, deadline en de datum waarop opnieuw moet worden beoordeeld.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
-    <ess:ownedElements rdf:resource="resource/review-records/template"/>
+    <ess:ownedElements rdf:resource="resource/reviewresultaten/template"/>
   </ess:WorkProduct>
 
-  <ess:WorkProductManifest rdf:about="workproduct-manifest/review-records/paved-road">
-    <ess:workProduct rdf:resource="workproduct/review-records"/>
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/reviewresultaten/paved-road">
+    <ess:workProduct rdf:resource="workproduct/reviewresultaten"/>
     <ess:alpha rdf:resource="alpha/governance"/>
     <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
   </ess:WorkProductManifest>
 
-  <ess:TypedResource rdf:about="resource/review-records/template">
+  <ess:TypedResource rdf:about="resource/reviewresultaten/template">
     <ess:kind rdf:resource="type/template"/>
-    <ess:content>https://hietkamp.nl/essence/downloads/review-records.docx</ess:content>
+    <ess:content>https://hietkamp.nl/essence/downloads/reviewresultaten.docx</ess:content>
   </ess:TypedResource>
 
 </rdf:RDF>

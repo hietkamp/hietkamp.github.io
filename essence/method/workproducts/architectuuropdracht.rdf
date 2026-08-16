@@ -7,7 +7,7 @@
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
 >
 
-  <ess:WorkProduct rdf:about="workproduct/statement-of-architecture-work">
+  <ess:WorkProduct rdf:about="workproduct/architectuuropdracht">
     <ess:name xml:lang="nl">Architectuuropdracht</ess:name>
     <ess:briefDescription xml:lang="nl">De architectuuropdracht is de formele opdracht die scope, doelstelling en beslissingsbevoegdheden van een architectuurinspanning vastlegt, voordat het eigenlijke architectuurwerk begint.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>De architectuuropdracht is de formele opdracht die scope, doelstelling en beslissingsbevoegdheden van een architectuurinspanning vastlegt, vóórdat het eigenlijke architectuurwerk begint. Ze is het startpunt zowel voor een nieuwe architectuurvisie op enterprise-niveau als voor een high-level design op solution-niveau.</p>
@@ -21,12 +21,12 @@
     <!-- ess:resources not defined -->
     <!-- ess:properties not defined -->
     <!-- Application-specific -->
-    <ess:ownedElements rdf:resource="resource/statement-of-architecture-work/template"/>
+    <ess:ownedElements rdf:resource="resource/architectuuropdracht/template"/>
   </ess:WorkProduct>
 
-  <ess:TypedResource rdf:about="resource/statement-of-architecture-work/template">
+  <ess:TypedResource rdf:about="resource/architectuuropdracht/template">
     <ess:kind rdf:resource="type/template"/>
-    <ess:content>https://hietkamp.nl/essence/downloads/statement-of-architecture-work.docx</ess:content>
+    <ess:content>https://hietkamp.nl/essence/downloads/architectuuropdracht.docx</ess:content>
   </ess:TypedResource>
 
 </rdf:RDF>

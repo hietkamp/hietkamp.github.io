@@ -20,9 +20,9 @@
     <ess:ownedElements rdf:resource="activity/enterprise-envision"/>
     <ess:ownedElements rdf:resource="activity/enterprise-build-paved-road"/>
     <ess:ownedElements rdf:resource="activity/enterprise-govern-change"/>
-    <ess:ownedElements rdf:resource="workproduct/architecture-vision"/>
+    <ess:ownedElements rdf:resource="workproduct/architectuurvisie"/>
     <ess:ownedElements rdf:resource="workproduct/paved-road"/>
-    <ess:ownedElements rdf:resource="workproduct/roadmap"/>
+    <ess:ownedElements rdf:resource="workproduct/migratiescenario"/>
     <ess:associations rdf:resource="pattern-association/enterprise-architecture/performed-by"/>
   </ess:Practice>
 

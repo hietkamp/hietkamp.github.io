@@ -17,9 +17,9 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
     <ess:approach rdf:resource="approach/enterprise-govern-change/default"/>
-    <ess:action rdf:resource="action/enterprise-govern-change/read/architecture-decisions"/>
-    <ess:action rdf:resource="action/enterprise-govern-change/read/architecture-model"/>
-    <ess:action rdf:resource="action/enterprise-govern-change/create/roadmap"/>
+    <ess:action rdf:resource="action/enterprise-govern-change/read/architectuurbeslissingen"/>
+    <ess:action rdf:resource="action/enterprise-govern-change/read/architectuurmodel"/>
+    <ess:action rdf:resource="action/enterprise-govern-change/create/migratiescenario"/>
     <ess:action rdf:resource="action/enterprise-govern-change/read/paved-road"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/enterprise-govern-change/entry/opportunity"/>
@@ -41,18 +41,18 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/enterprise-govern-change/read/architecture-decisions">
+  <ess:Action rdf:about="action/enterprise-govern-change/read/architectuurbeslissingen">
     <ess:name xml:lang="nl">Lees architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeslissingen"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/enterprise-govern-change/create/roadmap">
+  <ess:Action rdf:about="action/enterprise-govern-change/create/migratiescenario">
     <ess:name xml:lang="nl">Maak migratiescenario (tactisch niveau)</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/roadmap"/>
+    <ess:workProduct rdf:resource="workproduct/migratiescenario"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-govern-change/read/paved-road">

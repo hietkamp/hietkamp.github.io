@@ -7,7 +7,7 @@
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
 >
 
-  <ess:WorkProduct rdf:about="workproduct/roadmap">
+  <ess:WorkProduct rdf:about="workproduct/migratiescenario">
     <ess:name xml:lang="nl">Migratiescenario</ess:name>
     <ess:briefDescription xml:lang="nl">Het migratiescenario is de onderbouwde, geordende reeks stabiele tussentoestanden waarlangs de solution van de huidige naar de gewenste architectuur beweegt.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Het migratiescenario is een onderbouwde, geordende reeks stabiele tussentoestanden — plateaus — die de overgang beschrijft van de huidige naar de gewenste architectuur van de solution. Elk plateau is operationeel verdedigbaar: de solution functioneert als geheel, ook al is de doelarchitectuur nog niet volledig gerealiseerd, en tussen plateaus in mag nooit een half werkende toestand ontstaan die de bedrijfsvoering breekt. Dat onderscheidt het migratiescenario van een planning of taaklijst: het beschrijft niet wát er moet gebeuren, maar in welke volgorde de solution stabiel van de ene naar de andere toestand beweegt, en waarom die volgorde de juiste is.</p>
@@ -16,60 +16,60 @@
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
-    <ess:levelOfDetail rdf:resource="lod/solution-roadmap/strategisch"/>
-    <ess:levelOfDetail rdf:resource="lod/solution-roadmap/tactisch"/>
-    <ess:levelOfDetail rdf:resource="lod/solution-roadmap/operationeel"/>
-    <ess:levelOfDetail rdf:resource="lod/solution-roadmap/draaiboek"/>
-    <ess:resources rdf:resource="resource/solution-roadmap/togaf-transition-architecture"/>
-    <ess:resources rdf:resource="resource/solution-roadmap/togaf-migration-planning"/>
-    <ess:ownedElements rdf:resource="resource/solution-roadmap/template"/>
+    <ess:levelOfDetail rdf:resource="lod/migratiescenario/strategisch"/>
+    <ess:levelOfDetail rdf:resource="lod/migratiescenario/tactisch"/>
+    <ess:levelOfDetail rdf:resource="lod/migratiescenario/operationeel"/>
+    <ess:levelOfDetail rdf:resource="lod/migratiescenario/draaiboek"/>
+    <ess:resources rdf:resource="resource/migratiescenario/togaf-transition-architecture"/>
+    <ess:resources rdf:resource="resource/migratiescenario/togaf-migration-planning"/>
+    <ess:ownedElements rdf:resource="resource/migratiescenario/template"/>
   </ess:WorkProduct>
 
-  <ess:LevelOfDetail rdf:about="lod/solution-roadmap/strategisch">
+  <ess:LevelOfDetail rdf:about="lod/migratiescenario/strategisch">
     <ess:name xml:lang="nl">1. Strategisch niveau</ess:name>
     <ess:description xml:lang="nl"><![CDATA[<p>Dit niveau informeert management en bestuur over de grote lijnen van de migratie: de scope, het budget, de globale doorlooptijd, de eindmilestones en de bedrijfsdoelen die ermee gediend zijn. De centrale vraag is niet hóe wordt gemigreerd, maar wát er verandert en waaróm — vergelijkbaar met de manier waarop TOGAF's Architecture Roadmap op enterprise-niveau de opeenvolgende stappen van baseline- naar doelarchitectuur aan stakeholders communiceert, zonder de onderliggende technische uitwerking. Dit niveau is nooit voldoende om op te sturen: het ontbreekt de systeem- en afhankelijkheidsdetails die projectleiders en leveranciers nodig hebben, en dient daarom uitsluitend om richting en draagvlak te geven aan wat volgt.</p>]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
-    <ess:successor rdf:resource="lod/solution-roadmap/tactisch"/>
+    <ess:successor rdf:resource="lod/migratiescenario/tactisch"/>
   </ess:LevelOfDetail>
 
-  <ess:LevelOfDetail rdf:about="lod/solution-roadmap/tactisch">
+  <ess:LevelOfDetail rdf:about="lod/migratiescenario/tactisch">
     <ess:name xml:lang="nl">2. Tactisch niveau</ess:name>
     <ess:description xml:lang="nl"><![CDATA[<p>Dit niveau stemt af tussen projectleiders, leveranciers en afdelingshoofden: in welke volgorde systemen of afdelingen migreren, hoe capaciteit wordt ingepland en welke risico's en verantwoordelijkheden (RACI) bij elke stap horen. Het komt overeen met wat TOGAF in Phase E en F uitwerkt als een reeks Transition Architectures: elke tussentoestand krijgt een eigen set werkpakketten, samengesteld op basis van een analyse van gaps, mogelijke oplossingen en onderlinge afhankelijkheden — wat TOGAF de Consolidated Gaps, Solutions and Dependencies Matrix noemt. Dit is doorgaans het niveau waarop een migratiescenario voldoende is om als besturingsinstrument te dienen: het legt vast wie wat doet en wanneer welke component aan de beurt is, zonder al af te dalen naar de technische uitvoering zelf.</p>]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
-    <ess:successor rdf:resource="lod/solution-roadmap/operationeel"/>
+    <ess:successor rdf:resource="lod/migratiescenario/operationeel"/>
   </ess:LevelOfDetail>
 
-  <ess:LevelOfDetail rdf:about="lod/solution-roadmap/operationeel">
+  <ess:LevelOfDetail rdf:about="lod/migratiescenario/operationeel">
     <ess:name xml:lang="nl">3. Operationeel niveau</ess:name>
     <ess:description xml:lang="nl"><![CDATA[<p>Dit niveau stuurt de techneuten rechtstreeks tijdens de uitvoering: systeemconfiguraties, datamappings, netwerkwijzigingen en testscripts, met de technische randvoorwaarden en validaties die per stap moeten kloppen. TOGAF benoemt op dit detailniveau vergelijkbare factoren via de Implementation Factor Assessment and Deduction Matrix — risico's, aannames, afhankelijkheden en de acties die daaruit volgen — maar werkt ze in de ADM zelf niet uit tot op configuratieniveau; de ADM blijft steken op portfolio- en projectniveau. Dit operationele niveau vult dat gat voor deze werkwijze in: het maakt de tactische werkpakketten concreet genoeg om daadwerkelijk uit te voeren en te toetsen.</p>]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
-    <ess:successor rdf:resource="lod/solution-roadmap/draaiboek"/>
+    <ess:successor rdf:resource="lod/migratiescenario/draaiboek"/>
   </ess:LevelOfDetail>
 
-  <ess:LevelOfDetail rdf:about="lod/solution-roadmap/draaiboek">
+  <ess:LevelOfDetail rdf:about="lod/migratiescenario/draaiboek">
     <ess:name xml:lang="nl">4. Draaiboek niveau</ess:name>
     <ess:description xml:lang="nl"><![CDATA[<p>Dit niveau geeft strakke regie tijdens het daadwerkelijke migratievenster — vaak een avond of weekend — met een chronologische checklist op minuutbasis, expliciete go/no-go-momenten en terugvalprocedures (rollback) voor het geval iets misgaat. TOGAF beschrijft dit uitvoeringsdetail niet: de ADM eindigt bij het geprioriteerde en geaccordeerde Implementation and Migration Plan uit Phase F, en laat de daadwerkelijke uitvoering — inclusief het bewaken van architectuurconformiteit — over aan Phase G, Implementation Governance. Het draaiboek is daarmee het meest gedetailleerde niveau van het migratiescenario: het doel is minimale downtime en directe escalatielijnen zodra zich tijdens het venster een storing voordoet.</p>]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
   </ess:LevelOfDetail>
 
-  <ess:Resource rdf:about="resource/solution-roadmap/togaf-transition-architecture">
+  <ess:Resource rdf:about="resource/migratiescenario/togaf-transition-architecture">
     <ess:content>The Open Group, TOGAF® Series Guide: A Practitioners' Approach to Developing Enterprise Architecture Following the TOGAF® ADM (2025) — hoofdstukken over baseline/target/transition states en Transition Architecture</ess:content>
   </ess:Resource>
 
-  <ess:Resource rdf:about="resource/solution-roadmap/togaf-migration-planning">
+  <ess:Resource rdf:about="resource/migratiescenario/togaf-migration-planning">
     <ess:content>The Open Group, TOGAF® Standard, 10th Edition — ADM Phase E: Opportunities &amp; Solutions en Phase F: Migration Planning (Architecture Roadmap, Transition Architectures, werkpakketten, Implementation and Migration Plan), en de Migration Planning Techniques (Implementation Factor Assessment and Deduction Matrix, Consolidated Gaps, Solutions and Dependencies Matrix, Architecture Definition Increments Table)</ess:content>
   </ess:Resource>
 
-  <ess:WorkProductManifest rdf:about="workproduct-manifest/solution-roadmap/opportunity">
-    <ess:workProduct rdf:resource="workproduct/roadmap"/>
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/migratiescenario/opportunity">
+    <ess:workProduct rdf:resource="workproduct/migratiescenario"/>
     <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
     <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
   </ess:WorkProductManifest>
 
-  <ess:TypedResource rdf:about="resource/solution-roadmap/template">
+  <ess:TypedResource rdf:about="resource/migratiescenario/template">
     <ess:kind rdf:resource="type/template"/>
     <ess:briefDescription xml:lang="nl">Sjabloon voor Migratiescenario</ess:briefDescription>
-    <ess:content>https://hietkamp.nl/essence/downloads/roadmap.docx</ess:content>
+    <ess:content>https://hietkamp.nl/essence/downloads/migratiescenario.docx</ess:content>
   </ess:TypedResource>
 
 </rdf:RDF>

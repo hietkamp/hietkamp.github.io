@@ -17,9 +17,9 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <ess:approach rdf:resource="approach/governance-tune-governance/default"/>
-    <ess:action rdf:resource="action/governance-tune-governance/update/architecture-principles"/>
-    <ess:action rdf:resource="action/governance-tune-governance/update/architecture-working-agreement"/>
-    <ess:action rdf:resource="action/governance-tune-governance/create/statement-of-architecture-work"/>
+    <ess:action rdf:resource="action/governance-tune-governance/update/architectuurprincipes"/>
+    <ess:action rdf:resource="action/governance-tune-governance/update/architectuur-werkafspraken"/>
+    <ess:action rdf:resource="action/governance-tune-governance/create/architectuuropdracht"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/governance-tune-governance/entry/governance"/>
@@ -38,25 +38,25 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/governance-tune-governance/update/architecture-principles">
+  <ess:Action rdf:about="action/governance-tune-governance/update/architectuurprincipes">
     <ess:name xml:lang="nl">Werk architectuurprincipes bij</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-principles"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurprincipes"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/governance-tune-governance/update/architecture-working-agreement">
+  <ess:Action rdf:about="action/governance-tune-governance/update/architectuur-werkafspraken">
     <ess:name xml:lang="nl">Werk architectuur werkafspraken bij</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-working-agreement"/>
+    <ess:workProduct rdf:resource="workproduct/architectuur-werkafspraken"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/governance-tune-governance/create/statement-of-architecture-work">
+  <ess:Action rdf:about="action/governance-tune-governance/create/architectuuropdracht">
     <ess:name xml:lang="nl">Maak architectuuropdracht</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/statement-of-architecture-work"/>
+    <ess:workProduct rdf:resource="workproduct/architectuuropdracht"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/governance-tune-governance/part-of/coordinate-activity">

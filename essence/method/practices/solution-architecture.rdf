@@ -12,7 +12,7 @@
     <ess:briefDescription xml:lang="nl">Richt, kies, bewijs en plan de minimale architectuurkeuzes voor een specifieke solution — van high-level design (inclusief migratiestrategie), via architectuurbepalende eisen en low-level design, tot ondersteuning van de implementatie en conformance na oplevering.</ess:briefDescription>
 
     <ess:description xml:lang="nl"><![CDATA[
-<p>Werkt binnen de enterprise-architectuurkaders en maakt de solution-specifieke architectuurkeuzes: verfijnt drivers naar solution-kwaliteitsattributen, selecteert standaardsoftware-componenten, bewijst risicovolle integratiekeuzes en maakt de solution-roadmap.</p>
+<p>Werkt binnen de enterprise-architectuurkaders en maakt de solution-specifieke architectuurkeuzes: verfijnt drivers naar solution-kwaliteitsattributen, selecteert standaardsoftware-componenten, bewijst risicovolle integratiekeuzes en maakt het migratiescenario.</p>
 <p>Deze practice levert de vijf activiteiten die de Project levenscyclus over haar zes fasen verdeelt.</p>
 <p>De volgorde van activiteiten in deze practice komt overeen met hoe de Project levenscyclus ze over haar zes fasen verdeelt: Maak high-level design in Fase 1, Identificeer architectuurbepalende eisen in Fase 2, Maak low-level design in Fase 3, Ondersteun de implementatie in Fase 4, en Bewaak conformance in Fase 5/6.</p>
 ]]></ess:description>
@@ -35,9 +35,9 @@
     <ess:ownedElements rdf:resource="activity/solution-low-level-design"/>
     <ess:ownedElements rdf:resource="activity/solution-lead-implementation"/>
     <ess:ownedElements rdf:resource="activity/solution-monitor-performance"/>
-    <ess:ownedElements rdf:resource="workproduct/architecture-model"/>
-    <ess:ownedElements rdf:resource="workproduct/architecture-decisions"/>
-    <ess:ownedElements rdf:resource="workproduct/roadmap"/>
+    <ess:ownedElements rdf:resource="workproduct/architectuurmodel"/>
+    <ess:ownedElements rdf:resource="workproduct/architectuurbeslissingen"/>
+    <ess:ownedElements rdf:resource="workproduct/migratiescenario"/>
     <ess:associations rdf:resource="pattern-association/solution-architecture/performed-by"/>
   </ess:Practice>
 

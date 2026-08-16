@@ -44,10 +44,10 @@
   <ess:PatternAssociation rdf:about="pattern-association/governance-forum/responsible-for">
     <ess:name xml:lang="nl">verantwoordelijk voor</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="workproduct/statement-of-architecture-work"/>
-    <ess:elements rdf:resource="workproduct/review-records"/>
-    <ess:elements rdf:resource="workproduct/architecture-principles"/>
-    <ess:elements rdf:resource="workproduct/architecture-working-agreement"/>
+    <ess:elements rdf:resource="workproduct/architectuuropdracht"/>
+    <ess:elements rdf:resource="workproduct/reviewresultaten"/>
+    <ess:elements rdf:resource="workproduct/architectuurprincipes"/>
+    <ess:elements rdf:resource="workproduct/architectuur-werkafspraken"/>
   </ess:PatternAssociation>
 
 </rdf:RDF>

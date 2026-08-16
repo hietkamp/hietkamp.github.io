@@ -17,10 +17,10 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <ess:approach rdf:resource="approach/governance-govern-delivery/default"/>
-    <ess:action rdf:resource="action/governance-govern-delivery/create/statement-of-architecture-work"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/create/architectuuropdracht"/>
     <ess:action rdf:resource="action/governance-govern-delivery/read/paved-road"/>
-    <ess:action rdf:resource="action/governance-govern-delivery/read/architecture-decisions"/>
-    <ess:action rdf:resource="action/governance-govern-delivery/create/review-records"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/read/architectuurbeslissingen"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/create/reviewresultaten"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/governance-govern-delivery/entry/governance"/>
     <ess:criterion rdf:resource="criterion/governance-govern-delivery/completion/governance"/>
@@ -37,11 +37,11 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/governance-govern-delivery/create/statement-of-architecture-work">
+  <ess:Action rdf:about="action/governance-govern-delivery/create/architectuuropdracht">
     <ess:name xml:lang="nl">Maak architectuuropdracht</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/statement-of-architecture-work"/>
+    <ess:workProduct rdf:resource="workproduct/architectuuropdracht"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-govern-delivery/read/paved-road">
@@ -51,18 +51,18 @@
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/governance-govern-delivery/read/architecture-decisions">
+  <ess:Action rdf:about="action/governance-govern-delivery/read/architectuurbeslissingen">
     <ess:name xml:lang="nl">Lees architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeslissingen"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/governance-govern-delivery/create/review-records">
+  <ess:Action rdf:about="action/governance-govern-delivery/create/reviewresultaten">
     <ess:name xml:lang="nl">Maak reviewresultaten</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/review-records"/>
+    <ess:workProduct rdf:resource="workproduct/reviewresultaten"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/governance-govern-delivery/part-of/coordinate-activity">

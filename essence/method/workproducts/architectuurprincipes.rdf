@@ -7,7 +7,7 @@
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
 >
 
-  <ess:WorkProduct rdf:about="workproduct/architecture-principles">
+  <ess:WorkProduct rdf:about="workproduct/architectuurprincipes">
     <ess:name xml:lang="nl">Architectuurprincipes</ess:name>
     <ess:briefDescription xml:lang="nl">Een architectuurprincipe is een richtinggevende regel die aangeeft welke richting gewenst is, zonder elke situatie in detail voor te schrijven.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Architectuurprincipes zijn een beperkte, richtinggevende set regels die aangeven welke richting gewenst is, zonder elke situatie in detail voor te schrijven — guardrails in plaats van uitputtende standaarden. Ze worden bij Richt governance in voor het eerst vastgesteld en vormen vanaf dat moment de toetssteen waarmee het Architectuurforum beoordeelt of een architectuurbeslissing binnen de gestelde kaders past of als uitzondering moet worden behandeld.</p>
@@ -21,12 +21,12 @@
     <!-- ess:resources not defined -->
     <!-- ess:properties not defined -->
     <!-- Application-specific -->
-    <ess:ownedElements rdf:resource="resource/architecture-principles/template"/>
+    <ess:ownedElements rdf:resource="resource/architectuurprincipes/template"/>
   </ess:WorkProduct>
 
-  <ess:TypedResource rdf:about="resource/architecture-principles/template">
+  <ess:TypedResource rdf:about="resource/architectuurprincipes/template">
     <ess:kind rdf:resource="type/template"/>
-    <ess:content>https://hietkamp.nl/essence/downloads/architecture-principles.docx</ess:content>
+    <ess:content>https://hietkamp.nl/essence/downloads/architectuurprincipes.docx</ess:content>
   </ess:TypedResource>
 
 </rdf:RDF>

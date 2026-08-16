@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xml:base="https://hietkamp.nl/essence/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
+  xmlns:esk="https://www.hietkamp.nl/ontologies/essence-kernel#"
+>
+
+  <!-- ==================================================================
+       PRACTICE
+       ================================================================== -->
+
+  <ess:Practice rdf:about="practice/use-cases">
+    <ess:name xml:lang="nl">Use cases</ess:name>
+    <ess:briefDescription xml:lang="nl">Maakt zichtbaar wie het systeem gebruikt en waarvoor, en werkt dat uit tot gespecificeerde use cases met de aanvullende eisen die voor alle use cases gelden.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Deze practice geeft invulling aan de Requirements-alpha door de eisen aan het systeem te ordenen rond het gebruik ervan. In plaats van een lange, platte lijst met losse eisen wordt vastgelegd wie het systeem gebruikt — de actoren — en welk waardevol resultaat zij ermee willen bereiken. Elk van die resultaten is een use case. Door de eisen op deze manier te structureren blijft steeds zichtbaar waaróm een eis bestaat en voor wie, en ontstaat een verhaal dat opdrachtgever, gebruikersvertegenwoordigers en het realisatieteam met elkaar kunnen delen.</p>
+<p>De practice kent twee stappen die elkaar opvolgen maar in de praktijk iteratief worden doorlopen. Eerst wordt de buitenkant van het systeem in kaart gebracht: welke actoren zijn er, welke use cases herkennen zij, en waar ligt de systeemgrens. Dat levert het use-casemodel op — het overzicht dat de omvang van het werk begrenst. Vervolgens worden de use cases die er werkelijk toe doen uitgeschreven tot use-casespecificaties, met het hoofdscenario en de afwijkingen daarop. In diezelfde stap worden de eisen die niet aan één use case toe te wijzen zijn — kwaliteitseisen, wettelijke verplichtingen, ontwerpbeperkingen — vastgelegd in de aanvullende specificaties, zodat ze niet verdwijnen tussen de use cases in. Dat is geen apart moment: juist het uitschrijven van een scenario maakt zulke eisen zichtbaar.</p>
+<p>De practice beschrijft het identificeren en specificeren van use cases, niet het opdelen ervan in stukken werk voor een realisatieteam. Die verdeling hoort thuis in de planning van het werk en niet in het vastleggen van de eisen.</p>
+<p>Het use-casemodel en de use-casespecificaties zijn ook voor de architectuur van belang: de architectuurbepalende eisen worden eruit geselecteerd, en de use cases die technisch risicovol of structuurbepalend zijn, sturen de architectuurbeslissingen en de opbouw van het architectuurmodel.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:objective>Legt de eisen aan het systeem vast als een samenhangende, door stakeholders gedeelde set use cases met de bijbehorende aanvullende specificaties.</ess:objective>
+    <ess:measures/>
+    <ess:entry xml:lang="nl">De uitdaging is haalbaar gebleken — er is een oplossingsrichting die de investering waard is — en de belangrijkste stakeholders zijn bekend en beschikbaar om over het gebruik van het systeem te spreken.</ess:entry>
+    <ess:result xml:lang="nl">Een use-casemodel dat de systeemgrens en de omvang van het werk begrenst, uitgewerkte use-casespecificaties voor de use cases die ertoe doen, en een set aanvullende specificaties voor de eisen die niet aan één use case toe te wijzen zijn.</ess:result>
+    <ess:consistencyRules/>
+    <ess:ownedElements rdf:resource="activity/usecase-identify"/>
+    <ess:ownedElements rdf:resource="activity/usecase-specify"/>
+    <ess:ownedElements rdf:resource="workproduct/use-casemodel"/>
+    <ess:ownedElements rdf:resource="workproduct/use-casespecificatie"/>
+    <ess:ownedElements rdf:resource="workproduct/aanvullende-specificaties"/>
+    <ess:ownedElements rdf:resource="role/requirements-engineer"/>
+    <ess:associations rdf:resource="pattern-association/use-cases/performed-by"/>
+  </ess:Practice>
+
+  <ess:PatternAssociation rdf:about="pattern-association/use-cases/performed-by">
+    <ess:name xml:lang="nl">uitgevoerd door</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="role/requirements-engineer"/>
+  </ess:PatternAssociation>
+
+  <ess:ActivityAssociation rdf:about="activity-association/usecase-identify/end-before-start/usecase-specify">
+    <ess:name>usecase-identify end-before-start usecase-specify</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/usecase-identify"/>
+    <ess:end2 rdf:resource="activity/usecase-specify"/>
+    <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <!-- ==================================================================
+       ACTIVITEIT 1 — Identificeer actoren en use cases
+       ================================================================== -->
+
+  <ess:Activity rdf:about="activity/usecase-identify">
+    <ess:name xml:lang="nl">Identificeer actoren en use cases</ess:name>
+    <ess:briefDescription xml:lang="nl">Brengt in kaart wie het systeem gebruikt en welk waardevol resultaat zij ermee willen bereiken, en legt daarmee de systeemgrens en de omvang van het werk vast.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Deze activiteit brengt de buitenkant van het systeem in kaart. Vertrekpunt is niet een bestaande lijst met eisen, maar wat de stakeholders nodig hebben: wie er belang bij het systeem heeft en welke uitdaging ermee wordt aangepakt. Bepaald wordt welke actoren met het systeem omgaan — mensen in een bepaalde rol, maar ook andere systemen die het aanroepen of erdoor worden aangeroepen — en welk waardevol, afgerond resultaat elke actor met het systeem wil bereiken. Elk van die resultaten is een use case. Door van buiten naar binnen te werken ontstaat vanzelf een scherpe systeemgrens: alles wat een actor doet valt buiten het systeem, alles wat het systeem als antwoord daarop doet valt erbinnen.</p>
+<p>Het resultaat is het use-casemodel: een overzicht van actoren en use cases met per use case niet meer dan een naam en een korte omschrijving van het beoogde resultaat. Juist die beknoptheid is het punt van deze activiteit. Het model laat in één oogopslag zien hoe groot het werk is, waar de witte vlekken zitten en welke use cases nog onvoldoende begrepen zijn, zonder dat er al detailwerk in is gestoken dat later mogelijk wordt weggegooid.</p>
+<p>Het model wordt gemaakt sámen met de stakeholders, niet voor hen. Een use case die de opdrachtgever en de gebruikersvertegenwoordiger niet herkennen als iets waar zij waarde aan hechten, is geen use case maar een systeemfunctie die zich als use case voordoet. Zolang het model niet gedeeld wordt, is de omvang van het werk niet werkelijk begrensd.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/use-cases"/>
+    <ess:approach rdf:resource="approach/usecase-identify/default"/>
+    <ess:action rdf:resource="action/usecase-identify/read/opportunity"/>
+    <ess:action rdf:resource="action/usecase-identify/create/use-casemodel"/>
+    <ess:action rdf:resource="action/usecase-identify/update/requirements"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
+    <ess:criterion rdf:resource="criterion/usecase-identify/entry/opportunity"/>
+    <ess:criterion rdf:resource="criterion/usecase-identify/entry/stakeholders"/>
+    <ess:criterion rdf:resource="criterion/usecase-identify/entry/requirements"/>
+    <ess:criterion rdf:resource="criterion/usecase-identify/completion/requirements"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/usecase-identify/default">
+    <ess:name xml:lang="nl">Van buiten naar binnen werken</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>De aanpak begint bij de actoren, niet bij het systeem. In een werksessie met opdrachtgever, gebruikersvertegenwoordigers en het realisatieteam wordt eerst benoemd wie er met het systeem te maken krijgt: welke rollen gebruiken het rechtstreeks, welke systemen wisselen er gegevens mee uit, en wie heeft belang bij de uitkomst zonder het zelf te bedienen. Die laatste groep zijn stakeholders, geen actoren; het onderscheid voorkomt dat het model dichtslibt.</p>
+<p>Per actor wordt vervolgens gevraagd waarvoor deze het systeem gebruikt. Het antwoord moet een afgerond resultaat van waarde zijn — iets waarna de actor tevreden weg kan lopen — en niet een handeling onderweg. "Aanvraag indienen" is een use case; "inloggen" of "formulier valideren" is dat niet, hoe noodzakelijk ook. Deze toets is het belangrijkste instrument bij het opstellen van het model, omdat hij het model klein en betekenisvol houdt.</p>
+<p>De gevonden use cases krijgen een naam in de vorm van een werkwoord met een lijdend voorwerp, plus twee of drie regels over wat de actor eraan heeft. Ze worden geordend naar actor en, waar dat verheldert, naar samenhangend gebruik. Tot slot wordt per use case ingeschat hoe goed hij begrepen is en hoe risicovol hij is; die inschatting bepaalt in de volgende activiteit welke use cases als eerste worden uitgeschreven.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/usecase-identify/read/opportunity">
+    <ess:name xml:lang="nl">Lees uitdaging</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/usecase-identify/update/requirements">
+    <ess:name xml:lang="nl">Werk requirements bij</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/usecase-identify/create/use-casemodel">
+    <ess:name xml:lang="nl">Maak use-casemodel</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/use-casemodel"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/usecase-identify/part-of/understand-the-requirements">
+    <ess:name>Identificeer actoren en use cases part-of Understand The Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/usecase-identify"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandtheRequirements"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/usecase-identify/entry/opportunity">
+    <ess:name>Entry: Opportunity</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable"/>
+  </ess:EntryCriterion>
+
+  <ess:EntryCriterion rdf:about="criterion/usecase-identify/entry/stakeholders">
+    <ess:name>Entry: Stakeholders</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Involved"/>
+  </ess:EntryCriterion>
+
+  <ess:EntryCriterion rdf:about="criterion/usecase-identify/entry/requirements">
+    <ess:name>Entry: Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Conceived"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/usecase-identify/completion/requirements">
+    <ess:name>Completion: Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded"/>
+  </ess:CompletionCriterion>
+
+  <!-- ==================================================================
+       ACTIVITEIT 2 — Specificeer use cases
+       ================================================================== -->
+
+  <ess:Activity rdf:about="activity/usecase-specify">
+    <ess:name xml:lang="nl">Specificeer use cases</ess:name>
+    <ess:briefDescription xml:lang="nl">Werkt de use cases die ertoe doen uit tot een specificatie met het hoofdscenario en de afwijkingen daarop, en legt de eisen die niet aan één use case toebehoren vast in de aanvullende specificaties.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Waar het use-casemodel laat zien wélke use cases er zijn, legt deze activiteit vast wat er in een use case gebeurt. Per use case wordt het hoofdscenario beschreven: de stappen waarin de actor en het systeem elkaar afwisselen totdat het beoogde resultaat is bereikt. Daarnaast worden de afwijkingen op dat scenario vastgelegd — wat gebeurt er als de gegevens niet kloppen, als een koppeling niet beschikbaar is, als de actor halverwege afhaakt. In die afwijkingen zit doorgaans het merendeel van het werk en van de verrassingen.</p>
+<p>Niet elke use case verdient dezelfde uitwerking. Use cases die technisch risicovol zijn, die de structuur van het systeem bepalen of waarover de stakeholders het onderling nog niet eens zijn, worden volledig uitgeschreven; herkenbare, goed begrepen use cases volstaan met een beknopte beschrijving. Het detailniveau is daarmee een expliciete keuze en geen gewoonte: er wordt uitgeschreven zolang dat onzekerheid wegneemt, en niet langer.</p>
+<p>Tijdens het uitschrijven komen onvermijdelijk eisen naar boven die niet aan één use case toebehoren: kwaliteitseisen, wettelijke verplichtingen en beperkingen die van buitenaf zijn opgelegd. Die worden in dezelfde beweging vastgelegd in de aanvullende specificaties. Het is geen apart moment en geen aparte stap — juist doordat het uitschrijven van een scenario zulke eisen zichtbaar maakt, worden ze daar meteen geordend naar kwaliteitskenmerk en toetsbaar geformuleerd, in plaats van later alsnog te moeten worden gereconstrueerd.</p>
+<p>Het uitschrijven is zelf een onderzoeksmiddel. Zodra het hoofdscenario stap voor stap op tafel ligt, komen tegenstrijdigheden tussen stakeholders, ontbrekende gegevens en impliciete aannames aan het licht die in het beknopte model onzichtbaar bleven. Wat daarbij naar boven komt, kan leiden tot aanpassing van het use-casemodel — de werkproducten groeien in samenhang.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/use-cases"/>
+    <ess:approach rdf:resource="approach/usecase-specify/default"/>
+    <ess:approach rdf:resource="approach/usecase-specify/supplementary"/>
+    <ess:action rdf:resource="action/usecase-specify/read/use-casemodel"/>
+    <ess:action rdf:resource="action/usecase-specify/create/use-casespecificatie"/>
+    <ess:action rdf:resource="action/usecase-specify/create/aanvullende-specificaties"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/usecase-specify/entry/requirements"/>
+    <ess:criterion rdf:resource="criterion/usecase-specify/completion/requirements-coherent"/>
+    <ess:criterion rdf:resource="criterion/usecase-specify/completion/requirements-acceptable"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/usecase-specify/default">
+    <ess:name xml:lang="nl">Uitschrijven naar risico</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>De aanpak begint met kiezen. Uit het use-casemodel worden de use cases geselecteerd waarvan de uitwerking het meeste oplevert: de use cases die de structuur van het systeem bepalen, waar technisch risico zit, waar wet- en regelgeving hard ingrijpt, of waarover de stakeholders het onderling nog oneens zijn. Die worden als eerste uitgeschreven, zodat de onzekerheid vroeg verdwijnt in plaats van laat.</p>
+<p>Per use case wordt eerst het hoofdscenario opgeschreven: genummerde stappen waarin steeds duidelijk is wie handelt, de actor of het systeem, en die eindigen bij het resultaat waarvoor de use case bestaat. Vervolgens wordt bij elke stap de vraag gesteld wat er anders kan lopen. Elk antwoord daarop wordt een alternatief scenario met een eigen afloop. Deze twee stappen worden bewust gescheiden gehouden: een hoofdscenario dat al doorspekt is met uitzonderingen leest niemand meer.</p>
+<p>Rond het scenario worden de voorwaarden vastgelegd waaronder de use case start en de toestand waarin het systeem achterblijft, plus de gegevens die worden uitgewisseld en de regels die daarop gelden. Wat tijdens het uitschrijven boven water komt maar niet aan deze use case toebehoort, wordt niet weggeschreven maar doorgegeven: eisen die voor meerdere use cases gelden gaan naar de aanvullende specificaties, nieuwe of verkeerd afgebakende use cases gaan terug naar het use-casemodel.</p>
+<p>Elke uitgewerkte use case wordt getoetst bij de betrokken actoren en de opdrachtgever. Pas als zij het scenario herkennen als hun eigen werkwijze — of bewust kiezen voor een andere — is de specificatie af.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/usecase-specify/read/use-casemodel">
+    <ess:name xml:lang="nl">Lees use-casemodel</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/use-casemodel"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/usecase-specify/create/use-casespecificatie">
+    <ess:name xml:lang="nl">Maak use-casespecificatie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/use-casespecificatie"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/usecase-specify/create/aanvullende-specificaties">
+    <ess:name xml:lang="nl">Maak aanvullende specificaties</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/aanvullende-specificaties"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/usecase-specify/part-of/understand-the-requirements">
+    <ess:name>Specificeer use cases part-of Understand The Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/usecase-specify"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandtheRequirements"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/usecase-specify/entry/requirements">
+    <ess:name>Entry: Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/usecase-specify/completion/requirements-coherent">
+    <ess:name>Completion: Requirements samenhangend</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/usecase-specify/completion/requirements-acceptable">
+    <ess:name>Completion: Requirements aanvaardbaar</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable"/>
+  </ess:CompletionCriterion>
+
+  <ess:Approach rdf:about="approach/usecase-specify/supplementary">
+    <ess:name xml:lang="nl">Ordenen naar kwaliteitskenmerk</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Voor de eisen die niet aan één use case toebehoren wordt een vaste indeling naar kwaliteitskenmerken aangehouden, zodat systematisch kan worden nagegaan of er niets ontbreekt in plaats van af te wachten wat stakeholders uit zichzelf noemen. Per kenmerk — beschikbaarheid, prestaties, beveiliging, toegankelijkheid, onderhoudbaarheid en de overige die de organisatie hanteert — wordt gevraagd welke eis geldt en waar die vandaan komt.</p>
+<p>Elke eis wordt vervolgens toetsbaar gemaakt. Dat betekent een meetbare uitspraak met de omstandigheden erbij: welke gebeurtenis doet zich voor, welk deel van het systeem betreft het, welke reactie wordt verwacht en binnen welke marge. Zo'n formulering maakt niet alleen achteraf toetsing mogelijk, maar dwingt tijdens het gesprek al scherpte af over wat werkelijk nodig is.</p>
+<p>Daarna wordt de set naast de bestaande kaders gelegd. Wat de paved road, de architectuurprincipes of geldende wet- en regelgeving al voorschrijven, wordt niet opnieuw uitgeschreven maar met een verwijzing overgenomen; wat ervan afwijkt, wordt expliciet benoemd omdat het tot een architectuurbeslissing of een uitzondering moet leiden. Onderlinge tegenstrijdigheden — een prestatie-eis die zich niet verhoudt tot een beveiligingseis — worden niet gladgestreken maar voorgelegd aan de stakeholders, die de afweging maken.</p>
+<p>Tot slot wordt per eis vastgelegd voor welke use cases hij geldt, zodat bij realisatie en toetsing zichtbaar blijft waar de eis raakt aan het gebruik van het systeem.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <!-- ==================================================================
+       WERKPRODUCT — Use-casemodel
+       ================================================================== -->
+
+  <ess:WorkProduct rdf:about="workproduct/use-casemodel">
+    <ess:name xml:lang="nl">Use-casemodel</ess:name>
+    <ess:briefDescription xml:lang="nl">Het overzicht van alle actoren en use cases van het systeem, met per use case alleen een naam en het beoogde resultaat — het werkproduct dat de systeemgrens en de omvang van het werk begrenst.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Het use-casemodel is het overzicht van wie het systeem gebruikt en waarvoor. Het bevat de actoren — rollen van mensen en andere systemen die met het systeem communiceren — en de use cases: de afgeronde, waardevolle resultaten die die actoren met het systeem willen bereiken. Per use case bevat het model niet meer dan een naam en enkele regels over het beoogde resultaat. Het detail zit in de use-casespecificaties; het model dient om overzicht te houden.</p>
+<p>Juist door die beknoptheid is het model bruikbaar als sturingsmiddel. Het maakt in één beeld zichtbaar waar de systeemgrens ligt, hoe groot het werk ongeveer is, welke gebieden nog onvoldoende begrepen zijn en welke use cases het meeste risico dragen. Daarmee is het model de basis voor het bepalen van de omvang van het werk en voor de volgorde waarin use cases worden uitgewerkt.</p>
+<p>Het model is een levend werkproduct. Tijdens het specificeren van use cases blijkt regelmatig dat een use case eigenlijk twee use cases is, dat er een actor over het hoofd is gezien, of dat iets wat een use case leek in werkelijkheid een stap binnen een andere use case is. Die inzichten leiden tot aanpassing van het model.</p>
+<p>Het werkproduct is bedoeld voor de opdrachtgever, de gebruikersvertegenwoordigers, het realisatieteam en de architectuureigenaar, die eruit afleidt welke delen van het systeem structuurbepalend zijn.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/use-cases"/>
+    <ess:levelOfDetail rdf:resource="lod/use-casemodel/lijst"/>
+    <ess:levelOfDetail rdf:resource="lod/use-casemodel/diagram"/>
+    <ess:ownedElements rdf:resource="resource/use-casemodel/template"/>
+  </ess:WorkProduct>
+
+  <ess:TypedResource rdf:about="resource/use-casemodel/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/use-casemodel.docx</ess:content>
+  </ess:TypedResource>
+
+  <ess:LevelOfDetail rdf:about="lod/use-casemodel/lijst">
+    <ess:name xml:lang="nl">Lijst van actoren en use cases</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[<p>Een tabel met per use case de naam, de primaire actor en het beoogde resultaat. Voldoende voor systemen met een overzichtelijk aantal use cases of wanneer de samenhang tussen use cases geen toelichting behoeft.</p>]]></ess:description>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
+    <ess:successor rdf:resource="lod/use-casemodel/diagram"/>
+  </ess:LevelOfDetail>
+
+  <ess:LevelOfDetail rdf:about="lod/use-casemodel/diagram">
+    <ess:name xml:lang="nl">Lijst met use-casediagram</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[<p>De lijst aangevuld met een diagram waarin de systeemgrens, de actoren en hun use cases zijn afgebeeld. Zinvol wanneer het aantal actoren groot is, wanneer meerdere actoren dezelfde use case delen, of wanneer de systeemgrens zelf onderwerp van discussie is en visueel bevestigd moet worden.</p>]]></ess:description>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
+  </ess:LevelOfDetail>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/use-casemodel/requirements">
+    <ess:workProduct rdf:resource="workproduct/use-casemodel"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ess:lowerBound>
+    <ess:upperBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ess:upperBound>
+  </ess:WorkProductManifest>
+
+  <!-- ==================================================================
+       WERKPRODUCT — Use-casespecificatie
+       ================================================================== -->
+
+  <ess:WorkProduct rdf:about="workproduct/use-casespecificatie">
+    <ess:name xml:lang="nl">Use-casespecificatie</ess:name>
+    <ess:briefDescription xml:lang="nl">De uitwerking van één use case: het hoofdscenario van interactie tussen actor en systeem, de afwijkingen daarop, en de voorwaarden en regels die daarbij gelden.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Een use-casespecificatie beschrijft precies één use case. De kern is het hoofdscenario: de opeenvolging van stappen waarin de actor en het systeem elkaar afwisselen, vanaf de aanleiding tot het moment waarop het beoogde resultaat is bereikt. Daaromheen staan de alternatieve scenario's — de afwijkingen die zich kunnen voordoen en hoe het systeem daarmee omgaat.</p>
+<p>Naast de scenario's legt de specificatie vast onder welke voorwaarden de use case kan starten, in welke toestand het systeem achterblijft na afloop, welke gegevens tussen actor en systeem worden uitgewisseld en welke regels daarop van toepassing zijn. Eisen die niet aan deze ene use case toebehoren horen hier niet thuis; die gaan naar de aanvullende specificaties.</p>
+<p>De specificatie is geschreven in de taal van de gebruiker, niet in die van het systeem: de actor herkent zijn eigen werkwijze erin. Daardoor is het werkproduct tegelijk bruikbaar als afstemmingsmiddel met de opdrachtgever, als basis voor het ontwerp en als vertrekpunt voor het opstellen van testgevallen — elk alternatief scenario is in feite een testgeval.</p>
+<p>Het werkproduct is bedoeld voor de gebruikersvertegenwoordigers, het realisatieteam, de testers en de architectuureigenaar.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/use-cases"/>
+    <ess:levelOfDetail rdf:resource="lod/use-casespecificatie/beknopt"/>
+    <ess:levelOfDetail rdf:resource="lod/use-casespecificatie/volledig"/>
+    <ess:ownedElements rdf:resource="resource/use-casespecificatie/template"/>
+  </ess:WorkProduct>
+
+  <ess:TypedResource rdf:about="resource/use-casespecificatie/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/use-casespecificatie.docx</ess:content>
+  </ess:TypedResource>
+
+  <ess:LevelOfDetail rdf:about="lod/use-casespecificatie/beknopt">
+    <ess:name xml:lang="nl">Beknopt</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[<p>Een alinea of een handvol stappen die het verloop van de use case op hoofdlijnen weergeven, met alleen de belangrijkste afwijkingen. Geschikt voor use cases die herkenbaar en goed begrepen zijn en waar het realisatieteam geen aanvullende sturing nodig heeft.</p>]]></ess:description>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
+    <ess:successor rdf:resource="lod/use-casespecificatie/volledig"/>
+  </ess:LevelOfDetail>
+
+  <ess:LevelOfDetail rdf:about="lod/use-casespecificatie/volledig">
+    <ess:name xml:lang="nl">Volledig uitgeschreven</ess:name>
+    <ess:description xml:lang="nl"><![CDATA[<p>Het volledige verhaal van de use case. Reserveer dit voor use cases die de structuur van het systeem bepalen, technisch risico dragen, zwaar onder wet- en regelgeving vallen, of waarover de stakeholders het onderling nog niet eens zijn.</p>
+<p>Een volledig uitgeschreven use-casespecificatie bevat ten minste de volgende onderdelen:</p>
+<ul>
+<li>de naam van de use case en het resultaat dat de actor ermee bereikt;</li>
+<li>de primaire actor en de overige betrokken actoren;</li>
+<li>de voorwaarden waaronder de use case start en de toestand na afloop;</li>
+<li>het hoofdscenario in genummerde stappen, waarbij per stap duidelijk is wie handelt;</li>
+<li>de alternatieve scenario's, elk gekoppeld aan de stap waar zij afsplitsen, met hun eigen afloop;</li>
+<li>de uitgewisselde gegevens en de regels die daarop gelden;</li>
+<li>de openstaande vragen en aannames die nog bevestiging behoeven.</li>
+</ul>
+<p>Hierdoor ontstaat een specificatie die zonder mondelinge toelichting te realiseren en te testen is.</p>]]></ess:description>
+    <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
+  </ess:LevelOfDetail>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/use-casespecificatie/requirements">
+    <ess:workProduct rdf:resource="workproduct/use-casespecificatie"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:WorkProductManifest>
+
+  <!-- ==================================================================
+       WERKPRODUCT — Aanvullende specificaties
+       ================================================================== -->
+
+  <ess:WorkProduct rdf:about="workproduct/aanvullende-specificaties">
+    <ess:name xml:lang="nl">Aanvullende specificaties</ess:name>
+    <ess:briefDescription xml:lang="nl">De eisen die niet aan één use case zijn toe te wijzen: kwaliteitseisen, wettelijke verplichtingen en ontwerpbeperkingen die voor het systeem als geheel gelden.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De aanvullende specificaties bevatten de eisen die niet bij één use case horen, maar voor het systeem als geheel of voor meerdere use cases tegelijk gelden. Het gaat om kwaliteitseisen zoals beschikbaarheid, prestaties, beveiliging, toegankelijkheid en onderhoudbaarheid, om verplichtingen die voortkomen uit wet- en regelgeving, en om beperkingen die van buitenaf zijn opgelegd, zoals een voorgeschreven platform, koppelvlak of gegevensstandaard.</p>
+<p>Zonder dit werkproduct verdwijnen deze eisen. Ze passen niet in het scenario van een use case en worden daarom óf helemaal niet vastgelegd, óf verstopt in een willekeurige use case waar ze verdwijnen zodra die use case verandert. Door ze apart en geordend naar kwaliteitskenmerk vast te leggen, blijven ze zichtbaar en toetsbaar.</p>
+<p>Elke eis is zo geformuleerd dat vast te stellen is of eraan is voldaan: met een grootheid, een norm en de omstandigheden waaronder die geldt. Waar een eis al volgt uit de paved road, de architectuurprincipes of geldende regelgeving, wordt daarnaar verwezen in plaats van herhaald; waar ervan wordt afgeweken, is dat expliciet benoemd zodat het tot een architectuurbeslissing of uitzondering kan leiden.</p>
+<p>Dit werkproduct is de belangrijkste voedingsbron voor de architectuurbepalende eisen: waar de use cases beschrijven wát het systeem doet, bepalen deze eisen grotendeels hóe het gebouwd moet worden. Het is bedoeld voor de architectuureigenaar, het realisatieteam, de testers en de opdrachtgever.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/use-cases"/>
+    <ess:ownedElements rdf:resource="resource/aanvullende-specificaties/template"/>
+  </ess:WorkProduct>
+
+  <ess:TypedResource rdf:about="resource/aanvullende-specificaties/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/aanvullende-specificaties.docx</ess:content>
+  </ess:TypedResource>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/aanvullende-specificaties/requirements">
+    <ess:workProduct rdf:resource="workproduct/aanvullende-specificaties"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ess:lowerBound>
+    <ess:upperBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ess:upperBound>
+  </ess:WorkProductManifest>
+
+  <!-- ==================================================================
+       ROL — Requirements engineer
+       ================================================================== -->
+
+  <ess:TypedPattern rdf:about="role/requirements-engineer">
+    <ess:kind rdf:resource="type/role"/>
+    <ess:name xml:lang="nl">Requirements engineer</ess:name>
+    <ess:briefDescription xml:lang="nl">De Requirements engineer haalt op wat het systeem moet doen en legt dat vast als een samenhangende set use cases en aanvullende specificaties waarover opdrachtgever, gebruikers en realisatieteam het eens zijn.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De Requirements engineer is verantwoordelijk voor de volledigheid, samenhang en toetsbaarheid van de eisen aan het systeem. De rol bedenkt die eisen niet zelf, maar haalt ze op bij de stakeholders, ordent ze rond het gebruik van het systeem en legt ze zo vast dat er later niet over te twisten valt wat er bedoeld werd.</p>
+<p>Het zwaartepunt van de rol ligt bij het gesprek, niet bij het document. Stakeholders spreken in oplossingen, in gewoontes en in aannames die zij zelf niet meer als aanname herkennen. De Requirements engineer werkt daar doorheen naar het onderliggende resultaat dat zij willen bereiken, maakt tegenstrijdigheden tussen stakeholders zichtbaar in plaats van ze glad te strijken, en legt de afweging terug bij degenen die haar mogen maken.</p>
+<p>Daarbij bewaakt de rol voortdurend de omvang van het werk: het use-casemodel is niet alleen een overzicht van wat het systeem doet, maar ook de begrenzing van wat het niet doet. En de rol bewaakt het detailniveau — er wordt uitgeschreven zolang dat onzekerheid wegneemt en niet langer, zodat de specificaties niet dichtgroeien met werk dat niemand leest.</p>
+<p>De Requirements engineer werkt nauw samen met de architectuureigenaar, die uit de use cases en de aanvullende specificaties de architectuurbepalende eisen selecteert, en met het realisatieteam en de testers, die op de specificaties verder bouwen.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/use-cases"/>
+    <ess:associations rdf:resource="pattern-association/requirements-engineer/requires-competency/analysis"/>
+    <ess:associations rdf:resource="pattern-association/requirements-engineer/requires-competency/stakeholder-representation"/>
+    <ess:associations rdf:resource="pattern-association/requirements-engineer/requires-competency/development"/>
+    <ess:associations rdf:resource="pattern-association/requirements-engineer/participates-in"/>
+    <ess:associations rdf:resource="pattern-association/requirements-engineer/responsible-for"/>
+  </ess:TypedPattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/requirements-engineer/requires-competency/analysis">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Analysis"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/requirements-engineer/requires-competency/stakeholder-representation">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StakeholderRepresentation"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/requirements-engineer/requires-competency/development">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Development"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Applies"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/requirements-engineer/participates-in">
+    <ess:name xml:lang="nl">neemt deel aan</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/usecase-identify"/>
+    <ess:elements rdf:resource="activity/usecase-specify"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/requirements-engineer/responsible-for">
+    <ess:name xml:lang="nl">verantwoordelijk voor</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="workproduct/use-casemodel"/>
+    <ess:elements rdf:resource="workproduct/use-casespecificatie"/>
+    <ess:elements rdf:resource="workproduct/aanvullende-specificaties"/>
+  </ess:PatternAssociation>
+
+</rdf:RDF>

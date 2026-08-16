@@ -39,7 +39,7 @@
 <section id="achtergrond" class="mt-12">
   {{ sec_head(sections.achtergrond.num, sections.achtergrond.title) }}
   <p class="prose">{{ sections.achtergrond.intro }}</p>
-  <div class="deck-grid mt-2.5 grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-3">
+  <div class="deck-grid mt-2.5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
     {% for deck in sections.achtergrond.decks %}
     <a class="deck flex flex-col overflow-hidden rounded-lg border border-slate-300 bg-white text-inherit no-underline transition hover:shadow-md [&_.top]:h-1 [&_.body]:flex [&_.body]:flex-1 [&_.body]:flex-col [&_.body]:px-3.5 [&_.body]:py-3 [&_.body]:pb-3.5 [&_.tag]:mb-1 [&_.tag]:font-mono [&_.tag]:text-[10px] [&_.tag]:font-semibold [&_.tag]:uppercase [&_.tag]:tracking-[0.1em] [&_h4]:m-0 [&_h4]:mb-1 [&_h4]:font-serif [&_h4]:text-[1.05rem] [&_h4]:font-semibold [&_h4]:leading-tight [&_.one]:m-0 [&_.one]:mb-2.5 [&_.one]:text-[0.82rem] [&_.one]:leading-relaxed [&_.one]:text-slate-500 [&_.open]:mt-auto [&_.open]:font-mono [&_.open]:text-[10px] [&_.open]:font-semibold [&_.open]:uppercase [&_.open]:tracking-[0.08em]" href="{{ deck.href }}">
       <div class="top bg-[var(--{{ deck.color }})]"></div>

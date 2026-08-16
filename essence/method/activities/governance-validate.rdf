@@ -16,9 +16,9 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/architectural-governance"/>
     <ess:approach rdf:resource="approach/governance-validate/default"/>
-    <ess:action rdf:resource="action/governance-validate/read/architecture-working-agreement"/>
+    <ess:action rdf:resource="action/governance-validate/read/architectuur-werkafspraken"/>
     <ess:action rdf:resource="action/governance-validate/read/paved-road"/>
-    <ess:action rdf:resource="action/governance-validate/read/review-records"/>
+    <ess:action rdf:resource="action/governance-validate/read/reviewresultaten"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/governance-validate/entry/governance"/>
     <ess:criterion rdf:resource="criterion/governance-validate/entry/way-of-working"/>
@@ -38,11 +38,11 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/governance-validate/read/architecture-working-agreement">
+  <ess:Action rdf:about="action/governance-validate/read/architectuur-werkafspraken">
     <ess:name xml:lang="nl">Lees architectuur werkafspraken</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-working-agreement"/>
+    <ess:workProduct rdf:resource="workproduct/architectuur-werkafspraken"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/governance-validate/read/paved-road">
@@ -52,11 +52,11 @@
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/governance-validate/read/review-records">
+  <ess:Action rdf:about="action/governance-validate/read/reviewresultaten">
     <ess:name xml:lang="nl">Lees reviewresultaten</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/review-records"/>
+    <ess:workProduct rdf:resource="workproduct/reviewresultaten"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/governance-validate/part-of/track-progress">

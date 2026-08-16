@@ -72,8 +72,8 @@
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/analysisdesign/lod">
     <ess:name xml:lang="nl">detailniveau</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="lod/architecture-model/context"/>
-    <ess:elements rdf:resource="lod/architecture-model/container"/>
+    <ess:elements rdf:resource="lod/architectuurmodel/context"/>
+    <ess:elements rdf:resource="lod/architectuurmodel/container"/>
   </ess:PatternAssociation>
 
   <!-- ================= Phase 2 — Requirements ================= -->
@@ -125,8 +125,8 @@
   <ess:PatternAssociation rdf:about="pattern-association/project-lifecycle/analysisdesign/lod">
     <ess:name xml:lang="nl">detailniveau</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="lod/architecture-model/component"/>
-    <ess:elements rdf:resource="lod/architecture-model/code"/>
+    <ess:elements rdf:resource="lod/architectuurmodel/component"/>
+    <ess:elements rdf:resource="lod/architectuurmodel/code"/>
   </ess:PatternAssociation>
 
 

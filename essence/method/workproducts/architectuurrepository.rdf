@@ -7,7 +7,7 @@
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
 >
 
-  <ess:WorkProduct rdf:about="workproduct/architecture-repository">
+  <ess:WorkProduct rdf:about="workproduct/architectuurrepository">
     <ess:name xml:lang="nl">Architectuurrepository</ess:name>
     <ess:briefDescription xml:lang="nl">De architectuurrepository is de ene, autoritatieve plek waar alle architectuurartefacten van de organisatie hun vaste plek hebben.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>De architectuurrepository is de ene, autoritatieve plek waar alle architectuurartefacten van de organisatie hun vaste plek hebben, in plaats van verspreid over losse documenten en persoonlijke mappen. Eén bron van waarheid voorkomt dat teams met verouderde of onderling tegenstrijdige informatie werken.</p>

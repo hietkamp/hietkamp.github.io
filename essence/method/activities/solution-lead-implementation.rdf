@@ -15,7 +15,7 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
     <ess:approach rdf:resource="approach/solution-lead-implementation/default"/>
-    <ess:action rdf:resource="action/solution-lead-implementation/create/architecture-decisions"/>
+    <ess:action rdf:resource="action/solution-lead-implementation/create/architectuurbeslissingen"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/solution-lead-implementation/entry/system"/>
     <ess:criterion rdf:resource="criterion/solution-lead-implementation/completion/system"/>
@@ -33,11 +33,11 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/solution-lead-implementation/create/architecture-decisions">
+  <ess:Action rdf:about="action/solution-lead-implementation/create/architectuurbeslissingen">
     <ess:name xml:lang="nl">Maak architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeslissingen"/>
   </ess:Action>
 
   <ess:ActivityAssociation rdf:about="activity-association/solution-lead-implementation/part-of/support-the-team">

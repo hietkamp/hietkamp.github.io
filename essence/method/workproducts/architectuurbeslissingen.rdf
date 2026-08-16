@@ -7,7 +7,7 @@
   xmlns:ess="https://www.hietkamp.nl/ontologies/essence-language#"
 >
 
-  <ess:WorkProduct rdf:about="workproduct/architecture-decisions">
+  <ess:WorkProduct rdf:about="workproduct/architectuurbeslissingen">
     <ess:name xml:lang="nl">Architectuurbeslissingen</ess:name>
     <ess:briefDescription xml:lang="nl">Een architectuurbeslissing is, in de traditie van Architecture Decision Records (ADR), een onderbouwde keuze die invulling geeft aan een architectuurbepalende eis, inclusief de overwogen alternatieven en de motivatie voor de gekozen oplossing.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Een architectuurbeslissing is een onderbouwde keuze waarmee invulling wordt gegeven aan een architectuurbepalende eis: een eis met aantoonbare invloed op de structuur, samenhang of kwaliteit van de solution. Dit begrip volgt de bredere softwarearchitectuurpraktijk van Architecture Decision Records (ADR), niet een specifieke TOGAF-definitie: TOGAF kent met architecturally significant requirements een verwant begrip voor eisen met een meetbaar effect op de architectuur, maar koppelt daar zelf geen formeel 'architectuurbeslissing'-artefact aan. Niet elke ontwerp- of technische keuze is daarom een architectuurbeslissing — alleen keuzes die de architectuur daadwerkelijk richting geven of de onderhoudbaarheid, flexibiliteit, veiligheid of andere kwaliteitsaspecten beïnvloeden, worden zo vastgelegd.</p>
@@ -16,22 +16,22 @@
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
-    <ess:levelOfDetail rdf:resource="lod/architecture-decisions/lightweight"/>
-    <ess:levelOfDetail rdf:resource="lod/architecture-decisions/full"/>
-    <ess:resources rdf:resource="resource/architecture-decisions/adr-github"/>
-    <ess:resources rdf:resource="resource/architecture-decisions/ad-practices"/>
-    <ess:resources rdf:resource="resource/architecture-decisions/adr-templates"/>
-    <ess:ownedElements rdf:resource="resource/architecture-decisions/template"/>
+    <ess:levelOfDetail rdf:resource="lod/architectuurbeslissingen/lightweight"/>
+    <ess:levelOfDetail rdf:resource="lod/architectuurbeslissingen/full"/>
+    <ess:resources rdf:resource="resource/architectuurbeslissingen/adr-github"/>
+    <ess:resources rdf:resource="resource/architectuurbeslissingen/ad-practices"/>
+    <ess:resources rdf:resource="resource/architectuurbeslissingen/adr-templates"/>
+    <ess:ownedElements rdf:resource="resource/architectuurbeslissingen/template"/>
   </ess:WorkProduct>
 
-  <ess:LevelOfDetail rdf:about="lod/architecture-decisions/lightweight">
+  <ess:LevelOfDetail rdf:about="lod/architectuurbeslissingen/lightweight">
     <ess:name xml:lang="nl">Lichtgewicht (één zin)</ess:name>
     <ess:description xml:lang="nl"><![CDATA[<p>"Gegeven ⟨situatie⟩ en ⟨knelpunt⟩ kiezen we voor ⟨optie⟩ om ⟨kwaliteit⟩ te bereiken, met als geaccepteerd nadeel ⟨nadeel⟩." Geschikt voor de meeste dagelijkse, herkenbare keuzes — de "paved road"-beslissingen.</p>]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
-    <ess:successor rdf:resource="lod/architecture-decisions/full"/>
+    <ess:successor rdf:resource="lod/architectuurbeslissingen/full"/>
   </ess:LevelOfDetail>
 
-  <ess:LevelOfDetail rdf:about="lod/architecture-decisions/full">
+  <ess:LevelOfDetail rdf:about="lod/architectuurbeslissingen/full">
     <ess:name xml:lang="nl">Volledig</ess:name>
     <ess:description xml:lang="nl"><![CDATA[<p>Context, alle overwogen opties met hun voor- en nadelen, de afweging en het vervolgplan. Reserveer dit voor beslissingen waar het optieveld écht openstaat, de impact groot is, of waar Architectuursturing een expliciet oordeel moet vellen — de "off-road"-gevallen.</p>
 <p>Iedere architectuurbeslissing bevat ten minste de volgende onderdelen:</p>
@@ -47,21 +47,21 @@
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
   </ess:LevelOfDetail>
 
-  <ess:Resource rdf:about="resource/architecture-decisions/adr-github">
+  <ess:Resource rdf:about="resource/architectuurbeslissingen/adr-github">
     <ess:content>https://adr.github.io</ess:content>
   </ess:Resource>
 
-  <ess:Resource rdf:about="resource/architecture-decisions/ad-practices">
+  <ess:Resource rdf:about="resource/architectuurbeslissingen/ad-practices">
     <ess:content>https://adr.github.io/ad-practices/</ess:content>
   </ess:Resource>
 
-  <ess:Resource rdf:about="resource/architecture-decisions/adr-templates">
+  <ess:Resource rdf:about="resource/architectuurbeslissingen/adr-templates">
     <ess:content>https://adr.github.io/adr-templates/</ess:content>
   </ess:Resource>
 
-  <ess:TypedResource rdf:about="resource/architecture-decisions/template">
+  <ess:TypedResource rdf:about="resource/architectuurbeslissingen/template">
     <ess:kind rdf:resource="type/template"/>
-    <ess:content>https://hietkamp.nl/essence/downloads/architecture-decisions.docx</ess:content>
+    <ess:content>https://hietkamp.nl/essence/downloads/architectuurbeslissingen.docx</ess:content>
   </ess:TypedResource>
 
 </rdf:RDF>

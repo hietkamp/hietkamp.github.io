@@ -15,10 +15,10 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
     <ess:approach rdf:resource="approach/solution-low-level-design/default"/>
-    <ess:action rdf:resource="action/solution-low-level-design/read/architecture-decisions"/>
-    <ess:action rdf:resource="action/solution-low-level-design/create/architecture-decisions"/>
-    <ess:action rdf:resource="action/solution-low-level-design/update/architecture-model"/>
-    <ess:action rdf:resource="action/solution-low-level-design/update/solution-roadmap"/>
+    <ess:action rdf:resource="action/solution-low-level-design/read/architectuurbeslissingen"/>
+    <ess:action rdf:resource="action/solution-low-level-design/create/architectuurbeslissingen"/>
+    <ess:action rdf:resource="action/solution-low-level-design/update/architectuurmodel"/>
+    <ess:action rdf:resource="action/solution-low-level-design/update/migratiescenario"/>
     <ess:action rdf:resource="action/solution-low-level-design/read/paved-road"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/solution-low-level-design/entry/requirements"/>
@@ -39,32 +39,32 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/solution-low-level-design/read/architecture-decisions">
+  <ess:Action rdf:about="action/solution-low-level-design/read/architectuurbeslissingen">
     <ess:name xml:lang="nl">Lees architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeslissingen"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-low-level-design/create/architecture-decisions">
+  <ess:Action rdf:about="action/solution-low-level-design/create/architectuurbeslissingen">
     <ess:name xml:lang="nl">Maak architectuurbeslissingen</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-decisions"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeslissingen"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-low-level-design/update/architecture-model">
+  <ess:Action rdf:about="action/solution-low-level-design/update/architectuurmodel">
     <ess:name xml:lang="nl">Werk architectuurmodel bij</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:workProduct rdf:resource="workproduct/architecture-model"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurmodel"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-low-level-design/update/solution-roadmap">
-    <ess:name xml:lang="nl">Werk solution-roadmap bij</ess:name>
+  <ess:Action rdf:about="action/solution-low-level-design/update/migratiescenario">
+    <ess:name xml:lang="nl">Werk migratiescenario bij</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:workProduct rdf:resource="workproduct/roadmap"/>
+    <ess:workProduct rdf:resource="workproduct/migratiescenario"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-low-level-design/read/paved-road">

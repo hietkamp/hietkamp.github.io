@@ -11,7 +11,7 @@
     <ess:kind rdf:resource="type/role"/>
     <ess:name xml:lang="nl">Architectuureigenaar</ess:name>
     <ess:briefDescription xml:lang="nl">Een rol, geen functie: vervult het solution-spoor binnen de kaders die Enterprise architectuur oplevert, gelijk aan de Solution Architect uit TOGAF — verantwoordelijk voor het architecturaal ontwerp op het niveau van één solution, in plaats van het volledige landschap.</ess:briefDescription>
-    <ess:description xml:lang="nl">De architectuureigenaar is een rol, geen functie: wie de rol vervult, hangt af van wie voldoende technische ervaring en autoriteit heeft, niet van een formele titel. De rol komt overeen met wat TOGAF de Solution Architect noemt — verantwoordelijk voor architecturaal ontwerp en documentatie op het niveau van één systeem of subsysteem, gepositioneerd om de Enterprise architect te ontlasten van onnodige implementatiedetails. Binnen deze werkwijze verfijnt de architectuureigenaar de enterprise-drivers naar solution-specifieke kwaliteitsattributen, selecteert COTS-componenten, bewijst de risicovolste integratiekeuzes, maakt de solution-roadmap en faciliteert met het team de architectuurevolutie in productie. Afwijkingen van de paved road worden gerapporteerd aan het Architectuurforum via architectuurbeslissingen.</ess:description>
+    <ess:description xml:lang="nl">De architectuureigenaar is een rol, geen functie: wie de rol vervult, hangt af van wie voldoende technische ervaring en autoriteit heeft, niet van een formele titel. De rol komt overeen met wat TOGAF de Solution Architect noemt — verantwoordelijk voor architecturaal ontwerp en documentatie op het niveau van één systeem of subsysteem, gepositioneerd om de Enterprise architect te ontlasten van onnodige implementatiedetails. Binnen deze werkwijze verfijnt de architectuureigenaar de enterprise-drivers naar solution-specifieke kwaliteitsattributen, selecteert COTS-componenten, bewijst de risicovolste integratiekeuzes, maakt het migratiescenario en faciliteert met het team de architectuurevolutie in productie. Afwijkingen van de paved road worden gerapporteerd aan het Architectuurforum via architectuurbeslissingen.</ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:associations rdf:resource="pattern-association/architecture-owner/requires-competency/analysis"/>
     <ess:associations rdf:resource="pattern-association/architecture-owner/requires-competency/development"/>
@@ -46,9 +46,9 @@
   <ess:PatternAssociation rdf:about="pattern-association/architecture-owner/responsible-for">
     <ess:name xml:lang="nl">verantwoordelijk voor</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="workproduct/architecture-model"/>
-    <ess:elements rdf:resource="workproduct/architecture-decisions"/>
-    <ess:elements rdf:resource="workproduct/roadmap"/>
+    <ess:elements rdf:resource="workproduct/architectuurmodel"/>
+    <ess:elements rdf:resource="workproduct/architectuurbeslissingen"/>
+    <ess:elements rdf:resource="workproduct/migratiescenario"/>
   </ess:PatternAssociation>
 
 </rdf:RDF>

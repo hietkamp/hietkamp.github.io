@@ -25,14 +25,14 @@
     <ess:ownedElements rdf:resource="activity/governance-govern-delivery"/>
     <ess:ownedElements rdf:resource="activity/governance-validate"/>
     <ess:ownedElements rdf:resource="activity/governance-tune-governance"/>
-    <ess:ownedElements rdf:resource="workproduct/architecture-principles"/>
-    <ess:ownedElements rdf:resource="workproduct/architecture-working-agreement"/>
-    <ess:ownedElements rdf:resource="workproduct/architecture-repository"/>
-    <ess:ownedElements rdf:resource="workproduct/statement-of-architecture-work"/>
-    <!-- TODO: workproduct/review-records heeft nu een producent (Levering Besturen) en twee lezers
+    <ess:ownedElements rdf:resource="workproduct/architectuurprincipes"/>
+    <ess:ownedElements rdf:resource="workproduct/architectuur-werkafspraken"/>
+    <ess:ownedElements rdf:resource="workproduct/architectuurrepository"/>
+    <ess:ownedElements rdf:resource="workproduct/architectuuropdracht"/>
+    <!-- TODO: workproduct/reviewresultaten heeft nu een producent (Levering Besturen) en twee lezers
          (Toets werking governance, Stel governance bij), maar nog geen volledige ess:WorkProduct-definitie
-         (titel, detailniveaus, bronnen, sjabloon) — zelfde open status als de lod/architecture-model/* resources. -->
-    <ess:ownedElements rdf:resource="workproduct/review-records"/>
+         (titel, detailniveaus, bronnen, sjabloon) — zelfde open status als de lod/architectuurmodel/* resources. -->
+    <ess:ownedElements rdf:resource="workproduct/reviewresultaten"/>
     <ess:associations rdf:resource="pattern-association/architectural-governance/performed-by"/>
     <ess:associations rdf:resource="pattern-association/architectural-governance/uses"/>
   </ess:Practice>
