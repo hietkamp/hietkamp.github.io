@@ -63,7 +63,6 @@
     <ess:approach rdf:resource="approach/usecase-identify/default"/>
     <ess:action rdf:resource="action/usecase-identify/read/opportunity"/>
     <ess:action rdf:resource="action/usecase-identify/create/use-casemodel"/>
-    <ess:action rdf:resource="action/usecase-identify/update/requirements"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
     <ess:criterion rdf:resource="criterion/usecase-identify/entry/opportunity"/>
     <ess:criterion rdf:resource="criterion/usecase-identify/entry/stakeholders"/>
@@ -88,13 +87,6 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
     <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
-  </ess:Action>
-
-  <ess:Action rdf:about="action/usecase-identify/update/requirements">
-    <ess:name xml:lang="nl">Werk requirements bij</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/usecase-identify/create/use-casemodel">
@@ -151,12 +143,11 @@
     <ess:owner rdf:resource="practice/use-cases"/>
     <ess:approach rdf:resource="approach/usecase-specify/default"/>
     <ess:approach rdf:resource="approach/usecase-specify/supplementary"/>
-    <ess:action rdf:resource="action/usecase-specify/read/use-casemodel"/>
+    <ess:action rdf:resource="action/usecase-specify/update/use-casemodel"/>
     <ess:action rdf:resource="action/usecase-specify/create/use-casespecificatie"/>
     <ess:action rdf:resource="action/usecase-specify/create/aanvullende-specificaties"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/usecase-specify/entry/requirements"/>
-    <ess:criterion rdf:resource="criterion/usecase-specify/completion/requirements-coherent"/>
     <ess:criterion rdf:resource="criterion/usecase-specify/completion/requirements-acceptable"/>
     <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SolutionAreaOfConcern"/>
   </ess:Activity>
@@ -173,10 +164,10 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
 
-  <ess:Action rdf:about="action/usecase-specify/read/use-casemodel">
-    <ess:name xml:lang="nl">Lees use-casemodel</ess:name>
+  <ess:Action rdf:about="action/usecase-specify/update/use-casemodel">
+    <ess:name xml:lang="nl">Wijzig use-casemodel</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
     <ess:workProduct rdf:resource="workproduct/use-casemodel"/>
   </ess:Action>
 
@@ -207,12 +198,6 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Bounded"/>
   </ess:EntryCriterion>
-
-  <ess:CompletionCriterion rdf:about="criterion/usecase-specify/completion/requirements-coherent">
-    <ess:name>Completion: Requirements samenhangend</ess:name>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Coherent"/>
-  </ess:CompletionCriterion>
 
   <ess:CompletionCriterion rdf:about="criterion/usecase-specify/completion/requirements-acceptable">
     <ess:name>Completion: Requirements aanvaardbaar</ess:name>
