@@ -1,0 +1,23 @@
+PREFIX ess: <https://www.hietkamp.nl/ontologies/essence-language#>
+
+SELECT ?activityName ?practiceName ?actionKind
+WHERE {
+    ?wp a ess:WorkProduct ;
+        ess:name ?wpName .
+    FILTER(LANG(?wpName) = "nl" && STR(?wpName) = "Architectuurbeslissingen")
+
+    ?action a ess:Action ;
+            ess:workProduct ?wp ;
+            ess:kind ?actionKindUri .
+    BIND(STRAFTER(STR(?actionKindUri), "essence-language#") AS ?actionKind)
+
+    ?activity a ess:Activity ;
+              ess:action ?action ;
+              ess:name ?activityName ;
+              ess:owner ?practice .
+    ?practice ess:name ?practiceName .
+
+    FILTER(LANG(?activityName) = "nl")
+    FILTER(LANG(?practiceName) = "nl")
+}
+ORDER BY ?practiceName ?activityName
