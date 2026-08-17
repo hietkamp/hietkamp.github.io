@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.opengroup.org/xsd/archimate/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengroup.org/xsd/archimate/3.0/ http://www.opengroup.org/xsd/archimate/3.1/archimate3_Model.xsd" identifier="id-model-clientenregistratie">
+  <name xml:lang="nl">Cliëntenregistratie — ArchiMate-variant</name>
+  <documentation xml:lang="nl">Tweede variant van de drie views uit dsl/langdurigezorg.dsl, uitgedrukt in ArchiMate 3.1 en opgeslagen in het ArchiMate Model Exchange File Format (AMEFF) voor import in Archi of een vergelijkbare tool.
+Mapping vanuit C4: softwareSystem wordt ApplicationComponent, person wordt BusinessActor (Aanvrager) of BusinessRole (medewerkers), group wordt Grouping, deploymentNode wordt Node, infrastructureNode wordt SystemSoftware of Node, het datacenter wordt Location en softwareSystemInstance wordt een Assignment-relatie van Node naar ApplicationComponent.
+Twee bewuste keuzes. Ten eerste zijn de interacties tussen mens en systeem als Triggering gemodelleerd en niet als Serving: dat behoudt richting en tekst van het C4-model, zodat beide varianten naast elkaar te lezen zijn. ArchiMate 3.1 staat Triggering tussen actieve structuurelementen toe. Ten tweede kent ArchiMate geen genummerde interacties zoals een C4 dynamic diagram; de volgorde staat daarom in Label-elementen in de sequentie-view.</documentation>
+  <elements>
+    <element identifier="el-aanvrager" xsi:type="BusinessActor">
+      <name xml:lang="nl">Aanvrager</name>
+      <documentation xml:lang="nl">Cliënt, cliëntondersteuner of mantelzorger die zorg aanvraagt.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-bron">
+          <value xml:lang="nl">person 'Aanvrager'</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-csb" xsi:type="BusinessRole">
+      <name xml:lang="nl">Medewerker cliëntenbureau</name>
+      <documentation xml:lang="nl">Verantwoordelijk voor aanmelding en registratie.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-bron">
+          <value xml:lang="nl">person 'Medewerker cliëntenbureau'</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-zorgbemiddelaar" xsi:type="BusinessRole">
+      <name xml:lang="nl">Zorgbemiddelaar</name>
+      <documentation xml:lang="nl">Verantwoordelijk voor de toetsing en matching van de aanmelding.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-bron">
+          <value xml:lang="nl">person 'Zorgbemiddelaar'</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-za" xsi:type="BusinessRole">
+      <name xml:lang="nl">Medewerker zorgadministratie</name>
+      <documentation xml:lang="nl">Verantwoordelijk voor de administratieve afhandeling.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-bron">
+          <value xml:lang="nl">person 'Medewerker zorgadministratie'</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-grp-cr" xsi:type="Grouping">
+      <name xml:lang="nl">Cliëntenregistratie</name>
+      <documentation xml:lang="nl">Groepering van de eigen medewerkers en systemen. In het C4-model een 'group', hier een Grouping-element.</documentation>
+    </element>
+    <element identifier="el-grp-vecozo" xsi:type="Grouping">
+      <name xml:lang="nl">VECOZO</name>
+      <documentation xml:lang="nl">Groepering van de landelijke voorzieningen die via VECOZO worden ontsloten.</documentation>
+    </element>
+    <element identifier="el-website" xsi:type="ApplicationComponent">
+      <name xml:lang="nl">Website</name>
+      <documentation xml:lang="nl">Biedt het online aanvraagformulier.</documentation>
+    </element>
+    <element identifier="el-frontoffice" xsi:type="ApplicationComponent">
+      <name xml:lang="nl">Cliëntenplanning</name>
+      <documentation xml:lang="nl">Beheer van aanmeldingen, wachtlijsten en beddencapaciteit.</documentation>
+    </element>
+    <element identifier="el-ecd" xsi:type="ApplicationComponent">
+      <name xml:lang="nl">Elektronisch cliëntendossier</name>
+      <documentation xml:lang="nl">Administratie en dossiervoering voor de verzorging van cliënten.</documentation>
+    </element>
+    <element identifier="el-crm" xsi:type="ApplicationComponent">
+      <name xml:lang="nl">CRM</name>
+      <documentation xml:lang="nl">Relatiebeheer.</documentation>
+    </element>
+    <element identifier="el-bus" xsi:type="ApplicationComponent">
+      <name xml:lang="nl">Integratieplatform</name>
+      <documentation xml:lang="nl">Platform voor de configuratie en uitvoering van integraties.</documentation>
+    </element>
+    <element identifier="el-cov" xsi:type="ApplicationComponent">
+      <name xml:lang="nl">COV</name>
+      <documentation xml:lang="nl">Register van verzekerden en hun verzekeringsrecht.</documentation>
+    </element>
+    <element identifier="el-zorgkantoor" xsi:type="ApplicationComponent">
+      <name xml:lang="nl">Zorgkantoorsysteem</name>
+      <documentation xml:lang="nl">Verantwoordelijk voor de registratie van een zorgtoewijzing en de wijzigingen daarop.</documentation>
+    </element>
+    <element identifier="el-zd" xsi:type="ApplicationComponent">
+      <name xml:lang="nl">Zorgdomein</name>
+      <documentation xml:lang="nl">Aanvraag vanuit een zorgverlener.</documentation>
+    </element>
+    <element identifier="el-loc-amersfoort" xsi:type="Location">
+      <name xml:lang="nl">Datacenter Amersfoort</name>
+      <documentation xml:lang="nl">Primaire locatie, eigen datacenter.</documentation>
+    </element>
+    <element identifier="el-loc-apeldoorn" xsi:type="Location">
+      <name xml:lang="nl">Datacenter Apeldoorn</name>
+      <documentation xml:lang="nl">Uitwijklocatie op 40 km afstand, eigen datacenter.</documentation>
+    </element>
+    <element identifier="el-node-openstack" xsi:type="Node">
+      <name xml:lang="nl">OpenStack private cloud</name>
+      <documentation xml:lang="nl">IaaS-laag in eigen beheer.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">OpenStack 2024.1 (Caracal)</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-node-control" xsi:type="Node">
+      <name xml:lang="nl">Control plane</name>
+      <documentation xml:lang="nl">Identiteit, netwerken, images en scheduling; in HA over drie nodes.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">srv-ctrl-01 t/m srv-ctrl-03</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Ubuntu 24.04 LTS</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-ss-openstack" xsi:type="SystemSoftware">
+      <name xml:lang="nl">Keystone / Neutron / Glance / Horizon</name>
+      <documentation xml:lang="nl">OpenStack-besturing.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">OpenStack 2024.1</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-node-compute" xsi:type="Node">
+      <name xml:lang="nl">Compute</name>
+      <documentation xml:lang="nl">Draagt alle virtuele machines.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">srv-comp-01 t/m srv-comp-08</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Ubuntu 24.04 LTS + KVM</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-ss-nova" xsi:type="SystemSoftware">
+      <name xml:lang="nl">Nova compute (KVM/libvirt)</name>
+      <documentation xml:lang="nl">Hypervisorlaag.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">QEMU/KVM</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-zone-dmz" xsi:type="Node">
+      <name xml:lang="nl">DMZ</name>
+      <documentation xml:lang="nl">Van buiten bereikbare zone.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-netwerk">
+          <value xml:lang="nl">Neutron provider network</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-zone-app" xsi:type="Node">
+      <name xml:lang="nl">Applicatiezone</name>
+      <documentation xml:lang="nl">Interne zone, niet van buiten bereikbaar.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-netwerk">
+          <value xml:lang="nl">Neutron tenant network</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-zone-data" xsi:type="Node">
+      <name xml:lang="nl">Datazone</name>
+      <documentation xml:lang="nl">Afgeschermde zone voor persistente opslag.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-netwerk">
+          <value xml:lang="nl">Neutron tenant network, geen egress</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-zone-beheer" xsi:type="Node">
+      <name xml:lang="nl">Beheerzone</name>
+      <documentation xml:lang="nl">Monitoring, logging en configuratiebeheer.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-netwerk">
+          <value xml:lang="nl">Neutron tenant network</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-ss-haproxy" xsi:type="SystemSoftware">
+      <name xml:lang="nl">HAProxy + Keepalived</name>
+      <documentation xml:lang="nl">TLS-terminatie en verdeling over de webservers.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">srv-lb-01 / srv-lb-02</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Ubuntu 24.04 LTS</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-vm-web" xsi:type="Node">
+      <name xml:lang="nl">vm-web-01 / vm-web-02</name>
+      <documentation xml:lang="nl">Webservers achter de load balancer.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">vm-web-01, vm-web-02</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Nova-instance, Ubuntu 24.04 LTS + nginx</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-vm-planning" xsi:type="Node">
+      <name xml:lang="nl">vm-planning-01 / vm-planning-02</name>
+      <documentation xml:lang="nl">Draagt de Cliëntenplanning.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">vm-planning-01, vm-planning-02</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Nova-instance, Ubuntu 24.04 LTS</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-vm-ecd" xsi:type="Node">
+      <name xml:lang="nl">vm-ecd-01 / vm-ecd-02</name>
+      <documentation xml:lang="nl">Draagt het elektronisch cliëntendossier.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">vm-ecd-01, vm-ecd-02</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Nova-instance, Ubuntu 24.04 LTS</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-vm-crm" xsi:type="Node">
+      <name xml:lang="nl">vm-crm-01</name>
+      <documentation xml:lang="nl">Draagt het relatiebeheer.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">vm-crm-01</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Nova-instance, Ubuntu 24.04 LTS</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-vm-bus" xsi:type="Node">
+      <name xml:lang="nl">vm-bus-01 t/m vm-bus-03</name>
+      <documentation xml:lang="nl">Integratieplatform, berichtenverwerking.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">vm-bus-01, vm-bus-02, vm-bus-03</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Nova-instance, Ubuntu 24.04 LTS + Apache Kafka + Apache Camel</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-vm-idp" xsi:type="Node">
+      <name xml:lang="nl">vm-idp-01 / vm-idp-02</name>
+      <documentation xml:lang="nl">Authenticatie en autorisatie voor medewerkers.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">vm-idp-01, vm-idp-02</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Nova-instance, Ubuntu 24.04 LTS</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-ss-keycloak" xsi:type="SystemSoftware">
+      <name xml:lang="nl">Keycloak</name>
+      <documentation xml:lang="nl">Identity provider, OIDC/SAML.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Keycloak 26</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-ss-postgres" xsi:type="SystemSoftware">
+      <name xml:lang="nl">PostgreSQL-cluster</name>
+      <documentation xml:lang="nl">Eén primary en twee synchrone replica's, automatische failover via Patroni en etcd.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">srv-pg-01 t/m srv-pg-03</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Ubuntu 24.04 LTS, PostgreSQL 16 + Patroni</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-ss-backup" xsi:type="SystemSoftware">
+      <name xml:lang="nl">Back-up</name>
+      <documentation xml:lang="nl">Continue WAL-archivering en dagelijkse volledige back-up.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">srv-bck-01</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">pgBackRest</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-ss-monitoring" xsi:type="SystemSoftware">
+      <name xml:lang="nl">Prometheus / Grafana / Loki</name>
+      <documentation xml:lang="nl">Metrieken, dashboards en logs.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">vm-mon-01</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Ubuntu 24.04 LTS</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-ss-ceph" xsi:type="SystemSoftware">
+      <name xml:lang="nl">Ceph-opslagcluster</name>
+      <documentation xml:lang="nl">Blokopslag voor de Nova-instances en objectopslag voor documenten.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">srv-ceph-01 t/m srv-ceph-05</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Ubuntu 24.04 LTS, Ceph Reef</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-node-egress" xsi:type="Node">
+      <name xml:lang="nl">Egress-firewall</name>
+      <documentation xml:lang="nl">Enige uitgaande route naar VECOZO en Zorgdomein, met mTLS.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">srv-fw-01 / srv-fw-02</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">nftables + Suricata</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-ss-postgres-dr" xsi:type="SystemSoftware">
+      <name xml:lang="nl">PostgreSQL-standby</name>
+      <documentation xml:lang="nl">Asynchrone streaming replica, handmatige promotie bij uitwijk.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">srv-pg-dr-01</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Ubuntu 24.04 LTS, PostgreSQL 16</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="el-ss-ceph-dr" xsi:type="SystemSoftware">
+      <name xml:lang="nl">Ceph-spiegel</name>
+      <documentation xml:lang="nl">RBD-mirroring van de primaire opslag.</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-servers">
+          <value xml:lang="nl">srv-ceph-dr-01 t/m srv-ceph-dr-03</value>
+        </property>
+        <property propertyDefinitionRef="pd-tech">
+          <value xml:lang="nl">Ceph Reef</value>
+        </property>
+      </properties>
+    </element>
+  </elements>
+  <relationships>
+    <relationship identifier="rel-001" source="el-grp-cr" target="el-csb" xsi:type="Aggregation"/>
+    <relationship identifier="rel-002" source="el-grp-cr" target="el-zorgbemiddelaar" xsi:type="Aggregation"/>
+    <relationship identifier="rel-003" source="el-grp-cr" target="el-za" xsi:type="Aggregation"/>
+    <relationship identifier="rel-004" source="el-grp-cr" target="el-website" xsi:type="Aggregation"/>
+    <relationship identifier="rel-005" source="el-grp-cr" target="el-frontoffice" xsi:type="Aggregation"/>
+    <relationship identifier="rel-006" source="el-grp-cr" target="el-ecd" xsi:type="Aggregation"/>
+    <relationship identifier="rel-007" source="el-grp-cr" target="el-crm" xsi:type="Aggregation"/>
+    <relationship identifier="rel-008" source="el-grp-cr" target="el-bus" xsi:type="Aggregation"/>
+    <relationship identifier="rel-009" source="el-grp-vecozo" target="el-cov" xsi:type="Aggregation"/>
+    <relationship identifier="rel-010" source="el-grp-vecozo" target="el-zorgkantoor" xsi:type="Aggregation"/>
+    <relationship identifier="rel-011" source="el-aanvrager" target="el-csb" xsi:type="Triggering">
+      <name xml:lang="nl">Meld cliënt aan voor verpleeghuiszorg via e-mail</name>
+    </relationship>
+    <relationship identifier="rel-012" source="el-aanvrager" target="el-website" xsi:type="Triggering">
+      <name xml:lang="nl">Meld cliënt aan voor verpleeghuiszorg</name>
+    </relationship>
+    <relationship identifier="rel-013" source="el-aanvrager" target="el-zd" xsi:type="Triggering">
+      <name xml:lang="nl">Meld cliënt aan voor verpleeghuiszorg</name>
+    </relationship>
+    <relationship identifier="rel-014" source="el-csb" target="el-frontoffice" xsi:type="Triggering">
+      <name xml:lang="nl">Ontvang, verifieer en registreer aanmelding</name>
+    </relationship>
+    <relationship identifier="rel-015" source="el-zorgbemiddelaar" target="el-frontoffice" xsi:type="Triggering">
+      <name xml:lang="nl">Toets en match de zorgvraag met het aanbod</name>
+    </relationship>
+    <relationship identifier="rel-016" source="el-za" target="el-ecd" xsi:type="Triggering">
+      <name xml:lang="nl">Meld aanvang/beëindiging zorg</name>
+    </relationship>
+    <relationship identifier="rel-017" source="el-website" target="el-bus" xsi:type="Flow">
+      <name xml:lang="nl">Publiceer aanmelding</name>
+    </relationship>
+    <relationship identifier="rel-018" source="el-bus" target="el-frontoffice" xsi:type="Flow">
+      <name xml:lang="nl">Registreer aanmelding</name>
+    </relationship>
+    <relationship identifier="rel-019" source="el-frontoffice" target="el-bus" xsi:type="Flow">
+      <name xml:lang="nl">Publiceer cliëntgegevens</name>
+    </relationship>
+    <relationship identifier="rel-020" source="el-bus" target="el-ecd" xsi:type="Flow">
+      <name xml:lang="nl">Registreer cliëntgegevens</name>
+    </relationship>
+    <relationship identifier="rel-021" source="el-ecd" target="el-cov" xsi:type="Flow">
+      <name xml:lang="nl">Controleer verzekeringsrecht</name>
+    </relationship>
+    <relationship identifier="rel-022" source="el-zd" target="el-ecd" xsi:type="Flow">
+      <name xml:lang="nl">Registreer aanmelding</name>
+    </relationship>
+    <relationship identifier="rel-023" source="el-ecd" target="el-zorgkantoor" xsi:type="Flow">
+      <name xml:lang="nl">Meld aanvang (AW35) of beëindiging (AW39) zorg</name>
+    </relationship>
+    <relationship identifier="rel-024" source="el-zorgkantoor" target="el-ecd" xsi:type="Flow">
+      <name xml:lang="nl">Verstrek zorgtoewijzing (AW33)</name>
+    </relationship>
+    <relationship identifier="rel-025" source="el-ecd" target="el-bus" xsi:type="Flow">
+      <name xml:lang="nl">Publiceer debiteurgegevens</name>
+    </relationship>
+    <relationship identifier="rel-026" source="el-bus" target="el-crm" xsi:type="Flow">
+      <name xml:lang="nl">Registreer debiteurgegevens</name>
+    </relationship>
+    <relationship identifier="rel-027" source="el-loc-amersfoort" target="el-node-openstack" xsi:type="Aggregation"/>
+    <relationship identifier="rel-028" source="el-loc-amersfoort" target="el-ss-ceph" xsi:type="Aggregation"/>
+    <relationship identifier="rel-029" source="el-loc-amersfoort" target="el-node-egress" xsi:type="Aggregation"/>
+    <relationship identifier="rel-030" source="el-loc-apeldoorn" target="el-ss-postgres-dr" xsi:type="Aggregation"/>
+    <relationship identifier="rel-031" source="el-loc-apeldoorn" target="el-ss-ceph-dr" xsi:type="Aggregation"/>
+    <relationship identifier="rel-032" source="el-node-openstack" target="el-node-control" xsi:type="Composition"/>
+    <relationship identifier="rel-033" source="el-node-openstack" target="el-node-compute" xsi:type="Composition"/>
+    <relationship identifier="rel-034" source="el-node-openstack" target="el-zone-dmz" xsi:type="Composition"/>
+    <relationship identifier="rel-035" source="el-node-openstack" target="el-zone-app" xsi:type="Composition"/>
+    <relationship identifier="rel-036" source="el-node-openstack" target="el-zone-data" xsi:type="Composition"/>
+    <relationship identifier="rel-037" source="el-node-openstack" target="el-zone-beheer" xsi:type="Composition"/>
+    <relationship identifier="rel-038" source="el-node-control" target="el-ss-openstack" xsi:type="Composition"/>
+    <relationship identifier="rel-039" source="el-node-compute" target="el-ss-nova" xsi:type="Composition"/>
+    <relationship identifier="rel-040" source="el-zone-dmz" target="el-ss-haproxy" xsi:type="Composition"/>
+    <relationship identifier="rel-041" source="el-zone-dmz" target="el-vm-web" xsi:type="Composition"/>
+    <relationship identifier="rel-042" source="el-zone-app" target="el-vm-planning" xsi:type="Composition"/>
+    <relationship identifier="rel-043" source="el-zone-app" target="el-vm-ecd" xsi:type="Composition"/>
+    <relationship identifier="rel-044" source="el-zone-app" target="el-vm-crm" xsi:type="Composition"/>
+    <relationship identifier="rel-045" source="el-zone-app" target="el-vm-bus" xsi:type="Composition"/>
+    <relationship identifier="rel-046" source="el-zone-app" target="el-vm-idp" xsi:type="Composition"/>
+    <relationship identifier="rel-047" source="el-vm-idp" target="el-ss-keycloak" xsi:type="Composition"/>
+    <relationship identifier="rel-048" source="el-zone-data" target="el-ss-postgres" xsi:type="Composition"/>
+    <relationship identifier="rel-049" source="el-zone-data" target="el-ss-backup" xsi:type="Composition"/>
+    <relationship identifier="rel-050" source="el-zone-beheer" target="el-ss-monitoring" xsi:type="Composition"/>
+    <relationship identifier="rel-051" source="el-vm-web" target="el-website" xsi:type="Assignment"/>
+    <relationship identifier="rel-052" source="el-vm-planning" target="el-frontoffice" xsi:type="Assignment"/>
+    <relationship identifier="rel-053" source="el-vm-ecd" target="el-ecd" xsi:type="Assignment"/>
+    <relationship identifier="rel-054" source="el-vm-crm" target="el-crm" xsi:type="Assignment"/>
+    <relationship identifier="rel-055" source="el-vm-bus" target="el-bus" xsi:type="Assignment"/>
+    <relationship identifier="rel-056" source="el-ss-haproxy" target="el-website" xsi:type="Serving">
+      <name xml:lang="nl">Verdeelt HTTPS-verkeer over</name>
+    </relationship>
+    <relationship identifier="rel-057" source="el-ss-postgres" target="el-frontoffice" xsi:type="Serving">
+      <name xml:lang="nl">Leest en schrijft (JDBC, poort 5432)</name>
+    </relationship>
+    <relationship identifier="rel-058" source="el-ss-postgres" target="el-ecd" xsi:type="Serving">
+      <name xml:lang="nl">Leest en schrijft (JDBC, poort 5432)</name>
+    </relationship>
+    <relationship identifier="rel-059" source="el-ss-postgres" target="el-crm" xsi:type="Serving">
+      <name xml:lang="nl">Leest en schrijft (JDBC, poort 5432)</name>
+    </relationship>
+    <relationship identifier="rel-060" source="el-ss-postgres" target="el-bus" xsi:type="Serving">
+      <name xml:lang="nl">Leest en schrijft (JDBC, poort 5432)</name>
+    </relationship>
+    <relationship identifier="rel-061" source="el-node-egress" target="el-ecd" xsi:type="Serving">
+      <name xml:lang="nl">Koppelt uit naar VECOZO en Zorgdomein (mTLS)</name>
+    </relationship>
+    <relationship identifier="rel-062" source="el-ss-postgres" target="el-ss-backup" xsi:type="Flow">
+      <name xml:lang="nl">Archiveert WAL en back-ups naar</name>
+    </relationship>
+    <relationship identifier="rel-063" source="el-ss-postgres" target="el-ss-postgres-dr" xsi:type="Flow">
+      <name xml:lang="nl">Repliceert naar (PostgreSQL streaming replication)</name>
+    </relationship>
+    <relationship identifier="rel-064" source="el-ss-ceph" target="el-ss-ceph-dr" xsi:type="Flow">
+      <name xml:lang="nl">Spiegelt naar (Ceph RBD mirroring)</name>
+    </relationship>
+  </relationships>
+  <organizations>
+    <item>
+      <label xml:lang="nl">Business</label>
+      <item identifierRef="el-aanvrager"/>
+      <item identifierRef="el-csb"/>
+      <item identifierRef="el-zorgbemiddelaar"/>
+      <item identifierRef="el-za"/>
+      <item identifierRef="el-grp-cr"/>
+      <item identifierRef="el-grp-vecozo"/>
+    </item>
+    <item>
+      <label xml:lang="nl">Application</label>
+      <item identifierRef="el-website"/>
+      <item identifierRef="el-frontoffice"/>
+      <item identifierRef="el-ecd"/>
+      <item identifierRef="el-crm"/>
+      <item identifierRef="el-bus"/>
+      <item identifierRef="el-cov"/>
+      <item identifierRef="el-zorgkantoor"/>
+      <item identifierRef="el-zd"/>
+    </item>
+    <item>
+      <label xml:lang="nl">Technology &amp; Physical</label>
+      <item identifierRef="el-loc-amersfoort"/>
+      <item identifierRef="el-loc-apeldoorn"/>
+      <item identifierRef="el-node-openstack"/>
+      <item identifierRef="el-node-control"/>
+      <item identifierRef="el-ss-openstack"/>
+      <item identifierRef="el-node-compute"/>
+      <item identifierRef="el-ss-nova"/>
+      <item identifierRef="el-zone-dmz"/>
+      <item identifierRef="el-zone-app"/>
+      <item identifierRef="el-zone-data"/>
+      <item identifierRef="el-zone-beheer"/>
+      <item identifierRef="el-ss-haproxy"/>
+      <item identifierRef="el-vm-web"/>
+      <item identifierRef="el-vm-planning"/>
+      <item identifierRef="el-vm-ecd"/>
+      <item identifierRef="el-vm-crm"/>
+      <item identifierRef="el-vm-bus"/>
+      <item identifierRef="el-vm-idp"/>
+      <item identifierRef="el-ss-keycloak"/>
+      <item identifierRef="el-ss-postgres"/>
+      <item identifierRef="el-ss-backup"/>
+      <item identifierRef="el-ss-monitoring"/>
+      <item identifierRef="el-ss-ceph"/>
+      <item identifierRef="el-node-egress"/>
+      <item identifierRef="el-ss-postgres-dr"/>
+      <item identifierRef="el-ss-ceph-dr"/>
+    </item>
+    <item>
+      <label xml:lang="nl">Relations</label>
+      <item identifierRef="rel-001"/>
+      <item identifierRef="rel-002"/>
+      <item identifierRef="rel-003"/>
+      <item identifierRef="rel-004"/>
+      <item identifierRef="rel-005"/>
+      <item identifierRef="rel-006"/>
+      <item identifierRef="rel-007"/>
+      <item identifierRef="rel-008"/>
+      <item identifierRef="rel-009"/>
+      <item identifierRef="rel-010"/>
+      <item identifierRef="rel-011"/>
+      <item identifierRef="rel-012"/>
+      <item identifierRef="rel-013"/>
+      <item identifierRef="rel-014"/>
+      <item identifierRef="rel-015"/>
+      <item identifierRef="rel-016"/>
+      <item identifierRef="rel-017"/>
+      <item identifierRef="rel-018"/>
+      <item identifierRef="rel-019"/>
+      <item identifierRef="rel-020"/>
+      <item identifierRef="rel-021"/>
+      <item identifierRef="rel-022"/>
+      <item identifierRef="rel-023"/>
+      <item identifierRef="rel-024"/>
+      <item identifierRef="rel-025"/>
+      <item identifierRef="rel-026"/>
+      <item identifierRef="rel-027"/>
+      <item identifierRef="rel-028"/>
+      <item identifierRef="rel-029"/>
+      <item identifierRef="rel-030"/>
+      <item identifierRef="rel-031"/>
+      <item identifierRef="rel-032"/>
+      <item identifierRef="rel-033"/>
+      <item identifierRef="rel-034"/>
+      <item identifierRef="rel-035"/>
+      <item identifierRef="rel-036"/>
+      <item identifierRef="rel-037"/>
+      <item identifierRef="rel-038"/>
+      <item identifierRef="rel-039"/>
+      <item identifierRef="rel-040"/>
+      <item identifierRef="rel-041"/>
+      <item identifierRef="rel-042"/>
+      <item identifierRef="rel-043"/>
+      <item identifierRef="rel-044"/>
+      <item identifierRef="rel-045"/>
+      <item identifierRef="rel-046"/>
+      <item identifierRef="rel-047"/>
+      <item identifierRef="rel-048"/>
+      <item identifierRef="rel-049"/>
+      <item identifierRef="rel-050"/>
+      <item identifierRef="rel-051"/>
+      <item identifierRef="rel-052"/>
+      <item identifierRef="rel-053"/>
+      <item identifierRef="rel-054"/>
+      <item identifierRef="rel-055"/>
+      <item identifierRef="rel-056"/>
+      <item identifierRef="rel-057"/>
+      <item identifierRef="rel-058"/>
+      <item identifierRef="rel-059"/>
+      <item identifierRef="rel-060"/>
+      <item identifierRef="rel-061"/>
+      <item identifierRef="rel-062"/>
+      <item identifierRef="rel-063"/>
+      <item identifierRef="rel-064"/>
+    </item>
+    <item>
+      <label xml:lang="nl">Views</label>
+      <item identifierRef="view-landschap"/>
+      <item identifierRef="view-uc01"/>
+      <item identifierRef="view-deployment"/>
+    </item>
+  </organizations>
+  <propertyDefinitions>
+    <propertyDefinition identifier="pd-servers" type="string">
+      <name xml:lang="nl">servers</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-tech" type="string">
+      <name xml:lang="nl">technologie</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-netwerk" type="string">
+      <name xml:lang="nl">netwerkzone</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-bron" type="string">
+      <name xml:lang="nl">bron in C4-model</name>
+    </propertyDefinition>
+  </propertyDefinitions>
+  <views>
+    <diagrams>
+      <view identifier="view-landschap" xsi:type="Diagram">
+        <name xml:lang="nl">Landschap Cliëntenregistratie</name>
+        <documentation xml:lang="nl">ArchiMate-variant van de systemLandscape-view uit langdurigezorg.dsl. C4-groups zijn Grouping-elementen, softwareSystems zijn ApplicationComponents, persons zijn een BusinessActor en drie BusinessRoles.</documentation>
+        <node identifier="node-001" elementRef="el-aanvrager" xsi:type="Element" x="40" y="40" w="200" h="60"/>
+        <node identifier="node-002" elementRef="el-zd" xsi:type="Element" x="1000" y="40" w="200" h="60"/>
+        <node identifier="node-003" elementRef="el-grp-cr" xsi:type="Element" x="40" y="150" w="880" h="420">
+          <node identifier="node-004" elementRef="el-csb" xsi:type="Element" x="25" y="55" w="200" h="60"/>
+          <node identifier="node-005" elementRef="el-zorgbemiddelaar" xsi:type="Element" x="245" y="55" w="200" h="60"/>
+          <node identifier="node-006" elementRef="el-za" xsi:type="Element" x="465" y="55" w="200" h="60"/>
+          <node identifier="node-007" elementRef="el-website" xsi:type="Element" x="25" y="165" w="200" h="60"/>
+          <node identifier="node-008" elementRef="el-frontoffice" xsi:type="Element" x="245" y="165" w="200" h="60"/>
+          <node identifier="node-009" elementRef="el-ecd" xsi:type="Element" x="465" y="165" w="200" h="60"/>
+          <node identifier="node-010" elementRef="el-crm" xsi:type="Element" x="685" y="165" w="170" h="60"/>
+          <node identifier="node-011" elementRef="el-bus" xsi:type="Element" x="25" y="300" w="830" h="60"/>
+        </node>
+        <node identifier="node-012" elementRef="el-grp-vecozo" xsi:type="Element" x="1000" y="150" w="240" h="220">
+          <node identifier="node-013" elementRef="el-cov" xsi:type="Element" x="20" y="55" w="200" h="60"/>
+          <node identifier="node-014" elementRef="el-zorgkantoor" xsi:type="Element" x="20" y="135" w="200" h="60"/>
+        </node>
+        <connection identifier="conn-015" relationshipRef="rel-011" source="node-001" target="node-004" xsi:type="Relationship"/>
+        <connection identifier="conn-016" relationshipRef="rel-012" source="node-001" target="node-007" xsi:type="Relationship"/>
+        <connection identifier="conn-017" relationshipRef="rel-013" source="node-001" target="node-002" xsi:type="Relationship"/>
+        <connection identifier="conn-018" relationshipRef="rel-014" source="node-004" target="node-008" xsi:type="Relationship"/>
+        <connection identifier="conn-019" relationshipRef="rel-015" source="node-005" target="node-008" xsi:type="Relationship"/>
+        <connection identifier="conn-020" relationshipRef="rel-016" source="node-006" target="node-009" xsi:type="Relationship"/>
+        <connection identifier="conn-021" relationshipRef="rel-017" source="node-007" target="node-011" xsi:type="Relationship"/>
+        <connection identifier="conn-022" relationshipRef="rel-018" source="node-011" target="node-008" xsi:type="Relationship"/>
+        <connection identifier="conn-023" relationshipRef="rel-019" source="node-008" target="node-011" xsi:type="Relationship"/>
+        <connection identifier="conn-024" relationshipRef="rel-020" source="node-011" target="node-009" xsi:type="Relationship"/>
+        <connection identifier="conn-025" relationshipRef="rel-021" source="node-009" target="node-013" xsi:type="Relationship"/>
+        <connection identifier="conn-026" relationshipRef="rel-022" source="node-002" target="node-009" xsi:type="Relationship"/>
+        <connection identifier="conn-027" relationshipRef="rel-023" source="node-009" target="node-014" xsi:type="Relationship"/>
+        <connection identifier="conn-028" relationshipRef="rel-024" source="node-014" target="node-009" xsi:type="Relationship"/>
+        <connection identifier="conn-029" relationshipRef="rel-025" source="node-009" target="node-011" xsi:type="Relationship"/>
+        <connection identifier="conn-030" relationshipRef="rel-026" source="node-011" target="node-010" xsi:type="Relationship"/>
+      </view>
+      <view identifier="view-uc01" xsi:type="Diagram">
+        <name xml:lang="nl">UC-01 Cliënt aanmelden — sequentie</name>
+        <documentation xml:lang="nl">ArchiMate-variant van de dynamic view 'UC01-Client-aanmelden'. ArchiMate kent geen genummerde interacties; de volgorde is daarom vastgelegd in Label-elementen bij elke relatie. De view spiegelt de drie interacties die op dit moment in de DSL staan.</documentation>
+        <node identifier="node-031" elementRef="el-aanvrager" xsi:type="Element" x="40" y="120" w="200" h="60"/>
+        <node identifier="node-032" elementRef="el-website" xsi:type="Element" x="340" y="120" w="200" h="60"/>
+        <node identifier="node-033" elementRef="el-bus" xsi:type="Element" x="640" y="120" w="200" h="60"/>
+        <node identifier="node-034" elementRef="el-frontoffice" xsi:type="Element" x="940" y="120" w="200" h="60"/>
+        <node identifier="node-035" xsi:type="Label" x="265" y="75" w="50" h="34">
+          <label xml:lang="nl">1</label>
+        </node>
+        <node identifier="node-036" xsi:type="Label" x="565" y="75" w="50" h="34">
+          <label xml:lang="nl">2</label>
+        </node>
+        <node identifier="node-037" xsi:type="Label" x="865" y="75" w="50" h="34">
+          <label xml:lang="nl">3</label>
+        </node>
+        <node identifier="node-038" xsi:type="Label" x="40" y="240" w="1100" h="90">
+          <label xml:lang="nl">Volgorde van de interacties, conform het hoofdscenario van UC-01: 1 Meldt de cliënt aan via het online formulier — 2 Publiceert de aanmelding — 3 Registreert de aanmelding. De e-mailroute en de route via Zorgdomein zijn alternatieve scenario's en krijgen een eigen view.</label>
+        </node>
+        <connection identifier="conn-039" relationshipRef="rel-012" source="node-031" target="node-032" xsi:type="Relationship"/>
+        <connection identifier="conn-040" relationshipRef="rel-017" source="node-032" target="node-033" xsi:type="Relationship"/>
+        <connection identifier="conn-041" relationshipRef="rel-018" source="node-033" target="node-034" xsi:type="Relationship"/>
+      </view>
+      <view identifier="view-deployment" xsi:type="Diagram">
+        <name xml:lang="nl">Deployment productie — on-premise OpenStack</name>
+        <documentation xml:lang="nl">ArchiMate-variant van de deployment-view 'Deployment-Productie'. deploymentNodes zijn Nodes, infrastructureNodes zijn SystemSoftware of Node, datacenters zijn Locations en softwareSystemInstances zijn Assignment-relaties van Node naar ApplicationComponent. De servernamen staan als property 'servers' op de betreffende Node.</documentation>
+        <node identifier="node-042" elementRef="el-loc-amersfoort" xsi:type="Element" x="40" y="40" w="1180" h="800">
+          <node identifier="node-043" elementRef="el-node-openstack" xsi:type="Element" x="20" y="60" w="900" h="660">
+            <node identifier="node-044" elementRef="el-node-control" xsi:type="Element" x="20" y="50" w="270" h="120">
+              <node identifier="node-045" elementRef="el-ss-openstack" xsi:type="Element" x="15" y="50" w="240" h="55"/>
+            </node>
+            <node identifier="node-046" elementRef="el-node-compute" xsi:type="Element" x="310" y="50" w="270" h="120">
+              <node identifier="node-047" elementRef="el-ss-nova" xsi:type="Element" x="15" y="50" w="240" h="55"/>
+            </node>
+            <node identifier="node-048" elementRef="el-zone-beheer" xsi:type="Element" x="600" y="50" w="270" h="120">
+              <node identifier="node-049" elementRef="el-ss-monitoring" xsi:type="Element" x="15" y="50" w="240" h="55"/>
+            </node>
+            <node identifier="node-050" elementRef="el-zone-dmz" xsi:type="Element" x="20" y="190" w="420" h="150">
+              <node identifier="node-051" elementRef="el-ss-haproxy" xsi:type="Element" x="15" y="55" w="180" h="60"/>
+              <node identifier="node-052" elementRef="el-vm-web" xsi:type="Element" x="215" y="45" w="190" h="90">
+                <node identifier="node-053" elementRef="el-website" xsi:type="Element" x="12" y="32" w="166" h="48"/>
+              </node>
+            </node>
+            <node identifier="node-054" elementRef="el-zone-data" xsi:type="Element" x="460" y="190" w="410" h="150">
+              <node identifier="node-055" elementRef="el-ss-postgres" xsi:type="Element" x="15" y="55" w="190" h="60"/>
+              <node identifier="node-056" elementRef="el-ss-backup" xsi:type="Element" x="220" y="55" w="175" h="60"/>
+            </node>
+            <node identifier="node-057" elementRef="el-zone-app" xsi:type="Element" x="20" y="360" w="850" h="270">
+              <node identifier="node-058" elementRef="el-vm-planning" xsi:type="Element" x="15" y="50" w="195" h="90">
+                <node identifier="node-059" elementRef="el-frontoffice" xsi:type="Element" x="12" y="32" w="171" h="48"/>
+              </node>
+              <node identifier="node-060" elementRef="el-vm-ecd" xsi:type="Element" x="225" y="50" w="195" h="90">
+                <node identifier="node-061" elementRef="el-ecd" xsi:type="Element" x="12" y="32" w="171" h="48"/>
+              </node>
+              <node identifier="node-062" elementRef="el-vm-crm" xsi:type="Element" x="435" y="50" w="195" h="90">
+                <node identifier="node-063" elementRef="el-crm" xsi:type="Element" x="12" y="32" w="171" h="48"/>
+              </node>
+              <node identifier="node-064" elementRef="el-vm-bus" xsi:type="Element" x="645" y="50" w="190" h="90">
+                <node identifier="node-065" elementRef="el-bus" xsi:type="Element" x="12" y="32" w="166" h="48"/>
+              </node>
+              <node identifier="node-066" elementRef="el-vm-idp" xsi:type="Element" x="15" y="160" w="270" h="90">
+                <node identifier="node-067" elementRef="el-ss-keycloak" xsi:type="Element" x="12" y="32" w="246" h="48"/>
+              </node>
+            </node>
+          </node>
+          <node identifier="node-068" elementRef="el-ss-ceph" xsi:type="Element" x="950" y="100" w="200" h="70"/>
+          <node identifier="node-069" elementRef="el-node-egress" xsi:type="Element" x="950" y="210" w="200" h="70"/>
+        </node>
+        <node identifier="node-070" elementRef="el-loc-apeldoorn" xsi:type="Element" x="40" y="880" w="460" h="200">
+          <node identifier="node-071" elementRef="el-ss-postgres-dr" xsi:type="Element" x="20" y="60" w="200" h="70"/>
+          <node identifier="node-072" elementRef="el-ss-ceph-dr" xsi:type="Element" x="240" y="60" w="200" h="70"/>
+        </node>
+        <connection identifier="conn-073" relationshipRef="rel-056" source="node-051" target="node-053" xsi:type="Relationship"/>
+        <connection identifier="conn-074" relationshipRef="rel-057" source="node-055" target="node-059" xsi:type="Relationship"/>
+        <connection identifier="conn-075" relationshipRef="rel-058" source="node-055" target="node-061" xsi:type="Relationship"/>
+        <connection identifier="conn-076" relationshipRef="rel-059" source="node-055" target="node-063" xsi:type="Relationship"/>
+        <connection identifier="conn-077" relationshipRef="rel-060" source="node-055" target="node-065" xsi:type="Relationship"/>
+        <connection identifier="conn-078" relationshipRef="rel-061" source="node-069" target="node-061" xsi:type="Relationship"/>
+        <connection identifier="conn-079" relationshipRef="rel-062" source="node-055" target="node-056" xsi:type="Relationship"/>
+        <connection identifier="conn-080" relationshipRef="rel-063" source="node-055" target="node-071" xsi:type="Relationship"/>
+        <connection identifier="conn-081" relationshipRef="rel-064" source="node-068" target="node-072" xsi:type="Relationship"/>
+      </view>
+    </diagrams>
+  </views>
+</model>

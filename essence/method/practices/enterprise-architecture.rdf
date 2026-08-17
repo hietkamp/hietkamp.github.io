@@ -48,4 +48,495 @@
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>
 
+  <!-- ==================================================================
+       ACTIVITEIT — Envision
+       ================================================================== -->
+
+<ess:Activity rdf:about="activity/enterprise-envision">
+    <ess:name xml:lang="nl">Beschrijf de architectuurvisie</ess:name>
+    <ess:briefDescription xml:lang="nl">Formuleert de architectuurvisie: een compact, gemotiveerd beeld van de gewenste richting dat alle latere architectuurkeuzes stuurt.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Deze activiteit is de agile invulling van TOGAF's Architecture Vision-fase (Phase A). In plaats van een uitgebreid visiedocument levert ze, samen met de opdrachtgever en de belangrijkste stakeholders, een compacte, gemotiveerde visie op: doel, scope, principes en uitsluitingscriteria, vastgesteld vóórdat belangrijke ontwerpkeuzes vastlopen in impliciete aannames. De onderliggende motivatie wordt daarbij expliciet gemaakt langs de lijn van de ArchiMate-motivatielaag: drivers en stakeholderbelangen worden vertaald naar doelen en principes, zodat elke latere architectuurbeslissing herleidbaar blijft tot de reden waarom de verandering nodig is. Diezelfde sessie levert ook het migratiescenario op strategisch niveau op: de scope, het globale tijdpad en de bedrijfsdoelen van de beweging naar de gewenste situatie, bedoeld om bestuur en management te informeren.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:approach rdf:resource="approach/enterprise-envision/default"/>
+    <ess:action rdf:resource="action/enterprise-envision/create/architectuurvisie"/>
+    <ess:action rdf:resource="action/enterprise-envision/create/migratiescenario"/>
+    <ess:action rdf:resource="action/enterprise-envision/read/architectuuropdracht"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/enterprise-envision/entry/opportunity"/>
+    <ess:criterion rdf:resource="criterion/enterprise-envision/entry/stakeholders"/>
+    <ess:criterion rdf:resource="criterion/enterprise-envision/completion/opportunity"/>
+    <ess:criterion rdf:resource="criterion/enterprise-envision/completion/stakeholders"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/enterprise-envision/default">
+    <ess:name xml:lang="nl">Beschrijf de architectuurvisie</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>De aanpak volgt TOGAF's Architecture Vision-fase, maar dan in de lichtgewicht, iteratieve vorm die de agile toepassing van TOGAF voorschrijft: in plaats van een uitputtend visiedocument dat pas na weken wordt vastgesteld, wordt de visie opgehaald en vastgesteld in één of enkele kort getimede sessies met de opdrachtgever en een kleine kern van kritieke stakeholders. Uitgangspunt is de architectuuropdracht: daaruit wordt gehaald wat de aanleiding is, wie de belanghebbenden zijn, en welke driver de verandering rechtvaardigt — bijvoorbeeld een strategische keuze, een compliance-eis of een gesignaleerd probleem.</p>
+<p>Die drivers worden vervolgens vertaald naar een klein aantal doelen en leidende principes, in de geest van de ArchiMate-motivatielaag: niet als volledig uitgewerkt motivatiemodel, maar als het minimum dat nodig is om koers te bepalen. Doel, scope en principes blijven daarbij bewust beknopt. Wat een goede visie vooral onderscheidt, is echter wat er bewust buiten die scope wordt gehouden: expliciete uitsluitingscriteria die latere scope creep net zo goed voorkomen als wat wél wordt vastgelegd.</p>
+<p>De visie wordt getoetst bij de stakeholders die er het meest bij te winnen of te verliezen hebben, niet bij iedereen die ooit invloed zou kunnen hebben. Dat is dezelfde selectiviteit die agile TOGAF-toepassingen kenmerkt. Zodra die toetsing is doorlopen, stelt de opdrachtgever de visie formeel vast; vanaf dat moment is ze het kompas voor alle activiteiten en architectuurkeuzes die daarna volgen. Bij diezelfde vaststelling wordt ook het migratiescenario op strategisch niveau geschetst: scope, globale doorlooptijd en bedrijfsdoelen, als eerste kader voor de latere, meer gedetailleerde uitwerking bij Bestuur de architectuurverandering en de solution-specifieke ontwerpactiviteiten.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/enterprise-envision/create/architectuurvisie">
+    <ess:name xml:lang="nl">Maak architectuurvisie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurvisie"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-envision/create/migratiescenario">
+    <ess:name xml:lang="nl">Maak migratiescenario (strategisch niveau)</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/migratiescenario"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-envision/read/architectuuropdracht">
+    <ess:name xml:lang="nl">Lees architectuuropdracht</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architectuuropdracht"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/enterprise-envision/part-of/explore-possibilities">
+    <ess:name>Beschrijf de architectuurvisie part-of Explore Possibilities</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/enterprise-envision"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#ExplorePossibilities"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/enterprise-envision/entry/opportunity">
+    <ess:name>Entry: Opportunity</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_SolutionNeeded"/>
+  </ess:EntryCriterion>
+
+  <ess:EntryCriterion rdf:about="criterion/enterprise-envision/entry/stakeholders">
+    <ess:name>Entry: Stakeholder</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Recognized"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-envision/completion/opportunity">
+    <ess:name>Completion: Opportunity</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-envision/completion/stakeholders">
+    <ess:name>Entry: Stakeholder</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Recognized"/>
+  </ess:CompletionCriterion>
+
+  <!-- ==================================================================
+       ACTIVITEIT — Build paved road
+       ================================================================== -->
+
+<ess:Activity rdf:about="activity/enterprise-build-paved-road">
+    <ess:name xml:lang="nl">Beschrijf de gebaande weg</ess:name>
+    <ess:briefDescription xml:lang="nl">Werkt de architectuurvisie uit tot basis- en doelarchitectuur en vertaalt de doelarchitectuur naar een catalogus van goedgekeurde standaardsoftware-componenten, integratiepatronen en referentie-instellingen — de conforme keuze als de makkelijkste keuze.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Deze activiteit is de agile invulling van TOGAF's Business-, Information Systems- en Technology Architecture-fasen (Phase B, C en D). In plaats van drie uitputtende architectuurdocumenten werkt ze iteratief, gericht op wat daadwerkelijk verandert, en levert ze een gap-analyse tussen basis- en doelarchitectuur op die direct doorwerkt in een concrete, bruikbare paved road.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:approach rdf:resource="approach/enterprise-build-paved-road/default"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/read/architectuurvisie"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/create/architectuurbeslissingen"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/create/architectuurmodel"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/create/paved-road"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/entry/opportunity"/>
+    <ess:criterion rdf:resource="criterion/enterprise-envision/entry/stakeholders"/>
+    <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/completion/opportunity"/>
+    <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/completion/stakeholders"/>
+    <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/completion/paved-road"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/enterprise-build-paved-road/default">
+    <ess:name xml:lang="nl">Beschrijf de gebaande weg</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>De aanpak volgt TOGAF's Phase B, C en D, maar dan in de lichtgewicht, iteratieve vorm die de agile toepassing van TOGAF voorschrijft. In plaats van drie afzonderlijke, volledig uitgewerkte architectuurdocumenten wordt in doorlopende cycli gewerkt, telkens gericht op het deel van de business-, informatiesystemen- of technologiearchitectuur dat door de architectuurvisie daadwerkelijk wordt geraakt. Uitgangspunt is steeds de vastgestelde visie: daarbinnen worden de sturende eisen geïdentificeerd, zoals kwaliteitsattributen, beperkingen en bedrijfsdoelen. Net als op solution-niveau geldt hierbij het onderscheid tussen de significante weinige en de triviale velen, met een meetbaar succescriterium per significante eis.</p>
+<p>Net als bij de agile toepassing van TOGAF wordt de bestaande situatie niet uitputtend gedocumenteerd, maar alleen voor zover nodig om een zinvolle gap-analyse te kunnen doen: welke major systems, integratiepatronen en leverancierscategorieën zijn nu in gebruik, en welke enterprise-brede bouwstenen zijn nodig om de sturende eisen te realiseren? De gap daartussen maakt zichtbaar welke veranderingen nodig zijn. Onomkeerbare keuzes daarin worden vastgelegd als architectuurbeslissingen, in dezelfde vorm en met dezelfde supersessie-discipline als op solution-niveau.</p>
+<p>Waar TOGAF de fasen B tot en met D typisch afsluit met documentatie, gaat deze aanpak een stap verder. Vanuit de doelarchitectuur wordt afgeleid welke keuzes zich lenen voor vooraf goedkeuring, en die keuzes worden direct samengebracht in een eerste, beperkte paved road: zelfbedienbaar en versiegebonden gepubliceerd, klein begonnen en gegroeid vanuit gebruik in plaats van vanuit volledigheid. De adoptie wordt gemeten, en signalen over structurele uitzonderingen voeden de volgende iteratie.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/enterprise-build-paved-road/read/architectuurvisie">
+    <ess:name xml:lang="nl">Lees architectuurvisie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurvisie"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-build-paved-road/create/architectuurbeslissingen">
+    <ess:name xml:lang="nl">Maak architectuurbeslissingen</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeslissingen"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-build-paved-road/create/architectuurmodel">
+    <ess:name xml:lang="nl">Maak architectuurmodel</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurmodel"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-build-paved-road/create/paved-road">
+    <ess:name xml:lang="nl">Maak paved road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/paved-road"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/enterprise-build-paved-road/part-of/understand-stakeholder-needs">
+    <ess:name>Beschrijf de gebaande weg part-of Understand Stakeholder Needs</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/enterprise-build-paved-road"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#UnderstandStakeholderNeeds"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/enterprise-build-paved-road/entry/opportunity">
+    <ess:name>Entry: Opportunity</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_ValueEstablished"/>
+  </ess:EntryCriterion>
+
+  <ess:EntryCriterion rdf:about="criterion/enterprise-envision/entry/stakeholders">
+    <ess:name>Entry: Stakeholder</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_Recognized"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-build-paved-road/completion/opportunity">
+    <ess:name>Completion: Opportunity</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-build-paved-road/completion/stakeholders">
+    <ess:name>Completion: Stakeholder</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-build-paved-road/completion/paved-road">
+    <ess:name>Completion: Paved Road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/paved-road/established"/>
+  </ess:CompletionCriterion>
+
+  <!-- ==================================================================
+       ACTIVITEIT — Govern change
+       ================================================================== -->
+
+<ess:Activity rdf:about="activity/enterprise-govern-change">
+    <ess:name xml:lang="nl">Bestuur de architectuurverandering</ess:name>
+    <ess:briefDescription xml:lang="nl">Werkt het migratiescenario uit tot tactisch niveau: ordent de implementatiestappen van basis- naar doelarchitectuur in horizons, en legt daarmee het enterprise-brede kader vast waarbinnen een startend traject zelf zijn high-level design maakt.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Deze activiteit is de agile invulling van TOGAF's Opportunities & Solutions- en Migration Planning-fasen (Phase E en F): in plaats van één uitgewerkt implementatie- en migratieplan wordt de gap-analyse uit Beschrijf de gebaande weg iteratief omgezet in het migratiescenario, hier uitgewerkt tot tactisch niveau — een enterprise-brede reeks horizons die de volgorde van migratie tussen systemen en onderdelen vastlegt. Er wordt bewust geen aparte projectstartarchitectuur opgeleverd: een startend traject vertaalt de relevante horizon en de geldende paved-road-keuzes zelf naar zijn high-level design, op dezelfde manier als elk ander traject dat doet.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:approach rdf:resource="approach/enterprise-govern-change/default"/>
+    <ess:action rdf:resource="action/enterprise-govern-change/read/architectuurbeslissingen"/>
+    <ess:action rdf:resource="action/enterprise-govern-change/read/architectuurmodel"/>
+    <ess:action rdf:resource="action/enterprise-govern-change/create/migratiescenario"/>
+    <ess:action rdf:resource="action/enterprise-govern-change/read/paved-road"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/enterprise-govern-change/entry/opportunity"/>
+    <ess:criterion rdf:resource="criterion/enterprise-govern-change/entry/stakeholders"/>
+    <ess:criterion rdf:resource="criterion/enterprise-govern-change/entry/paved-road"/>
+    <ess:criterion rdf:resource="criterion/enterprise-govern-change/completion/opportunity"/>
+    <ess:criterion rdf:resource="criterion/enterprise-govern-change/completion/stakeholders"/>
+    <ess:criterion rdf:resource="criterion/enterprise-govern-change/completion/paved-road"/>   
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/enterprise-govern-change/default">
+    <ess:name xml:lang="nl">Bestuur de architectuurverandering</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>De aanpak volgt TOGAF's Phase E en F, maar dan in de lichtgewicht, iteratieve vorm die de agile toepassing van TOGAF voorschrijft: in plaats van één big-bang transformatieplan wordt de gap-analyse uit Beschrijf de gebaande weg opgeknipt in horizons — opeenvolgende stappen die stap voor stap dichter bij de doelarchitectuur komen. Alleen de eerstvolgende horizon wordt gedetailleerd uitgewerkt; latere horizons blijven bewust globaal, omdat ze toch worden bijgesteld zodra er meer bekend is. Elke horizon krijgt een expliciete onomkeerbare grens: welke keuze kan na deze horizon niet meer worden teruggedraaid? Het geheel wordt vastgelegd in het migratiescenario, hier op tactisch niveau: het enterprise-brede kader van horizons waarbinnen de solution-specifieke migratiescenario's van individuele trajecten opereren.</p>
+<p>TOGAF is weinig expliciet over hoe de architect het team dat een horizon gaat uitvoeren op weg helpt; dat gat wordt hier bewust niet gedicht met een aparte projectstartarchitectuur. In plaats daarvan geldt hetzelfde patroon als bij elk ander traject: het startende team leest het migratiescenario en de paved road, en vertaalt daaruit zelf de toepasselijke horizon en geldende standaardkeuzes naar zijn eigen high-level design. Zo blijft er één plek waar een traject zijn oplossingsrichting vastlegt, in plaats van twee overlappende documenten.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/enterprise-govern-change/read/architectuurbeslissingen">
+    <ess:name xml:lang="nl">Lees architectuurbeslissingen</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeslissingen"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-govern-change/create/migratiescenario">
+    <ess:name xml:lang="nl">Maak migratiescenario (tactisch niveau)</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/migratiescenario"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/enterprise-govern-change/read/paved-road">
+    <ess:name xml:lang="nl">Lees paved road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/paved-road"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/enterprise-govern-change/part-of/support-the-team">
+    <ess:name>Bestuur de architectuurverandering part-of Support The Team</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/enterprise-govern-change"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#SupporttheTeam"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/enterprise-govern-change/entry/opportunity">
+    <ess:name>Completion: Opportunity</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Viable"/>
+  </ess:EntryCriterion>
+
+  <ess:EntryCriterion rdf:about="criterion/enterprise-govern-change/entry/stakeholders">
+    <ess:name>Completion: Stakeholder</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_InAgreement"/>
+  </ess:EntryCriterion>
+
+  <ess:EntryCriterion rdf:about="criterion/enterprise-govern-change/entry/paved-road">
+    <ess:name>Completion: Paved Road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/paved-road/established"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-govern-change/completion/opportunity">
+    <ess:name>Completion: Requirements</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Addressed"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-govern-change/completion/stakeholders">
+    <ess:name>Entry: Stakeholder</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Stakeholders_SatisfiedforDeployment"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/enterprise-govern-change/completion/paved-road">
+    <ess:name>Completion: Paved Road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/paved-road/adopted"/>
+  </ess:CompletionCriterion>
+
+  <!-- ==================================================================
+       WERKPRODUCT — Architectuurvisie
+       ================================================================== -->
+
+<ess:WorkProduct rdf:about="workproduct/architectuurvisie">
+    <ess:name xml:lang="nl">Architectuurvisie</ess:name>
+    <ess:briefDescription xml:lang="nl">De architectuurvisie is het compacte, gemotiveerde beeld van de gewenste richting — doel, scope en principes — dat wordt vastgesteld voordat er architectuurkeuzes worden gemaakt.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De architectuurvisie is het compacte, gemotiveerde beeld van de gewenste richting — doel, scope en principes — dat wordt vastgesteld vóórdat er architectuurkeuzes worden gemaakt. Ze is het startpunt van elke architectuurinspanning: het eerste document dat richting geeft, nog voordat er één bouwsteen is uitgewerkt.</p>
+<p>De architectuurvisie ontstaat bij Beschrijf de architectuurvisie en wordt daar, na toetsing bij de belangrijkste stakeholders, formeel vastgesteld door de opdrachtgever. Vanaf dat moment is ze het kompas voor alle architectuurkeuzes die volgen: Bouw de paved road leest de visie als het uitgangspunt voor de paved road, zodat latere ontwerpkeuzes herleidbaar blijven tot dezelfde onderliggende richting.</p>
+<p>De architectuurvisie bevat in gewone taal de beoogde waarde voor afnemers en organisatie, de scope van het initiatief inclusief expliciete uitsluitingen, de belangrijkste drivers met meetbare criteria, en de principes en uitsluitingscriteria waarmee latere opties worden gekozen of afgewezen.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:ownedElements rdf:resource="resource/architectuurvisie/template"/>
+  </ess:WorkProduct>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/architectuurvisie/opportunity">
+    <ess:workProduct rdf:resource="workproduct/architectuurvisie"/>
+    <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:WorkProductManifest>
+
+  <ess:TypedResource rdf:about="resource/architectuurvisie/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/architectuurvisie.docx</ess:content>
+  </ess:TypedResource>
+
+  <!-- ==================================================================
+       WERKPRODUCT — Paved road
+       ================================================================== -->
+
+<ess:WorkProduct rdf:about="workproduct/paved-road">
+    <ess:name xml:lang="nl">Paved road</ess:name>
+    <ess:briefDescription xml:lang="nl">De paved road is de vooraf goedgekeurde catalogus van producten, patronen en instellingen waarmee teams zelfstandig en zonder review kunnen bouwen, met een expliciete route voor wie ervan afwijkt.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De paved road is geen beleidsdocument maar een gestructureerd aanbod van vooraf goedgekeurde keuzes per architectuurlaag — producten, patronen, protocollen en referentie-instellingen — met bijbehorende ondersteuning en een expliciete off-road-procedure voor wie ervan afwijkt. On-road betekent: geen review nodig, gewoon gebruiken; off-road betekent: een architectuurbeslissing is verplicht vóór gebruik.</p>
+<p>Enterprise architectuur bouwt en onderhoudt de paved road, afgeleid van de architectuurvisie en het geldende beleid. Vrijwel elke andere activiteit in deze werkwijze leest hem vervolgens: Bestuur levering scant binnenkomende beslissingen tegen de paved road om te bepalen of ze ongehinderd door kunnen, en de solution-architectuuractiviteiten gebruiken hem als het zelfbedienbare fundament waarop het high-level en low-level design voortbouwen zonder dat elke keuze opnieuw hoeft te worden verantwoord.</p>
+<p>Per catalogusitem legt de paved road vast: het goedgekeurde product, patroon of protocol; de status ervan — bijvoorbeeld seeded, published, curated, adopted, pervasive of evolving; de voorwaarden waaronder het geldt, inclusief beperkingen en de uitzonderingsroute; en de rol of groep die het onderhoudt. De rationale achter een item staat niet in de paved road zelf maar in de bijbehorende architectuurbeslissing, en de feitelijke toetsing ervan in reviewresultaten.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:ownedElements rdf:resource="resource/paved-road/template"/>
+  </ess:WorkProduct>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/paved-road/paved-road">
+    <ess:workProduct rdf:resource="workproduct/paved-road"/>
+    <ess:alpha rdf:resource="alpha/paved-road"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:WorkProductManifest>
+
+  <ess:TypedResource rdf:about="resource/paved-road/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/paved-road.docx</ess:content>
+  </ess:TypedResource>
+
+  <!-- ==================================================================
+       ALPHA — Paved road
+       ================================================================== -->
+
+<ess:Alpha rdf:about="alpha/paved-road">
+    <ess:name xml:lang="nl">Paved road</ess:name>
+    <ess:briefDescription xml:lang="nl">De catalogus van goedgekeurde standaardsoftware-componenten, integratiepatronen en referentie-instellingen die teams mogen toepassen zonder voorafgaande beoordeling — de conforme keuze is de gemakkelijkste keuze.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>De paved road is het technische tegenwicht van de architectuurprincipes: waar principes begrenzen wat een team <em>niet</em> mag doen, is de paved road wat Enterprise architectuur teams <em>wel</em> aanreikt om te gebruiken. Deze alpha volgt hoe volwassen die catalogus is, van een eerste kiem tot een levende, zelf-onderhoudende standaard.</p>
+<p>Het Architectuurforum geeft bij Richt governance in opdracht aan Enterprise architectuur om de paved road te ontwikkelen en te onderhouden, afgeleid van beleid en de architectuurvisie op ondernemingsniveau. Teams die binnen de paved road blijven, hoeven niet langs een gate voor architectuurgoedkeuring; alleen afwijkingen (off-road) worden expliciet beoordeeld door Architectuursturing.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/enterprise-architecture"/>
+    <ess:states rdf:resource="state/paved-road/established"/>
+    <ess:states rdf:resource="state/paved-road/adopted"/>
+    <ess:states rdf:resource="state/paved-road/evolving"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CustomerAreaOfConcern"/>
+  </ess:Alpha>
+
+  <ess:State rdf:about="state/paved-road/established">
+    <ess:name xml:lang="nl">Vastgesteld</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/paved-road/established/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/paved-road/established/2"/>
+    <ess:successor rdf:resource="state/paved-road/adopted"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/paved-road/established/1">
+    <ess:name xml:lang="nl">Een coherent service-chassis van goedgekeurde producten en…</ess:name>
+    <ess:description xml:lang="nl">Een coherent service-chassis van goedgekeurde producten, patronen en standaarden is gepubliceerd.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/paved-road/established/2">
+    <ess:name xml:lang="nl">De goedgekeurde route is zelfbedienbaar.</ess:name>
+    <ess:description xml:lang="nl">De goedgekeurde route is zelfbedienbaar.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:State rdf:about="state/paved-road/adopted">
+    <ess:name xml:lang="nl">Toegepast</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/paved-road/adopted/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/paved-road/adopted/2"/>
+    <ess:successor rdf:resource="state/paved-road/evolving"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/paved-road/adopted/1">
+    <ess:name xml:lang="nl">Teams bouwen standaard op de goedgekeurde route.</ess:name>
+    <ess:description xml:lang="nl">Teams bouwen standaard op de goedgekeurde route.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/paved-road/adopted/2">
+    <ess:name xml:lang="nl">On-road keuzes hoeven niet te worden beoordeeld.</ess:name>
+    <ess:description xml:lang="nl">On-road keuzes hoeven niet te worden beoordeeld.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:State rdf:about="state/paved-road/evolving">
+    <ess:name xml:lang="nl">Evoluerend</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/paved-road/evolving/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/paved-road/evolving/2"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/paved-road/evolving/1">
+    <ess:name xml:lang="nl">De goedgekeurde route wordt continu verbreed en gesnoeid.</ess:name>
+    <ess:description xml:lang="nl">De goedgekeurde route wordt continu verbreed en gesnoeid.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/paved-road/evolving/2">
+    <ess:name xml:lang="nl">Lessen uit beoordelingen worden er in teruggevoerd.</ess:name>
+    <ess:description xml:lang="nl">Lessen uit beoordelingen worden er in teruggevoerd.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <!-- ==================================================================
+       ROL — Enterprise architect
+       ================================================================== -->
+
+<ess:TypedPattern rdf:about="role/enterprise-architect">
+    <ess:kind rdf:resource="type/role"/>
+    <ess:name xml:lang="nl">Enterprise architect</ess:name>
+    <ess:briefDescription xml:lang="nl">De Enterprise architect is verantwoordelijk voor architecturaal ontwerp en documentatie op het niveau van het volledige architectuurlandschap en technical reference model, niet van één specifieke solution — eerder een stadsplanner dan de architect van één gebouw.</ess:briefDescription>
+    <ess:description xml:lang="nl">De Enterprise architect is verantwoordelijk voor de volledigheid en samenhang van de architectuur op het niveau van het hele architectuurlandschap, niet van één specifieke solution. TOGAF vergelijkt de rol met een stadsplanner eerder dan een architect van één gebouw: het resultaat is een geplande gemeenschap, geen op zichzelf staand gebouw. De Enterprise architect bedenkt niet zelf de technische visie, maar onderhoudt de relatie met de executives van de organisatie om die visie op te halen en te verwoorden, en vertaalt haar naar een strategisch plan dat herleidbaar blijft naar de businessplannen en verankerd is in de architectuursturing, zodat ontwerpbeslissingen niet omwille van tactisch gemak worden omzeild. In deze werkwijze leidt de Enterprise architect zo het enterprise-spoor: stelt enterprise-brede sturende eisen vast, maakt de gewenste richting zichtbaar, definieert de reference architecture en bouwt de goedgekeurde paved road waarlangs solutions kunnen worden gerealiseerd — vergelijkbaar met hoe TOGAF's Enterprise Architect de documentatie en onderbouwing van high-level ontwerpbeslissingen oplevert die Solution Architects vervolgens uitvoeren. Werkt daarvoor samen met de CIO, business-owners en het Architectuurforum; de uitkomsten vormen de kaders en context die elke solution als uitgangspunt erft.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/enterprise-architect/requires-competency/analysis"/>
+    <ess:associations rdf:resource="pattern-association/enterprise-architect/requires-competency/development"/>
+    <ess:associations rdf:resource="pattern-association/enterprise-architect/requires-competency/leadership"/>
+    <ess:associations rdf:resource="pattern-association/enterprise-architect/participates-in"/>
+    <ess:associations rdf:resource="pattern-association/enterprise-architect/responsible-for"/>
+  </ess:TypedPattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/requires-competency/analysis">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Analysis"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/requires-competency/development">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Development"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/requires-competency/leadership">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Leadership"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Applies"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/participates-in">
+    <ess:name xml:lang="nl">neemt deel aan</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/enterprise-envision"/>
+    <ess:elements rdf:resource="activity/enterprise-build-paved-road"/>
+    <ess:elements rdf:resource="activity/enterprise-govern-change"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/enterprise-architect/responsible-for">
+    <ess:name xml:lang="nl">verantwoordelijk voor</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="workproduct/architectuurvisie"/>
+    <ess:elements rdf:resource="workproduct/paved-road"/>
+    <ess:elements rdf:resource="workproduct/migratiescenario"/>
+    <ess:elements rdf:resource="workproduct/architectuurmodel"/>
+    <ess:elements rdf:resource="workproduct/architectuurbeslissingen"/>
+  </ess:PatternAssociation>
+
 </rdf:RDF>

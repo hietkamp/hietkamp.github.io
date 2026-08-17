@@ -74,4 +74,735 @@
     <ess:associationKind rdf:datatype="http://www.w3.org/2001/XMLSchema#string">end-before-start</ess:associationKind>
   </ess:ActivityAssociation>
 
+  <!-- ==================================================================
+       ACTIVITEIT — Richt governance in
+       ================================================================== -->
+
+<ess:Activity rdf:about="activity/governance-establish-governance">
+    <ess:name xml:lang="nl">Richt governance in</ess:name>
+    <ess:briefDescription xml:lang="nl">Legt eenmalig het fundament van de architectuursturing: mandaat en beslissingsbevoegdheid, een beperkte set principes als guardrails, een architectuurrepository en een vaste vergadercadans voor het Architectuurforum.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Deze activiteit is de agile invulling van TOGAF's Preliminary Phase: voordat de architectuurcyclus zelf kan draaien, wordt eerst het besturingsvermogen ingericht. Ze richt het Architectuurforum en zijn mandaat in, stelt een beperkte set architectuurprincipes vast als guardrails, geeft de architectuurrepository een vaste plek en legt de opdracht aan Enterprise architectuur voor visie en paved road vast, samen met de objectives waaraan de governance zichzelf later toetst.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <ess:approach rdf:resource="approach/governance-establish-governance/default"/>
+    <ess:action rdf:resource="action/governance-establish-governance/create/architectuurprincipes"/>
+    <ess:action rdf:resource="action/governance-establish-governance/create/architectuurrepository"/>
+    <ess:action rdf:resource="action/governance-establish-governance/create/architectuur-werkafspraken"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/governance-establish-governance/entry/opportunity"/>
+    <ess:criterion rdf:resource="criterion/governance-establish-governance/completion/governance"/>
+    <ess:criterion rdf:resource="criterion/governance-establish-governance/completion/way-of-working"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/governance-establish-governance/default">
+    <ess:name xml:lang="nl">Richt governance in</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>De aanpak volgt TOGAF's Preliminary Phase: voordat de architectuurcyclus zelf kan draaien, wordt eerst het besturingsvermogen ingericht. Samen met de Architectuursponsor en het Architectuurforum wordt de escalatiegrens bepaald: welke beslissingen een team zelfstandig mag nemen en welke naar het forum moeten. Op dat mandaat wordt vervolgens een beperkte set architectuurprincipes geformuleerd — TOGAF spreekt hier van architecture principles die sturing geven zonder elke keuze voor te schrijven; in deze werkwijze fungeren ze bewust als guardrails, vangrails die de richting aangeven in plaats van uitputtende standaarden. Elk kandidaat-principe wordt getoetst op de vraag of het een team helpt een betere beslissing te nemen; principes die dat niet doen, worden geschrapt.</p>
+<p>De architectuurrepository krijgt hier zijn plek als het enige autoritatieve thuis voor principes, beslissingen, modellen en later bewijs — inclusief de plek waar Enterprise architectuur straks de architectuurvisie en de paved road publiceert. Beslissingsbevoegdheden, escalatiepaden en de manier van werken worden kort en operationeel vastgelegd in de werkafspraken voor architectuur, samen met de objectives waaraan de governance zichzelf later laat toetsen: bijvoorbeeld dat conforme beslissingen geen vertraging ondervinden en dat escalaties binnen een vaste termijn worden afgehandeld. Zonder die objectives vooraf heeft een latere toetsing niets om tegen te vergelijken. Het Architectuurforum wordt hier ook expliciet eigenaar gemaakt van de architectuur-werkwijze zelf, zodat wijzigingen daarin later via hetzelfde mandaat verlopen als een gewijzigd principe.</p>
+<p>Tot slot bevestigt deze activiteit de opdracht van de Architectuursponsor aan Enterprise architectuur: de architectuurvisie die richting geeft, en de paved road die deze richting dagelijks bruikbaar maakt voor teams. En het forum krijgt zijn ritme: een vaste, vooraf gepubliceerde vergadercadans met een lichte manier om onderwerpen aan te melden, gekoppeld aan de gates uit de Project levenscyclus zodat de cadans die formele beslismomenten bedient in plaats van vervangt.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/governance-establish-governance/create/architectuurprincipes">
+    <ess:name xml:lang="nl">Maak architectuurprincipes</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurprincipes"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-establish-governance/create/architectuurrepository">
+    <ess:name xml:lang="nl">Maak architectuurrepository</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurrepository"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-establish-governance/create/architectuur-werkafspraken">
+    <ess:name xml:lang="nl">Maak architectuur werkafspraken</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architectuur-werkafspraken"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/governance-establish-governance/part-of/prepare-to-do-the-work">
+    <ess:name>Establish Governance part-of Prepare To Do The Work</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-establish-governance"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#PreparetodotheWork"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/governance-establish-governance/entry/opportunity">
+    <ess:name>Entry: Opportunity</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Opportunity_Identified"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/governance-establish-governance/completion/governance">
+    <ess:name>Completion: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/engaged"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/governance-establish-governance/completion/way-of-working">
+    <ess:name>Completion: Way Of Working</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished"/>
+  </ess:CompletionCriterion>
+
+  <!-- ==================================================================
+       ACTIVITEIT — Bestuur levering
+       ================================================================== -->
+
+<ess:Activity rdf:about="activity/governance-govern-delivery">
+    <ess:name xml:lang="nl">Bestuur levering</ess:name>
+    <ess:briefDescription xml:lang="nl">Neemt nieuwe initiatieven formeel onder governance, laat beslissingen binnen de guardrails ongehinderd doorgaan en behandelt alleen uitzonderingen als een snelle, vastgelegde review — governance als dienst, niet als vertragend controlepunt.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Deze activiteit is de agile invulling van TOGAF's Implementation Governance-fase (Phase G): in plaats van vaste stage gates die elk project evenveel vertragen, stroomt wat binnen de paved road past ongehinderd door. Alleen wat daarvan afwijkt — in TOGAF-termen een dispensation — krijgt een snelle, vastgelegde review.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <ess:approach rdf:resource="approach/governance-govern-delivery/default"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/create/architectuuropdracht"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/read/paved-road"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/read/architectuurbeslissingen"/>
+    <ess:action rdf:resource="action/governance-govern-delivery/create/reviewresultaten"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/governance-govern-delivery/entry/governance"/>
+    <ess:criterion rdf:resource="criterion/governance-govern-delivery/completion/governance"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/governance-govern-delivery/default">
+    <ess:name xml:lang="nl">Bestuur levering</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>De aanpak volgt TOGAF's Phase G, maar in een lichtgewicht vorm: guardrails zijn zo ingericht dat de veilige weg vanzelf ook de makkelijke weg is. Waar klassieke implementation governance werkt met vaste goedkeuringsmomenten die elk project moet doorlopen, ongeacht hoe voorspelbaar het is, kijkt deze aanpak alleen naar uitzonderingen. Binnenkomende architectuurbeslissingen worden gescand op signalen die de guardrails raken — off-road, hoge impact, onomkeerbaar — en beslissingen zonder die signalen passeren ongezien. Bij de start van een nieuw initiatief worden wel altijd de scope en de toepasselijke principes vastgesteld en vastgelegd in een architectuuropdracht, en wordt bepaald hoe het initiatief aansluit bij de vergadercadans van het forum; dat is het moment waarop het initiatief formeel onder governance komt.</p>
+<p>Elke uitzondering die wél aandacht vraagt, doorloopt een compliance review tegen de architectuurprincipes en de vastgestelde koers, met een go/no-go binnen een vaste, korte termijn — onduidelijkheid over die termijn is zelf al een vorm van vertraging. Elke review wordt vastgelegd als review record: wat was de vraag, wie besliste, wat was de uitkomst en de onderbouwing, als geheugen waarop latere assurance en bijstelling steunen. Een team dat op een beslissing wacht krijgt voorrang — dat is de eerstvolgende review die wordt opgepakt, niet de laatste op de stapel — want governance die vertraagt zonder waarde toe te voegen ondermijnt zichzelf.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/governance-govern-delivery/create/architectuuropdracht">
+    <ess:name xml:lang="nl">Maak architectuuropdracht</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architectuuropdracht"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-govern-delivery/read/paved-road">
+    <ess:name xml:lang="nl">Lees paved road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/paved-road"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-govern-delivery/read/architectuurbeslissingen">
+    <ess:name xml:lang="nl">Lees architectuurbeslissingen</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeslissingen"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-govern-delivery/create/reviewresultaten">
+    <ess:name xml:lang="nl">Maak reviewresultaten</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/reviewresultaten"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/governance-govern-delivery/part-of/coordinate-activity">
+    <ess:name>Govern the Delivery part-of Coordinate Activity</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-govern-delivery"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/governance-govern-delivery/entry/governance">
+    <ess:name>Entry: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/engaged"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/governance-govern-delivery/completion/governance">
+    <ess:name>Completion: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/guiding"/>
+  </ess:CompletionCriterion>
+
+  <!-- ==================================================================
+       ACTIVITEIT — Toets werking governance
+       ================================================================== -->
+
+<ess:Activity rdf:about="activity/governance-validate">
+    <ess:name xml:lang="nl">Toets werking governance</ess:name>
+    <ess:briefDescription xml:lang="nl">Vergelijkt hoe de governance feitelijk werkt met de objectives die bij Richt governance in zijn vastgelegd — geen hertoetsing van architectuurproducten, maar de vraag of het sturingssysteem zelf doet wat het moest doen.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Deze activiteit toetst niet opnieuw de architectuurbeslissingen of de paved-road-conformance — dat gebeurt al bij Bestuur levering. Ze vergelijkt in plaats daarvan de opgetelde review records en het feitelijk paved-road-gebruik over een periode met de objectives die bij Richt governance in zijn afgesproken, en signaleert afwijkingen door naar Stel governance bij.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <ess:approach rdf:resource="approach/governance-validate/default"/>
+    <ess:action rdf:resource="action/governance-validate/read/architectuur-werkafspraken"/>
+    <ess:action rdf:resource="action/governance-validate/read/paved-road"/>
+    <ess:action rdf:resource="action/governance-validate/read/reviewresultaten"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/governance-validate/entry/governance"/>
+    <ess:criterion rdf:resource="criterion/governance-validate/entry/way-of-working"/>
+    <ess:criterion rdf:resource="criterion/governance-validate/completion/governance"/>
+    <ess:criterion rdf:resource="criterion/governance-validate/completion/way-of-working"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/governance-validate/default">
+    <ess:name xml:lang="nl">Toets werking governance</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>De aanpak begint bij de objectives die bij Richt governance in zijn vastgelegd in de werkafspraken: wat moest dit sturingssysteem opleveren? Vervolgens worden de al bestaande gegevens over de afgelopen periode verzameld: de review records uit Bestuur levering, met het aantal en de aard van de uitzonderingen en de doorlooptijd van escalaties, en het feitelijk gebruik van de paved road. Er worden bewust geen nieuwe metingen bedacht — de review is al gedaan, dit is geen tweede beoordelingsronde, maar, in TOGAF-termen, een periodieke compliance-assessment van de governance zelf.</p>
+<p>Die gegevens worden naast de objectives gelegd, niet naast de architectuur: worden escalaties binnen de afgesproken termijn afgehandeld, blijft het aantal actieve principes beperkt, ondervinden conforme beslissingen geen vertraging? Daarnaast wordt in diezelfde review records gezocht naar terugkerende frictie: welk principe wordt vaak omzeild, welke uitzondering komt telkens terug? De vergelijking levert geen eigen werkproduct op — reviewresultaten horen bij de solution, niet bij de governance zelf — maar wordt bewust als trend over tijd bekeken in plaats van als eenmalig oordeel. Patronen die erop wijzen dat de governance haar eigen objectives niet meer haalt of dat een principe structureel wringt — oplopende doorlooptijden, een groeiend aantal principes, een principe dat telkens wordt omzeild, structurele ontwijking van de paved road — worden expliciet doorgezet naar Stel governance bij.</p>
+<p>Dezelfde vergelijking geldt voor de werkwijze zelf: worden de activiteiten en werkproducten van deze practices daadwerkelijk gebruikt zoals bedoeld, of raken stappen structureel overgeslagen? Ook dat wordt expliciet gesignaleerd naar Stel governance bij — niet per se als teken van een falend team, maar mogelijk als teken dat de werkwijze zelf aan bijstelling toe is.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/governance-validate/read/architectuur-werkafspraken">
+    <ess:name xml:lang="nl">Lees architectuur werkafspraken</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/architectuur-werkafspraken"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-validate/read/paved-road">
+    <ess:name xml:lang="nl">Lees paved road</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/paved-road"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-validate/read/reviewresultaten">
+    <ess:name xml:lang="nl">Lees reviewresultaten</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
+    <ess:workProduct rdf:resource="workproduct/reviewresultaten"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/governance-validate/part-of/track-progress">
+    <ess:name>Assure by Evidence part-of Track Progress</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-validate"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#TrackProgress"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/governance-validate/entry/governance">
+    <ess:name>Entry: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/guiding"/>
+  </ess:EntryCriterion>
+
+  <ess:EntryCriterion rdf:about="criterion/governance-validate/entry/way-of-working">
+    <ess:name>Entry: Way Of Working</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_FoundationEstablished"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/governance-validate/completion/governance">
+    <ess:name>Completion: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/assured"/>
+  </ess:CompletionCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/governance-validate/completion/way-of-working">
+    <ess:name>Completion: Way Of Working</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#WayofWorking_WorkingWell"/>
+  </ess:CompletionCriterion>
+
+  <!-- ==================================================================
+       ACTIVITEIT — Stel governance bij
+       ================================================================== -->
+
+<ess:Activity rdf:about="activity/governance-tune-governance">
+    <ess:name xml:lang="nl">Stel governance bij</ess:name>
+    <ess:briefDescription xml:lang="nl">Herziet periodiek principes, werkafspraken en de werkwijze zelf op basis van bewijs en reviewpatronen, en verwijdert net zo actief guardrails of werkwijze-onderdelen die hun waarde hebben verloren.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Governance die nooit verandert, veroudert vanzelf. Deze activiteit sluit de sturingscyclus: ze gebruikt de patronen die Toets werking governance heeft gesignaleerd om de architectuurprincipes en de werkafspraken bij te stellen, en durft guardrails net zo hard weg te halen als toe te voegen.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <ess:approach rdf:resource="approach/governance-tune-governance/default"/>
+    <ess:action rdf:resource="action/governance-tune-governance/update/architectuurprincipes"/>
+    <ess:action rdf:resource="action/governance-tune-governance/update/architectuur-werkafspraken"/>
+    <ess:action rdf:resource="action/governance-tune-governance/create/architectuuropdracht"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
+    <ess:criterion rdf:resource="criterion/governance-tune-governance/entry/governance"/>
+    <ess:criterion rdf:resource="criterion/governance-tune-governance/completion/governance"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+  </ess:Activity>
+
+  <ess:Approach rdf:about="approach/governance-tune-governance/default">
+    <ess:name xml:lang="nl">Stel governance bij</ess:name>
+    <ess:briefDescription/>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>De aanpak vertrekt vanuit de patronen die Toets werking governance heeft gesignaleerd: welk principe wordt vaak omzeild, welke uitzondering komt telkens terug? De review records zelf worden hier niet opnieuw doorgenomen — dat is al gebeurd. Op basis van die signalen worden de architectuurprincipes en de werkafspraken bijgesteld, op dezelfde manier als eerder vastgelegde architectuurbeslissingen worden behandeld: via expliciete supersessie, waarbij een nieuwe versie de oude zichtbaar vervangt in plaats van dat de bestaande tekst stilzwijgend wordt aangepast.</p>
+<p>Wanneer een uitzondering structureel terugkeert, wordt dat gesignaleerd aan Enterprise architectuur: wat drie keer een uitzondering was, verdient overweging voor de standaardroute. Dat signaal krijgt waar nodig de vorm van een architectuuropdracht, zodat Enterprise architectuur een duidelijke, afgebakende opdracht heeft om de paved road op dat punt te herzien. De paved road zelf wordt door Enterprise architectuur beheerd en verbreed, niet door deze activiteit — hier wordt alleen de opdracht gegeven. Even belangrijk is het actief schrappen van guardrails die geen waarde meer toevoegen: bij elke herziening wordt niet alleen gevraagd wat erbij moet, maar ook wat eraf kan, want minimale sturing bouwt net zo hard af als op.</p>
+<p>Bijstellen reikt hier verder dan principes en werkafspraken: ook de werkwijze zelf — de activiteiten, werkproducten en volgorde van deze practices — hoort bij wat wordt herzien, telkens wanneer Toets werking governance daar aanleiding toe geeft. Activiteiten die stelselmatig worden overgeslagen of werkproducten die niemand raadpleegt, verdienen dezelfde kritische blik als een principe dat te vaak wordt omzeild. Het Architectuurforum blijft eigenaar van die werkwijze en autoriseert daarmee ook wijzigingen erin, net als bij een gewijzigd principe.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Approach>
+
+  <ess:Action rdf:about="action/governance-tune-governance/update/architectuurprincipes">
+    <ess:name xml:lang="nl">Werk architectuurprincipes bij</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurprincipes"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-tune-governance/update/architectuur-werkafspraken">
+    <ess:name xml:lang="nl">Werk architectuur werkafspraken bij</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
+    <ess:workProduct rdf:resource="workproduct/architectuur-werkafspraken"/>
+  </ess:Action>
+
+  <ess:Action rdf:about="action/governance-tune-governance/create/architectuuropdracht">
+    <ess:name xml:lang="nl">Maak architectuuropdracht</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
+    <ess:workProduct rdf:resource="workproduct/architectuuropdracht"/>
+  </ess:Action>
+
+  <ess:ActivityAssociation rdf:about="activity-association/governance-tune-governance/part-of/coordinate-activity">
+    <ess:name>Tune the Governance part-of Coordinate Activity</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:end1 rdf:resource="activity/governance-tune-governance"/>
+    <ess:end2 rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#CoordinateActivity"/>
+    <ess:associationKind>part-of</ess:associationKind>
+  </ess:ActivityAssociation>
+
+  <ess:EntryCriterion rdf:about="criterion/governance-tune-governance/entry/governance">
+    <ess:name>Entry: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/assured"/>
+  </ess:EntryCriterion>
+
+  <ess:CompletionCriterion rdf:about="criterion/governance-tune-governance/completion/governance">
+    <ess:name>Completion: Governance</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:state rdf:resource="state/governance/effective"/>
+  </ess:CompletionCriterion>
+
+  <!-- ==================================================================
+       WERKPRODUCT — Architectuurprincipes
+       ================================================================== -->
+
+<ess:WorkProduct rdf:about="workproduct/architectuurprincipes">
+    <ess:name xml:lang="nl">Architectuurprincipes</ess:name>
+    <ess:briefDescription xml:lang="nl">Een architectuurprincipe is een richtinggevende regel die aangeeft welke richting gewenst is, zonder elke situatie in detail voor te schrijven.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Architectuurprincipes zijn een beperkte, richtinggevende set regels die aangeven welke richting gewenst is, zonder elke situatie in detail voor te schrijven — guardrails in plaats van uitputtende standaarden. Ze worden bij Richt governance in voor het eerst vastgesteld en vormen vanaf dat moment de toetssteen waarmee het Architectuurforum beoordeelt of een architectuurbeslissing binnen de gestelde kaders past of als uitzondering moet worden behandeld.</p>
+<p>Bij Bestuur levering worden binnenkomende architectuurbeslissingen gescand op signalen die de principes raken; wat binnen de principes past stroomt ongehinderd door, wat ervan afwijkt krijgt een review. Principes zijn daarmee niet statisch: bij Stel governance bij worden ze periodiek herzien op basis van reviewpatronen — een principe dat vaak wordt omzeild, wordt aangescherpt of geschrapt — via expliciete supersessie, zodat een nieuwe versie de oude zichtbaar vervangt.</p>
+<p>Elk principe bestaat doorgaans uit een korte, eenduidige stelling, de onderliggende rationale en de implicaties voor ontwerp- en technologiekeuzes. Het aantal actieve principes blijft bewust beperkt — een richtlijn van vijf tot tien — zodat ze te onthouden, toe te passen en te handhaven blijven.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <!-- ess:levelOfDetail not defined -->
+    <!-- ess:icon not defined -->
+    <!-- ess:tags not defined -->
+    <!-- ess:resources not defined -->
+    <!-- ess:properties not defined -->
+    <!-- Application-specific -->
+    <ess:ownedElements rdf:resource="resource/architectuurprincipes/template"/>
+  </ess:WorkProduct>
+
+  <ess:TypedResource rdf:about="resource/architectuurprincipes/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/architectuurprincipes.docx</ess:content>
+  </ess:TypedResource>
+
+  <!-- ==================================================================
+       WERKPRODUCT — Architectuur-werkafspraken
+       ================================================================== -->
+
+<ess:WorkProduct rdf:about="workproduct/architectuur-werkafspraken">
+    <ess:name xml:lang="nl">Architectuur werkafspraken</ess:name>
+    <ess:briefDescription xml:lang="nl">De werkafspraken leggen vast wie welke architectuurbeslissing mag nemen, wat de escalatieroute is, en welk ritme de governance-interacties volgen.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De architectuur werkafspraken zijn een kort, operationeel document — geen beleidsstuk — dat vastlegt wie welke architectuurbeslissing mag nemen, op welk niveau, en wat de escalatieroute is wanneer een keuze buiten die bevoegdheid valt. Ze worden bij Richt governance in voor het eerst vastgesteld, samen met de objectives waaraan de governance zichzelf later laat toetsen.</p>
+<p>Toets werking governance gebruikt deze werkafspraken als de meetlat: worden de vastgelegde objectives daadwerkelijk gehaald? Blijken ze niet meer te kloppen met de praktijk, dan stelt Stel governance bij ze bij — via dezelfde expliciete supersessie als bij de architectuurprincipes, zodat wijzigingen zichtbaar en herleidbaar blijven.</p>
+<p>De werkafspraken bevatten in elk geval de escalatiegrens tussen wat een team zelfstandig mag beslissen en wat naar het Architectuurforum moet, de vaste vergadercadans van het forum met de lichte manier om onderwerpen aan te melden, en de objectives voor de governance zelf — bijvoorbeeld dat conforme beslissingen geen vertraging ondervinden en dat escalaties binnen een vaste termijn worden afgehandeld.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <!-- ess:levelOfDetail not defined -->
+    <!-- ess:icon not defined -->
+    <!-- ess:tags not defined -->
+    <!-- ess:resources not defined -->
+    <!-- ess:properties not defined -->
+    <!-- Application-specific -->
+    <ess:ownedElements rdf:resource="resource/architectuur-werkafspraken/template"/>
+  </ess:WorkProduct>
+
+  <ess:TypedResource rdf:about="resource/architectuur-werkafspraken/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/architectuur-werkafspraken.docx</ess:content>
+  </ess:TypedResource>
+
+  <!-- ==================================================================
+       WERKPRODUCT — Architectuurrepository
+       ================================================================== -->
+
+<ess:WorkProduct rdf:about="workproduct/architectuurrepository">
+    <ess:name xml:lang="nl">Architectuurrepository</ess:name>
+    <ess:briefDescription xml:lang="nl">De architectuurrepository is de ene, autoritatieve plek waar alle architectuurartefacten van de organisatie hun vaste plek hebben.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De architectuurrepository is de ene, autoritatieve plek waar alle architectuurartefacten van de organisatie hun vaste plek hebben, in plaats van verspreid over losse documenten en persoonlijke mappen. Eén bron van waarheid voorkomt dat teams met verouderde of onderling tegenstrijdige informatie werken.</p>
+<p>De repository wordt bij Richt governance in ingericht, als onderdeel van het fundament waarop de rest van de sturing steunt. Vanaf dat moment krijgen ook de architectuurvisie en de paved road, zodra Enterprise architectuur ze oplevert, hier hun gepubliceerde plek, naast de architectuurprincipes, architectuurbeslissingen en reviewresultaten die gedurende de levenscyclus ontstaan. Ook de componenten van het architectuurmodel — de bouwstenen, relaties en grenzen die het model op elk detailniveau vastlegt — worden in de architectuurrepository opgenomen, zodat de structurele opbouw van elke solution op dezelfde autoritatieve plek terug te vinden is als de rest van de architectuurartefacten.</p>
+<p>Inhoudelijk bevat de repository dus geen eigen, op zichzelf staande tekst, maar fungeert ze als het geordende geheel van de andere werkproducten uit deze werkwijze: principes, werkafspraken, beslissingen, modellen en bewijs, elk terug te vinden op de plek die bij het bijbehorende werkproduct hoort.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <!-- ess:levelOfDetail not defined -->
+    <!-- ess:icon not defined -->
+    <!-- ess:tags not defined -->
+    <!-- ess:resources not defined -->
+    <!-- ess:properties not defined -->
+    <!-- Application-specific -->
+    <!-- Geen sjabloon: de repository is een vindplaats, geen document. -->
+  </ess:WorkProduct>
+
+  <!-- ==================================================================
+       WERKPRODUCT — Architectuuropdracht
+       ================================================================== -->
+
+<ess:WorkProduct rdf:about="workproduct/architectuuropdracht">
+    <ess:name xml:lang="nl">Architectuuropdracht</ess:name>
+    <ess:briefDescription xml:lang="nl">De architectuuropdracht is de formele opdracht die scope, doelstelling en beslissingsbevoegdheden van een architectuurinspanning vastlegt, voordat het eigenlijke architectuurwerk begint.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>De architectuuropdracht is de formele opdracht die scope, doelstelling en beslissingsbevoegdheden van een architectuurinspanning vastlegt, vóórdat het eigenlijke architectuurwerk begint. Ze is het startpunt zowel voor een nieuwe architectuurvisie op enterprise-niveau als voor een high-level design op solution-niveau.</p>
+<p>De opdracht ontstaat op twee momenten. Bestuur levering geeft de opdracht wanneer een nieuw initiatief formeel onder governance komt: scope en toepasselijke principes worden dan voor het eerst vastgesteld. Stel governance bij geeft de opdracht wanneer een structureel terugkerende uitzondering aanleiding geeft om Enterprise architectuur een gerichte opdracht te geven, bijvoorbeeld om de paved road op dat punt te herzien. Beschrijf de architectuurvisie en Maak high-level design lezen de opdracht vervolgens als hun uitgangspunt.</p>
+<p>De architectuuropdracht bevat in elk geval de aanleiding en het doel van het initiatief, de scope en wat daarbuiten valt, de toepasselijke architectuurprincipes, en wie welke beslissing binnen dat initiatief mag nemen.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <!-- ess:levelOfDetail not defined -->
+    <!-- ess:icon not defined -->
+    <!-- ess:tags not defined -->
+    <!-- ess:resources not defined -->
+    <!-- ess:properties not defined -->
+    <!-- Application-specific -->
+    <ess:ownedElements rdf:resource="resource/architectuuropdracht/template"/>
+  </ess:WorkProduct>
+
+  <ess:TypedResource rdf:about="resource/architectuuropdracht/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/architectuuropdracht.docx</ess:content>
+  </ess:TypedResource>
+
+  <!-- ==================================================================
+       WERKPRODUCT — Reviewresultaten
+       ================================================================== -->
+
+<ess:WorkProduct rdf:about="workproduct/reviewresultaten">
+    <ess:name xml:lang="nl">Reviewresultaten</ess:name>
+    <ess:briefDescription xml:lang="nl">Een reviewresultaat legt vast of een concreet geval voldoet aan de afgesproken drivers, principes en paved-road-normen — conform, met condities, of als toegestane uitzondering.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[<p>Een reviewresultaat legt vast of een concreet geval voldoet aan wat is afgesproken — niet waaróm een keuze is gemaakt, dat is de architectuurbeslissing. Het past de paved road en de architectuurprincipes toe op een specifiek geval en levert een van twee uitkomsten op: bevestigde conformiteit (on-road) of een toegestane uitzondering (off-road geformaliseerd), eventueel met condities.</p>
+<p>Bestuur levering legt een reviewresultaat vast bij elke uitzondering die aandacht vraagt: wat was de vraag, wie besliste, wat was de uitkomst en de onderbouwing. Toets werking governance telt deze reviewresultaten vervolgens op over een periode en vergelijkt het patroon — hoeveel uitzonderingen, welk principe wordt vaak omzeild, hoe lang duurden escalaties — met de objectives uit de werkafspraken, als signaal voor Stel governance bij.</p>
+<p>Een reviewresultaat bevat het getoetste object — het systeem, product, de leverancier, interface of het besluit dat wordt beoordeeld —, de criteria waartegen is getoetst, het oordeel (conform, met condities, afgekeurd of exception toegestaan), en de acties en geldigheid: eigenaar, deadline en de datum waarop opnieuw moet worden beoordeeld.</p>]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <ess:ownedElements rdf:resource="resource/reviewresultaten/template"/>
+  </ess:WorkProduct>
+
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/reviewresultaten/paved-road">
+    <ess:workProduct rdf:resource="workproduct/reviewresultaten"/>
+    <ess:alpha rdf:resource="alpha/governance"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:WorkProductManifest>
+
+  <ess:TypedResource rdf:about="resource/reviewresultaten/template">
+    <ess:kind rdf:resource="type/template"/>
+    <ess:content>https://hietkamp.nl/essence/downloads/reviewresultaten.docx</ess:content>
+  </ess:TypedResource>
+
+  <!-- ==================================================================
+       ALPHA — Governance
+       ================================================================== -->
+
+<ess:Alpha rdf:about="alpha/governance">
+    <ess:name xml:lang="nl">Governance</ess:name>
+    <ess:briefDescription xml:lang="nl">Het systeem van guardrails, beslissingsrechten, cadans en werkwijze-eigenaarschap waarmee het Architectuurforum architectuurkwaliteit stuurt, in dienst van de gates uit de Project levenscyclus.</ess:briefDescription>
+    <ess:description xml:lang="nl"><![CDATA[
+<p>Deze alpha volgt hoe ver de sturing is: van een net opgericht forum tot een governance die aantoonbaar werkt én zichzelf actief bijstelt. De vijf toestanden volgen de cyclus van de practice Architectuursturing.</p>
+<p>Richt governance in brengt de alpha naar <strong>Opgericht</strong> en direct door naar <strong>Actief</strong>: het fundament (beslissingsbevoegdheid, principes, repository, eigenaarschap van de werkwijze, opdracht aan Enterprise architectuur voor architectuurvisie en paved road, en de objectives voor de governance zelf) staat, en het Architectuurforum vergadert op een vaste, vooraf gepubliceerde cadans. Bestuur levering brengt de alpha naar <strong>Sturend</strong>: nieuwe initiatieven zijn formeel onder governance gebracht en beslissingen stromen binnen de guardrails. Toets werking governance brengt de alpha naar <strong>Geborgd</strong>: niet door de architectuur opnieuw te beoordelen — dat is al gebeurd bij Bestuur levering — maar door de opgetelde reviewuitkomsten en het paved-road-gebruik te vergelijken met de objectives uit Richt governance in, en te toetsen of ook de werkwijze zelf nog aansluit. Stel governance bij sluit de cyclus met <strong>Effectief</strong>: principes, working agreement en waar nodig de werkwijze zelf zijn bijgesteld op basis van dat bewijs.</p>
+<p>Deze alpha vervangt de gates uit de Project levenscyclus niet — ze bedient ze: zolang een initiatief binnen de guardrails blijft, stroomt het door de gates heen; alleen afwijkingen krijgen een expliciete beoordeling door het forum.</p>
+]]></ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:owner rdf:resource="practice/architectural-governance"/>
+    <ess:states rdf:resource="state/governance/initiated"/>
+    <ess:states rdf:resource="state/governance/engaged"/>
+    <ess:states rdf:resource="state/governance/guiding"/>
+    <ess:states rdf:resource="state/governance/assured"/>
+    <ess:states rdf:resource="state/governance/effective"/>
+    <ess:tags rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#EndeavorAreaOfConcern"/>
+  </ess:Alpha>
+
+  <ess:State rdf:about="state/governance/initiated">
+    <ess:name xml:lang="nl">Opgericht</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/governance/initiated/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/initiated/2"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/initiated/3"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/initiated/4"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/initiated/5"/>
+    <ess:successor rdf:resource="state/governance/engaged"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/initiated/1">
+    <ess:name xml:lang="nl">De beslissingsrechten en minimale guardrails zijn overeengekomen.</ess:name>
+    <ess:description xml:lang="nl">De beslissingsrechten en minimale guardrails zijn overeengekomen.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/initiated/2">
+    <ess:name xml:lang="nl">Het is duidelijk wie wat beslist.</ess:name>
+    <ess:description xml:lang="nl">Het is duidelijk wie wat beslist.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/initiated/3">
+    <ess:name xml:lang="nl">Het eigenaarschap van de architectuur-werkwijze is belegd bij het Architectuurforum.</ess:name>
+    <ess:description xml:lang="nl">Het eigenaarschap van de architectuur-werkwijze is belegd bij het Architectuurforum.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/initiated/4">
+    <ess:name xml:lang="nl">Enterprise architectuur heeft opdracht voor de architectuurvisie en de paved road.</ess:name>
+    <ess:description xml:lang="nl">Enterprise architectuur heeft opdracht voor de architectuurvisie en de paved road.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/initiated/5">
+    <ess:name xml:lang="nl">De objectives voor de governance zelf zijn vastgelegd.</ess:name>
+    <ess:description xml:lang="nl">De objectives voor de governance zelf zijn vastgelegd — de meetlat waartegen Toets werking governance later vergelijkt.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:State rdf:about="state/governance/engaged">
+    <ess:name xml:lang="nl">Actief</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/governance/engaged/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/engaged/2"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/engaged/3"/>
+    <ess:successor rdf:resource="state/governance/guiding"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/engaged/1">
+    <ess:name xml:lang="nl">Het Architectuurforum vergadert op een vaste, vooraf gepubliceerde cadans.</ess:name>
+    <ess:description xml:lang="nl">Het Architectuurforum vergadert op een vaste, vooraf gepubliceerde cadans en is niet op afroep beschikbaar.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/engaged/2">
+    <ess:name xml:lang="nl">De teams kennen de guardrails.</ess:name>
+    <ess:description xml:lang="nl">De teams kennen de guardrails.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/engaged/3">
+    <ess:name xml:lang="nl">Er is een lichte manier om onderwerpen vooraf bij het forum aan te melden.</ess:name>
+    <ess:description xml:lang="nl">Er is een lichte manier om onderwerpen vooraf bij het forum aan te melden.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:State rdf:about="state/governance/guiding">
+    <ess:name xml:lang="nl">Sturend</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/governance/guiding/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/guiding/2"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/guiding/3"/>
+    <ess:successor rdf:resource="state/governance/assured"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/guiding/1">
+    <ess:name xml:lang="nl">Beslissingen stromen binnen de guardrails.</ess:name>
+    <ess:description xml:lang="nl">Beslissingen stromen binnen de guardrails.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/guiding/2">
+    <ess:name xml:lang="nl">Alleen uitzonderingen worden geëscaleerd.</ess:name>
+    <ess:description xml:lang="nl">Alleen uitzonderingen worden geëscaleerd.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/guiding/3">
+    <ess:name xml:lang="nl">Nieuwe initiatieven zijn formeel onder governance gebracht via een Statement of Architecture Work.</ess:name>
+    <ess:description xml:lang="nl">Nieuwe initiatieven zijn formeel onder governance gebracht via een Statement of Architecture Work.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:State rdf:about="state/governance/assured">
+    <ess:name xml:lang="nl">Geborgd</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/governance/assured/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/assured/2"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/assured/3"/>
+    <ess:successor rdf:resource="state/governance/effective"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/assured/1">
+    <ess:name xml:lang="nl">De feitelijke werking is vergeleken met de objectives uit Richt governance in.</ess:name>
+    <ess:description xml:lang="nl">De feitelijke werking is vergeleken met de objectives uit Richt governance in.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/assured/2">
+    <ess:name xml:lang="nl">Afwijkingen van de objectives zijn gesignaleerd naar Stel governance bij.</ess:name>
+    <ess:description xml:lang="nl">Afwijkingen van de objectives zijn gesignaleerd naar Stel governance bij.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/assured/3">
+    <ess:name xml:lang="nl">De werkwijze zelf is getoetst: activiteiten en werkproducten worden gebruikt zoals bedoeld.</ess:name>
+    <ess:description xml:lang="nl">De werkwijze zelf is getoetst: activiteiten en werkproducten worden gebruikt zoals bedoeld.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:State rdf:about="state/governance/effective">
+    <ess:name xml:lang="nl">Effectief</ess:name>
+    <ess:briefDescription/>
+    <ess:description/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:checkListItem rdf:resource="checkpoint/governance/effective/1"/>
+    <ess:checkListItem rdf:resource="checkpoint/governance/effective/2"/>
+  </ess:State>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/effective/1">
+    <ess:name xml:lang="nl">Governance maakt levering aantoonbaar mogelijk.</ess:name>
+    <ess:description xml:lang="nl">Governance maakt levering aantoonbaar mogelijk.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:Checkpoint rdf:about="checkpoint/governance/effective/2">
+    <ess:name xml:lang="nl">De governance én de werkwijze zelf worden continu bijgesteld en verlicht.</ess:name>
+    <ess:description xml:lang="nl">De governance én de werkwijze zelf worden continu bijgesteld en verlicht.</ess:description>
+    <ess:shortDescription/>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+  </ess:Checkpoint>
+
+  <ess:AlphaContainment rdf:about="alpha-containment/governance">
+    <ess:superAlpha rdf:resource="alpha/way-of-working"/>
+    <ess:subordinateAlpha rdf:resource="alpha/governance"/>
+    <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</ess:lowerBound>
+  </ess:AlphaContainment>
+
+  <!-- ==================================================================
+       ROL — Architectuursponsor
+       ================================================================== -->
+
+<ess:TypedPattern rdf:about="role/architecture-sponsor">
+    <ess:kind rdf:resource="type/role"/>
+    <ess:name xml:lang="nl">Architectuursponsor</ess:name>
+    <ess:briefDescription xml:lang="nl">De rol die overeenkomt met TOGAF's Architecture Sponsor: de senior executive — doorgaans de CIO — die als executive sponsor van het Architectuurforum (TOGAF's Architecture Board) het mandaat en de financiering verleent waarmee de architectuursturing daadwerkelijk kan werken.</ess:briefDescription>
+    <ess:description xml:lang="nl">De Architectuursponsor is de rol die in TOGAF 10 de Architecture Sponsor heet. TOGAF's EA Capability and Governance-gids beschrijft dat het Architectuurforum weliswaar zelf de architectuur binnen de organisatie sponsort, maar op zijn beurt een executive sponsor nodig heeft — doorgaans de CIO of een andere senior executive — die het mandaat geeft. In deze werkwijze stelt de Architectuursponsor daarom de beslissingsbevoegdheden in en beschermt ze — wie beslist wat, op welk niveau, en wat de escalatieroute is — en verleent ze de financiering die dat mogelijk maakt. Net als bij TOGAF's executive sponsor hoort daar een terugkerende rol bij: TOGAF stelt dat deze sponsor periodiek het werk van het Architectuurforum beoordeelt en de effectiviteit ervan evalueert, en zo nodig het architectuurcompliance-reviewproces laat bijstellen.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/architecture-sponsor/requires-competency/leadership"/>
+    <ess:associations rdf:resource="pattern-association/architecture-sponsor/participates-in"/>
+    <ess:associations rdf:resource="pattern-association/architecture-sponsor/responsible-for"/>
+  </ess:TypedPattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/architecture-sponsor/requires-competency/leadership">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Leadership"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/architecture-sponsor/participates-in">
+    <ess:name xml:lang="nl">neemt deel aan</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/governance-establish-governance"/>
+    <ess:elements rdf:resource="activity/governance-tune-governance"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/architecture-sponsor/responsible-for">
+    <ess:name xml:lang="nl">verantwoordelijk voor</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="workproduct/architectuurprincipes"/>
+    <ess:elements rdf:resource="workproduct/architectuur-werkafspraken"/>
+    <ess:elements rdf:resource="workproduct/architectuurrepository"/>
+    <ess:elements rdf:resource="workproduct/architectuuropdracht"/>
+  </ess:PatternAssociation>
+
+  <!-- ==================================================================
+       ROL — Architectuurforum
+       ================================================================== -->
+
+<ess:TypedPattern rdf:about="role/governance-forum">
+    <ess:kind rdf:resource="type/role"/>
+    <ess:name xml:lang="nl">Architectuurforum</ess:name>
+    <ess:briefDescription xml:lang="nl">De rol die overeenkomt met TOGAF's Architecture Board: een klein orgaan van senior architecten en executives dat namens de organisatie een zichtbaar escalatiemechanisme biedt voor architectuurbeslissingen die buiten de vastgestelde kaders vallen.</ess:briefDescription>
+    <ess:description xml:lang="nl">Het Architectuurforum is de rol die in TOGAF 10 het Architecture Board heet. TOGAF noemt als kernverantwoordelijkheden van dit orgaan: een zichtbaar escalatiemechanisme bieden voor beslissingen die buiten de vastgestelde kaders vallen en onduidelijkheden, issues of conflicten oplossen; zorgen voor effectief en consistent beheer en implementatie van architectuur binnen de organisatie; en duidelijke verantwoordelijkheid voor architectuurbeslissingen vastleggen. Leden zijn doorgaans senior managers of executives die verantwoordelijk zijn voor het onderhoud van de architectuur; het lidmaatschap kan rouleren — met behoud van continuïteit — om enterprise-brede vertegenwoordiging te waarborgen zonder het orgaan te groot te laten worden. In deze werkwijze is die rol bewust smal gehouden: het Architectuurforum beoordeelt uitsluitend uitzonderingen en off-road architectuurbeslissingen; wat binnen de guardrails past, stroomt ongehinderd door zonder tussenkomst van het forum, en het forum vergadert op de vaste cadans of als escalatie daarbuiten.</ess:description>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:associations rdf:resource="pattern-association/governance-forum/requires-competency/stakeholder-representation"/>
+    <ess:associations rdf:resource="pattern-association/governance-forum/requires-competency/leadership"/>
+    <ess:associations rdf:resource="pattern-association/governance-forum/participates-in"/>
+    <ess:associations rdf:resource="pattern-association/governance-forum/responsible-for"/>
+  </ess:TypedPattern>
+
+  <ess:PatternAssociation rdf:about="pattern-association/governance-forum/requires-competency/stakeholder-representation">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#StakeholderRepresentation"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Adapts"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/governance-forum/requires-competency/leadership">
+    <ess:name xml:lang="nl">vereist competentie</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Leadership"/>
+    <ess:elements rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Innovates"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/governance-forum/participates-in">
+    <ess:name xml:lang="nl">neemt deel aan</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="activity/governance-validate"/>
+    <ess:elements rdf:resource="activity/governance-govern-delivery"/>
+    <ess:elements rdf:resource="activity/governance-tune-governance"/>
+  </ess:PatternAssociation>
+
+  <ess:PatternAssociation rdf:about="pattern-association/governance-forum/responsible-for">
+    <ess:name xml:lang="nl">verantwoordelijk voor</ess:name>
+    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
+    <ess:elements rdf:resource="workproduct/architectuuropdracht"/>
+    <ess:elements rdf:resource="workproduct/reviewresultaten"/>
+    <ess:elements rdf:resource="workproduct/architectuurprincipes"/>
+    <ess:elements rdf:resource="workproduct/architectuur-werkafspraken"/>
+  </ess:PatternAssociation>
+
 </rdf:RDF>
