@@ -35,7 +35,7 @@
     <div class="amap-domain overflow-hidden rounded-2xl border-[1.5px] border-slate-300 bg-white">
       <div class="amap-dhdr relative flex items-center gap-4 overflow-hidden px-[22px] py-[13px] {% if domain.header_light %}text-slate-800{% else %}text-white{% endif %} [&_.amap-dname]:font-mono [&_.amap-dname]:text-[11px] [&_.amap-dname]:font-bold [&_.amap-dname]:uppercase [&_.amap-dname]:tracking-[0.2em] [&_.amap-dalphas]:font-mono [&_.amap-dalphas]:text-[9.5px] [&_.amap-dalphas]:tracking-wide [&_.amap-dalphas]:opacity-80 {{ domain.css }} bg-gradient-to-br {{ domain.gradient }}">
         {% if domain.phase_num %}
-        <span class="amap-dnum shrink-0 select-none font-serif text-[2.6rem] font-black leading-none {{ 'text-slate-900/15' if domain.header_light else 'text-white/20' }}" aria-hidden="true">{{ '%02d'|format(domain.phase_num) }}</span>
+        <span class="amap-dnum shrink-0 select-none font-serif text-[2.6rem] font-black leading-none {{ 'text-slate-900/50' if domain.header_light else 'text-white/40' }}" aria-hidden="true">{{ '%02d'|format(domain.phase_num) }}</span>
         {% endif %}
         <div class="flex min-w-0 flex-1 flex-wrap items-center justify-between gap-2">
           <span class="amap-dname">{{ domain.name }}</span>
