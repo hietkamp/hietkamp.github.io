@@ -142,7 +142,6 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/use-cases"/>
     <ess:approach rdf:resource="approach/usecase-specify/default"/>
-    <ess:approach rdf:resource="approach/usecase-specify/supplementary"/>
     <ess:action rdf:resource="action/usecase-specify/update/use-casemodel"/>
     <ess:action rdf:resource="action/usecase-specify/create/use-casespecificatie"/>
     <ess:action rdf:resource="action/usecase-specify/create/aanvullende-specificaties"/>
@@ -153,13 +152,17 @@
   </ess:Activity>
 
   <ess:Approach rdf:about="approach/usecase-specify/default">
-    <ess:name xml:lang="nl">Uitschrijven naar risico</ess:name>
+    <ess:name xml:lang="nl">Uitschrijven naar risico, ordenen naar kwaliteitskenmerk</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
 <p>De aanpak begint met kiezen. Uit het use-casemodel worden de use cases geselecteerd waarvan de uitwerking het meeste oplevert: de use cases die de structuur van het systeem bepalen, waar technisch risico zit, waar wet- en regelgeving hard ingrijpt, of waarover de stakeholders het onderling nog oneens zijn. Die worden als eerste uitgeschreven, zodat de onzekerheid vroeg verdwijnt in plaats van laat.</p>
 <p>Per use case wordt eerst het hoofdscenario opgeschreven: genummerde stappen waarin steeds duidelijk is wie handelt, de actor of het systeem, en die eindigen bij het resultaat waarvoor de use case bestaat. Vervolgens wordt bij elke stap de vraag gesteld wat er anders kan lopen. Elk antwoord daarop wordt een alternatief scenario met een eigen afloop. Deze twee stappen worden bewust gescheiden gehouden: een hoofdscenario dat al doorspekt is met uitzonderingen leest niemand meer.</p>
 <p>Rond het scenario worden de voorwaarden vastgelegd waaronder de use case start en de toestand waarin het systeem achterblijft, plus de gegevens die worden uitgewisseld en de regels die daarop gelden. Wat tijdens het uitschrijven boven water komt maar niet aan deze use case toebehoort, wordt niet weggeschreven maar doorgegeven: eisen die voor meerdere use cases gelden gaan naar de aanvullende specificaties, nieuwe of verkeerd afgebakende use cases gaan terug naar het use-casemodel.</p>
 <p>Elke uitgewerkte use case wordt getoetst bij de betrokken actoren en de opdrachtgever. Pas als zij het scenario herkennen als hun eigen werkwijze — of bewust kiezen voor een andere — is de specificatie af.</p>
+<p>Voor de eisen die niet aan één use case toebehoren wordt een vaste indeling naar kwaliteitskenmerken aangehouden, zodat systematisch kan worden nagegaan of er niets ontbreekt in plaats van af te wachten wat stakeholders uit zichzelf noemen. Per kenmerk — beschikbaarheid, prestaties, beveiliging, toegankelijkheid, onderhoudbaarheid en de overige die de organisatie hanteert — wordt gevraagd welke eis geldt en waar die vandaan komt.</p>
+<p>Elke eis wordt vervolgens toetsbaar gemaakt. Dat betekent een meetbare uitspraak met de omstandigheden erbij: welke gebeurtenis doet zich voor, welk deel van het systeem betreft het, welke reactie wordt verwacht en binnen welke marge. Zo'n formulering maakt niet alleen achteraf toetsing mogelijk, maar dwingt tijdens het gesprek al scherpte af over wat werkelijk nodig is.</p>
+<p>Daarna wordt de set naast de bestaande kaders gelegd. Wat de paved road, de architectuurprincipes of geldende wet- en regelgeving al voorschrijven, wordt niet opnieuw uitgeschreven maar met een verwijzing overgenomen; wat ervan afwijkt, wordt expliciet benoemd omdat het tot een architectuurbeslissing of een uitzondering moet leiden. Onderlinge tegenstrijdigheden — een prestatie-eis die zich niet verhoudt tot een beveiligingseis — worden niet gladgestreken maar voorgelegd aan de stakeholders, die de afweging maken.</p>
+<p>Tot slot wordt per eis vastgelegd voor welke use cases hij geldt, zodat bij realisatie en toetsing zichtbaar blijft waar de eis raakt aan het gebruik van het systeem.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
   </ess:Approach>
@@ -204,18 +207,6 @@
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:state rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Requirements_Acceptable"/>
   </ess:CompletionCriterion>
-
-  <ess:Approach rdf:about="approach/usecase-specify/supplementary">
-    <ess:name xml:lang="nl">Ordenen naar kwaliteitskenmerk</ess:name>
-    <ess:briefDescription/>
-    <ess:description xml:lang="nl"><![CDATA[
-<p>Voor de eisen die niet aan één use case toebehoren wordt een vaste indeling naar kwaliteitskenmerken aangehouden, zodat systematisch kan worden nagegaan of er niets ontbreekt in plaats van af te wachten wat stakeholders uit zichzelf noemen. Per kenmerk — beschikbaarheid, prestaties, beveiliging, toegankelijkheid, onderhoudbaarheid en de overige die de organisatie hanteert — wordt gevraagd welke eis geldt en waar die vandaan komt.</p>
-<p>Elke eis wordt vervolgens toetsbaar gemaakt. Dat betekent een meetbare uitspraak met de omstandigheden erbij: welke gebeurtenis doet zich voor, welk deel van het systeem betreft het, welke reactie wordt verwacht en binnen welke marge. Zo'n formulering maakt niet alleen achteraf toetsing mogelijk, maar dwingt tijdens het gesprek al scherpte af over wat werkelijk nodig is.</p>
-<p>Daarna wordt de set naast de bestaande kaders gelegd. Wat de paved road, de architectuurprincipes of geldende wet- en regelgeving al voorschrijven, wordt niet opnieuw uitgeschreven maar met een verwijzing overgenomen; wat ervan afwijkt, wordt expliciet benoemd omdat het tot een architectuurbeslissing of een uitzondering moet leiden. Onderlinge tegenstrijdigheden — een prestatie-eis die zich niet verhoudt tot een beveiligingseis — worden niet gladgestreken maar voorgelegd aan de stakeholders, die de afweging maken.</p>
-<p>Tot slot wordt per eis vastgelegd voor welke use cases hij geldt, zodat bij realisatie en toetsing zichtbaar blijft waar de eis raakt aan het gebruik van het systeem.</p>
-]]></ess:description>
-    <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-  </ess:Approach>
 
   <!-- ==================================================================
        WERKPRODUCT — Use-casemodel

@@ -1,0 +1,1466 @@
+{
+  "configuration": {},
+  "description": "System Landscape view, getransformeerd vanuit de container view: 'Cliëntenregistratie' is hier een group i.p.v. een software system.",
+  "documentation": {},
+  "id": 1,
+  "lastModifiedAgent": "structurizr/diagrams/4d52bace-5b7c-4c2c-ac56-bb69b3c5225c",
+  "lastModifiedDate": "2026-08-17T10:06:24Z",
+  "lastModifiedUser": "1304367080",
+  "model": {
+    "deploymentNodes": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "description": "Identiteit, netwerken, images en scheduling",
+                "environment": "Productie",
+                "id": "31",
+                "infrastructureNodes": [
+                  {
+                    "description": "OpenStack-besturing, in HA over drie nodes",
+                    "environment": "Productie",
+                    "id": "32",
+                    "name": "Keystone / Neutron / Glance / Horizon",
+                    "properties": {
+                      "structurizr.dsl.identifier": "openstackControl"
+                    },
+                    "tags": "Element,Infrastructure Node",
+                    "technology": "OpenStack 2024.1"
+                  }
+                ],
+                "instances": "1",
+                "name": "Control plane",
+                "properties": {
+                  "structurizr.dsl.identifier": "97bd231d-0048-4c81-86e6-ee5896743cfd"
+                },
+                "tags": "Element,Deployment Node,3",
+                "technology": "srv-ctrl-01 t/m srv-ctrl-03, Ubuntu 24.04 LTS"
+              },
+              {
+                "description": "Draagt alle virtuele machines",
+                "environment": "Productie",
+                "id": "33",
+                "infrastructureNodes": [
+                  {
+                    "description": "Hypervisorlaag",
+                    "environment": "Productie",
+                    "id": "34",
+                    "name": "Nova compute (KVM/libvirt)",
+                    "properties": {
+                      "structurizr.dsl.identifier": "novaCompute"
+                    },
+                    "tags": "Element,Infrastructure Node",
+                    "technology": "QEMU/KVM"
+                  }
+                ],
+                "instances": "1",
+                "name": "Compute",
+                "properties": {
+                  "structurizr.dsl.identifier": "a5fe31f6-54d6-4ac2-bf5b-841b88670bee"
+                },
+                "tags": "Element,Deployment Node,8",
+                "technology": "srv-comp-01 t/m srv-comp-08, Ubuntu 24.04 LTS + KVM"
+              },
+              {
+                "children": [
+                  {
+                    "description": "Webservers achter de load balancer",
+                    "environment": "Productie",
+                    "id": "37",
+                    "instances": "1",
+                    "name": "vm-web-01 / vm-web-02",
+                    "properties": {
+                      "structurizr.dsl.identifier": "6363bf42-7ccb-4075-be7a-0836bdb8967a"
+                    },
+                    "softwareSystemInstances": [
+                      {
+                        "environment": "Productie",
+                        "id": "38",
+                        "instanceId": 1,
+                        "properties": {
+                          "structurizr.dsl.identifier": "websiteInstance"
+                        },
+                        "relationships": [
+                          {
+                            "description": "Publiceer aanmelding",
+                            "destinationId": "47",
+                            "id": "48",
+                            "linkedRelationshipId": "16",
+                            "sourceId": "38"
+                          }
+                        ],
+                        "softwareSystemId": "8",
+                        "tags": "Software System Instance"
+                      }
+                    ],
+                    "tags": "Element,Deployment Node,2",
+                    "technology": "Nova-instance, Ubuntu 24.04 LTS + nginx"
+                  }
+                ],
+                "description": "Van buiten bereikbare zone",
+                "environment": "Productie",
+                "id": "35",
+                "infrastructureNodes": [
+                  {
+                    "description": "TLS-terminatie en verdeling over de webservers",
+                    "environment": "Productie",
+                    "id": "36",
+                    "name": "HAProxy + Keepalived",
+                    "properties": {
+                      "structurizr.dsl.identifier": "loadbalancer"
+                    },
+                    "relationships": [
+                      {
+                        "description": "Verdeelt HTTPS-verkeer over",
+                        "destinationId": "38",
+                        "id": "66",
+                        "sourceId": "36",
+                        "tags": "Relationship",
+                        "technology": "HTTPS"
+                      }
+                    ],
+                    "tags": "Element,Infrastructure Node",
+                    "technology": "srv-lb-01 / srv-lb-02, Ubuntu 24.04 LTS"
+                  }
+                ],
+                "instances": "1",
+                "name": "DMZ",
+                "properties": {
+                  "structurizr.dsl.identifier": "6fb4dd39-3e2b-4e03-9a2f-9aa69787cb74"
+                },
+                "tags": "Element,Deployment Node",
+                "technology": "Neutron provider network"
+              },
+              {
+                "children": [
+                  {
+                    "description": "Cliëntenplanning",
+                    "environment": "Productie",
+                    "id": "40",
+                    "instances": "1",
+                    "name": "vm-planning-01 / vm-planning-02",
+                    "properties": {
+                      "structurizr.dsl.identifier": "2f911d0f-95c2-403d-8d19-66cb4b436872"
+                    },
+                    "softwareSystemInstances": [
+                      {
+                        "environment": "Productie",
+                        "id": "41",
+                        "instanceId": 1,
+                        "properties": {
+                          "structurizr.dsl.identifier": "frontofficeInstance"
+                        },
+                        "relationships": [
+                          {
+                            "description": "Publiceer cliëntgegevens",
+                            "destinationId": "47",
+                            "id": "50",
+                            "linkedRelationshipId": "18",
+                            "sourceId": "41"
+                          },
+                          {
+                            "description": "Leest en schrijft",
+                            "destinationId": "57",
+                            "id": "67",
+                            "sourceId": "41",
+                            "tags": "Relationship",
+                            "technology": "JDBC, poort 5432"
+                          }
+                        ],
+                        "softwareSystemId": "9",
+                        "tags": "Software System Instance"
+                      }
+                    ],
+                    "tags": "Element,Deployment Node,2",
+                    "technology": "Nova-instance, Ubuntu 24.04 LTS"
+                  },
+                  {
+                    "description": "Elektronisch cliëntendossier",
+                    "environment": "Productie",
+                    "id": "42",
+                    "instances": "1",
+                    "name": "vm-ecd-01 / vm-ecd-02",
+                    "properties": {
+                      "structurizr.dsl.identifier": "36799b03-5169-48c4-8466-92dab85e41ab"
+                    },
+                    "softwareSystemInstances": [
+                      {
+                        "environment": "Productie",
+                        "id": "43",
+                        "instanceId": 1,
+                        "properties": {
+                          "structurizr.dsl.identifier": "ecdInstance"
+                        },
+                        "relationships": [
+                          {
+                            "description": "Publiceer debiteurgegevens",
+                            "destinationId": "47",
+                            "id": "52",
+                            "linkedRelationshipId": "25",
+                            "sourceId": "43"
+                          },
+                          {
+                            "description": "Leest en schrijft",
+                            "destinationId": "57",
+                            "id": "68",
+                            "sourceId": "43",
+                            "tags": "Relationship",
+                            "technology": "JDBC, poort 5432"
+                          },
+                          {
+                            "description": "Koppelt uit naar VECOZO en Zorgdomein via",
+                            "destinationId": "62",
+                            "id": "71",
+                            "sourceId": "43",
+                            "tags": "Relationship",
+                            "technology": "mTLS"
+                          }
+                        ],
+                        "softwareSystemId": "10",
+                        "tags": "Software System Instance"
+                      }
+                    ],
+                    "tags": "Element,Deployment Node,2",
+                    "technology": "Nova-instance, Ubuntu 24.04 LTS"
+                  },
+                  {
+                    "description": "Relatiebeheer",
+                    "environment": "Productie",
+                    "id": "44",
+                    "instances": "1",
+                    "name": "vm-crm-01",
+                    "properties": {
+                      "structurizr.dsl.identifier": "5cc19f35-c936-437b-bd69-794b6547b8df"
+                    },
+                    "softwareSystemInstances": [
+                      {
+                        "environment": "Productie",
+                        "id": "45",
+                        "instanceId": 1,
+                        "properties": {
+                          "structurizr.dsl.identifier": "crmInstance"
+                        },
+                        "relationships": [
+                          {
+                            "description": "Leest en schrijft",
+                            "destinationId": "57",
+                            "id": "69",
+                            "sourceId": "45",
+                            "tags": "Relationship",
+                            "technology": "JDBC, poort 5432"
+                          }
+                        ],
+                        "softwareSystemId": "11",
+                        "tags": "Software System Instance"
+                      }
+                    ],
+                    "tags": "Element,Deployment Node",
+                    "technology": "Nova-instance, Ubuntu 24.04 LTS"
+                  },
+                  {
+                    "description": "Integratieplatform, berichtenverwerking",
+                    "environment": "Productie",
+                    "id": "46",
+                    "instances": "1",
+                    "name": "vm-bus-01 t/m vm-bus-03",
+                    "properties": {
+                      "structurizr.dsl.identifier": "3c2340dd-aa7a-4466-b5d1-8fb4b5cffcfe"
+                    },
+                    "softwareSystemInstances": [
+                      {
+                        "environment": "Productie",
+                        "id": "47",
+                        "instanceId": 1,
+                        "properties": {
+                          "structurizr.dsl.identifier": "busInstance"
+                        },
+                        "relationships": [
+                          {
+                            "description": "Registreer aanmelding",
+                            "destinationId": "41",
+                            "id": "49",
+                            "linkedRelationshipId": "17",
+                            "sourceId": "47"
+                          },
+                          {
+                            "description": "Registreer cliëntgegevens",
+                            "destinationId": "43",
+                            "id": "51",
+                            "linkedRelationshipId": "19",
+                            "sourceId": "47"
+                          },
+                          {
+                            "description": "Registreer debiteurgegevens",
+                            "destinationId": "45",
+                            "id": "53",
+                            "linkedRelationshipId": "26",
+                            "sourceId": "47"
+                          },
+                          {
+                            "description": "Leest en schrijft",
+                            "destinationId": "57",
+                            "id": "70",
+                            "sourceId": "47",
+                            "tags": "Relationship",
+                            "technology": "JDBC, poort 5432"
+                          }
+                        ],
+                        "softwareSystemId": "12",
+                        "tags": "Software System Instance"
+                      }
+                    ],
+                    "tags": "Element,Deployment Node,3",
+                    "technology": "Nova-instance, Ubuntu 24.04 LTS + Apache Kafka + Apache Camel"
+                  },
+                  {
+                    "description": "Authenticatie en autorisatie voor medewerkers",
+                    "environment": "Productie",
+                    "id": "54",
+                    "infrastructureNodes": [
+                      {
+                        "description": "Identity provider, OIDC/SAML",
+                        "environment": "Productie",
+                        "id": "55",
+                        "name": "Keycloak",
+                        "properties": {
+                          "structurizr.dsl.identifier": "keycloak"
+                        },
+                        "tags": "Element,Infrastructure Node",
+                        "technology": "Keycloak 26"
+                      }
+                    ],
+                    "instances": "1",
+                    "name": "vm-idp-01 / vm-idp-02",
+                    "properties": {
+                      "structurizr.dsl.identifier": "2fe0df3e-4799-405b-8209-edc12d66d9ff"
+                    },
+                    "tags": "Element,Deployment Node,2",
+                    "technology": "Nova-instance, Ubuntu 24.04 LTS"
+                  }
+                ],
+                "description": "Interne zone, niet van buiten bereikbaar",
+                "environment": "Productie",
+                "id": "39",
+                "instances": "1",
+                "name": "Applicatiezone",
+                "properties": {
+                  "structurizr.dsl.identifier": "cae72d3d-1ba4-4820-83f7-dfd294ec6fc2"
+                },
+                "tags": "Element,Deployment Node",
+                "technology": "Neutron tenant network"
+              },
+              {
+                "description": "Afgeschermde zone voor persistente opslag",
+                "environment": "Productie",
+                "id": "56",
+                "infrastructureNodes": [
+                  {
+                    "description": "Eén primary en twee synchrone replica's, automatische failover via Patroni en etcd",
+                    "environment": "Productie",
+                    "id": "57",
+                    "name": "PostgreSQL-cluster",
+                    "properties": {
+                      "structurizr.dsl.identifier": "postgresCluster"
+                    },
+                    "relationships": [
+                      {
+                        "description": "Archiveert WAL en back-ups naar",
+                        "destinationId": "58",
+                        "id": "72",
+                        "sourceId": "57",
+                        "tags": "Relationship"
+                      },
+                      {
+                        "description": "Repliceert naar",
+                        "destinationId": "64",
+                        "id": "73",
+                        "sourceId": "57",
+                        "tags": "Relationship",
+                        "technology": "PostgreSQL streaming replication"
+                      }
+                    ],
+                    "tags": "Element,Infrastructure Node,Database",
+                    "technology": "srv-pg-01 t/m srv-pg-03, Ubuntu 24.04 LTS, PostgreSQL 16 + Patroni"
+                  },
+                  {
+                    "description": "Continue WAL-archivering en dagelijkse volledige back-up",
+                    "environment": "Productie",
+                    "id": "58",
+                    "name": "Back-up",
+                    "properties": {
+                      "structurizr.dsl.identifier": "backup"
+                    },
+                    "tags": "Element,Infrastructure Node",
+                    "technology": "srv-bck-01, pgBackRest"
+                  }
+                ],
+                "instances": "1",
+                "name": "Datazone",
+                "properties": {
+                  "structurizr.dsl.identifier": "311a20f8-cb5e-4a18-9905-5203fcc41dcb"
+                },
+                "tags": "Element,Deployment Node",
+                "technology": "Neutron tenant network, geen egress"
+              },
+              {
+                "description": "Monitoring, logging en configuratiebeheer",
+                "environment": "Productie",
+                "id": "59",
+                "infrastructureNodes": [
+                  {
+                    "description": "Metrieken, dashboards en logs",
+                    "environment": "Productie",
+                    "id": "60",
+                    "name": "Prometheus / Grafana / Loki",
+                    "properties": {
+                      "structurizr.dsl.identifier": "monitoring"
+                    },
+                    "tags": "Element,Infrastructure Node",
+                    "technology": "vm-mon-01, Ubuntu 24.04 LTS"
+                  }
+                ],
+                "instances": "1",
+                "name": "Beheerzone",
+                "properties": {
+                  "structurizr.dsl.identifier": "18bd0781-3cc1-4fe6-ab48-8cb5b1970021"
+                },
+                "tags": "Element,Deployment Node",
+                "technology": "Neutron tenant network"
+              }
+            ],
+            "description": "IaaS-laag in eigen beheer",
+            "environment": "Productie",
+            "id": "30",
+            "instances": "1",
+            "name": "OpenStack private cloud",
+            "properties": {
+              "structurizr.dsl.identifier": "5ce06674-0e76-4f58-aa7b-0dddcc4cac7b"
+            },
+            "tags": "Element,Deployment Node",
+            "technology": "OpenStack 2024.1 (Caracal)"
+          }
+        ],
+        "description": "Primaire locatie",
+        "environment": "Productie",
+        "id": "29",
+        "infrastructureNodes": [
+          {
+            "description": "Blokopslag voor de Nova-instances en objectopslag voor documenten",
+            "environment": "Productie",
+            "id": "61",
+            "name": "Ceph-opslagcluster",
+            "properties": {
+              "structurizr.dsl.identifier": "cephCluster"
+            },
+            "relationships": [
+              {
+                "description": "Spiegelt naar",
+                "destinationId": "65",
+                "id": "74",
+                "sourceId": "61",
+                "tags": "Relationship",
+                "technology": "Ceph RBD mirroring"
+              }
+            ],
+            "tags": "Element,Infrastructure Node,Database",
+            "technology": "srv-ceph-01 t/m srv-ceph-05, Ubuntu 24.04 LTS, Ceph Reef"
+          },
+          {
+            "description": "Enige uitgaande route naar VECOZO en Zorgdomein, met mTLS",
+            "environment": "Productie",
+            "id": "62",
+            "name": "Egress-firewall",
+            "properties": {
+              "structurizr.dsl.identifier": "egress"
+            },
+            "tags": "Element,Infrastructure Node",
+            "technology": "srv-fw-01 / srv-fw-02, nftables + Suricata"
+          }
+        ],
+        "instances": "1",
+        "name": "Datacenter Amersfoort",
+        "properties": {
+          "structurizr.dsl.identifier": "bf1ef1d6-af00-4952-9b9a-4df0e12b90c2"
+        },
+        "tags": "Element,Deployment Node",
+        "technology": "Eigen datacenter"
+      },
+      {
+        "description": "Uitwijklocatie op 40 km afstand",
+        "environment": "Productie",
+        "id": "63",
+        "infrastructureNodes": [
+          {
+            "description": "Asynchrone streaming replica, handmatige promotie bij uitwijk",
+            "environment": "Productie",
+            "id": "64",
+            "name": "PostgreSQL-standby",
+            "properties": {
+              "structurizr.dsl.identifier": "postgresStandby"
+            },
+            "tags": "Element,Infrastructure Node,Database,Failover",
+            "technology": "srv-pg-dr-01, Ubuntu 24.04 LTS, PostgreSQL 16"
+          },
+          {
+            "description": "RBD-mirroring van de primaire opslag",
+            "environment": "Productie",
+            "id": "65",
+            "name": "Ceph-spiegel",
+            "properties": {
+              "structurizr.dsl.identifier": "cephMirror"
+            },
+            "tags": "Element,Infrastructure Node,Database,Failover",
+            "technology": "srv-ceph-dr-01 t/m srv-ceph-dr-03, Ceph Reef"
+          }
+        ],
+        "instances": "1",
+        "name": "Datacenter Apeldoorn",
+        "properties": {
+          "structurizr.dsl.identifier": "c527d95f-0a08-4d7f-bc83-a64a615e16a7"
+        },
+        "tags": "Element,Deployment Node",
+        "technology": "Eigen datacenter"
+      }
+    ],
+    "people": [
+      {
+        "description": "Cliënt, cliëntondersteuner of mantelzorger die zorg aanvraagt",
+        "id": "1",
+        "name": "Aanvrager",
+        "properties": {
+          "structurizr.dsl.identifier": "aanvrager"
+        },
+        "relationships": [
+          {
+            "description": "Meld cliënt aan voor verpleeghuiszorg via e-mail",
+            "destinationId": "5",
+            "id": "13",
+            "sourceId": "1",
+            "tags": "Relationship"
+          },
+          {
+            "description": "Meld cliënt aan voor verpleeghuiszorg",
+            "destinationId": "8",
+            "id": "14",
+            "sourceId": "1",
+            "tags": "Relationship"
+          },
+          {
+            "description": "Meld cliënt aan voor verpleeghuiszorg",
+            "destinationId": "4",
+            "id": "21",
+            "sourceId": "1",
+            "tags": "Relationship"
+          }
+        ],
+        "tags": "Element,Person,Customer"
+      },
+      {
+        "description": "Verantwoordelijk voor aanmelding en registratie",
+        "group": "Cliëntenregistratie",
+        "id": "5",
+        "name": "Medewerker cliëntenbureau",
+        "properties": {
+          "structurizr.dsl.identifier": "csb"
+        },
+        "relationships": [
+          {
+            "description": "Ontvang, verifieer en registreer aanmelding",
+            "destinationId": "9",
+            "id": "15",
+            "sourceId": "5",
+            "tags": "Relationship"
+          }
+        ],
+        "tags": "Element,Person,Staff"
+      },
+      {
+        "description": "Verantwoordelijk voor de toetsing en matching van de aanmelding",
+        "group": "Cliëntenregistratie",
+        "id": "6",
+        "name": "Zorgbemiddelaar",
+        "properties": {
+          "structurizr.dsl.identifier": "zorgbemiddelaar"
+        },
+        "relationships": [
+          {
+            "description": "Toets en match de zorgvraag met het aanbod",
+            "destinationId": "9",
+            "id": "27",
+            "sourceId": "6",
+            "tags": "Relationship"
+          }
+        ],
+        "tags": "Element,Person,Staff"
+      },
+      {
+        "description": "Verantwoordelijk voor de administratieve afhandeling.",
+        "group": "Cliëntenregistratie",
+        "id": "7",
+        "name": "Medewerker zorgadministratie",
+        "properties": {
+          "structurizr.dsl.identifier": "za"
+        },
+        "relationships": [
+          {
+            "description": "Meld aanvang/beëindiging zorg",
+            "destinationId": "10",
+            "id": "28",
+            "sourceId": "7",
+            "tags": "Relationship"
+          }
+        ],
+        "tags": "Element,Person,Staff"
+      }
+    ],
+    "softwareSystems": [
+      {
+        "description": "Register van verzekerden en hun verzekeringsrecht.",
+        "documentation": {},
+        "group": "VECOZO",
+        "id": "2",
+        "name": "COV",
+        "properties": {
+          "structurizr.dsl.identifier": "cov"
+        },
+        "tags": "Element,Software System"
+      },
+      {
+        "description": "Verantwoordelijk voor de registratie van een zorgtoewijzing en de wijzigingen daarop.",
+        "documentation": {},
+        "group": "VECOZO",
+        "id": "3",
+        "name": "Zorgkantoorsysteem",
+        "properties": {
+          "structurizr.dsl.identifier": "zorgkantoor"
+        },
+        "relationships": [
+          {
+            "description": "Verstrek zorgtoewijzing (AW33)",
+            "destinationId": "10",
+            "id": "24",
+            "sourceId": "3",
+            "tags": "Relationship"
+          }
+        ],
+        "tags": "Element,Software System"
+      },
+      {
+        "description": "Aanvraag vanuit een zorgverlener",
+        "documentation": {},
+        "id": "4",
+        "name": "Zorgdomein",
+        "properties": {
+          "structurizr.dsl.identifier": "zd"
+        },
+        "relationships": [
+          {
+            "description": "Registreer aanmelding",
+            "destinationId": "10",
+            "id": "22",
+            "sourceId": "4",
+            "tags": "Relationship"
+          }
+        ],
+        "tags": "Element,Software System"
+      },
+      {
+        "description": "Biedt het online aanvraagformulier.",
+        "documentation": {},
+        "group": "Cliëntenregistratie",
+        "id": "8",
+        "name": "Website",
+        "properties": {
+          "structurizr.dsl.identifier": "website"
+        },
+        "relationships": [
+          {
+            "description": "Publiceer aanmelding",
+            "destinationId": "12",
+            "id": "16",
+            "sourceId": "8",
+            "tags": "Relationship"
+          }
+        ],
+        "tags": "Element,Software System"
+      },
+      {
+        "description": "Beheer van aanmeldingen, wachtlijsten en beddencapaciteit.",
+        "documentation": {},
+        "group": "Cliëntenregistratie",
+        "id": "9",
+        "name": "Cliëntenplanning",
+        "properties": {
+          "structurizr.dsl.identifier": "frontoffice"
+        },
+        "relationships": [
+          {
+            "description": "Publiceer cliëntgegevens",
+            "destinationId": "12",
+            "id": "18",
+            "sourceId": "9",
+            "tags": "Relationship"
+          }
+        ],
+        "tags": "Element,Software System"
+      },
+      {
+        "description": "Administratie en dossiervoering voor de verzorging van cliënten.",
+        "documentation": {},
+        "group": "Cliëntenregistratie",
+        "id": "10",
+        "name": "Elektronisch cliëntendossier",
+        "properties": {
+          "structurizr.dsl.identifier": "ecd"
+        },
+        "relationships": [
+          {
+            "description": "Controleer verzekeringsrecht",
+            "destinationId": "2",
+            "id": "20",
+            "sourceId": "10",
+            "tags": "Relationship"
+          },
+          {
+            "description": "Meld aanvang (AW35) of beëindiging (AW39) zorg",
+            "destinationId": "3",
+            "id": "23",
+            "sourceId": "10",
+            "tags": "Relationship"
+          },
+          {
+            "description": "Publiceer debiteurgegevens",
+            "destinationId": "12",
+            "id": "25",
+            "sourceId": "10",
+            "tags": "Relationship"
+          }
+        ],
+        "tags": "Element,Software System"
+      },
+      {
+        "description": "Relatiebeheer.",
+        "documentation": {},
+        "group": "Cliëntenregistratie",
+        "id": "11",
+        "name": "CRM",
+        "properties": {
+          "structurizr.dsl.identifier": "crm"
+        },
+        "tags": "Element,Software System"
+      },
+      {
+        "description": "Platform voor de configuratie en uitvoering van integraties.",
+        "documentation": {},
+        "group": "Cliëntenregistratie",
+        "id": "12",
+        "name": "Integratieplatform",
+        "properties": {
+          "structurizr.dsl.identifier": "bus"
+        },
+        "relationships": [
+          {
+            "description": "Registreer aanmelding",
+            "destinationId": "9",
+            "id": "17",
+            "sourceId": "12",
+            "tags": "Relationship"
+          },
+          {
+            "description": "Registreer cliëntgegevens",
+            "destinationId": "10",
+            "id": "19",
+            "sourceId": "12",
+            "tags": "Relationship"
+          },
+          {
+            "description": "Registreer debiteurgegevens",
+            "destinationId": "11",
+            "id": "26",
+            "sourceId": "12",
+            "tags": "Relationship"
+          }
+        ],
+        "tags": "Element,Software System,ServiceBus"
+      }
+    ]
+  },
+  "name": "Cliëntenregistratie",
+  "properties": {
+    "structurizr.inspection.info": "0",
+    "structurizr.inspection.ignore": "0",
+    "structurizr.inspection.error": "28",
+    "structurizr.inspection.warning": "0",
+    "structurizr.dsl": "d29ya3NwYWNlICJDbGnDq250ZW5yZWdpc3RyYXRpZSIgIlN5c3RlbSBMYW5kc2NhcGUgdmlldywgZ2V0cmFuc2Zvcm1lZXJkIHZhbnVpdCBkZSBjb250YWluZXIgdmlldzogJ0NsacOrbnRlbnJlZ2lzdHJhdGllJyBpcyBoaWVyIGVlbiBncm91cCBpLnAudi4gZWVuIHNvZnR3YXJlIHN5c3RlbS4iIHsKCiAgICBtb2RlbCB7CgogICAgICAgICMgLS0tIFBlcnNvb24gZGllIGJ1aXRlbiBkZSBncm91cCBzdGFhdCAoZXh0ZXJuZSBhYW52cmFnZXIsIHpvYWxzIGluIGhldCBvcmlnaW5lZWwpIC0tLQogICAgICAgIGFhbnZyYWdlciA9IHBlcnNvbiAiQWFudnJhZ2VyIiAiQ2xpw6tudCwgY2xpw6tudG9uZGVyc3RldW5lciBvZiBtYW50ZWx6b3JnZXIgZGllIHpvcmcgYWFudnJhYWd0IiAiQ3VzdG9tZXIiCgogICAgICAgICMgLS0tIEV4dGVybmUgc29mdHdhcmUgc3lzdGVtZW4gLS0tCiAgICAgICAgZ3JvdXAgIlZFQ09aTyIgewogICAgICAgICAgICBjb3YgPSBzb2Z0d2FyZVN5c3RlbSAiQ09WIiAiUmVnaXN0ZXIgdmFuIHZlcnpla2VyZGVuIGVuIGh1biB2ZXJ6ZWtlcmluZ3NyZWNodC4iCiAgICAgICAgICAgIHpvcmdrYW50b29yID0gc29mdHdhcmVTeXN0ZW0gIlpvcmdrYW50b29yc3lzdGVlbSIgIlZlcmFudHdvb3JkZWxpamsgdm9vciBkZSByZWdpc3RyYXRpZSB2YW4gZWVuIHpvcmd0b2V3aWp6aW5nIGVuIGRlIHdpanppZ2luZ2VuIGRhYXJvcC4iCiAgICAgICAgfQogICAgICAgIHpkID0gc29mdHdhcmVTeXN0ZW0gIlpvcmdkb21laW4iICJBYW52cmFhZyB2YW51aXQgZWVuIHpvcmd2ZXJsZW5lciIKCiAgICAgICAgIyAtLS0gVm9vcm1hbGlnZSBjb250YWluZXJzICsgbWVkZXdlcmtlcnMsIG51IG9wIGxhbmRzY2FwZS1uaXZlYXUsIC0tLQogICAgICAgICMgLS0tIGdlZ3JvZXBlZXJkIGJpbm5lbiBkZSBncm91cCAiQ2xpw6tudGVucmVnaXN0cmF0aWUiICh3YXM6IHNvZnR3YXJlIHN5c3RlbSkgLS0tCiAgICAgICAgZ3JvdXAgIkNsacOrbnRlbnJlZ2lzdHJhdGllIiB7CiAgICAgICAgICAgIGNzYiA9IHBlcnNvbiAiTWVkZXdlcmtlciBjbGnDq250ZW5idXJlYXUiICJWZXJhbnR3b29yZGVsaWprIHZvb3IgYWFubWVsZGluZyBlbiByZWdpc3RyYXRpZSIgIlN0YWZmIgogICAgICAgICAgICB6b3JnYmVtaWRkZWxhYXIgPSBwZXJzb24gIlpvcmdiZW1pZGRlbGFhciIgIlZlcmFudHdvb3JkZWxpamsgdm9vciBkZSB0b2V0c2luZyBlbiBtYXRjaGluZyB2YW4gZGUgYWFubWVsZGluZyIgIlN0YWZmIgogICAgICAgICAgICB6YSA9IHBlcnNvbiAiTWVkZXdlcmtlciB6b3JnYWRtaW5pc3RyYXRpZSIgIlZlcmFudHdvb3JkZWxpamsgdm9vciBkZSBhZG1pbmlzdHJhdGlldmUgYWZoYW5kZWxpbmcuIiAiU3RhZmYiCgogICAgICAgICAgICB3ZWJzaXRlID0gc29mdHdhcmVTeXN0ZW0gIldlYnNpdGUiICJCaWVkdCBoZXQgb25saW5lIGFhbnZyYWFnZm9ybXVsaWVyLiIgCiAgICAgICAgICAgIGZyb250b2ZmaWNlID0gc29mdHdhcmVTeXN0ZW0gIkNsacOrbnRlbnBsYW5uaW5nIiAiQmVoZWVyIHZhbiBhYW5tZWxkaW5nZW4sIHdhY2h0bGlqc3RlbiBlbiBiZWRkZW5jYXBhY2l0ZWl0LiIgCiAgICAgICAgICAgIGVjZCA9IHNvZnR3YXJlU3lzdGVtICJFbGVrdHJvbmlzY2ggY2xpw6tudGVuZG9zc2llciIgIkFkbWluaXN0cmF0aWUgZW4gZG9zc2llcnZvZXJpbmcgdm9vciBkZSB2ZXJ6b3JnaW5nIHZhbiBjbGnDq250ZW4uIiAKICAgICAgICAgICAgY3JtID0gc29mdHdhcmVTeXN0ZW0gIkNSTSIgIlJlbGF0aWViZWhlZXIuIiAKICAgICAgICAgICAgYnVzID0gc29mdHdhcmVTeXN0ZW0gIkludGVncmF0aWVwbGF0Zm9ybSIgIlBsYXRmb3JtIHZvb3IgZGUgY29uZmlndXJhdGllIGVuIHVpdHZvZXJpbmcgdmFuIGludGVncmF0aWVzLiIgIlNlcnZpY2VCdXMiCiAgICAgICAgfQoKICAgICAgICAjIC0tLSBSZWxhdGllcyAob3Zlcmdlbm9tZW4gdmFuIGRlIGNvbnRhaW5lciB2aWV3LCBudSB0dXNzZW4gc29mdHdhcmUgc3lzdGVtZW4pIC0tLQogICAgICAgIGFhbnZyYWdlciAtPiBjc2IgIk1lbGQgY2xpw6tudCBhYW4gdm9vciB2ZXJwbGVlZ2h1aXN6b3JnIHZpYSBlLW1haWwiCiAgICAgICAgYWFudnJhZ2VyIC0+IHdlYnNpdGUgIk1lbGQgY2xpw6tudCBhYW4gdm9vciB2ZXJwbGVlZ2h1aXN6b3JnIgoKICAgICAgICBjc2IgLT4gZnJvbnRvZmZpY2UgIk9udHZhbmcsIHZlcmlmaWVlciBlbiByZWdpc3RyZWVyIGFhbm1lbGRpbmciCgogICAgICAgIHdlYnNpdGUgLT4gYnVzICJQdWJsaWNlZXIgYWFubWVsZGluZyIKICAgICAgICBidXMgLT4gZnJvbnRvZmZpY2UgIlJlZ2lzdHJlZXIgYWFubWVsZGluZyIKCiAgICAgICAgZnJvbnRvZmZpY2UgLT4gYnVzICJQdWJsaWNlZXIgY2xpw6tudGdlZ2V2ZW5zIgogICAgICAgIGJ1cyAtPiBlY2QgIlJlZ2lzdHJlZXIgY2xpw6tudGdlZ2V2ZW5zIgogICAgICAgIGVjZCAtPiBjb3YgIkNvbnRyb2xlZXIgdmVyemVrZXJpbmdzcmVjaHQiCgogICAgICAgIGFhbnZyYWdlciAtPiB6ZCAiTWVsZCBjbGnDq250IGFhbiB2b29yIHZlcnBsZWVnaHVpc3pvcmciCiAgICAgICAgemQgLT4gZWNkICJSZWdpc3RyZWVyIGFhbm1lbGRpbmciCiAgICAgICAgZWNkIC0+IHpvcmdrYW50b29yICJNZWxkIGFhbnZhbmcgKEFXMzUpIG9mIGJlw6tpbmRpZ2luZyAoQVczOSkgem9yZyIKICAgICAgICB6b3Jna2FudG9vciAtPiBlY2QgIlZlcnN0cmVrIHpvcmd0b2V3aWp6aW5nIChBVzMzKSIKCiAgICAgICAgZWNkIC0+IGJ1cyAiUHVibGljZWVyIGRlYml0ZXVyZ2VnZXZlbnMiCiAgICAgICAgYnVzIC0+IGNybSAiUmVnaXN0cmVlciBkZWJpdGV1cmdlZ2V2ZW5zIgoKICAgICAgICB6b3JnYmVtaWRkZWxhYXIgLT4gZnJvbnRvZmZpY2UgIlRvZXRzIGVuIG1hdGNoIGRlIHpvcmd2cmFhZyBtZXQgaGV0IGFhbmJvZCIKICAgICAgICB6YSAtPiBlY2QgIk1lbGQgYWFudmFuZy9iZcOraW5kaWdpbmcgem9yZyIKCiAgICAgICAgIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KICAgICAgICAjIERFUExPWU1FTlQg4oCUIFByb2R1Y3RpZSwgb24tcHJlbWlzZSBwcml2YXRlIGNsb3VkIG9wIE9wZW5TdGFjawogICAgICAgICMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiAgICAgICAgIwogICAgICAgICMgQWxsZSBlaWdlbiBzeXN0ZW1lbiBkcmFhaWVuIGluIGVlbiBwcml2YXRlIGNsb3VkIGluIGVpZ2VuIGJlaGVlciwKICAgICAgICAjIG9wZ2Vib3V3ZCB1aXQgdWl0c2x1aXRlbmQgb3BlbiBzb3VyY2UgY29tcG9uZW50ZW4uIERlIGV4dGVybmUKICAgICAgICAjIHN5c3RlbWVuIChDT1YsIFpvcmdrYW50b29yc3lzdGVlbSwgWm9yZ2RvbWVpbikgemlqbiBoaWVyIG5pZXQKICAgICAgICAjIGdlw69uc3RhbnRpZWVyZDogemUgZHJhYWllbiBiaWogZGVyZGVuIGVuIHppam4gYWxsZWVuIGJlcmVpa2JhYXIKICAgICAgICAjIHZpYSBkZSBlZ3Jlc3MtZmlyZXdhbGwsIGRpZSBhbHMgaW5mcmFzdHJ1Y3R1dXJrbm9vcCBpcyBvcGdlbm9tZW4uCiAgICAgICAgIwogICAgICAgICMgTW9kZWxsZWVya2V1emU6IGRlIE5ldXRyb24tbmV0d2Vya3pvbmVzIHN0YWFuIGFscyBicm9lciB2YW4gZGUKICAgICAgICAjIGNvbXB1dGUtbm9kZXMgZW4gbmlldCBlcm9uZGVyLiBGeXNpZWsgZHJhYWllbiBkZSBWTSdzIHVpdGVyYWFyZCDDs3AKICAgICAgICAjIGRlIGNvbXB1dGUtbm9kZXMsIG1hYXIgZGUgem9uZS1pbmRlbGluZyBpcyB3YXQgaGV0IG9udHdlcnAgc3R1dXJ0OwogICAgICAgICMgaGV0IGRpYWdyYW0gdm9sZ3QgaGllciBkZSBsb2dpY2EgdmFuIGhldCBuZXR3ZXJrLCBuaWV0IGRpZSB2YW4gaGV0CiAgICAgICAgIyByYWNrLgoKICAgICAgICBwcm9kdWN0aWUgPSBkZXBsb3ltZW50RW52aXJvbm1lbnQgIlByb2R1Y3RpZSIgewoKICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIkRhdGFjZW50ZXIgQW1lcnNmb29ydCIgIlByaW1haXJlIGxvY2F0aWUiICJFaWdlbiBkYXRhY2VudGVyIiB7CgogICAgICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIk9wZW5TdGFjayBwcml2YXRlIGNsb3VkIiAiSWFhUy1sYWFnIGluIGVpZ2VuIGJlaGVlciIgIk9wZW5TdGFjayAyMDI0LjEgKENhcmFjYWwpIiB7CgogICAgICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJDb250cm9sIHBsYW5lIiAiSWRlbnRpdGVpdCwgbmV0d2Vya2VuLCBpbWFnZXMgZW4gc2NoZWR1bGluZyIgInNydi1jdHJsLTAxIHQvbSBzcnYtY3RybC0wMywgVWJ1bnR1IDI0LjA0IExUUyIgMyB7CiAgICAgICAgICAgICAgICAgICAgICAgIG9wZW5zdGFja0NvbnRyb2wgPSBpbmZyYXN0cnVjdHVyZU5vZGUgIktleXN0b25lIC8gTmV1dHJvbiAvIEdsYW5jZSAvIEhvcml6b24iICJPcGVuU3RhY2stYmVzdHVyaW5nLCBpbiBIQSBvdmVyIGRyaWUgbm9kZXMiICJPcGVuU3RhY2sgMjAyNC4xIgogICAgICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIkNvbXB1dGUiICJEcmFhZ3QgYWxsZSB2aXJ0dWVsZSBtYWNoaW5lcyIgInNydi1jb21wLTAxIHQvbSBzcnYtY29tcC0wOCwgVWJ1bnR1IDI0LjA0IExUUyArIEtWTSIgOCB7CiAgICAgICAgICAgICAgICAgICAgICAgIG5vdmFDb21wdXRlID0gaW5mcmFzdHJ1Y3R1cmVOb2RlICJOb3ZhIGNvbXB1dGUgKEtWTS9saWJ2aXJ0KSIgIkh5cGVydmlzb3JsYWFnIiAiUUVNVS9LVk0iCiAgICAgICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgICAgICAjIC0tLSBOZXR3ZXJrem9uZTogRE1aIC0tLQogICAgICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJETVoiICJWYW4gYnVpdGVuIGJlcmVpa2JhcmUgem9uZSIgIk5ldXRyb24gcHJvdmlkZXIgbmV0d29yayIgewoKICAgICAgICAgICAgICAgICAgICAgICAgbG9hZGJhbGFuY2VyID0gaW5mcmFzdHJ1Y3R1cmVOb2RlICJIQVByb3h5ICsgS2VlcGFsaXZlZCIgIlRMUy10ZXJtaW5hdGllIGVuIHZlcmRlbGluZyBvdmVyIGRlIHdlYnNlcnZlcnMiICJzcnYtbGItMDEgLyBzcnYtbGItMDIsIFVidW50dSAyNC4wNCBMVFMiCgogICAgICAgICAgICAgICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAidm0td2ViLTAxIC8gdm0td2ViLTAyIiAiV2Vic2VydmVycyBhY2h0ZXIgZGUgbG9hZCBiYWxhbmNlciIgIk5vdmEtaW5zdGFuY2UsIFVidW50dSAyNC4wNCBMVFMgKyBuZ2lueCIgMiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB3ZWJzaXRlSW5zdGFuY2UgPSBzb2Z0d2FyZVN5c3RlbUluc3RhbmNlIHdlYnNpdGUKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICAgICAgIyAtLS0gTmV0d2Vya3pvbmU6IGFwcGxpY2F0aWUgLS0tCiAgICAgICAgICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIkFwcGxpY2F0aWV6b25lIiAiSW50ZXJuZSB6b25lLCBuaWV0IHZhbiBidWl0ZW4gYmVyZWlrYmFhciIgIk5ldXRyb24gdGVuYW50IG5ldHdvcmsiIHsKCiAgICAgICAgICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJ2bS1wbGFubmluZy0wMSAvIHZtLXBsYW5uaW5nLTAyIiAiQ2xpw6tudGVucGxhbm5pbmciICJOb3ZhLWluc3RhbmNlLCBVYnVudHUgMjQuMDQgTFRTIiAyIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZyb250b2ZmaWNlSW5zdGFuY2UgPSBzb2Z0d2FyZVN5c3RlbUluc3RhbmNlIGZyb250b2ZmaWNlCiAgICAgICAgICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJ2bS1lY2QtMDEgLyB2bS1lY2QtMDIiICJFbGVrdHJvbmlzY2ggY2xpw6tudGVuZG9zc2llciIgIk5vdmEtaW5zdGFuY2UsIFVidW50dSAyNC4wNCBMVFMiIDIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgZWNkSW5zdGFuY2UgPSBzb2Z0d2FyZVN5c3RlbUluc3RhbmNlIGVjZAogICAgICAgICAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAidm0tY3JtLTAxIiAiUmVsYXRpZWJlaGVlciIgIk5vdmEtaW5zdGFuY2UsIFVidW50dSAyNC4wNCBMVFMiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNybUluc3RhbmNlID0gc29mdHdhcmVTeXN0ZW1JbnN0YW5jZSBjcm0KICAgICAgICAgICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgInZtLWJ1cy0wMSB0L20gdm0tYnVzLTAzIiAiSW50ZWdyYXRpZXBsYXRmb3JtLCBiZXJpY2h0ZW52ZXJ3ZXJraW5nIiAiTm92YS1pbnN0YW5jZSwgVWJ1bnR1IDI0LjA0IExUUyArIEFwYWNoZSBLYWZrYSArIEFwYWNoZSBDYW1lbCIgMyB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBidXNJbnN0YW5jZSA9IHNvZnR3YXJlU3lzdGVtSW5zdGFuY2UgYnVzCiAgICAgICAgICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJ2bS1pZHAtMDEgLyB2bS1pZHAtMDIiICJBdXRoZW50aWNhdGllIGVuIGF1dG9yaXNhdGllIHZvb3IgbWVkZXdlcmtlcnMiICJOb3ZhLWluc3RhbmNlLCBVYnVudHUgMjQuMDQgTFRTIiAyIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleWNsb2FrID0gaW5mcmFzdHJ1Y3R1cmVOb2RlICJLZXljbG9hayIgIklkZW50aXR5IHByb3ZpZGVyLCBPSURDL1NBTUwiICJLZXljbG9hayAyNiIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICAgICAgIyAtLS0gTmV0d2Vya3pvbmU6IGRhdGEgLS0tCiAgICAgICAgICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIkRhdGF6b25lIiAiQWZnZXNjaGVybWRlIHpvbmUgdm9vciBwZXJzaXN0ZW50ZSBvcHNsYWciICJOZXV0cm9uIHRlbmFudCBuZXR3b3JrLCBnZWVuIGVncmVzcyIgewoKICAgICAgICAgICAgICAgICAgICAgICAgcG9zdGdyZXNDbHVzdGVyID0gaW5mcmFzdHJ1Y3R1cmVOb2RlICJQb3N0Z3JlU1FMLWNsdXN0ZXIiICJFw6luIHByaW1hcnkgZW4gdHdlZSBzeW5jaHJvbmUgcmVwbGljYSdzLCBhdXRvbWF0aXNjaGUgZmFpbG92ZXIgdmlhIFBhdHJvbmkgZW4gZXRjZCIgInNydi1wZy0wMSB0L20gc3J2LXBnLTAzLCBVYnVudHUgMjQuMDQgTFRTLCBQb3N0Z3JlU1FMIDE2ICsgUGF0cm9uaSIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiRGF0YWJhc2UiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICAgICAgICAgIGJhY2t1cCA9IGluZnJhc3RydWN0dXJlTm9kZSAiQmFjay11cCIgIkNvbnRpbnVlIFdBTC1hcmNoaXZlcmluZyBlbiBkYWdlbGlqa3NlIHZvbGxlZGlnZSBiYWNrLXVwIiAic3J2LWJjay0wMSwgcGdCYWNrUmVzdCIKICAgICAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgICAgICMgLS0tIE5ldHdlcmt6b25lOiBiZWhlZXIgLS0tCiAgICAgICAgICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIkJlaGVlcnpvbmUiICJNb25pdG9yaW5nLCBsb2dnaW5nIGVuIGNvbmZpZ3VyYXRpZWJlaGVlciIgIk5ldXRyb24gdGVuYW50IG5ldHdvcmsiIHsKICAgICAgICAgICAgICAgICAgICAgICAgbW9uaXRvcmluZyA9IGluZnJhc3RydWN0dXJlTm9kZSAiUHJvbWV0aGV1cyAvIEdyYWZhbmEgLyBMb2tpIiAiTWV0cmlla2VuLCBkYXNoYm9hcmRzIGVuIGxvZ3MiICJ2bS1tb24tMDEsIFVidW50dSAyNC4wNCBMVFMiCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgIGNlcGhDbHVzdGVyID0gaW5mcmFzdHJ1Y3R1cmVOb2RlICJDZXBoLW9wc2xhZ2NsdXN0ZXIiICJCbG9rb3BzbGFnIHZvb3IgZGUgTm92YS1pbnN0YW5jZXMgZW4gb2JqZWN0b3BzbGFnIHZvb3IgZG9jdW1lbnRlbiIgInNydi1jZXBoLTAxIHQvbSBzcnYtY2VwaC0wNSwgVWJ1bnR1IDI0LjA0IExUUywgQ2VwaCBSZWVmIiB7CiAgICAgICAgICAgICAgICAgICAgdGFncyAiRGF0YWJhc2UiCiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgZWdyZXNzID0gaW5mcmFzdHJ1Y3R1cmVOb2RlICJFZ3Jlc3MtZmlyZXdhbGwiICJFbmlnZSB1aXRnYWFuZGUgcm91dGUgbmFhciBWRUNPWk8gZW4gWm9yZ2RvbWVpbiwgbWV0IG1UTFMiICJzcnYtZnctMDEgLyBzcnYtZnctMDIsIG5mdGFibGVzICsgU3VyaWNhdGEiCiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJEYXRhY2VudGVyIEFwZWxkb29ybiIgIlVpdHdpamtsb2NhdGllIG9wIDQwIGttIGFmc3RhbmQiICJFaWdlbiBkYXRhY2VudGVyIiB7CgogICAgICAgICAgICAgICAgcG9zdGdyZXNTdGFuZGJ5ID0gaW5mcmFzdHJ1Y3R1cmVOb2RlICJQb3N0Z3JlU1FMLXN0YW5kYnkiICJBc3luY2hyb25lIHN0cmVhbWluZyByZXBsaWNhLCBoYW5kbWF0aWdlIHByb21vdGllIGJpaiB1aXR3aWprIiAic3J2LXBnLWRyLTAxLCBVYnVudHUgMjQuMDQgTFRTLCBQb3N0Z3JlU1FMIDE2IiB7CiAgICAgICAgICAgICAgICAgICAgdGFncyAiRGF0YWJhc2UiICJGYWlsb3ZlciIKICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICBjZXBoTWlycm9yID0gaW5mcmFzdHJ1Y3R1cmVOb2RlICJDZXBoLXNwaWVnZWwiICJSQkQtbWlycm9yaW5nIHZhbiBkZSBwcmltYWlyZSBvcHNsYWciICJzcnYtY2VwaC1kci0wMSB0L20gc3J2LWNlcGgtZHItMDMsIENlcGggUmVlZiIgewogICAgICAgICAgICAgICAgICAgIHRhZ3MgIkRhdGFiYXNlIiAiRmFpbG92ZXIiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KCiAgICAgICAgICAgICMgLS0tIEluZnJhc3RydWN0dXVycmVsYXRpZXMgKG5pZXQgYWZsZWlkYmFhciB1aXQgZGUgbG9naXNjaGUgbGFhZykgLS0tCiAgICAgICAgICAgIGxvYWRiYWxhbmNlciAtPiB3ZWJzaXRlSW5zdGFuY2UgIlZlcmRlZWx0IEhUVFBTLXZlcmtlZXIgb3ZlciIgIkhUVFBTIgoKICAgICAgICAgICAgZnJvbnRvZmZpY2VJbnN0YW5jZSAtPiBwb3N0Z3Jlc0NsdXN0ZXIgIkxlZXN0IGVuIHNjaHJpamZ0IiAiSkRCQywgcG9vcnQgNTQzMiIKICAgICAgICAgICAgZWNkSW5zdGFuY2UgICAgICAgICAtPiBwb3N0Z3Jlc0NsdXN0ZXIgIkxlZXN0IGVuIHNjaHJpamZ0IiAiSkRCQywgcG9vcnQgNTQzMiIKICAgICAgICAgICAgY3JtSW5zdGFuY2UgICAgICAgICAtPiBwb3N0Z3Jlc0NsdXN0ZXIgIkxlZXN0IGVuIHNjaHJpamZ0IiAiSkRCQywgcG9vcnQgNTQzMiIKICAgICAgICAgICAgYnVzSW5zdGFuY2UgICAgICAgICAtPiBwb3N0Z3Jlc0NsdXN0ZXIgIkxlZXN0IGVuIHNjaHJpamZ0IiAiSkRCQywgcG9vcnQgNTQzMiIKCiAgICAgICAgICAgIGVjZEluc3RhbmNlIC0+IGVncmVzcyAiS29wcGVsdCB1aXQgbmFhciBWRUNPWk8gZW4gWm9yZ2RvbWVpbiB2aWEiICJtVExTIgoKICAgICAgICAgICAgcG9zdGdyZXNDbHVzdGVyIC0+IGJhY2t1cCAiQXJjaGl2ZWVydCBXQUwgZW4gYmFjay11cHMgbmFhciIKICAgICAgICAgICAgcG9zdGdyZXNDbHVzdGVyIC0+IHBvc3RncmVzU3RhbmRieSAiUmVwbGljZWVydCBuYWFyIiAiUG9zdGdyZVNRTCBzdHJlYW1pbmcgcmVwbGljYXRpb24iCiAgICAgICAgICAgIGNlcGhDbHVzdGVyICAgICAtPiBjZXBoTWlycm9yICAgICAgIlNwaWVnZWx0IG5hYXIiICJDZXBoIFJCRCBtaXJyb3JpbmciCiAgICAgICAgfQogICAgfQoKICAgIHZpZXdzIHsKCiAgICAgICAgc3lzdGVtTGFuZHNjYXBlICJDbGllbnRlbnJlZ2lzdHJhdGllTGFuZHNjYXBlIiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgIH0KCiAgICAgICAgIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KICAgICAgICAjIERZTkFNSUMgVklFVyDigJQgdXNlLWNhc2VyZWFsaXNhdGllIG9wIGxhbmRzY2hhcHNuaXZlYXUKICAgICAgICAjID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQogICAgICAgICMKICAgICAgICAjIFNjb3BlIGlzICcqJzogZGUgcmVhbGlzYXRpZSBsb29wdCBkd2FycyBkb29yIG1lZXJkZXJlIHN5c3RlbWVuIGVuCiAgICAgICAgIyBvdmVyIGRlIG9yZ2FuaXNhdGllZ3JlbnMgaGVlbiwgZW4gcGFzdCBkdXMgbmlldCBiaW5uZW4gw6nDqW4gc3lzdGVlbS4KICAgICAgICAjCiAgICAgICAgIyBTdHJ1Y3R1cml6ciBudW1tZXJ0IGRlIGludGVyYWN0aWVzIGF1dG9tYXRpc2NoLCBpbiBkZSB2b2xnb3JkZQogICAgICAgICMgd2FhcmluIHplIGhpZXJvbmRlciBzdGFhbi4gRGllIG51bW1lcnMgdmVyc2NoaWpuZW4gb3AgZGUgcGlqbGVuIGluCiAgICAgICAgIyBoZXQgR0VSRU5ERVJERSBkaWFncmFtLCBuaWV0IGluIGRlemUgRFNMLXRla3N0LiBIZXQgY29tbWVudGFhciBib3ZlbgogICAgICAgICMgZWxrZSByZWdlbCBsZWd0IHZhc3Qgd2VsayBpbnRlcmFjdGllbnVtbWVyIGJpaiB3ZWxrZSBzdGFwIHVpdCBkZQogICAgICAgICMgdXNlLWNhc2VzcGVjaWZpY2F0aWUgaG9vcnQuCgogICAgICAgIGR5bmFtaWMgKiAiVUMwMS1DbGllbnQtYWFubWVsZGVuIiB7CiAgICAgICAgICAgIHRpdGxlICJVc2UtY2FzZXJlYWxpc2F0aWUgVUMtMDEgLSBDbGnDq250IGFhbm1lbGRlbiB2b29yIHZlcnBsZWVnaHVpc3pvcmcgKG9ubGluZSByb3V0ZSkiCgogICAgICAgICAgICAjIGludGVyYWN0aWUgMSAtIHN0YXAgMTogZGUgYWFudnJhZ2VyIGRpZW50IGRlIGFhbm1lbGRpbmcgaW4KICAgICAgICAgICAgYWFudnJhZ2VyIC0+IHdlYnNpdGUgIk1lbGR0IGRlIGNsacOrbnQgYWFuIHZpYSBoZXQgb25saW5lIGZvcm11bGllciIKCiAgICAgICAgICAgICMgaW50ZXJhY3RpZSAyIC0gc3RhcCAyOiBkZSBhYW5tZWxkaW5nIGtvbXQgb3AgaGV0IGludGVncmF0aWVwbGF0Zm9ybQogICAgICAgICAgICB3ZWJzaXRlIC0+IGJ1cyAiUHVibGljZWVydCBkZSBhYW5tZWxkaW5nIgoKICAgICAgICAgICAgIyBpbnRlcmFjdGllIDMgLSBzdGFwIDIKICAgICAgICAgICAgYnVzIC0+IGZyb250b2ZmaWNlICJSZWdpc3RyZWVydCBkZSBhYW5tZWxkaW5nIgoKICAgICAgICAgICAgZGVzY3JpcHRpb24gIlJlYWxpc2F0aWUgdmFuIGhldCBob29mZHNjZW5hcmlvIHZhbiBVQy0wMSBvcCBsYW5kc2NoYXBzbml2ZWF1LiBEZSBlLW1haWxyb3V0ZSBlbiBkZSByb3V0ZSB2aWEgWm9yZ2RvbWVpbiB6aWpuIGFsdGVybmF0aWV2ZSBzY2VuYXJpbydzIGVuIGtyaWpnZW4gZWVuIGVpZ2VuIHJlYWxpc2F0aWUuIgogICAgICAgIH0KCiAgICAgICAgIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KICAgICAgICAjIERFUExPWU1FTlQgVklFVyDigJQgcHJvZHVjdGllLCBvbi1wcmVtaXNlIE9wZW5TdGFjawogICAgICAgICMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CgogICAgICAgIGRlcGxveW1lbnQgKiAiUHJvZHVjdGllIiAiRGVwbG95bWVudC1Qcm9kdWN0aWUiIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJNYXBwaW5nIHZhbiBkZSBlaWdlbiBzeXN0ZW1lbiBvcCBkZSBvbi1wcmVtaXNlIHByaXZhdGUgY2xvdWQ6IE9wZW5TdGFjayBvdmVyIGFjaHQgY29tcHV0ZS1ub2RlcywgUG9zdGdyZVNRTCBpbiBlZW4gUGF0cm9uaS1jbHVzdGVyLCBDZXBoIGFscyBvcHNsYWcgZW4gZWVuIHVpdHdpamtsb2NhdGllIGluIEFwZWxkb29ybi4iCiAgICAgICAgfQoKICAgICAgICBzdHlsZXMgewogICAgICAgICAgZWxlbWVudCAiRWxlbWVudCIgewogICAgICAgICAgICAgICAgY29sb3IgIzlhMjhmOAogICAgICAgICAgICAgICAgc3Ryb2tlICM5YTI4ZjgKICAgICAgICAgICAgICAgIHN0cm9rZVdpZHRoIDcKICAgICAgICAgICAgICAgIHNoYXBlIHJvdW5kZWRib3gKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJQZXJzb24iIHsKICAgICAgICAgICAgICAgIHNoYXBlIHBlcnNvbgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBjeWxpbmRlcgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkJvdW5kYXJ5IiB7CiAgICAgICAgICAgICAgICBzdHJva2VXaWR0aCA1CiAgICAgICAgICAgIH0KICAgICAgICAgICAgcmVsYXRpb25zaGlwICJSZWxhdGlvbnNoaXAiIHsKICAgICAgICAgICAgICAgIHRoaWNrbmVzcyA0CiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGVsZW1lbnQgIkN1c3RvbWVyIiB7CiAgICAgICAgICAgICAgICBjb2xvciAjMDg0MjdiCiAgICAgICAgICAgICAgICBzdHJva2UgIzA4NDI3YgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIlN0YWZmIiB7CiAgICAgICAgICAgICAgICBjb2xvciAjMDA2NjY2CiAgICAgICAgICAgICAgICBzdHJva2UgIzAwNjY2NgogICAgICAgICAgICB9CgogICAgICAgICAgICBlbGVtZW50ICJTb2Z0d2FyZSBTeXN0ZW0iIHsKICAgICAgICAgICAgICAgIHNoYXBlIFJvdW5kZWRCb3gKICAgICAgICAgICAgfQoKICAgICAgICAgICAgZWxlbWVudCAiU2VydmljZUJ1cyIgewogICAgICAgICAgICAgICAgc2hhcGUgUGlwZQogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBDeWxpbmRlcgogICAgICAgICAgICAgICAgY29sb3IgIzU1NTU1NQogICAgICAgICAgICAgICAgc3Ryb2tlICM1NTU1NTUKICAgICAgICAgICAgfQoKICAgICAgICAgICAgcmVsYXRpb25zaGlwICJSZWxhdGlvbnNoaXAiIHsKICAgICAgICAgICAgICAgIHN0eWxlIGRhc2hlZAogICAgICAgICAgICAgICAgY29sb3IgIzU1NTU1NQogICAgICAgICAgICAgICAgdGhpY2tuZXNzIDQKICAgICAgICAgICAgfQoKICAgICAgICAgICAgZWxlbWVudCAiRGVwbG95bWVudCBOb2RlIiB7CiAgICAgICAgICAgICAgICBjb2xvciAjNTU1NTU1CiAgICAgICAgICAgICAgICBzdHJva2UgIzU1NTU1NQogICAgICAgICAgICAgICAgc3Ryb2tlV2lkdGggNAogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkluZnJhc3RydWN0dXJlIE5vZGUiIHsKICAgICAgICAgICAgICAgIHNoYXBlIFJvdW5kZWRCb3gKICAgICAgICAgICAgICAgIGNvbG9yICM1NTU1NTUKICAgICAgICAgICAgICAgIHN0cm9rZSAjNTU1NTU1CiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiRmFpbG92ZXIiIHsKICAgICAgICAgICAgICAgIG9wYWNpdHkgNjAKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KfQ=="
+  },
+  "views": {
+    "configuration": {
+      "lastSavedView": "ClientenregistratieLandscape",
+      "metadataSymbols": "SquareBrackets",
+      "styles": {
+        "elements": [
+          {
+            "strokeWidth": 5,
+            "tag": "Boundary"
+          },
+          {
+            "color": "#08427b",
+            "stroke": "#08427b",
+            "tag": "Customer"
+          },
+          {
+            "color": "#555555",
+            "shape": "Cylinder",
+            "stroke": "#555555",
+            "tag": "Database"
+          },
+          {
+            "color": "#555555",
+            "stroke": "#555555",
+            "strokeWidth": 4,
+            "tag": "Deployment Node"
+          },
+          {
+            "color": "#9a28f8",
+            "shape": "RoundedBox",
+            "stroke": "#9a28f8",
+            "strokeWidth": 7,
+            "tag": "Element"
+          },
+          {
+            "opacity": 60,
+            "tag": "Failover"
+          },
+          {
+            "color": "#555555",
+            "shape": "RoundedBox",
+            "stroke": "#555555",
+            "tag": "Infrastructure Node"
+          },
+          {
+            "shape": "Person",
+            "tag": "Person"
+          },
+          {
+            "shape": "Pipe",
+            "tag": "ServiceBus"
+          },
+          {
+            "shape": "RoundedBox",
+            "tag": "Software System"
+          },
+          {
+            "color": "#006666",
+            "stroke": "#006666",
+            "tag": "Staff"
+          }
+        ],
+        "relationships": [
+          {
+            "color": "#555555",
+            "style": "Dashed",
+            "tag": "Relationship",
+            "thickness": 4
+          }
+        ]
+      },
+      "terminology": {}
+    },
+    "deploymentViews": [
+      {
+        "description": "Mapping van de eigen systemen op de on-premise private cloud: OpenStack over acht compute-nodes, PostgreSQL in een Patroni-cluster, Ceph als opslag en een uitwijklocatie in Apeldoorn.",
+        "dimensions": {
+          "height": 5031,
+          "width": 5758
+        },
+        "elements": [
+          {
+            "id": "29",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "30",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "31",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "32",
+            "x": 1390,
+            "y": 1390
+          },
+          {
+            "id": "33",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "34",
+            "x": 655,
+            "y": 1395
+          },
+          {
+            "id": "35",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "36",
+            "x": 630,
+            "y": 2020
+          },
+          {
+            "id": "37",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "38",
+            "x": 1370,
+            "y": 2015
+          },
+          {
+            "id": "39",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "40",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "41",
+            "x": 3075,
+            "y": 1455
+          },
+          {
+            "id": "42",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "43",
+            "x": 3069,
+            "y": 2444
+          },
+          {
+            "id": "44",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "45",
+            "x": 3069,
+            "y": 1993
+          },
+          {
+            "id": "46",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "47",
+            "x": 2179,
+            "y": 2018
+          },
+          {
+            "id": "54",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "55",
+            "x": 2060,
+            "y": 1445
+          },
+          {
+            "id": "56",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "57",
+            "x": 4030,
+            "y": 2055
+          },
+          {
+            "id": "58",
+            "x": 4910,
+            "y": 2060
+          },
+          {
+            "id": "59",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "60",
+            "x": 4905,
+            "y": 1495
+          },
+          {
+            "id": "61",
+            "x": 3990,
+            "y": 3180
+          },
+          {
+            "id": "62",
+            "x": 3475,
+            "y": 3180
+          },
+          {
+            "id": "63",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "64",
+            "x": 4475,
+            "y": 3755
+          },
+          {
+            "id": "65",
+            "x": 3980,
+            "y": 3755
+          }
+        ],
+        "environment": "Productie",
+        "key": "Deployment-Productie",
+        "name": "Deployment View: Productie",
+        "order": 3,
+        "relationships": [
+          {
+            "id": "48"
+          },
+          {
+            "id": "49"
+          },
+          {
+            "id": "50",
+            "vertices": [
+              {
+                "x": 2790,
+                "y": 1675
+              }
+            ]
+          },
+          {
+            "id": "51",
+            "vertices": [
+              {
+                "x": 2679,
+                "y": 2543
+              },
+              {
+                "x": 3019,
+                "y": 2543
+              }
+            ]
+          },
+          {
+            "id": "52",
+            "vertices": [
+              {
+                "x": 3019,
+                "y": 2669
+              },
+              {
+                "x": 2679,
+                "y": 2669
+              }
+            ]
+          },
+          {
+            "id": "53",
+            "vertices": [
+              {
+                "x": 2679,
+                "y": 2143
+              }
+            ]
+          },
+          {
+            "id": "66"
+          },
+          {
+            "id": "67",
+            "vertices": [
+              {
+                "x": 4090,
+                "y": 1855
+              }
+            ]
+          },
+          {
+            "id": "68",
+            "vertices": [
+              {
+                "x": 3569,
+                "y": 2543
+              },
+              {
+                "x": 3700,
+                "y": 2305
+              },
+              {
+                "x": 3925,
+                "y": 2205
+              }
+            ]
+          },
+          {
+            "id": "69",
+            "vertices": [
+              {
+                "x": 3670,
+                "y": 2115
+              },
+              {
+                "x": 3915,
+                "y": 2095
+              }
+            ]
+          },
+          {
+            "id": "70",
+            "vertices": [
+              {
+                "x": 2570,
+                "y": 2945
+              },
+              {
+                "x": 3880,
+                "y": 2945
+              },
+              {
+                "x": 3860,
+                "y": 2330
+              }
+            ]
+          },
+          {
+            "id": "71",
+            "vertices": [
+              {
+                "x": 3075,
+                "y": 3330
+              }
+            ]
+          },
+          {
+            "id": "72"
+          },
+          {
+            "id": "73",
+            "vertices": [
+              {
+                "x": 4685,
+                "y": 2575
+              }
+            ]
+          },
+          {
+            "id": "74"
+          }
+        ]
+      }
+    ],
+    "dynamicViews": [
+      {
+        "description": "Realisatie van het hoofdscenario van UC-01 op landschapsniveau. De e-mailroute en de route via Zorgdomein zijn alternatieve scenario's en krijgen een eigen realisatie.",
+        "dimensions": {
+          "height": 2040,
+          "width": 4160
+        },
+        "elements": [
+          {
+            "id": "1",
+            "x": 295,
+            "y": 695
+          },
+          {
+            "id": "8",
+            "x": 989,
+            "y": 708
+          },
+          {
+            "id": "9",
+            "x": 2695,
+            "y": 725
+          },
+          {
+            "id": "12",
+            "x": 1785,
+            "y": 720
+          }
+        ],
+        "externalBoundariesVisible": false,
+        "key": "UC01-Client-aanmelden",
+        "name": "Dynamic View",
+        "order": 2,
+        "relationships": [
+          {
+            "description": "Meldt de cliënt aan via het online formulier",
+            "id": "14",
+            "order": "1",
+            "response": false
+          },
+          {
+            "description": "Publiceert de aanmelding",
+            "id": "16",
+            "order": "2",
+            "response": false
+          },
+          {
+            "description": "Registreert de aanmelding",
+            "id": "17",
+            "order": "3",
+            "response": false,
+            "vertices": [
+              {
+                "x": 2575,
+                "y": 870
+              }
+            ]
+          }
+        ],
+        "title": "Use-caserealisatie UC-01 - Cliënt aanmelden voor verpleeghuiszorg (online route)"
+      }
+    ],
+    "systemLandscapeViews": [
+      {
+        "dimensions": {
+          "height": 2340,
+          "width": 4900
+        },
+        "elements": [
+          {
+            "id": "1",
+            "x": 290,
+            "y": 745
+          },
+          {
+            "id": "2",
+            "x": 4200,
+            "y": 1115
+          },
+          {
+            "id": "3",
+            "x": 4175,
+            "y": 560
+          },
+          {
+            "id": "4",
+            "x": 2519,
+            "y": 160
+          },
+          {
+            "id": "5",
+            "x": 989,
+            "y": 1586
+          },
+          {
+            "id": "6",
+            "x": 989,
+            "y": 1031
+          },
+          {
+            "id": "7",
+            "x": 2544,
+            "y": 609
+          },
+          {
+            "id": "8",
+            "x": 1729,
+            "y": 760
+          },
+          {
+            "id": "9",
+            "x": 1729,
+            "y": 1385
+          },
+          {
+            "id": "10",
+            "x": 3309,
+            "y": 933
+          },
+          {
+            "id": "11",
+            "x": 2540,
+            "y": 1865
+          },
+          {
+            "id": "12",
+            "x": 2519,
+            "y": 1210
+          }
+        ],
+        "enterpriseBoundaryVisible": true,
+        "key": "ClientenregistratieLandscape",
+        "name": "System Landscape View",
+        "order": 1,
+        "relationships": [
+          {
+            "id": "13",
+            "vertices": [
+              {
+                "x": 769,
+                "y": 1786
+              }
+            ]
+          },
+          {
+            "id": "14",
+            "vertices": [
+              {
+                "x": 769,
+                "y": 910
+              }
+            ]
+          },
+          {
+            "id": "15",
+            "vertices": [
+              {
+                "x": 1559,
+                "y": 1786
+              }
+            ]
+          },
+          {
+            "id": "16",
+            "vertices": [
+              {
+                "x": 2349,
+                "y": 910
+              }
+            ]
+          },
+          {
+            "id": "17",
+            "vertices": [
+              {
+                "x": 2349,
+                "y": 1510
+              }
+            ]
+          },
+          {
+            "id": "18",
+            "vertices": [
+              {
+                "x": 2349,
+                "y": 1873
+              }
+            ]
+          },
+          {
+            "id": "19",
+            "vertices": [
+              {
+                "x": 3534,
+                "y": 1360
+              }
+            ]
+          },
+          {
+            "id": "20",
+            "vertices": [
+              {
+                "x": 3809,
+                "y": 1258
+              }
+            ]
+          },
+          {
+            "id": "21",
+            "vertices": [
+              {
+                "x": 769,
+                "y": 310
+              }
+            ]
+          },
+          {
+            "id": "22",
+            "vertices": [
+              {
+                "x": 3139,
+                "y": 671
+              }
+            ]
+          },
+          {
+            "id": "23",
+            "vertices": [
+              {
+                "x": 3809,
+                "y": 1017
+              },
+              {
+                "x": 4149,
+                "y": 1017
+              }
+            ]
+          },
+          {
+            "id": "24",
+            "vertices": [
+              {
+                "x": 4149,
+                "y": 835
+              },
+              {
+                "x": 3809,
+                "y": 835
+              }
+            ]
+          },
+          {
+            "id": "25",
+            "vertices": [
+              {
+                "x": 3139,
+                "y": 1131
+              }
+            ]
+          },
+          {
+            "id": "26",
+            "vertices": [
+              {
+                "x": 2744,
+                "y": 1610
+              }
+            ]
+          },
+          {
+            "id": "27",
+            "vertices": [
+              {
+                "x": 1559,
+                "y": 1231
+              }
+            ]
+          },
+          {
+            "id": "28",
+            "vertices": [
+              {
+                "x": 3139,
+                "y": 809
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
