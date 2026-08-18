@@ -21,7 +21,7 @@
 
     <ess:entry xml:lang="nl">De enterprise-architectuurkaders en de paved road zijn gepubliceerd (Enterprise architectuur heeft minimaal de toestand Omlijnd bereikt); scope en stakeholders van de solution zijn geïdentificeerd; een opdrachtgever heeft opdracht gegeven voor het solution-traject.</ess:entry>
 
-    <ess:result xml:lang="nl">Solution-specifieke architectuurkeuzes zijn vastgelegd als architectuurbeslissingen; het architectuurmodel is uitgewerkt tot op codeniveau (context, container, component, code); risicovolle integratiekeuzes zijn bewezen via proof-of-concepts; de solution functioneert aantoonbaar conform de enterprise-kaders in productie.</ess:result>
+    <ess:result xml:lang="nl">Solution-specifieke architectuurkeuzes zijn vastgelegd als architectuurbeslissingen; de architectuurbeschrijving is uitgewerkt tot op codeniveau (context, container, component, code); risicovolle integratiekeuzes zijn bewezen via proof-of-concepts; de solution functioneert aantoonbaar conform de enterprise-kaders in productie.</ess:result>
 
     <ess:measures xml:lang="nl">Aantal architectuurbeslissingen per alpha-toestand; percentage architectuurbepalende eisen dat is afgedekt door minimaal één architectuurbeslissing; aantal open, onopgeloste integratierisico's; conformance-score bij systeemtest.</ess:measures>
 
@@ -35,7 +35,7 @@
     <ess:ownedElements rdf:resource="activity/solution-low-level-design"/>
     <ess:ownedElements rdf:resource="activity/solution-lead-implementation"/>
     <ess:ownedElements rdf:resource="activity/solution-monitor-performance"/>
-    <ess:ownedElements rdf:resource="workproduct/architectuurmodel"/>
+    <ess:ownedElements rdf:resource="workproduct/architectuurbeschrijving"/>
     <ess:ownedElements rdf:resource="workproduct/architectuurbeslissingen"/>
     <ess:ownedElements rdf:resource="workproduct/migratiescenario"/>
     <ess:associations rdf:resource="pattern-association/solution-architecture/performed-by"/>
@@ -99,7 +99,7 @@
     <ess:approach rdf:resource="approach/solution-high-level-design/default"/>
     <ess:action rdf:resource="action/solution-high-level-design/read/architectuuropdracht"/>
     <ess:action rdf:resource="action/solution-high-level-design/read/paved-road"/>
-    <ess:action rdf:resource="action/solution-high-level-design/create/architectuurmodel"/>
+    <ess:action rdf:resource="action/solution-high-level-design/create/architectuurbeschrijving"/>
     <ess:action rdf:resource="action/solution-high-level-design/create/architectuurbeslissingen"/>
     <ess:action rdf:resource="action/solution-high-level-design/create/migratiescenario"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
@@ -135,11 +135,11 @@
     <ess:workProduct rdf:resource="workproduct/paved-road"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-high-level-design/create/architectuurmodel">
-    <ess:name xml:lang="nl">Maak architectuurmodel</ess:name>
+  <ess:Action rdf:about="action/solution-high-level-design/create/architectuurbeschrijving">
+    <ess:name xml:lang="nl">Maak architectuurbeschrijving</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/architectuurmodel"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeschrijving"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-high-level-design/create/architectuurbeslissingen">
@@ -273,13 +273,13 @@
 <ess:Activity rdf:about="activity/solution-low-level-design">
     <ess:name xml:lang="nl">Maak low-level design</ess:name>
     <ess:briefDescription xml:lang="nl">Werkt de architectuur, voortbouwend op het high-level design, uit tot een technisch low-level design — alleen voor de onderdelen die daadwerkelijk verdere detaillering behoeven.</ess:briefDescription>
-    <ess:description xml:lang="nl"><![CDATA[<p>Niet ieder onderdeel van de solution heeft nadere technische uitwerking nodig, en niet iedere use case wordt hier uitgewerkt. Deze activiteit richt zich alleen op de onderdelen met een architectuurbepalende eis, een aanzienlijk technisch risico, een complexe integratie of een belangrijke ontwerpbeslissing, en op de architectuurbepalende use cases die de werking van het ontwerp aantoonbaar maken: hoe de gekozen patronen werken en hoe de standaarden uit de paved road moeten worden toegepast. Zo'n use case wordt uitgewerkt tot een use-caserealisatie: een weergave waarin de bouwstenen uit het architectuurmodel het scenario van de use case stap voor stap uitvoeren. Daarmee ontstaat de verbinding tussen de use-casespecificatie, die beschrijft wát er gebeurt, en het architectuurmodel, dat beschrijft waar het gebeurt. Voor de rest volstaat het detailniveau van het high-level design. Voor die geselecteerde onderdelen legt de architectuureigenaar, samen met ontwikkelaars, engineers, leveranciers en security- en dataspecialisten, vast hoe ze intern zijn opgebouwd, hoe ze samenwerken en hoe ze worden gerealiseerd — inclusief interfaces, gegevensverwerking en, waar relevant, de technische infrastructuur. De architectuurbepalende eisen zelf krijgen geen eigen werkproduct: ze worden hier in het low-level design verwerkt, en kunnen daarnaast in de architectuurrepository worden vastgelegd. Het resultaat is de directe basis voor implementatie, configuratie, bouw en technische toetsing.</p>]]></ess:description>
+    <ess:description xml:lang="nl"><![CDATA[<p>Niet ieder onderdeel van de solution heeft nadere technische uitwerking nodig, en niet iedere use case wordt hier uitgewerkt. Deze activiteit richt zich alleen op de onderdelen met een architectuurbepalende eis, een aanzienlijk technisch risico, een complexe integratie of een belangrijke ontwerpbeslissing, en op de architectuurbepalende use cases die de werking van het ontwerp aantoonbaar maken: hoe de gekozen patronen werken en hoe de standaarden uit de paved road moeten worden toegepast. Zo'n use case wordt uitgewerkt tot een use-caserealisatie: een weergave waarin de bouwstenen uit de architectuurbeschrijving het scenario van de use case stap voor stap uitvoeren. Daarmee ontstaat de verbinding tussen de use-casespecificatie, die beschrijft wát er gebeurt, en de architectuurbeschrijving, die beschrijft waar het gebeurt. Voor de rest volstaat het detailniveau van het high-level design. Voor die geselecteerde onderdelen legt de architectuureigenaar, samen met ontwikkelaars, engineers, leveranciers en security- en dataspecialisten, vast hoe ze intern zijn opgebouwd, hoe ze samenwerken en hoe ze worden gerealiseerd — inclusief interfaces, gegevensverwerking en, waar relevant, de technische infrastructuur. De architectuurbepalende eisen zelf krijgen geen eigen werkproduct: ze worden hier in het low-level design verwerkt, en kunnen daarnaast in de architectuurrepository worden vastgelegd. Het resultaat is de directe basis voor implementatie, configuratie, bouw en technische toetsing.</p>]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
     <ess:approach rdf:resource="approach/solution-low-level-design/default"/>
     <ess:action rdf:resource="action/solution-low-level-design/read/architectuurbeslissingen"/>
     <ess:action rdf:resource="action/solution-low-level-design/create/architectuurbeslissingen"/>
-    <ess:action rdf:resource="action/solution-low-level-design/update/architectuurmodel"/>
+    <ess:action rdf:resource="action/solution-low-level-design/update/architectuurbeschrijving"/>
     <ess:action rdf:resource="action/solution-low-level-design/update/migratiescenario"/>
     <ess:action rdf:resource="action/solution-low-level-design/read/paved-road"/>
     <ess:action rdf:resource="action/solution-low-level-design/read/requirements"/>
@@ -293,10 +293,10 @@
     <ess:name xml:lang="nl">Kiezen</ess:name>
     <ess:briefDescription/>
     <ess:description xml:lang="nl"><![CDATA[
-<p>Het low-level design bouwt voort op de containerindeling uit het high-level design. De containers worden hier niet opnieuw ontworpen, maar intern verder uitgewerkt; low-level design is immers een evolutie van hetzelfde architectuurmodel, geen apart document. Blijkt de containerstructuur onvoldoende aan te sluiten, dan wordt niet het high-level design aangepast, maar wordt het architectuurmodel op dat punt verder ontwikkeld, voordat de detaillering verder gaat. Deze activiteit is daarmee iteratief: ze kan worden herhaald zodra architectuurbeslissingen uit andere activiteiten daar aanleiding toe geven. Per container wordt beschreven welke componenten worden onderscheiden, welke verantwoordelijkheden zij hebben en hoe zij communiceren, met de belangrijkste interfaces, gegevensuitwisselingen en technische afhankelijkheden. Verdere detaillering vindt alleen plaats waar dat nodig is om een architectuurbepalende eis te realiseren of te toetsen; voor de meeste componenten, en zeker voor standaardsoftware, blijft de implementatie de verantwoordelijkheid van het ontwikkelteam of de leverancier. Hetzelfde selectiecriterium geldt voor use cases: niet elke use case wordt uitgewerkt, alleen de architectuurbepalende use cases die laten zien hoe het ontwerp werkt, hoe de gekozen patronen functioneren en hoe de standaarden uit de paved road daarbij worden toegepast. Er is geen apart werkproduct voor de architectuurbepalende eisen zelf: ze worden verwerkt in dit low-level design, en kunnen daarnaast worden opgenomen in de architectuurrepository.</p>
+<p>Het low-level design bouwt voort op de containerindeling uit het high-level design. De containers worden hier niet opnieuw ontworpen, maar intern verder uitgewerkt; low-level design is immers een evolutie van dezelfde architectuurbeschrijving, geen apart document. Blijkt de containerstructuur onvoldoende aan te sluiten, dan wordt niet het high-level design aangepast, maar wordt de architectuurbeschrijving op dat punt verder ontwikkeld, voordat de detaillering verder gaat. Deze activiteit is daarmee iteratief: ze kan worden herhaald zodra architectuurbeslissingen uit andere activiteiten daar aanleiding toe geven. Per container wordt beschreven welke componenten worden onderscheiden, welke verantwoordelijkheden zij hebben en hoe zij communiceren, met de belangrijkste interfaces, gegevensuitwisselingen en technische afhankelijkheden. Verdere detaillering vindt alleen plaats waar dat nodig is om een architectuurbepalende eis te realiseren of te toetsen; voor de meeste componenten, en zeker voor standaardsoftware, blijft de implementatie de verantwoordelijkheid van het ontwikkelteam of de leverancier. Hetzelfde selectiecriterium geldt voor use cases: niet elke use case wordt uitgewerkt, alleen de architectuurbepalende use cases die laten zien hoe het ontwerp werkt, hoe de gekozen patronen functioneren en hoe de standaarden uit de paved road daarbij worden toegepast. Er is geen apart werkproduct voor de architectuurbepalende eisen zelf: ze worden verwerkt in dit low-level design, en kunnen daarnaast worden opgenomen in de architectuurrepository.</p>
 <br />
 <p><strong>Beschrijven applicatielaag voor een use case</strong></p>
-<p>Een geselecteerde use case wordt uitgewerkt als dynamisch diagram (zie onderstaand voorbeeld): de bouwstenen uit het architectuurmodel worden getoond met genummerde interacties die de volgorde aangeven waarin zij het scenario uitvoeren. Het diagram is geen nieuw model maar een extra weergave op hetzelfde architectuurmodel, zodat dezelfde containers en componenten worden gebruikt als in de statische diagrammen. De nummering volgt de genummerde stappen van het hoofdscenario in de use-casespecificatie; daardoor blijft de herkomst van elke interactie zichtbaar zonder dat er een apart koppelingsdocument nodig is. Het abstractieniveau is een keuze: op containerniveau wanneer de realisatie duidelijk moet maken hoe de bouwstenen samenwerken, op componentniveau alleen wanneer het risico juist binnen één container zit.</p>
+<p>Een geselecteerde use case wordt uitgewerkt als dynamisch diagram (zie onderstaand voorbeeld): de bouwstenen uit de architectuurbeschrijving worden getoond met genummerde interacties die de volgorde aangeven waarin zij het scenario uitvoeren. Het diagram is geen nieuw model maar een extra weergave op dezelfde architectuurbeschrijving, zodat dezelfde containers en componenten worden gebruikt als in de statische diagrammen. De nummering volgt de genummerde stappen van het hoofdscenario in de use-casespecificatie; daardoor blijft de herkomst van elke interactie zichtbaar zonder dat er een apart koppelingsdocument nodig is. Het abstractieniveau is een keuze: op containerniveau wanneer de realisatie duidelijk moet maken hoe de bouwstenen samenwerken, op componentniveau alleen wanneer het risico juist binnen één container zit.</p>
 <canvas src="assets/images/solution-lld-dynamic.png" alt="Voorbeeld van een C4-deploymentdiagram" style="display:block;max-width:75%;object-fit:contain;margin:1rem auto;">
 <p>Terughoudendheid is hier het uitgangspunt. Een use-caserealisatie wordt gemaakt voor terugkerende samenwerkingspatronen en voor scenario's waarvan het samenspel tussen bouwstenen ingewikkeld genoeg is om misverstanden op te leveren — niet voor elke use case, en niet omdat de use case belangrijk is voor de gebruiker. Alternatieve scenario's krijgen geen eigen realisatie, tenzij het architectuurrisico zich juist daar bevindt: een niet-beschikbare koppeling of een mislukte transactie legt vaker een structurele tekortkoming bloot dan het gelukkige pad.</p>
 <br />
@@ -325,11 +325,11 @@
     <ess:workProduct rdf:resource="workproduct/architectuurbeslissingen"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-low-level-design/update/architectuurmodel">
-    <ess:name xml:lang="nl">Werk architectuurmodel bij</ess:name>
+  <ess:Action rdf:about="action/solution-low-level-design/update/architectuurbeschrijving">
+    <ess:name xml:lang="nl">Werk architectuurbeschrijving bij</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#update"/>
-    <ess:workProduct rdf:resource="workproduct/architectuurmodel"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeschrijving"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-low-level-design/update/migratiescenario">
@@ -441,7 +441,7 @@
     <ess:owner rdf:resource="practice/solution-architecture"/>
     <ess:approach rdf:resource="approach/solution-monitor-performance/default"/>
     <ess:action rdf:resource="action/solution-monitor-performance/read/architectuurbeslissingen"/>
-    <ess:action rdf:resource="action/solution-monitor-performance/read/architectuurmodel"/>
+    <ess:action rdf:resource="action/solution-monitor-performance/read/architectuurbeschrijving"/>
     <ess:action rdf:resource="action/solution-monitor-performance/read/migratiescenario"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/solution-monitor-performance/entry/system"/>
@@ -467,11 +467,11 @@
     <ess:workProduct rdf:resource="workproduct/architectuurbeslissingen"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/solution-monitor-performance/read/architectuurmodel">
-    <ess:name xml:lang="nl">Maak architectuurmodel</ess:name>
+  <ess:Action rdf:about="action/solution-monitor-performance/read/architectuurbeschrijving">
+    <ess:name xml:lang="nl">Maak architectuurbeschrijving</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#read"/>
-    <ess:workProduct rdf:resource="workproduct/architectuurmodel"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeschrijving"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/solution-monitor-performance/read/migratiescenario">
@@ -502,40 +502,40 @@
   </ess:CompletionCriterion>
 
   <!-- ==================================================================
-       WERKPRODUCT — Architectuurmodel
+       WERKPRODUCT — Architectuurbeschrijving
        ================================================================== -->
 
-<ess:WorkProduct rdf:about="workproduct/architectuurmodel">
-    <ess:name xml:lang="nl">Architectuurmodel</ess:name>
-    <ess:briefDescription xml:lang="nl">Het architectuurmodel is de formele beschrijving van de solution: de bouwstenen waaruit ze bestaat, hun verantwoordelijkheden en grenzen, en hoe ze onderling samenwerken.</ess:briefDescription>
+<ess:WorkProduct rdf:about="workproduct/architectuurbeschrijving">
+    <ess:name xml:lang="nl">Architectuurbeschrijving</ess:name>
+    <ess:briefDescription xml:lang="nl">De architectuurbeschrijving is de formele beschrijving van de solution: de bouwstenen waaruit ze bestaat, hun verantwoordelijkheden en grenzen, en hoe ze onderling samenwerken.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[
-    <p>Het architectuurmodel is de formele beschrijving van de solution en het centrale stuurmiddel voor ontwerp, realisatie en toetsing. Het legt vast uit welke bouwstenen de oplossing bestaat, welke verantwoordelijkheden en grenzen deze bouwstenen hebben en hoe ze onderling samenwerken, zodat structurele keuzes zichtbaar worden en gedurende het project kunnen worden beoordeeld en bewaakt.</p>
-    <p>Het model beschrijft zowel de relevante delen van de huidige als de gewenste situatie, maar uitsluitend voor zover nodig om de verandering te begrijpen: onderdelen die ongewijzigd blijven, worden niet opnieuw uitgewerkt. De uitwerking groeit mee met de voortgang van het project — vroege fasen bevatten alleen wat nodig is voor richtinggevende keuzes, latere fasen worden verder gedetailleerd tot het niveau dat nodig is om te realiseren en te toetsen. De onderbouwing van de gemaakte keuzes maakt geen deel uit van het model zelf, maar wordt apart vastgelegd in architectuurbeslissingen.</p>
-    <p>Het architectuurmodel wordt uitgewerkt volgens het C4-model: van contextniveau (de grenzen van de solution en haar omgeving) via containerniveau (de bouwstenen en hun onderlinge gegevensuitwisseling — voor de meeste solutions het niveau waarop governance haar oordeel vormt) tot component- en codeniveau, die alleen worden uitgewerkt waar een architectuurbepalende eis, een risico of een ontwerpbeslissing dat vereist. Het model is bedoeld voor iedereen die verantwoordelijk is voor of betrokken is bij de architectuur: de architectuureigenaar, het deliveryteam, de Enterprise architect, leveranciers en reviewers. De componenten van het architectuurmodel worden opgenomen in de architectuurrepository, zodat de structurele opbouw van de solution op dezelfde autoritatieve plek terug te vinden is als de overige architectuurartefacten.</p>
+    <p>De architectuurbeschrijving is de formele beschrijving van de solution en het centrale stuurmiddel voor ontwerp, realisatie en toetsing. Ze legt vast uit welke bouwstenen de oplossing bestaat, welke verantwoordelijkheden en grenzen deze bouwstenen hebben en hoe ze onderling samenwerken, zodat structurele keuzes zichtbaar worden en gedurende het project kunnen worden beoordeeld en bewaakt.</p>
+    <p>De architectuurbeschrijving beschrijft zowel de relevante delen van de huidige als de gewenste situatie, maar uitsluitend voor zover nodig om de verandering te begrijpen: onderdelen die ongewijzigd blijven, worden niet opnieuw uitgewerkt. De uitwerking groeit mee met de voortgang van het project — vroege fasen bevatten alleen wat nodig is voor richtinggevende keuzes, latere fasen worden verder gedetailleerd tot het niveau dat nodig is om te realiseren en te toetsen. De onderbouwing van de gemaakte keuzes maakt geen deel uit van de architectuurbeschrijving zelf, maar wordt apart vastgelegd in architectuurbeslissingen.</p>
+    <p>De architectuurbeschrijving wordt uitgewerkt volgens het C4-model: van contextniveau (de grenzen van de solution en haar omgeving) via containerniveau (de bouwstenen en hun onderlinge gegevensuitwisseling — voor de meeste solutions het niveau waarop governance haar oordeel vormt) tot component- en codeniveau, die alleen worden uitgewerkt waar een architectuurbepalende eis, een risico of een ontwerpbeslissing dat vereist. De architectuurbeschrijving is bedoeld voor iedereen die verantwoordelijk is voor of betrokken is bij de architectuur: de architectuureigenaar, het deliveryteam, de Enterprise architect, leveranciers en reviewers. De componenten van de architectuurbeschrijving worden opgenomen in de architectuurrepository, zodat de structurele opbouw van de solution op dezelfde autoritatieve plek terug te vinden is als de overige architectuurartefacten.</p>
     <br /><p><strong>Voorbeeld van een applicatielandschap</strong></p>
     <p>Onderstaand voorbeeld toont een applicatielandschap voor het proces Cliëntenregistratie. Het diagram brengt de belangrijkste gebruikers, applicaties, externe systemen en hun onderlinge interacties in beeld. Zo wordt duidelijk welke applicaties onderdeel zijn van de solution, hoe gegevens worden uitgewisseld en waar de systeemgrenzen (en verantwoordelijkheden) liggen. Het diagram is opgesteld volgens het C4-model en ondersteunt het maken, communiceren en toetsen van architectuurbeslissingen.</p>
     <canvas src="assets/images/systemlandscape.png" alt="Applicatielandschap" style="max-width:100%;margin:1rem 0;">
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:owner rdf:resource="practice/solution-architecture"/>
-    <ess:levelOfDetail rdf:resource="lod/architectuurmodel/context"/>
-    <ess:levelOfDetail rdf:resource="lod/architectuurmodel/container"/>
-    <ess:levelOfDetail rdf:resource="lod/architectuurmodel/component"/>
-    <ess:levelOfDetail rdf:resource="lod/architectuurmodel/code"/>
-    <ess:resources rdf:resource="resource/architectuurmodel/c4-reference"/>
-    <ess:ownedElements rdf:resource="resource/architectuurmodel/template"/>
+    <ess:levelOfDetail rdf:resource="lod/architectuurbeschrijving/context"/>
+    <ess:levelOfDetail rdf:resource="lod/architectuurbeschrijving/container"/>
+    <ess:levelOfDetail rdf:resource="lod/architectuurbeschrijving/component"/>
+    <ess:levelOfDetail rdf:resource="lod/architectuurbeschrijving/code"/>
+    <ess:resources rdf:resource="resource/architectuurbeschrijving/c4-reference"/>
+    <ess:ownedElements rdf:resource="resource/architectuurbeschrijving/template"/>
   </ess:WorkProduct>
 
-  <ess:LevelOfDetail rdf:about="lod/architectuurmodel/context">
+  <ess:LevelOfDetail rdf:about="lod/architectuurbeschrijving/context">
     <ess:name xml:lang="nl">1. Context</ess:name>
     <ess:description xml:lang="nl"><![CDATA[
-    <p>Op dit detailniveau blijft de interne opbouw van de solution een black box. De interne gegevensstructuur wordt nog niet beschreven; uitsluitend de gegevensuitwisselingen over de systeemgrenzen heen worden vastgelegd, bijvoorbeeld 'levert FHIR-resources (primair gebruik)' of 'verstuurt meetgegevens'. Het model laat daarmee zien welke gegevens worden uitgewisseld, met welke partijen en via welke systeemgrenzen, zonder in te gaan op de interne opslag of verwerking van gegevens.</p>
+    <p>Op dit detailniveau blijft de interne opbouw van de solution een black box. De interne gegevensstructuur wordt nog niet beschreven; uitsluitend de gegevensuitwisselingen over de systeemgrenzen heen worden vastgelegd, bijvoorbeeld 'levert FHIR-resources (primair gebruik)' of 'verstuurt meetgegevens'. Deze weergave laat daarmee zien welke gegevens worden uitgewisseld, met welke partijen en via welke systeemgrenzen, zonder in te gaan op de interne opslag of verwerking van gegevens.</p>
     <p>Dit detailniveau is van belang zodra de architectuur moet aantonen dat de grenzen van de solution duidelijk zijn afgebakend en dat de belangrijkste buy-, build- en reuse-keuzes op hoofdlijnen zijn gemaakt. Het betreft een van de eerste architectuurweergaven die met de opdrachtgever en de eigenaren van omliggende systemen wordt besproken. Omdat deze weergave de scope van de oplossing vastlegt, verandert zij gedurende het project doorgaans weinig. Een wijziging op contextniveau duidt meestal op een wijziging van de projectscope en niet op een verdere uitwerking van de architectuur.</p>
     <p>Onderstaand voorbeeld toont een contextdiagram op dit detailniveau. Het diagram laat zien welke personen, software- en externe systemen onderdeel uitmaken van de solution en welke gegevens over de systeemgrenzen worden uitgewisseld. De interne opbouw van de afzonderlijke systemen blijft daarbij buiten beschouwing; de nadruk ligt volledig op de context van de oplossing en haar interacties met de omgeving.</p>
     <canvas src="assets/images/solution-hld-context.png" alt="Voorbeeld van een C4 System Context-diagram" style="display:block;max-width:60%;object-fit:contain;margin:1rem auto;">
 ]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
-    <ess:successor rdf:resource="lod/architectuurmodel/container"/>
+    <ess:successor rdf:resource="lod/architectuurbeschrijving/container"/>
     <ess:checkListItem rdf:nodeID="checkpoint_lod_context_1"/>
   </ess:LevelOfDetail>
 
@@ -543,7 +543,7 @@
     <ess:name>1</ess:name>
   </ess:Checkpoint>
 
-  <ess:LevelOfDetail rdf:about="lod/architectuurmodel/container">
+  <ess:LevelOfDetail rdf:about="lod/architectuurbeschrijving/container">
     <ess:name xml:lang="nl">2. Container</ess:name>
     <ess:description xml:lang="nl"><![CDATA[
     <p>Op dit detailniveau wordt voor het eerst concreet vastgelegd <strong>welke bouwsteen verantwoordelijk is voor welke gegevens</strong> en op <strong>welke wijze gegevens tussen de bouwstenen worden uitgewisseld</strong>. Daarbij wordt niet alleen bepaald waar gegevens worden beheerd, maar ook in welke vorm zij worden uitgewisseld, bijvoorbeeld als een real-time gebeurtenis, batchbestand, query of FHIR-resource. In het voorbeeld van het Health Data Platform is dit het niveau waarop de Clinical Data Repository wordt onderscheiden als de persistente bron voor klinische gegevens en de OMOP Datastore als afgeleide onderzoeksdataset. Ook wordt op dit niveau de scheiding tussen primair en secundair gegevensgebruik expliciet gemaakt.</p>
@@ -552,7 +552,7 @@
     <canvas src="assets/images/solution-hld-containers.png" alt="Voorbeeld van een C4 Container-diagram" style="display:block;max-width:80%;object-fit:contain;margin:1rem auto;">
 ]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ess:isSufficientLevel>
-    <ess:successor rdf:resource="lod/architectuurmodel/component"/>
+    <ess:successor rdf:resource="lod/architectuurbeschrijving/component"/>
     <ess:checkListItem rdf:nodeID="checkpoint_lod_container_1"/>
   </ess:LevelOfDetail>
 
@@ -560,7 +560,7 @@
     <ess:name>1</ess:name>
   </ess:Checkpoint>
 
-  <ess:LevelOfDetail rdf:about="lod/architectuurmodel/component">
+  <ess:LevelOfDetail rdf:about="lod/architectuurbeschrijving/component">
     <ess:name xml:lang="nl">3. Component</ess:name>
     <ess:description xml:lang="nl"><![CDATA[
     <p>Dit detailniveau wordt alleen uitgewerkt voor containers waarvoor een <strong>architectuurbepalende eis</strong>, een <strong>aanzienlijk technisch risico</strong> of een <strong>belangrijke ontwerpbeslissing</strong> bestaat. Het is daarom geen standaardonderdeel voor iedere container binnen de solution, maar wordt alleen toegepast wanneer verdere detaillering noodzakelijk is om ontwerpkeuzes te kunnen onderbouwen, implementeren of toetsen.</p>
@@ -568,7 +568,7 @@
     <p>De uitwerking van dit detailniveau vindt plaats wanneer dit voor een specifieke container noodzakelijk is. Dit gebeurt doorgaans later in het project, zodra de realisatie van de container wordt voorbereid of wanneer technische risico's of kwaliteitseisen daarom vragen. De detaillering wordt veelal in samenwerking met het ontwikkelteam opgesteld, waarbij de architectuureigenaar verantwoordelijk blijft voor het bewaken van de architectuurkaders en de samenhang met de rest van de solution.</p>
 ]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
-    <ess:successor rdf:resource="lod/architectuurmodel/code"/>
+    <ess:successor rdf:resource="lod/architectuurbeschrijving/code"/>
     <ess:checkListItem rdf:nodeID="checkpoint_lod_component_1"/>
   </ess:LevelOfDetail>
 
@@ -576,11 +576,11 @@
     <ess:name>1</ess:name>
   </ess:Checkpoint>
 
-  <ess:LevelOfDetail rdf:about="lod/architectuurmodel/code">
+  <ess:LevelOfDetail rdf:about="lod/architectuurbeschrijving/code">
     <ess:name xml:lang="nl">4. Code</ess:name>
     <ess:description xml:lang="nl"><![CDATA[
-    <p>Dit detailniveau maakt slechts in uitzonderlijke gevallen onderdeel uit van het Architectuurmodel. Het wordt alleen toegepast wanneer een architectuurbeslissing uitsluitend op code- of implementatieniveau eenduidig kan worden vastgelegd, bijvoorbeeld bij een verplicht gegevensschema, een beveiligingspatroon of een technisch protocol dat bepalend is voor de architectuur.</p>
-  <p>Op dit niveau betreft het de fysieke implementatie, zoals databaseschema's, tabeldefinities, berichtformaten of andere implementatieartefacten. Dit wordt doorgaans vastgelegd in UML-diagrammen op klassen- of objectniveau, zoals sequence- of class-diagrammen, die het gedrag of de structuur van de implementatie in detail tonen. Deze diagrammen maken formeel onderdeel uit van het Architectuurmodel op detailniveau Code, maar worden alleen opgenomen wanneer de erin vastgelegde keuze daadwerkelijk architectuurbepalend is; voor gewone implementatiedetails volstaat de broncode zelf. Hierdoor blijft het Architectuurmodel gericht op de structurele opbouw van de solution en wordt onnodige duplicatie van ontwerp- en implementatie-informatie voorkomen.</p>
+    <p>Dit detailniveau maakt slechts in uitzonderlijke gevallen onderdeel uit van de Architectuurbeschrijving. Het wordt alleen toegepast wanneer een architectuurbeslissing uitsluitend op code- of implementatieniveau eenduidig kan worden vastgelegd, bijvoorbeeld bij een verplicht gegevensschema, een beveiligingspatroon of een technisch protocol dat bepalend is voor de architectuur.</p>
+  <p>Op dit niveau betreft het de fysieke implementatie, zoals databaseschema's, tabeldefinities, berichtformaten of andere implementatieartefacten. Dit wordt doorgaans vastgelegd in UML-diagrammen op klassen- of objectniveau, zoals sequence- of class-diagrammen, die het gedrag of de structuur van de implementatie in detail tonen. Deze diagrammen maken formeel onderdeel uit van de Architectuurbeschrijving op detailniveau Code, maar worden alleen opgenomen wanneer de erin vastgelegde keuze daadwerkelijk architectuurbepalend is; voor gewone implementatiedetails volstaat de broncode zelf. Hierdoor blijft de Architectuurbeschrijving gericht op de structurele opbouw van de solution en wordt onnodige duplicatie van ontwerp- en implementatie-informatie voorkomen.</p>
 ]]></ess:description>
     <ess:isSufficientLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSufficientLevel>
     <ess:checkListItem rdf:nodeID="checkpoint_lod_code_1"/>
@@ -590,20 +590,20 @@
     <ess:name>1</ess:name>
   </ess:Checkpoint>
 
-  <ess:Resource rdf:about="resource/architectuurmodel/c4-reference">
+  <ess:Resource rdf:about="resource/architectuurbeschrijving/c4-reference">
     <ess:content>https://c4model.com/</ess:content>
   </ess:Resource>
 
-  <ess:WorkProductManifest rdf:about="workproduct-manifest/architectuurmodel/system">
-    <ess:workProduct rdf:resource="workproduct/architectuurmodel"/>
+  <ess:WorkProductManifest rdf:about="workproduct-manifest/architectuurbeschrijving/system">
+    <ess:workProduct rdf:resource="workproduct/architectuurbeschrijving"/>
     <ess:alpha rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#System"/>
     <ess:lowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ess:lowerBound>
     <ess:upperBound rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ess:upperBound>
   </ess:WorkProductManifest>
 
-  <ess:TypedResource rdf:about="resource/architectuurmodel/template">
+  <ess:TypedResource rdf:about="resource/architectuurbeschrijving/template">
     <ess:kind rdf:resource="type/template"/>
-    <ess:content>https://hietkamp.nl/essence/downloads/architectuurmodel.docx</ess:content>
+    <ess:content>https://hietkamp.nl/essence/downloads/architectuurbeschrijving.docx</ess:content>
   </ess:TypedResource>
 
   <!-- ==================================================================
@@ -614,7 +614,7 @@
     <ess:name xml:lang="nl">Architectuurbeslissingen</ess:name>
     <ess:briefDescription xml:lang="nl">Een architectuurbeslissing is, in de traditie van Architecture Decision Records (ADR), een onderbouwde keuze die invulling geeft aan een architectuurbepalende eis, inclusief de overwogen alternatieven en de motivatie voor de gekozen oplossing.</ess:briefDescription>
     <ess:description xml:lang="nl"><![CDATA[<p>Een architectuurbeslissing is een onderbouwde keuze waarmee invulling wordt gegeven aan een architectuurbepalende eis: een eis met aantoonbare invloed op de structuur, samenhang of kwaliteit van de solution. Dit begrip volgt de bredere softwarearchitectuurpraktijk van Architecture Decision Records (ADR), niet een specifieke TOGAF-definitie: TOGAF kent met architecturally significant requirements een verwant begrip voor eisen met een meetbaar effect op de architectuur, maar koppelt daar zelf geen formeel 'architectuurbeslissing'-artefact aan. Niet elke ontwerp- of technische keuze is daarom een architectuurbeslissing — alleen keuzes die de architectuur daadwerkelijk richting geven of de onderhoudbaarheid, flexibiliteit, veiligheid of andere kwaliteitsaspecten beïnvloeden, worden zo vastgelegd.</p>
-<p>Architectuurbeslissingen vormen samen het besluitvormingslog van de architectuur: niet alleen wélke keuze is gemaakt, maar vooral waaróm, welke alternatieven zijn overwogen en welke gevolgen daarbij zijn geaccepteerd. Ze vormen de schakel tussen de architectuurbepalende eisen — die aangeven waaróm een beslissing nodig is — en het architectuurmodel, dat laat zien hóe de gekozen oplossing is uitgewerkt. Hierdoor blijven afwegingen ook na afloop van het project herleidbaar en kunnen toekomstige wijzigingen beter worden beoordeeld.</p>
+<p>Architectuurbeslissingen vormen samen het besluitvormingslog van de architectuur: niet alleen wélke keuze is gemaakt, maar vooral waaróm, welke alternatieven zijn overwogen en welke gevolgen daarbij zijn geaccepteerd. Ze vormen de schakel tussen de architectuurbepalende eisen — die aangeven waaróm een beslissing nodig is — en de architectuurbeschrijving, die laat zien hóe de gekozen oplossing is uitgewerkt. Hierdoor blijven afwegingen ook na afloop van het project herleidbaar en kunnen toekomstige wijzigingen beter worden beoordeeld.</p>
 <p>Elke architectuurbeslissing beschrijft precies één keuze, licht of volledig uitgewerkt naargelang het gewicht van de beslissing: een korte, eenregelige vastlegging volstaat voor de meeste dagelijkse, paved-road-keuzes, terwijl een volledige uitwerking — met context, alle overwogen opties en het vervolgplan — is voorbehouden aan de zwaardere, off-road-gevallen. Het werkproduct is bedoeld voor de architectuureigenaar, het deliveryteam, de Enterprise architect, reviewers, toekomstige beheerders en de architectuursturing.</p>
 ]]></ess:description>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
@@ -779,7 +779,7 @@
   <ess:PatternAssociation rdf:about="pattern-association/architecture-owner/responsible-for">
     <ess:name xml:lang="nl">verantwoordelijk voor</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
-    <ess:elements rdf:resource="workproduct/architectuurmodel"/>
+    <ess:elements rdf:resource="workproduct/architectuurbeschrijving"/>
     <ess:elements rdf:resource="workproduct/architectuurbeslissingen"/>
     <ess:elements rdf:resource="workproduct/migratiescenario"/>
   </ess:PatternAssociation>

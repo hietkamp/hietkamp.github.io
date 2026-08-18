@@ -44,7 +44,7 @@ Per werkproduct de gebruikte RUP-bron:
 | Architectuurprincipes      | Design Guidelines §2–§4; Programming Gl. §12    |
 | Architectuur werkafspraken | Development Case §2.3, §2.5, §4                 |
 | Paved road                 | Design Guidelines §5; Programming Gl. §7–§11    |
-| Architectuurmodel          | Software Architecture Document §2–§11           |
+| Architectuurbeschrijving   | Software Architecture Document §2–§11           |
 | Architectuurbeslissingen   | SAD §3, §11; Business Architecture Doc. §11     |
 | Migratiescenario           | Deployment Plan §3–§5                           |
 | Reviewresultaten           | Iteration Assessment §7; CM Plan §3.1.1, §3.3.2 |
@@ -359,7 +359,7 @@ def architectuurvisie(wp):
 
         + heading("Verschil met de huidige situatie")
         + guidance("Wat verdwijnt, wat verandert, wat komt erbij. Alleen het "
-                   "verschil — de invulling volgt in het architectuurmodel.")
+                   "verschil — de invulling volgt in de architectuurbeschrijving.")
         + placeholder()
 
         + heading("Randvoorwaarden en aannames")
@@ -739,23 +739,57 @@ def paved_road(wp):
 
 
 # ==========================================================================
-# Architectuurmodel
+# Architectuurbeschrijving
 # TOGAF: Architecture Definition Document (fase A t/m D)
 # RUP:   Software Architecture Document §2, §3, §4, §7, §9, §10, §11
 # ==========================================================================
-# Dit is de sterkste overeenkomst van de hele set: de SAD ís het
-# architectuurmodel.
+# Dit is de sterkste overeenkomst van de hele set: de SAD ís de
+# architectuurbeschrijving.
 #
-# De sectievolgorde volgt het C4-model, en wel strikt: per niveau één hoofdstuk
-# met daarin zowel het diagram als het register. Eerder stonden diagram en
-# register los van elkaar — "Containers" met de tekening, "Bouwstenen" met de
-# tabel — terwijl de RDF beide woorden voor hetzelfde gebruikt: "containerniveau
-# (de bouwstenen en hun onderlinge gegevensuitwisseling)". Een bouwsteen ís een
-# C4-container. Die dubbeling is opgeheven; het woord bouwsteen blijft in de
-# lopende tekst staan omdat de RDF het gebruikt, maar als kop en kolomnaam
-# staat er nu het C4-begrip. Koppelingen blijft wél een eigen hoofdstuk: dat
-# register beslaat alle drie de niveaus, en het is voor governance het blad
-# waar het oordeel op rust.
+# Hoofdstukindeling overgenomen uit de KIK-V Architectuur Explainer
+# ------------------------------------------------------------------
+# Naast TOGAF en RUP is de hoofdstukindeling herzien naar het voorbeeld van de
+# KIK-V Architectuur Explainer (Team KIK-V Data en Techniek, maart 2024) — een
+# bestuurlijk leesbaar architectuurdocument met de vaste volgorde Inleiding →
+# Achtergrond (probleemstelling, gewenste situatie) → Architectuurkeuzes →
+# Architectuur → Realisatie → bijlage Samenhang met andere initiatieven. Die
+# indeling groepeert wat hier voorheen los naast elkaar stond (de C4-registers
+# direct na de leeswijzer) onder herkenbare hoofdstukken, en dwingt bovendien
+# een paar vragen af die het oude sjabloon niet stelde.
+#
+# Wat uit de vergelijking met de KIK-V-indeling ontbrak in het oude sjabloon,
+# en dus hier is toegevoegd:
+#
+# 1. Doelgroep. KIK-V opent expliciet met voor wie het document is bedoeld
+#    (bestuurders, directeuren IV/IT, CxO's, architecten). Het oude sjabloon
+#    had een leeswijzer voor de weergaven, maar niet voor de lezer zelf.
+# 2. Probleemstelling en gewenste situatie als eigen, verhalende sectie. Het
+#    oude sjabloon sprong direct naar scope en detailniveau; de vraag "welk
+#    probleem lost dit op" stond alleen impliciet in de architectuurvisie,
+#    zonder brug naar dít document.
+# 3. Een samenvattend overzicht van de architectuurkeuzes (vergelijkbaar met
+#    KIK-V §3, tabel Kn/Toelichting). De losse architectuurbeslissingen
+#    bestonden al, maar er was geen plek die ze in samenhang toont — juist de
+#    samenhang tussen keuzes is waar een architectuurbeoordeling op let.
+# 4. Validatie van de keuzes als eigen stap (KIK-V §3.4). Het oude sjabloon
+#    verwees pas bij "Onderbouwing" naar architectuurbeslissingen, maar had
+#    geen plek voor de vraag of, en hoe, de keuzes zijn getoetst voordat ze
+#    zijn vastgesteld.
+# 5. Samenhang met andere initiatieven (KIK-V bijlage A). Het oude sjabloon
+#    had geen sectie voor de kaders, standaarden en programma's waar deze
+#    architectuur van afhangt of die ze raakt — een architectuur die in
+#    isolatie wordt gelezen, mist precies dat.
+# 6. Realisatie als eigen hoofdstuk met een korte brug naar migratiescenario.
+#    "Verschil met de huidige situatie" bestond al, maar de vraag hóe daar te
+#    komen (transitiestappen, migratieplan) had geen eigen plek in dit
+#    document, alleen in het losse werkproduct migratiescenario.
+#
+# De C4-secties zelf (context, containers, componenten, koppelingen,
+# plaatsing, gegevens, omvang/prestaties, kwaliteitseigenschappen) blijven
+# ongewijzigd van opzet — inclusief de eerdere opheffing van de dubbeling
+# tussen diagram en register per niveau — maar staan nu als subkoppen
+# gebundeld onder het hoofdstuk "De architectuur", in plaats van als losse,
+# gelijkwaardige hoofdstukken naast Inleiding en Achtergrond.
 #
 # Vijf SAD-secties zijn overgenomen omdat ze in de TOGAF-vorm ontbraken:
 #
@@ -774,34 +808,68 @@ def paved_road(wp):
 # §10  Size and Performance — de omvangskenmerken die de architectuur raken.
 # §11  Quality — hoe de architectuur de niet-functionele eigenschappen waarmaakt.
 
-def architectuurmodel(wp):
+def architectuurbeschrijving(wp):
     return (
         preamble(wp)
-        + heading("Afbakening en detailniveau")
-        + guidance("Wat wel en niet in dit model zit, en tot welk C4-niveau is "
-                   "uitgewerkt. Werk alleen uit wat nodig is om de verandering "
-                   "te begrijpen; wat ongewijzigd blijft, wordt niet opnieuw "
-                   "beschreven.")
-        + placeholder()
+        + heading("Inleiding")
+        + guidance("Voor wie dit document is bedoeld en hoe het te lezen. "
+                   "Noem de rollen die erop moeten kunnen beslissen of "
+                   "toetsen — niet alleen wie het schrijft.")
+        + fld("Doelgroep",
+              "wie dit document leest: architectuureigenaar, delivery team, "
+              "Enterprise architect, leveranciers, reviewers, en wie verder "
+              "op basis hiervan beslist of toetst.")
 
-        + heading("Weergaven in dit model")
-        + guidance("Welke weergaven dit model bevat, voor welke lezer ze "
+        + subheading("Weergaven in dit document")
+        + guidance("Welke weergaven dit document bevat, voor welke lezer ze "
                    "bedoeld zijn en welke soort elementen erin staan. Deze "
                    "leeswijzer voorkomt dat een diagram wordt gelezen als "
                    "antwoord op een vraag die het niet beantwoordt.")
         + content_table(["Weergave", "Voor wie", "Wat erin staat"], rows=4)
 
-        + heading("Architectuurdoelen en beperkingen")
-        + guidance("Twee soorten krachten bepalen de vorm van dit model. "
-                   "Doelen komen uit eisen: beveiliging, privacy, "
-                   "beschikbaarheid, hergebruik, verplichte aangeschafte "
-                   "producten. Beperkingen komen uit omstandigheden: bestaande "
-                   "systemen, beschikbare hulpmiddelen, samenstelling van het "
-                   "team, planning, contracten. Benoem ze allebei — veel van de "
-                   "vorm komt niet uit de eisen maar uit de omstandigheden.")
+        + subheading("Afbakening en detailniveau")
+        + guidance("Wat wel en niet in deze beschrijving zit, en tot welk "
+                   "C4-niveau ze is uitgewerkt. Werk alleen uit wat nodig is "
+                   "om de verandering te begrijpen; wat ongewijzigd blijft, "
+                   "wordt niet opnieuw beschreven.")
         + placeholder()
 
-        + heading("Structuurbepalende use cases")
+        + heading("Achtergrond")
+        + subheading("Aanleiding en probleemstelling")
+        + guidance("Welk probleem of welke doelstelling deze architectuur "
+                   "beantwoordt, en wie daarvan last heeft of erbij gebaat "
+                   "is. Neem dit over uit de architectuurvisie; schrijf hier "
+                   "alleen wat nodig is om de rest van dit document zonder "
+                   "die visie erbij te kunnen lezen.")
+        + placeholder()
+
+        + subheading("Gewenste situatie")
+        + guidance("Wat er anders is zodra deze architectuur is "
+                   "gerealiseerd, in enkele zinnen. De doelstellingen zelf "
+                   "staan in de architectuurvisie; hier gaat het om wat dat "
+                   "concreet betekent voor déze solution.")
+        + placeholder()
+
+        + heading("Architectuurkeuzes")
+        + guidance("De keuzes die samen de vorm van deze architectuur "
+                   "bepalen, in samenhang en op hoofdlijnen — niet de "
+                   "volledige afweging per keuze; dat staat in de "
+                   "architectuurbeslissingen waarnaar deze tabel verwijst.")
+        + content_table(["Keuze", "Toelichting", "Architectuurbeslissing"],
+                        rows=4)
+
+        + subheading("Architectuurdoelen en beperkingen")
+        + guidance("Twee soorten krachten bepalen de vorm van deze "
+                   "architectuur. Doelen komen uit eisen: beveiliging, "
+                   "privacy, beschikbaarheid, hergebruik, verplichte "
+                   "aangeschafte producten. Beperkingen komen uit "
+                   "omstandigheden: bestaande systemen, beschikbare "
+                   "hulpmiddelen, samenstelling van het team, planning, "
+                   "contracten. Benoem ze allebei — veel van de vorm komt "
+                   "niet uit de eisen maar uit de omstandigheden.")
+        + placeholder()
+
+        + subheading("Structuurbepalende use cases")
         + guidance("De use cases en scenario's die de opbouw van de solution "
                    "bepalen: omdat ze veel bouwstenen raken, omdat ze het "
                    "meeste volume dragen, of omdat ze een gevoelig punt in de "
@@ -810,7 +878,16 @@ def architectuurmodel(wp):
         + content_table(["Use case", "Waarom structuurbepalend",
                          "Welke containers geraakt"], rows=4)
 
-        + heading("Context")
+        + subheading("Validatie van de keuzes")
+        + guidance("Hoe en door wie deze keuzes zijn getoetst voordat ze "
+                   "hier zijn vastgelegd: welke review, welk overleg of "
+                   "welke proof-of-concept de keuze heeft bevestigd of juist "
+                   "heeft doen kantelen. Verwijs naar reviewresultaten; "
+                   "schrijf de uitkomst niet opnieuw uit.")
+        + placeholder()
+
+        + heading("De architectuur")
+        + subheading("Context")
         + guidance("De grenzen van de solution en haar omgeving: gebruikers, "
                    "aangrenzende systemen en externe partijen. Voeg het "
                    "contextdiagram hier in en zet daarna in het register wie "
@@ -820,7 +897,7 @@ def architectuurmodel(wp):
         + content_table(["Partij of systeem", "Relatie tot de solution",
                          "Eigenaar"], rows=4)
 
-        + heading("Containers")
+        + subheading("Containers")
         + guidance("De bouwstenen waaruit de solution bestaat: elk onderdeel "
                    "dat zelfstandig draait of gegevens vasthoudt. Voor de "
                    "meeste solutions is dit het niveau waarop governance haar "
@@ -832,17 +909,17 @@ def architectuurmodel(wp):
         + content_table(["Container", "Verantwoordelijkheid", "Grens",
                          "Eigenaar"], rows=5)
 
-        + heading("Componenten")
+        + subheading("Componenten")
         + guidance("Alleen uitwerken waar een architectuurbepalende eis, een "
                    "risico of een beslissing dat vereist — en dan alleen voor "
-                   "de container waar dat speelt. Laat dit hoofdstuk anders "
+                   "de container waar dat speelt. Laat dit onderdeel anders "
                    "leeg: een volledig uitgewerkt componentniveau veroudert "
                    "sneller dan het wordt gelezen.")
         + placeholder(2)
         + content_table(["Component", "In welke container",
                          "Verantwoordelijkheid", "Waarom uitgewerkt"], rows=4)
 
-        + heading("Koppelingen")
+        + subheading("Koppelingen")
         + guidance("Per koppeling wat er wordt uitgewisseld en wat er gebeurt "
                    "als de andere kant wegvalt. Dit register beslaat de drie "
                    "niveaus hierboven — koppelingen over de systeemgrens heen "
@@ -852,53 +929,92 @@ def architectuurmodel(wp):
         + content_table(["Koppeling", "Van", "Naar", "Wat wordt uitgewisseld",
                          "Gedrag bij uitval"], rows=5)
 
-        + heading("Plaatsing")
+        + subheading("Plaatsing")
         + guidance("Waarop de bouwstenen draaien: omgevingen, knooppunten en "
                    "de verbindingen ertussen, met de afbeelding van containers "
                    "op die knooppunten. Voeg het deploymentdiagram hier in. "
                    "Laat weg wat standaard uit de paved road volgt.")
         + placeholder(2)
 
-        + heading("Gegevens")
+        + subheading("Gegevens")
         + guidance("Welke gegevens waar worden vastgelegd, wie eigenaar is en "
-                   "hoe lang ze bewaard blijven. Sla deze sectie over als de "
+                   "hoe lang ze bewaard blijven. Sla dit onderdeel over als de "
                    "opslag triviaal is of geheel uit de bouwstenen volgt.")
         + placeholder()
 
-        + heading("Omvang en prestaties")
+        + subheading("Omvang en prestaties")
         + guidance("De omvangskenmerken die de vorm van de architectuur raken: "
                    "aantallen gebruikers, volumes, groei, piekbelasting, en de "
                    "prestatiegrenzen waarbinnen dat moet passen.")
         + placeholder()
 
-        + heading("Kwaliteitseigenschappen")
+        + subheading("Kwaliteitseigenschappen")
         + guidance("Hoe deze architectuur de eigenschappen waarmaakt die niet "
                    "in functionaliteit zijn uit te drukken: beschikbaarheid, "
                    "herstelbaarheid, beveiliging, uitbreidbaarheid, "
-                   "onderhoudbaarheid. Zeg per eigenschap wélke keuze in dit "
-                   "model haar levert, niet dát de architectuur eraan voldoet.")
+                   "onderhoudbaarheid. Zeg per eigenschap wélke keuze in deze "
+                   "architectuur haar levert, niet dát de architectuur eraan "
+                   "voldoet.")
         + placeholder()
 
-        + heading("Verschil met de huidige situatie")
+        + heading("Realisatie van de architectuur")
+        + subheading("Verschil met de huidige situatie")
         + guidance("Wat verdwijnt, wat verandert, wat komt erbij. Beschrijf de "
                    "huidige situatie alleen voor zover ze geraakt wordt.")
         + placeholder()
 
-        + heading("Onderbouwing van de keuzes")
+        + subheading("Implementatie en migratie")
+        + guidance("In welke stappen deze architectuur wordt gerealiseerd, en "
+                   "wat elke stap oplevert. Schrijf de volledige planning niet "
+                   "hier uit — dat staat in het migratiescenario — maar geef "
+                   "aan welke transitiestap(pen) op dit model van toepassing "
+                   "zijn.")
+        + placeholder()
+
+        + subheading("Onderbouwing van de keuzes")
         + guidance("Niet hier uitschrijven. Verwijs naar de "
                    "architectuurbeslissingen waarin de afwegingen zijn "
                    "vastgelegd.")
         + placeholder()
 
-        + heading("Vindplaats in de architectuurrepository")
-        + guidance("Waar de componenten van dit model zijn opgenomen, zodat ze "
-                   "op dezelfde autoritatieve plek staan als de overige "
-                   "artefacten.")
+        + subheading("Vindplaats in de architectuurrepository")
+        + guidance("Waar de componenten van deze beschrijving zijn "
+                   "opgenomen, zodat ze op dezelfde autoritatieve plek staan "
+                   "als de overige artefacten.")
         + placeholder()
+
+        + heading("Samenhang met andere initiatieven")
+        + guidance("Bijlage: hoe deze architectuur zich verhoudt tot kaders, "
+                   "programma's en initiatieven buiten deze opdracht. Een "
+                   "architectuur die in isolatie wordt gelezen, mist precies "
+                   "deze samenhang — laat dit hoofdstuk daarom niet standaard "
+                   "leeg, ook al is de opdracht klein.")
+        + subheading("Kaders en standaarden")
+        + guidance("Aan welke externe referentiearchitecturen, wet- en "
+                   "regelgeving of standaarden deze architectuur voldoet of "
+                   "waarmee ze aansluit, en op welke punten bewust wordt "
+                   "afgeweken.")
+        + content_table(["Kader of standaard", "Hoe deze architectuur "
+                         "ermee samenhangt"], rows=3)
+
+        + subheading("Andere programma's en initiatieven")
+        + guidance("Met welke andere lopende initiatieven deze architectuur "
+                   "samenhangt: gedeelde bouwstenen, afhankelijkheden in "
+                   "planning, of overlappende scope. Benoem per initiatief "
+                   "de aard van de relatie en wie het aanspreekpunt is.")
+        + content_table(["Initiatief", "Aard van de samenhang",
+                         "Aanspreekpunt"], rows=3)
 
         + heading("Gereed wanneer")
         + checklist([
-            "De leeswijzer benoemt elke weergave en haar lezer.",
+            "De doelgroep en de leeswijzer benoemen elke weergave en haar "
+            "lezer.",
+            "De probleemstelling en de gewenste situatie zijn kort geschetst "
+            "en verwijzen naar de architectuurvisie.",
+            "De architectuurkeuzes staan als overzicht bij elkaar, met "
+            "verwijzing naar de onderliggende architectuurbeslissingen.",
+            "Van de keuzes is aangegeven hoe en door wie ze zijn "
+            "gevalideerd.",
             "De systeemgrenzen zijn eenduidig.",
             "Van elke partij aan de andere kant van een grens is de eigenaar "
             "bekend.",
@@ -910,9 +1026,12 @@ def architectuurmodel(wp):
             "beslissing dat vroeg.",
             "Van elke koppeling is het gedrag bij uitval bekend.",
             "Bij elke kwaliteitseigenschap staat welke keuze haar levert.",
-            "Het verschil met de huidige situatie is zichtbaar.",
+            "Het verschil met de huidige situatie is zichtbaar, met een "
+            "korte doorverwijzing naar het migratiescenario.",
             "De onderbouwing staat in architectuurbeslissingen, niet hier.",
-            "Het model is opgenomen in de architectuurrepository.",
+            "Deze beschrijving is opgenomen in de architectuurrepository.",
+            "De samenhang met kaders, standaarden en andere initiatieven is "
+            "benoemd — of expliciet als niet van toepassing gemarkeerd.",
         ])
     )
 
@@ -1704,7 +1823,7 @@ BUILDERS = {
     "architectuurprincipes": architectuurprincipes,
     "architectuur-werkafspraken": architectuur_werkafspraken,
     "paved-road": paved_road,
-    "architectuurmodel": architectuurmodel,
+    "architectuurbeschrijving": architectuurbeschrijving,
     "architectuurbeslissingen": architectuurbeslissingen,
     "migratiescenario": migratiescenario,
     "reviewresultaten": reviewresultaten,

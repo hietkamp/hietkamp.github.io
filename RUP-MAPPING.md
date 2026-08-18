@@ -13,7 +13,7 @@ Kolom **Fit**: `1:1` = zelfde artefact, `deel` = RUP dekt een deel of verspreidt
 |---|---|---|---|---|
 | 1 | Architectuurvisie | Enterprise architectuur | [Vision](https://files.defcon.no/RUP/webtmpl/templates/req/rup_vision.htm) + [Business Architecture Document](https://files.defcon.no/RUP/webtmpl/templates/bm/rup_barchdoc.htm) §3 | deel |
 | 2 | Paved road | Enterprise architectuur | [Design Guidelines](https://files.defcon.no/RUP/webtmpl/templates/environ/rup_desgd.htm) + [Programming Guidelines](https://files.defcon.no/RUP/webtmpl/templates/environ/rup_prggd.htm) | deel |
-| 3 | Architectuurmodel | Solution architectuur | [Software Architecture Document](https://files.defcon.no/RUP/webtmpl/templates/a_and_d/rup_sad.htm) | 1:1 |
+| 3 | Architectuurbeschrijving | Solution architectuur | [Software Architecture Document](https://files.defcon.no/RUP/webtmpl/templates/a_and_d/rup_sad.htm) | 1:1 |
 | 4 | Architectuurbeslissingen | Solution architectuur | SAD §3 + §11; BAD §11 Architectural Trade-offs | gat |
 | 5 | Migratiescenario | Solution architectuur | [Software Development Plan](https://files.defcon.no/RUP/webtmpl/templates/mgmnt/rup_sdpln.htm), [Deployment Plan](https://files.defcon.no/RUP/webtmpl/templates/deploy/rup_depln.htm) §3.2 | gat |
 | 6 | Architectuurprincipes | Architectuursturing | [Design Guidelines](https://files.defcon.no/RUP/webtmpl/templates/environ/rup_desgd.htm) §2/§4; BAD §3 Architectural Drivers | deel |
@@ -41,7 +41,7 @@ BAD **§3 Architectural Drivers** (goals vs. constraints) is inhoudelijk het dic
 
 Wat RUP mist: het **afwijkingspad**. De paved road heeft een expliciete route voor wie ervan afwijkt; RUP-guidelines kennen geen exception-mechanisme. Dichtstbijzijnde in RUP is Development Case §2.3.3 "Notes on Artifacts" (wat we níet gebruiken en waarom) — maar dat is procesniveau, geen technologiekeuze.
 
-### 3. Architectuurmodel → Software Architecture Document
+### 3. Architectuurbeschrijving → Software Architecture Document
 
 Sterkste match van de hele set. SAD-structuur: §2 Architectural Representation, §4 Use-Case View, §5 Logical View (decompositie in subsystemen/packages, verantwoordelijkheden), §6 Process View, §7 Deployment View, §8 Implementation View (lagen), §9 Data View, §10 Size & Performance, §11 Quality.
 
@@ -135,7 +135,7 @@ Relevant voor architectuurwerk, maar niet gemodelleerd:
 | [Glossary](https://files.defcon.no/RUP/webtmpl/templates/req/rup_gloss.htm) / [Business Glossary](https://files.defcon.no/RUP/webtmpl/templates/bm/rup_bgloss.htm) | begrippenkader ontbreekt als werkproduct |
 | [Stakeholder Requests](https://files.defcon.no/RUP/webtmpl/templates/req/rup_stkreq.htm) | ruwe input vóór de architectuurvisie |
 | [Risk List](https://files.defcon.no/RUP/webtmpl/templates/mgmnt/rup_rsklst.htm) | architectuurrisico's als eigen werkproduct |
-| [Use-Case-Realization Specification](https://files.defcon.no/RUP/webtmpl/templates/a_and_d/rup_ucrs.htm) | brug use case → architectuurmodel |
+| [Use-Case-Realization Specification](https://files.defcon.no/RUP/webtmpl/templates/a_and_d/rup_ucrs.htm) | brug use case → architectuurbeschrijving |
 | [Business Architecture Document](https://files.defcon.no/RUP/webtmpl/templates/bm/rup_barchdoc.htm) | volledige EA-tegenhanger van de SAD; nu verdeeld over visie + model |
 | [Target-Organization Assessment](https://files.defcon.no/RUP/webtmpl/templates/bm/rup_tarorgass.htm) | huidige-situatie-analyse vóór het migratiescenario |
 
@@ -143,7 +143,7 @@ Relevant voor architectuurwerk, maar niet gemodelleerd:
 
 ## 4. Samenvatting
 
-- **3 van 13** hebben een directe RUP-template: architectuurmodel (SAD), architectuur werkafspraken (Development Case), use-casespecificatie + aanvullende specificaties (2 van de use-case-set) — feitelijk **4**.
+- **3 van 13** hebben een directe RUP-template: architectuurbeschrijving (SAD), architectuur werkafspraken (Development Case), use-casespecificatie + aanvullende specificaties (2 van de use-case-set) — feitelijk **4**.
 - **6** zijn deels gedekt en kunnen sectiestructuur lenen.
 - **3 gaten** zijn systematisch: architectuurbeslissingen, migratiescenario en architectuuropdracht zijn TOGAF/ADR-concepten die RUP niet kent. RUP legt de *uitkomst* van architectuurwerk vast (de SAD), niet de *besturing* ervan.
 - Alle 4 werkproducten van de practice **Use cases** hebben goede RUP-dekking; de practice **Architectuursturing** het slechtst.

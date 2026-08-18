@@ -151,7 +151,7 @@
     <ess:approach rdf:resource="approach/enterprise-build-paved-road/default"/>
     <ess:action rdf:resource="action/enterprise-build-paved-road/read/architectuurvisie"/>
     <ess:action rdf:resource="action/enterprise-build-paved-road/create/architectuurbeslissingen"/>
-    <ess:action rdf:resource="action/enterprise-build-paved-road/create/architectuurmodel"/>
+    <ess:action rdf:resource="action/enterprise-build-paved-road/create/architectuurbeschrijving"/>
     <ess:action rdf:resource="action/enterprise-build-paved-road/create/paved-road"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
     <ess:criterion rdf:resource="criterion/enterprise-build-paved-road/entry/opportunity"/>
@@ -187,11 +187,11 @@
     <ess:workProduct rdf:resource="workproduct/architectuurbeslissingen"/>
   </ess:Action>
 
-  <ess:Action rdf:about="action/enterprise-build-paved-road/create/architectuurmodel">
-    <ess:name xml:lang="nl">Maak architectuurmodel</ess:name>
+  <ess:Action rdf:about="action/enterprise-build-paved-road/create/architectuurbeschrijving">
+    <ess:name xml:lang="nl">Maak architectuurbeschrijving</ess:name>
     <ess:isSuppressable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ess:isSuppressable>
     <ess:kind rdf:resource="https://www.hietkamp.nl/ontologies/essence-language#create"/>
-    <ess:workProduct rdf:resource="workproduct/architectuurmodel"/>
+    <ess:workProduct rdf:resource="workproduct/architectuurbeschrijving"/>
   </ess:Action>
 
   <ess:Action rdf:about="action/enterprise-build-paved-road/create/paved-road">
@@ -253,7 +253,7 @@
     <ess:owner rdf:resource="practice/enterprise-architecture"/>
     <ess:approach rdf:resource="approach/enterprise-govern-change/default"/>
     <ess:action rdf:resource="action/enterprise-govern-change/read/architectuurbeslissingen"/>
-    <ess:action rdf:resource="action/enterprise-govern-change/read/architectuurmodel"/>
+    <ess:action rdf:resource="action/enterprise-govern-change/read/architectuurbeschrijving"/>
     <ess:action rdf:resource="action/enterprise-govern-change/create/migratiescenario"/>
     <ess:action rdf:resource="action/enterprise-govern-change/read/paved-road"/>
     <ess:requiredCompetencyLevel rdf:resource="https://www.hietkamp.nl/ontologies/essence-kernel#Masters"/>
@@ -535,7 +535,7 @@
     <ess:elements rdf:resource="workproduct/architectuurvisie"/>
     <ess:elements rdf:resource="workproduct/paved-road"/>
     <ess:elements rdf:resource="workproduct/migratiescenario"/>
-    <ess:elements rdf:resource="workproduct/architectuurmodel"/>
+    <ess:elements rdf:resource="workproduct/architectuurbeschrijving"/>
     <ess:elements rdf:resource="workproduct/architectuurbeslissingen"/>
   </ess:PatternAssociation>
 
